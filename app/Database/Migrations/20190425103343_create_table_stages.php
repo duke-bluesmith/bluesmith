@@ -9,8 +9,9 @@ class Migration_create_table_stages extends Migration
 		$fields = [
 			'type'           => ['type' => 'varchar', 'constraint' => 31],
 			'name'           => ['type' => 'varchar', 'constraint' => 31],
-			'party'          => ['type' => 'varchar', 'constraint' => 31],
 			'uid'            => ['type' => 'varchar', 'constraint' => 31],
+			'route'          => ['type' => 'varchar', 'constraint' => 31],
+			'party'          => ['type' => 'varchar', 'constraint' => 31],
 			'icon'           => ['type' => 'varchar', 'constraint' => 31],
 			'summary'        => ['type' => 'varchar', 'constraint' => 255],
 			'description'    => ['type' => 'text'],
