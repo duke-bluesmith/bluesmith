@@ -8,11 +8,36 @@
         {
             "type": "vcs",
             "url": "https://github.com/codeigniter4/codeigniter4"
-        }
+        },
+		{
+			"type": "package",
+			"package": {
+				"name": "blackrockdigital/sb-admin-2",
+				"version": "4.0.4",
+				"dist": {
+					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.4.zip",
+					"type": "zip"
+				},
+				"source": {
+					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2",
+					"type": "vcs",
+					"reference": "releases/tag/v4.0.4"
+				}
+			}
+		}
     ],
     "require": {
         "php": ">=7.2",
-        "codeigniter4/codeigniter4": "dev-develop"
+        "codeigniter4/codeigniter4": "dev-develop",
+        "twbs/bootstrap": "^4.3",
+        "components/jquery": "^3.3",
+        "enyo/dropzone": "^5.5",
+        "fortawesome/font-awesome": "^5.8",
+        "blackrockdigital/sb-admin-2": "4.0.*",
+        "datatables/datatables": "^1.10",
+        "nnnick/chartjs": "^2.8",
+        "peekleon/datatables-all": "^1.10",
+        "tatter/addins": "^1.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
