@@ -32,7 +32,7 @@ class Logger extends BaseConfig
 	| your log files will fill up very fast.
 	|
 	*/
-	public $threshold = 3;
+	public $threshold = [1, 2, 3, 4, 5, 8];
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ class Logger extends BaseConfig
 			 * IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
 			 * integer notation (i.e. 0700, 0644, etc.)
 			 */
-			'filePermissions' => 0644,
+			'filePermissions' => 0664,
 		],
 
 		/**

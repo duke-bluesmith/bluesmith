@@ -4,9 +4,15 @@
     "description": "CodeIgniter4 starter app",
     "homepage": "https://codeigniter.com",
     "license": "MIT",
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/codeigniter4/codeigniter4"
+        }
+    ],
     "require": {
         "php": ">=7.2",
-        "codeigniter4/framework": "^4@alpha"
+        "codeigniter4/codeigniter4": "dev-develop"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
@@ -14,7 +20,7 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "composer dump-autoload",
+            "@composer dump-autoload",
             "./post-update.sh"
         ]
     },
