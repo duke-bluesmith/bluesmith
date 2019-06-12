@@ -4,10 +4,16 @@
     "description": "CodeIgniter4 starter app",
     "homepage": "https://codeigniter.com",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
 	"repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/codeigniter4/codeigniter4"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/lonnieezell/myth-auth"
         },
 		{
 			"type": "package",
@@ -29,6 +35,7 @@
     "require": {
         "php": ">=7.2",
         "codeigniter4/codeigniter4": "dev-develop",
+        "myth/auth": "dev-develop",
         "twbs/bootstrap": "^4.3",
         "components/jquery": "^3.3",
         "enyo/dropzone": "^5.5",
