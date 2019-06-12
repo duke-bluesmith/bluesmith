@@ -19,15 +19,15 @@
 			"type": "package",
 			"package": {
 				"name": "blackrockdigital/sb-admin-2",
-				"version": "4.0.4",
+				"version": "4.0.5",
 				"dist": {
-					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.4.zip",
+					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.5.zip",
 					"type": "zip"
 				},
 				"source": {
 					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2",
 					"type": "vcs",
-					"reference": "releases/tag/v4.0.4"
+					"reference": "releases/tag/v4.0.5"
 				}
 			}
 		}
@@ -44,7 +44,9 @@
         "datatables/datatables": "^1.10",
         "nnnick/chartjs": "^2.8",
         "peekleon/datatables-all": "^1.10",
-        "tatter/addins": "^1.0"
+        "tatter/addins": "^1.0",
+        "tatter/reports": "^1.0",
+        "tatter/workflows": "^0.8.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
