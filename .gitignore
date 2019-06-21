@@ -84,6 +84,7 @@ phpunit
 # Composer
 #-------------------------
 vendor/
+public/assets/vendor/
 composer.lock
 
 #-------------------------
