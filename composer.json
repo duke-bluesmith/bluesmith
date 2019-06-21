@@ -36,6 +36,8 @@
         "php": ">=7.2",
         "codeigniter4/codeigniter4": "dev-develop",
         "myth/auth": "dev-develop",
+        "tatter/addins": "^1.0",
+        "tatter/workflows": "^0.8.0",
         "twbs/bootstrap": "^4.3",
         "components/jquery": "^3.3",
         "enyo/dropzone": "^5.5",
@@ -43,10 +45,7 @@
         "blackrockdigital/sb-admin-2": "4.0.*",
         "datatables/datatables": "^1.10",
         "nnnick/chartjs": "^2.8",
-        "peekleon/datatables-all": "^1.10",
-        "tatter/addins": "^1.0",
-        "tatter/reports": "^1.0",
-        "tatter/workflows": "^0.8.0"
+        "peekleon/datatables-all": "^1.10"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
@@ -55,7 +54,8 @@
     "scripts": {
         "post-update-cmd": [
             "@composer dump-autoload",
-            "./post-update.sh"
+            "./post-update.sh",
+            "./spark migrate:latest -all"
         ]
     },
     "support": {

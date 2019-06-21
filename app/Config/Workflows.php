@@ -2,8 +2,11 @@
 
 use CodeIgniter\Config\BaseConfig;
 
-class Workflows extends Tatter\Workflows\Config\Workflows
+class Workflows extends \Tatter\Workflows\Config\Workflows
 {
+	// the session variable to check for a logged-in user ID
+	public $userSource = 'logged_in';
+	
 	// the model to use for jobs
 	public $jobModel = 'App\Models\JobModel';
 	
