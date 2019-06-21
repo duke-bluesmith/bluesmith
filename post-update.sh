@@ -10,6 +10,7 @@ mkdir -pv public/assets/vendor
 cp -n app/index.html public/assets/
 cp -n app/index.html public/assets/vendor/
 
+
 ### Specific package handling
 
 # JQuery
