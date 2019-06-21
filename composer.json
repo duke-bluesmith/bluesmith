@@ -45,7 +45,8 @@
         "blackrockdigital/sb-admin-2": "4.0.*",
         "datatables/datatables": "^1.10",
         "nnnick/chartjs": "^2.8",
-        "peekleon/datatables-all": "^1.10"
+        "peekleon/datatables-all": "^1.10",
+        "tinymce/tinymce": "^5.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",

@@ -16,5 +16,8 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/dropzone/dropzone.min.css',
 			'vendor/dropzone/dropzone.min.js',
 		],
+		'cms' => [
+			'vendor/tinymce/tinymce.min.js',
+		]
 	];
 }

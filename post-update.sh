@@ -63,6 +63,12 @@ cp -n app/index.html public/assets/vendor/sbadmin2/
 rm -f public/sbadmin2
 ln -s ../vendor/blackrockdigital/sb-admin-2 public/sbadmin2
 
+# TinyMCE
+rm -rf public/assets/vendor/tinymce
+mkdir public/assets/vendor/tinymce
+cp vendor/tinymce/tinymce/*.js public/assets/vendor/tinymce/
+cp -r vendor/tinymce/tinymce/themes public/assets/vendor/tinymce/
+cp -r vendor/tinymce/tinymce/skins public/assets/vendor/tinymce/
 
 ### All done
 
