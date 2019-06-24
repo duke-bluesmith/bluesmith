@@ -1,0 +1,50 @@
+#banner {
+
+}
+	#banner-logo {
+		font-size: 2em;
+		display: inline-block;
+		line-height: inherit;
+		white-space: nowrap;
+	}
+		#banner-logo p {
+			margin: 30px 0;
+		}
+		#banner-logo a {
+			text-decoration: none;
+			font-weight: 600;
+			letter-spacing: 2px;
+		}
+		#banner-logo img {
+			margin-right: 5%;
+		}
+	
+	#banner-tools {
+		float: right;
+		width: 20%;
+		margin-top: 35px;
+		margin-right: 10px;
+		text-align: right;
+	}
+
+#menu {
+	padding: 0;
+	text-align: center;
+}
+	#menu .nav-item a {
+		padding: 10px 30px;
+		font-size: .8em;
+	}
+
+#main {
+	min-height: 600px;
+}
+
+#footer {
+	width: 100%;
+	padding: 20px;
+}
+	#footer .copyright {
+		margin: 10px;
+		font-size: .7em;
+	}

@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+$settings = service('settings');
+?><!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -49,42 +51,54 @@
 	<!-- End Matomo Code -->
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg <?= (theme()->name == 'Dark') ? 'navbar-dark' : 'navbar-light' ?>">
-		<a class="navbar-brand" href="<?= site_url() ?>">
-			<img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
-			Bluesmith
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="<?= site_url() ?>">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= site_url('users') ?>">Users</a>
-				</li>
-			</ul>
+	<header id="banner" role="banner">
+		<div class="container">
+			<div id="banner-logo">
+				<p>
+					<a href="<?= $settings->orgUrl ?>"><img src="<?= $settings->orgLogo ?>" height="60" class="align-middle" alt="logo"></a>
+					<a href="<?= site_url() ?>"><?= $settings->brandName ?></a>
+				</p>
+			</div>
+			
+			<div id="banner-tools">
 <?php
 if (service('authentication')->user()):
 ?>
-			<a class="navbar-text" href="<?=route_to('logout') ?>" id="login"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				<a href="<?=route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
 <?php
 else:
 ?>
-			<a class="navbar-text" href="<?=route_to('login') ?>" id="login"><i class="fas fa-unlock-alt"></i> Login</a>
+				<a href="<?=route_to('login') ?>"><i class="fas fa-unlock-alt"></i> Login</a>
+				<?= themes_form('themed-select custom-select custom-select-sm') ?>
+			</div>
     	</div>
 <?php
 endif;
 ?>
-    	</div>
-	</nav>
+	</header>
 	
+	<nav id="menu" class="navbar navbar-expand-lg <?= (theme()->dark) ? 'navbar-dark' : 'navbar-light' ?>" role="navigation">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="<?= site_url() ?>">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= site_url('users') ?>">Users</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+		
 	<?= service('alerts')->display() ?>
 	
-	<main role="main" class="my-5">
+	<main id="main" role="main" class="my-5">

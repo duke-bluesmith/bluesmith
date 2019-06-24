@@ -1,12 +1,19 @@
+<?php
+$settings = service('settings');
+?>
 
 	</main>
 
-	<footer class="footer">
-		<div class="float-left mx-4">
-			<?= themes_form('themed-select custom-select custom-select-sm') ?>
+	<footer id="footer" class="footer float-left">
+		<div class="float-left">
+			<a href="<?= $settings->orgUrl ?>"><img src="<?= $settings->orgLogo ?>" height="45" alt="logo"></a>
 		</div>
-		<div class="container">
-			<div class="col text-muted text-center">&copy; <?=date('Y') ?> Bluesmith</div>
+			
+		<div class="float-right copyright">
+			&copy; <?=date('Y') ?>
+			<?= $settings->orgName ?>
+			<?= $settings->orgAddress ?>
+			<?= $settings->orgPhone ?>
 		</div>
 	</footer>
 	
