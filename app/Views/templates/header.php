@@ -64,11 +64,11 @@ $settings = service('settings');
 <?php
 if (service('authentication')->user()):
 ?>
-				<a href="<?=route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				<a href="<?=route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
 <?php
 else:
 ?>
-				<a href="<?=route_to('login') ?>"><i class="fas fa-unlock-alt"></i> Login</a>
+				<a href="<?=route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
 				<?= themes_form('themed-select custom-select custom-select-sm') ?>
 			</div>
     	</div>

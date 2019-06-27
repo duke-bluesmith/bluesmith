@@ -73,8 +73,13 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('jobs/show/(:num)', 'Jobs::show/$1');
-$routes->get('jobs/(:segment)/(:num)', 'Jobs::stage/$1/$2');
+
+// Admin dashboard
+//$routes->group('manage', ['filter' => 'role:admin'], function($routes)
+$routes->group('manage', function($routes)
+{
+	$routes->add('/', 'App\Controllers\Manage\Dashboard::index');
+});
 
 /**
  * --------------------------------------------------------------------

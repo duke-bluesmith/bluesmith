@@ -26,6 +26,9 @@
 		margin-right: 10px;
 		text-align: right;
 	}
+		#banner-tools a i {
+			margin-right: 5px;
+		}
 
 #menu {
 	padding: 0;

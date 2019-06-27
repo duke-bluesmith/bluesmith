@@ -67,8 +67,9 @@ ln -s ../vendor/blackrockdigital/sb-admin-2 public/sbadmin2
 rm -rf public/assets/vendor/tinymce
 mkdir public/assets/vendor/tinymce
 cp vendor/tinymce/tinymce/*.js public/assets/vendor/tinymce/
-cp -r vendor/tinymce/tinymce/themes public/assets/vendor/tinymce/
-cp -r vendor/tinymce/tinymce/skins public/assets/vendor/tinymce/
+cp -R vendor/tinymce/tinymce/plugins public/assets/vendor/tinymce/
+cp -R vendor/tinymce/tinymce/skins public/assets/vendor/tinymce/
+cp -R vendor/tinymce/tinymce/themes public/assets/vendor/tinymce/
 
 ### All done
 
