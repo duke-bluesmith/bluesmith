@@ -75,10 +75,12 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 // Admin dashboard
-//$routes->group('manage', ['filter' => 'role:admin'], function($routes)
-$routes->group('manage', function($routes)
+$routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Controllers\Manage'], function($routes)
 {
-	$routes->add('/', 'App\Controllers\Manage\Dashboard::index');
+	$routes->add('/', 'Dashboard::index');
+
+	$routes->get('content/(:any)', 'Content::$1');
+	$routes->post('content/(:any)', 'Content::$1');
 });
 
 /**
