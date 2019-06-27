@@ -25,7 +25,7 @@ class Migration_create_table_pages extends Migration
 		
 		// Add rows for required pages
 		$pages = new PageModel();
-		foreach (['Home'] as $name):
+		foreach (['Home', 'Options'] as $name):
 			$row = [
 				'name'    => $name,
 				'content' => view("examples/{$name}", [], ['debug' => false]),

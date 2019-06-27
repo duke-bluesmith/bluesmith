@@ -1,3 +1,14 @@
-nav.navbar {
+body {
+	background-color: #f8f9fa;
+}
+
+#banner {
+	background-color: #0E82CF;
+}
+	#banner a {
+		color: white;
+	}
+
+#menu {
 	background-color: #17A2B8;
 }

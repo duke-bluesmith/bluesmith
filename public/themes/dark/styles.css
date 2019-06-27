@@ -1,4 +1,19 @@
 body {
 	background-color: #242424;
-	color: #ededed;
+	color: #cdcdcd;
+}
+
+#banner {
+	background-color: #000030;
+}
+	#banner a {
+		color: #a8a8a8;
+	}
+
+#menu {
+	background-color: #1a1a30;
+}
+
+#footer {
+	background-color: #1a1a30;
 }

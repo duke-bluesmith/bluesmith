@@ -1,6 +1,6 @@
 <h2>3D Printing Service</h2>
 
-<p><a href="/jobs/new" class="btn btn-primary">Submit a job now</a></p>
+<p>Welcome to our 3D printing service!</p>
 
 <h3>How it Works</h3>
 <section>

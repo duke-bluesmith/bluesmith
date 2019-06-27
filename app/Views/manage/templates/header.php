@@ -42,7 +42,7 @@ $settings = service('settings');
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-user-shield"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3"><?= $settings->brandName ?> Admin</div>
+				<div class="sidebar-brand-text mx-3"><?= $settings->brandName ?></div>
 			</a>
 
 			<!-- Divider -->
@@ -72,26 +72,24 @@ $settings = service('settings');
 				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Available Pages:</h6>
-						<a class="collapse-item" href="<?= site_url('manage/content/page/home') ?>">Home</a>
+						<a class="collapse-item" href="<?= site_url('manage/content/page/Home') ?>">Home</a>
+						<a class="collapse-item" href="<?= site_url('manage/content/page/Options') ?>">Options</a>
 					</div>
 				</div>
 			</li>
 
-			<!-- Nav Item - Branding Collapse Menu -->
+			<!-- Nav Item - Materials -->
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+				<a class="nav-link" href="<?= site_url('content/materials') ?>">
+					<i class="fas fa-tools"></i>
+					<span>Materials</span></a>
+			</li>
+			
+			<!-- Nav Item - Branding -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= site_url('content/branding') ?>">
 					<i class="fas fa-fw fa-copyright"></i>
-					<span>Branding</span>
-				</a>
-				<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Utilities:</h6>
-						<a class="collapse-item" href="utilities-color.html">Colors</a>
-						<a class="collapse-item" href="utilities-border.html">Borders</a>
-						<a class="collapse-item" href="utilities-animation.html">Animations</a>
-						<a class="collapse-item" href="utilities-other.html">Other</a>
-					</div>
-				</div>
+					<span>Branding</span></a>
 			</li>
 
 			<!-- Divider -->

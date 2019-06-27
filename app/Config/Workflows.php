@@ -8,7 +8,7 @@ class Workflows extends \Tatter\Workflows\Config\Workflows
 	public $userSource = 'logged_in';
 	
 	// the model to use for jobs
-	public $jobModel = 'App\Models\JobModel';
+	//public $jobModel = 'App\Models\JobModel';
 	
 	// views to display for each function
 	public $views = [
