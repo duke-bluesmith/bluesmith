@@ -72,7 +72,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Pages::show/home');
+$routes->get('about/(:segment)', 'Pages::show/$1');
 
 // Admin dashboard
 $routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Controllers\Manage'], function($routes)

@@ -16,7 +16,7 @@ class Content extends BaseController
 			$page->content = $post['content'];
 			$pages->save($page);
 			
-			alert('success', "'{$page->name}' updated.");
+			alert('success', "'{$page->name}' page updated.");
 			
 		// Load current values		
 		else:

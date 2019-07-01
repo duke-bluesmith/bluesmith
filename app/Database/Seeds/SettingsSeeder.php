@@ -25,7 +25,7 @@ class SettingsSeeder extends \CodeIgniter\Database\Seeder
 			[
 				'name'       => 'orgLogo',
 				'scope'      => 'global',
-				'content'    => 'assets/images/logo.png',
+				'content'    => '/assets/images/logo.png',
 				'protected'  => 1,
 				'summary'    => 'Your organization logo',
 			],
@@ -60,7 +60,7 @@ class SettingsSeeder extends \CodeIgniter\Database\Seeder
 			[
 				'name'       => 'brandLogo',
 				'scope'      => 'global',
-				'content'    => 'assets/images/logo.png',
+				'content'    => '/assets/images/logo.png',
 				'protected'  => 1,
 				'summary'    => 'Brand logo for this project',
 			],

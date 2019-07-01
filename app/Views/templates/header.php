@@ -28,11 +28,10 @@ $settings = service('settings');
 	<meta name="theme-color" content="#ffffff">
 
 	<?= service('assets')->display('css') ?>
-	<?= service('alerts')->css() ?>
 	<?= view('Tatter\Themes\Views\css') ?>
 
 	<!-- CMS stylesheet -->
-	<link href="<?=site_url('sections/stylesheet') ?>" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?= /*site_url('sections/stylesheet')*/ '' ?>" rel="stylesheet" type="text/css" media="all" />
 
 	<!-- Matomo -->
 	<script type="text/javascript">
@@ -74,6 +73,9 @@ else:
     	</div>
 <?php
 endif;
+
+$menu = $menu ?? '';
+$current = ' <span class="sr-only">(current)</span>';
 ?>
 	</header>
 	
@@ -85,8 +87,11 @@ endif;
 		
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="<?= site_url() ?>">Home <span class="sr-only">(current)</span></a>
+					<li class="nav-item<?= $menu == 'home' ? ' active' : '' ?>">
+						<a class="nav-link" href="<?= site_url() ?>">Home<?= $menu == 'home' ? $current : '' ?></a>
+					</li>
+					<li class="nav-item<?= $menu == 'options' ? ' active' : '' ?>">
+						<a class="nav-link" href="<?= site_url('about/options') ?>">Print options<?= $menu == 'options' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
