@@ -1,5 +1,7 @@
 <?php
 $settings = service('settings');
+$menu = $menu ?? '';
+$current = ' <span class="sr-only">(current)</span>';
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -60,23 +62,20 @@ $settings = service('settings');
 			</div>
 			
 			<div id="banner-tools">
-<?php
-if (service('authentication')->user()):
-?>
-				<a href="<?=route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
-<?php
-else:
-?>
-				<a href="<?=route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
 				<?= themes_form('themed-select custom-select custom-select-sm') ?>
+
+<?php if (logged_in()): ?>
+
+	<?php if (has_permission('ManageAny')): ?>
+				<a href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i>Manage</a>
+	<?php endif; ?>
+				<a href="<?= route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
+<?php else: ?>
+				<a href="<?= route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
 			</div>
     	</div>
-<?php
-endif;
+<?php endif; ?>
 
-$menu = $menu ?? '';
-$current = ' <span class="sr-only">(current)</span>';
-?>
 	</header>
 	
 	<nav id="menu" class="navbar navbar-expand-lg <?= (theme()->dark) ? 'navbar-dark' : 'navbar-light' ?>" role="navigation">
