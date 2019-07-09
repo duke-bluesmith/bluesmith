@@ -1,4 +1,4 @@
-<?= view('manage/templates/header') ?>
+<?= view('manage/templates/header', ['menu' => 'dashboard.']) ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

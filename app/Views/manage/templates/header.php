@@ -1,6 +1,9 @@
 <?php
 $settings = service('settings');
 $user = user();
+list($menu, $submenu) = explode('.', $menu ?? 'dashboard.');
+$current = ' <span class="sr-only">(current)</span>';
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -50,7 +53,7 @@ $user = user();
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
+			<li class="nav-item<?= $menu == 'dashboard' ? ' active' : '' ?>">
 				<a class="nav-link" href="<?= site_url('manage') ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
@@ -65,16 +68,16 @@ $user = user();
 			</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item active">
+			<li class="nav-item<?= $menu == 'pages' ? ' active' : '' ?>">
 				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-columns"></i>
 					<span>Pages</span></a>
 				</a>
-				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseTwo" class="collapse<?= $menu == 'pages' ? ' show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Available Pages:</h6>
-						<a class="collapse-item" href="<?= site_url('manage/content/page/Home') ?>">Home</a>
-						<a class="collapse-item" href="<?= site_url('manage/content/page/Options') ?>">Options</a>
+						<a class="collapse-item<?= $submenu == 'Home' ? ' active' : '' ?>" href="<?= site_url('manage/content/page/Home') ?>">Home</a>
+						<a class="collapse-item<?= $submenu == 'Options' ? ' active' : '' ?>" href="<?= site_url('manage/content/page/Options') ?>">Options</a>
 					</div>
 				</div>
 			</li>

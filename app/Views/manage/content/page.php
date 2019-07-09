@@ -1,4 +1,4 @@
-<?= view('manage/templates/header') ?>
+<?= view('manage/templates/header', ['menu' => "pages.{$name}"]) ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 
