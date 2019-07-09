@@ -4,7 +4,8 @@ use App\Controllers\BaseController;
 use App\Models\Manage\PageModel;
 
 class Content extends BaseController
-{	
+{
+	// Dynamic page content
 	public function page($name = 'Home')
 	{
 		$pages = new PageModel();
@@ -28,5 +29,32 @@ class Content extends BaseController
 			'content' => $page->content,
 		];
 		return view('manage/content/page', $data);
+	}
+	
+	// Controls for individual settings related to site branding
+	public function branding()
+	{
+		// Preload the Settings Library
+		$data['settings'] = service('settings');
+		helper('date');
+		
+		// Check for form submission
+		if ($post = $this->request->getPost()):
+			$page = $pages->where('name', $post['name'])->first();
+			
+			$page->content = $post['content'];
+			$pages->save($page);
+			
+			if ($this->request->isAJAX()):
+				echo 'success';
+				return;
+			endif;
+			
+			alert('success', "'{$page->name}' page updated.");
+
+		endif;		
+		
+		return view('manage/content/branding', $data);
+		
 	}
 }

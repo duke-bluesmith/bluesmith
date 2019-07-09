@@ -1,8 +1,10 @@
 <?php
 $settings = service('settings');
 $user = user();
-list($menu, $submenu) = explode('.', $menu ?? 'dashboard.');
-$current = ' <span class="sr-only">(current)</span>';
+
+$menu = explode('.', $menu ?? '');
+$submenu = $menu[1] ?? '';
+$menu = $menu[0];
 
 ?><!doctype html>
 <html lang="en">
@@ -84,14 +86,14 @@ $current = ' <span class="sr-only">(current)</span>';
 
 			<!-- Nav Item - Materials -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= site_url('content/materials') ?>">
+				<a class="nav-link" href="<?= site_url('manage/content/materials') ?>">
 					<i class="fas fa-tools"></i>
 					<span>Materials</span></a>
 			</li>
 			
 			<!-- Nav Item - Branding -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= site_url('content/branding') ?>">
+				<a class="nav-link" href="<?= site_url('manage/content/branding') ?>">
 					<i class="fas fa-fw fa-copyright"></i>
 					<span>Branding</span></a>
 			</li>
