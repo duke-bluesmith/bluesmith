@@ -130,5 +130,4 @@ nb-configuration.xml
 # Sensitive files
 #-------------------------
 
-app/Config/App.php
 access/

@@ -69,7 +69,7 @@ class StagesSeeder extends \CodeIgniter\Database\Seeder
 				'uid'         => 'assess.estimate',
 				'route'       => 'estimate',
 				'party'       => 'staff',
-				'icon'        => 'fa-file-alt',
+				'icon'        => 'fa-balance-scale-right',
 				'summary'     => 'Staff issues estimate',
 			],
 			[

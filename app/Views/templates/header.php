@@ -2,7 +2,7 @@
 $settings = service('settings');
 $menu = $menu ?? '';
 $current = ' <span class="sr-only">(current)</span>';
-
+helper('auth');
 ?><!doctype html>
 <html lang="en">
 <head>
