@@ -4,10 +4,25 @@ var myDropzone = null;
 Dropzone.options.filesDropzone = {
 	maxFilesize: 2000, // MB
 	chunking: true,
-	chunkSize: 1000000, // ~1MB in bytes
+	chunkSize: 10000, // ~1MB in bytes
 	retryChunks: true,
 	retryChunksLimit: 3,
+	
+	// When chunking include chunk data as POST fields
+	params: function(files, xhr, chunk) {
+		return chunk ? { uuid: chunk.file.upload.uuid, totalChunks: chunk.file.upload.totalChunkCount, chunkIndex: chunk.index } : null;
+	},
 
+/*
+	// Pass the UUID for chunks so they can be merged later
+	url: function (files) {
+		file = files[0];
+		if (file.upload.chunked) {
+			
+		}
+		return baseUrl + 'files/create/' + files[0].upload.uuid;
+	},
+ 
 	// https://stackoverflow.com/questions/49769853/dropzone-js-chunking
 	chunksUploaded: function (file, done) {
 		// All chunks have been uploaded. Perform any other actions
@@ -41,4 +56,5 @@ Dropzone.options.filesDropzone = {
 			});
 		});
 	}
+*/
 };
