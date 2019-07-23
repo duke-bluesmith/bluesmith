@@ -12,7 +12,7 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/bootstrap/bootstrap.bundle.min.js',
 			'vendor/font-awesome/css/all.min.css',
 		],
-		'files/upload' => [
+		'files' => [
 			'vendor/dropzone/dropzone.min.css',
 			'vendor/dropzone/dropzone.min.js',
 		],

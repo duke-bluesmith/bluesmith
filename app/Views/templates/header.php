@@ -93,11 +93,11 @@ helper('auth');
 					<li class="nav-item<?= $menu == 'options' ? ' active' : '' ?>">
 						<a class="nav-link" href="<?= site_url('about/options') ?>">Print options<?= $menu == 'options' ? $current : '' ?></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
+					<li class="nav-item<?= $menu == 'files' ? ' active' : '' ?>">
+						<a class="nav-link" href="<?= site_url('files') ?>">My files<?= $menu == 'files' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?= site_url('users') ?>">Users</a>
+						<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
 					</li>
 				</ul>
 			</div>
