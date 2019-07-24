@@ -8,7 +8,7 @@ class FileModel extends BaseModel
 	protected $returnType = 'object';
 	protected $useSoftDeletes = true;
 
-	protected $allowedFields = ['name', 'clientname', 'filename', 'type', 'size'];
+	protected $allowedFields = ['name', 'filename', 'clientname', 'type', 'size'];
 
 	protected $useTimestamps = true;
 
@@ -37,4 +37,15 @@ class FileModel extends BaseModel
 			->where('user_id', $userId)
 			->get()->getResult();
     }
+	
+	// Associate a file with a user    
+	public function addToUser(int $fileId, int $userId)
+	{
+		$row = [
+			'file_id'  => (int)$fileId,
+			'user_id'  => (int)$userId,
+		];
+		
+		return $this->db->table('files_users')->insert($row);
+	}
 }

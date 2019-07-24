@@ -3,6 +3,7 @@ var myDropzone = null;
 
 Dropzone.options.filesDropzone = {
 	maxFilesize: 2000, // MB
+	parallelUploads: 1,
 	chunking: true,
 	chunkSize: 10000, // ~1MB in bytes
 	retryChunks: true,

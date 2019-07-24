@@ -8,11 +8,11 @@ class Migration_create_table_files extends Migration
 	{
 		// files
 		$fields = [
-			'name'          => ['type' => 'VARCHAR', 'constraint' => 31],
-			'clientname'    => ['type' => 'VARCHAR', 'constraint' => 31],
-			'filename'      => ['type' => 'VARCHAR', 'constraint' => 31],
-			'type'          => ['type' => 'VARCHAR', 'constraint' => 31],
-			'size'          => ['type' => 'FLOAT'],
+			'name'          => ['type' => 'VARCHAR', 'constraint' => 255],
+			'filename'      => ['type' => 'VARCHAR', 'constraint' => 255],
+			'clientname'    => ['type' => 'VARCHAR', 'constraint' => 255],
+			'type'          => ['type' => 'VARCHAR', 'constraint' => 255],
+			'size'          => ['type' => 'INT', 'unsigned' => true],
 			'created_at'    => ['type' => 'DATETIME', 'null' => true],
 			'updated_at'    => ['type' => 'DATETIME', 'null' => true],
 			'deleted_at'    => ['type' => 'DATETIME', 'null' => true],
@@ -21,7 +21,7 @@ class Migration_create_table_files extends Migration
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
-		$this->forge->addUniqueKey('name');
+		$this->forge->addKey('name');
 		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('files');

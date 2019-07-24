@@ -59,6 +59,8 @@ writable/session/*
 
 writable/uploads/*
 !writable/uploads/index.html
+!writable/uploads/files/.gitkeep
+!writable/uploads/chunks/.gitkeep
 
 writable/debugbar/*
 
