@@ -46,7 +46,8 @@
         "datatables/datatables": "^1.10",
         "nnnick/chartjs": "^2.8",
         "peekleon/datatables-all": "^1.10",
-        "tinymce/tinymce": "^5.0"
+        "tinymce/tinymce": "^5.0",
+        "tatter/files": "^1.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
@@ -55,8 +56,7 @@
     "scripts": {
         "post-update-cmd": [
             "@composer dump-autoload",
-            "./post-update.sh",
-            "./spark migrate:latest -all"
+            "./post-update.sh"
         ]
     },
     "support": {
