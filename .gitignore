@@ -51,6 +51,9 @@ Vagrantfile
 writable/cache/*
 !writable/cache/index.html
 
+writable/files/*
+!writable/files/index.html
+
 writable/logs/*
 !writable/logs/index.html
 
@@ -59,8 +62,6 @@ writable/session/*
 
 writable/uploads/*
 !writable/uploads/index.html
-!writable/uploads/files/.gitkeep
-!writable/uploads/chunks/.gitkeep
 
 writable/debugbar/*
 

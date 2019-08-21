@@ -2,6 +2,8 @@
 
 use App\Controllers\BaseController;
 use App\Models\Manage\PageModel;
+use App\Models\MaterialModel;
+use App\Models\MethodModel;
 
 class Content extends BaseController
 {
@@ -56,5 +58,14 @@ class Content extends BaseController
 		
 		return view('manage/content/branding', $data);
 		
+	}
+	
+	// Create and manage print materials
+	public function materials()
+	{
+		$methods = new MethodModel();
+		$method = $methods->first();
+		$materials = $method->materials;
+		var_dump($materials);		
 	}
 }
