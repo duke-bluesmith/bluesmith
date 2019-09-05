@@ -68,19 +68,12 @@ writable/debugbar/*
 php_errors.log
 
 #-------------------------
-# User Guide Temp Files
-#-------------------------
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-
-#-------------------------
 # Test Files
 #-------------------------
 tests/coverage*
-
-# Don't save phpunit under version control.
+results/
+build/
+phpunit*.xml
 phpunit
 
 #-------------------------
@@ -126,8 +119,6 @@ nb-configuration.xml
 # Visual Studio Code
 .vscode/
 
-/results/
-/phpunit*.xml
 
 #-------------------------
 # Sensitive files

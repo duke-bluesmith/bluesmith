@@ -1,9 +1,9 @@
 {
-    "name": "codeigniter4/appstarter",
+    "name": "bluesmith/bluesmith",
     "type": "project",
-    "description": "CodeIgniter4 starter app",
-    "homepage": "https://codeigniter.com",
-    "license": "MIT",
+    "description": "3D print job management",
+    "homepage": "https://bluesmith.oit.duke.edu",
+    "license": "Mozilla Public License Version 2.0",
     "minimum-stability": "dev",
     "prefer-stable": true,
 	"repositories": [
@@ -19,15 +19,15 @@
 			"type": "package",
 			"package": {
 				"name": "blackrockdigital/sb-admin-2",
-				"version": "4.0.5",
+				"version": "4.0.6",
 				"dist": {
-					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.5.zip",
+					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.6.zip",
 					"type": "zip"
 				},
 				"source": {
 					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2",
 					"type": "vcs",
-					"reference": "releases/tag/v4.0.5"
+					"reference": "releases/tag/v4.0.6"
 				}
 			}
 		}
@@ -36,7 +36,8 @@
         "php": ">=7.2",
         "codeigniter4/codeigniter4": "dev-develop",
         "myth/auth": "dev-develop",
-        "tatter/addins": "^1.0",
+        "tatter/addins": "^1.2",
+        "tatter/files": "^1.0",
         "tatter/workflows": "^0.8.0",
         "twbs/bootstrap": "^4.3",
         "components/jquery": "^3.3",
@@ -46,22 +47,17 @@
         "datatables/datatables": "^1.10",
         "nnnick/chartjs": "^2.8",
         "peekleon/datatables-all": "^1.10",
-        "tinymce/tinymce": "^5.0",
-        "tatter/files": "^1.0"
+        "tinymce/tinymce": "^5.0"
     },
     "require-dev": {
         "mikey179/vfsstream": "1.6.*",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0",
+        "mockery/mockery": "^1.0"
     },
     "scripts": {
         "post-update-cmd": [
             "@composer dump-autoload",
             "./post-update.sh"
         ]
-    },
-    "support": {
-        "forum": "http://forum.codeigniter.com/",
-        "source": "https://github.com/codeigniter4/CodeIgniter4",
-        "slack": "https://codeigniterchat.slack.com"
     }
 }
