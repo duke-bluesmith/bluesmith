@@ -1,38 +1,38 @@
 <?php namespace App\Database\Seeds;
 
-use \App\Models\MethodModel;
+use App\Models\Legacy\MaterialModel;
+use App\Models\Legacy\MethodModel;
 
 class LegacySeeder extends \CodeIgniter\Database\Seeder
 {
 	public function run()
 	{
+		// Setup
 		$db     = db_connect();
 		$legacy = db_connect('legacy');
 		
+		$db->disableForeignKeyChecks();
+		
 		/* METHODS & MATERIALS */
-		$methods = new MethodModel();
+		$legacyMaterials = new MaterialModel();
+		$legacyMethods   = new MethodModel();
 		
 		// Truncate
 		$db->table('methods')->truncate();
 		$db->table('materials')->truncate();
-		
-		// Load previous data
-		$query = $legacy->table('methods')->get();
-		foreach ($query->getResult() as $row)
+
+		// Port data row by row
+		foreach ($legacyMethods->findAll() as $legacyMethod)
 		{
-			$method = [
-				'id'          => $row->id,
-				'name'        => $row->name,
-				'summary'     => $row->fullname,
-				'description' => $row->description,
-				'sortorder'   => $row->sortorder,
-				'created_at'  => $row->created_at,
-				'updated_at'  => $row->updated_at,
-				'deleted_at'  => $row->status == 'Archived' ? $row->updated_at : null,
-			];
-			
-			$methods->insert($method);
+			$legacyMethods->legacyToLive($legacyMethod);
 		}
+		foreach ($legacyMaterials->findAll() as $legacyMaterial)
+		{
+			$legacyMaterials->legacyToLive($legacyMaterial);
+		}
+		
+		// Cleanup
+		$db->enableForeignKeyChecks();
 	}
 }
 

@@ -66,6 +66,8 @@ class Content extends BaseController
 		$methods = new MethodModel();
 		$method = $methods->first();
 		$materials = $method->materials;
-		var_dump($materials);		
+
+		var_dump($method);
+		var_dump($materials);	
 	}
 }
