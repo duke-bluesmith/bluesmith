@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class Migration_create_table_files_jobs extends Migration
+class CreateFilesJobs extends Migration
 {
 	public function up()
 	{

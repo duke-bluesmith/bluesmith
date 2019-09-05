@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class Migration_create_table_methods extends Migration
+class CreateMethods extends Migration
 {
 	public function up()
 	{
@@ -53,11 +53,11 @@ class Migration_create_table_methods extends Migration
 
 	public function down()
 	{
-		$this->db->disableForeignKeyConstraints();
+		$this->db->disableForeignKeyChecks();
 
 		$this->forge->dropTable('materials');
 		$this->forge->dropTable('methods');
 
-		$this->db->enableForeignKeyConstraints();
+		$this->db->enableForeignKeyChecks();
 	}
 }

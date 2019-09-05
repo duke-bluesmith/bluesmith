@@ -3,7 +3,7 @@
 use CodeIgniter\Database\Migration;
 use App\Models\Manage\PageModel;
 
-class Migration_create_table_pages extends Migration
+class CreatePages extends Migration
 {
 	public function up()
 	{
