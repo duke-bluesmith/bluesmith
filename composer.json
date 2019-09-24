@@ -1,69 +1,69 @@
 {
-    "name": "bluesmith/bluesmith",
-    "type": "project",
-    "description": "3D print job management",
-    "homepage": "https://bluesmith.oit.duke.edu",
-    "license": "Mozilla Public License Version 2.0",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+	"name": "bluesmith/bluesmith",
+	"type": "project",
+	"description": "3D print job management",
+	"homepage": "https://bluesmith.oit.duke.edu",
+	"license": "Mozilla Public License Version 2.0",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/codeigniter4/codeigniter4"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/lonnieezell/myth-auth"
-        },
+		{
+			"type": "vcs",
+			"url": "https://github.com/codeigniter4/codeigniter4"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/lonnieezell/myth-auth"
+		},
 		{
 			"type": "package",
 			"package": {
 				"name": "blackrockdigital/sb-admin-2",
-				"version": "4.0.6",
+				"version": "4.0.7",
 				"dist": {
-					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.6.zip",
+					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.7.zip",
 					"type": "zip"
 				},
 				"source": {
 					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2",
 					"type": "vcs",
-					"reference": "releases/tag/v4.0.6"
+					"reference": "releases/tag/v4.0.7"
 				}
 			}
 		}
-    ],
-    "require": {
-        "php": ">=7.2",
-        "codeigniter4/codeigniter4": "dev-develop",
-        "myth/auth": "dev-develop",
-        "tatter/addins": "^1.2",
-        "tatter/files": "^1.0",
-        "tatter/workflows": "^0.8.0",
-        "twbs/bootstrap": "^4.3",
-        "components/jquery": "^3.3",
-        "enyo/dropzone": "^5.5",
-        "fortawesome/font-awesome": "^5.8",
-        "blackrockdigital/sb-admin-2": "4.0.*",
-        "datatables/datatables": "^1.10",
-        "nnnick/chartjs": "^2.8",
-        "peekleon/datatables-all": "^1.10",
-        "tinymce/tinymce": "^5.0"
-    },
-    "require-dev": {
-        "mikey179/vfsstream": "1.6.*",
-        "phpunit/phpunit": "^7.0",
-        "mockery/mockery": "^1.0"
-    },
+	],
+	"require": {
+		"php": ">=7.2",
+		"codeigniter4/codeigniter4": "dev-develop",
+		"myth/auth": "dev-develop",
+		"tatter/addins": "^1.2",
+		"tatter/files": "^1.0",
+		"tatter/workflows": "^0.8.0",
+		"twbs/bootstrap": "^4.3",
+		"components/jquery": "^3.3",
+		"enyo/dropzone": "^5.5",
+		"fortawesome/font-awesome": "^5.8",
+		"blackrockdigital/sb-admin-2": "^4.0",
+		"datatables/datatables": "^1.10",
+		"nnnick/chartjs": "^2.8",
+		"peekleon/datatables-all": "^1.10",
+		"tinymce/tinymce": "^5.0"
+	},
+	"require-dev": {
+		"mikey179/vfsstream": "1.6.*",
+		"phpunit/phpunit": "^7.0",
+		"mockery/mockery": "^1.0"
+	},
 	"autoload-dev": {
 		"psr-4": {
 			"ProjectTests\\Support\\": "tests/_support"
 		}
 	},
-    "scripts": {
+	"scripts": {
 		"test": "phpunit",
-        "post-update-cmd": [
-            "@composer dump-autoload",
-            "./post-update.sh"
-        ]
-    }
+		"post-update-cmd": [
+			"@composer dump-autoload",
+			"./post-update.sh"
+		]
+	}
 }
