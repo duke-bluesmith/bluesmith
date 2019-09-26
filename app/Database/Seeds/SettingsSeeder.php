@@ -68,12 +68,15 @@ class SettingsSeeder extends \CodeIgniter\Database\Seeder
 		
 		// Check for and create necessary project settings
 		$settings = new SettingModel();
-		foreach ($rows as $row):
+		foreach ($rows as $row)
+		{
 			$setting = $settings->where('name', $row['name'])->first();
-			if (empty($setting)):
-			// No setting - add the row
-				$settings->save($row);
-			endif;
-		endforeach;
+			
+			if (empty($setting))
+			{
+				// No setting - add the row
+				$settings->insert($row);
+			}
+		}
 	}
 }

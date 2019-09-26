@@ -24,28 +24,34 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 			['name' => 'Editors',        'description' => 'Staff who can access the CMS to update content'],
 			['name' => 'VIPs',           'description' => 'Patrons with priority printing access'],
 		];
-		foreach ($rows as $row):
+		foreach ($rows as $row)
+		{
 			$group = $groups->where('name', $row['name'])->first();
-			if (empty($group)):
+			
+			if (empty($group))
+			{
 				$groups->insert($row);
-			endif;
-		endforeach;
+			}
+		}
 		
 		
 		/** PERMISSIONS ***/
 		// Test for and create the necessary permissions
 
 		$rows = [
-			['name' => 'ManageAny',     'description' => 'General access to the admin dashboard'],
-			['name' => 'ManageContent', 'description' => 'Access to the CMS'],
-			['name' => 'ManageJobs',    'description' => 'Access to perform job updates'],
+			['name' => 'manageAny',     'description' => 'General access to the admin dashboard'],
+			['name' => 'manageContent', 'description' => 'Access to the CMS'],
+			['name' => 'manageJobs',    'description' => 'Access to perform job updates'],
 		];
-		foreach ($rows as $row):
+		foreach ($rows as $row)
+		{
 			$permission = $permissions->where('name', $row['name'])->first();
-			if (empty($permission)):
+			
+			if (empty($permission))
+			{
 				$permissions->insert($row);
-			endif;
-		endforeach;
+			}
+		}
 		
 		
 		/*** GROUPS_PERMISSIONS ***/
@@ -53,24 +59,27 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 		
 		// General dashboard access
 		$names = ['Administrators', 'Consultants', 'Editors'];
-		foreach ($names as $name):
-			$authorization->removePermissionFromGroup('ManageAny', $name);
-			$authorization->addPermissionToGroup('ManageAny', $name);
-		endforeach;
+		foreach ($names as $name)
+		{
+			$authorization->removePermissionFromGroup('manageAny', $name);
+			$authorization->addPermissionToGroup('manageAny', $name);
+		}
 
 		// CMS access
 		$names = ['Administrators', 'Editors'];
-		foreach ($names as $name):
-			$authorization->removePermissionFromGroup('ManageContent', $name);
-			$authorization->addPermissionToGroup('ManageContent', $name);
-		endforeach;
+		foreach ($names as $name)
+		{
+			$authorization->removePermissionFromGroup('manageContent', $name);
+			$authorization->addPermissionToGroup('manageContent', $name);
+		}
 		
 		// Job management access
 		$names = ['Administrators', 'Consultants'];
-		foreach ($names as $name):
-			$authorization->removePermissionFromGroup('ManageJobs', $name);
-			$authorization->addPermissionToGroup('ManageJobs', $name);
-		endforeach;
+		foreach ($names as $name)
+		{
+			$authorization->removePermissionFromGroup('manageJobs', $name);
+			$authorization->addPermissionToGroup('manageJobs', $name);
+		}
 		
 	}
 }
