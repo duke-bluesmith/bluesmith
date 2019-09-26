@@ -21,20 +21,5 @@ class MaterialModel extends BaseModel
 	protected $validationMessages = [];
 	protected $skipValidation     = false;
 	
-	// Store of pre-fetched relatives
-	public $methods = [];
-
-	// Pre-loads all methods into the model
-	public function fetchMethods()
-	{
-		if (count($this->methods))
-			return;
-		
-		// Index by method ID
-		$methods = new MethodModel();
-		foreach ($methods->findAll() as $method)
-		{
-			$this->methods[$method->id] = [$method];
-		}
-	}
+	protected $with = ['methods'];
 }

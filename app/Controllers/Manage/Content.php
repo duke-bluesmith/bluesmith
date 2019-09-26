@@ -59,15 +59,4 @@ class Content extends BaseController
 		return view('manage/content/branding', $data);
 		
 	}
-	
-	// Create and manage print materials
-	public function materials()
-	{
-		$methods = new MethodModel();
-		$method = $methods->first();
-		$materials = $method->materials;
-
-		var_dump($method);
-		var_dump($materials);	
-	}
 }

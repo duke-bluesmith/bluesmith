@@ -1,8 +1,8 @@
 <?php namespace App\Models;
 
-use CodeIgniter\Model;
+use Tatter\Addins\Model;
 
-class MethodModel extends BaseModel
+class MethodModel extends Model
 {
 	protected $table      = 'methods';
 	protected $primaryKey = 'id';
@@ -21,27 +21,5 @@ class MethodModel extends BaseModel
 	protected $validationMessages = [];
 	protected $skipValidation     = false;
 	
-	// Store of pre-fetched relatives
-	public static $materials = [];
-
-	// Pre-loads all materials into the model's static property
-	// If a method ID was supplied then return its materials
-	public function fetchMaterials($methodId = null)
-	{
-		// Check if already loaded
-		if (empty(self::$materials))
-		{
-			// Get all the materials from the model
-			$materials = new MaterialModel();
-			foreach ($materials->findAll() as $material)
-			{
-				// Index by material ID
-				self::$materials[$material->method_id] = [$material];
-			}
-		}
-		
-		if ($methodId)
-			return self::$materials[$methodId] ?? [];
-		return self::$materials;
-	}
+	protected $with = ['materials'];
 }

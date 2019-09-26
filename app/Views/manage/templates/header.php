@@ -58,7 +58,8 @@ $menu = $menu[0];
 			<li class="nav-item<?= $menu == 'dashboard' ? ' active' : '' ?>">
 				<a class="nav-link" href="<?= site_url('manage') ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span></a>
+					<span>Dashboard</span>
+				</a>
 			</li>
 
 			<!-- Divider -->
@@ -73,7 +74,7 @@ $menu = $menu[0];
 			<li class="nav-item<?= $menu == 'pages' ? ' active' : '' ?>">
 				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-columns"></i>
-					<span>Pages</span></a>
+					<span>Pages</span>
 				</a>
 				<div id="collapseTwo" class="collapse<?= $menu == 'pages' ? ' show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
@@ -85,14 +86,14 @@ $menu = $menu[0];
 			</li>
 
 			<!-- Nav Item - Materials -->
-			<li class="nav-item">
-				<a class="nav-link" href="<?= site_url('manage/content/materials') ?>">
+			<li class="nav-item<?= $menu == 'materials' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('manage/materials') ?>">
 					<i class="fas fa-tools"></i>
 					<span>Materials</span></a>
 			</li>
 			
 			<!-- Nav Item - Branding -->
-			<li class="nav-item">
+			<li class="nav-item<?= $menu == 'branding' ? ' active' : '' ?>">
 				<a class="nav-link" href="<?= site_url('manage/content/branding') ?>">
 					<i class="fas fa-fw fa-copyright"></i>
 					<span>Branding</span></a>

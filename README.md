@@ -18,7 +18,8 @@ by Duke University OIT
 	* `./spark migrate -all`
 5. Seed the database with the necessary initial settings:
 	* `./spark tatter:publish`
-	* `./spark tasks:register`
+	* `./spark handlers:register`
+	* `./spark db:seed \\Tatter\\Settings\\Database\\Seeds\\SettingsSeeder`
 	* `./spark db:seed \\Tatter\\Themes\\Database\\Seeds\\ThemeSeeder`
 6. Setup cron jobs for the following tasks
 	* `./spark reports:generate`
