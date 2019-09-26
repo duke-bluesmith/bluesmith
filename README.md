@@ -14,20 +14,21 @@ by Duke University OIT
 	* Set all variables in the `DATABASE` section
 3. Install all packages and dependencies with the following command in the root directory:
 	* `composer update`<sup>1</sup>
-4. Seed the database with the necessary initial settings:
+4. Migrate the database:
+	* `./spark migrate -all`
+5. Seed the database with the necessary initial settings:
 	* `./spark tatter:publish`
 	* `./spark tasks:register`
 	* `./spark db:seed \\Tatter\\Themes\\Database\\Seeds\\ThemeSeeder`
-5. Setup cron jobs for the following tasks
+6. Setup cron jobs for the following tasks
 	* `./spark reports:generate`
-6. Set your web server to serve the **public/** directory
+7. Set your web server to serve the **public/** directory
 
 	
-<sup>1</sup> Note: This should trigger composer's post update commands which handle database migrations
-and vendor assets, but if that fails or if you update manually be sure to run the following
+<sup>1</sup> Note: This should trigger composer's post update command which handles
+vendor assets, but if that fails or if you update manually be sure to run the following
 additional commands from the root directory:
 	* `./post-update.sh`
-	* `./spark migrate:latest -all`
 
 
 ## Customize
