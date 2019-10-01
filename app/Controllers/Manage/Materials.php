@@ -9,13 +9,28 @@ class Materials extends BaseController
 	// Manage print materials
 	public function index()
 	{
-		$methods = new MethodModel();
+		$materials = new MaterialModel();
 
 		$data = [
-			'methods' => $methods->findAll()
+			'materials' => $materials->findAll()
 		];
 
 		return view('materials/index', $data);	
+	}
+	
+	// Print materials for one method
+	public function method($methodId)
+	{
+		$methods = new MethodModel();
+		$method  = $methods->find($methodId);
+		$materials = new MaterialModel();
+
+		$data = [
+			'method'    => $method,
+			'materials' => $materials->where('method_id', $method->id)->findAll()
+		];
+
+		return view('materials/method', $data);	
 	}
 	
 	// Display the form for a new material
