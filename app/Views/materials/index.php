@@ -1,4 +1,5 @@
-<?= view('manage/templates/header', ['menu' => 'materials']) ?>
+<?= $this->setVar('menu', 'materials')->extend('templates/manage') ?>
+<?= $this->section('main') ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 
@@ -68,4 +69,4 @@
 
 </div>
 
-<?= view('manage/templates/footer') ?>
+<?= $this->endSection() ?>

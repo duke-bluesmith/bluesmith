@@ -1,4 +1,5 @@
-<?= view('templates/header', ['menu' => $menu]) ?>
+<?= $this->setVar('menu', $menu ?? '')->extend('templates/public') ?>
+<?= $this->section('main') ?>
 
 <div class="container">
 	<div class="d-lg-none mb-3">
@@ -16,4 +17,4 @@
 	</div>
 </div>
 
-<?= view('templates/footer') ?>
+<?= $this->endSection() ?>

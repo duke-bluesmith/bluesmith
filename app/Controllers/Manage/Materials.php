@@ -15,7 +15,7 @@ class Materials extends BaseController
 			'methods' => $methods->findAll()
 		];
 
-		return view('manage/materials/index', $data);	
+		return view('materials/index', $data);	
 	}
 	
 	// Display the form for a new material
@@ -27,6 +27,6 @@ class Materials extends BaseController
 			'methods' => $methods->findAll()
 		];
 
-		return view('manage/materials/new', $data);	
+		return view('materials/new', $data);	
 	}
 }

@@ -1,4 +1,5 @@
-<?= view('templates/header') ?>
+<?= $this->extend('templates/public') ?>
+<?= $this->section('main') ?>
 
 <div class="container">
 	<div class="row">
@@ -64,4 +65,4 @@
 	</div>
 </div>
 
-<?= view('templates/footer') ?>
+<?= $this->endSection() ?>

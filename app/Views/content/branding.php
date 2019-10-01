@@ -1,4 +1,5 @@
-<?= view('manage/templates/header', ['menu' => 'branding']) ?>
+<?= $this->setVar('menu', 'branding')->extend('templates/manage') ?>
+<?= $this->section('main') ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 
@@ -117,13 +118,4 @@
     </div>
 </div>
 
-<?= view('manage/templates/footer') ?>
-
-----+--------------------+--------+-------------------------------------+------------------------------------------------------------------
- id | name               | scope  | content                             | summary                                                          
-----+--------------------+--------+-------------------------------------+------------------------------------------------------------------
-  1 | databaseTimezone   | global | America/New_York                    | Timezone for the database server(s)                              
-  2 | perPage            | user   | 10                                  | Number of items to show per page                                 
-  4 | serverTimezone     | global | America/New_York                    | Timezone for the web server(s)                                   
-  5 | siteVersion        | global | 1.0.0                               | Current version of this project                                  
-  6 | timezone           | user   | America/New_York                    | Timezone for the user                                            
+<?= $this->endSection() ?>

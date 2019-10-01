@@ -1,4 +1,5 @@
-<?= view('manage/templates/header', ['menu' => 'dashboard']) ?>
+<?= $this->setVar('menu', 'dashboard')->extend('templates/manage') ?>
+<?= $this->section('main') ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -278,4 +279,4 @@
 	</div>
 </div>
 
-<?= view('manage/templates/footer') ?>
+<?= $this->endSection() ?>

@@ -1,4 +1,5 @@
-<?= view('manage/templates/header', ['menu' => "pages.{$name}"]) ?>
+<?= $this->setVar('menu', "pages.{$name}")->extend('templates/manage') ?>
+<?= $this->section('main') ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 
@@ -26,4 +27,4 @@
     </div>
 </div>
 
-<?= view('manage/templates/footer') ?>
+<?= $this->endSection() ?>

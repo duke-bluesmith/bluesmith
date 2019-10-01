@@ -30,7 +30,7 @@ class Content extends BaseController
 			'name'    => $page->name,
 			'content' => $page->content,
 		];
-		return view('manage/content/page', $data);
+		return view('content/page', $data);
 	}
 	
 	// Controls for individual settings related to site branding
@@ -56,7 +56,6 @@ class Content extends BaseController
 
 		endif;		
 		
-		return view('manage/content/branding', $data);
-		
+		return view('content/branding', $data);
 	}
 }
