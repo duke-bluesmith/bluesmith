@@ -75,6 +75,7 @@ results/
 build/
 phpunit*.xml
 phpunit
+app/Commands/Test.php
 
 #-------------------------
 # Composer
