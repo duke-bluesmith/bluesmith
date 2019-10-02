@@ -227,7 +227,6 @@ class App extends BaseConfig
 	| Array:		array('10.0.1.200', '192.168.5.0/24')
 	*/
 	public $proxyIPs = '';
-
 	/*
 	|--------------------------------------------------------------------------
 	| Cross Site Request Forgery
@@ -237,12 +236,14 @@ class App extends BaseConfig
 	| recommended CSRF protection be enabled.
 	|
 	| CSRFTokenName   = The token name
+	| CSRFHeaderName  = The header name
 	| CSRFCookieName  = The cookie name
 	| CSRFExpire      = The number in seconds the token should expire.
 	| CSRFRegenerate  = Regenerate token on every submission
 	| CSRFRedirect    = Redirect to previous page with error on failure
 	*/
 	public $CSRFTokenName  = 'csrf_test_name';
+	public $CSRFHeaderName = 'X-CSRF-TOKEN';
 	public $CSRFCookieName = 'csrf_cookie_name';
 	public $CSRFExpire     = 7200;
 	public $CSRFRegenerate = true;
