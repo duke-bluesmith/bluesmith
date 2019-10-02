@@ -6,7 +6,7 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-0 text-gray-800"><?= $method->name ?> Materials</h1>
 
-	<?php if (empty($materials)): ?>
+	<?php if (empty($method->materials)): ?>
 
 <p>This method has no defined materials. Would you like to <a href="<?= site_url('manage/materials/new/' . $method->id) ?>">add one now</a>?</p>
 
@@ -14,7 +14,7 @@
 	
 <p class="mb-4">Available printing materials for <?= $method->name ?></p>
 
-	<?= view('materials/cards', ['materials' => $materials]) ?>
+	<?= view('materials/cards', ['materials' => $method->materials]) ?>
 
 <?php endif; ?>
 

@@ -6,7 +6,7 @@ use App\Models\MethodModel;
 
 class Materials extends BaseController
 {
-	// Manage print materials
+	// List all print materials
 	public function index()
 	{
 		$materials = new MaterialModel();
@@ -18,16 +18,13 @@ class Materials extends BaseController
 		return view('materials/index', $data);	
 	}
 	
-	// Print materials for one method
+	// List materials for one method
 	public function method($methodId)
 	{
 		$methods = new MethodModel();
-		$method  = $methods->find($methodId);
-		$materials = new MaterialModel();
 
 		$data = [
-			'method'    => $method,
-			'materials' => $materials->where('method_id', $method->id)->findAll()
+			'method' => $methods->find($methodId)
 		];
 
 		return view('materials/method', $data);	
