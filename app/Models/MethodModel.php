@@ -10,10 +10,7 @@ class MethodModel extends Model
 	protected $returnType = 'App\Entities\Method';
 	protected $useSoftDeletes = true;
 
-	protected $allowedFields = [
-		'name', 'summary', 'description', 'sortorder',
-		'created_at', 'updated_at', 'deleted_at',
-	];
+	protected $allowedFields = ['name', 'summary', 'description', 'sortorder'];
 
 	protected $useTimestamps = true;
 

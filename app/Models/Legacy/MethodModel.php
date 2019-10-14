@@ -34,16 +34,7 @@ class MethodModel extends Model
 		];
 		
 		$methods = new \App\Models\MethodModel();
-		if ($methods->find($method['id']))
-		{
-			$result = $methods->builder()->where('id', $method['id'])->update($method);
-		}
-		else
-		{
-			$result = $methods->builder()->insert($method);
-		}
-		
-		return $result;
+		return $methods->protect(false)->save($method);
 	}
 }
 
