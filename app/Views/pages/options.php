@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('templates/public') ?>
+<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
 <div class="container">

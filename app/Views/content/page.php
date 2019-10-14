@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', "pages.{$name}")->extend('templates/manage') ?>
+<?= $this->setVar('menu', "pages.{$name}")->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>

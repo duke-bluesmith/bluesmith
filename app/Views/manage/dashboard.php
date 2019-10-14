@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', 'dashboard')->extend('templates/manage') ?>
+<?= $this->setVar('menu', 'dashboard')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 <!-- Page Heading -->

@@ -31,7 +31,7 @@ $menu = $menu[0];
 	<meta name="msapplication-TileColor" content="#307093">
 	<meta name="theme-color" content="#307093">
 
-	<?= service('assets')->display('css') ?>
+	<?= service('assets')->css() ?>
 	<?= service('alerts')->css() ?>
 
 </head>
@@ -360,7 +360,7 @@ $menu = $menu[0];
 		<i class="fas fa-angle-up"></i>
 	</a>
 
-	<?= service('assets')->display('js') ?>
+	<?= service('assets')->js() ?>
 
 	<?= $this->renderSection('pageScripts') ?>
 </body>

@@ -30,7 +30,7 @@ helper('auth');
 	<meta name="msapplication-config" content="<?= base_url() ?>assets/favicon/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 
-	<?= service('assets')->display('css') ?>
+	<?= service('assets')->css() ?>
 	<?= view('Tatter\Themes\Views\css') ?>
 
 	<!-- CMS stylesheet -->
@@ -128,7 +128,7 @@ helper('auth');
 		var siteUrl = "<?=site_url() ?>";
 	</script>
 	
-	<?= service('assets')->display('js') ?>
+	<?= service('assets')->js() ?>
 
 	<?= $this->renderSection('pageScripts') ?>
 </body>

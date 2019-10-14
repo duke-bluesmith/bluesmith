@@ -227,6 +227,7 @@ class App extends BaseConfig
 	| Array:		array('10.0.1.200', '192.168.5.0/24')
 	*/
 	public $proxyIPs = '';
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Cross Site Request Forgery
