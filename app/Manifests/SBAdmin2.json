@@ -1,0 +1,17 @@
+{
+	"source": "blackrockdigital/sb-admin-2",
+	"destination": "vendor/sbadmin2",
+	"resources": [
+		{
+			"source": "css"
+		},
+		{
+			"source": "js",
+			"filter": "#\\.js$#"
+		},
+		{
+			"source": "vendor/jquery-easing",
+			"filter": "#\\.js$#"
+		}
+	]
+}

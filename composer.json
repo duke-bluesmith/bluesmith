@@ -68,7 +68,7 @@
 		"test": "phpunit",
 		"post-update-cmd": [
 			"@composer dump-autoload",
-			"./post-update.sh"
+			"php spark assets:publish"
 		]
 	}
 }

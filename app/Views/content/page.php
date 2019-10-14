@@ -1,7 +1,11 @@
 <?= $this->setVar('menu', "pages.{$name}")->extend('layouts/manage') ?>
-<?= $this->section('main') ?>
 
-<script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
+<?= $this->section('headerAssets') ?>
+	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
+	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('main') ?>
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

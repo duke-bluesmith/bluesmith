@@ -33,6 +33,7 @@ $menu = $menu[0];
 
 	<?= service('assets')->css() ?>
 	<?= service('alerts')->css() ?>
+	<?= $this->renderSection('headerAssets') ?>
 
 </head>
 <body id="page-top">
@@ -361,7 +362,7 @@ $menu = $menu[0];
 	</a>
 
 	<?= service('assets')->js() ?>
+	<?= $this->renderSection('footerAssets') ?>
 
-	<?= $this->renderSection('pageScripts') ?>
 </body>
 </html>
