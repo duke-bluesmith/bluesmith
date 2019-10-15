@@ -19,6 +19,7 @@ class Assets extends \Tatter\Assets\Config\Assets
 		
 		// Admin dashboard
 		'manage' => [
+			'vendor/forms',
 			'vendor/chartjs/Chart.min.css',
 			'vendor/chartjs/Chart.bundle.min.js',
 			'vendor/datatables/css/dataTables.bootstrap4.min.css',

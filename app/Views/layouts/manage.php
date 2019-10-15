@@ -31,6 +31,8 @@ $menu = $menu[0];
 	<meta name="msapplication-TileColor" content="#307093">
 	<meta name="theme-color" content="#307093">
 
+	<script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
+
 	<?= service('assets')->css() ?>
 	<?= service('alerts')->css() ?>
 	<?= $this->renderSection('headerAssets') ?>

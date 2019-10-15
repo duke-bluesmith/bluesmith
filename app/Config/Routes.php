@@ -82,7 +82,13 @@ $routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Co
 
 	$routes->get('content/(:any)', 'Content::$1');
 	$routes->post('content/(:any)', 'Content::$1');
+
+	$routes->get('materials/method/(:any)', 'Materials::method/$1');
+	$routes->presenter('materials');
 });
+
+// API
+$routes->resource('api/materials', ['websafe' => 1, 'controller' => 'App\Controllers\API\Materials']);
 
 /**
  * --------------------------------------------------------------------
