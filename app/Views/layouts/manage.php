@@ -360,6 +360,12 @@ $menu = $menu[0];
 	<a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a>
+	
+	<script>
+		var baseUrl = "<?= base_url() ?>";
+		var siteUrl = "<?= site_url('manage') ?>";
+		var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
+	</script>
 
 	<?= service('assets')->js() ?>
 	<?= $this->renderSection('footerAssets') ?>

@@ -107,8 +107,9 @@ helper('auth');
 	</footer>
 	
 	<script>
-		var baseUrl = "<?=base_url() ?>";
-		var siteUrl = "<?=site_url() ?>";
+		var baseUrl = "<?= base_url() ?>";
+		var siteUrl = "<?= site_url() ?>";
+		var apiUrl  = "<?= site_url(config('forms')->apiUrl) ?>";
 	</script>
 	
 	<?= service('assets')->js() ?>
