@@ -1,7 +1,6 @@
 <?php namespace App\Controllers\Manage;
 
 use Tatter\Forms\Controllers\ResourcePresenter;
-use App\Models\MaterialModel;
 use App\Models\MethodModel;
 
 class Materials extends ResourcePresenter
