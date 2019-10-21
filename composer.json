@@ -19,21 +19,13 @@
             "type": "vcs",
             "url": "https://github.com/tattersoftware/codeigniter4-forms"
         },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tattersoftware/codeigniter4-workflows"
+        },
 		{
-			"type": "package",
-			"package": {
-				"name": "blackrockdigital/sb-admin-2",
-				"version": "4.0.7",
-				"dist": {
-					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/archive/v4.0.7.zip",
-					"type": "zip"
-				},
-				"source": {
-					"url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2",
-					"type": "vcs",
-					"reference": "releases/tag/v4.0.7"
-				}
-			}
+			"type": "composer",
+			"url": "https://asset-packagist.org"
 		}
 	],
 	"require": {
@@ -41,14 +33,14 @@
 		"codeigniter4/codeigniter4": "dev-develop",
 		"myth/auth": "dev-develop",
         "tatter/forms": "dev-develop",
+		"tatter/workflows": "dev-develop",
 		"tatter/addins": "^1.3",
 		"tatter/files": "^1.1",
-		"tatter/workflows": "^0.8.0",
 		"twbs/bootstrap": "^4.3",
 		"components/jquery": "^3.3",
 		"enyo/dropzone": "^5.5",
 		"fortawesome/font-awesome": "^5.8",
-		"blackrockdigital/sb-admin-2": "^4.0",
+		"bower-asset/sbadmin2": "^4.0",
 		"datatables/datatables": "^1.10",
 		"nnnick/chartjs": "^2.8",
 		"peekleon/datatables-all": "^1.10",

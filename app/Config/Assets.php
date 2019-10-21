@@ -32,5 +32,17 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/sbadmin2/sb-admin-2.min.css',
 			'vendor/sbadmin2/sb-admin-2.min.js',
 		],
+		
+		'workflows' => [
+			'vendor/sbadmin2/sb-admin-2.min.css',
+			'vendor/sbadmin2/sb-admin-2.min.js',
+			'vendor/sortablejs/Sortable.min.js',
+		],
+		
+		'tasks' => [
+			'vendor/sbadmin2/sb-admin-2.min.css',
+			'vendor/sbadmin2/sb-admin-2.min.js',
+			'vendor/sortablejs/Sortable.min.js',
+		],
 	];
 }

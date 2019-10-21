@@ -1,5 +1,6 @@
 <?php
 $settings = service('settings');
+helper('auth');
 $user = user();
 
 $menu = explode('.', $menu ?? '');
@@ -31,7 +32,7 @@ $menu = $menu[0];
 	<meta name="msapplication-TileColor" content="#307093">
 	<meta name="theme-color" content="#307093">
 
-	<script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
+	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
 
 	<?= service('assets')->css() ?>
 	<?= service('alerts')->css() ?>
@@ -63,6 +64,50 @@ $menu = $menu[0];
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span>
 				</a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Workflows
+			</div>
+
+			<!-- Nav Item - Methods -->
+			<li class="nav-item<?= $menu == 'workflows' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('workflows') ?>">
+					<i class="fas fa-cubes"></i>
+					<span>Workflows</span></a>
+			</li>
+
+			<!-- Nav Item - Materials -->
+			<li class="nav-item<?= $menu == 'tasks' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('tasks') ?>">
+					<i class="fas fa-tools"></i>
+					<span>Tasks</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Reports
+			</div>
+
+			<!-- Nav Item - Charts -->
+			<li class="nav-item">
+				<a class="nav-link" href="charts.html">
+					<i class="fas fa-fw fa-chart-area"></i>
+					<span>Charts</span></a>
+			</li>
+
+			<!-- Nav Item - Tables -->
+			<li class="nav-item">
+				<a class="nav-link" href="tables.html">
+					<i class="fas fa-fw fa-table"></i>
+					<span>Tables</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -107,28 +152,6 @@ $menu = $menu[0];
 				<a class="nav-link" href="<?= site_url('manage/content/branding') ?>">
 					<i class="fas fa-fw fa-copyright"></i>
 					<span>Branding</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Reports
-			</div>
-
-			<!-- Nav Item - Charts -->
-			<li class="nav-item">
-				<a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i>
-					<span>Charts</span></a>
-			</li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item">
-				<a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i>
-					<span>Tables</span></a>
 			</li>
 
 			<!-- Divider -->

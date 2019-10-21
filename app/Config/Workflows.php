@@ -4,16 +4,14 @@ use CodeIgniter\Config\BaseConfig;
 
 class Workflows extends \Tatter\Workflows\Config\Workflows
 {
-	// the session variable to check for a logged-in user ID
-	public $userSource = 'logged_in';
+	// The model to use for jobs
+	public $jobModel = 'Tatter\Workflows\Models\JobModel';
 	
-	// the model to use for jobs
-	//public $jobModel = 'App\Models\JobModel';
+	// Layout to use for views
+	public $layout = 'layouts/manage';
 	
-	// views to display for each function
+	// Views to display for each function
 	public $views = [
-		'header'    => 'Tatter\Workflows\Views\templates\header',
-		'footer'    => 'Tatter\Workflows\Views\templates\footer',
 		'messages'  => 'Tatter\Workflows\Views\messages',
 		'complete'  => 'Tatter\Workflows\Views\complete',
 		'deleted'   => 'Tatter\Workflows\Views\deleted',
