@@ -33,9 +33,13 @@ $menu = $menu[0];
 	<meta name="theme-color" content="#307093">
 
 	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
+	
+	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
 
 	<?= service('assets')->css() ?>
+	
 	<?= service('alerts')->css() ?>
+	
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>
@@ -77,14 +81,14 @@ $menu = $menu[0];
 			<!-- Nav Item - Methods -->
 			<li class="nav-item<?= $menu == 'workflows' ? ' active' : '' ?>">
 				<a class="nav-link" href="<?= site_url('workflows') ?>">
-					<i class="fas fa-cubes"></i>
+					<i class="fas fa-project-diagram"></i>
 					<span>Workflows</span></a>
 			</li>
 
 			<!-- Nav Item - Materials -->
 			<li class="nav-item<?= $menu == 'tasks' ? ' active' : '' ?>">
 				<a class="nav-link" href="<?= site_url('tasks') ?>">
-					<i class="fas fa-tools"></i>
+					<i class="fas fa-tasks"></i>
 					<span>Tasks</span></a>
 			</li>
 

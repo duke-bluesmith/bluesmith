@@ -30,8 +30,12 @@ helper('auth');
 	<meta name="msapplication-config" content="<?= base_url() ?>assets/favicon/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 
+	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
+
 	<?= service('assets')->css() ?>
+
 	<?= view('Tatter\Themes\Views\css') ?>
+
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>

@@ -1,9 +1,8 @@
 <?php namespace App\Tasks;
 
-use Tatter\Workflows\Entities\Task;
+use App\Models\MethodModel;
+use App\Models\OptionModel;
 use Tatter\Workflows\Interfaces\TaskInterface;
-use Tatter\Workflows\Models\TaskModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class OptionsTask implements TaskInterface
 {
@@ -19,7 +18,17 @@ class OptionsTask implements TaskInterface
 	
 	public function get()
 	{
-
+		helper(['form', 'inflector']);
+		$options = new OptionModel();
+		$methods = new MethodModel();
+		
+		$data = [
+			'job'     => $this->job,
+			'methods' => $methods->with('materials')->findAll(),
+			'options' => $options->findAll(),
+		];
+		
+		return view('jobs/options', $data);
 	}
 	
 	public function post()
