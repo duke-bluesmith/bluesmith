@@ -10,6 +10,7 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/bootstrap/bootstrap.min.css',
 			'vendor/bootstrap/bootstrap.bundle.min.js',
 			'vendor/font-awesome/css/all.min.css',
+			'vendor/forms',
 		],
 		'files' => [
 			'vendor/dropzone/dropzone.min.css',
@@ -18,7 +19,6 @@ class Assets extends \Tatter\Assets\Config\Assets
 		
 		// Admin dashboard
 		'manage' => [
-			'vendor/forms',
 			'vendor/chartjs/Chart.min.css',
 			'vendor/chartjs/Chart.bundle.min.js',
 			'vendor/datatables/css/dataTables.bootstrap4.min.css',
@@ -39,12 +39,6 @@ class Assets extends \Tatter\Assets\Config\Assets
 		],
 		
 		'tasks' => [
-			'vendor/sbadmin2/sb-admin-2.min.css',
-			'vendor/sbadmin2/sb-admin-2.min.js',
-			'vendor/sortablejs/Sortable.min.js',
-		],
-		
-		'jobs' => [
 			'vendor/sbadmin2/sb-admin-2.min.css',
 			'vendor/sbadmin2/sb-admin-2.min.js',
 			'vendor/sortablejs/Sortable.min.js',

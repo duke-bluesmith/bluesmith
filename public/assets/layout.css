@@ -38,8 +38,9 @@
 	text-align: center;
 }
 	#menu .nav-item a {
+		min-width: 180px;
 		padding: 10px 30px;
-		font-size: .8em;
+		font-size: 1.2em;
 	}
 
 #main {

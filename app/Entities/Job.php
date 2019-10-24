@@ -1,23 +1,27 @@
 <?php namespace App\Entities;
 
-use App\Models\OptionModel;
-
 class Job extends \Tatter\Workflows\Entities\Job
 {
-	public function getOptions()
+	// Writes out this job's options to the database
+	public function updateOptions()
 	{
-		$options = new OptionModel();
-		$return  = [];
+		$builder = db_connect()->table('jobs_options');
 		
-		foreach ($options
-			->select('options.*')
-			->join('jobs_options', 'options.id = jobs_options.job_id')
-			->where('jobs_options.job_id', $this->attributes['id'])
-			->findAll() as $option)
+		// Determine which options are set
+		$optionIds = isset($this->attributes['options']) ? array_keys($this->attributes['options']) : [];
+		
+		// Clear existing options
+		$builder->where('job_id', $this->attributes['id'])->delete();
+		
+		// Add in any toggled options
+		foreach ($optionIds as $optionId)
 		{
-			$return[$option->id] = $option;
+			$row = [
+				'job_id'    => $this->attributes['id'],
+				'option_id' => $optionId,
+			]
+			
+			$builder->insert($row);
 		}
-		
-		return $return;	
 	}
 }

@@ -33,7 +33,20 @@ class OptionsTask implements TaskInterface
 	
 	public function post()
 	{
-
+		$data = $this->request->getPost();
+		
+		if ($data['material_id'])
+		{
+			$this->job->material_id = $data['material_id'];
+			$this->jobs->save($this->job);
+		}
+		
+		if (! empty($data['options']))
+		{
+// WIP			$this->job->options = $data['options'];
+		}
+		
+		dd($this->job);
 	}
 	
 	public function put()

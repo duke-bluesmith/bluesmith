@@ -26,7 +26,7 @@ class OptionSeeder extends \CodeIgniter\Database\Seeder
 				'description' => 'Printing occurs in an open lab and cannot guarantee privacy. By request we can make extra efforts not to position your job in a way it can be seen by others.',
 			],
 			[
-				'name'        => 'priorty',
+				'name'        => 'priority',
 				'summary'     => 'High priority',
 				'description' => 'High priorty jobs are reserved for urgent clinical needs and take precendence over other jobs.',
 			],

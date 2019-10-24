@@ -5,7 +5,7 @@ use CodeIgniter\Config\BaseConfig;
 class Workflows extends \Tatter\Workflows\Config\Workflows
 {
 	// The model to use for jobs
-	public $jobModel = 'Tatter\Workflows\Models\JobModel';
+	public $jobModel = 'App\Models\JobModel';
 
 	// Layouts to use for jobs and administration
 	public $layouts = [

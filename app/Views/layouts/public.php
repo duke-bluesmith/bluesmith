@@ -53,17 +53,13 @@ helper('auth');
 				<?= themes_form('themed-select custom-select custom-select-sm') ?>
 
 <?php if (logged_in()): ?>
-
-	<?php if (has_permission('ManageAny')): ?>
-				<a href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i>Manage</a>
-	<?php endif; ?>
 				<a href="<?= route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
 <?php else: ?>
 				<a href="<?= route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
 			</div>
-    	</div>
 <?php endif; ?>
 
+    	</div>
 	</header>
 	
 	<nav id="menu" class="navbar navbar-expand-lg <?= (theme()->dark) ? 'navbar-dark' : 'navbar-light' ?>" role="navigation">
@@ -75,17 +71,24 @@ helper('auth');
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item<?= $menu == 'home' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url() ?>">Home<?= $menu == 'home' ? $current : '' ?></a>
+						<a class="nav-link" href="<?= site_url() ?>"><i class="fas fa-home"></i> Home<?= $menu == 'home' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item<?= $menu == 'options' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('about/options') ?>">Print options<?= $menu == 'options' ? $current : '' ?></a>
+						<a class="nav-link" href="<?= site_url('about/options') ?>"><i class="fas fa-cogs"></i> Options<?= $menu == 'options' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item<?= $menu == 'files' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('files') ?>">My files<?= $menu == 'files' ? $current : '' ?></a>
+						<a class="nav-link" href="<?= site_url('files') ?>"><i class="fas fa-file-alt"></i> My files<?= $menu == 'files' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?= site_url('jobs') ?>">Jobs</a>
+						<a class="nav-link" href="<?= site_url('jobs') ?>"><i class="fas fa-cubes"></i> Jobs</a>
 					</li>
+
+<?php if (has_permission('ManageAny')): ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i> Manage</a>
+					</li>
+<?php endif; ?>
+	
 				</ul>
 			</div>
 		</div>

@@ -5,5 +5,16 @@ use App\Models\MethodModel;
 
 class Materials extends ResourceController
 {
-	public $modelName  = 'App\Models\MaterialModel';
+	protected $modelName = 'App\Models\MaterialModel';
+	
+	// Intercept filter requests
+	public function index()
+	{
+		if ($methodId = $this->request->getGet('method_id', FILTER_SANITIZE_NUMBER_INT))
+		{
+			$this->model->where('method_id', $methodId);
+		}
+		
+		return parent::index();
+	}
 }
