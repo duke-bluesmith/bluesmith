@@ -28,7 +28,7 @@ class OptionsTask implements TaskInterface
 			'options' => $options->findAll(),
 		];
 		
-		return view('jobs/options', $data);
+		return view('tasks/options', $data);
 	}
 	
 	public function post()
@@ -43,11 +43,11 @@ class OptionsTask implements TaskInterface
 		
 		if (! empty($data['option_ids']) && is_array($data['option_ids']))
 		{
-			$this->job->setOptions($data['option_ids']);
+			$this->job->updateOptions($data['option_ids']);
 		}
 		else
 		{
-			$this->job->setOptions([]);
+			$this->job->updateOptions([]);
 		}
 		
 		dd($this->job);

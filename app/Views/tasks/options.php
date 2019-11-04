@@ -8,7 +8,8 @@
 		<input class="btn btn-primary float-md-right" type="submit" name="submit" value="<?= lang('Pub.saveContinue') ?>">	
 		
 		<h2 class="my-4"><?= plural(lang('Pub.jobOption')) ?></h2>
-
+		<p><?= lang('Tasks.optionsHelp') ?></p>
+		
 		<div class="row">
 			
 			<div class="col">
@@ -24,7 +25,7 @@
 						class="custom-control-input"
 						id="<?= $option->name ?>"
 						value="<?= $option->id ?>"
-						<?= isset($job->options[$option->id]) ? 'checked' : '' ?>
+						<?= $job->hasOption($option->id) ? 'checked' : '' ?>
 					>
 					<label class="custom-control-label font-weight-bold" for="<?= $option->name ?>"><?= $option->summary ?></label>
 
