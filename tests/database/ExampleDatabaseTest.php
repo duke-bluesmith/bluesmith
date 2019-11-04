@@ -9,7 +9,7 @@ class ExampleDatabaseTest extends ProjectTests\Support\ProjectTestCase
 
 	public function testDatabaseSimple()
 	{
-		$model = new \ProjectTests\Support\Models\ExampleModel();
+		$model = new \App\Models\OptionModel();
 
 		$objects = $model->findAll();
 
