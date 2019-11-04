@@ -1,6 +1,6 @@
 <?php namespace ProjectTests\Support;
 
-class DatabaseTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
+class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 {
     /**
      * Should the database be refreshed before each test?
@@ -14,7 +14,7 @@ class DatabaseTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
      *
      * @var string
      */
-    protected $seed = 'ProjectTests\Support\Database\Seeds\ExampleSeeder';
+    protected $seed = 'ProjectTests\Support\Database\Seeds\TestSeeder';
 
     /**
      * The path to where we can find the test Seeds directory.
@@ -29,9 +29,29 @@ class DatabaseTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
      * @var string
      */
     protected $namespace = 'ProjectTests\Support';
+    
+    /**
+     * @var SessionHandler
+     */
+    protected $session;
 
     public function setUp(): void
-    {
+    {        
         parent::setUp();
+
+        $this->mockSession();
+    }
+
+    /**
+     * Pre-loads the mock session driver into $this->session.
+     *
+     * @var string
+     */
+    protected function mockSession()
+    {
+        require_once CIPATH . 'tests/_support/Session/MockSession.php';
+        $config = config('App');
+        $this->session = new MockSession(new ArrayHandler($config, '0.0.0.0'), $config);
+        \Config\Services::injectMock('session', $this->session);
     }
 }

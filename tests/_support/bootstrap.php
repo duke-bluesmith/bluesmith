@@ -20,10 +20,11 @@ define('FCPATH',        realpath(ROOTPATH . 'public') . DIRECTORY_SEPARATOR);
 define('WRITEPATH',     realpath($paths->writableDirectory) . DIRECTORY_SEPARATOR);
 define('SYSTEMPATH',    realpath($paths->systemDirectory) . DIRECTORY_SEPARATOR);
 define('CIPATH',        realpath(SYSTEMPATH . '../') . DIRECTORY_SEPARATOR);
+define('SUPPORTPATH',   realpath(ROOTPATH . 'tests/_support') . DIRECTORY_SEPARATOR);
 
-// Define necessary module test path constants
-define('SUPPORTPATH',   realpath(__DIR__) . DIRECTORY_SEPARATOR);
-define('TESTPATH',      realpath(SUPPORTPATH . '../') . DIRECTORY_SEPARATOR);
+// Define necessary project test path constants
+define('PROJECTSUPPORTPATH', realpath(__DIR__) . DIRECTORY_SEPARATOR);
+define('TESTPATH',           realpath(PROJECTSUPPORTPATH . '../') . DIRECTORY_SEPARATOR);
 
 // Set environment values that would otherwise stop the framework from functioning during tests.
 if (! isset($_SERVER['app.baseURL']))

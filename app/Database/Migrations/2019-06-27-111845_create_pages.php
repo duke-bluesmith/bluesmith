@@ -28,7 +28,7 @@ class CreatePages extends Migration
 		foreach (['Home', 'Options'] as $name):
 			$row = [
 				'name'    => $name,
-				'content' => view("examples/{$name}", [], ['debug' => false]),
+				'content' => view("_examples/{$name}", [], ['debug' => false]),
 			];
 			$pages->insert($row);
 		endforeach;
