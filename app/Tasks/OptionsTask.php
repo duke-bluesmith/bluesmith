@@ -41,9 +41,13 @@ class OptionsTask implements TaskInterface
 			$this->jobs->save($this->job);
 		}
 		
-		if (! empty($data['options']))
+		if (! empty($data['option_ids']) && is_array($data['option_ids']))
 		{
-// WIP			$this->job->options = $data['options'];
+			$this->job->setOptions($data['option_ids']);
+		}
+		else
+		{
+			$this->job->setOptions([]);
 		}
 		
 		dd($this->job);

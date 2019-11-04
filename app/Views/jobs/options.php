@@ -1,6 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
-<?php $job->options = [3 => 'test']; ?>
+
 <div class="container">
 
 	<?= form_open('jobs/options/' . $job->id) ?>
@@ -20,7 +20,7 @@
 				<div class="custom-control custom-switch mb-3">
 					<input
 						type="checkbox"
-						name="options[]"
+						name="option_ids[]"
 						class="custom-control-input"
 						id="<?= $option->name ?>"
 						value="<?= $option->id ?>"

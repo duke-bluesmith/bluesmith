@@ -2,8 +2,8 @@
 
 class Job extends \Tatter\Workflows\Entities\Job
 {
-	// Writes out this job's options to the database
-	public function updateOptions()
+	// Set options for a job in the database
+	public function setOptions($optionIds)
 	{
 		$builder = db_connect()->table('jobs_options');
 		
@@ -13,15 +13,22 @@ class Job extends \Tatter\Workflows\Entities\Job
 		// Clear existing options
 		$builder->where('job_id', $this->attributes['id'])->delete();
 		
-		// Add in any toggled options
+		// If there are no options then finish
+		if (empty($optionIds))
+		{
+			return;
+		}
+		
+		// Add back any selected options
+		$rows = [];
 		foreach ($optionIds as $optionId)
 		{
-			$row = [
+			$rows[] = [
 				'job_id'    => $this->attributes['id'],
 				'option_id' => $optionId,
-			]
-			
-			$builder->insert($row);
+			];
 		}
+
+		$builder->insertBatch($rows);
 	}
 }

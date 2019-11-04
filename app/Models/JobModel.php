@@ -12,7 +12,7 @@ class JobModel extends \Tatter\Relations\Model
 	
 	protected $with = ['options'];
 
-	protected $returnType = 'Tatter\Workflows\Entities\Job';
+	protected $returnType = 'App\Entities\Job';
 	protected $useSoftDeletes = true;
 
 	protected $allowedFields = [
