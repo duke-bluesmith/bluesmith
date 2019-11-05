@@ -11,6 +11,8 @@ class TestSeeder extends Seeder
 			throw new \Exception('Environment exception');
 		endif;
 		
+		$this->setSilent(true);
+
 		// Seed from App
 		$this->setPath(APPPATH . 'Database/Seeds');
 		$seeders = ['AuthSeeder', 'OptionSeeder'];

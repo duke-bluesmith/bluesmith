@@ -12,27 +12,6 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 	 * @var boolean
 	 */
 	protected $refresh = true;
-
-	/**
-	 * The name of a seed file used for all tests within this test case.
-	 *
-	 * @var string
-	 */
-	protected $seed = 'ProjectTests\Support\Database\Seeds\TestSeeder';
-
-	/**
-	 * The path to where we can find the test Seeds directory.
-	 *
-	 * @var string
-	 */
-	protected $basePath = PROJECTSUPPORTPATH . 'Database/Seeds';
-
-	/**
-	 * The namespace to help us find the migration classes.
-	 *
-	 * @var string
-	 */
-	protected $namespace = 'Tatter\Workflows';
 	
 	/**
 	 * @var SessionHandler
@@ -55,10 +34,10 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 			// Run all migrations
 			$this->migrations->setNamespace(false);
 			$this->migrations->latest('tests');
-			
+
 			// Seed the database
-			$this->seeder->setPath($this->basePath);
-			$this->seed($this->seed);
+			$this->seeder->setPath(PROJECTSUPPORTPATH . 'Database/Seeds');
+			$this->seed('ProjectTests\Support\Database\Seeds\TestSeeder');
 		}
 
 		$this->mockSession();
