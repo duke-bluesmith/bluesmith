@@ -6,30 +6,50 @@ by Duke University OIT
 
 (CodeIgniter 4 port of https://gitlab.oit.duke.edu/msg8/bluesmith)
 
+## Requirements
+
+**Bluesmith** is built on version 4 the CodeIgniter PHP framework. You will need to be
+sure your environment meets all of the framework's
+[system requirements](https://codeigniter4.github.io/userguide/intro/requirements.html).
+Framework requirements may change but here is a good start:
+
+* PHP 7.2 or newer
+* PHP extensions: intl, json, mbstring, mysqlnd, xml, libcurl
+* A database with one of the supported drivers
+
+Some additional requirements may depend on your choice of web host. See "Hosting with ..."
+in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/installation/running.html).
+
 ## Setup
 
 1. Clone or download the repository
+
 2. In the root directory, copy **env** to **.env** and edit the new file:
 	* Set `app.baseURL` to your site (with trailing slash), e.g. 'https://bluesmith.example.edu/'
 	* Set all variables in the `DATABASE` section
+	* `forceGlobalSecureRequests` is recommended but requires a valid HTTPS configuration
+
 3. Install all packages and dependencies with the following command in the root directory:
 	* `composer update`<sup>1</sup>
+
 4. Migrate the database:
 	* `./spark migrate -all`
+
 5. Seed the database with the necessary initial settings:
-	* `./spark tatter:publish`
 	* `./spark handlers:register`
 	* `./spark db:seed \\Tatter\\Settings\\Database\\Seeds\\SettingsSeeder`
 	* `./spark db:seed \\Tatter\\Themes\\Database\\Seeds\\ThemeSeeder`
-6. Setup cron jobs for the following tasks
+
+6. Setup cron jobs for the following tasks:
 	* `./spark reports:generate`
-7. Set your web server to serve the **public/** directory
+
+7. Set your web host to serve the **public/** directory
 
 	
 <sup>1</sup> Note: This should trigger composer's post update command which handles
 vendor assets, but if that fails or if you update manually be sure to run the following
-additional commands from the root directory:
-	* `./post-update.sh`
+command from the root directory to publish them manually:
+	* `./spark assets:publish`
 
 
 ## Customize
@@ -39,7 +59,7 @@ your institution's flair. You should leverage the included
 [Themes Library](https://github.com/tattersoftware/codeigniter4-themes) to add your own
 themes or even replace the default theme (hint: `./spark themes:add`).
 
-There are a number of places where displayed names can be changed centrally from the
+There are a number of places where branding can be changed centrally from the
 [Settings Library](https://github.com/tattersoftware/codeigniter4-settings), and a built-in
 CMS that allows for customized text in various places.
 
