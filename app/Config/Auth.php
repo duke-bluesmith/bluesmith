@@ -38,11 +38,4 @@ class Auth extends \Myth\Auth\Config\Auth
     // Defaults to 30 days.
     //
     public $rememberLength = 30 * DAY;
-
-    //--------------------------------------------------------------------
-    // Error handling
-    //--------------------------------------------------------------------
-    // If true, will continue instead of throwing exceptions.
-    //
-    public $silent = false;
 }
