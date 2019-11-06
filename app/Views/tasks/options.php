@@ -58,16 +58,21 @@
 					
 					<div class="card mb-4" style="min-width: 14rem; max-width: 33rem;">
 						<div class="card-body">
-							<h5 class="card-title <?= $method->id == 3 ? 'text-primary' : '' ?>"><?= $method->name ?></h5>
+							<h5 class="card-title"><?= $method->name ?></h5>
 							<h6 class="card-subtitle mb-2 text-muted"><?= $method->summary ?: '&nbsp;' ?></h6>
-							<a href="#" class="btn btn-info"><?= lang('Pub.details') ?></a>
+							<button class="btn btn-info" onclick="$('#methodDetails<?= $method->id ?>').modal(); return false;"><?= lang('Pub.details') ?></button>
 						</div>
 						
 						<ul class="list-group list-group-flush">
 							
 						<?php foreach ($method->materials as $material): ?>
 
-							<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="right" title="<?= htmlentities($material->description) ?>">
+							<li
+								class="list-group-item d-flex justify-content-between align-items-center"
+								data-toggle="tooltip"
+								data-placement="right"
+								title="<?= htmlentities($material->description) ?>"
+							>
 								<div class="custom-control custom-radio">
 									<input
 										type="radio"
@@ -86,6 +91,27 @@
 						<?php endforeach; ?>
 
 						</ul>
+						
+						<div class="modal fade" id="methodDetails<?= $method->id ?>" tabindex="-1" role="dialog" aria-labelledby="methodDetails<?= $method->id ?>Title" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-scrollable" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								<h5 class="modal-title" id="methodDetails<?= $method->id ?>Title"><?= $method->name ?></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<?= $method->description ?>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
 					</div>
 					
 					<?php endforeach; ?>
