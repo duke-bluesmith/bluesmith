@@ -37,8 +37,7 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 
 5. Seed the database with the necessary initial settings:
 	* `./spark handlers:register`
-	* `./spark db:seed \\Tatter\\Settings\\Database\\Seeds\\SettingsSeeder`
-	* `./spark db:seed \\Tatter\\Themes\\Database\\Seeds\\ThemeSeeder`
+	* `./spark db:seed InitialSeeder`
 
 6. Setup cron jobs for the following tasks:
 	* `./spark reports:generate`
@@ -54,7 +53,7 @@ command from the root directory to publish them manually:
 
 ## Customize
 
-Bluesmith comes with generic branding and a basic UI, but relishes being customized with
+**Bluesmith** comes with generic branding and a basic UI, but relishes being customized with
 your institution's flair. You should leverage the included
 [Themes Library](https://github.com/tattersoftware/codeigniter4-themes) to add your own
 themes or even replace the default theme (hint: `./spark themes:add`).
@@ -65,7 +64,7 @@ CMS that allows for customized text in various places.
 
 ## Extending
 
-Bluesmith is built off a handful of CodeIgniter 4 libraries that support modular loading.
+**Bluesmith** is built off a handful of CodeIgniter 4 libraries that support modular loading.
 This means it is easy to make your own extensions of existing features without deviating
 from the master branch. Create your own directory with whatever modules you wish to extend
 and add it to the list of autoloaded namespaces in **app/Config/Autoload.php**.

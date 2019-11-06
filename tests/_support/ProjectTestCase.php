@@ -36,8 +36,7 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 			$this->migrations->latest('tests');
 
 			// Seed the database
-			$this->seeder->setPath(PROJECTSUPPORTPATH . 'Database/Seeds');
-			$this->seed('ProjectTests\Support\Database\Seeds\TestSeeder');
+			$this->seed('App\Database\Seeds\InitialSeeder');
 		}
 
 		$this->mockSession();
