@@ -35,7 +35,8 @@ class Job extends \Tatter\Workflows\Entities\Job
 		
 		// Clear existing options
 		$builder->where('job_id', $this->attributes['id'])->delete();
-		
+		unset($this->attributes['options']);
+
 		// If there are no options then finish
 		if (empty($optionIds))
 		{

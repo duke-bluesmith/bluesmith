@@ -2,6 +2,13 @@
 
 class JobTest extends ProjectTests\Support\ProjectTestCase
 {
+	/**
+	 * Should the database be refreshed before each test?
+	 *
+	 * @var boolean
+	 */
+	protected $refresh = true;
+	
 	public function setUp(): void
 	{
 		parent::setUp();
@@ -10,7 +17,7 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 				
 		// Create some mock jobs
 		$builder = $this->db->table('jobs');
-		$jobs = [
+		$this->jobs = [
 			[
 				'name'        => 'Durham Bull',
 				'summary'     => 'A 3D scanned version of the downtown Bull',
@@ -27,17 +34,10 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 			],
 		];
 		
-		foreach ($jobs as $job)
+		foreach ($this->jobs as $job)
 		{
 			$builder->insert($job);
 		}
-	}
-
-	public function testHasOptionEmpty()
-	{
-		$job = $this->model->find(1);
-
-		$this->assertFalse($job->hasOption(1));
 	}
 
 	public function testUpdateOptionsAddsToDatabase()
@@ -49,7 +49,22 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 			->table('jobs_options')
 			->where('job_id', 1)
 			->get()->getResult();
-		
+
 		$this->assertCount(3, $result);
+	}
+
+	public function testHasOptionEmpty()
+	{
+		$job = $this->model->find(1);
+
+		$this->assertFalse($job->hasOption(1));
+	}
+
+	public function testHasOptionTrue()
+	{
+		$job = $this->model->find(1);
+		$job->updateOptions([1, 2, 3]);
+
+		$this->assertTrue($job->hasOption(1));
 	}
 }
