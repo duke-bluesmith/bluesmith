@@ -36,8 +36,9 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 	* `./spark migrate -all`
 
 5. Seed the database with the necessary initial settings:
-	* `./spark handlers:register`
 	* `./spark db:seed InitialSeeder`
+	* `./spark handlers:register`
+	* `./spark tasks:register`
 
 6. Setup cron jobs for the following tasks:
 	* `./spark reports:generate`

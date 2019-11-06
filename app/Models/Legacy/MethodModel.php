@@ -34,7 +34,17 @@ class MethodModel extends Model
 		];
 		
 		$methods = new \App\Models\MethodModel();
-		return $methods->protect(false)->save($method);
+		
+		if ($methods->find($method['id']))
+		{
+			$result = $methods->protect(false)->save($method);
+		}
+		else
+		{
+			$result = $methods->protect(false)->insert($method);		
+		}
+
+		return $result;
 	}
 }
 

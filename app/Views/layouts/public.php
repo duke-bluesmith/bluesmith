@@ -83,7 +83,7 @@ helper('auth');
 						<a class="nav-link" href="<?= site_url('jobs') ?>"><i class="fas fa-cubes"></i> Jobs</a>
 					</li>
 
-<?php if (has_permission('ManageAny')): ?>
+<?php if (has_permission('manageAny')): ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i> Manage</a>
 					</li>

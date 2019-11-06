@@ -37,13 +37,13 @@ class MaterialModel extends Model
 		$materials = new \App\Models\MaterialModel();
 		if ($materials->find($material['id']))
 		{
-			$result = $materials->builder()->where('id', $material['id'])->update($material);
+			$result = $materials->protect(false)->save($material);
 		}
 		else
 		{
-			$result = $materials->builder()->insert($material);
+			$result = $materials->protect(false)->insert($material);
 		}
-		
+			
 		return $result;
 	}
 }

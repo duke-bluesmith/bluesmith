@@ -4,6 +4,9 @@ use CodeIgniter\Config\BaseConfig;
 
 class Workflows extends \Tatter\Workflows\Config\Workflows
 {
+	// Whether to continue instead of throwing exceptions
+	public $silent = false;
+
 	// The model to use for jobs
 	public $jobModel = 'App\Models\JobModel';
 
