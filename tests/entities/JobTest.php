@@ -39,4 +39,17 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 
 		$this->assertFalse($job->hasOption(1));
 	}
+
+	public function testUpdateOptionsAddsToDatabase()
+	{
+		$job = $this->model->find(1);
+		$job->updateOptions([1, 2, 3]);
+		
+		$result = $this->db
+			->table('jobs_options')
+			->where('job_id', 1)
+			->get()->getResult();
+		
+		$this->assertCount(3, $result);
+	}
 }

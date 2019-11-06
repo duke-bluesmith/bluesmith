@@ -14,8 +14,8 @@ sure your environment meets all of the framework's
 Framework requirements may change but here is a good start:
 
 * PHP 7.2 or newer
-* PHP extensions: intl, json, mbstring, mysqlnd, xml, libcurl
-* A database with one of the supported drivers
+* PHP extensions (`php -m`): intl, json, mbstring, mysqlnd, xml, curl
+* A database with one of the framework's supported drivers
 
 Some additional requirements may depend on your choice of web host. See "Hosting with ..."
 in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/installation/running.html).
@@ -26,7 +26,7 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 
 2. In the root directory, copy **env** to **.env** and edit the new file:
 	* Set `app.baseURL` to your site (with trailing slash), e.g. 'https://bluesmith.example.edu/'
-	* Set all variables in the `DATABASE` section
+	* Set all variables in the `DATABASE` section for the `default` group
 	* `forceGlobalSecureRequests` is recommended but requires a valid HTTPS configuration
 
 3. Install all packages and dependencies with the following command in the root directory:
@@ -76,3 +76,20 @@ added/changed/removed with the
 
 Likewise, the included reports are all generated from modules that can be added to easily
 via the [Reports Library](https://github.com/tattersoftware/codeigniter4-reports).
+
+## Testing
+
+**Bluesmith** comes bundled with its own unit tests. If you are planning on modifying or
+extending the application you likely will want to run these tests or even add your own.
+To run the tests...
+
+1. Make sure you have `phpunit` installed (included automatically if you followed the Composer
+installation above) and a code coverage
+
+2. Install a code coverage driver like [Xdebug](http://xdebug.org)
+
+3. Rename **phpunit.xml.dist** to **phpunit.xml** and modify the database settings to match your environment
+
+4. Run the tests with the following command in the application root: `composer test`
+
+5. Results are output to the CLI and in the **build/** directory

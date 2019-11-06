@@ -62,9 +62,6 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 	 */
 	protected function resetTables()
 	{
-		// Reset migrations
-		$this->db->table('migrations')->truncate();
-		
 		// Check for tables
 		$tables = $this->db->listTables();
 		
@@ -79,6 +76,8 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 		{
 			if ($table === $this->db->DBPrefix . 'migrations')
 			{
+				// Reset migrations
+				$this->db->table('migrations')->truncate();
 				continue;
 			}
 
