@@ -50,12 +50,8 @@ class OptionsTask implements TaskInterface
 			$this->job->updateOptions([]);
 		}
 		
-		dd($this->job);
-	}
-	
-	public function put()
-	{
-
+		// End the task
+		return true;
 	}
 	
 	// run when a job progresses forward through the workflow

@@ -1,13 +1,18 @@
 <?php namespace App\Tasks;
 
-use Tatter\Workflows\Entities\Task;
+use Tatter\Files\Models\FileModel;
 use Tatter\Workflows\Interfaces\TaskInterface;
-use Tatter\Workflows\Models\TaskModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class FilesTask implements TaskInterface
 {
 	use \Tatter\Workflows\Traits\TasksTrait;
+
+	public function __construct()
+	{		
+		// Preload the Files model and helper
+		$this->files = new FileModel();
+		helper('files');
+	}
 	
 	public $definition = [
 		'category' => 'Define',
@@ -19,10 +24,11 @@ class FilesTask implements TaskInterface
 	
 	public function get()
 	{
+		helper(['auth', 'form']);
+
 		$data = [
-			'config'  => $this->config,
-			'job'     => $this->job,
-			'message' => session('message')
+			'job'   => $this->job,
+			'files' => $this->files->getForUser(user_id()),
 		];
 		return view('tasks/files', $data);
 	}

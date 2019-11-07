@@ -14,7 +14,7 @@
 			
 			<div class="col">
 		
-				<h3 ><?= plural(lang('Pub.printService')) ?></h3>
+				<h3><?= plural(lang('Pub.printService')) ?></h3>
 				
 				<?php foreach ($options as $option): ?>
 
