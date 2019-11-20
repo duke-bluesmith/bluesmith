@@ -2,5 +2,5 @@
 
 class Method extends BaseEntity
 {
-
+	protected $table = 'methods';
 }

@@ -1,8 +1,6 @@
 <?php namespace App\Entities;
 
-use CodeIgniter\Entity;
-
-class Material extends Entity
+class Material extends BaseEntity
 {
-
+	protected $table = 'materials';
 }
