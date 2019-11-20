@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = ''; // configured via .env
+	public $baseURL = 'http://localhost:8080/'; // Configure via .env
 
 	/*
 	|--------------------------------------------------------------------------
@@ -227,7 +227,7 @@ class App extends BaseConfig
 	| Array:		array('10.0.1.200', '192.168.5.0/24')
 	*/
 	public $proxyIPs = '';
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Cross Site Request Forgery
@@ -265,7 +265,5 @@ class App extends BaseConfig
 	|   - http://www.w3.org/TR/CSP/
 	*/
 	public $CSPEnabled = false;
-
-	//--------------------------------------------------------------------
 
 }
