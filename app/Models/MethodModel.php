@@ -1,8 +1,6 @@
 <?php namespace App\Models;
 
-use Tatter\Addins\Model;
-
-class MethodModel extends Model
+class MethodModel extends BaseModel
 {
 	protected $table      = 'methods';
 	protected $primaryKey = 'id';

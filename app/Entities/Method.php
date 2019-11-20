@@ -1,9 +1,6 @@
 <?php namespace App\Entities;
 
-use App\Models\MethodModel;
-use CodeIgniter\Entity;
-
-class Method extends Entity
+class Method extends BaseEntity
 {
-	protected $dates = ['created_at', 'updated_at', 'expired_at'];
+
 }

@@ -1,11 +1,12 @@
 <?php namespace App\Models;
 
-use Tatter\Permits\Traits\PermitsTrait;
+use CodeIgniter\Model;
 
-class JobModel extends \Tatter\Relations\Model
+class JobModel extends Model
 {
 	// Traits
-	use PermitsTrait;
+	use \Tatter\Permits\Traits\PermitsTrait;
+	use \Tatter\Relations\Traits\ModelTrait;
 
 	protected $table      = 'jobs';
 	protected $primaryKey = 'id';
