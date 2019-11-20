@@ -18,7 +18,7 @@
 			
 			<div class="col">
 
-				<?= view('Tatter\Files\Views\formats\select', ['files' => $files]) ?>
+				<?= view('Tatter\Files\Views\formats\select', ['files' => $files, 'selected' => $job->relations('files', true)]) ?>
 				
 			</div>
 		</div>

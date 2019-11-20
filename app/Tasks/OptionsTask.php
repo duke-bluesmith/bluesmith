@@ -43,11 +43,11 @@ class OptionsTask implements TaskInterface
 		
 		if (! empty($data['option_ids']) && is_array($data['option_ids']))
 		{
-			$this->job->updateOptions($data['option_ids']);
+			$this->job->setOptions($data['option_ids']);
 		}
 		else
 		{
-			$this->job->updateOptions([]);
+			$this->job->setOptions([]);
 		}
 		
 		// End the task

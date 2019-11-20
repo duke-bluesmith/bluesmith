@@ -24,7 +24,7 @@ class FilesTask implements TaskInterface
 	
 	public function get()
 	{
-		helper(['auth', 'form']);
+		helper('form');
 
 		$data = [
 			'job'      => $this->job,
@@ -53,31 +53,26 @@ class FilesTask implements TaskInterface
 		
 		if (! empty($fileIds))
 		{
-			$this->job->updateFiles($fileIds);
+			$this->job->setFiles($fileIds);
 		}
 		else
 		{
-			$this->job->updateFiles([]);
+			$this->job->setFiles([]);
 		}
-return;
+
 		// End the task
 		return true;
 	}
 	
-	public function put()
-	{
-		return true;
-	}
-	
-	// run when a job progresses forward through the workflow
+	// Run when a job progresses forward through the workflow
 	public function up()
 	{
 	
 	}
 	
-	// run when job regresses back through the workflow
+	// Run when job regresses back through the workflow
 	public function down()
 	{
-		$this->jobs->update($this->job->id, ['score' => null]);
+
 	}
 }
