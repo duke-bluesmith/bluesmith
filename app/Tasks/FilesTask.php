@@ -11,7 +11,7 @@ class FilesTask implements TaskInterface
 	{		
 		// Preload the Files model and helper
 		$this->files = new FileModel();
-		helper('files');
+		helper(['auth', 'files']);
 	}
 	
 	public $definition = [
@@ -27,17 +27,41 @@ class FilesTask implements TaskInterface
 		helper(['auth', 'form']);
 
 		$data = [
-			'job'   => $this->job,
-			'files' => $this->files->getForUser(user_id()),
+			'job'      => $this->job,
+			'files'    => $this->files->getForUser(user_id()),
 		];
 		return view('tasks/files', $data);
 	}
 	
 	public function post()
 	{
-		$this->job->word = $this->request->getPost('word');
-		$this->jobs->save($this->job);
-		return redirect()->to($this->route())->with('message', "Your word has been set to '{$this->job->word}'");
+		$data = $this->request->getPost();
+
+		// Harvest file IDs
+		$action = '';
+		$fileIds = [];
+		foreach ($data as $key => $value)
+		{
+			if (is_numeric($value) && strpos($key, 'file') === 0)
+			{
+				$fileIds[] = $value;
+			}
+		}
+		
+		// Filter by user's files
+		$fileIds = array_intersect($fileIds, array_column($this->files->getForUser(user_id()), 'id'));
+		
+		if (! empty($fileIds))
+		{
+			$this->job->updateFiles($fileIds);
+		}
+		else
+		{
+			$this->job->updateFiles([]);
+		}
+return;
+		// End the task
+		return true;
 	}
 	
 	public function put()
