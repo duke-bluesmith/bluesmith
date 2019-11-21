@@ -7,7 +7,7 @@ class AlterJobs extends Migration
 	public function up()
 	{
 		$fields = [
-			'material_id' => ['type' => 'INT', 'unsigned' => true, 'after' => 'stage_id'],
+			'material_id' => ['type' => 'int', 'unsigned' => true, null => 'true', 'after' => 'stage_id'],
 		];
 
 		$this->forge->addColumn('jobs', $fields);

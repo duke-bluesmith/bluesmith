@@ -2,12 +2,14 @@
 
 return [
 	'details'                 => 'Details',
+	'add'                     => 'Add',
+	'remove'                  => 'Remove',
 	'saveContinue'            => 'Save and Continue',
 	'jobOption'               => 'Job option',
 	'printService'            => 'Print service',
 	'printMethod'             => 'Print method',
 	'printMethodAndMaterials' => 'Print method and materials',
-	'chooseForMe'             => 'Allow the consultant to select the best fit material',
-	'chooseMyOwn'             => 'Select my own',
 	'files'                   => 'Files',
+	'clients'                 => 'Clients',
+	'email'                   => 'Email address',
 ];

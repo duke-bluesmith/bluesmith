@@ -41,7 +41,7 @@
 				<p>
 					<div class="custom-control custom-radio mb-3">
 						<input type="radio" id="material-0" name="material_id" class="custom-control-input" value="0" <?= $job->material_id ? '' : 'checked' ?>>
-						<label class="custom-control-label" for="material-0"><?= lang('Pub.chooseForMe') ?></label>
+						<label class="custom-control-label" for="material-0"><?= lang('Tasks.chooseForMe') ?></label>
 					</div>
 
 					<button
@@ -49,7 +49,7 @@
 						<?= $job->material_id ? 'data-toggle="button" aria-pressed="true"' : 'data-toggle="button" aria-pressed="false"' ?>
 						autocomplete="off"
 						onclick="$('#methods').toggleClass('invisible');"
-					><?= lang('Pub.chooseMyOwn') ?></button>
+					><?= lang('Tasks.chooseMyOwn') ?></button>
 				</p>
 
 				<div id="methods" class="card-deck <?= $job->material_id ? '' : 'invisible' ?>">

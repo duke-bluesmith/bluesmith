@@ -11,7 +11,7 @@ class FilesTask implements TaskInterface
 	{		
 		// Preload the Files model and helper
 		$this->files = new FileModel();
-		helper(['auth', 'files']);
+		helper('files');
 	}
 	
 	public $definition = [

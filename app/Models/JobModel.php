@@ -62,6 +62,7 @@ class JobModel extends Model
 		{
 			return false;
 		}
+		$db = db_connect();
 		
 		// determine user source from config
 		$userId = session(config('Workflows')->userSource);
@@ -75,9 +76,15 @@ class JobModel extends Model
 		];
 		
 		// add it to the database
-		$db = db_connect();
 		$db->table('joblogs')->insert($row);
 		
+		// Assign to the user
+		$row = [
+			'job_id'     => $data['result']->connID->insert_id,
+			'user_id'    => $userId,
+		];
+		$db->table('jobs_users')->insert($row);
+
 		return $data;
 	}
 	
