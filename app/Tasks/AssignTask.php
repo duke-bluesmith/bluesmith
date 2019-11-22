@@ -22,7 +22,8 @@ class AssignTask implements TaskInterface
 		'icon'     => 'fas fa-user-friends',
 		'summary'  => 'Client includes other clients',
 	];
-	
+
+	// Display the form
 	public function get()
 	{
 		helper('form');
@@ -33,11 +34,19 @@ class AssignTask implements TaskInterface
 		return view('tasks/clients', $data);
 	}
 	
+	// Validate and continue
 	public function post()
 	{
+		if (empty($this->job->users))
+		{
+			alert('warning', lang('Tasks.needClients'));
+			return redirect()->back();		
+		}
 
+		return true;
 	}
-	
+
+	// Take an email address and add a user or send them an invite
 	public function put()
 	{
 		// All we care about is a valid email address
@@ -72,10 +81,17 @@ class AssignTask implements TaskInterface
 			}
 		}
 
-		// New email - send an invitation
+		// Email address not found - send an invitation
 		else
 		{
-			// WIP
+			if ($this->job->invite($email))
+			{
+				alert('success', lang('Tasks.inviteSuccess'));
+			}
+			else
+			{
+				alert('error', lang('Tasks.inviteFail'));
+			}
 		}
 
 		return redirect()->back();		

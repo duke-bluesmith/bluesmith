@@ -23,9 +23,9 @@ class CreateJobsUsers extends Migration
 		
 		// Invites
 		$fields = [
+			'job_id'     => ['type' => 'int', 'unsigned' => true],
 			'email'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
 			'token'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
-			'job_id'     => ['type' => 'int', 'unsigned' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'expired_at' => ['type' => 'datetime', 'null' => true],
 		];
@@ -33,8 +33,8 @@ class CreateJobsUsers extends Migration
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
-		$this->forge->addKey('email');
 		$this->forge->addKey('job_id');
+		$this->forge->addKey('email');
 		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('invites');

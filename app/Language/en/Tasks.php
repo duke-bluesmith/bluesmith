@@ -11,9 +11,11 @@ return [
 	'addClientFail'    => 'There was an error adding that client.',
 	'alreadyClient'    => 'That user is already assigned to this job!',
 	'inviteSuccess'    => 'An invitation to your job was issued to "{0}".',
+	'inviteFail'       => 'Unable to issue an invitation to "{0}".',
 	'clientEmailHelp'  => 'Add an existing user, or send an invitation to new users.',
 	'currentClients'   => 'Current clients',
 	'noClients'        => 'There are no clients assigned to this job.',
+	'needClients'      => 'There must be at least one client assigned to a job.',
 	'pendingClients'   => 'Pending clients',
 	'noInvites'        => 'There are no outstanding client invitations for this job.',
 ];
