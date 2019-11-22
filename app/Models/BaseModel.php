@@ -4,6 +4,13 @@ use CodeIgniter\Model;
 
 class BaseModel extends Model
 {
+	// Core defaults
+	protected $primaryKey     = 'id';
+	protected $returnType     = 'object';
+	protected $useTimestamps  = true;
+	protected $useSoftDeletes = true;
+	protected $skipValidation = false;
+
 	// Traits
 	use \Tatter\Audits\Traits\AuditsTrait;
 	use \Tatter\Permits\Traits\PermitsTrait;
@@ -23,16 +30,19 @@ class BaseModel extends Model
 	 */	
 	protected $mode = 04664;
 	
-	// name of the user ID in this model's objects
+	/* Properties that need to be filled in by each model to use Permits */
+	// Name of the user ID in this model's objects
 	protected $userKey;
-	// table that joins this model's objects to its users
+
+	// Table that joins this model's objects to its users
 	protected $usersPivot;
-	
-	// name of the group ID in this model's objects
+
+	// Name of the group ID in this model's objects
 	protected $groupKey;
-	// table that joins this model's objects to its groups
+
+	// Table that joins this model's objects to its groups
 	protected $groupsPivot;
-	
-	// name of this object's ID in the pivot tables
+
+	// Name of this object's ID in the pivot tables
 	protected $pivotKey;
 }

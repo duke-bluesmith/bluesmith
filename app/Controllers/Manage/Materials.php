@@ -32,7 +32,7 @@ class Materials extends ResourcePresenter
 	{
 		$methods = new MethodModel();
 		
-		if (! $method = $methods->find($methodId))
+		if (! $method = $methods->with('materials')->find($methodId))
 		{
 			$error = lang('Forms.notFound', ['method']);
 			$this->alert('danger', $error);
