@@ -96,7 +96,7 @@ helper('auth');
 		
 	<?= service('alerts')->display() ?>
 	
-	<main id="main" role="main" class="my-5">
+	<main id="main" role="main" class="container my-5">
 		<?= $this->renderSection('main') ?>
 	</main>
 
