@@ -18,4 +18,6 @@ return [
 	'needClients'      => 'There must be at least one client assigned to a job.',
 	'pendingClients'   => 'Pending clients',
 	'noInvites'        => 'There are no outstanding client invitations for this job.',
+	'genericTerms'     => 'I accept the terms of service for using this website.',
+	'mustAccept'       => 'You must accept the Terms of Service to continue.',
 ];

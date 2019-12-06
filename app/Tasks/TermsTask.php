@@ -1,9 +1,8 @@
 <?php namespace App\Tasks;
 
-use Tatter\Workflows\Entities\Task;
+use App\Models\PageModel;
+use App\Models\TermModel;
 use Tatter\Workflows\Interfaces\TaskInterface;
-use Tatter\Workflows\Models\TaskModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class TermsTask implements TaskInterface
 {
@@ -19,28 +18,57 @@ class TermsTask implements TaskInterface
 	
 	public function get()
 	{
+		helper(['form']);
+		$pages = new PageModel();
+		
+		$data = [
+			'job'   => $this->job,
+			'page'  => $pages->where('name', 'TOS')->first(),
+		];
 
+		return view('tasks/terms', $data);
 	}
 	
 	public function post()
 	{
-
-	}
-	
-	public function put()
-	{
-
+		$data = $this->request->getPost();
+		
+		if (empty($data['accept']))
+		{
+			alert('warning', lang('Tasks.mustAccept'));
+			return redirect()->back();		
+		}
+		
+		// End the task
+		return true;
 	}
 	
 	// run when a job progresses forward through the workflow
 	public function up()
 	{
-	
+		$accepts = new AcceptModel();
+
+		// If skipping is allowed we'll assume this is deliberate and auto-accept on their behalf
+		$row = [
+			'job_id'  => $this->job->id,
+			'user_id' => user_id(),
+		];
+
+		// Check for an existing row
+		if (! $accepts->where($row)->first())
+		{
+			// Create the record of acceptance
+			return $accepts->insert($row);
+		}
+
+		return true;
 	}
 	
 	// run when job regresses back through the workflow
 	public function down()
 	{
-
+		// Remove all acceptance records
+		$accepts = new AcceptModel();
+		return $accepts->where('job_id',$this->job->id)->delete();
 	}
 }

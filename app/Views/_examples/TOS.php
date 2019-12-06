@@ -1,5 +1,15 @@
 <h2>Terms of Service</h2>
 
+<h3>Contract of agreement</h3>
+<section>
+	<ul>
+		<li>I agree that these terms are reasonable and I will abide by them in order to use this service.</li>
+		<li>I understand charges vary between jobs, and cost estimates may change during job processing.</li>
+		<li>I understand very small parts increase likelihood of job failure.</li>
+		<li>I confirm all model units are in millimeters.</li>
+	</ul>
+</section>
+
 <h3>Services</h3>
 <section>
 	<p>
@@ -33,14 +43,4 @@
 		material used. Material prices are liable to change frequently and thus our printing
 		costs may also change without notice for new jobs.
 	</p>
-</section>
-
-<h3>Contract of agreement</h3>
-<section>
-	<ul>
-		<li>I agree that these terms are reasonable and I will abide by them in order ot use this service.</li>
-		<li>I understand charges vary between jobs, and actual costs may change during processing.</li>
-		<li>I understand very small parts increase likelihood of job failure</li>
-		<li>I confirm all model units are in millimeters</li>
-	</ul>
 </section>
