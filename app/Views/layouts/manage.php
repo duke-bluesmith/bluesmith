@@ -1,11 +1,13 @@
 <?php
+// Load dependencies
 $settings = service('settings');
-helper('auth');
-$user = user();
+$pages    = new \App\Models\PageModel();
+$user     = user();
 
-$menu = explode('.', $menu ?? '');
+// Determine active menu items
+$menu    = explode('.', $menu ?? '');
+$menu    = $menu[0];
 $submenu = $menu[1] ?? '';
-$menu = $menu[0];
 
 ?><!doctype html>
 <html lang="en">
@@ -124,15 +126,20 @@ $menu = $menu[0];
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item<?= $menu == 'pages' ? ' active' : '' ?>">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<a class="nav-link<?= $menu == 'pages' ? '' : ' collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="<?= $menu == 'pages' ? 'true' : 'false' ?>" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-columns"></i>
 					<span>Pages</span>
 				</a>
 				<div id="collapseTwo" class="collapse<?= $menu == 'pages' ? ' show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Available Pages:</h6>
-						<a class="collapse-item<?= $submenu == 'Home' ? ' active' : '' ?>" href="<?= site_url('manage/content/page/Home') ?>">Home</a>
-						<a class="collapse-item<?= $submenu == 'Options' ? ' active' : '' ?>" href="<?= site_url('manage/content/page/Options') ?>">Options</a>
+						
+						<?php foreach ($pages->findAll() as $page): ?>
+						
+						<a class="collapse-item<?= $submenu == $page->name ? ' active' : '' ?>" href="<?= site_url('manage/content/page/' . $page->name) ?>"><?= $page->name ?></a>
+						
+						<?php endforeach; ?>
+
 					</div>
 				</div>
 			</li>
