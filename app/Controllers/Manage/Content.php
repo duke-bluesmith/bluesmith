@@ -1,7 +1,7 @@
 <?php namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
-use App\Models\Manage\PageModel;
+use App\Models\PageModel;
 use App\Models\MaterialModel;
 use App\Models\MethodModel;
 

@@ -22,16 +22,6 @@ class CreatePages extends Migration
 		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('pages');
-		
-		// Add rows for required pages
-		$pages = new PageModel();
-		foreach (['Home', 'Options'] as $name):
-			$row = [
-				'name'    => $name,
-				'content' => view("_examples/{$name}", [], ['debug' => false]),
-			];
-			$pages->insert($row);
-		endforeach;
 	}
 
 	public function down()

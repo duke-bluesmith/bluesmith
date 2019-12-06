@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-use App\Models\Manage\PageModel;
+use App\Models\PageModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
