@@ -7,21 +7,20 @@ class Pages extends BaseController
 {
 	public function show($page = 'home')
 	{
-		$pages = new PageModel();
-		$page = $pages->where('name', $page)->first();
+		$page = (new PageModel())->where('name', $page)->first();
 		
 		if (empty($page))
 		{
 			 throw PageNotFoundException::forPageNotFound();
 		}
-		
-		// Check for a view file
-		$viewDirectory = config('Paths')->viewDirectory ?? '';
-		if ($viewDirectory && is_file("{$viewDirectory}/pages/{$page->name}"))
+
+		// Check for a specified view file
+		$path = config('Paths')->viewDirectory . '/pages/' . strtolower($page->name) . '.php';
+		if (is_file($path))
 		{
-			return view("{$viewDirectory}/pages/{$page->name}", ['content' => $page->content, 'menu' => $page->name]);
+			return view('pages/' . strtolower($page->name), ['content' => $page->content, 'menu' => $page->name]);
 		}
-		
+
 		// Otherwise use the generic one		
 		return view('pages/show', ['content' => $page->content, 'menu' => $page->name]);
 	}
