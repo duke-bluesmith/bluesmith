@@ -12,6 +12,7 @@ class OptionsTask implements TaskInterface
 		'category' => 'Define',
 		'name'     => 'Print Options',
 		'uid'      => 'options',
+		'role'     => 'user',
 		'icon'     => 'fas fa-cogs',
 		'summary'  => 'Client specifies method, materials, and options',
 	];

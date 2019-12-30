@@ -13,6 +13,7 @@ class PostprintTask implements TaskInterface
 		'category' => 'Process',
 		'name'     => 'Print Post-Process',
 		'uid'      => 'postprint',
+		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-broom',
 		'summary'  => 'Staff post-processes objects',
 	];

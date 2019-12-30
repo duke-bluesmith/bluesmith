@@ -12,6 +12,7 @@ class TermsTask implements TaskInterface
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
+		'role'     => 'user',
 		'icon'     => 'fas fa-tasks',
 		'summary'  => 'Client accepts terms of service',
 	];

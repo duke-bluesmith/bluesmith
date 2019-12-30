@@ -13,6 +13,7 @@ class PrepayTask implements TaskInterface
 		'category' => 'Define',
 		'name'     => 'Prepay',
 		'uid'      => 'prepay',
+		'role'     => 'user',
 		'icon'     => 'fas fa-comments-dollar',
 		'summary'  => 'Client submits payment in advance',
 	];

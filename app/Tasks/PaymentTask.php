@@ -13,6 +13,7 @@ class PaymentTask implements TaskInterface
 		'category' => 'Complete',
 		'name'     => 'Payment',
 		'uid'      => 'payment',
+		'role'     => 'user',
 		'icon'     => 'fas fa-money-check',
 		'summary'  => 'Client submits payment for charges',
 	];

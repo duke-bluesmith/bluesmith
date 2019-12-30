@@ -6,6 +6,15 @@ use Tatter\Workflows\Interfaces\TaskInterface;
 class FilesTask implements TaskInterface
 {
 	use \Tatter\Workflows\Traits\TasksTrait;
+	
+	public $definition = [
+		'category' => 'Define',
+		'name'     => 'Files',
+		'uid'      => 'files',
+		'role'     => 'user',
+		'icon'     => 'fas fa-file-alt',
+		'summary'  => 'Client selects or uploads files',
+	];
 
 	public function __construct()
 	{		
@@ -13,14 +22,6 @@ class FilesTask implements TaskInterface
 		$this->files = new FileModel();
 		helper('files');
 	}
-	
-	public $definition = [
-		'category' => 'Define',
-		'name'     => 'Files',
-		'uid'      => 'files',
-		'icon'     => 'fas fa-file-alt',
-		'summary'  => 'Client selects or uploads files',
-	];
 	
 	public function get()
 	{

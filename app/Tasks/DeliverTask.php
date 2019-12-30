@@ -13,6 +13,7 @@ class DeliverTask implements TaskInterface
 		'category' => 'Compelte',
 		'name'     => 'Deliver',
 		'uid'      => 'deliver',
+		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-truck',
 		'summary'  => 'Staff delivers objects to client',
 	];

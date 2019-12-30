@@ -13,6 +13,7 @@ class ChargesTask implements TaskInterface
 		'category' => 'Assess',
 		'name'     => 'Charges',
 		'uid'      => 'charges',
+		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-file-invoice-dollar',
 		'summary'  => 'Staff reviews submission and sets charges',
 	];

@@ -13,6 +13,7 @@ class PrintTask implements TaskInterface
 		'category' => 'Process',
 		'name'     => 'Print',
 		'uid'      => 'print',
+		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-cubes',
 		'summary'  => 'Staff prints objects',
 	];

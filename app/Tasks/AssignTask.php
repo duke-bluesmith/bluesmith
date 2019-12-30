@@ -9,19 +9,20 @@ use Tatter\Workflows\Models\WorkflowModel;
 class AssignTask implements TaskInterface
 {
 	use \Tatter\Workflows\Traits\TasksTrait;
-
-	public function __construct()
-	{
-		helper('alerts');
-	}
 	
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Assign Clients',
 		'uid'      => 'clients',
+		'role'     => 'user',
 		'icon'     => 'fas fa-user-friends',
 		'summary'  => 'Client includes other clients',
 	];
+
+	public function __construct()
+	{
+		helper('alerts');
+	}
 
 	// Display the form
 	public function get()

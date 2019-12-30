@@ -13,6 +13,7 @@ class ApproveTask implements TaskInterface
 		'category' => 'Assess',
 		'name'     => 'Approve',
 		'uid'      => 'approve',
+		'role'     => 'user',
 		'icon'     => 'fas fa-thumbs-up',
 		'summary'  => 'Client approves the estimate',
 	];

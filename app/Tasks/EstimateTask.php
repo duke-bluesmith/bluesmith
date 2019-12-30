@@ -13,6 +13,7 @@ class EstimateTask implements TaskInterface
 		'category' => 'Assess',
 		'name'     => 'Estimate',
 		'uid'      => 'estimate',
+		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-balance-scale-right',
 		'summary'  => 'Staff issues estimate',
 	];
