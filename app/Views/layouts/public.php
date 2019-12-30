@@ -85,7 +85,7 @@ helper('auth');
 						<a class="nav-link" href="<?= site_url('files') ?>"><i class="fas fa-file-alt"></i> My files<?= $menu == 'files' ? $current : '' ?></a>
 					</li>
 					<li class="nav-item<?= $menu == 'jobs' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('jobs') ?>"><i class="fas fa-cubes"></i> Jobs<?= $menu == 'jobs' ? $current : '' ?></a>
+						<a class="nav-link" href="<?= site_url('account/jobs') ?>"><i class="fas fa-cubes"></i> Jobs<?= $menu == 'jobs' ? $current : '' ?></a>
 					</li>
 
 					<?php if (has_permission('manageAny')): ?>

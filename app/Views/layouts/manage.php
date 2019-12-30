@@ -1,5 +1,6 @@
 <?php
 // Load dependencies
+helper('auth');
 $settings = service('settings');
 $pages    = new \App\Models\PageModel();
 $user     = user();
