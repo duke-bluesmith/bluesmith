@@ -7,14 +7,17 @@
 	
 	<div class="row">
 		<div class="col-lg-9">
+
 			<?= $content ?>
-			<?php $methods = new \App\Models\MethodModel(); ?>
-			<?php foreach ($methods->findAll() as $method): ?>
+
+			<?php foreach ((new \App\Models\MethodModel())->findAll() as $method): ?>
+
 			<div class="border">
-				
+				<h5><?= $method->name ?></h5>
 			</div>
 			
 			<?php endforeach; ?>
+
 		</div>
 		
 		<div class="col-lg-3">

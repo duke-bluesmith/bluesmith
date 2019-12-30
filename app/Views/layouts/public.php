@@ -50,15 +50,20 @@ helper('auth');
 			</div>
 			
 			<div id="banner-tools">
+
 				<?= themes_form('themed-select custom-select custom-select-sm') ?>
 
-<?php if (logged_in()): ?>
-				<a href="<?= route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
-<?php else: ?>
-				<a href="<?= route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
-			</div>
-<?php endif; ?>
+				<?php if (logged_in()): ?>
 
+				<a href="<?= route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
+
+				<?php else: ?>
+
+				<a href="<?= route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
+
+				<?php endif; ?>
+
+			</div>
     	</div>
 	</header>
 	
@@ -79,15 +84,17 @@ helper('auth');
 					<li class="nav-item<?= $menu == 'files' ? ' active' : '' ?>">
 						<a class="nav-link" href="<?= site_url('files') ?>"><i class="fas fa-file-alt"></i> My files<?= $menu == 'files' ? $current : '' ?></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?= site_url('jobs') ?>"><i class="fas fa-cubes"></i> Jobs</a>
+					<li class="nav-item<?= $menu == 'jobs' ? ' active' : '' ?>">
+						<a class="nav-link" href="<?= site_url('jobs') ?>"><i class="fas fa-cubes"></i> Jobs<?= $menu == 'jobs' ? $current : '' ?></a>
 					</li>
 
-<?php if (has_permission('manageAny')): ?>
+					<?php if (has_permission('manageAny')): ?>
+
 					<li class="nav-item">
 						<a class="nav-link" href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i> Manage</a>
 					</li>
-<?php endif; ?>
+
+					<?php endif; ?>
 	
 				</ul>
 			</div>
@@ -100,13 +107,13 @@ helper('auth');
 		<?= $this->renderSection('main') ?>
 	</main>
 
-	<footer id="footer" class="footer float-left">
+	<footer id="footer" class="footer fixed-bottom border-top">
 		<div class="float-left">
 			<a href="<?= $settings->orgUrl ?>"><img src="<?= $settings->orgLogo ?>" height="45" alt="logo"></a>
 		</div>
 			
 		<div class="float-right copyright">
-			&copy; <?=date('Y') ?>
+			&copy; <?= date('Y') ?>
 			<?= $settings->orgName ?>
 			<?= $settings->orgAddress ?>
 			<?= $settings->orgPhone ?>
@@ -120,6 +127,7 @@ helper('auth');
 	</script>
 	
 	<?= service('assets')->js() ?>
+
 	<?= $this->renderSection('footerAssets') ?>
 
 </body>
