@@ -1,5 +1,8 @@
 # Bluesmith
 
+[![pipeline status](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/pipeline.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
+[![coverage report](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/coverage.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
+
 3D Print manager, Bluesmith (https://bluesmith.oit.duke.edu)
 
 by Duke University OIT

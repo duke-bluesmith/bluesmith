@@ -1,0 +1,15 @@
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+
+before_script:
+# Install composer dependencies
+- composer install
+
+services:
+- mysql
+
+test:app:
+  script:
+  - vendor/bin/phpunit
