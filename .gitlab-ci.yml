@@ -12,9 +12,10 @@ before_script:
 # Install composer dependencies
 - composer install
 
-services:
-- mysql
-
 test:app:
+  tags: 
+    - ubuntu18
+    - codeigniter4
+
   script:
   - vendor/bin/phpunit
