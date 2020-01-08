@@ -40,10 +40,10 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 		}
 	}
 
-	public function testUpdateOptionsAddsToDatabase()
+	public function testSetOptionsAddsToDatabase()
 	{
 		$job = $this->model->find(1);
-		$job->updateOptions([1, 2, 3]);
+		$job->setOptions([1, 2, 3]);
 		
 		$result = $this->db
 			->table('jobs_options')
@@ -63,7 +63,7 @@ class JobTest extends ProjectTests\Support\ProjectTestCase
 	public function testHasOptionTrue()
 	{
 		$job = $this->model->find(1);
-		$job->updateOptions([1, 2, 3]);
+		$job->setOptions([1, 2, 3]);
 
 		$this->assertTrue($job->hasOption(1));
 	}
