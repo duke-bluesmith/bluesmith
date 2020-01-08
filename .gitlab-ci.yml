@@ -1,5 +1,6 @@
 # Select what we should cache
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
   - vendor/
 
@@ -8,9 +9,12 @@ before_script:
 - hostname
 - whoami
 - pwd
+- git --version
+- composer --version
+- php --version
 
 # Install composer dependencies
-- composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+- composer install --no-progress --no-suggest --optimize-autoloader
 
 test:app:
   tags: 
