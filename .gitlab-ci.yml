@@ -10,7 +10,7 @@ before_script:
 - pwd
 
 # Install composer dependencies
-- composer install
+- composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
 
 test:app:
   tags: 
