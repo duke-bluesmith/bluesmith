@@ -4,6 +4,11 @@ cache:
   - vendor/
 
 before_script:
+# Sanity checks
+- hostname
+- whoami
+- pwd
+
 # Install composer dependencies
 - composer install
 
