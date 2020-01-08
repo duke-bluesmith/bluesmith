@@ -25,7 +25,9 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 		$this->refresh = false;
 
 		parent::setUp();
-		
+
+		$this->mockSession();
+
 		// Refresh the database to the initial test state
 		if ($tmpReset === true)
 		{
@@ -38,8 +40,6 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 			// Seed the database
 			$this->seed('App\Database\Seeds\InitialSeeder');
 		}
-
-		$this->mockSession();
 	}
 
 	/**
