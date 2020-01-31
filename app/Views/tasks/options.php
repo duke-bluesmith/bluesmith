@@ -48,7 +48,7 @@
 						class="btn btn-secondary <?= $job->material_id ? 'active' : '' ?>"
 						<?= $job->material_id ? 'data-toggle="button" aria-pressed="true"' : 'data-toggle="button" aria-pressed="false"' ?>
 						autocomplete="off"
-						onclick="$('#methods').toggleClass('invisible');"
+						onclick="$('#methods').toggleClass('invisible'); return false;"
 					><?= lang('Tasks.chooseMyOwn') ?></button>
 				</p>
 

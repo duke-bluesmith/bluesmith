@@ -87,7 +87,7 @@ class AssignTask implements TaskInterface
 		{
 			if ($this->job->invite($email))
 			{
-				alert('success', lang('Tasks.inviteSuccess'));
+				alert('success', lang('Tasks.inviteSuccess', [$email]));
 			}
 			else
 			{

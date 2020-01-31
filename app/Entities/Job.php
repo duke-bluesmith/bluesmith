@@ -13,24 +13,31 @@ class Job extends \Tatter\Workflows\Entities\Job
 	/**
 	 * Create an invitation to this job and send it to the email
 	 *
-	 * @param string  $email  Email address to invite
+	 * @param string  $to  Email address to invite
 	 *
 	 * @return bool  Success or failure
 	 */
-	public function invite(string $email): bool
+	public function invite(string $to): bool
 	{
 		$config = config('Auth');
+		helper('auth');
 
 		// Check if invitations are allowed
 		if (! $config->allowInvitations)
 		{
 			return false;
 		}
-		
+
+		// Make sure we have an issuer
+		if (! $issuer = user())
+		{
+			return false;
+		}
+
 		// Build the row		
 		$row = [
 			'job_id'     => $this->attributes['id'],
-			'email'      => $email,
+			'email'      => $to,
 			'token'      => bin2hex(random_bytes(16)),
 			'created_at' => date('Y-m-d H:i:s'),
 		];
@@ -50,6 +57,9 @@ class Job extends \Tatter\Workflows\Entities\Job
 			return false;
 		}
 
+		// Determine the issuer
+		
+		
 		// Send the email
 		$email = service('email');
 		$emailConfig = config('Email');
@@ -59,9 +69,9 @@ class Job extends \Tatter\Workflows\Entities\Job
 		$fromName  = $config->userActivators['Myth\Auth\Authentication\Activators\EmailActivator']['fromName']  ?? $emailConfig->fromName;
 
 		return $email->setFrom($fromEmail, $fromName)
-			->setTo($email)
-			->setSubject(lang('Tasks.inviteSubject'))
-			->setMessage(view('emails/invite', ['token' => $row['token']]))
+			->setTo($to)
+			->setSubject(lang('Tasks.inviteSubject', [$issuer->firstname]))
+			->setMessage(view('emails/invite', ['token' => $row['token'], 'issuer' => $issuer]))
 			->setMailType('html')
 			->send();
 	}

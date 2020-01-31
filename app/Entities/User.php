@@ -6,4 +6,14 @@ class User extends \Myth\Auth\Entities\User
 
 	protected $table      = 'users';
 	protected $primaryKey = 'id';
+
+	/**
+	 * Return a full name: "first last"
+	 *
+	 * @return string
+	 */
+	public function getName()
+	{
+		return trim($this->attributes['firstname']) . ' ' . trim($this->attributes['lastname']);
+	}
 }

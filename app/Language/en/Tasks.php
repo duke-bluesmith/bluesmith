@@ -10,6 +10,7 @@ return [
 	'addClientSuccess' => '{0} was added to your job.',
 	'addClientFail'    => 'There was an error adding that client.',
 	'alreadyClient'    => 'That user is already assigned to this job!',
+	'inviteSubject'    => '{0} has invited you to join a project',
 	'inviteSuccess'    => 'An invitation to your job was issued to "{0}".',
 	'inviteFail'       => 'Unable to issue an invitation to "{0}".',
 	'clientEmailHelp'  => 'Add an existing user, or send an invitation to new users.',

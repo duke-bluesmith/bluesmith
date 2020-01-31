@@ -24,6 +24,7 @@ class CreateJobsUsers extends Migration
 		// Invites
 		$fields = [
 			'job_id'     => ['type' => 'int', 'unsigned' => true],
+			'issuer'     => ['type' => 'int', 'unsigned' => true, 'null' => true],
 			'email'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
 			'token'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],

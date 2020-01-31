@@ -32,6 +32,7 @@ if (! function_exists('user'))
 		{
 			return (new UserModel())->find($authenticate->id());
 		}
+
 		return null;
 	}
 }
