@@ -88,7 +88,7 @@ $routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Co
 });
 
 // API
-$routes->resource('api/materials', ['websafe' => 1, 'controller' => 'App\Controllers\API\Materials']);
+$routes->resource('api/materials', ['websafe' => 1, 'controller' => 'App\Controllers\Api\Materials']);
 
 /**
  * --------------------------------------------------------------------

@@ -22,7 +22,7 @@ class Filters extends BaseConfig
 			// 'csrf',
 		],
 		'after'  => [
-			'toolbar',
+			'toolbar' => ['except' => 'api/*'],
 			//'honeypot'
 		],
 	];

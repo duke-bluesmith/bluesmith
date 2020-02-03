@@ -1,7 +1,7 @@
 <?php
 $data = [
-	'title'   => 'Job invitation',
-	'preview' => 'Collaborate with ' . $issuer->firstname,
+	'title'   => 'Simple Transactional Email',
+	'preview' => 'This is preheader text. Some clients will show this text as a preview.',
 	'contact' => 'Company Inc, 3 Abbey Road, San Francisco CA 94102',
 ];
 
@@ -11,7 +11,7 @@ $this->setData($data)->extend('layouts/email', $data);
 
   <td>
 	<p>Hi there,</p>
-	<p><?= $issuer->name ?> has invited you to collaborate on this job!</p>
+	<p>Sometimes you just want to send a simple HTML email with a simple design and clear call to action. This is it.</p>
 	<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
 	  <tbody>
 		<tr>
@@ -19,7 +19,7 @@ $this->setData($data)->extend('layouts/email', $data);
 			<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 			  <tbody>
 				<tr>
-				  <td> <a href="<?= site_url('emails/invite/' . $token) ?>" target="_blank">Accept Invitation</a> </td>
+				  <td> <a href="http://htmlemail.io" target="_blank">Call To Action</a> </td>
 				</tr>
 			  </tbody>
 			</table>
@@ -27,8 +27,8 @@ $this->setData($data)->extend('layouts/email', $data);
 		</tr>
 	  </tbody>
 	</table>
-	<p>You will need to create an account to proceed, but it is free and easy.</p>
-	<p>Some basic instructions go here.</p>
+	<p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
+	<p>Good luck! Hope it works.</p>
   </td>
 
 <?= $this->endSection() ?>
