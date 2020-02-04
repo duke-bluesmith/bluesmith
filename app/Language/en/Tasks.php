@@ -9,6 +9,7 @@ return [
 	'addClients'       => 'Add clients',
 	'addClientSuccess' => '{0} was added to your job.',
 	'addClientFail'    => 'There was an error adding that client.',
+	'removeClientFail' => 'There was an error removing that client.',
 	'alreadyClient'    => 'That user is already assigned to this job!',
 	'inviteSubject'    => '{0} has invited you to join a project',
 	'inviteSuccess'    => 'An invitation to your job was issued to "{0}".',

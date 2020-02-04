@@ -97,6 +97,24 @@ class AssignTask implements TaskInterface
 
 		return redirect()->back();		
 	}
+
+	// Remove a user or an invitation
+	public function delete()
+	{
+		if ($userId = $this->request->getPost('user_id'))
+		{
+		
+		}
+		elseif ($inviteId = $this->request->getPost('invite_id'))
+		{
+		
+		}
+		else
+		{
+			alert('error', lang('Tasks.removeClientFail'));
+			return redirect()->back();
+		}
+	}
 	
 	// run when a job progresses forward through the workflow
 	public function up()
