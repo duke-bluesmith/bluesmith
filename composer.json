@@ -36,6 +36,7 @@
 		"tatter/workflows": "dev-develop",
 		"tatter/addins": "^1.3",
 		"tatter/files": "^1.1",
+		"tatter/chat": "^1.0",
 		"twbs/bootstrap": "^4.3",
 		"components/jquery": "^3.3",
 		"enyo/dropzone": "^5.5",
