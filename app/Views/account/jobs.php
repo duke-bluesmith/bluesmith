@@ -33,7 +33,7 @@
 			
 					<tr>
 						<td><?= $job->id ?></td>
-						<td><a href="<?= site_url('jobs/' . $job->id) ?>"><?= $job->name ?></a></td>
+						<td><a href="<?= site_url('jobs/show/' . $job->id) ?>"><?= $job->name ?></a></td>
 						<td><?= $job->stage->name ?></td>
 						<td><?= $job->created_at->humanize() ?></td>
 			

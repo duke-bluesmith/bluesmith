@@ -18,7 +18,7 @@ class Workflows extends \Tatter\Workflows\Config\Workflows
 	
 	// Views to display for each function
 	public $views = [
-		'job'       => 'jobs/show',
+		'job'       => 'account/job',
 		'messages'  => 'Tatter\Workflows\Views\messages',
 		'complete'  => 'Tatter\Workflows\Views\complete',
 		'deleted'   => 'Tatter\Workflows\Views\deleted',
