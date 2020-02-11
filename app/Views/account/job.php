@@ -52,29 +52,31 @@
 					<p><?= $job->summary ?></p>
 
 					<table class="table">
+						<tbody>
 
 					<?php if ($job->material): ?>
 
-						<tr>
-							<th scope="row"><?= lang('Pub.printMethod') ?></th>
-							<td><?= $job->material->method->name ?></td>
-						</tr>
-						<tr>
-							<th scope="row"><?= lang('Pub.printMaterial') ?></th>
-							<td><?= $job->material->name ?></td>
-						</tr>
+							<tr>
+								<th scope="row"><?= lang('Pub.printMethod') ?></th>
+								<td><?= $job->material->method->name ?></td>
+							</tr>
+							<tr>
+								<th scope="row"><?= lang('Pub.printMaterial') ?></th>
+								<td><?= $job->material->name ?></td>
+							</tr>
 
 					<?php endif; ?>
 
 					<?php foreach ($job->options as $option): ?>
 
-						<tr>
-							<th scope="row"><?= lang('Pub.jobOption') ?></th>
-							<td><?= $option->name ?></td>
-						</tr>
+							<tr>
+								<th scope="row"><?= lang('Pub.jobOption') ?></th>
+								<td><?= $option->summary ?></td>
+							</tr>
 
 					<?php endforeach; ?>
 
+						</tbody>
 					</table>
 
 					<a href="#" class="btn btn-secondary">Change</a>
@@ -83,13 +85,45 @@
 				</div>
 
 				<div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-					...
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Task</th>
+								<th scope="col">Status</th>
+								<th scope="col">User</th>
+								<th scope="col">Time</th>
+							</tr>
+						</thead>
+						<tbody>
+
+					<?php foreach ($logs as $log): ?>
+
+							<tr>
+								<td><?= $log->from->name ?? lang('Pub.newJob') ?></td>
+								<td><?= $log->stage_to > $log->stage_from ? lang('Pub.complete') : lang('Pub.revert') ?>
+								<td><?= service('accounts')->app->get($log->user_id)->name ?></td>
+								<td><?= $log->created_at->humanize() ?></td>
+							</tr>
+
+					<?php endforeach; ?>
+					
+						</tbody>
+					</table>
 				</div>
 
 				<div class="tab-pane fade" id="files" role="tabpanel" aria-labelledby="files-tab">
 
-					<?php helper('files'); ?>
-					<?= view('Tatter\Files\Views\\formats\\cards', ['files' => $job->files, 'access' => 'display']) ?>
+<?php
+// Display the Files card view partial
+helper('files');
+$data = [
+	'files'   => $job->files,
+	'access'  => 'display',
+	'exports' => (new Tatter\Exports\Models\ExportModel())->getByExtensions(),
+];
+echo view('Tatter\Files\Views\\formats\\cards', $data)
+?>
+
 
 				</div>
 			</div>
@@ -103,5 +137,25 @@
 		</div>
 	</div>
 
+<?= $this->endSection() ?>
+<?= $this->section('footerAssets') ?>
+
+	<!-- Modal -->
+	<div class="modal fade" id="globalModal" tabindex="-1" role="dialog" aria-labelledby="globalModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content" style="max-height:600px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="globalModalTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body overflow-auto"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <?= $this->endSection() ?>

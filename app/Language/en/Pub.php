@@ -14,4 +14,7 @@ return [
 	'files'                   => 'Files',
 	'clients'                 => 'Clients',
 	'email'                   => 'Email address',
+	'newJob'                  => 'Job created',
+	'complete'                => 'Complete',
+	'revert'                  => 'Revert',
 ];
