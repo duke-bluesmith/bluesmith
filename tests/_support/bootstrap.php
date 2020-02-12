@@ -20,11 +20,20 @@ define('FCPATH',        realpath(ROOTPATH . 'public') . DIRECTORY_SEPARATOR);
 define('WRITEPATH',     realpath($paths->writableDirectory) . DIRECTORY_SEPARATOR);
 define('SYSTEMPATH',    realpath($paths->systemDirectory) . DIRECTORY_SEPARATOR);
 define('CIPATH',        realpath(SYSTEMPATH . '../') . DIRECTORY_SEPARATOR);
-define('SUPPORTPATH',   realpath(ROOTPATH . 'tests/_support') . DIRECTORY_SEPARATOR);
+define('SUPPORTPATH',   realpath(CIPATH . 'tests/_support') . DIRECTORY_SEPARATOR);
 
 // Define necessary project test path constants
 define('PROJECTSUPPORTPATH', realpath(__DIR__) . DIRECTORY_SEPARATOR);
 define('TESTPATH',           realpath(PROJECTSUPPORTPATH . '../') . DIRECTORY_SEPARATOR);
+
+// Let's see if an app/Common.php file exists
+if (file_exists(APPPATH . 'Common.php'))
+{
+	require_once APPPATH . 'Common.php';
+}
+
+// Require system/Common.php
+require_once SYSTEMPATH . 'Common.php';
 
 // Set environment values that would otherwise stop the framework from functioning during tests.
 if (! isset($_SERVER['app.baseURL']))
