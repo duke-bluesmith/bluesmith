@@ -27,6 +27,13 @@ class AssignTask implements TaskInterface
 	// Display the form
 	public function get()
 	{
+		// The first time through add the current user
+		if (empty($this->job->users))
+		{
+			helper('auth');
+			$this->job->addUser(user_id());
+		}
+
 		helper('form');
 
 		$data = [
@@ -119,7 +126,7 @@ class AssignTask implements TaskInterface
 	// run when a job progresses forward through the workflow
 	public function up()
 	{
-	
+
 	}
 	
 	// run when job regresses back through the workflow
