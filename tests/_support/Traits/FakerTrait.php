@@ -51,6 +51,68 @@ trait FakerTrait
 	}
 
 	/**
+	 * Creates a full simulated environment.
+	 */
+	protected function fullFake()
+	{
+		// Start with some users
+		$users = $this->createFaked('User', rand(10, 40));
+
+		// A few workflows
+		$workflows = $this->createFaked('Workflow', rand(3, 6));
+
+		// Some tasks
+		$tasks = $this->createFaked('Task', rand(10, 20));
+
+		// For each workflow create some stages and jobs
+		$jobs = [];
+		foreach ($workflows as $workflowId)
+		{
+			// Force the stages to this workflow
+			$stages = $this->createFaked('Stage', rand(2, count($tasks)), ['workflow_id' => $workflowId]);
+
+			// Create jobs at any valid stage
+			for ($i = 0; $i < rand(3, 50); $i++)
+			{
+				$data = [
+					'stage_id'    => $stages[array_rand($stages)],
+					'workflow_id' => $workflowId,
+				];
+				$jobs[] = $this->createFaked('Job', 1, $data);
+			}
+		}
+
+		// Assign jobs to users
+		$builder = $this->db->table('jobs_users');
+		foreach ($jobs as $jobId)
+		{
+			$data = [
+				'job_id'  => $jobId,
+				'user_id' => $users[array_rand($users)],
+			];
+
+			$builder->insert($data);
+		}
+		
+		// Make a few jobs have multiple users
+		$newUsers = $this->createFaked('User', rand(1, 10));
+		foreach ($newUsers as $userId)
+		{
+			if (empty($userId))
+			{
+				dd($newUsers);
+			}
+
+			$data = [
+				'job_id'  => $jobs[array_rand($jobs)],
+				'user_id' => $userId,
+			];
+
+			$builder->insert($data);			
+		}
+	}
+
+	/**
 	 * Creates $num faked objects on-the-fly.
 	 *
 	 * @param string $name   Name of the object to match model & method
@@ -74,8 +136,16 @@ trait FakerTrait
 		$ids = [];
 		for ($i = 0; $i < $num; $i++)
 		{
-			$row   = array_merge($this->$methodName(), $data);
-			$ids[] = $model->insert($row);
+			$row = array_merge($this->$methodName(), $data);
+			if ($id = $model->insert($row))
+			{
+				$ids[] = $id;
+			}
+			else
+			{
+				d($row);
+				throw new \RuntimeException("Unable to create faked {$name}: " . implode(' | ', $model->errors()));
+			}
 		}
 
 		if (empty($this->fakedCounts[$name]))
@@ -99,7 +169,7 @@ trait FakerTrait
 	{
 		$data = [
 			'email'     => self::$faker->email,
-			'username'  => self::$faker->userName,
+			'username'  => str_replace('.', ' ', self::$faker->userName), // Myth doesn't allow periods
 			'firstname' => self::$faker->firstName,
 			'lastname'  => self::$faker->lastName,
 			'password'  => bin2hex(random_bytes(24)),
