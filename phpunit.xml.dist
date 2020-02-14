@@ -17,10 +17,11 @@
 
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">./src</directory>
+			<directory suffix=".php">./app</directory>
 			<exclude>
-				<directory suffix=".php">./src/Views</directory>
-				<file>./src/Config/Routes.php</file>
+				<directory suffix=".php">./app/Views</directory>
+				<directory suffix=".php">./app/Config</directory>
+				<directory suffix=".php">./app/Database/Migrations</directory>
 			</exclude>
 		</whitelist>
 	</filter>

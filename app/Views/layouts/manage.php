@@ -78,6 +78,28 @@ $submenu = $menu[1] ?? '';
 
 			<!-- Heading -->
 			<div class="sidebar-heading">
+				Jobs
+			</div>
+
+			<!-- Nav Item - Methods -->
+			<li class="nav-item<?= $menu == 'jobs' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('manage/jobs') ?>">
+					<i class="fas fa-th-list"></i>
+					<span>All Jobs</span></a>
+			</li>
+
+			<!-- Nav Item - Materials -->
+			<li class="nav-item<?= $menu == 'action' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('manage/jobs') ?>">
+					<i class="fas fa-exclamation-circle"></i>
+					<span>Action Items</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
 				Workflows
 			</div>
 
