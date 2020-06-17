@@ -82,7 +82,6 @@ app/Commands/Test.php
 #-------------------------
 vendor/
 public/assets/vendor/
-composer.lock
 
 #-------------------------
 # IDE / Development Files

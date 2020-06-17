@@ -17,7 +17,7 @@ before_script:
 - cp "$PHP_UNIT_XML" ./phpunit.xml
 
 # Install composer dependencies
-- composer install --no-progress --no-suggest --optimize-autoloader
+- composer install --no-progress --no-suggest --no-interaction --prefer-dist --optimize-autoloader
 
 test:app:
   tags: 
