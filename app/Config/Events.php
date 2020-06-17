@@ -1,6 +1,7 @@
 <?php namespace Config;
 
 use CodeIgniter\Events\Events;
+use CodeIgniter\Exceptions\FrameworkException;
 
 /*
  * --------------------------------------------------------------------
@@ -19,23 +20,33 @@ use CodeIgniter\Events\Events;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
-/*
- * --------------------------------------------------------------------
- * Debug Toolbar Listeners.
- * --------------------------------------------------------------------
- * If you delete, they will no longer be collected.
- */
-if (ENVIRONMENT !== 'production')
-{
-	Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
-
-	Events::on('pre_system', function () {
-		if (ENVIRONMENT !== 'testing')
+Events::on('pre_system', function () {
+	if (ENVIRONMENT !== 'testing')
+	{
+		if (ini_get('zlib.output_compression'))
 		{
-			\ob_start(function ($buffer) {
-				return $buffer;
-			});
+			throw FrameworkException::forEnabledZlibOutputCompression();
 		}
+
+		while (ob_get_level() > 0)
+		{
+			ob_end_flush();
+		}
+
+		ob_start(function ($buffer) {
+			return $buffer;
+		});
+	}
+
+	/*
+	 * --------------------------------------------------------------------
+	 * Debug Toolbar Listeners.
+	 * --------------------------------------------------------------------
+	 * If you delete, they will no longer be collected.
+	 */
+	if (ENVIRONMENT !== 'production')
+	{
+		Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
 		Services::toolbar()->respond();
-	});
-}
+	}
+});

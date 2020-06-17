@@ -20,8 +20,10 @@
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = ''
+# app.baseURL   = ''
+# app.indexPage = ''
 # app.forceGlobalSecureRequests = false
+# app.appTimezone = 'America/New_York'
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
 # app.sessionCookieName = 'ci_session'

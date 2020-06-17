@@ -36,15 +36,6 @@ class Logger extends BaseConfig
 
 	/*
 	|--------------------------------------------------------------------------
-	| Error Logging Directory Path
-	|--------------------------------------------------------------------------
-	| By default, logs are written to WRITEPATH . 'logs/'
-	| Specify a different destination here, if desired.
-	*/
-	public $path = '';
-
-	/*
-	|--------------------------------------------------------------------------
 	| Date Format for Logs
 	|--------------------------------------------------------------------------
 	|
@@ -115,7 +106,15 @@ class Logger extends BaseConfig
 			 * IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
 			 * integer notation (i.e. 0700, 0644, etc.)
 			 */
-			'filePermissions' => 0664,
+			'filePermissions' => 0644,
+
+			/*
+			 * Logging Directory Path
+			 *
+			 * By default, logs are written to WRITEPATH . 'logs/'
+			 * Specify a different destination here, if desired.
+			 */
+			'path'            => '',
 		],
 
 		/**
