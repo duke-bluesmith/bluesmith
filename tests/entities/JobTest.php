@@ -1,14 +1,9 @@
 <?php
 
-class JobTest extends Tests\Support\TestCase
+use Tests\Support\DatabaseTestCase;
+
+class JobTest extends DatabaseTestCase
 {
-	/**
-	 * Should the database be refreshed before each test?
-	 *
-	 * @var boolean
-	 */
-	protected $refresh = true;
-	
 	public function setUp(): void
 	{
 		parent::setUp();

@@ -3,21 +3,15 @@
 use App\Models\JobModel;
 use App\Models\UserModel;
 use Tatter\Workflows\Models\StageModel;
+use Tests\Support\DatabaseTestCase;
 
 /**
  * Tests for the faker methods
  */
-class FakerTest extends Tests\Support\TestCase
+class FakerTest extends DatabaseTestCase
 {
 	use Tests\Support\Traits\FakerTrait;
 
-	/**
-	 * Should the database be refreshed before each test?
-	 *
-	 * @var boolean
-	 */
-	protected $refresh = true;
-	
 	public function setUp(): void
 	{
 		parent::setUp();

@@ -50,13 +50,12 @@
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",
-		"phpunit/phpunit": "^7.0",
-		"mockery/mockery": "^1.0",
+		"phpunit/phpunit": "^8.0",
 		"fzaninotto/faker": "^1.9@dev"
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"ProjectTests\\Support\\": "tests/_support"
+			"Tests\\Support\\": "tests/_support"
 		}
 	},
 	"scripts": {
