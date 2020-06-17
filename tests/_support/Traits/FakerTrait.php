@@ -1,4 +1,4 @@
-<?php namespace ProjectTests\Support\Traits;
+<?php namespace Tests\Support\Traits;
 
 /**
  * Class FakerTrait

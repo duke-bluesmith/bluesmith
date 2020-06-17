@@ -5,7 +5,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Account extends BaseController
 {
-	use \ProjectTests\Support\Traits\FakerTrait;
+	use \Tests\Support\Traits\FakerTrait;
 
 	// Displays a list of jobs for the current user
 	public function jobs()

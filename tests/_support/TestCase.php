@@ -1,10 +1,10 @@
-<?php namespace ProjectTests\Support;
+<?php namespace Tests\Support;
 
 use CodeIgniter\Session\Handlers\ArrayHandler;
+use CodeIgniter\Test\Mock\MockSession;
 use Config\Database;
-use Tests\Support\Session\MockSession;
 
-class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
+class TestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 {
 	/**
 	 * Should the database be refreshed before each test?
@@ -49,7 +49,6 @@ class ProjectTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 	 */
 	protected function mockSession()
 	{
-		require_once CIPATH . 'tests/_support/Session/MockSession.php';
 		$config = config('App');
 		$this->session = new MockSession(new ArrayHandler($config, '0.0.0.0'), $config);
 		\Config\Services::injectMock('session', $this->session);

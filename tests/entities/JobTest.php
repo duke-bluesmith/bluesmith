@@ -1,6 +1,6 @@
 <?php
 
-class JobTest extends ProjectTests\Support\ProjectTestCase
+class JobTest extends Tests\Support\TestCase
 {
 	/**
 	 * Should the database be refreshed before each test?

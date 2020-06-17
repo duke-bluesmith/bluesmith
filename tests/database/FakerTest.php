@@ -7,9 +7,9 @@ use Tatter\Workflows\Models\StageModel;
 /**
  * Tests for the faker methods
  */
-class FakerTest extends ProjectTests\Support\ProjectTestCase
+class FakerTest extends Tests\Support\TestCase
 {
-	use ProjectTests\Support\Traits\FakerTrait;
+	use Tests\Support\Traits\FakerTrait;
 
 	/**
 	 * Should the database be refreshed before each test?
