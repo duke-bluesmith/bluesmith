@@ -30,7 +30,7 @@ class FilesTask implements TaskInterface
 		$data = [
 			'job'      => $this->job,
 			'files'    => $this->files->getForUser(user_id()),
-			'selected' => array_column($this->job->files, 'id'),
+			'selected' => array_column($this->job->files ?? [], 'id'),
 		];
 		return view('tasks/files', $data);
 	}
