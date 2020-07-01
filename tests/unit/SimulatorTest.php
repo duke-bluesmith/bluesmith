@@ -21,15 +21,19 @@ class SimulatorTest extends DatabaseTestCase
 	 *
 	 * @var boolean
 	 */
-	protected $refresh = true;
+	protected $refresh = false;
 
     protected function setUp(): void
     {
 		parent::setUp();
 
 		// Initialize the simulation only once since it is costly.
-		if (! $this->simulated)
+		if (! Simulator::$initialized)
 		{
+			// Rerun the database set up to clear the database
+			$this->refresh = true;
+			parent::setUp();
+
 			Simulator::initialize();
 			$this->simulated = true;
 			$this->refresh   = false;

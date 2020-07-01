@@ -11,6 +11,13 @@ use Tests\Support\Fakers\UserFaker;
 class Simulator extends \Tatter\Workflows\Test\Simulator
 {
 	/**
+	 * Whether initialize() has been run 
+	 *
+	 * @var array
+	 */
+	static public $initialized = false;
+
+	/**
 	 * Number of each object type created since last reset.
 	 *
 	 * @var array
@@ -82,5 +89,17 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 				'user_id' => $user->id,
 			]);		
 		}
+
+		self::$initialized = true;
+	}
+
+	/**
+	 * Reset counts.
+	 */
+	static public function reset()
+	{
+		parent::reset();
+
+		self::$initialized = false;
 	}
 }

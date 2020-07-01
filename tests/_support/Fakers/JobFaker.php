@@ -1,8 +1,8 @@
 <?php namespace Tests\Support\Fakers;
 
+use App\Entities\Job;
+use App\Models\JobModel;
 use Faker\Generator;
-use Tatter\Workflows\Entities\Job;
-use Tatter\Workflows\Models\JobModel;
 use Tests\Support\Simulator;
 
 class JobFaker extends JobModel
