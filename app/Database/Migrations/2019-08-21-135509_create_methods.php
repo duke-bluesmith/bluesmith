@@ -23,7 +23,7 @@ class CreateMethods extends Migration
 		$this->forge->addKey('name');
 		$this->forge->addKey(['sortorder', 'name']);
 		$this->forge->addKey('created_at');
-		$this->forge->addKey('deleted_at');
+		$this->forge->addKey(['deleted_at', 'id']);
 		
 		$this->forge->createTable('methods');
 		
@@ -45,8 +45,8 @@ class CreateMethods extends Migration
 		$this->forge->addKey('name');
 		$this->forge->addKey(['sortorder', 'name']);
 		$this->forge->addKey('created_at');
-		$this->forge->addKey('deleted_at');
-        $this->forge->addForeignKey('method_id', 'methods', 'id', false, 'CASCADE');
+		$this->forge->addKey(['deleted_at', 'id']);
+        //$this->forge->addForeignKey('method_id', 'methods', 'id', false, 'CASCADE');
 		
 		$this->forge->createTable('materials');
 	}

@@ -2,6 +2,7 @@
 
 use CodeIgniter\Session\Handlers\ArrayHandler;
 use CodeIgniter\Test\CIDatabaseTestCase;
+use CodeIgniter\Test\Mock\MockEmail;
 use CodeIgniter\Test\Mock\MockSession;
 use Config\Services;
 use Faker\Factory;
@@ -45,7 +46,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	 *
 	 * @var array of methods
 	 */
-	protected $setUpMethods = ['mockSession'];
+	protected $setUpMethods = ['mockEmail', 'mockSession'];
 
     /**
      * Initializes the one-time components.
@@ -60,7 +61,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	// Staging
 	//--------------------------------------------------------------------
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -73,7 +74,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 		}
 	}
 
-	public function tearDown(): void
+	protected function tearDown(): void
 	{
 		parent::tearDown();
 
@@ -101,5 +102,13 @@ class DatabaseTestCase extends CIDatabaseTestCase
         $session = new MockSession(new ArrayHandler($config, '0.0.0.0'), $config);
 
         Services::injectMock('session', $session);
+    }
+    /**
+     * Injects the mock email driver into Services
+     */
+    protected function mockEmail()
+    {
+		// Globally mock Email so nothing really sends
+        Services::injectMock('email', new MockEmail(config('Email')));
     }
 }

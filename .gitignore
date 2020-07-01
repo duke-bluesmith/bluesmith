@@ -76,6 +76,7 @@ results/
 build/
 phpunit*.xml
 phpunit
+.phpunit*.cache
 app/Commands/Test.php
 
 #-------------------------
@@ -122,7 +123,7 @@ nb-configuration.xml
 
 
 #-------------------------
-# Sensitive files
+# Sensitive Files
 #-------------------------
 
 access/

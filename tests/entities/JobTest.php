@@ -1,65 +1,34 @@
 <?php
 
 use Tests\Support\DatabaseTestCase;
+use Tests\Support\Fakers\JobFaker;
 
 class JobTest extends DatabaseTestCase
 {
 	public function setUp(): void
 	{
 		parent::setUp();
-		
-		$this->model = new \App\Models\JobModel();
 				
-		// Create some mock jobs
-		$builder = $this->db->table('jobs');
-		$this->jobs = [
-			[
-				'name'        => 'Durham Bull',
-				'summary'     => 'A 3D scanned version of the downtown Bull',
-				'workflow_id' => 1,
-				'stage_id'    => 1,
-				'material_id' => 1,
-			],
-			[
-				'name'        => 'Duck whistle',
-				'summary'     => 'Please help me make this duck whistle',
-				'workflow_id' => 2,
-				'stage_id'    => 3,
-				'material_id' => 4,
-			],
-		];
-		
-		foreach ($this->jobs as $job)
-		{
-			$builder->insert($job);
-		}
+		// Create a random job
+		$this->job = fake(JobFaker::class);
 	}
 
 	public function testSetOptionsAddsToDatabase()
 	{
-		$job = $this->model->find(1);
-		$job->setOptions([1, 2, 3]);
-		
-		$result = $this->db
-			->table('jobs_options')
-			->where('job_id', 1)
-			->get()->getResult();
+		$this->job->setOptions([1, 2, 3]);
 
-		$this->assertCount(3, $result);
+		$this->seeNumRecords(3, 'jobs_options', ['job_id' => 1]);
 	}
 
 	public function testHasOptionEmpty()
 	{
-		$job = $this->model->find(1);
-
-		$this->assertFalse($job->hasOption(1));
+		$this->assertFalse($this->job->hasOption(1));
 	}
 
 	public function testHasOptionTrue()
 	{
-		$job = $this->model->find(1);
-		$job->setOptions([1, 2, 3]);
+		$this->job->setOptions([1, 2, 3]);
 
-		$this->assertTrue($job->hasOption(1));
+		$this->assertTrue($this->job->hasOption(1));
 	}
 }
