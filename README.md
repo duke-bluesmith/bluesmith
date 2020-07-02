@@ -41,15 +41,13 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 5. Seed the database with the necessary initial settings:
 	* `./spark db:seed InitialSeeder`
 	* `./spark handlers:register`
-	* `./spark tasks:register`
 
-6. Setup cron jobs for the following tasks:
+6. Set up cron jobs for the following tasks:
 	* `./spark reports:generate`
 
 7. Set your web host to serve the **public/** directory
-
 	
-<sup>1</sup> Note: This should trigger composer's post update command which handles
+<sup>1</sup> Note: This should trigger Composer's post-update command which handles
 vendor assets, but if that fails or if you update manually be sure to run the following
 command from the root directory to publish them manually:
 	* `./spark assets:publish`
@@ -73,7 +71,7 @@ This means it is easy to make your own extensions of existing features without d
 from the master branch. Create your own directory with whatever modules you wish to extend
 and add it to the list of autoloaded namespaces in **app/Config/Autoload.php**.
 
-For the bold, jobs are processed through a series of modular tasks that can be
+For the bold, jobs are processed through a series of modular actions that can be
 added/changed/removed with the
 [Workflows Library](https://github.com/tattersoftware/codeigniter4-workflows). 
 

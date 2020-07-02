@@ -16,6 +16,7 @@ class InitialSeeder extends Seeder
 			'App\Database\Seeds\AuthSeeder',
 			'App\Database\Seeds\PageSeeder',
 			'App\Database\Seeds\OptionSeeder',
+			'App\Database\Seeds\WorkflowSeeder',
 		];
 
 		// Run each seeder in order

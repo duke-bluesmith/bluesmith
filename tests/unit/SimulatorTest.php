@@ -10,13 +10,6 @@ use Tests\Support\Simulator;
 class SimulatorTest extends DatabaseTestCase
 {
 	/**
-	 * Has the simluator been initialized
-	 *
-	 * @var boolean
-	 */
-	protected $simulated = false;
-
-	/**
 	 * Should the database be refreshed before each test?
 	 *
 	 * @var boolean
@@ -25,18 +18,14 @@ class SimulatorTest extends DatabaseTestCase
 
     protected function setUp(): void
     {
+		$this->refresh = ! Simulator::$initialized;
+
 		parent::setUp();
 
 		// Initialize the simulation only once since it is costly.
 		if (! Simulator::$initialized)
 		{
-			// Rerun the database set up to clear the database
-			$this->refresh = true;
-			parent::setUp();
-
 			Simulator::initialize();
-			$this->simulated = true;
-			$this->refresh   = false;
 		}
 	}
 
