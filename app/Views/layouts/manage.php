@@ -111,10 +111,10 @@ $submenu = $menu[1] ?? '';
 			</li>
 
 			<!-- Nav Item - Materials -->
-			<li class="nav-item<?= $menu == 'tasks' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('tasks') ?>">
+			<li class="nav-item<?= $menu == 'actions' ? ' active' : '' ?>">
+				<a class="nav-link" href="<?= site_url('actions') ?>">
 					<i class="fas fa-tasks"></i>
-					<span>Tasks</span></a>
+					<span>Actions</span></a>
 			</li>
 
 			<!-- Divider -->

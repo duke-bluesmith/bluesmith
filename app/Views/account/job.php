@@ -39,7 +39,7 @@
 
 							<?php endif; ?>
 
-							<?= $stage->task->summary ?>
+							<?= $stage->action->summary ?>
 						</li>
 
 					<?php endforeach; ?>
@@ -88,7 +88,7 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">Task</th>
+								<th scope="col">Action</th>
 								<th scope="col">Status</th>
 								<th scope="col">User</th>
 								<th scope="col">Time</th>
