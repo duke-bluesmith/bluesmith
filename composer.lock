@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "63d715b771ae3b4048f72cc6fd50ca63ba1e7337"
+                "reference": "000a5e77eaf1b402e932883ae301c71820b4caae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/63d715b771ae3b4048f72cc6fd50ca63ba1e7337",
-                "reference": "63d715b771ae3b4048f72cc6fd50ca63ba1e7337",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/000a5e77eaf1b402e932883ae301c71820b4caae",
+                "reference": "000a5e77eaf1b402e932883ae301c71820b4caae",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-07-01T16:23:57+00:00"
+            "time": "2020-07-02T11:44:05+00:00"
         },
         {
             "name": "components/jquery",
@@ -3156,12 +3156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "329d24b3b36a5ad4e9f2f00a325179ecebedc261"
+                "reference": "ba2664a11734336e3d00cebdc145d317eba648c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/329d24b3b36a5ad4e9f2f00a325179ecebedc261",
-                "reference": "329d24b3b36a5ad4e9f2f00a325179ecebedc261",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/ba2664a11734336e3d00cebdc145d317eba648c5",
+                "reference": "ba2664a11734336e3d00cebdc145d317eba648c5",
                 "shasum": ""
             },
             "require": {
@@ -3212,17 +3212,17 @@
             "description": "Job task control through dynamic workflows, for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-workflows",
             "keywords": [
+                "actions",
                 "codeigniter",
                 "codeigniter4",
                 "jobs",
-                "tasks",
                 "workflows"
             ],
             "support": {
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v1.1.1",
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/develop",
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues"
             },
-            "time": "2020-06-25T00:15:02+00:00"
+            "time": "2020-07-02T15:44:33+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
