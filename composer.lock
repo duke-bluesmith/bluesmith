@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "000a5e77eaf1b402e932883ae301c71820b4caae"
+                "reference": "dbadbaa1e9f32a8985c87ba57230f53c8ec10efb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/000a5e77eaf1b402e932883ae301c71820b4caae",
-                "reference": "000a5e77eaf1b402e932883ae301c71820b4caae",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/dbadbaa1e9f32a8985c87ba57230f53c8ec10efb",
+                "reference": "dbadbaa1e9f32a8985c87ba57230f53c8ec10efb",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-07-02T11:44:05+00:00"
+            "time": "2020-07-02T19:55:32+00:00"
         },
         {
             "name": "components/jquery",
