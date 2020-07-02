@@ -18,15 +18,7 @@ class SimulatorTest extends DatabaseTestCase
 
     protected function setUp(): void
     {
-		$this->refresh = ! Simulator::$initialized;
-
-		parent::setUp();
-
-		// Initialize the simulation only once since it is costly.
-		if (! Simulator::$initialized)
-		{
-			Simulator::initialize();
-		}
+		$this->simulateOnce();
 	}
 
 	public function testDoesRegisterAppActions()

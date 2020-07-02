@@ -41,74 +41,36 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	 */
 	protected $seed = 'App\Database\Seeds\InitialSeeder';
 
-	/**
-	 * Callbacks to run during setUp.
-	 *
-	 * @var array of methods
-	 */
-	protected $setUpMethods = ['mockEmail', 'mockSession'];
-
     /**
      * Initializes the one-time components.
      */
     public static function setUpBeforeClass(): void
     {
-    	helper('test');
+    	parent::setUpBeforeClass();
 		self::$faker = Factory::create();
     }
 
-	//--------------------------------------------------------------------
-	// Staging
-	//--------------------------------------------------------------------
+    /**
+     * Reset the simulation between classes.
+     */
+    public static function tearDownAfterClass(): void
+    {
+    	Simulator::reset();
+    }
 
-	protected function setUp(): void
+    /**
+     * Refresh the database and run the simulation on the first run only.
+     */
+	protected function simulateOnce(): void
 	{
+		$this->refresh = ! Simulator::$initialized;
+
 		parent::setUp();
 
-		if (isset($this->setUpMethods) && is_array($this->setUpMethods))
+		// Initialize the simulation only once since it is costly.
+		if (! Simulator::$initialized)
 		{
-			foreach ($this->setUpMethods as $method)
-			{
-				$this->$method();
-			}
+			Simulator::initialize();
 		}
 	}
-
-	protected function tearDown(): void
-	{
-		parent::tearDown();
-
-		if (isset($this->tearDownMethods) && is_array($this->tearDownMethods))
-		{
-			foreach ($this->tearDownMethods as $method)
-			{
-				$this->$method();
-			}
-		}
-	}
-
-	//--------------------------------------------------------------------
-	// Mocking
-	//--------------------------------------------------------------------
-
-    /**
-     * Injects the mock session driver into Services
-     */
-    protected function mockSession()
-    {
-    	$_SESSION = [];
-
-        $config  = config('App');
-        $session = new MockSession(new ArrayHandler($config, '0.0.0.0'), $config);
-
-        Services::injectMock('session', $session);
-    }
-    /**
-     * Injects the mock email driver into Services
-     */
-    protected function mockEmail()
-    {
-		// Globally mock Email so nothing really sends
-        Services::injectMock('email', new MockEmail(config('Email')));
-    }
 }
