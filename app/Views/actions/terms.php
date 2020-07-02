@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col">
 
-				<?= $page->content ?? lang('Tasks.genericTerms') ?></p>
+				<?= $page->content ?? lang('Actions.genericTerms') ?></p>
 				
 			</div>
 		</div>

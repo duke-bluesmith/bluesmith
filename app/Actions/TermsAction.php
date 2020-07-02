@@ -1,19 +1,19 @@
-<?php namespace App\Tasks;
+<?php namespace App\Actions;
 
 use App\Models\PageModel;
 use App\Models\TermModel;
-use Tatter\Workflows\Interfaces\TaskInterface;
+use Tatter\Workflows\Interfaces\ActionInterface;
 
-class TermsTask implements TaskInterface
+class TermsAction implements ActionInterface
 {
-	use \Tatter\Workflows\Traits\TasksTrait;
+	use \Tatter\Workflows\Traits\ActionsTrait;
 	
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
 		'role'     => 'user',
-		'icon'     => 'fas fa-tasks',
+		'icon'     => 'fas fa-actions',
 		'summary'  => 'Client accepts terms of service',
 	];
 	
@@ -27,7 +27,7 @@ class TermsTask implements TaskInterface
 			'page'  => $pages->where('name', 'TOS')->first(),
 		];
 
-		return view('tasks/terms', $data);
+		return view('actions/terms', $data);
 	}
 	
 	public function post()
@@ -36,11 +36,11 @@ class TermsTask implements TaskInterface
 		
 		if (empty($data['accept']))
 		{
-			alert('warning', lang('Tasks.mustAccept'));
+			alert('warning', lang('Actions.mustAccept'));
 			return redirect()->back();		
 		}
 		
-		// End the task
+		// End the action
 		return true;
 	}
 	

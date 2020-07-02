@@ -1,12 +1,12 @@
-<?php namespace App\Tasks;
+<?php namespace App\Actions;
 
 use App\Models\MethodModel;
 use App\Models\OptionModel;
-use Tatter\Workflows\Interfaces\TaskInterface;
+use Tatter\Workflows\Interfaces\ActionInterface;
 
-class OptionsTask implements TaskInterface
+class OptionsAction implements ActionInterface
 {
-	use \Tatter\Workflows\Traits\TasksTrait;
+	use \Tatter\Workflows\Traits\ActionsTrait;
 	
 	public $definition = [
 		'category' => 'Define',
@@ -29,7 +29,7 @@ class OptionsTask implements TaskInterface
 			'options' => $options->findAll(),
 		];
 		
-		return view('tasks/options', $data);
+		return view('actions/options', $data);
 	}
 	
 	public function post()
@@ -51,7 +51,7 @@ class OptionsTask implements TaskInterface
 			$this->job->setOptions([]);
 		}
 		
-		// End the task
+		// End the action
 		return true;
 	}
 	

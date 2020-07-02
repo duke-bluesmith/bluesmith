@@ -1,14 +1,14 @@
-<?php namespace App\Tasks;
+<?php namespace App\Actions;
 
 use App\Models\UserModel;
-use Tatter\Workflows\Entities\Task;
-use Tatter\Workflows\Interfaces\TaskInterface;
-use Tatter\Workflows\Models\TaskModel;
+use Tatter\Workflows\Entities\Action;
+use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
-class AssignTask implements TaskInterface
+class AssignAction implements ActionInterface
 {
-	use \Tatter\Workflows\Traits\TasksTrait;
+	use \Tatter\Workflows\Traits\ActionsTrait;
 	
 	public $definition = [
 		'category' => 'Define',
@@ -39,7 +39,7 @@ class AssignTask implements TaskInterface
 		$data = [
 			'job' => $this->job,
 		];
-		return view('tasks/clients', $data);
+		return view('actions/clients', $data);
 	}
 	
 	// Validate and continue
@@ -47,7 +47,7 @@ class AssignTask implements TaskInterface
 	{
 		if (empty($this->job->users))
 		{
-			alert('warning', lang('Tasks.needClients'));
+			alert('warning', lang('Actions.needClients'));
 			return redirect()->back();		
 		}
 
@@ -77,15 +77,15 @@ class AssignTask implements TaskInterface
 			// Check for dupes
 			if ($this->job->hasUser($user->id))
 			{
-				alert('warning', lang('Tasks.alreadyClient'));
+				alert('warning', lang('Actions.alreadyClient'));
 			}
 			elseif ($this->job->addUser($user->id))
 			{
-				alert('success', lang('Tasks.addClientSuccess', [$user->firstname]));
+				alert('success', lang('Actions.addClientSuccess', [$user->firstname]));
 			}
 			else
 			{
-				alert('error', lang('Tasks.addClientFail'));
+				alert('error', lang('Actions.addClientFail'));
 			}
 		}
 
@@ -94,11 +94,11 @@ class AssignTask implements TaskInterface
 		{
 			if ($this->job->invite($email))
 			{
-				alert('success', lang('Tasks.inviteSuccess', [$email]));
+				alert('success', lang('Actions.inviteSuccess', [$email]));
 			}
 			else
 			{
-				alert('error', lang('Tasks.inviteFail'));
+				alert('error', lang('Actions.inviteFail'));
 			}
 		}
 
@@ -118,7 +118,7 @@ class AssignTask implements TaskInterface
 		}
 		else
 		{
-			alert('error', lang('Tasks.removeClientFail'));
+			alert('error', lang('Actions.removeClientFail'));
 			return redirect()->back();
 		}
 	}

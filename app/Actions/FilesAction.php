@@ -1,11 +1,11 @@
-<?php namespace App\Tasks;
+<?php namespace App\Actions;
 
 use Tatter\Files\Models\FileModel;
-use Tatter\Workflows\Interfaces\TaskInterface;
+use Tatter\Workflows\Interfaces\ActionInterface;
 
-class FilesTask implements TaskInterface
+class FilesAction implements ActionInterface
 {
-	use \Tatter\Workflows\Traits\TasksTrait;
+	use \Tatter\Workflows\Traits\ActionsTrait;
 	
 	public $definition = [
 		'category' => 'Define',
@@ -32,7 +32,7 @@ class FilesTask implements TaskInterface
 			'files'    => $this->files->getForUser(user_id()),
 			'selected' => array_column($this->job->files ?? [], 'id'),
 		];
-		return view('tasks/files', $data);
+		return view('actions/files', $data);
 	}
 	
 	public function post()
@@ -62,7 +62,7 @@ class FilesTask implements TaskInterface
 			$this->job->setFiles([]);
 		}
 
-		// End the task
+		// End the action
 		return true;
 	}
 	

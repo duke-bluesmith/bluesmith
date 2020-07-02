@@ -25,7 +25,7 @@
 						<th scope="col">Name</th>
 						<th scope="col">Owner</th>
 						<th scope="col">Workflow</th>
-						<th scope="col">Task</th>
+						<th scope="col">Action</th>
 						<th scope="col">Start date</th>
 					</tr>
 				</thead>

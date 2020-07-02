@@ -40,9 +40,9 @@ class SimulatorTest extends DatabaseTestCase
 		}
 	}
 
-	public function testDoesRegisterAppTasks()
+	public function testDoesRegisterAppActions()
 	{
-		$this->seeInDatabase('tasks', ['uid' => 'approve']);
+		$this->seeInDatabase('actions', ['uid' => 'approve']);
 	}
 
 	public function testDoesAssignJobsToUsers()

@@ -25,7 +25,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 	static public $counts = [
 		'jobs'      => 0,
 		'stages'    => 0,
-		'tasks'     => 0,
+		'actions'     => 0,
 		'workflows' => 0,
 		'methods'   => 0,
 		'materials' => 0,

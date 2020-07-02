@@ -12,7 +12,7 @@
 		</button>
 		
 		<h2 class="my-4"><?= lang('Pub.files') ?></h2>
-		<p><?= lang('Tasks.filesHelp') ?></p>
+		<p><?= lang('Actions.filesHelp') ?></p>
 		
 		<div class="row">
 			
