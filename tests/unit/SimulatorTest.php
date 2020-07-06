@@ -20,11 +20,7 @@ class SimulatorTest extends DatabaseTestCase
 	{
 		parent::setUp();
 
-		// Initialize the simulation only once since it is costly.
-		if (! Simulator::$initialized)
-		{
-			Simulator::initialize();
-		}
+		$this->simulateOnce();
 	}
 
 	public function testDoesRegisterAppActions()

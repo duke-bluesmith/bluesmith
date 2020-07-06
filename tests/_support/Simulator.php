@@ -13,13 +13,6 @@ use Tests\Support\Fakers\UserFaker;
 class Simulator extends \Tatter\Workflows\Test\Simulator
 {
 	/**
-	 * Whether initialize() has been run 
-	 *
-	 * @var array
-	 */
-	static public $initialized = false;
-
-	/**
 	 * Initialize the simulation.
 	 *
 	 * @param array  Array of target items to create
@@ -89,7 +82,5 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 				]);		
 			}
 		}
-
-		self::$initialized = true;
 	}
 }

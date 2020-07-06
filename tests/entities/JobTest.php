@@ -5,7 +5,7 @@ use Tests\Support\Fakers\JobFaker;
 
 class JobTest extends DatabaseTestCase
 {
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
 				

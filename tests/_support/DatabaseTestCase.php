@@ -6,6 +6,7 @@ use CodeIgniter\Test\Mock\MockEmail;
 use CodeIgniter\Test\Mock\MockSession;
 use Config\Services;
 use Faker\Factory;
+use Tests\Support\Simulator;
 
 class DatabaseTestCase extends CIDatabaseTestCase
 {
@@ -52,10 +53,22 @@ class DatabaseTestCase extends CIDatabaseTestCase
     }
 
     /**
-     * Reset the simulation between classes.
+     * Always reset the simulation between classes.
      */
     public static function tearDownAfterClass(): void
     {
     	Simulator::reset();
     }
+
+    /**
+     * Initialize the simulation, if it has not been.
+     */
+	protected function simulateOnce()
+	{
+		// Initialize the simulation only once since it is costly.
+		if (! Simulator::$initialized)
+		{
+			Simulator::initialize();
+		}
+	}
 }
