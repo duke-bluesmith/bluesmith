@@ -3,7 +3,6 @@
 use App\Entities\User;
 use App\Models\UserModel;
 use Faker\Generator;
-use Tests\Support\Simulator;
 
 class UserFaker extends UserModel
 {
@@ -14,10 +13,8 @@ class UserFaker extends UserModel
 	 *
 	 * @return User
 	 */
-	public function fake(Generator &$faker)
+	public function fake(Generator &$faker): User
 	{
-		Simulator::$counts['users']++;
-
 		return new User([
 			'email'     => $faker->email,
 			'username'  => str_replace('.', ' ', $faker->userName), // Myth doesn't allow periods

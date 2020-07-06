@@ -2,8 +2,8 @@
 
 use App\Entities\Material;
 use App\Models\MaterialModel;
+use CodeIgniter\Test\Fabricator;
 use Faker\Generator;
-use Tests\Support\Simulator;
 
 class MaterialFaker extends MaterialModel
 {
@@ -14,16 +14,14 @@ class MaterialFaker extends MaterialModel
 	 *
 	 * @return Material
 	 */
-	public function fake(Generator &$faker)
+	public function fake(Generator &$faker): Material
 	{
-		Simulator::$counts['materials']++;
-
 		return new Material([
 			'name'        => $faker->catchPhrase,
 			'summary'     => $faker->sentence,
 			'description' => $faker->paragraph,
 			'sortorder'   => rand(1, 10),
-			'method_id'   => rand(1, Simulator::$counts['methods'] ?? 8),
+			'method_id'   => rand(1, Fabricator::getCount('methods') ?? 8),
 		]);
 	}
 }

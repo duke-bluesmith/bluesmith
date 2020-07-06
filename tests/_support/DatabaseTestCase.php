@@ -47,6 +47,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
     public static function setUpBeforeClass(): void
     {
     	parent::setUpBeforeClass();
+
 		self::$faker = Factory::create();
     }
 
@@ -57,20 +58,4 @@ class DatabaseTestCase extends CIDatabaseTestCase
     {
     	Simulator::reset();
     }
-
-    /**
-     * Refresh the database and run the simulation on the first run only.
-     */
-	protected function simulateOnce(): void
-	{
-		$this->refresh = ! Simulator::$initialized;
-
-		parent::setUp();
-
-		// Initialize the simulation only once since it is costly.
-		if (! Simulator::$initialized)
-		{
-			Simulator::initialize();
-		}
-	}
 }

@@ -13,7 +13,13 @@ class PermissionRoutesTest extends FeatureTestCase
 
 	protected function setUp(): void
 	{
-		$this->simulateOnce();
+		parent::setUp();
+
+		// Initialize the simulation only once since it is costly.
+		if (! Simulator::$initialized)
+		{
+			Simulator::initialize();
+		}
 	}
 
 	/**

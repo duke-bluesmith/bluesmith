@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "dbadbaa1e9f32a8985c87ba57230f53c8ec10efb"
+                "reference": "06c3ad835519ed252c6420ca073999cec234272f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/dbadbaa1e9f32a8985c87ba57230f53c8ec10efb",
-                "reference": "dbadbaa1e9f32a8985c87ba57230f53c8ec10efb",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/06c3ad835519ed252c6420ca073999cec234272f",
+                "reference": "06c3ad835519ed252c6420ca073999cec234272f",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-07-02T19:55:32+00:00"
+            "time": "2020-07-06T13:06:59+00:00"
         },
         {
             "name": "components/jquery",
@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "e7f503ced726bd100c13296d8908058d23e0a547"
+                "reference": "c483c81b77ae01bd66157809c17b594080bf7d8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/e7f503ced726bd100c13296d8908058d23e0a547",
-                "reference": "e7f503ced726bd100c13296d8908058d23e0a547",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/c483c81b77ae01bd66157809c17b594080bf7d8c",
+                "reference": "c483c81b77ae01bd66157809c17b594080bf7d8c",
                 "shasum": ""
             },
             "require": {
@@ -868,7 +868,17 @@
                 "source": "https://github.com/lonnieezell/myth-auth/tree/develop",
                 "issues": "https://github.com/lonnieezell/myth-auth/issues"
             },
-            "time": "2020-06-11T04:38:34+00:00"
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/lonnieezell"
+                },
+                {
+                    "type": "patreon",
+                    "url": "https://www.patreon.com/lonnieezell"
+                }
+            ],
+            "time": "2020-07-06T04:07:03+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -1959,16 +1969,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/66a8f0957a3ca54e4f724e49028ab19d75a8918b",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/58c7475e5457c5492c26cc740cc0ad7464be9442",
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442",
                 "shasum": ""
             },
             "require": {
@@ -1982,6 +1992,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -2013,7 +2027,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/string",
@@ -3156,12 +3184,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "ba2664a11734336e3d00cebdc145d317eba648c5"
+                "reference": "9df7f9d03ca0d1670c7f0179e0cb57aabd664f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/ba2664a11734336e3d00cebdc145d317eba648c5",
-                "reference": "ba2664a11734336e3d00cebdc145d317eba648c5",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/9df7f9d03ca0d1670c7f0179e0cb57aabd664f20",
+                "reference": "9df7f9d03ca0d1670c7f0179e0cb57aabd664f20",
                 "shasum": ""
             },
             "require": {
@@ -3222,7 +3250,7 @@
                 "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/develop",
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues"
             },
-            "time": "2020-07-02T15:44:33+00:00"
+            "time": "2020-07-06T17:27:16+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -14,10 +14,8 @@ class MethodFaker extends MethodModel
 	 *
 	 * @return Method
 	 */
-	public function fake(Generator &$faker)
+	public function fake(Generator &$faker): Method
 	{
-		Simulator::$counts['methods']++;
-
 		return new Method([
 			'name'        => $faker->catchPhrase,
 			'summary'     => $faker->sentence,

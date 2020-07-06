@@ -1,5 +1,6 @@
 <?php namespace Tests\Support;
 
+use CodeIgniter\Test\Fabricator;
 use Tests\Support\Fakers\JobFaker;
 use Tests\Support\Fakers\MaterialFaker;
 use Tests\Support\Fakers\MethodFaker;
@@ -7,6 +8,7 @@ use Tests\Support\Fakers\UserFaker;
 
 /**
  * Support class for simulating a complete project environment.
+ * Builds off existing funcitonality in Workflows.
  */
 class Simulator extends \Tatter\Workflows\Test\Simulator
 {
@@ -18,88 +20,76 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 	static public $initialized = false;
 
 	/**
-	 * Number of each object type created since last reset.
-	 *
-	 * @var array
-	 */
-	static public $counts = [
-		'actions'   => 0,
-		'jobs'      => 0,
-		'stages'    => 0,
-		'workflows' => 0,
-		'methods'   => 0,
-		'materials' => 0,
-		'users'     => 0,
-	];
-
-	/**
 	 * Initialize the simulation.
+	 *
+	 * @param array  Array of target items to create
 	 */
-	static public function initialize()
+	static public function initialize($targets = ['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'])
 	{
-		parent::initialize();
+		parent::initialize(array_intersect(['actions', 'stages', 'workflows'], $targets));
 
 		// Create methods up to N
-		$count = rand(1, 8);
-		while (self::$counts['methods'] < $count)
+		if (in_array('methods', $targets))
 		{
-			fake(MethodFaker::class);
+			$count = rand(1, 8);
+			while (Fabricator::getCount('methods') < $count)
+			{
+				fake(MethodFaker::class);
+			}
 		}
 
 		// Create materials up to N
-		$count = self::$counts['methods'] * rand(2, 6);
-		while (self::$counts['materials'] < $count)
+		if (in_array('materials', $targets))
 		{
-			fake(MaterialFaker::class);
+			$count = Fabricator::getCount('methods') * rand(2, 6);
+			while (Fabricator::getCount('materials') < $count)
+			{
+				fake(MaterialFaker::class);
+			}
 		}
 
 		// Create users up to N
-		$count = rand(20, 50);
-		while (self::$counts['users'] < $count)
+		if (in_array('users', $targets))
 		{
-			fake(UserFaker::class);
+			$count = rand(20, 50);
+			while (Fabricator::getCount('users') < $count)
+			{
+				fake(UserFaker::class);
+			}
 		}
 
-		// Remake jobs with our faker
-		self::$counts['jobs'] = 0;
-		$count = rand(40, 200);
-		while (self::$counts['jobs'] < $count)
+		// Create jobs up to N
+		if (in_array('jobs', $targets))
 		{
-			fake(JobFaker::class);
-		}
+			$count = rand(40, 200);
+			while (Fabricator::getCount('jobs') < $count)
+			{
+				fake(JobFaker::class);
+			}
 
-		// Assign jobs to users
-		$builder = db_connect()->table('jobs_users');
-		for ($i = 1; $i < self::$counts['jobs']; $i++)
-		{
-			$builder->insert([
-				'job_id'  => $i,
-				'user_id' => rand(1, self::$counts['users']),
-			]);
-		}
+			// Assign jobs to users
+			$builder = db_connect()->table('jobs_users');
+			for ($i = 1; $i < Fabricator::getCount('jobs'); $i++)
+			{
+				$builder->insert([
+					'job_id'  => $i,
+					'user_id' => rand(1, Fabricator::getCount('users')),
+				]);
+			}
 
-		// Make a few jobs have multiple users
-		$count = rand(10, 30);
-		for ($i = 1; $i < $count; $i++)
-		{
-			$user = fake(UserFaker::class);
+			// Make a few jobs have multiple users
+			$count = rand(10, 30);
+			for ($i = 1; $i < $count; $i++)
+			{
+				$user = fake(UserFaker::class);
 
-			$builder->insert([
-				'job_id'  => rand(1, self::$counts['jobs']),
-				'user_id' => $user->id,
-			]);		
+				$builder->insert([
+					'job_id'  => rand(1, Fabricator::getCount('jobs')),
+					'user_id' => $user->id,
+				]);		
+			}
 		}
 
 		self::$initialized = true;
-	}
-
-	/**
-	 * Reset counts.
-	 */
-	static public function reset()
-	{
-		parent::reset();
-
-		self::$initialized = false;
 	}
 }
