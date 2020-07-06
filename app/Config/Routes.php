@@ -34,13 +34,10 @@ $routes->get('/', 'Pages::show/home');
 $routes->get('about/(:segment)', 'Pages::show/$1');
 
 // Admin dashboard
-$routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Controllers\Manage'], function($routes)
+$routes->add('manage', '\App\Controllers\Manage\Dashboard::index');
+
+$routes->group('manage', ['namespace'=>'App\Controllers\Manage'], function($routes)
 {
-	$routes->add('/', 'Dashboard::index');
-
-	$routes->get('content/(:any)', 'Content::$1');
-	$routes->post('content/(:any)', 'Content::$1');
-
 	$routes->get('materials/method/(:any)', 'Materials::method/$1');
 	$routes->presenter('materials');
 });
