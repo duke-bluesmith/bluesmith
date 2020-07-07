@@ -14,6 +14,6 @@ class User extends \Myth\Auth\Entities\User
 	 */
 	public function getName()
 	{
-		return trim($this->attributes['firstname']) . ' ' . trim($this->attributes['lastname']);
+		return trim(trim($this->attributes['firstname']) . ' ' . trim($this->attributes['lastname']));
 	}
 }

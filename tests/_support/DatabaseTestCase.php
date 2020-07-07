@@ -1,11 +1,12 @@
 <?php namespace Tests\Support;
 
-use CodeIgniter\Session\Handlers\ArrayHandler;
+use App\Entities\User;
 use CodeIgniter\Test\CIDatabaseTestCase;
-use CodeIgniter\Test\Mock\MockEmail;
-use CodeIgniter\Test\Mock\MockSession;
 use Config\Services;
 use Faker\Factory;
+use Myth\Auth\Authorization\GroupModel;
+use Myth\Auth\Authorization\PermissionModel;
+use Tests\Support\Fakers\UserFaker;
 use Tests\Support\Simulator;
 
 class DatabaseTestCase extends CIDatabaseTestCase
@@ -42,6 +43,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	 */
 	protected $seed = 'App\Database\Seeds\InitialSeeder';
 
+	//--------------------------------------------------------------------
+	// Staging
+	//--------------------------------------------------------------------
+
     /**
      * Initializes the one-time components.
      */
@@ -60,6 +65,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
     	Simulator::reset();
     }
 
+	//--------------------------------------------------------------------
+	// Simulation
+	//--------------------------------------------------------------------
+
     /**
      * Initialize the simulation, if it has not been.
      */
@@ -68,7 +77,87 @@ class DatabaseTestCase extends CIDatabaseTestCase
 		// Initialize the simulation only once since it is costly.
 		if (! Simulator::$initialized)
 		{
+			// Rerun database setUp as a refresh
+			$tmpRefresh    = $this->refresh;
+			$this->refresh = true;
+
+			parent::setUp();
+
+			$this->refresh = $tmpRefresh;
+
 			Simulator::initialize();
 		}
+	}
+
+    /**
+     * Resets the Authentication and Authorization services between tests.
+     */
+	protected function resetAuthServices()
+	{
+		Services::injectMock('authentication', Services::authentication('local', null, null, false));
+		Services::injectMock('authorization', Services::authorization(null, null, null, false));
+		$_SESSION = [];
+	}
+
+	/**
+	 * Create a User with the requested Permission.
+	 *
+	 * @param int|string|object $identifier  The target permission
+	 */
+	protected function createUserWithPermission($identifier): User
+	{
+		if (is_array($identifier))
+		{
+			$id = $identifier['id'];
+		}
+		elseif (is_object($identifier))
+		{
+			$id = $identifier->id;
+		}
+		elseif (is_numeric($identifier))
+		{
+			$id = (int) $identifier;
+		}
+		elseif (is_string($identifier))
+		{
+			$permission = model(PermissionModel::class)->where(['name' => $identifier])->first();
+			$id = $permission['id'];
+		}
+
+		$user = fake(UserFaker::class);
+		model(PermissionModel::class)->addPermissionToUser($id, $user->id);
+
+		return $user;
+	}
+
+	/**
+	 * Create a User part of the requested Group.
+	 *
+	 * @param int|string|object $identifier  The target group
+	 */
+	public function createUserInGroup($identifier): User
+	{
+		if (is_array($identifier))
+		{
+			$id = $identifier['id'];
+		}
+		elseif (is_object($identifier))
+		{
+			$id = $identifier->id;
+		}
+		elseif (is_numeric($identifier))
+		{
+			$id = (int) $identifier;
+		}
+		elseif (is_string($identifier))
+		{
+			$group = model(GroupModel::class)->where(['name' => $identifier])->first();
+			$id = $group->id;
+		}
+
+		$user = fake(UserFaker::class);
+		model(GroupModel::class)->addUserToGroup($user->id, $id);
+
+		return $user;
 	}
 }

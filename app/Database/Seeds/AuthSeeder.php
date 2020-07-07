@@ -13,8 +13,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 		$permissions   = new PermissionModel();
 		$users         = new UserModel();
 		$authorization = service('authorization'); 
-		
-		
+
 		/*** GROUPS ***/
 		// Test for and create the necessary groups
 
@@ -33,8 +32,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 				$groups->insert($row);
 			}
 		}
-		
-		
+
 		/** PERMISSIONS ***/
 		// Test for and create the necessary permissions
 
@@ -52,10 +50,9 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 				$permissions->insert($row);
 			}
 		}
-		
-		
+
 		/*** GROUPS_PERMISSIONS ***/
-		//Authorize groups for access to various sections
+		// Authorize groups for access to various sections
 		
 		// General dashboard access
 		$names = ['Administrators', 'Consultants', 'Editors'];
