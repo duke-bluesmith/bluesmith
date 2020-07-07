@@ -1,6 +1,7 @@
 <?php namespace Tests\Support;
 
 use CodeIgniter\Test\Fabricator;
+use Myth\Auth\Authorization\GroupModel;
 use Tests\Support\Fakers\JobFaker;
 use Tests\Support\Fakers\MaterialFaker;
 use Tests\Support\Fakers\MethodFaker;
@@ -15,7 +16,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 	/**
 	 * Initialize the simulation.
 	 *
-	 * @param array  Array of target items to create
+	 * @param array $targets  Array of target items to create
 	 */
 	static public function initialize($targets = ['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'])
 	{
@@ -49,6 +50,18 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 			{
 				fake(UserFaker::class);
 			}
+
+			// Assign some users to groups (created by AuthSeeder)
+			$numGroups = model(GroupModel::class)->countAllResults();
+
+			$count = rand(5, 10);
+			for ($i = 1; $i < $count; $i++)
+			{
+				model(GroupModel::class)->addUserToGroup(
+					rand(1, Fabricator::getCount('users')),
+					$i % $numGroups + 1 // Ensures every group gets at least one
+				);
+			}			
 		}
 
 		// Create jobs up to N

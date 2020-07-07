@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\JobModel;
+use Myth\Auth\Authorization\GroupModel;
 use Tests\Support\DatabaseTestCase;
 use Tests\Support\Simulator;
 
@@ -36,5 +37,19 @@ class SimulatorTest extends DatabaseTestCase
 
 		$this->assertIsArray($result);
 		$this->assertGreaterThan(0, $result);
+	}
+
+	public function testDoesAssignUsersToGroups()
+	{
+		// Gather the groups
+		$groups = model(GroupModel::class)->findAll();
+		$this->assertGreaterThanOrEqual(4, count($groups));
+
+		// Check that each group has at least one user
+		foreach ($groups as $group)
+		{
+			$users = model(GroupModel::class)->getUsersForGroup($group->id);
+			$this->assertGreaterThanOrEqual(1, $users);
+		}
 	}
 }
