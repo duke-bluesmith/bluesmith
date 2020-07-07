@@ -12,8 +12,8 @@ class JobModel extends \Tatter\Workflows\Models\JobModel
 	use \Tatter\Permits\Traits\PermitsTrait;
 	use \Tatter\Relations\Traits\ModelTrait;
 
-	protected $with          = ['options'];
-	protected $returnType    = 'App\Entities\Job';
+	protected $with		     = ['options'];
+	protected $returnType	 = 'App\Entities\Job';
 	protected $allowedFields = ['name', 'summary', 'workflow_id', 'stage_id', 'material_id'];
 
 	/**
@@ -30,4 +30,20 @@ class JobModel extends \Tatter\Workflows\Models\JobModel
 	
 	// Name of this object's ID in the pivot tables
 	protected $pivotKey = 'job_id';
+
+	/**
+	 * Adds a single user to a single job.
+	 *
+	 * @param int $userId
+	 * @param int $jobId
+	 *
+	 * @return bool
+	 */
+	public function addUserToJob(int $userId, int $jobId)
+	{
+		return $this->db->table('jobs_users')->insert([
+			'user_id' => (int) $userId,
+			'job_id'  => (int) $jobId,
+		]);
+	}
 }
