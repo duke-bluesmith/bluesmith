@@ -11,6 +11,8 @@ use Tests\Support\Simulator;
 
 class DatabaseTestCase extends CIDatabaseTestCase
 {
+	use \Myth\Auth\Test\AuthTestTrait;
+
 	/**
 	 * Faker instance for generating content.
 	 *
@@ -87,16 +89,6 @@ class DatabaseTestCase extends CIDatabaseTestCase
 
 			Simulator::initialize();
 		}
-	}
-
-    /**
-     * Resets the Authentication and Authorization services between tests.
-     */
-	protected function resetAuthServices()
-	{
-		Services::injectMock('authentication', Services::authentication('local', null, null, false));
-		Services::injectMock('authorization', Services::authorization(null, null, null, false));
-		$_SESSION = [];
 	}
 
 	/**

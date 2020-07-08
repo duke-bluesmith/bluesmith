@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "06c3ad835519ed252c6420ca073999cec234272f"
+                "reference": "bcd8955526809ecf0430053735bd57fa3d86c049"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/06c3ad835519ed252c6420ca073999cec234272f",
-                "reference": "06c3ad835519ed252c6420ca073999cec234272f",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/bcd8955526809ecf0430053735bd57fa3d86c049",
+                "reference": "bcd8955526809ecf0430053735bd57fa3d86c049",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-07-06T13:06:59+00:00"
+            "time": "2020-07-07T15:13:02+00:00"
         },
         {
             "name": "components/jquery",
@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "c483c81b77ae01bd66157809c17b594080bf7d8c"
+                "reference": "b95fb4ce86e0cd5eecc9f6844ab0410d5442cc61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/c483c81b77ae01bd66157809c17b594080bf7d8c",
-                "reference": "c483c81b77ae01bd66157809c17b594080bf7d8c",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/b95fb4ce86e0cd5eecc9f6844ab0410d5442cc61",
+                "reference": "b95fb4ce86e0cd5eecc9f6844ab0410d5442cc61",
                 "shasum": ""
             },
             "require": {
@@ -878,7 +878,7 @@
                     "url": "https://www.patreon.com/lonnieezell"
                 }
             ],
-            "time": "2020-07-06T04:07:03+00:00"
+            "time": "2020-07-07T20:54:49+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -1162,16 +1162,16 @@
         },
         {
             "name": "seld/phar-utils",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/phar-utils.git",
-                "reference": "8800503d56b9867d43d9c303b9cbcc26016e82f0"
+                "reference": "8674b1d84ffb47cc59a101f5d5a3b61e87d23796"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/8800503d56b9867d43d9c303b9cbcc26016e82f0",
-                "reference": "8800503d56b9867d43d9c303b9cbcc26016e82f0",
+                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/8674b1d84ffb47cc59a101f5d5a3b61e87d23796",
+                "reference": "8674b1d84ffb47cc59a101f5d5a3b61e87d23796",
                 "shasum": ""
             },
             "require": {
@@ -1202,7 +1202,7 @@
             "keywords": [
                 "phar"
             ],
-            "time": "2020-02-14T15:25:33+00:00"
+            "time": "2020-07-07T18:42:57+00:00"
         },
         {
             "name": "symfony/console",
@@ -3184,12 +3184,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "9df7f9d03ca0d1670c7f0179e0cb57aabd664f20"
+                "reference": "af31ca90cd050d3734ce930265ede7f0fdb2414a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/9df7f9d03ca0d1670c7f0179e0cb57aabd664f20",
-                "reference": "9df7f9d03ca0d1670c7f0179e0cb57aabd664f20",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/af31ca90cd050d3734ce930265ede7f0fdb2414a",
+                "reference": "af31ca90cd050d3734ce930265ede7f0fdb2414a",
                 "shasum": ""
             },
             "require": {
@@ -3250,7 +3250,7 @@
                 "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/develop",
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues"
             },
-            "time": "2020-07-06T17:27:16+00:00"
+            "time": "2020-07-06T18:40:26+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3879,33 +3879,33 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.3",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "451c3cd1418cf640de218914901e51b064abb093"
+                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
-                "reference": "451c3cd1418cf640de218914901e51b064abb093",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
+                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "^1.0.2",
-                "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
-                "sebastian/comparator": "^1.2.3|^2.0|^3.0|^4.0",
-                "sebastian/recursion-context": "^1.0|^2.0|^3.0|^4.0"
+                "doctrine/instantiator": "^1.2",
+                "php": "^7.2",
+                "phpdocumentor/reflection-docblock": "^5.0",
+                "sebastian/comparator": "^3.0 || ^4.0",
+                "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.5 || ^3.2",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5 || ^7.1"
+                "phpspec/phpspec": "^6.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.10.x-dev"
+                    "dev-master": "1.11.x-dev"
                 }
             },
             "autoload": {
@@ -3938,7 +3938,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-03-05T15:02:03+00:00"
+            "time": "2020-07-07T16:07:38+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
