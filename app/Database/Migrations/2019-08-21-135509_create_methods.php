@@ -8,8 +8,8 @@ class CreateMethods extends Migration
 	{
 		// Methods
 		$fields = [
-			'name'        => ['type' => 'VARCHAR', 'constraint' => 31],
-			'summary'     => ['type' => 'VARCHAR', 'constraint' => 31],
+			'name'        => ['type' => 'VARCHAR', 'constraint' => 127],
+			'summary'     => ['type' => 'VARCHAR', 'constraint' => 127],
 			'description' => ['type' => 'TEXT'],
 			'sortorder'   => ['type' => 'INT', 'unsigned' => true],
 			'created_at'  => ['type' => 'DATETIME', 'null' => true],
@@ -29,8 +29,8 @@ class CreateMethods extends Migration
 		
 		// Materials
 		$fields = [
-			'name'        => ['type' => 'VARCHAR', 'constraint' => 31],
-			'summary'     => ['type' => 'VARCHAR', 'constraint' => 31],
+			'name'        => ['type' => 'VARCHAR', 'constraint' => 127],
+			'summary'     => ['type' => 'VARCHAR', 'constraint' => 127],
 			'description' => ['type' => 'TEXT'],
 			'sortorder'   => ['type' => 'INT', 'unsigned' => true],
 			'method_id'   => ['type' => 'INT'],

@@ -8,8 +8,8 @@ class CreateOptions extends Migration
 	public function up()
 	{
 		$fields = [
-			'name'        => ['type' => 'VARCHAR', 'constraint' => 31],
-			'summary'     => ['type' => 'VARCHAR', 'constraint' => 63],
+			'name'        => ['type' => 'VARCHAR', 'constraint' => 127],
+			'summary'     => ['type' => 'VARCHAR', 'constraint' => 127],
 			'description' => ['type' => 'VARCHAR', 'constraint' => 255],
 			'created_at'  => ['type' => 'DATETIME', 'null' => true],
 			'updated_at'  => ['type' => 'DATETIME', 'null' => true],
