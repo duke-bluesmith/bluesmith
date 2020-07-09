@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "bcd8955526809ecf0430053735bd57fa3d86c049"
+                "reference": "a18fdea70b00856ceff78dcb30ee92ad8bf83254"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/bcd8955526809ecf0430053735bd57fa3d86c049",
-                "reference": "bcd8955526809ecf0430053735bd57fa3d86c049",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/a18fdea70b00856ceff78dcb30ee92ad8bf83254",
+                "reference": "a18fdea70b00856ceff78dcb30ee92ad8bf83254",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-07-07T15:13:02+00:00"
+            "time": "2020-07-08T21:16:59+00:00"
         },
         {
             "name": "components/jquery",
@@ -3303,16 +3303,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "5.4.0",
+            "version": "5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "aa17e50a1302fdb601a56e99b7b59f7abe5ff2a6"
+                "reference": "940fdcfa7aa2ade09a1ec916dadeee01baa7787a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/aa17e50a1302fdb601a56e99b7b59f7abe5ff2a6",
-                "reference": "aa17e50a1302fdb601a56e99b7b59f7abe5ff2a6",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/940fdcfa7aa2ade09a1ec916dadeee01baa7787a",
+                "reference": "940fdcfa7aa2ade09a1ec916dadeee01baa7787a",
                 "shasum": ""
             },
             "type": "component",
@@ -3347,7 +3347,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2020-06-30T05:22:55+00:00"
+            "time": "2020-07-08T04:08:07+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -3879,16 +3879,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61"
+                "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
-                "reference": "8ff0384cd5d87e038297e79d85c99e4b2dcf0e61",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b20034be5efcdab4fb60ca3a29cba2949aead160",
+                "reference": "b20034be5efcdab4fb60ca3a29cba2949aead160",
                 "shasum": ""
             },
             "require": {
@@ -3938,7 +3938,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-07-07T16:07:38+00:00"
+            "time": "2020-07-08T12:44:21+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -4886,20 +4886,20 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
-                "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0",
+                "php": "^5.3.3 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -4931,7 +4931,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-06-16T10:16:42+00:00"
+            "time": "2020-07-08T17:02:28+00:00"
         }
     ],
     "aliases": [],
