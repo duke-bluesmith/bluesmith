@@ -51,7 +51,8 @@
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",
 		"phpunit/phpunit": "^8.0",
-		"fzaninotto/faker": "^1.9@dev"
+		"fzaninotto/faker": "^1.9@dev",
+		"phpstan/phpstan": "^0.12"
 	},
 	"autoload-dev": {
 		"psr-4": {
