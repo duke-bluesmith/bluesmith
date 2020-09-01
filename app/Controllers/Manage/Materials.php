@@ -1,7 +1,8 @@
 <?php namespace App\Controllers\Manage;
 
-use Tatter\Forms\Controllers\ResourcePresenter;
 use App\Models\MethodModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use Tatter\Forms\Controllers\ResourcePresenter;
 
 class Materials extends ResourcePresenter
 {

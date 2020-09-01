@@ -1,5 +1,6 @@
 <?php namespace App\Actions;
 
+use App\Models\AcceptModel;
 use App\Models\PageModel;
 use App\Models\TermModel;
 use Tatter\Workflows\Interfaces\ActionInterface;

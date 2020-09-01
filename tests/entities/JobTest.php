@@ -5,6 +5,11 @@ use Tests\Support\Fakers\JobFaker;
 
 class JobTest extends DatabaseTestCase
 {
+	/**
+	 * @var \App\Entities\Job
+	 */
+	protected $job;
+
 	protected function setUp(): void
 	{
 		parent::setUp();
