@@ -34,7 +34,7 @@ $routes->get('/', 'Pages::show/home');
 $routes->get('about/(:segment)', 'Pages::show/$1');
 
 // Admin dashboard
-$routes->add('manage', '\App\Controllers\Manage\Dashboard::index');
+$routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
 
 $routes->group('manage', ['namespace'=>'App\Controllers\Manage'], function($routes)
 {
