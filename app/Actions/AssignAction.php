@@ -2,14 +2,12 @@
 
 use App\Models\UserModel;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
-class AssignAction implements ActionInterface
+class AssignAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Assign Clients',
