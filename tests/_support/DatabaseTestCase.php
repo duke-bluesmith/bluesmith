@@ -115,6 +115,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
 			$permission = model(PermissionModel::class)->where(['name' => $identifier])->first();
 			$id = $permission['id'];
 		}
+		else
+		{
+			throw new \RuntimeException('Unable to determine type for $identifier');
+		}
 
 		$user = fake(UserFaker::class);
 		model(PermissionModel::class)->addPermissionToUser($id, $user->id);
@@ -145,6 +149,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
 		{
 			$group = model(GroupModel::class)->where(['name' => $identifier])->first();
 			$id = $group->id;
+		}
+		else
+		{
+			throw new \RuntimeException('Unable to determine type for $identifier');
 		}
 
 		$user = fake(UserFaker::class);

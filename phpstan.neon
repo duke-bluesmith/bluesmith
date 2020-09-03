@@ -1,15 +1,20 @@
 parameters:
-    bootstrapFiles:
-        - qa-bootstrap.php
-    excludes_analyse:
-        - app/Views/*
-        - system/ThirdParty/*
-    ignoreErrors:
-    scanDirectories:
-      - system/Helpers
-      - vendor/tatter/alerts/src/Helpers
-      - vendor/myth/auth/src/Helpers
-    dynamicConstantNames:
-        - ENVIRONMENT
-        - CI_DEBUG
-    checkMissingIterableValueType: false
+	tmpDir: build/phpstan
+	paths:
+		- app
+		- tests
+	bootstrapFiles:
+		- phpstan-bootstrap.php
+	excludes_analyse:
+		- app/Views/*
+		- system/ThirdParty/*
+	ignoreErrors:
+		- '#Call to an undefined static method Config\\Services::authentication\(\)#'
+	scanDirectories:
+		- system/Helpers
+		- vendor/tatter/alerts/src/Helpers
+		- vendor/myth/auth/src/Helpers
+	dynamicConstantNames:
+		- ENVIRONMENT
+		- CI_DEBUG
+	checkMissingIterableValueType: false
