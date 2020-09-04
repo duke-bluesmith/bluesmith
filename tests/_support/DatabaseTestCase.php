@@ -16,7 +16,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Faker instance for generating content.
 	 *
-	 * @var Factory
+	 * @var \Faker\Generator
 	 */
 	protected static $faker;
 
