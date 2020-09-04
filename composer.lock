@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2ea2da24d7619783ceb89e671efac70",
+    "content-hash": "66f1cf22c99bcded0b5c8354cb1237b9",
     "packages": [
         {
             "name": "bower-asset/sbadmin2",
@@ -27,12 +27,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "a9450031f8a45c4feab7b6cc8f9c4b0976dadd12"
+                "reference": "ae5837b2cf6d7612b1dd10a99d265836bd8f2dea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/a9450031f8a45c4feab7b6cc8f9c4b0976dadd12",
-                "reference": "a9450031f8a45c4feab7b6cc8f9c4b0976dadd12",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/ae5837b2cf6d7612b1dd10a99d265836bd8f2dea",
+                "reference": "ae5837b2cf6d7612b1dd10a99d265836bd8f2dea",
                 "shasum": ""
             },
             "require": {
@@ -81,7 +81,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-09-03T16:19:24+00:00"
+            "time": "2020-09-04T10:47:31+00:00"
         },
         {
             "name": "components/jquery",
@@ -3318,16 +3318,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "dev-develop",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "3035e01bc7eba61f9c06c64c9cfe2ab423893fa0"
+                "reference": "f50ee0badec209c7580ff39d52796d19a2f796a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/3035e01bc7eba61f9c06c64c9cfe2ab423893fa0",
-                "reference": "3035e01bc7eba61f9c06c64c9cfe2ab423893fa0",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/f50ee0badec209c7580ff39d52796d19a2f796a8",
+                "reference": "f50ee0badec209c7580ff39d52796d19a2f796a8",
                 "shasum": ""
             },
             "require": {
@@ -3353,22 +3353,7 @@
                     "Tatter\\Workflows\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\Support\\": "tests/_support"
-                }
-            },
-            "scripts": {
-                "analyze": [
-                    "phpstan analyze"
-                ],
-                "test": [
-                    "phpunit"
-                ],
-                "post-update-cmd": [
-                    "composer dump-autoload"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3389,11 +3374,7 @@
                 "jobs",
                 "workflows"
             ],
-            "support": {
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.0.1",
-                "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues"
-            },
-            "time": "2020-09-03T19:40:51+00:00"
+            "time": "2020-09-04T15:40:16+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -5145,7 +5126,6 @@
         "codeigniter4/codeigniter4": 20,
         "myth/auth": 20,
         "tatter/forms": 20,
-        "tatter/workflows": 20,
         "fzaninotto/faker": 20
     },
     "prefer-stable": true,
