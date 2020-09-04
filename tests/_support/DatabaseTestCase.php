@@ -94,7 +94,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Create a User with the requested Permission.
 	 *
-	 * @param int|string|object $identifier  The target permission
+	 * @param int|string|array|object $identifier  The target permission
 	 */
 	protected function createUserWithPermission($identifier): User
 	{
@@ -129,7 +129,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Create a User part of the requested Group.
 	 *
-	 * @param int|string|object $identifier  The target group
+	 * @param int|string|array|object $identifier  The target group
 	 */
 	public function createUserInGroup($identifier): User
 	{
