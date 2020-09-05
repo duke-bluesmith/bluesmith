@@ -867,12 +867,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "cf68c1e1746eb011333d41aa1eb7dc097f373c88"
+                "reference": "d0e8593498a591ab284850e4bbf1c18430418f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/cf68c1e1746eb011333d41aa1eb7dc097f373c88",
-                "reference": "cf68c1e1746eb011333d41aa1eb7dc097f373c88",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/d0e8593498a591ab284850e4bbf1c18430418f90",
+                "reference": "d0e8593498a591ab284850e4bbf1c18430418f90",
                 "shasum": ""
             },
             "require": {
@@ -935,7 +935,7 @@
                     "url": "https://www.patreon.com/lonnieezell"
                 }
             ],
-            "time": "2020-09-03T14:51:46+00:00"
+            "time": "2020-09-04T19:55:18+00:00"
         },
         {
             "name": "nnnick/chartjs",
