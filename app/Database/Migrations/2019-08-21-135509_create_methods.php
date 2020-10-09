@@ -53,11 +53,11 @@ class CreateMethods extends Migration
 
 	public function down()
 	{
-		$this->db->disableForeignKeyChecks();
+		$this->db->disableForeignKeyChecks(); // @phpstan-ignore-line
 
 		$this->forge->dropTable('materials');
 		$this->forge->dropTable('methods');
 
-		$this->db->enableForeignKeyChecks();
+		$this->db->enableForeignKeyChecks(); // @phpstan-ignore-line
 	}
 }

@@ -1,14 +1,12 @@
 <?php namespace App\Actions;
 
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
-class PaymentAction implements ActionInterface
+class PaymentAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
 	public $definition = [
 		'category' => 'Complete',
 		'name'     => 'Payment',

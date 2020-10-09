@@ -37,6 +37,7 @@
 # app.cookiePath = '/'
 # app.cookieSecure = false
 # app.cookieHTTPOnly = false
+# app.cookieSameSite = 'Lax'
 
 # app.CSRFProtection  = false
 # app.CSRFTokenName   = 'csrf_test_name'
@@ -44,6 +45,7 @@
 # app.CSRFExpire      = 7200
 # app.CSRFRegenerate  = true
 # app.CSRFExcludeURIs = []
+# app.CSRFSameSite    = 'Lax'
 
 # app.CSPEnabled = false
 
@@ -86,10 +88,19 @@
 # contentsecuritypolicy.upgradeInsecureRequests = false
 
 #--------------------------------------------------------------------
+# ENCRYPTION
+#--------------------------------------------------------------------
+
+# encryption.key =
+# encryption.driver = OpenSSL
+# encryption.digest = SHA512
+
+#--------------------------------------------------------------------
 # HONEYPOT
 #--------------------------------------------------------------------
 
-#  honeypot.hidden = 'true'
-#  honeypot.label = 'Fill This Field'
-#  honeypot.name = 'honeypot'
-#  honeypot.template = '<label>{label}</label><input type="text" name="{name}" value=""/>'
+# honeypot.hidden = 'true'
+# honeypot.label = 'Fill This Field'
+# honeypot.name = 'honeypot'
+# honeypot.template = '<label>{label}</label><input type="text" name="{name}" value=""/>'
+# honeypot.container = '<div style="display:none">{template}</div>'

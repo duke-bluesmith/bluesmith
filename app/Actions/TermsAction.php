@@ -1,13 +1,12 @@
 <?php namespace App\Actions;
 
+use App\Models\AcceptModel;
 use App\Models\PageModel;
 use App\Models\TermModel;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 
-class TermsAction implements ActionInterface
+class TermsAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Terms',

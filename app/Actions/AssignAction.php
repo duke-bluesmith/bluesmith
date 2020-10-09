@@ -1,15 +1,22 @@
 <?php namespace App\Actions;
 
+use App\Entities\Job;
 use App\Models\UserModel;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
-class AssignAction implements ActionInterface
+class AssignAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
+	/**
+	 * @var Job
+	 */
+	public $job;
+
+	/**
+	 * @var array<string> Implemented by child class
+	 */
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Assign Clients',

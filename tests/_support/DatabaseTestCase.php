@@ -16,7 +16,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Faker instance for generating content.
 	 *
-	 * @var Faker\Factory
+	 * @var \Faker\Generator
 	 */
 	protected static $faker;
 
@@ -94,7 +94,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Create a User with the requested Permission.
 	 *
-	 * @param int|string|object $identifier  The target permission
+	 * @param int|string|array|object $identifier  The target permission
 	 */
 	protected function createUserWithPermission($identifier): User
 	{
@@ -115,6 +115,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
 			$permission = model(PermissionModel::class)->where(['name' => $identifier])->first();
 			$id = $permission['id'];
 		}
+		else
+		{
+			throw new \RuntimeException('Unable to determine type for $identifier');
+		}
 
 		$user = fake(UserFaker::class);
 		model(PermissionModel::class)->addPermissionToUser($id, $user->id);
@@ -125,7 +129,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	/**
 	 * Create a User part of the requested Group.
 	 *
-	 * @param int|string|object $identifier  The target group
+	 * @param int|string|array|object $identifier  The target group
 	 */
 	public function createUserInGroup($identifier): User
 	{
@@ -145,6 +149,10 @@ class DatabaseTestCase extends CIDatabaseTestCase
 		{
 			$group = model(GroupModel::class)->where(['name' => $identifier])->first();
 			$id = $group->id;
+		}
+		else
+		{
+			throw new \RuntimeException('Unable to determine type for $identifier');
 		}
 
 		$user = fake(UserFaker::class);

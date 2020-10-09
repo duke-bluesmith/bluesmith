@@ -6,21 +6,29 @@ use App\Models\MethodModel;
 
 class Methods extends BaseController
 {
-	// Manage print methods
-	public function index()
+	/**
+	 * Displays the form to manage print Methods
+	 *
+	 * @return string
+	 */
+	public function index(): string
 	{
 		$methods = new MethodModel();
 
-		$data = [
+		return view('methods/index', [
 			'methods' => $methods->with('materials')->findAll()
-		];
-
-		return view('methods/index', $data);	
+		]);
 	}
 	
-	// Display the form for a new method
-	public function new($methodId)
+	/**
+	 * Displays the form for a new Method
+	 *
+	 * @param string $methodId
+	 *
+	 * @return string
+	 */
+	public function new(string $methodId): string
 	{
-		return view('methods/new', $data);	
+		return view('methods/new');	
 	}
 }

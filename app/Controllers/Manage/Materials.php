@@ -1,34 +1,59 @@
 <?php namespace App\Controllers\Manage;
 
-use Tatter\Forms\Controllers\ResourcePresenter;
 use App\Models\MethodModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use Tatter\Forms\Controllers\ResourcePresenter;
 
 class Materials extends ResourcePresenter
 {
-	public $modelName  = 'App\Models\MaterialModel';
+	/**
+	 * @var string  Name of the model for ResourcePresenter
+	 */
+	public $modelName = 'App\Models\MaterialModel';
 	
+	/**
+	 * @var array  Helpers to load
+	 */
 	protected $helpers = ['alerts', 'assets', 'auth', 'inflector', 'themes'];
+
+	/**
+	 * @var MethodModel
+	 */
 	protected $methods;
 	
+    /**
+     * Loads the Methods model.
+     */
 	public function __construct()
 	{
 		$this->methods = new MethodModel();
 	}
-	
-	public function new()
+
+    /**
+     * Displays the form for a new Material.
+     *
+     * @return string
+     */
+	public function new(): string
 	{
 		$data = [
 			'methodOptions' => $this->methodOptions()
 		];
 		
 		helper('form');
-		return $this->request->isAJAX() ?
-			view("{$this->names}/form", $data) :
-			view("{$this->names}/new", $data);
+		return $this->request->isAJAX()
+			? view("{$this->names}/form", $data)
+			: view("{$this->names}/new", $data);
 	}
 
-	// List materials for one method
-	public function method($methodId = null)
+    /**
+     * Lists materials for one method.
+     *
+     * @param string|null $methodId
+     *
+     * @return string|RedirectResponse
+     */
+	public function method(string $methodId = null)
 	{
 		$methods = new MethodModel();
 		
@@ -42,7 +67,14 @@ class Materials extends ResourcePresenter
 		
 		return view('materials/method', ['method' => $method]);	
 	}
-	
+
+    /**
+     * Displays the form to edit a Material.
+     *
+     * @param mixed $id
+     *
+     * @return string|RedirectResponse
+     */
 	public function edit($id = null)
 	{
 		if (($object = $this->ensureExists($id)) instanceof RedirectResponse)
@@ -56,21 +88,25 @@ class Materials extends ResourcePresenter
 		];
 
 		helper('form');
-		return $this->request->isAJAX() ?
-			view("{$this->names}/form", $data) :
-			view("{$this->names}/edit", $data);
+		return $this->request->isAJAX()
+			? view("{$this->names}/form", $data)
+			: view("{$this->names}/edit", $data);
 	}
-	
-	// Support function to load form select-ready methods
-	protected function methodOptions()
+
+    /**
+     * Support function to load all Methods for select form.
+     *
+     * @return array
+     */
+	protected function methodOptions(): array
 	{
 		$methodOptions = [];
-		
+
 		foreach ($this->methods->with(false)->findAll() as $method)
 		{
 			$methodOptions[$method->id] = $method->name;
 		}
-		
+
 		return $methodOptions;
 	}
 }

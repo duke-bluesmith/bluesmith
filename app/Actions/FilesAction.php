@@ -1,12 +1,13 @@
 <?php namespace App\Actions;
 
 use Tatter\Files\Models\FileModel;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 
-class FilesAction implements ActionInterface
+class FilesAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
+	/**
+	 * @var array
+	 */
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Files',
@@ -15,6 +16,11 @@ class FilesAction implements ActionInterface
 		'icon'     => 'fas fa-file-alt',
 		'summary'  => 'Client selects or uploads files',
 	];
+
+	/**
+	 * @var FileModel
+	 */
+	protected $files;
 
 	public function __construct()
 	{		

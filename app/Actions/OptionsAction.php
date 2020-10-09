@@ -2,12 +2,10 @@
 
 use App\Models\MethodModel;
 use App\Models\OptionModel;
-use Tatter\Workflows\Interfaces\ActionInterface;
+use Tatter\Workflows\BaseAction;
 
-class OptionsAction implements ActionInterface
+class OptionsAction extends BaseAction
 {
-	use \Tatter\Workflows\Traits\ActionsTrait;
-	
 	public $definition = [
 		'category' => 'Define',
 		'name'     => 'Print Options',
