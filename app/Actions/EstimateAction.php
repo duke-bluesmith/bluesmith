@@ -7,7 +7,10 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class EstimateAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Assess',
 		'name'     => 'Estimate',
 		'uid'      => 'estimate',

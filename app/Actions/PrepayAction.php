@@ -7,7 +7,10 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class PrepayAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Define',
 		'name'     => 'Prepay',
 		'uid'      => 'prepay',

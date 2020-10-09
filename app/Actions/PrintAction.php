@@ -7,7 +7,10 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class PrintAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Process',
 		'name'     => 'Print',
 		'uid'      => 'print',

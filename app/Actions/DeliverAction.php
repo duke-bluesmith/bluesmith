@@ -7,8 +7,11 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class DeliverAction extends BaseAction
 {
-	public $definition = [
-		'category' => 'Compelte',
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
+		'category' => 'Complete',
 		'name'     => 'Deliver',
 		'uid'      => 'deliver',
 		'role'     => 'manageJobs',

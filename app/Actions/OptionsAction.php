@@ -6,7 +6,10 @@ use Tatter\Workflows\BaseAction;
 
 class OptionsAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Define',
 		'name'     => 'Print Options',
 		'uid'      => 'options',

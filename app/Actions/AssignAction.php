@@ -10,14 +10,9 @@ use Tatter\Workflows\Models\WorkflowModel;
 class AssignAction extends BaseAction
 {
 	/**
-	 * @var Job
+	 * @var array<string, string>
 	 */
-	public $job;
-
-	/**
-	 * @var array<string> Implemented by child class
-	 */
-	public $definition = [
+	protected $attributes = [
 		'category' => 'Define',
 		'name'     => 'Assign Clients',
 		'uid'      => 'clients',
@@ -25,6 +20,11 @@ class AssignAction extends BaseAction
 		'icon'     => 'fas fa-user-friends',
 		'summary'  => 'Client includes other clients',
 	];
+
+	/**
+	 * @var Job
+	 */
+	public $job;
 
 	public function __construct()
 	{

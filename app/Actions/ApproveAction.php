@@ -7,7 +7,10 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class ApproveAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Assess',
 		'name'     => 'Approve',
 		'uid'      => 'approve',

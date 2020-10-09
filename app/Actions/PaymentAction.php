@@ -7,7 +7,10 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class PaymentAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Complete',
 		'name'     => 'Payment',
 		'uid'      => 'payment',

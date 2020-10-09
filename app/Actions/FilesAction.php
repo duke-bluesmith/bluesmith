@@ -6,9 +6,9 @@ use Tatter\Workflows\BaseAction;
 class FilesAction extends BaseAction
 {
 	/**
-	 * @var array
+	 * @var array<string, string>
 	 */
-	public $definition = [
+	protected $attributes = [
 		'category' => 'Define',
 		'name'     => 'Files',
 		'uid'      => 'files',

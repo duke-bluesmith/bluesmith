@@ -7,7 +7,10 @@ use Tatter\Workflows\BaseAction;
 
 class TermsAction extends BaseAction
 {
-	public $definition = [
+	/**
+	 * @var array<string, string>
+	 */
+	protected $attributes = [
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
