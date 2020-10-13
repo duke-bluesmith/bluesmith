@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL   = ''
+# app.baseURL = ''
 # app.indexPage = ''
 # app.forceGlobalSecureRequests = false
 # app.appTimezone = 'America/New_York'
@@ -93,6 +93,7 @@
 
 # encryption.key =
 # encryption.driver = OpenSSL
+# encryption.blockSize = 16
 # encryption.digest = SHA512
 
 #--------------------------------------------------------------------
