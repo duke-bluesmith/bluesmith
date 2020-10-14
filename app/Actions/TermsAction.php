@@ -10,7 +10,7 @@ class TermsAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
