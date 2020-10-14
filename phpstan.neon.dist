@@ -5,23 +5,25 @@ parameters:
 		- app
 		- tests
 	bootstrapFiles:
-		- phpstan-bootstrap.php
+		- vendor/codeigniter4/codeigniter4/system/Test/bootstrap.php
 	excludes_analyse:
+		- app/Config/Routes.php
 		- app/Views/*
-		- system/ThirdParty/*
 	ignoreErrors:
-		- '#Access to an undefined property .+\\Entities\\[A-Za-z]+::\$[a-z]+#'
-		- '#Access to an undefined property Faker\\Generator::\$[A-Za-z]+#'
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::add[A-Za-z]+\(\)#'
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::has[A-Za-z]+\(\)#'
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::set[A-Za-z]+\(\)#'
 		- '#Call to an undefined static method Config\\Services::authentication\(\)#'
 		- '#Cannot access property [\$a-z_]+ on (array|object)#'
 		- '#Cannot call method [A-Za-z_]+\(\) on (array|object)#'
+	universalObjectCratesClasses:
+		- CodeIgniter\Entity
+		- Faker\Generator
 	scanDirectories:
 		- system/Helpers
 		- vendor/tatter/alerts/src/Helpers
 		- vendor/myth/auth/src/Helpers
 	dynamicConstantNames:
+		- APP_NAMESPACE
 		- ENVIRONMENT
 		- CI_DEBUG
