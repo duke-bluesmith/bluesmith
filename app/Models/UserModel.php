@@ -1,21 +1,23 @@
 <?php namespace App\Models;
 
+use App\Entities\User;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
+use Myth\Auth\Models\UserModel as MythModel;
+use Myth\Auth\Authorization\GroupModel;
+use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 
-class UserModel extends \Myth\Auth\Models\UserModel
+class UserModel extends MythModel implements PermitsUserModelInterface
 {
-    protected $table = 'users';
+    protected $table      = 'users';
     protected $primaryKey = 'id';
+    protected $returnType = User::class;
 
-    protected $returnType = 'App\Entities\User';
-
-    protected $_allowedFields = ['firstname', 'lastname'];
-
+    protected $_allowedFields   = ['firstname', 'lastname'];
     protected $_validationRules = [];
 
 	/**
-	 * Call the framework constructor then extend the properties.
+	 * Call the framework constructor then add the extended properties.
 	 *
 	 * @param ConnectionInterface $db
 	 * @param ValidationInterface $validation
@@ -28,5 +30,21 @@ class UserModel extends \Myth\Auth\Models\UserModel
 		// Merge properties with parent
 		$this->allowedFields   = array_merge($this->allowedFields,   $this->_allowedFields);
 		$this->validationRules = array_merge($this->validationRules, $this->_validationRules);
+	}
+
+	/**
+	 * Returns groups for a single user.
+	 *
+	 * @param mixed $userId = null
+	 *
+	 * @return stdClass[] Array of group objects
+	 */
+	public function groups($userId = null): array
+	{
+		return model(GroupModel::class)
+			->select('auth_groups.*')
+			->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
+			->where('auth_groups_users.user_id', $userId)
+			->get()->getResultObject();
 	}
 }

@@ -1,10 +1,11 @@
 <?php namespace App\Database\Seeds;
 
+use CodeIgniter\Database\Seeder;
 use Myth\Auth\Authorization\GroupModel;
 use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Models\UserModel;
 
-class AuthSeeder extends \CodeIgniter\Database\Seeder
+class AuthSeeder extends Seeder
 {
 	public function run()
 	{
@@ -26,7 +27,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 		foreach ($rows as $row)
 		{
 			$group = $groups->where('name', $row['name'])->first();
-			
+
 			if (empty($group))
 			{
 				$groups->insert($row);
@@ -44,7 +45,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 		foreach ($rows as $row)
 		{
 			$permission = $permissions->where('name', $row['name'])->first();
-			
+
 			if (empty($permission))
 			{
 				$permissions->insert($row);
@@ -53,7 +54,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 
 		/*** GROUPS_PERMISSIONS ***/
 		// Authorize groups for access to various sections
-		
+
 		// General dashboard access
 		$names = ['Administrators', 'Consultants', 'Editors'];
 		foreach ($names as $name)
@@ -69,7 +70,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 			$authorization->removePermissionFromGroup('manageContent', $name);
 			$authorization->addPermissionToGroup('manageContent', $name);
 		}
-		
+
 		// Job management access
 		$names = ['Administrators', 'Consultants'];
 		foreach ($names as $name)
@@ -77,6 +78,5 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 			$authorization->removePermissionFromGroup('manageJobs', $name);
 			$authorization->addPermissionToGroup('manageJobs', $name);
 		}
-		
 	}
 }
