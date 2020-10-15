@@ -25,7 +25,7 @@ class Content extends BaseController
 	 *
 	 * @return string
 	 */
-	public function page($name = 'Home'): string
+	public function page($name = 'home'): string
 	{
 		// Check for form submission
 		if ($post = $this->request->getPost())

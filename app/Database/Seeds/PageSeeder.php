@@ -8,7 +8,7 @@ class PageSeeder extends \CodeIgniter\Database\Seeder
 	{
 		// Add rows for required pages
 		$pages = new PageModel();
-		foreach (['Home', 'Options', 'TOS', 'Privacy'] as $name)
+		foreach (['home', 'options', 'terms', 'privacy'] as $name)
 		{
 			$page = $pages->where('name', $name)->first();
 

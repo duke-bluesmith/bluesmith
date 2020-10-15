@@ -8,11 +8,11 @@ class CreatePages extends Migration
 	public function up()
 	{
 		$fields = [
-			'name'          => ['type' => 'VARCHAR', 'constraint' => 127],
-			'content'       => ['type' => 'TEXT'],
-			'created_at'    => ['type' => 'DATETIME', 'null' => true],
-			'updated_at'    => ['type' => 'DATETIME', 'null' => true],
-			'deleted_at'    => ['type' => 'DATETIME', 'null' => true],
+			'name'          => ['type' => 'varchar', 'constraint' => 127],
+			'content'       => ['type' => 'text'],
+			'created_at'    => ['type' => 'datetime', 'null' => true],
+			'updated_at'    => ['type' => 'datetime', 'null' => true],
+			'deleted_at'    => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');
