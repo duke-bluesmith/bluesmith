@@ -4,22 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66f1cf22c99bcded0b5c8354cb1237b9",
+    "content-hash": "1fcf8315267d1848f56db4db8717524c",
     "packages": [
         {
-            "name": "bower-asset/sbadmin2",
-            "version": "v4.0.7",
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
-                "url": "git@github.com:BlackrockDigital/startbootstrap-sb-admin-2.git",
-                "reference": "60d24312ca1c3d75738d2b40e552a0495e53dda6"
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "6b8b69261f1aacbb4be037c934f3c3652e6dff27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BlackrockDigital/startbootstrap-sb-admin-2/zipball/60d24312ca1c3d75738d2b40e552a0495e53dda6",
-                "reference": "60d24312ca1c3d75738d2b40e552a0495e53dda6"
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/6b8b69261f1aacbb4be037c934f3c3652e6dff27",
+                "reference": "6b8b69261f1aacbb4be037c934f3c3652e6dff27",
+                "shasum": ""
             },
-            "type": "bower-asset"
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "http://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2020-05-19T20:41:11+00:00"
         },
         {
             "name": "codeigniter4/codeigniter4",
@@ -27,12 +51,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "dc7addc748ed9600d2977f89da52779879242bd1"
+                "reference": "7455ef464688d22156c6376c04a0671f50f9207a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/dc7addc748ed9600d2977f89da52779879242bd1",
-                "reference": "dc7addc748ed9600d2977f89da52779879242bd1",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/7455ef464688d22156c6376c04a0671f50f9207a",
+                "reference": "7455ef464688d22156c6376c04a0671f50f9207a",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +114,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-10-13T05:38:16+00:00"
+            "time": "2020-10-15T15:37:56+00:00"
         },
         {
             "name": "components/jquery",
@@ -206,16 +230,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.14",
+            "version": "1.10.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "bf81c86045d1c3588043827c015b1557cc5ee363"
+                "reference": "547c9ee73fe26c77af09a0ea16419176b1cdbd12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/bf81c86045d1c3588043827c015b1557cc5ee363",
-                "reference": "bf81c86045d1c3588043827c015b1557cc5ee363",
+                "url": "https://api.github.com/repos/composer/composer/zipball/547c9ee73fe26c77af09a0ea16419176b1cdbd12",
+                "reference": "547c9ee73fe26c77af09a0ea16419176b1cdbd12",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +320,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-13T12:44:51+00:00"
+            "time": "2020-10-13T13:59:09+00:00"
         },
         {
             "name": "composer/semver",
@@ -2939,16 +2963,16 @@
         },
         {
             "name": "tatter/permits",
-            "version": "v2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-permits.git",
-                "reference": "f99c8c562fd37f791783103a5938639f143cf267"
+                "reference": "8175c76899dc2240755aa1df3ce67c0361188420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/f99c8c562fd37f791783103a5938639f143cf267",
-                "reference": "f99c8c562fd37f791783103a5938639f143cf267",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/8175c76899dc2240755aa1df3ce67c0361188420",
+                "reference": "8175c76899dc2240755aa1df3ce67c0361188420",
                 "shasum": ""
             },
             "require": {
@@ -2990,7 +3014,7 @@
                 "permission",
                 "rights"
             ],
-            "time": "2020-10-08T22:49:59+00:00"
+            "time": "2020-10-15T14:37:02+00:00"
         },
         {
             "name": "tatter/relations",
@@ -3501,16 +3525,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.5.2",
+            "version": "v4.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "5f2480a90ab911babc53039835fe78c6fc12646d"
+                "reference": "a716fb03f965dc0846df479e14388b1b4b93d7ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5f2480a90ab911babc53039835fe78c6fc12646d",
-                "reference": "5f2480a90ab911babc53039835fe78c6fc12646d",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/a716fb03f965dc0846df479e14388b1b4b93d7ce",
+                "reference": "a716fb03f965dc0846df479e14388b1b4b93d7ce",
                 "shasum": ""
             },
             "replace": {
@@ -3554,7 +3578,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-08-06T16:22:43+00:00"
+            "time": "2020-10-13T15:38:30+00:00"
         }
     ],
     "packages-dev": [

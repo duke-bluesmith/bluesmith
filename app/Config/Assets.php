@@ -36,19 +36,18 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/datatables/js/dataTables.buttons.min.js',
 			'vendor/datatables/js/buttons.html5.min.js',
 			'vendor/datatables/js/buttons.print.min.js',
-			'vendor/sbadmin2/sb-admin-2.min.css',
-			'vendor/sbadmin2/sb-admin-2.min.js',
-		],
-		
+			'vendor/adminlte/js/adminlte.min.js',
+			'vendor/adminlte/css/adminlte.min.css',
+		],		
 		'workflows' => [
-			'vendor/sbadmin2/sb-admin-2.min.css',
-			'vendor/sbadmin2/sb-admin-2.min.js',
+			'vendor/adminlte/js/adminlte.min.js',
+			'vendor/adminlte/css/adminlte.min.css',
 			'vendor/sortablejs/Sortable.min.js',
 		],
 		
 		'actions' => [
-			'vendor/sbadmin2/sb-admin-2.min.css',
-			'vendor/sbadmin2/sb-admin-2.min.js',
+			'vendor/adminlte/js/adminlte.min.js',
+			'vendor/adminlte/css/adminlte.min.css',
 			'vendor/sortablejs/Sortable.min.js',
 		],
 	];
