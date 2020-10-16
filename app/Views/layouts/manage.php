@@ -1,16 +1,4 @@
-<?php
-// Load dependencies
-helper('auth');
-$settings = service('settings');
-$pages    = new \App\Models\PageModel();
-$user     = user();
-
-// Determine active menu items
-$menu    = explode('.', $menu ?? '');
-$menu    = $menu[0];
-$submenu = $menu[1] ?? '';
-
-?><!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -19,20 +7,22 @@ $submenu = $menu[1] ?? '';
 	<!--Mobile meta-data -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<meta name="description" content="Admin dashboard" />
+	<meta name="description" content="Admin Dashboard" />
 	<meta name="keywords" content="admin,dashboard,management" />
-	<meta name="author" content="SBAdmin2" />
+	<meta name="author" content="AdminLTE" />
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-	<title><?= $settings->brandName ?> Admin<?=isset($title)? " | {$title}" : '' ?></title>
+	<title><?= service('settings')->brandName ?> | <?= $header ?? 'Admin' ?></title>
 
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url() ?>assets/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/favicon/favicon-16x16.png">
-	<link rel="manifest" href="<?= base_url() ?>assets/favicon/site.webmanifest">
-	<link rel="mask-icon" href="<?= base_url() ?>assets/favicon/safari-pinned-tab.svg" color="#307093">
+	<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('assets/favicon/apple-touch-icon.png') ?>">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/favicon/favicon-32x32.png') ?>">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/favicon/favicon-16x16.png') ?>">
+	<link rel="manifest" href="<?= base_url('assets/favicon/site.webmanifest') ?>">
+	<link rel="mask-icon" href="<?= base_url('assets/favicon/safari-pinned-tab.svg') ?>" color="#307093">
+	<link rel="shortcut icon" href="<?= base_url('assets/favicon/favicon.ico') ?>">
 	<meta name="msapplication-TileColor" content="#307093">
+	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#307093">
 
 	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
@@ -46,388 +36,240 @@ $submenu = $menu[1] ?? '';
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>
-<body id="page-top">
+<body class="hold-transition sidebar-mini accent-blue">
+<div class="wrapper">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper">
+	<?= service('alerts')->display() ?>
+
+	<!-- Navbar -->
+	<nav class="main-header navbar navbar-expand navbar-blue navbar-light">
+		<!-- Left navbar links -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="<?= base_url() ?>" class="nav-link">Home</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="<?= site_url('manage') ?>" class="nav-link">Dashboard</a>
+			</li>
+		</ul>
+
+		<!-- SEARCH FORM
+		<form class="form-inline ml-3 invisible">
+			<div class="input-group input-group-sm">
+				<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-navbar" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+		-->
+
+		<!-- Right navbar links -->
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /.navbar -->
+
+	<!-- Main Sidebar Container -->
+	<aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<!-- Brand Logo -->
+		<a href="<?= site_url('manage') ?>" class="brand-link">
+			<img src="<?= base_url('assets/images/logo-transparent.png') ?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+			<span class="brand-text font-weight-light"><?= service('settings')->brandName ?></span>
+		</a>
 
 		<!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion d-print-none" id="accordionSidebar">
-
-			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-user-shield"></i>
+		<div class="sidebar sidebar-dark-orange">
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image">
+					<i class="fas fa-user"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3"><?= $settings->brandName ?></div>
-			</a>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item<?= $menu == 'dashboard' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage') ?>">
-					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span>
-				</a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Jobs
-			</div>
-
-			<!-- Nav Item - Methods -->
-			<li class="nav-item<?= $menu == 'jobs' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage/jobs') ?>">
-					<i class="fas fa-th-list"></i>
-					<span>All Jobs</span></a>
-			</li>
-
-			<!-- Nav Item - Materials -->
-			<li class="nav-item<?= $menu == 'action' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage/jobs') ?>">
-					<i class="fas fa-exclamation-circle"></i>
-					<span>Action Items</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Workflows
-			</div>
-
-			<!-- Nav Item - Methods -->
-			<li class="nav-item<?= $menu == 'workflows' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('workflows') ?>">
-					<i class="fas fa-project-diagram"></i>
-					<span>Workflows</span></a>
-			</li>
-
-			<!-- Nav Item - Materials -->
-			<li class="nav-item<?= $menu == 'actions' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('actions') ?>">
-					<i class="fas fa-tasks"></i>
-					<span>Actions</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Reports
-			</div>
-
-			<!-- Nav Item - Charts -->
-			<li class="nav-item">
-				<a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i>
-					<span>Charts</span></a>
-			</li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item">
-				<a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i>
-					<span>Tables</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Content Management
-			</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item<?= $menu == 'pages' ? ' active' : '' ?>">
-				<a class="nav-link<?= $menu == 'pages' ? '' : ' collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="<?= $menu == 'pages' ? 'true' : 'false' ?>" aria-controls="collapseTwo">
-					<i class="fas fa-fw fa-columns"></i>
-					<span>Pages</span>
-				</a>
-				<div id="collapseTwo" class="collapse<?= $menu == 'pages' ? ' show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Available Pages:</h6>
-						
-						<?php foreach ($pages->findAll() as $page): ?>
-						
-						<a class="collapse-item<?= $submenu == $page->name ? ' active' : '' ?>" href="<?= site_url('manage/content/page/' . $page->name) ?>"><?= $page->name ?></a>
-						
-						<?php endforeach; ?>
-
-					</div>
+				<div class="info">
+					<a href="<?= site_url('manage/users/' . user()->id) ?>" class="d-block"><?= user()->username ?></a>
 				</div>
-			</li>
-
-			<!-- Nav Item - Methods -->
-			<li class="nav-item<?= $menu == 'methods' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage/methods') ?>">
-					<i class="fas fa-cubes"></i>
-					<span>Methods</span></a>
-			</li>
-
-			<!-- Nav Item - Materials -->
-			<li class="nav-item<?= $menu == 'materials' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage/materials') ?>">
-					<i class="fas fa-tools"></i>
-					<span>Materials</span></a>
-			</li>
-			
-			<!-- Nav Item - Branding -->
-			<li class="nav-item<?= $menu == 'branding' ? ' active' : '' ?>">
-				<a class="nav-link" href="<?= site_url('manage/content/branding') ?>">
-					<i class="fas fa-fw fa-copyright"></i>
-					<span>Branding</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
-
-			<!-- Sidebar Toggler (Sidebar) -->
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
 
-		</ul>
-		<!-- End of Sidebar -->
-
-		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<!-- Main Content -->
-			<div id="content">
-
-				<!-- Topbar -->
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-print-none">
-
-					<!-- Sidebar Toggle (Topbar) -->
-					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-						<i class="fa fa-bars"></i>
-					</button>
-
-					<!-- Topbar Search -->
-					<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-
-					<!-- Topbar Navbar -->
-					<ul class="navbar-nav ml-auto">
-
-						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-						<li class="nav-item dropdown no-arrow d-sm-none">
-							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-search fa-fw"></i>
-							</a>
-							<!-- Dropdown - Messages -->
-							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-								<form class="form-inline mr-auto w-100 navbar-search">
-									<div class="input-group">
-										<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
-												<i class="fas fa-search fa-sm"></i>
-											</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</li>
-
-						<!-- Nav Item - Alerts -->
-						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-bell fa-fw"></i>
-								<!-- Counter - Alerts -->
-								<span class="badge badge-danger badge-counter">3+</span>
-							</a>
-							<!-- Dropdown - Alerts -->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-								<h6 class="dropdown-header">
-									Alerts Center
-								</h6>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-primary">
-											<i class="fas fa-file-alt text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 12, 2019</div>
-										<span class="font-weight-bold">A new monthly report is ready to download!</span>
-									</div>
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+					<li class="nav-item has-treeview menu-open">
+						<a href="#" class="nav-link has-treeview <?= url_is('manage/jobs*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-th-list"></i>
+							<p>
+								Jobs
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="<?= site_url('manage/jobs') ?>" class="nav-link <?= url_is('manage/jobs') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>All Jobs</p>
 								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-success">
-											<i class="fas fa-donate text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 7, 2019</div>
-										$290.29 has been deposited into your account!
-									</div>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('mnage/jobs/staff') ?>" class="nav-link <?= url_is('manage/jobs/staff') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Action Items</p>
+									<span class="right badge badge-warning">12</span>
 								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-warning">
-											<i class="fas fa-exclamation-triangle text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 2, 2019</div>
-										Spending Alert: We've noticed unusually high spending for your account.
-									</div>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item has-treeview menu-open">
+						<a href="#" class="nav-link has-treeview <?= url_is('workflows*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-project-diagram"></i>
+							<p>
+								Workflows
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="<?= site_url('workflows') ?>" class="nav-link <?= url_is('workflows') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Index</p>
 								</a>
-								<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-							</div>
-						</li>
-
-						<!-- Nav Item - Messages -->
-						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-envelope fa-fw"></i>
-								<!-- Counter - Messages -->
-								<span class="badge badge-danger badge-counter">7</span>
-							</a>
-							<!-- Dropdown - Messages -->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-								<h6 class="dropdown-header">
-									Message Center
-								</h6>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div class="font-weight-bold">
-										<div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-										<div class="small text-gray-500">Emily Fowler · 58m</div>
-									</div>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('actions') ?>" class="nav-link <?= url_is('actions') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Actions</p>
 								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-										<div class="status-indicator"></div>
-									</div>
-									<div>
-										<div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-										<div class="small text-gray-500">Jae Chun · 1d</div>
-									</div>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-header">CONTENT MANAGEMENT</li>
+
+					<li class="nav-item has-treeview menu-open">
+						<a href="#" class="nav-link has-treeview <?= url_is('manage/content/page*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-fw"></i>
+							<p>
+								Pages
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+
+							<?php foreach (model('App\Models\PageModel')->findAll() as $page): ?>
+							<li class="nav-item">
+								<a href="<?= site_url('manage/content/page/' . $page->name) ?>" class="nav-link <?= url_is('manage/content/page/' . $page->name) ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<?= $page->name ?>
 								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-										<div class="status-indicator bg-warning"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-										<div class="small text-gray-500">Morgan Alvarez · 2d</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-										<div class="small text-gray-500">Chicken the Dog · 2w</div>
-									</div>
-								</a>
-								<a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-							</div>
-						</li>
-
-						<div class="topbar-divider d-none d-sm-block"></div>
-
-						<!-- Nav Item - User Information -->
-						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user->username ?></span>
-								<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-							</a>
-							<!-- Dropdown - User Information -->
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-									Profile
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
-								</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?= route_to('logout') ?>">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a>
-							</div>
-						</li>
-
-					</ul>
-
-				</nav>
-				<!-- End of Topbar -->
-				
-				<?= service('alerts')->display() ?>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-					<?= $this->renderSection('main') ?>
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>&copy; <?=date('Y') ?> <?= $settings->orgName ?></span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
-
-		</div>
-		<!-- End of Content Wrapper -->
-
-	</div>
-	<!-- End of Page Wrapper -->
-
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top">
-		<i class="fas fa-angle-up"></i>
-	</a>
+							</li>
+							<?php endforeach; ?>
 	
-	<script>
-		var baseUrl = "<?= base_url() ?>";
-		var siteUrl = "<?= site_url('manage') ?>";
-		var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
-	</script>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a href="<?= site_url('manage/methods') ?>" class="nav-link <?= url_is('manage/methods*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-cubes"></i>
+							<p>
+								Methods
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= site_url('manage/materials') ?>" class="nav-link <?= url_is('manage/materials*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-tools"></i>
+							<p>
+								Materials
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= site_url('manage/content/branding') ?>" class="nav-link <?= url_is('manage/content/branding*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-copyright"></i>
+							<p>
+								Branding
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+	</aside>
 
-	<?= service('assets')->js() ?>
-	<?= $this->renderSection('footerAssets') ?>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0 text-dark"><?= $header ?? '' ?></h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item active">Starter Page</li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<div class="content">
+			<div class="container-fluid text-dark">
+
+			<?= $this->renderSection('main') ?>
+
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+		<div class="p-3">
+			<h5>Title</h5>
+			<p>Sidebar content</p>
+		</div>
+	</aside>
+	<!-- /.control-sidebar -->
+
+	<!-- Main Footer -->
+	<footer class="main-footer">
+		<!-- To the right -->
+		<div class="float-right d-none d-sm-inline mr-4">
+			Get Fit. Raise Money.
+		</div>
+		<!-- Default to the left -->
+		<strong>Copyright &copy; <?=date('Y') ?> <?= service('settings')->orgName ?></strong>
+	</footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<script>
+	var baseUrl = "<?= base_url() ?>";
+	var siteUrl = "<?= site_url('manage') ?>";
+	var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
+</script>
+
+<?= service('assets')->js() ?>
+
+<?= $this->renderSection('footerAssets') ?>
 
 </body>
 </html>

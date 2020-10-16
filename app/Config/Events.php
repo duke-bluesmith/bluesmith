@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
@@ -49,4 +51,13 @@ Events::on('pre_system', function () {
 		Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
 		Services::toolbar()->respond();
 	}
+});
+
+/**
+ * Loads helpers we want available globally.
+ *
+ * @see BaseController::$helpers for slightly less global
+ */
+Events::on('post_controller_constructor', function () {
+	helper(['alerts', 'auth']);
 });
