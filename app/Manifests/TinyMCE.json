@@ -7,6 +7,11 @@
 			"filter": "#\\.js$#"
 		},
 		{
+			"source": "icons",
+			"destination": "icons",
+			"recursive": true
+		},
+		{
 			"source": "plugins",
 			"destination": "plugins",
 			"recursive": true

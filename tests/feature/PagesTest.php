@@ -20,9 +20,9 @@ class PagesTest extends FeatureTestCase
 		$result->assertSee('Services and Pricing', 'h3');
 	}
 
-	public function testAboutTOS()
+	public function testAboutTerms()
 	{
-		$result = $this->get('about/tos');
+		$result = $this->get('about/terms');
 
 		$result->assertStatus(200);
 		$result->assertSee('Contract of agreement', 'h3');

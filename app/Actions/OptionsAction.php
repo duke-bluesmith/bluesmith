@@ -9,7 +9,7 @@ class OptionsAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Define',
 		'name'     => 'Print Options',
 		'uid'      => 'options',

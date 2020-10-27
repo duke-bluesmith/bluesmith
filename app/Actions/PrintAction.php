@@ -10,7 +10,7 @@ class PrintAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Process',
 		'name'     => 'Print',
 		'uid'      => 'print',

@@ -10,7 +10,7 @@ class PrepayAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Define',
 		'name'     => 'Prepay',
 		'uid'      => 'prepay',

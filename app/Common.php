@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\User;
 use App\Models\UserModel;
 use Config\Services;
 
@@ -23,14 +24,14 @@ if (! function_exists('user'))
 	/**
 	 * Returns the User instance for the current logged in user.
 	 *
-	 * @return \App\Entities\User|null
+	 * @return User|null
 	 */
-	function user()
+	function user(): ?User
 	{
 		$authenticate = Services::authentication();
 		if ($authenticate->check())
 		{
-			return (new UserModel())->find($authenticate->id());
+			return model(UserModel::class)->find($authenticate->id());
 		}
 
 		return null;

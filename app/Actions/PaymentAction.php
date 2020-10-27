@@ -10,7 +10,7 @@ class PaymentAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Complete',
 		'name'     => 'Payment',
 		'uid'      => 'payment',

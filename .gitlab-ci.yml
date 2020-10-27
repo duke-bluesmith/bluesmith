@@ -25,4 +25,4 @@ test:app:
     - codeigniter4
 
   script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --verbose --coverage-text

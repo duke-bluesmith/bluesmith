@@ -10,7 +10,7 @@ class EstimateAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Assess',
 		'name'     => 'Estimate',
 		'uid'      => 'estimate',

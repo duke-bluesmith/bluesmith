@@ -10,7 +10,7 @@ class ApproveAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Assess',
 		'name'     => 'Approve',
 		'uid'      => 'approve',

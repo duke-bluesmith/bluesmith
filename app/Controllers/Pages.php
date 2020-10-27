@@ -5,11 +5,9 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
 {
-	public function show($page = 'home')
+	public function show($name = 'home')
 	{
-		$page = (new PageModel())->where('name', $page)->first();
-		
-		if (empty($page))
+		if (! $page = model(PageModel::class)->where('name', $name)->first())
 		{
 			 throw PageNotFoundException::forPageNotFound();
 		}

@@ -8,7 +8,7 @@ class FilesAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Define',
 		'name'     => 'Files',
 		'uid'      => 'files',

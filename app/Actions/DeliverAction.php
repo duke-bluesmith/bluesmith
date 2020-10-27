@@ -10,7 +10,7 @@ class DeliverAction extends BaseAction
 	/**
 	 * @var array<string, string>
 	 */
-	protected $attributes = [
+	public $attributes = [
 		'category' => 'Complete',
 		'name'     => 'Deliver',
 		'uid'      => 'deliver',
