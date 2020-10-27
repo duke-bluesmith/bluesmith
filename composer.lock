@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fcf8315267d1848f56db4db8717524c",
+    "content-hash": "a314b05b0960c712175b93deb3dd5e93",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2358,31 +2358,29 @@
         },
         {
             "name": "tatter/addins",
-            "version": "v1.3.3",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-addins.git",
-                "reference": "3dcb8e82fc1b60c5759fd845c3fe4ce95c10e9c6"
+                "reference": "2bcdd6c12147480339e16e1f39b01e7ab813c312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/3dcb8e82fc1b60c5759fd845c3fe4ce95c10e9c6",
-                "reference": "3dcb8e82fc1b60c5759fd845c3fe4ce95c10e9c6",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/2bcdd6c12147480339e16e1f39b01e7ab813c312",
+                "reference": "2bcdd6c12147480339e16e1f39b01e7ab813c312",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "tatter/accounts": "^1.0",
-                "tatter/agents": "^1.0",
+                "tatter/agents": "^1.1",
                 "tatter/alerts": "^2.0",
                 "tatter/assets": "^2.0",
                 "tatter/audits": "^1.0",
-                "tatter/handlers": "^1.0",
+                "tatter/outbox": "^1.0",
                 "tatter/patches": "^1.0",
                 "tatter/permits": "^2.0",
                 "tatter/relations": "^2.0",
-                "tatter/reports": "^1.0",
-                "tatter/schemas": "^2.0",
+                "tatter/reports": "^1.1",
                 "tatter/settings": "^1.0",
                 "tatter/themes": "^1.0",
                 "tatter/visits": "^1.0"
@@ -2408,37 +2406,44 @@
             "description": "Meta-package of Tatter modules for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-addins",
             "keywords": [
+                "addins",
                 "codeigniter",
                 "codeigniter4",
                 "libraries",
                 "modules",
                 "packages",
+                "suite",
                 "tatter",
                 "tattersoftware"
             ],
-            "time": "2020-05-30T13:32:41+00:00"
+            "time": "2020-09-18T00:14:51+00:00"
         },
         {
             "name": "tatter/agents",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-agents.git",
-                "reference": "d9295d62ec2e626a7160dbe0b1abca9f68b3c50a"
+                "reference": "1c18955d01a37851d867debd8848ec71bb014bf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-agents/zipball/d9295d62ec2e626a7160dbe0b1abca9f68b3c50a",
-                "reference": "d9295d62ec2e626a7160dbe0b1abca9f68b3c50a",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-agents/zipball/1c18955d01a37851d867debd8848ec71bb014bf0",
+                "reference": "1c18955d01a37851d867debd8848ec71bb014bf0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
-                "tatter/handlers": "^1.0",
-                "tatter/reports": "^1.0"
+                "php": ">=7.2",
+                "tatter/handlers": "^2.0",
+                "tatter/reports": "^1.1"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -2462,14 +2467,14 @@
             "homepage": "https://github.com/tattersoftware/codeigniter4-agents",
             "keywords": [
                 "Agent",
-                "assess",
                 "checkup",
                 "codeigniter",
                 "codeigniter4",
+                "health",
                 "monitor",
                 "service"
             ],
-            "time": "2019-09-18T18:44:43+00:00"
+            "time": "2020-09-17T02:07:26+00:00"
         },
         {
             "name": "tatter/alerts",
@@ -2685,24 +2690,29 @@
         },
         {
             "name": "tatter/exports",
-            "version": "v1.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-exports.git",
-                "reference": "17a5c755326fe5aec6f00845de4dc04c2a78891f"
+                "reference": "61c3b4fdf93388f320abf21a71579837922ba9d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-exports/zipball/17a5c755326fe5aec6f00845de4dc04c2a78891f",
-                "reference": "17a5c755326fe5aec6f00845de4dc04c2a78891f",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-exports/zipball/61c3b4fdf93388f320abf21a71579837922ba9d0",
+                "reference": "61c3b4fdf93388f320abf21a71579837922ba9d0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
-                "tatter/handlers": "^1.0"
+                "php": ">=7.2",
+                "tatter/handlers": "^2.0"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -2730,37 +2740,49 @@
                 "exports",
                 "files",
                 "send",
-                "share"
+                "share",
+                "social"
             ],
-            "time": "2019-08-12T18:35:52+00:00"
+            "time": "2020-10-19T18:46:36+00:00"
         },
         {
             "name": "tatter/files",
-            "version": "v1.1.1",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-files.git",
-                "reference": "18e3e67682a4ecf5422600f8e66c4bc3ec5c39c8"
+                "reference": "91544b167470e30f27ef5eb2fa7b2f912333edc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/18e3e67682a4ecf5422600f8e66c4bc3ec5c39c8",
-                "reference": "18e3e67682a4ecf5422600f8e66c4bc3ec5c39c8",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/91544b167470e30f27ef5eb2fa7b2f912333edc3",
+                "reference": "91544b167470e30f27ef5eb2fa7b2f912333edc3",
                 "shasum": ""
             },
             "require": {
-                "enyo/dropzone": "^5.5",
-                "php": "^7.0",
+                "components/jquery": "^3.3",
+                "enyo/dropzone": "^5.7",
+                "fortawesome/font-awesome": "^5.8",
+                "php": ">=7.2",
                 "tatter/alerts": "^2.0",
+                "tatter/assets": "^2.2",
                 "tatter/audits": "^1.0",
-                "tatter/exports": "^1.0",
-                "tatter/handlers": "^1.0",
+                "tatter/exports": "^2.0",
                 "tatter/permits": "^2.0",
                 "tatter/settings": "^1.0",
-                "tatter/thumbnails": "^1.1"
+                "tatter/thumbnails": "^1.2",
+                "twbs/bootstrap": "^4.5"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "antecedent/patchwork": "^2.1",
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "mikey179/vfsstream": "^1.6",
+                "myth/auth": "dev-develop",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -2789,7 +2811,7 @@
                 "files",
                 "uploads"
             ],
-            "time": "2019-12-04T16:45:31+00:00"
+            "time": "2020-10-16T15:23:21+00:00"
         },
         {
             "name": "tatter/forms",
@@ -2867,23 +2889,28 @@
         },
         {
             "name": "tatter/handlers",
-            "version": "v1.0.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-handlers.git",
-                "reference": "b0df512b594364c79fa45b6407d06320faa5b73c"
+                "reference": "50c75ec231319add4f4c804a48e0f37755dc8cf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-handlers/zipball/b0df512b594364c79fa45b6407d06320faa5b73c",
-                "reference": "b0df512b594364c79fa45b6407d06320faa5b73c",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-handlers/zipball/50c75ec231319add4f4c804a48e0f37755dc8cf2",
+                "reference": "50c75ec231319add4f4c804a48e0f37755dc8cf2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -2907,13 +2934,75 @@
             "homepage": "https://github.com/tattersoftware/codeigniter4-handlers",
             "keywords": [
                 "adapters",
+                "autoload",
                 "codeigniter",
                 "codeigniter4",
                 "drivers",
                 "handlers",
                 "modules"
             ],
-            "time": "2019-08-27T19:05:17+00:00"
+            "time": "2020-09-28T19:18:02+00:00"
+        },
+        {
+            "name": "tatter/outbox",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tattersoftware/codeigniter4-outbox.git",
+                "reference": "c83a92f2f1bb07c483250726282ccfa1967044a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-outbox/zipball/c83a92f2f1bb07c483250726282ccfa1967044a9",
+                "reference": "c83a92f2f1bb07c483250726282ccfa1967044a9",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": "^3.3",
+                "php": ">=7.2",
+                "tatter/assets": "^2.2",
+                "tijsverkoyen/css-to-inline-styles": "^2.2",
+                "twbs/bootstrap": "^4.5"
+            },
+            "require-dev": {
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "mikey179/vfsstream": "^1.6",
+                "myth/auth": "dev-develop",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tatter\\Outbox\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Gatner",
+                    "email": "mgatner@tattersoftware.com",
+                    "homepage": "https://tattersoftware.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Email toolkit for CodeIgniter 4",
+            "homepage": "https://github.com/tattersoftware/codeigniter4-outbox",
+            "keywords": [
+                "codeigniter",
+                "codeigniter4",
+                "email",
+                "inline",
+                "logging",
+                "outbox"
+            ],
+            "time": "2020-10-26T19:50:33+00:00"
         },
         {
             "name": "tatter/patches",
@@ -3080,23 +3169,29 @@
         },
         {
             "name": "tatter/reports",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-reports.git",
-                "reference": "aec63a9d9dc9192dd70fc8caa027d3892f62e436"
+                "reference": "a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-reports/zipball/aec63a9d9dc9192dd70fc8caa027d3892f62e436",
-                "reference": "aec63a9d9dc9192dd70fc8caa027d3892f62e436",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-reports/zipball/a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a",
+                "reference": "a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": ">=7.2",
+                "tatter/handlers": "^2.0"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -3124,7 +3219,7 @@
                 "reporting",
                 "reports"
             ],
-            "time": "2019-05-20T18:40:41+00:00"
+            "time": "2020-09-10T20:01:17+00:00"
         },
         {
             "name": "tatter/schemas",
@@ -3277,24 +3372,30 @@
         },
         {
             "name": "tatter/thumbnails",
-            "version": "v1.1.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-thumbnails.git",
-                "reference": "32a35ce99b16ef6d10de7dd60b54bdcd87e18aba"
+                "reference": "4b6ffed154cae448ba3b746f16afbc20cdc48110"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-thumbnails/zipball/32a35ce99b16ef6d10de7dd60b54bdcd87e18aba",
-                "reference": "32a35ce99b16ef6d10de7dd60b54bdcd87e18aba",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-thumbnails/zipball/4b6ffed154cae448ba3b746f16afbc20cdc48110",
+                "reference": "4b6ffed154cae448ba3b746f16afbc20cdc48110",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
-                "tatter/handlers": "^1.0"
+                "php": ">=7.2",
+                "tatter/handlers": "^2.0"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "codeigniter4/codeigniter4-standard": "^1.0",
+                "fzaninotto/faker": "^1.9@dev",
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -3323,7 +3424,7 @@
                 "images",
                 "thumbs"
             ],
-            "time": "2019-08-09T02:59:02+00:00"
+            "time": "2020-10-01T19:30:20+00:00"
         },
         {
             "name": "tatter/visits",
@@ -3376,16 +3477,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.0.2",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "f50ee0badec209c7580ff39d52796d19a2f796a8"
+                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/f50ee0badec209c7580ff39d52796d19a2f796a8",
-                "reference": "f50ee0badec209c7580ff39d52796d19a2f796a8",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/4d8af4b43d27bf729cff2e8094868825c465107d",
+                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d",
                 "shasum": ""
             },
             "require": {
@@ -3396,6 +3497,7 @@
                 "tatter/alerts": "^2.0",
                 "tatter/assets": "^2.0",
                 "tatter/audits": "^1.0",
+                "tatter/handlers": "^2.0",
                 "twbs/bootstrap": "^4.3"
             },
             "require-dev": {
@@ -3432,7 +3534,7 @@
                 "jobs",
                 "workflows"
             ],
-            "time": "2020-09-04T15:40:16+00:00"
+            "time": "2020-10-14T17:41:28+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3590,6 +3692,41 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "codeigniter4/codeigniter4-standard",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bcit-ci/CodeIgniter4-Standard.git",
+                "reference": "4fd1f9c78803bc7f20126729cced63c7e623946d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter4-Standard/zipball/4fd1f9c78803bc7f20126729cced63c7e623946d",
+                "reference": "4fd1f9c78803bc7f20126729cced63c7e623946d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Louis Linehan",
+                    "email": "louis.linehan@gmail.com",
+                    "homepage": "https://github.com/louisl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CodeIgniter 4 Standard for PHP_CodeSniffer 3.",
+            "time": "2017-12-12T08:31:33+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.3.1",
@@ -5081,6 +5218,57 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.5.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2020-10-23T02:01:07+00:00"
         },
         {
             "name": "theseer/tokenizer",
