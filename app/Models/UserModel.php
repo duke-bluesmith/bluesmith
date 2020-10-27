@@ -36,7 +36,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 	 *
 	 * @param mixed $userId = null
 	 *
-	 * @return stdClass[] Array of group objects
+	 * @return \stdClass[] Array of group objects
 	 */
 	public function groups($userId = null): array
 	{
