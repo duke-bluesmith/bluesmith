@@ -125,8 +125,9 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-open">
-						<a href="#" class="nav-link has-treeview <?= url_is('workflows*') ? 'active' : '' ?>">
+
+					<li class="nav-item has-treeview  <?= url_is('workflows*') || url_is('actions*') ? 'menu-open' : '' ?>">
+						<a href="#" class="nav-link has-treeview <?= url_is('workflows*') || url_is('actions*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-project-diagram"></i>
 							<p>
 								Workflows
@@ -151,7 +152,7 @@
 
 					<li class="nav-header">CONTENT MANAGEMENT</li>
 
-					<li class="nav-item has-treeview menu-open">
+					<li class="nav-item has-treeview <?= url_is('emails/templates*') ? 'menu-open' : '' ?>">
 						<a href="#" class="nav-link has-treeview <?= url_is('emails/templates*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-inbox"></i>
 							<p>
@@ -177,9 +178,9 @@
 						</ul>
 					</li>
 
-					<li class="nav-item has-treeview menu-open">
+					<li class="nav-item has-treeview <?= url_is('manage/content/page*') ? 'menu-open' : '' ?>">
 						<a href="#" class="nav-link has-treeview <?= url_is('manage/content/page*') ? 'active' : '' ?>">
-							<i class="nav-icon fas fa-fw"></i>
+							<i class="nav-icon fas fa-file-alt"></i>
 							<p>
 								Pages
 								<i class="right fas fa-angle-left"></i>
@@ -191,7 +192,7 @@
 							<li class="nav-item">
 								<a href="<?= site_url('manage/content/page/' . $page->name) ?>" class="nav-link <?= url_is('manage/content/page/' . $page->name) ? 'active' : '' ?>">
 									<i class="far fa-circle nav-icon"></i>
-									<?= $page->name ?>
+									<?= ucfirst($page->name) ?>
 								</a>
 							</li>
 							<?php endforeach; ?>
@@ -201,28 +202,19 @@
 					<li class="nav-item">
 						<a href="<?= site_url('manage/methods') ?>" class="nav-link <?= url_is('manage/methods*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-cubes"></i>
-							<p>
-								Methods
-								<i class="right fas fa-angle-left"></i>
-							</p>
+							<p>Methods</p>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= site_url('manage/materials') ?>" class="nav-link <?= url_is('manage/materials*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-tools"></i>
-							<p>
-								Materials
-								<i class="right fas fa-angle-left"></i>
-							</p>
+							<p>Materials</p>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= site_url('manage/content/branding') ?>" class="nav-link <?= url_is('manage/content/branding*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-copyright"></i>
-							<p>
-								Branding
-								<i class="right fas fa-angle-left"></i>
-							</p>
+							<p>Branding</p>
 						</a>
 					</li>
 				</ul>
