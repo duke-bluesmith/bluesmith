@@ -17,23 +17,3 @@ use Config\Services;
  *
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
-
-// Define our own user() function to return the extended entity
-if (! function_exists('user'))
-{
-	/**
-	 * Returns the User instance for the current logged in user.
-	 *
-	 * @return User|null
-	 */
-	function user(): ?User
-	{
-		$authenticate = Services::authentication();
-		if ($authenticate->check())
-		{
-			return model(UserModel::class)->find($authenticate->id());
-		}
-
-		return null;
-	}
-}
