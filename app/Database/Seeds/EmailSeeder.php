@@ -55,7 +55,7 @@ class EmailSeeder extends BaseSeeder
 		$templates = [
 			[
 				'name'    => 'Job Invite',
-				'subject' => lang('Actions.inviteSubject', ['{issuer_name}']),
+				'subject' => lang('Invite.subject', ['{issuer_name}']),
 				'body'    => view('emails/seeds/JobInvite'),
 				'tokens'  => 'issuer_name,accept_url',
 			],

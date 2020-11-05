@@ -4,17 +4,17 @@ use CodeIgniter\Model;
 
 class BaseModel extends Model
 {
+	// Traits
+	use \Tatter\Audits\Traits\AuditsTrait;
+	use \Tatter\Permits\Traits\PermitsTrait;
+	use \Tatter\Relations\Traits\ModelTrait;
+
 	// Core defaults
 	protected $primaryKey     = 'id';
 	protected $returnType     = 'object';
 	protected $useTimestamps  = true;
 	protected $useSoftDeletes = true;
 	protected $skipValidation = false;
-
-	// Traits
-	use \Tatter\Audits\Traits\AuditsTrait;
-	use \Tatter\Permits\Traits\PermitsTrait;
-	use \Tatter\Relations\Traits\ModelTrait;
 
 	// Audits
 	protected $afterInsert = ['auditInsert'];

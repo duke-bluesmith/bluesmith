@@ -8,7 +8,7 @@ class User extends \Myth\Auth\Entities\User
 	protected $primaryKey = 'id';
 
 	/**
-	 * Return a full name: "first last"
+	 * Return a full name: "First Last"
 	 *
 	 * @return string
 	 */

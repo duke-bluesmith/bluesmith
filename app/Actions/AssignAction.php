@@ -1,6 +1,7 @@
 <?php namespace App\Actions;
 
 use App\Entities\Job;
+use App\Exceptions\InviteException;
 use App\Models\UserModel;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\BaseAction;
@@ -99,13 +100,14 @@ class AssignAction extends BaseAction
 		// Email address not found - send an invitation
 		else
 		{
-			if ($this->job->invite($email))
+			try
 			{
-				alert('success', lang('Actions.inviteSuccess', [$email]));
+				$this->job->invite($email);
+				alert('success', lang('Invite.success', [$email]));
 			}
-			else
+			catch (InviteException $e)
 			{
-				alert('error', lang('Actions.inviteFail'));
+				alert('error', lang('Invite.fail', [$email, $e->getMessage()]));
 			}
 		}
 
@@ -117,11 +119,11 @@ class AssignAction extends BaseAction
 	{
 		if ($userId = service('request')->getPost('user_id'))
 		{
-		
+			/** @todo */
 		}
 		elseif ($inviteId = service('request')->getPost('invite_id'))
 		{
-		
+			/** @todo */
 		}
 		else
 		{

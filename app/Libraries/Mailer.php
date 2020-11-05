@@ -2,6 +2,7 @@
 
 use App\Entities\User;
 use CodeIgniter\Email\Email;
+use Myth\Auth\Authentication\Activators\EmailActivator;
 use Tatter\Outbox\Models\TemplateModel;
 use Tatter\Outbox\Outbox;
 
@@ -55,7 +56,12 @@ class Mailer
 			'issuer_name' => $issuer->name,
 			'accept_url'  => site_url('emails/invite/' . $token),
 		]);
-		$email->setTo($recipient);
+
+		// Use the Auth activator email settings, if available
+		$email->setFrom(
+			$config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
+			$config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName)
+		->setTo($recipient);
 
 		self::send($email);
 	}
