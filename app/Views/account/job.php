@@ -115,13 +115,13 @@
 
 <?php
 // Display the Files card view partial
-helper('files');
+helper(['files', 'handlers']);
 $data = [
 	'files'   => $job->files,
 	'access'  => 'display',
-	'exports' => (new Tatter\Exports\Models\ExportModel())->getByExtensions(),
+	'exports' => handlers('Exports')->findAll(),
 ];
-echo view('Tatter\Files\Views\\formats\\cards', $data)
+echo view('Tatter\Files\Views\Formats\\cards', $data)
 ?>
 
 

@@ -18,16 +18,19 @@
 			
 			<div class="col">
 
-				<?= view('Tatter\Files\Views\formats\select', ['files' => $files, 'selected' => $job->relations('files', true)]) ?>
+				<?= view('Tatter\Files\Views\Formats\select', ['files' => $files, 'selected' => $job->relations('files', true)]) ?>
 				
 			</div>
 		</div>
 			
 	<?= form_close() ?>
+
+	<?= view('Tatter\Files\Views\Dropzone\modal') ?>
+</div>
+
+<?= $this->endSection() ?>
+<?= $this->section('footerAssets') ?>
 	
 	<?= view(config('Files')->views['dropzone']) ?>
-
-	<?= view('Tatter\Files\Views\dropzone\modal') ?>
-</div>
 
 <?= $this->endSection() ?>
