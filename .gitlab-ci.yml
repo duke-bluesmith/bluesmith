@@ -5,24 +5,30 @@ cache:
   - vendor/
 
 before_script:
-# Sanity checks
-- hostname
-- whoami
-- pwd
-- git --version
-- composer --version
-- php --version
+  # Sanity checks
+  - hostname
+  - whoami
+  - pwd
+  - git --version
+  - composer --version
+  - php --version
 
-# Inject PHPUnit configuration
-- cp "$PHP_UNIT_XML" ./phpunit.xml
+  # Inject PHPUnit configuration
+  - cp "$PHP_UNIT_XML" ./phpunit.xml
 
-# Install composer dependencies
-- composer install --no-progress --no-suggest --no-interaction --prefer-dist --optimize-autoloader
+  # Install composer dependencies
+  - composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+analyze:app:
+  tags: 
+    - ubuntu18
+    - codeigniter4
+  script:
+  - vendor/bin/phpstan analyze
 
 test:app:
   tags: 
     - ubuntu18
     - codeigniter4
-
   script:
   - vendor/bin/phpunit --verbose --coverage-text
