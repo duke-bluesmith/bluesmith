@@ -2,10 +2,57 @@
 	"name": "bluesmith/bluesmith",
 	"type": "project",
 	"description": "3D print job management",
+	"keywords": [
+		"codeigniter",
+		"codeigniter4",
+		"bluesmith",
+		"workflow",
+		"management",
+		"3d",
+		"printing"
+	],
 	"homepage": "https://bluesmith.oit.duke.edu",
 	"license": "Mozilla Public License Version 2.0",
-	"minimum-stability": "dev",
-	"prefer-stable": true,
+	"authors": [
+		{
+			"name": "Matthew Gatner",
+			"email": "msg8@duke.edu",
+			"homepage": "https://duke.edu",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.2",
+		"almasaeed2010/adminlte": "^3.0",
+		"codeigniter4/codeigniter4": "dev-develop",
+		"components/jquery": "^3.3",
+		"enyo/dropzone": "^5.5",
+		"fortawesome/font-awesome": "^5.8",
+		"myth/auth": "dev-develop",
+		"nnnick/chartjs": "^2.8",
+		"peekleon/datatables-all": "^1.10",
+		"tatter/addins": "^2.0",
+		"tatter/chat": "^1.0",
+		"tatter/files": "^2.0",
+		"tatter/forms": "dev-develop",
+		"tatter/workflows": "^3.0",
+		"tinymce/tinymce": "^5.0",
+		"twbs/bootstrap": "^4.3"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.0",
+		"tatter/tools": "^1.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Organization\\Name\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\Support\\": "tests/_support"
+		}
+	},
 	"repositories": [
 		{
 			"type": "vcs",
@@ -24,46 +71,14 @@
 			"url": "https://asset-packagist.org"
 		}
 	],
-	"require": {
-		"php": ">=7.2",
-		"codeigniter4/codeigniter4": "dev-develop",
-		"myth/auth": "dev-develop",
-		"tatter/addins": "^2.0",
-		"tatter/chat": "^1.0",
-		"tatter/files": "^2.0",
-		"tatter/forms": "dev-develop",
-		"tatter/workflows": "^3.0",
-		"twbs/bootstrap": "^4.3",
-		"components/jquery": "^3.3",
-		"enyo/dropzone": "^5.5",
-		"fortawesome/font-awesome": "^5.8",
-		"almasaeed2010/adminlte": "^3.0",
-		"datatables/datatables": "^1.10",
-		"nnnick/chartjs": "^2.8",
-		"peekleon/datatables-all": "^1.10",
-		"tinymce/tinymce": "^5.0",
-		"tijsverkoyen/css-to-inline-styles": "^2.2"
-	},
-	"require-dev": {
-		"fzaninotto/faker": "^1.9@dev",
-		"mikey179/vfsstream": "^1.6",
-		"phpunit/phpunit": "^8.5",
-		"phpstan/phpstan": "^0.12",
-		"squizlabs/php_codesniffer": "^3.5",
-		"codeigniter4/codeigniter4-standard": "^1.0"
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Tests\\Support\\": "tests/_support"
-		}
-	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"scripts": {
-		"analyze": "phpstan analyze",
-		"style": "phpcbf --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4 app/ tests/",
-		"test": "phpunit",
 		"post-update-cmd": [
-			"composer dump-autoload",
 			"php spark assets:publish"
-		]
+		],
+		"analyze": "phpstan analyze",
+		"style": "phpcbf --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4 tests/ app/",
+		"test": "phpunit"
 	}
 }
