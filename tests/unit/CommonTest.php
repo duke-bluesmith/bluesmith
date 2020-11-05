@@ -12,6 +12,7 @@ class CommonTest extends DatabaseTestCase
 	{
 		parent::setUp();
 
+		$this->resetAuthServices();
 		helper('auth');
 	}
 
