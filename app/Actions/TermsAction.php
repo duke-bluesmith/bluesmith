@@ -34,7 +34,7 @@ class TermsAction extends BaseAction
 	
 	public function post()
 	{
-		$data = $this->request->getPost();
+		$data = service('request')->getPost();
 		
 		if (empty($data['accept']))
 		{

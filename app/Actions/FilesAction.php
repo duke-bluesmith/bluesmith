@@ -43,7 +43,7 @@ class FilesAction extends BaseAction
 	
 	public function post()
 	{
-		$data = $this->request->getPost();
+		$data = service('request')->getPost();
 
 		// Harvest file IDs
 		$action = '';

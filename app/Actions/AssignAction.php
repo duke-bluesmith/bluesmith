@@ -65,7 +65,7 @@ class AssignAction extends BaseAction
 	public function put()
 	{
 		// All we care about is a valid email address
-		$email = $this->request->getPost('email');
+		$email = service('request')->getPost('email');
 		$validation = service('validation');
 
 		// Check for a legit email
@@ -115,11 +115,11 @@ class AssignAction extends BaseAction
 	// Remove a user or an invitation
 	public function delete()
 	{
-		if ($userId = $this->request->getPost('user_id'))
+		if ($userId = service('request')->getPost('user_id'))
 		{
 		
 		}
-		elseif ($inviteId = $this->request->getPost('invite_id'))
+		elseif ($inviteId = service('request')->getPost('invite_id'))
 		{
 		
 		}
