@@ -152,6 +152,32 @@
 					<li class="nav-header">CONTENT MANAGEMENT</li>
 
 					<li class="nav-item has-treeview menu-open">
+						<a href="#" class="nav-link has-treeview <?= url_is('emails/templates*') ? 'active' : '' ?>">
+							<i class="nav-icon fas fa-inbox"></i>
+							<p>
+								Email
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+
+							<li class="nav-item">
+								<a href="<?= site_url('emails/templates') ?>" class="nav-link <?= url_is('emails/templates') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>List Templates</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('emails/templates/new') ?>" class="nav-link <?= url_is('emails/templates/new*') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Add Template</p>
+								</a>
+							</li>
+
+						</ul>
+					</li>
+
+					<li class="nav-item has-treeview menu-open">
 						<a href="#" class="nav-link has-treeview <?= url_is('manage/content/page*') ? 'active' : '' ?>">
 							<i class="nav-icon fas fa-fw"></i>
 							<p>
