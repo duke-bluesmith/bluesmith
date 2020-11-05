@@ -13,6 +13,7 @@ class InitialSeeder extends Seeder
 			'Tatter\Settings\Database\Seeds\SettingsSeeder',
 			'Tatter\Themes\Database\Seeds\ThemeSeeder',
 			'Tatter\Files\Database\Seeds\FileSeeder',
+			'Tatter\Outbox\Database\Seeds\TemplateSeeder',
 			'App\Database\Seeds\AuthSeeder',
 			'App\Database\Seeds\PageSeeder',
 			'App\Database\Seeds\OptionSeeder',
