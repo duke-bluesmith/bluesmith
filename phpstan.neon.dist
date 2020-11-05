@@ -13,7 +13,6 @@ parameters:
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::add[A-Za-z]+\(\)#'
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::has[A-Za-z]+\(\)#'
 		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::set[A-Za-z]+\(\)#'
-		- '#Call to an undefined static method Config\\Services::authentication\(\)#'
 		- '#Cannot access property [\$a-z_]+ on (array|object)#'
 		- '#Cannot call method [A-Za-z_]+\(\) on (array|object)#'
 	universalObjectCratesClasses:
