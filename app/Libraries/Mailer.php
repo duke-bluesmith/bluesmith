@@ -4,7 +4,6 @@ use App\Entities\User;
 use CodeIgniter\Email\Email;
 use Myth\Auth\Authentication\Activators\EmailActivator;
 use Tatter\Outbox\Models\TemplateModel;
-use Tatter\Outbox\Outbox;
 
 /**
  * Mailer Class
@@ -50,7 +49,7 @@ class Mailer
 		$template = model(TemplateModel::class)->findByName('Job Invite');
 
 		// Prep Email to our Template
-		$email = Outbox::fromTemplate($template, [
+		$email = $template->email([
 			'title'       => 'Job invitation',
 			'preview'     => 'Collaborate with ' . $issuer->firstname,
 			'issuer_name' => $issuer->name,

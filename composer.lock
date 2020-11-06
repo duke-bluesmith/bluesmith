@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "92a0e1cfade073b5e364c5837a88b814fe68d52f"
+                "reference": "d3045229125e7e9d3d486ffd688eee1fde6ecdf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/92a0e1cfade073b5e364c5837a88b814fe68d52f",
-                "reference": "92a0e1cfade073b5e364c5837a88b814fe68d52f",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/d3045229125e7e9d3d486ffd688eee1fde6ecdf8",
+                "reference": "d3045229125e7e9d3d486ffd688eee1fde6ecdf8",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-11-04T15:09:27+00:00"
+            "time": "2020-11-05T19:31:28+00:00"
         },
         {
             "name": "components/jquery",
@@ -2499,16 +2499,16 @@
         },
         {
             "name": "tatter/addins",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-addins.git",
-                "reference": "2bcdd6c12147480339e16e1f39b01e7ab813c312"
+                "reference": "63827b01518b1d65b16c8fcd46c53aea1765b938"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/2bcdd6c12147480339e16e1f39b01e7ab813c312",
-                "reference": "2bcdd6c12147480339e16e1f39b01e7ab813c312",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/63827b01518b1d65b16c8fcd46c53aea1765b938",
+                "reference": "63827b01518b1d65b16c8fcd46c53aea1765b938",
                 "shasum": ""
             },
             "require": {
@@ -2517,7 +2517,7 @@
                 "tatter/alerts": "^2.0",
                 "tatter/assets": "^2.0",
                 "tatter/audits": "^1.0",
-                "tatter/outbox": "^1.0",
+                "tatter/outbox": "^2.0",
                 "tatter/patches": "^1.0",
                 "tatter/permits": "^2.0",
                 "tatter/relations": "^2.0",
@@ -2559,9 +2559,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-addins/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-addins/tree/v2.0.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-addins/tree/v2.0.1"
             },
-            "time": "2020-09-18T00:14:51+00:00"
+            "time": "2020-11-06T17:09:06+00:00"
         },
         {
             "name": "tatter/agents",
@@ -3123,16 +3123,16 @@
         },
         {
             "name": "tatter/outbox",
-            "version": "v1.1.5",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-outbox.git",
-                "reference": "8e07530fcd048cef019473ecbbf970eb5325ea79"
+                "reference": "cdf3775af4702a68f436349dd4b6560932d8b412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-outbox/zipball/8e07530fcd048cef019473ecbbf970eb5325ea79",
-                "reference": "8e07530fcd048cef019473ecbbf970eb5325ea79",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-outbox/zipball/cdf3775af4702a68f436349dd4b6560932d8b412",
+                "reference": "cdf3775af4702a68f436349dd4b6560932d8b412",
                 "shasum": ""
             },
             "require": {
@@ -3177,9 +3177,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-outbox/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-outbox/tree/v1.1.5"
+                "source": "https://github.com/tattersoftware/codeigniter4-outbox/tree/v2.0.1"
             },
-            "time": "2020-11-03T16:18:23+00:00"
+            "time": "2020-11-06T18:14:18+00:00"
         },
         {
             "name": "tatter/patches",
