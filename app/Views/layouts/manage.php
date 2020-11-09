@@ -32,6 +32,8 @@
 	<?= service('assets')->css() ?>
 	
 	<?= service('alerts')->css() ?>
+
+	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
 	
 	<?= $this->renderSection('headerAssets') ?>
 
@@ -286,6 +288,8 @@
 </script>
 
 <?= service('assets')->js() ?>
+
+<?= service('assets')->tag('vendor/adminlte/js/adminlte.min.js') ?>
 
 <?= $this->renderSection('footerAssets') ?>
 
