@@ -21,7 +21,7 @@ class MaterialFaker extends MaterialModel
 			'summary'     => $faker->sentence,
 			'description' => $faker->paragraph,
 			'sortorder'   => rand(1, 10),
-			'method_id'   => rand(1, Fabricator::getCount('methods') ?? 8),
+			'method_id'   => rand(1, Fabricator::getCount('methods') ?: 8),
 		]);
 	}
 }
