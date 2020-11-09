@@ -42,14 +42,18 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/datatables/js/buttons.print.min.js',
 			'vendor/adminlte/js/adminlte.min.js',
 			'vendor/adminlte/css/adminlte.min.css',
-		],		
+		],
 		'workflows' => [
 			'vendor/adminlte/js/adminlte.min.js',
 			'vendor/adminlte/css/adminlte.min.css',
 			'vendor/sortablejs/Sortable.min.js',
 		],
-		
 		'actions' => [
+			'vendor/adminlte/js/adminlte.min.js',
+			'vendor/adminlte/css/adminlte.min.css',
+			'vendor/sortablejs/Sortable.min.js',
+		],
+		'emails/templates' => [
 			'vendor/adminlte/js/adminlte.min.js',
 			'vendor/adminlte/css/adminlte.min.css',
 			'vendor/sortablejs/Sortable.min.js',

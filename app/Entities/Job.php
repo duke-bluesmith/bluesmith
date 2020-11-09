@@ -1,5 +1,7 @@
 <?php namespace App\Entities;
 
+use App\Exceptions\InviteException;
+use App\Libraries\Mailer;
 use App\Models\InviteModel;
 use CodeIgniter\I18n\Time;
 
@@ -13,66 +15,49 @@ class Job extends \Tatter\Workflows\Entities\Job
 	/**
 	 * Create an invitation to this job and send it to the email
 	 *
-	 * @param string  $to  Email address to invite
+	 * @param string $recipient Email address to invite
 	 *
-	 * @return bool  Success or failure
+	 * @return void
+	 * @throws InviteException
 	 */
-	public function invite(string $to): bool
+	public function invite(string $recipient): void
 	{
-		$config = config('Auth');
-		helper('auth');
-
 		// Check if invitations are allowed
-		if (! $config->allowInvitations)
+		if (! config('Auth')->allowInvitations)
 		{
-			return false;
+			throw new InviteException(lang('Invite.disabled'));
 		}
 
 		// Make sure we have an issuer
-		if (! $issuer = user())
+		/** @var \App\Entities\User|null $issuer */
+		$issuer = user();
+		if (! $issuer)
 		{
-			return false;
+			throw new InviteException(lang('Invite.noLogin'));
 		}
 
 		// Build the row		
 		$row = [
 			'job_id'     => $this->attributes['id'],
-			'email'      => $to,
+			'email'      => $recipient,
 			'token'      => bin2hex(random_bytes(16)),
 			'created_at' => date('Y-m-d H:i:s'),
 		];
-		
+
 		// Check for expirations
 		if ($seconds = config('Auth')->invitationLength)
 		{
-			$expire = new Time("+{$seconds} seconds");
-			$row['expired_at'] = $expire->toDateTimeString();
+			$row['expired_at'] = (new Time("+{$seconds} seconds"))->toDateTimeString();
 		}
 
 		// Use the model to make the insert
-		$invites = new InviteModel();
-		
-		if (! $invites->insert($row))
+		if (! model(InviteModel::class)->insert($row))
 		{
-			return false;
+			$error = implode(' ', model(InviteModel::class)->errors());
+			throw new InviteException($error);
 		}
 
-		// Determine the issuer
-		
-		
 		// Send the email
-		$email = service('email');
-		$emailConfig = config('Email');
-		
-		// Use the Auth activator email settings, if available
-		$fromEmail = $config->userActivators['Myth\Auth\Authentication\Activators\EmailActivator']['fromEmail'] ?? $emailConfig->fromEmail;
-		$fromName  = $config->userActivators['Myth\Auth\Authentication\Activators\EmailActivator']['fromName']  ?? $emailConfig->fromName;
-
-		return $email->setFrom($fromEmail, $fromName)
-			->setTo($to)
-			->setSubject(lang('Tasks.inviteSubject', [$issuer->firstname]))
-			->setMessage(view('emails/invite', ['token' => $row['token'], 'issuer' => $issuer]))
-			->setMailType('html')
-			->send();
+		Mailer::forJobInvite($issuer, $recipient, $row['token']);
 	}
 }

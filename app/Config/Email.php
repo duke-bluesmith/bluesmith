@@ -1,11 +1,11 @@
 <?php
+
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-
 	/**
 	 * @var string
 	 */
@@ -15,6 +15,11 @@ class Email extends BaseConfig
 	 * @var string
 	 */
 	public $fromName;
+
+	/**
+	 * @var string
+	 */
+	public $recipients;
 
 	/**
 	 * The "user agent"

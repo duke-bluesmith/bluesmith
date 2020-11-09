@@ -14,6 +14,7 @@ class InitialSeeder extends Seeder
 			'Tatter\Themes\Database\Seeds\ThemeSeeder',
 			'Tatter\Files\Database\Seeds\FileSeeder',
 			'App\Database\Seeds\AuthSeeder',
+			'App\Database\Seeds\EmailSeeder',
 			'App\Database\Seeds\PageSeeder',
 			'App\Database\Seeds\OptionSeeder',
 			'App\Database\Seeds\WorkflowSeeder',
