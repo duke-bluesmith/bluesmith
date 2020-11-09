@@ -1,5 +1,7 @@
 <?php
 
+use Tatter\Outbox\Entities\Template;
+use Tatter\Outbox\Models\TemplateModel;
 use Tatter\Workflows\Models\WorkflowModel;
 use Tests\Support\DatabaseTestCase;
 use Tests\Support\Simulator;
@@ -22,5 +24,12 @@ class InitialSeederTest extends DatabaseTestCase
 
 		$this->assertCount(12, $result);
 		$this->assertEquals('options', $result[3]->action->uid);
+	}
+
+	public function testCreatesInviteEmailTemplate()
+	{
+		$template = model(TemplateModel::class)->findByName('Job Invite');
+
+		$this->assertInstanceOf(Template::class, $template);
 	}
 }
