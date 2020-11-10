@@ -58,6 +58,6 @@ class Job extends \Tatter\Workflows\Entities\Job
 		}
 
 		// Send the email
-		Mailer::forJobInvite($issuer, $recipient, $row['token']);
+		Mailer::forJobInvite($issuer, $recipient, $this, $row['token']);
 	}
 }
