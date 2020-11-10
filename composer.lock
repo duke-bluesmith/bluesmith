@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "224322d93915950600d0757536147a25b9a2d725"
+                "reference": "399e0ac88699c2fcf9b629652f205298bef0e45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/224322d93915950600d0757536147a25b9a2d725",
-                "reference": "224322d93915950600d0757536147a25b9a2d725",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/399e0ac88699c2fcf9b629652f205298bef0e45b",
+                "reference": "399e0ac88699c2fcf9b629652f205298bef0e45b",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-11-09T18:46:31+00:00"
+            "time": "2020-11-10T00:42:13+00:00"
         },
         {
             "name": "components/jquery",
@@ -3690,16 +3690,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d"
+                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/4d8af4b43d27bf729cff2e8094868825c465107d",
-                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
+                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
                 "shasum": ""
             },
             "require": {
@@ -3749,9 +3749,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.1.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.1.2"
             },
-            "time": "2020-10-14T17:41:28+00:00"
+            "time": "2020-11-10T02:14:15+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
