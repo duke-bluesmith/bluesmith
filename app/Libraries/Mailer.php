@@ -2,11 +2,11 @@
 
 use App\Entities\Job;
 use App\Entities\User;
+use App\Models\JobModel;
 use CodeIgniter\Email\Email as Emailer;
 use Myth\Auth\Authentication\Activators\EmailActivator;
 use Tatter\Outbox\Entities\Email;
 use Tatter\Outbox\Models\EmailModel;
-use Tatter\Outbox\Models\JobModel;
 use Tatter\Outbox\Models\TemplateModel;
 
 /**
@@ -37,7 +37,7 @@ class Mailer
 		if (! $emailer->send(false))
 		{
 			log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
-			return null;
+			return 0;
 		}
 
 		// Because the EmailModel is shared we can trust the insertID value to come from the Event trigger
