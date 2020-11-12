@@ -32,6 +32,8 @@
 	<?= service('assets')->css() ?>
 	
 	<?= service('alerts')->css() ?>
+
+	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
 	
 	<?= $this->renderSection('headerAssets') ?>
 
@@ -270,10 +272,10 @@
 	<footer class="main-footer">
 		<!-- To the right -->
 		<div class="float-right d-none d-sm-inline mr-4">
-			Get Fit. Raise Money.
+			<?= service('settings')->brandName ?>
 		</div>
 		<!-- Default to the left -->
-		<strong>Copyright &copy; <?=date('Y') ?> <?= service('settings')->orgName ?></strong>
+		<strong>Copyright &copy; <?= date('Y') ?> <?= service('settings')->orgName ?></strong>
 	</footer>
 </div>
 <!-- ./wrapper -->
@@ -286,6 +288,8 @@
 </script>
 
 <?= service('assets')->js() ?>
+
+<?= service('assets')->tag('vendor/adminlte/js/adminlte.min.js') ?>
 
 <?= $this->renderSection('footerAssets') ?>
 

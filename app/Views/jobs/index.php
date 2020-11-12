@@ -36,9 +36,9 @@
 					<tr>
 						<td><?= $job->id ?></td>
 						<td><?= anchor('jobs/show/' . $job->id, $job->name) ?></td>
-						<td><?= 'Jill User' ?></td>
+						<td><?= $job->users ? $job->users[0]->name : '' ?></td>
 						<td><?= $job->workflow->name ?></td>
-						<td><?= $job->stage->name ?></td>
+						<td><?= $job->getStage() ? $job->stage->name : '' ?></td>
 						<td><?= $job->created_at->humanize() ?></td>
 					</tr>
 		

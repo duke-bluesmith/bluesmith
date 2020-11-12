@@ -22,7 +22,7 @@ class Jobs extends BaseController
 	public function index()
 	{
 		$data = [
-			'jobs' => $this->model->findAll()
+			'jobs' => $this->model->with('users')->findAll()
 		];
 
 		return view('jobs/index', $data);	

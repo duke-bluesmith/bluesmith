@@ -1,8 +1,12 @@
 <?php namespace App\Libraries;
 
+use App\Entities\Job;
 use App\Entities\User;
-use CodeIgniter\Email\Email;
+use App\Models\JobModel;
+use CodeIgniter\Email\Email as Emailer;
 use Myth\Auth\Authentication\Activators\EmailActivator;
+use Tatter\Outbox\Entities\Email;
+use Tatter\Outbox\Models\EmailModel;
 use Tatter\Outbox\Models\TemplateModel;
 
 /**
@@ -24,14 +28,20 @@ class Mailer
 	 * Handles any last-minute global settings,
 	 * then sends the Email and deals with any errors.
 	 *
-	 * @param Email $email The Email class all ready to go
+	 * @param Emailer $emailer The Email class all ready to go
+	 *
+	 * @return int The insertID from EmailModel (0 = failed)
 	 */
-	protected static function send(Email $email)
+	protected static function send(Emailer $emailer): int
 	{
-		if (! $email->send(false))
+		if (! $emailer->send(false))
 		{
-			log_message('error', 'Mailer was unable to send an email: ' . $email->printDebugger());
+			log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
+			return 0;
 		}
+
+		// Because the EmailModel is shared we can trust the insertID value to come from the Event trigger
+		return model(EmailModel::class)->getInsertID();
 	}
 
 	//--------------------------------------------------------------------
@@ -42,14 +52,15 @@ class Mailer
 	 *
 	 * @param User $issuer      The User issuing the invitation
 	 * @param string $recipient Email address of the recipient
+	 * @param Job $job          The Job Entity
 	 * @param string $token     The invitation token hash
 	 */
-	public static function forJobInvite(User $issuer, string $recipient, string $token)
+	public static function forJobInvite(User $issuer, string $recipient, Job $job, string $token)
 	{
 		$template = model(TemplateModel::class)->findByName('Job Invite');
 
 		// Prep Email to our Template
-		$email = $template->email([
+		$emailer = $template->email([
 			'title'       => 'Job invitation',
 			'preview'     => 'Collaborate with ' . $issuer->firstname,
 			'issuer_name' => $issuer->name,
@@ -57,11 +68,14 @@ class Mailer
 		]);
 
 		// Use the Auth activator email settings, if available
-		$email->setFrom(
+		$emailer->setFrom(
 			$config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
 			$config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName)
 		->setTo($recipient);
 
-		self::send($email);
+		if ($emailId = self::send($emailer))
+		{
+			model(JobModel::class)->addEmailToJob($emailId, $job->id);
+		}
 	}
 }

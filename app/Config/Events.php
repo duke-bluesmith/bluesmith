@@ -59,5 +59,5 @@ Events::on('pre_system', function () {
  * @see BaseController::$helpers for slightly less global
  */
 Events::on('post_controller_constructor', function () {
-	helper(['alerts', 'auth']);
+	helper(['alerts', 'auth', 'html']);
 });

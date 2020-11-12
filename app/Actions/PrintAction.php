@@ -21,12 +21,19 @@ class PrintAction extends BaseAction
 	
 	public function get()
 	{
+		helper(['form', 'inflector']);
 
+		return view('actions/print', [
+			'job' => $this->job,
+		]);
 	}
 	
 	public function post()
 	{
+		$data = service('request')->getPost();
 
+		// End the action
+		return true;
 	}
 	
 	public function put()

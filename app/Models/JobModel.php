@@ -1,12 +1,14 @@
 <?php namespace App\Models;
 
+use Tatter\Workflows\Models\JobModel as BaseJobModel;
+
 /**
  * Class JobModel
  *
  * Extension of the Workflows model to add Relations and Permits
  *
  */
-class JobModel extends \Tatter\Workflows\Models\JobModel
+class JobModel extends BaseJobModel
 {
 	// Traits
 	use \Tatter\Permits\Traits\PermitsTrait;
@@ -32,7 +34,23 @@ class JobModel extends \Tatter\Workflows\Models\JobModel
 	protected $pivotKey = 'job_id';
 
 	/**
-	 * Adds a single user to a single job.
+	 * Assigns a single Email to a single job.
+	 *
+	 * @param int $emailId
+	 * @param int $jobId
+	 *
+	 * @return bool
+	 */
+	public function addEmailToJob(int $emailId, int $jobId)
+	{
+		return $this->db->table('emails_jobs')->insert([
+			'email_id' => (int) $emailId,
+			'job_id'   => (int) $jobId,
+		]);
+	}
+
+	/**
+	 * Assigns a single User to a single job.
 	 *
 	 * @param int $userId
 	 * @param int $jobId
@@ -42,8 +60,8 @@ class JobModel extends \Tatter\Workflows\Models\JobModel
 	public function addUserToJob(int $userId, int $jobId)
 	{
 		return $this->db->table('jobs_users')->insert([
-			'user_id' => (int) $userId,
 			'job_id'  => (int) $jobId,
+			'user_id' => (int) $userId,
 		]);
 	}
 }

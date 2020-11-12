@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "804b48a23f8e3bd39f6c3d133ad5da03b78f1d3e"
+                "reference": "399e0ac88699c2fcf9b629652f205298bef0e45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/804b48a23f8e3bd39f6c3d133ad5da03b78f1d3e",
-                "reference": "804b48a23f8e3bd39f6c3d133ad5da03b78f1d3e",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/399e0ac88699c2fcf9b629652f205298bef0e45b",
+                "reference": "399e0ac88699c2fcf9b629652f205298bef0e45b",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-11-09T16:32:10+00:00"
+            "time": "2020-11-10T00:42:13+00:00"
         },
         {
             "name": "components/jquery",
@@ -953,12 +953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "d71c26307fa208cb96b122efa8ea462dbe60ce2d"
+                "reference": "cb65c89845f2c47da549cc24f26388f66bb99a35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/d71c26307fa208cb96b122efa8ea462dbe60ce2d",
-                "reference": "d71c26307fa208cb96b122efa8ea462dbe60ce2d",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/cb65c89845f2c47da549cc24f26388f66bb99a35",
+                "reference": "cb65c89845f2c47da549cc24f26388f66bb99a35",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1031,7 @@
                     "url": "https://www.patreon.com/lonnieezell"
                 }
             ],
-            "time": "2020-10-29T16:39:58+00:00"
+            "time": "2020-11-09T19:32:27+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -2916,16 +2916,16 @@
         },
         {
             "name": "tatter/files",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-files.git",
-                "reference": "91544b167470e30f27ef5eb2fa7b2f912333edc3"
+                "reference": "09d3bee165eac871ffd099c8184a7f841820e33d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/91544b167470e30f27ef5eb2fa7b2f912333edc3",
-                "reference": "91544b167470e30f27ef5eb2fa7b2f912333edc3",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/09d3bee165eac871ffd099c8184a7f841820e33d",
+                "reference": "09d3bee165eac871ffd099c8184a7f841820e33d",
                 "shasum": ""
             },
             "require": {
@@ -2982,9 +2982,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-files/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v2.0.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v2.1.0"
             },
-            "time": "2020-10-16T15:23:21+00:00"
+            "time": "2020-11-09T20:25:11+00:00"
         },
         {
             "name": "tatter/forms",
@@ -3123,16 +3123,16 @@
         },
         {
             "name": "tatter/outbox",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-outbox.git",
-                "reference": "19de0cb2f3e905d791852cd67faac64545b73183"
+                "reference": "5f3dbcaa726257423ba369c070746dec8609b02f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-outbox/zipball/19de0cb2f3e905d791852cd67faac64545b73183",
-                "reference": "19de0cb2f3e905d791852cd67faac64545b73183",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-outbox/zipball/5f3dbcaa726257423ba369c070746dec8609b02f",
+                "reference": "5f3dbcaa726257423ba369c070746dec8609b02f",
                 "shasum": ""
             },
             "require": {
@@ -3145,7 +3145,7 @@
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.0"
+                "tatter/tools": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -3177,9 +3177,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-outbox/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-outbox/tree/v2.0.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-outbox/tree/v2.0.3"
             },
-            "time": "2020-11-06T23:29:46+00:00"
+            "time": "2020-11-10T15:38:54+00:00"
         },
         {
             "name": "tatter/patches",
@@ -3690,16 +3690,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d"
+                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/4d8af4b43d27bf729cff2e8094868825c465107d",
-                "reference": "4d8af4b43d27bf729cff2e8094868825c465107d",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
+                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
                 "shasum": ""
             },
             "require": {
@@ -3749,9 +3749,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.1.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.1.2"
             },
-            "time": "2020-10-14T17:41:28+00:00"
+            "time": "2020-11-10T02:14:15+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

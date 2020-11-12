@@ -1,5 +1,6 @@
 <?php namespace App\Entities;
 
+use App\Entities\User;
 use App\Exceptions\InviteException;
 use App\Libraries\Mailer;
 use App\Models\InviteModel;
@@ -13,11 +14,13 @@ class Job extends \Tatter\Workflows\Entities\Job
 	protected $primaryKey = 'id';
 
 	/**
-	 * Create an invitation to this job and send it to the email
+	 * Creates an invitation to this job and sends it to
+	 * the specified email address.
 	 *
 	 * @param string $recipient Email address to invite
 	 *
 	 * @return void
+	 *
 	 * @throws InviteException
 	 */
 	public function invite(string $recipient): void
@@ -29,7 +32,7 @@ class Job extends \Tatter\Workflows\Entities\Job
 		}
 
 		// Make sure we have an issuer
-		/** @var \App\Entities\User|null $issuer */
+		/** @var User|null $issuer */
 		$issuer = user();
 		if (! $issuer)
 		{
@@ -58,6 +61,6 @@ class Job extends \Tatter\Workflows\Entities\Job
 		}
 
 		// Send the email
-		Mailer::forJobInvite($issuer, $recipient, $row['token']);
+		Mailer::forJobInvite($issuer, $recipient, $this, $row['token']);
 	}
 }
