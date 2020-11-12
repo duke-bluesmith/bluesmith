@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Entities;
 
 use Tests\Support\DatabaseTestCase;
 use Tests\Support\Fakers\JobFaker;

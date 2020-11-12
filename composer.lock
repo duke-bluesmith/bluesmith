@@ -3472,23 +3472,24 @@
         },
         {
             "name": "tatter/settings",
-            "version": "v1.0.5",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-settings.git",
-                "reference": "34a2cf3949f87f1bef89750504beea930d3af266"
+                "reference": "ac6a113303794f010db79c69e076c6cd8858fbcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-settings/zipball/34a2cf3949f87f1bef89750504beea930d3af266",
-                "reference": "34a2cf3949f87f1bef89750504beea930d3af266",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-settings/zipball/ac6a113303794f010db79c69e076c6cd8858fbcf",
+                "reference": "ac6a113303794f010db79c69e076c6cd8858fbcf",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "tatter/tools": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -3518,9 +3519,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-settings/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-settings/tree/develop"
+                "source": "https://github.com/tattersoftware/codeigniter4-settings/tree/v1.1.0"
             },
-            "time": "2019-09-26T19:45:38+00:00"
+            "time": "2020-11-12T18:01:10+00:00"
         },
         {
             "name": "tatter/themes",

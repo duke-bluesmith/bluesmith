@@ -8,12 +8,12 @@ use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 
 class UserModel extends MythModel implements PermitsUserModelInterface
 {
-    protected $table      = 'users';
-    protected $primaryKey = 'id';
-    protected $returnType = User::class;
+	protected $table      = 'users';
+	protected $primaryKey = 'id';
+	protected $returnType = User::class;
 
-    protected $_allowedFields   = ['firstname', 'lastname'];
-    protected $_validationRules = [];
+	protected $_allowedFields   = ['firstname', 'lastname'];
+	protected $_validationRules = [];
 
 	/**
 	 * Call the framework constructor then add the extended properties.
