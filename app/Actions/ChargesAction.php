@@ -1,9 +1,7 @@
 <?php namespace App\Actions;
 
-use Tatter\Workflows\Entities\Action;
+use App\Models\ChargeModel;
 use Tatter\Workflows\BaseAction;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class ChargesAction extends BaseAction
 {
@@ -38,7 +36,19 @@ class ChargesAction extends BaseAction
 	
 	public function put()
 	{
+		$data = service('request')->getPost();
 
+		// Convert the input into fractional money units
+		$data['price']  = $data['price'] * service('settings')->currencyScale;
+		$data['job_id'] = $this->job->id;
+
+		// Add the Charge
+		if (! model(ChargeModel::class)->insert($data))
+		{
+			return redirect()->back()->withInput()->with('error', implode(' ', model(ChargeModel::class)->errors()));
+		}
+
+		return redirect()->back();
 	}
 	
 	// run when a job progresses forward through the workflow

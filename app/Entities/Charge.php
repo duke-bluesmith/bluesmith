@@ -1,5 +1,19 @@
 <?php namespace App\Entities;
 
+/**
+ * Charge Class
+ *
+ * Stores itemized charges for either a
+ * job or an invoice (depending on job_id
+ * or invoice_id respectively).
+ * Includes some convenience methods for
+ * converting and displaying values across
+ * currencies. Glossary:
+ *
+ * - "price" is the fractional monetary unit, e.g. cents
+ * - "amount" is a quantity-relative value, e.g. 10 price at 5 quantity = 50 amount
+ * - "scale" is the conversion from fractional monetary unit to the currency standard, e.g. cents to dollars
+ */
 class Charge extends BaseEntity
 {
 	protected $table = 'charges';
@@ -8,6 +22,20 @@ class Charge extends BaseEntity
 		'price'    => 'int',
 		'quantity' => '?float',
 	];
+
+	/**
+	 * Returns the price scaled for the desired currency
+	 * E.g. 1000 (cents) returns 10 (dollars)
+	 *
+	 * @return float
+	 */
+	public function getScaled(): float
+	{
+		$price = (int) $this->attributes['price'];
+		$scale = (int) service('settings')->currencyScale;
+
+		return $price / $scale;
+	}
 
 	/**
 	 * Calculates the amount from the price and quantity.
@@ -20,7 +48,7 @@ class Charge extends BaseEntity
 	{
 		$amount = (int) $this->attributes['price'];
 
-		if (! empty($this->attributes['quantity']))
+		if (isset($this->attributes['quantity']))
 		{
 			$amount = round($amount * (float) $this->attributes['quantity']);
 		}

@@ -8,7 +8,8 @@ class CreateCharges extends Migration
 	{
 		// Job charges
 		$fields = [
-			'job_id'     => ['type' => 'int', 'unsigned' => true],
+			'invoice_id' => ['type' => 'int', 'unsigned' => true, 'null' => true],
+			'job_id'     => ['type' => 'int', 'unsigned' => true, 'null' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
 			'price'      => ['type' => 'int', 'null' => false, 'default' => 0],
 			'quantity'   => ['type' => 'double', 'null' => true],
@@ -20,6 +21,7 @@ class CreateCharges extends Migration
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
+		$this->forge->addKey('invoice_id');
 		$this->forge->addKey('job_id');
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
