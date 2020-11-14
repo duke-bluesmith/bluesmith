@@ -1,19 +1,5 @@
 <?php namespace App\Entities;
 
-/**
- * Charge Class
- *
- * Stores itemized charges for either a
- * job or an invoice (depending on job_id
- * or invoice_id respectively).
- * Includes some convenience methods for
- * converting and displaying values across
- * currencies. Glossary:
- *
- * - "price" is the fractional monetary unit, e.g. cents
- * - "amount" is a quantity-relative value, e.g. 10 price at 5 quantity = 50 amount
- * - "scale" is the conversion from fractional monetary unit to the currency standard, e.g. cents to dollars
- */
 class Charge extends BaseEntity
 {
 	protected $table = 'charges';
@@ -24,23 +10,9 @@ class Charge extends BaseEntity
 	];
 
 	/**
-	 * Returns the price scaled for the desired currency
-	 * E.g. 1000 (cents) returns 10 (dollars)
-	 *
-	 * @return float
-	 */
-	public function getScaled(): float
-	{
-		$price = (int) $this->attributes['price'];
-		$scale = (int) service('settings')->currencyScale;
-
-		return $price / $scale;
-	}
-
-	/**
 	 * Calculates the amount from the price and quantity.
 	 *
-	 * @param bool $formatted Whether to format the result for display
+	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
 	 * @return string|int
 	 */
@@ -48,7 +20,7 @@ class Charge extends BaseEntity
 	{
 		$amount = (int) $this->attributes['price'];
 
-		if (isset($this->attributes['quantity']))
+		if (! empty($this->attributes['quantity']))
 		{
 			$amount = round($amount * (float) $this->attributes['quantity']);
 		}
@@ -58,13 +30,14 @@ class Charge extends BaseEntity
 			return (int) $amount;
 		}
 
-		helper('number');
+		helper(['currency', 'number']);
 
 		// Convert price (fractional monetary unit) to its currency equivalent
 		// E.g. cents to dollars
-		$scale  = (int) service('settings')->currencyScale;
-		$amount = $amount / $scale;
+		$scale  = service('settings')->currencyScale;
+		$scaled = price_to_scaled($amount, $scale);
 
-		return number_to_currency($amount, service('settings')->currencyUnit, null, log($scale, 10));
+		// Format the scaled amount to the localized currency
+		return number_to_currency($scaled, service('settings')->currencyUnit, null, log($scale, 10));
 	}
 }

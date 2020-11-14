@@ -26,4 +26,19 @@ class CurrencyHelperTest extends DatabaseTestCase
 
 		$this->assertEquals(10, $result);
 	}
+
+	public function testPriceToScaledRespectsPrecision()
+	{
+		$result = price_to_scaled(1234.5678, 100.3333333);
+
+		$this->assertEquals(12.34, $result);
+	}
+
+	public function testPriceToScaledFormatted()
+	{
+		$result = price_to_scaled(1000, null, true);
+
+		$this->assertIsString($result);
+		$this->assertEquals($result, '10.00');
+	}
 }
