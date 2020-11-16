@@ -44,9 +44,9 @@
 		"tatter/tools": "^1.1"
 	},
 	"autoload": {
-		"psr-4": {
-			"Organization\\Name\\": "src"
-		}
+		"exclude-from-classmap": [
+			"**/Database/Migrations/**"
+		]
 	},
 	"autoload-dev": {
 		"psr-4": {

@@ -42,10 +42,10 @@ class JobTest extends DatabaseTestCase
 	{
 		$result = model(InvoiceModel::class)->insert([
 			'job_id'      => $this->job->id,
-			'estimate'    => 1,
+			'estimate'    => 0,
 		]);
 
-		$result = $this->job->estimate;
+		$result = $this->job->bill;
 
 		$this->assertInstanceOf(Invoice::class, $result);
 		$this->assertFalse($result->estimate);
