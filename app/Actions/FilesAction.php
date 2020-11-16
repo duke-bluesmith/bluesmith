@@ -1,7 +1,7 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use Tatter\Files\Models\FileModel;
-use Tatter\Workflows\BaseAction;
 
 class FilesAction extends BaseAction
 {

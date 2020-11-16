@@ -52,9 +52,9 @@ class JobTest extends DatabaseTestCase
 		$result = $this->job->getLedgers();
 
 		$this->assertIsArray($result);
-		$this->assertEquals([false, true], array_keys($result));
-		$this->assertInstanceOf(Ledger::class, $result[false]);
-		$this->assertInstanceOf(Ledger::class, $result[true]);
+		$this->assertEquals([false, true], array_keys($result)); // @phpstan-ignore-line
+		$this->assertInstanceOf(Ledger::class, $result[false]); // @phpstan-ignore-line
+		$this->assertInstanceOf(Ledger::class, $result[true]); // @phpstan-ignore-line
 	
 	}
 

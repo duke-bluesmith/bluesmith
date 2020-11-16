@@ -1,9 +1,9 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use App\Models\AcceptModel;
 use App\Models\PageModel;
 use App\Models\TermModel;
-use Tatter\Workflows\BaseAction;
 
 class TermsAction extends BaseAction
 {

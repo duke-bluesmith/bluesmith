@@ -1,10 +1,10 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use App\Entities\Job;
 use App\Exceptions\InviteException;
 use App\Models\UserModel;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 

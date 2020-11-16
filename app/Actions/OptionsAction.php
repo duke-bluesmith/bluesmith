@@ -1,8 +1,8 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use App\Models\MethodModel;
 use App\Models\OptionModel;
-use Tatter\Workflows\BaseAction;
 
 class OptionsAction extends BaseAction
 {
