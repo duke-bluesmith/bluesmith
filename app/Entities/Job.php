@@ -12,8 +12,6 @@ use CodeIgniter\I18n\Time;
  * An extension of Workflow's Job entity to enable
  * Relations and add a number of project-specific
  * methods and poperty stores.
- *
- * @todo Should missing Ledgers be generated automatically?
  */
 class Job extends \Tatter\Workflows\Entities\Job
 {
@@ -73,9 +71,7 @@ class Job extends \Tatter\Workflows\Entities\Job
 		{
 			$this->ledgers = [];
 
-			foreach (model(LedgerModel::class)
-				->where('job_id', $this->attributes['id'])->findAll()
-			as $ledger)
+			foreach (model(LedgerModel::class)->where('job_id', $this->attributes['id'])->findAll() as $ledger)
 			{
 				$this->ledgers[$ledger->estimate] = $ledger;
 			}
@@ -96,7 +92,7 @@ class Job extends \Tatter\Workflows\Entities\Job
 	{
 		$this->getLedgers();
 
-		if (empty($this->ledges[$estimate]) && $create)
+		if (empty($this->ledgers[$estimate]) && $create)
 		{
 			$id = model(LedgerModel::class)->insert([
 				'job_id'   => $this->attributes['id'],

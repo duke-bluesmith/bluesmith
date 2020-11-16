@@ -1,6 +1,8 @@
 <?php namespace App\Actions;
 
 use App\Models\ChargeModel;
+use App\Models\LedgerModel;
+use CodeIgniter\HTTP\RedirectResponse;
 use Tatter\Workflows\BaseAction;
 
 class ChargesAction extends BaseAction
@@ -16,31 +18,97 @@ class ChargesAction extends BaseAction
 		'icon'     => 'fas fa-file-invoice-dollar',
 		'summary'  => 'Staff reviews submission and sets charges',
 	];
-	
+
+	/**
+	 * Load the currency helper
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		helper(['currency', 'number']);
+	}
+
+	/**
+	 * Displays the form for modifying Charges
+	 * on the estimate Ledger.
+	 *
+	 * @return string
+	 */
 	public function get()
 	{
-		helper(['form', 'inflector']);
+		helper(['form']);
 
-		return view('actions/charges', [
-			'job' => $this->job,
+		// Build out the clickable charge items for the "Details" aside
+		$items = [
+			[
+				'name' => $this->job->material->method->name,
+				'quantity' => null,
+			],
+			[
+				'name'     => $this->job->material->name,
+				'quantity' => 1,
+			]
+		];
+		foreach ($this->job->options as $option)
+		{
+			$items[] = [
+				'name'     => $option->summary,
+				'quantity' => null,
+			];
+		}
+
+		return view('actions/charges/index', [
+			'job'      => $this->job,
+			'estimate' => $this->job->getEstimate(true),
+			'items'    => $items,
 		]);
 	}
-	
-	public function post()
-	{
-		$data = service('request')->getPost();
 
-		// End the action
+	/**
+	 * Denotes that all Charges are created.
+	 *
+	 * @return bool
+	 */
+	public function post(): bool
+	{
 		return true;
 	}
-	
-	public function put()
+
+	/**
+	 * Removes a single Charge.
+	 *
+	 * @return RedirectResponse
+	 */
+	public function delete(): RedirectResponse
+	{
+		if ($chargeId = service('request')->getPost('charge_id'))
+		{
+			model(ChargeModel::class)->delete($chargeId);
+			alert('warning', 'Charge removed.');
+		}
+
+		return redirect()->back();
+	}
+
+	/**
+	 * Adds a Charge to the estimate Ledger.
+	 *
+	 * @return RedirectResponse
+	 */
+	public function put(): RedirectResponse
 	{
 		$data = service('request')->getPost();
 
 		// Convert the input into fractional money units
-		$data['price']  = $data['price'] * service('settings')->currencyScale;
-		$data['job_id'] = $this->job->id;
+		helper('currency');
+		$data['price']     = scaled_to_price($data['price']);
+		$data['ledger_id'] = $this->job->estimate->id;
+
+		if (empty($data['quantity']))
+		{
+			unset($data['quantity']);
+		}
 
 		// Add the Charge
 		if (! model(ChargeModel::class)->insert($data))
@@ -50,16 +118,19 @@ class ChargesAction extends BaseAction
 
 		return redirect()->back();
 	}
-	
-	// run when a job progresses forward through the workflow
+
+	/**
+	 * Runs when a job progresses forward through the workflow
+	 */
 	public function up()
 	{
-	
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
-
+		// If there is no estimate then create a new one
+		if (! $this->job->getEstimate())
+		{
+			model(LedgerModel::class)->insert([
+				'job_id'   => $this->job->id,
+				'estimate' => 1,
+			]);
+		}
 	}
 }
