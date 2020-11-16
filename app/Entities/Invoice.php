@@ -28,7 +28,7 @@ class Invoice extends BaseEntity
 	public function getTotal(bool $formatted = false)
 	{
 		$total = 0;
-		foreach ($this->getCharges() as $charge)
+		foreach ($this->charges ?? [] as $charge)
 		{
 			$total += $charge->amount;
 		}

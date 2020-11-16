@@ -7,7 +7,7 @@ class InvoiceModel extends BaseModel
 	protected $table          = 'invoices';
 	protected $returnType     = Invoice::class;
 	protected $allowedFields  = [
-		'job_id', 'description',
+		'job_id', 'description', 'estimate',
 	];
 
 	protected $validationRules = [

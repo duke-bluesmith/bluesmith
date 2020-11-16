@@ -1,9 +1,11 @@
 <?php namespace App\Entities;
 
+use App\Entities\Invoice;
 use App\Entities\User;
 use App\Exceptions\InviteException;
 use App\Libraries\Mailer;
 use App\Models\InviteModel;
+use App\Models\InvoiceModel;
 use CodeIgniter\I18n\Time;
 
 class Job extends \Tatter\Workflows\Entities\Job
@@ -12,6 +14,60 @@ class Job extends \Tatter\Workflows\Entities\Job
 
 	protected $table      = 'jobs';
 	protected $primaryKey = 'id';
+
+	/**
+	 * Stored invoice
+	 *
+	 * @var Invoice|null
+	 */
+	protected $bill;
+
+	/**
+	 * Stored estimate invoice
+	 *
+	 * @var Invoice|null
+	 */
+	protected $estimate;
+
+	/**
+	 * Gets the invoice.
+	 *
+	 * @return Invoice|null
+	 */
+	public function getBill(): ?Invoice
+	{
+		$this->ensureCreated();
+
+		if (is_null($this->bill))
+		{
+			$this->bill = model(InvoiceModel::class)
+				->where('job_id', $this->attributes['id'])
+				->where('estimate', 0)
+				->first();
+		}
+
+		return $this->bill;
+	}
+
+	/**
+	 * Gets the estimate invoice.
+	 *
+	 * @return Invoice|null
+	 */
+	public function getEstimate(): ?Invoice
+	{
+		$this->ensureCreated();
+
+		if (is_null($this->estimate))
+		{
+			$this->estimate = model(InvoiceModel::class)
+				->where('job_id', $this->attributes['id'])
+				->where('estimate', 1)
+				->first();
+		}
+
+		return $this->estimate;
+	}
 
 	/**
 	 * Creates an invitation to this job and sends it to
@@ -25,6 +81,8 @@ class Job extends \Tatter\Workflows\Entities\Job
 	 */
 	public function invite(string $recipient): void
 	{
+		$this->ensureCreated();
+
 		// Check if invitations are allowed
 		if (! config('Auth')->allowInvitations)
 		{

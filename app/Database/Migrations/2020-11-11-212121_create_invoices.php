@@ -8,7 +8,7 @@ class CreateInvoices extends Migration
 	{
 		// Invoices
 		$fields = [
-			'job_id'      => ['type' => 'int', 'unsigned' => true, 'null' => true],
+			'job_id'      => ['type' => 'int', 'unsigned' => true],
 			'description' => ['type' => 'text', 'null' => false, 'default' => ''],
 			'estimate'    => ['type' => 'bool', 'null' => false, 'default' => 0],
 			'created_at'  => ['type' => 'datetime', 'null' => true],
@@ -27,7 +27,7 @@ class CreateInvoices extends Migration
 
 		// Charges
 		$fields = [
-			'invoice_id' => ['type' => 'int', 'unsigned' => true, 'null' => true],
+			'invoice_id' => ['type' => 'int', 'unsigned' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
 			'price'      => ['type' => 'int', 'null' => false, 'default' => 0],
 			'quantity'   => ['type' => 'double', 'null' => true],

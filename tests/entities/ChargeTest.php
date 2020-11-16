@@ -5,7 +5,7 @@ use Tests\Support\DatabaseTestCase;
 
 class ChargeTest extends DatabaseTestCase
 {
-	// Locks down currency settings 
+	// Locks down currency settings
 	protected function setUp(): void
 	{
 		parent::setUp();
