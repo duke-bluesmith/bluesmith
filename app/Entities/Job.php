@@ -6,6 +6,15 @@ use App\Models\InviteModel;
 use App\Models\LedgerModel;
 use CodeIgniter\I18n\Time;
 
+/**
+ * Class Job
+ *
+ * An extension of Workflow's Job entity to enable
+ * Relations and add a number of project-specific
+ * methods and poperty stores.
+ *
+ * @todo Should missing Ledgers be generated automatically?
+ */
 class Job extends \Tatter\Workflows\Entities\Job
 {
 	use \Tatter\Relations\Traits\EntityTrait;
@@ -14,14 +23,14 @@ class Job extends \Tatter\Workflows\Entities\Job
 	protected $primaryKey = 'id';
 
 	/**
-	 * Stored invoice ledger
+	 * Stored Ledgers, indexed by "estimate" field
 	 *
-	 * @var Ledger|null
+	 * @var array<bool,Ledger>|null
 	 */
-	protected $invoice;
+	protected $ledgers;
 
 	/**
-	 * Stored estimate ledger
+	 * Stored estimate Ledger
 	 *
 	 * @var Ledger|null
 	 */
@@ -30,42 +39,77 @@ class Job extends \Tatter\Workflows\Entities\Job
 	/**
 	 * Gets the estimate.
 	 *
+	 * @param bool $create Whether a new Ledger should be created if missing
+	 *
 	 * @return Ledger|null
 	 */
-	public function getEstimate(): ?Ledger
+	public function getEstimate($create = false): ?Ledger
 	{
-		$this->ensureCreated();
-
-		if (is_null($this->estimate))
-		{
-			$this->estimate = model(LedgerModel::class)
-				->where('job_id', $this->attributes['id'])
-				->where('estimate', 1)
-				->first();
-		}
-
-		return $this->estimate;
+		return $this->ledger(true, $create);
 	}
 
 	/**
 	 * Gets the invoice.
 	 *
+	 * @param bool $create Whether a new Ledger should be created if missing
+	 *
 	 * @return Ledger|null
 	 */
-	public function getInvoice(): ?Ledger
+	public function getInvoice($create = false): ?Ledger
+	{
+		return $this->ledger(false, $create);
+	}
+
+	/**
+	 * Gets related Ledgers.
+	 *
+	 * @return array<bool,Ledger>
+	 */
+	public function getLedgers(): array
 	{
 		$this->ensureCreated();
 
-		if (is_null($this->invoice))
+		if (is_null($this->ledgers))
 		{
-			$this->invoice = model(LedgerModel::class)
-				->where('job_id', $this->attributes['id'])
-				->where('estimate', 0)
-				->first();
+			$this->ledgers = [];
+
+			foreach (model(LedgerModel::class)
+				->where('job_id', $this->attributes['id'])->findAll()
+			as $ledger)
+			{
+				$this->ledgers[$ledger->estimate] = $ledger;
+			}
 		}
 
-		return $this->invoice;
+		return $this->ledgers;
 	}
+
+	/**
+	 * Gets a Ledger.
+	 *
+	 * @param bool $estimate Filter for the `estimate` field
+	 * @param bool $create   Whether a new Ledger should be created if missing
+	 *
+	 * @return Ledger|null
+	 */
+	protected function ledger(bool $estimate, bool $create): ?Ledger
+	{
+		$this->getLedgers();
+
+		if (empty($this->ledges[$estimate]) && $create)
+		{
+			$id = model(LedgerModel::class)->insert([
+				'job_id'   => $this->attributes['id'],
+				'estimate' => (int) $estimate,
+			]);
+
+			$this->ledgers[$estimate] = model(LedgerModel::class)->find($id);
+		}
+
+		return $this->ledgers[$estimate] ?? null;
+	}
+
+	//--------------------------------------------------------------------
 
 	/**
 	 * Creates an invitation to this job and sends it to

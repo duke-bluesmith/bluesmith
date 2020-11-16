@@ -38,6 +38,33 @@ class JobTest extends DatabaseTestCase
 		$this->assertTrue($this->job->hasOption(1));
 	}
 
+	public function testGetLedgersReturnsLedgers()
+	{
+		model(LedgerModel::class)->insert([
+			'job_id'      => $this->job->id,
+			'estimate'    => 0,
+		]);
+		model(LedgerModel::class)->insert([
+			'job_id'      => $this->job->id,
+			'estimate'    => 1,
+		]);
+
+		$result = $this->job->getLedgers();
+
+		$this->assertIsArray($result);
+		$this->assertEquals([false, true], array_keys($result));
+		$this->assertInstanceOf(Ledger::class, $result[false]);
+		$this->assertInstanceOf(Ledger::class, $result[true]);
+	
+	}
+
+	public function testEstimateReturnsNull()
+	{
+		$result = $this->job->estimate;
+
+		$this->assertNull($result);
+	}
+
 	public function testEstimateReturnsLedger()
 	{
 		$result = model(LedgerModel::class)->insert([
@@ -51,14 +78,30 @@ class JobTest extends DatabaseTestCase
 		$this->assertTrue($result->estimate);
 	}
 
+	public function testEstimateCreatesLedger()
+	{
+		$result = $this->job->getEstimate(true);
+
+		$this->assertInstanceOf(Ledger::class, $result);
+		$this->assertTrue($result->estimate);
+	}
+
 	public function testInvoiceReturnsLedger()
 	{
 		$result = model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 0,
+			'job_id'   => $this->job->id,
+			'estimate' => 0,
 		]);
 
 		$result = $this->job->invoice;
+
+		$this->assertInstanceOf(Ledger::class, $result);
+		$this->assertFalse($result->estimate);
+	}
+
+	public function testInvoiceCreatesLedger()
+	{
+		$result = $this->job->getInvoice(true);
 
 		$this->assertInstanceOf(Ledger::class, $result);
 		$this->assertFalse($result->estimate);
