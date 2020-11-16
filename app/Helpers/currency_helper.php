@@ -10,6 +10,36 @@
 
 //--------------------------------------------------------------------
 
+if (! function_exists('price_to_currency'))
+{
+	/**
+	 * Converts a FMU to the currency format defined by Settings
+	 *
+	 * @param int $price          Fractional monetary units
+	 * @param string|null $unit   The currency unit, defaults to value from Settings
+	 * @param int|null $scale     The scale value to use, defaults to value from Settings
+	 * @param int|null $precision The number of decimals to display, defaults to detection from the scale
+	 *
+	 * @return string
+	 */
+	function price_to_currency(int $price, string $unit = null, int $scale = null, int $precision = null): string
+	{
+		helper('number');
+
+		$unit      = $unit ?? service('settings')->currencyUnit;
+		$scale     = $scale ?? service('settings')->currencyScale;
+		$precision = $precision ?? log($scale, 10);
+
+		// Convert, e.g. cents to dollars
+		$scaled = price_to_scaled($price, $scale);
+
+		// Format the scaled amount to the currency unit
+		return number_to_currency($scaled, $unit, null, $precision);
+	}
+}
+
+//--------------------------------------------------------------------
+
 if (! function_exists('price_to_scaled'))
 {
 	/**

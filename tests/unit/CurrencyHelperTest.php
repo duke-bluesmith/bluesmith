@@ -39,6 +39,22 @@ class CurrencyHelperTest extends DatabaseTestCase
 		$result = price_to_scaled(1000, null, true);
 
 		$this->assertIsString($result);
-		$this->assertEquals($result, '10.00');
+		$this->assertEquals('10.00', $result);
+	}
+
+	public function testPriceToCurrency()
+	{
+		$result = price_to_currency(1005);
+
+		$this->assertIsString($result);
+		$this->assertEquals('$10.05', $result);
+	}
+
+	public function testPriceToCurrencyPrecision()
+	{
+		$result = price_to_currency(1005, null, null, 1);
+
+		$this->assertIsString($result);
+		$this->assertEquals('$10.0', $result);
 	}
 }

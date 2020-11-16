@@ -4,9 +4,9 @@ class Charge extends BaseEntity
 {
 	protected $table = 'charges';
 	protected $casts = [
-		'job_id'   => 'int',
-		'price'    => 'int',
-		'quantity' => '?float',
+		'invoice_id' => 'int',
+		'price'      => 'int',
+		'quantity'   => '?float',
 	];
 
 	/**
@@ -31,13 +31,6 @@ class Charge extends BaseEntity
 		}
 
 		helper(['currency', 'number']);
-
-		// Convert price (fractional monetary unit) to its currency equivalent
-		// E.g. cents to dollars
-		$scale  = service('settings')->currencyScale;
-		$scaled = price_to_scaled($amount, $scale);
-
-		// Format the scaled amount to the localized currency
-		return number_to_currency($scaled, service('settings')->currencyUnit, null, log($scale, 10));
+		return price_to_currency($amount);
 	}
 }
