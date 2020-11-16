@@ -56,7 +56,7 @@ if (! function_exists('price_to_scaled'))
 	{
 		$scale     = $scale ?? service('settings')->currencyScale;
 		$scaled    = $price / $scale;
-		$precision = log($scale, 10);
+		$precision = (int) log($scale, 10);
 
 		return $format ? number_format($scaled, $precision) : round($scaled, $precision);
 	}
@@ -69,7 +69,7 @@ if (! function_exists('scaled_to_price'))
 	/**
 	 * Converts a currency value to its FMU (e.g. dollars to cents).
 	 *
-	 * @param float $value    The scaled currency value
+	 * @param float $scaled   The scaled currency value
 	 * @param int|null $scale The scale value to use, defaults to value from Settings
 	 *
 	 * @return int
@@ -79,6 +79,6 @@ if (! function_exists('scaled_to_price'))
 		$scale = $scale ?? service('settings')->currencyScale;
 		$price = $scaled * $scale;
 
-		return round($price);
+		return (int) round($price);
 	}
 }

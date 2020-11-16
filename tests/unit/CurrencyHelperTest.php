@@ -1,5 +1,6 @@
 <?php
 
+use Tatter\Settings\Models\SettingModel;
 use Tests\Support\DatabaseTestCase;
 
 class CurrencyHelperTest extends DatabaseTestCase
@@ -29,7 +30,7 @@ class CurrencyHelperTest extends DatabaseTestCase
 
 	public function testPriceToScaledRespectsPrecision()
 	{
-		$result = price_to_scaled(1234.5678, 100.3333333);
+		$result = price_to_scaled(1234.5678, 100.3333333); // @phpstan-ignore-line
 
 		$this->assertEquals(12.34, $result);
 	}
