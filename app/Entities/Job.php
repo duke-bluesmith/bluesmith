@@ -1,11 +1,9 @@
 <?php namespace App\Entities;
 
-use App\Entities\Invoice;
-use App\Entities\User;
 use App\Exceptions\InviteException;
 use App\Libraries\Mailer;
 use App\Models\InviteModel;
-use App\Models\InvoiceModel;
+use App\Models\LedgerModel;
 use CodeIgniter\I18n\Time;
 
 class Job extends \Tatter\Workflows\Entities\Job
@@ -16,57 +14,57 @@ class Job extends \Tatter\Workflows\Entities\Job
 	protected $primaryKey = 'id';
 
 	/**
-	 * Stored invoice
+	 * Stored invoice ledger
 	 *
-	 * @var Invoice|null
+	 * @var Ledger|null
 	 */
-	protected $bill;
+	protected $invoice;
 
 	/**
-	 * Stored estimate invoice
+	 * Stored estimate ledger
 	 *
-	 * @var Invoice|null
+	 * @var Ledger|null
 	 */
 	protected $estimate;
 
 	/**
-	 * Gets the invoice.
+	 * Gets the estimate.
 	 *
-	 * @return Invoice|null
+	 * @return Ledger|null
 	 */
-	public function getBill(): ?Invoice
-	{
-		$this->ensureCreated();
-
-		if (is_null($this->bill))
-		{
-			$this->bill = model(InvoiceModel::class)
-				->where('job_id', $this->attributes['id'])
-				->where('estimate', 0)
-				->first();
-		}
-
-		return $this->bill;
-	}
-
-	/**
-	 * Gets the estimate invoice.
-	 *
-	 * @return Invoice|null
-	 */
-	public function getEstimate(): ?Invoice
+	public function getEstimate(): ?Ledger
 	{
 		$this->ensureCreated();
 
 		if (is_null($this->estimate))
 		{
-			$this->estimate = model(InvoiceModel::class)
+			$this->estimate = model(LedgerModel::class)
 				->where('job_id', $this->attributes['id'])
 				->where('estimate', 1)
 				->first();
 		}
 
 		return $this->estimate;
+	}
+
+	/**
+	 * Gets the invoice.
+	 *
+	 * @return Ledger|null
+	 */
+	public function getInvoice(): ?Ledger
+	{
+		$this->ensureCreated();
+
+		if (is_null($this->invoice))
+		{
+			$this->invoice = model(LedgerModel::class)
+				->where('job_id', $this->attributes['id'])
+				->where('estimate', 0)
+				->first();
+		}
+
+		return $this->invoice;
 	}
 
 	/**

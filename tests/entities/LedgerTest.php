@@ -1,16 +1,16 @@
 <?php namespace App\Entities;
 
 use App\Models\ChargeModel;
-use App\Models\InvoiceModel;
+use App\Models\LedgerModel;
 use Tatter\Settings\Models\SettingModel;
 use Tests\Support\DatabaseTestCase;
 
-class InvoiceTest extends DatabaseTestCase
+class LedgerTest extends DatabaseTestCase
 {
 	/**
-	 * @var Invoice
+	 * @var Ledger
 	 */
-	protected $invoice;
+	protected $ledger;
 
 	protected function setUp(): void
 	{
@@ -20,12 +20,12 @@ class InvoiceTest extends DatabaseTestCase
 		model(SettingModel::class)->where('name', 'currencyUnit')->update(null, ['content' => 'USD']);
 		model(SettingModel::class)->where('name', 'currencyScale')->update(null, ['content' => 100]);
 
-		// Create an invoice
-		$id = model(InvoiceModel::class)->insert([
+		// Create a Ledger
+		$id = model(LedgerModel::class)->insert([
 			'job_id'      => 1,
-			'description' => 'Test invoice',
+			'description' => 'Test Ledger',
 		]);
-		$this->invoice = model(InvoiceModel::class)->find($id);
+		$this->ledger = model(LedgerModel::class)->find($id);
 	}
 
 	public function testGetTotalReturnsSum()
@@ -34,12 +34,12 @@ class InvoiceTest extends DatabaseTestCase
 		{
 			model(ChargeModel::class)->insert([
 				'name'       => $i,
-				'invoice_id' => $this->invoice->id,
+				'ledger_id' => $this->ledger->id,
 				'price'      => $i * 1000,
 			]);
 		}
 
-		$result = $this->invoice->getTotal();
+		$result = $this->ledger->getTotal();
 
 		$this->assertEquals(10000, $result);
 	}

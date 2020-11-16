@@ -1,6 +1,6 @@
 <?php namespace App\Entities;
 
-use App\Models\InvoiceModel;
+use App\Models\LedgerModel;
 use Tests\Support\DatabaseTestCase;
 use Tests\Support\Fakers\JobFaker;
 
@@ -38,29 +38,29 @@ class JobTest extends DatabaseTestCase
 		$this->assertTrue($this->job->hasOption(1));
 	}
 
-	public function testBillReturnsInvoice()
+	public function testEstimateReturnsLedger()
 	{
-		$result = model(InvoiceModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 0,
-		]);
-
-		$result = $this->job->bill;
-
-		$this->assertInstanceOf(Invoice::class, $result);
-		$this->assertFalse($result->estimate);
-	}
-
-	public function testEstimateReturnsInvoice()
-	{
-		$result = model(InvoiceModel::class)->insert([
+		$result = model(LedgerModel::class)->insert([
 			'job_id'      => $this->job->id,
 			'estimate'    => 1,
 		]);
 
 		$result = $this->job->estimate;
 
-		$this->assertInstanceOf(Invoice::class, $result);
+		$this->assertInstanceOf(Ledger::class, $result);
 		$this->assertTrue($result->estimate);
+	}
+
+	public function testInvoiceReturnsLedger()
+	{
+		$result = model(LedgerModel::class)->insert([
+			'job_id'      => $this->job->id,
+			'estimate'    => 0,
+		]);
+
+		$result = $this->job->invoice;
+
+		$this->assertInstanceOf(Ledger::class, $result);
+		$this->assertFalse($result->estimate);
 	}
 }

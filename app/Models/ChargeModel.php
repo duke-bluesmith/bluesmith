@@ -8,13 +8,13 @@ class ChargeModel extends BaseModel
 	protected $returnType     = Charge::class;
 	protected $useSoftDeletes = false;
 	protected $allowedFields  = [
-		'invoice_id', 'name', 'price', 'quantity',
+		'ledger_id', 'name', 'price', 'quantity',
 	];
 
 	protected $validationRules = [
-		'invoice_id' => 'required|is_natural_no_zero',
-		'name'       => 'required',
-		'price'      => 'permit_empty|integer',
-		'quantity'   => 'permit_empty|greater_than[0]',
+		'ledger_id' => 'required|is_natural_no_zero',
+		'name'      => 'required',
+		'price'     => 'permit_empty|integer',
+		'quantity'  => 'permit_empty|greater_than[0]',
     ];
 }

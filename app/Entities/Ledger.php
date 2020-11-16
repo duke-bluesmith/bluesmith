@@ -1,8 +1,8 @@
 <?php namespace App\Entities;
 
-class Invoice extends BaseEntity
+class Ledger extends BaseEntity
 {
-	protected $table = 'invoices';
+	protected $table = 'ledgers';
 	protected $casts = [
 		'job_id'   => 'int',
 		'estimate' => 'bool',
@@ -19,7 +19,7 @@ class Invoice extends BaseEntity
 	];
 
 	/**
-	 * Calculates the total amount for the invoice.
+	 * Calculates the total amount from associated charges.
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *

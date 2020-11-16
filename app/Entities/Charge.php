@@ -4,9 +4,9 @@ class Charge extends BaseEntity
 {
 	protected $table = 'charges';
 	protected $casts = [
-		'invoice_id' => 'int',
-		'price'      => 'int',
-		'quantity'   => '?float',
+		'ledger_id' => 'int',
+		'price'     => 'int',
+		'quantity'  => '?float',
 	];
 
 	/**

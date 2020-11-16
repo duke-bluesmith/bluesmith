@@ -2,11 +2,11 @@
 
 use CodeIgniter\Database\Migration;
 
-class CreateInvoices extends Migration
+class CreateLedgers extends Migration
 {
 	public function up()
 	{
-		// Invoices
+		// Ledgers
 		$fields = [
 			'job_id'      => ['type' => 'int', 'unsigned' => true],
 			'description' => ['type' => 'text', 'null' => false, 'default' => ''],
@@ -23,11 +23,11 @@ class CreateInvoices extends Migration
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
 
-		$this->forge->createTable('invoices');
+		$this->forge->createTable('ledgers');
 
 		// Charges
 		$fields = [
-			'invoice_id' => ['type' => 'int', 'unsigned' => true],
+			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
 			'price'      => ['type' => 'int', 'null' => false, 'default' => 0],
 			'quantity'   => ['type' => 'double', 'null' => true],
@@ -39,7 +39,7 @@ class CreateInvoices extends Migration
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
-		$this->forge->addKey('invoice_id');
+		$this->forge->addKey('ledger_id');
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
 		
@@ -49,6 +49,6 @@ class CreateInvoices extends Migration
 	public function down()
 	{
 		$this->forge->dropTable('charges');
-		$this->forge->dropTable('invoices');
+		$this->forge->dropTable('ledgers');
 	}
 }
