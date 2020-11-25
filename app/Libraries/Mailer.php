@@ -92,7 +92,7 @@ class Mailer
 	 */
 	public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
 	{
-		$template = model(TemplateModel::class)->findByName('Job Invite');
+		$template = model(TemplateModel::class)->findByName('Estimate');
 
 		// Prep Email to our Template
 		$emailer = $template->email([

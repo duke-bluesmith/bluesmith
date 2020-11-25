@@ -41,7 +41,6 @@
 
 		<?php endif; ?>
 
-		<span class="float-right h3">Total: <?= $estimate->getTotal(true) ?></span>
 		<h3>Charges</h3>
 
 		<?php if (empty($estimate->charges)): ?>
@@ -49,6 +48,8 @@
 		<?php else: ?>
 		<?= view('actions/charges/table', ['mayDelete' => false]) ?>
 		<?php endif; ?>
+
+		<span class="float-right h3">Total: <?= $estimate->getTotal(true) ?></span>
 
 		<h3>Additional Notes</h3>
 		<textarea class="form-control mb-3" name="description" rows="8" placeholder="Additional notes..."><?= old('description') ?></textarea>
