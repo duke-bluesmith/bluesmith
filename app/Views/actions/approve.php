@@ -3,14 +3,23 @@
 
 <div class="container">
 
-	<p>Approve estimate here.</p>
-
 	<?= form_open('jobs/approve/' . $job->id) ?>
-
-		<input class="btn btn-primary float-md-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">	
-
+		<input class="btn btn-primary float-right" type="submit" name="approve" value="<?= lang('Pub.accept') ?>">	
 	<?= form_close() ?>
 
+	<h3>Charges</h3>
+
+	<?php if (empty($estimate->charges)): ?>
+	<p class="text-danger">No charges have been set.</p>
+	<?php else: ?>
+	<?= view('actions/charges/table', ['mayDelete' => false]) ?>
+	<?php endif; ?>
+	<span class="float-right h3">Total: <?= $estimate->getTotal(true) ?></span>
+
+	<h3>Additional Notes</h3>
+	<blockquote>
+	<?= nl2br($job->estimate->description ?: '<em>Nothing noted.</em>') ?>
+	</blockquote>
 </div>
 
 <?= $this->endSection() ?>
