@@ -21,7 +21,6 @@ class TermsAction extends BaseAction
 	
 	public function get()
 	{
-		helper(['form']);
 		$pages = new PageModel();
 		
 		$data = [

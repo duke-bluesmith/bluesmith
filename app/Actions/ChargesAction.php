@@ -20,16 +20,6 @@ class ChargesAction extends BaseAction
 	];
 
 	/**
-	 * Load the helpers
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-
-		helper(['currency', 'form', 'number']);
-	}
-
-	/**
 	 * Displays the form for modifying Charges
 	 * on the estimate Ledger.
 	 *
@@ -99,7 +89,6 @@ class ChargesAction extends BaseAction
 		$data = service('request')->getPost();
 
 		// Convert the input into fractional money units
-		helper('currency');
 		$data['price']     = scaled_to_price($data['price']);
 		$data['ledger_id'] = $this->job->estimate->id;
 

@@ -30,8 +30,6 @@ class AssignAction extends BaseAction
 	// Display the form
 	public function get()
 	{
-		helper('form');
-
 		$data = [
 			'job' => $this->job,
 		];

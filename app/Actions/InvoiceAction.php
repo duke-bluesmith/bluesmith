@@ -21,8 +21,6 @@ class InvoiceAction extends BaseAction
 
 	public function get()
 	{
-		helper(['form', 'inflector']);
-
 		return view('actions/invoice', [
 			'job'     => $this->job,
 			'invoice' => $this->job->getInvoice(true),

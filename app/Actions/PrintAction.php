@@ -20,9 +20,6 @@ class PrintAction extends BaseAction
 	
 	public function get()
 	{
-		// Load the helpers
-		helper(['currency', 'form', 'number']);
-
 		return view('actions/print', [
 			'action'   => $this->attributes['name'],
 			'job'      => $this->job,

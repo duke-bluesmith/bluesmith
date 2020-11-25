@@ -28,4 +28,14 @@ abstract class BaseAction extends ModuleBaseAction
 	 * @var JobModel
 	 */
 	public $jobs;
+
+	/**
+	 * Loads frequently-needed helpers
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		helper(['currency', 'form', 'inflector', 'number']);
+	}
 }

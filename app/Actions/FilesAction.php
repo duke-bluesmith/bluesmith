@@ -23,7 +23,9 @@ class FilesAction extends BaseAction
 	protected $files;
 
 	public function __construct()
-	{		
+	{
+		parent::__construct();
+
 		// Preload the Files model and helper
 		$this->files = new FileModel();
 		helper('files');
@@ -31,8 +33,6 @@ class FilesAction extends BaseAction
 	
 	public function get()
 	{
-		helper('form');
-
 		$data = [
 			'job'      => $this->job,
 			'files'    => $this->files->getForUser(user_id()),

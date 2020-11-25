@@ -24,9 +24,6 @@ class ApproveAction extends BaseAction
 	 */
 	public function get()
 	{
-		// Load the helpers
-		helper(['currency', 'form', 'number']);
-
 		return view('actions/approve', [
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(),

@@ -20,7 +20,6 @@ class OptionsAction extends BaseAction
 	
 	public function get()
 	{
-		helper(['form', 'inflector']);
 		$options = new OptionModel();
 		$methods = new MethodModel();
 		

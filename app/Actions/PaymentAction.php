@@ -21,8 +21,6 @@ class PaymentAction extends BaseAction
 
 	public function get()
 	{
-		helper(['form', 'inflector']);
-
 		return view('actions/payment', [
 			'job' => $this->job,
 		]);

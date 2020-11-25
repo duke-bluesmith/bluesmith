@@ -21,8 +21,6 @@ class DeliverAction extends BaseAction
 	
 	public function get()
 	{
-		helper(['form', 'inflector']);
-
 		return view('actions/deliver', [
 			'job' => $this->job,
 		]);

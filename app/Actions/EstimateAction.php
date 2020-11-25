@@ -28,9 +28,6 @@ class EstimateAction extends BaseAction
 	 */
 	public function get()
 	{
-		// Load the helpers
-		helper(['currency', 'form', 'number']);
-
 		return view('actions/estimate', [
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(),
