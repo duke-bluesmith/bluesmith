@@ -21,6 +21,7 @@ class WorkflowSeeder extends Seeder
 		'approve',
 		'print',
 		'postprint',
+		'invoice',
 		'payment',
 		'deliver',
 	];

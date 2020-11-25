@@ -3792,16 +3792,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "cd3b71b449a9559cf1328789b3fcc873ad9758dd"
+                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/cd3b71b449a9559cf1328789b3fcc873ad9758dd",
-                "reference": "cd3b71b449a9559cf1328789b3fcc873ad9758dd",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/7903f3d23ace182303cb1b8cd6af6e972629389e",
+                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e",
                 "shasum": ""
             },
             "require": {
@@ -3817,16 +3817,17 @@
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "fzaninotto/faker": "^1.9@dev",
                 "myth/auth": "dev-develop",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5"
+                "tatter/tools": "^1.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Workflows\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3851,9 +3852,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.2.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.2.1"
             },
-            "time": "2020-11-15T19:12:56+00:00"
+            "time": "2020-11-16T17:44:48+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

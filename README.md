@@ -36,21 +36,20 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 	* `composer update`<sup>1</sup>
 
 4. Migrate the database:
-	* `./spark migrate -all`
+	* `php spark migrate -all`
 
 5. Seed the database with the necessary initial settings:
-	* `./spark db:seed InitialSeeder`
-	* `./spark handlers:register`
+	* `php spark db:seed InitialSeeder`
 
 6. Set up cron jobs for the following tasks:
-	* `./spark reports:generate`
+	* `php spark reports:generate`
 
 7. Set your web host to serve the **public/** directory
 	
 <sup>1</sup> Note: This should trigger Composer's post-update command which handles
 vendor assets, but if that fails or if you update manually be sure to run the following
 command from the root directory to publish them manually:
-	* `./spark assets:publish`
+	* `php spark assets:publish`
 
 
 ## Customize
