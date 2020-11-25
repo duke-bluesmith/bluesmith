@@ -1,6 +1,10 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
+use App\Libraries\Mailer;
+use App\Models\LedgerModel;
+use App\Models\UserModel;
+use CodeIgniter\HTTP\RedirectResponse;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -18,38 +22,65 @@ class EstimateAction extends BaseAction
 		'icon'     => 'fas fa-balance-scale-right',
 		'summary'  => 'Staff issues estimate',
 	];
-	
+
+	/**
+	 * Displays the Charges and form for sending
+	 * the estimate Ledger.
+	 *
+	 * @return string
+	 */
 	public function get()
 	{
-		helper(['form', 'inflector']);
+		// Load the helpers
+		helper(['currency', 'form', 'number']);
 
 		return view('actions/estimate', [
-			'job' => $this->job,
+			'job'      => $this->job,
+			'estimate' => $this->job->getEstimate(),
 		]);
 	}
-	
+
+	/**
+	 * Processes form data and sends the Estimate
+	 * Email to each selected user.
+	 *
+	 * @return RedirectResponse|bool
+	 */
 	public function post()
 	{
-		$data = service('request')->getPost();
+		// Update the description
+		model(LedgerModel::class)->update($this->job->estimate->id, [
+			'description' => service('request')->getPost('description'),
+		]);
+
+		// Verify each user and grab their email address
+		$recipients = [];
+		foreach (service('request')->getPost('users') as $userId)
+		{
+			if (! is_numeric($userId))
+			{
+				continue;			
+			}
+
+			if ($user = model(UserModel::class)->first($userId))
+			{
+				$recipients[] = $user->email;
+			}
+			else
+			{
+				alert('warning', 'Unable to locate user #' . $userId);
+			}
+		}
+
+		if (empty($recipients))
+		{
+			return redirect()->back()->withInput()->with('error', lang('Actions.needClients'));
+		}
+
+		// Send the email
+		Mailer::forEstimate($recipients, $this->job, $this->job->estimate);
 
 		// End the action
 		return true;
-	}
-	
-	public function put()
-	{
-
-	}
-	
-	// run when a job progresses forward through the workflow
-	public function up()
-	{
-	
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
-
 	}
 }

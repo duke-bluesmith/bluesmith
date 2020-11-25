@@ -20,13 +20,13 @@ class ChargesAction extends BaseAction
 	];
 
 	/**
-	 * Load the currency helper
+	 * Load the helpers
 	 */
 	public function __construct()
 	{
 		parent::__construct();
 
-		helper(['currency', 'number']);
+		helper(['currency', 'form', 'number']);
 	}
 
 	/**
@@ -37,8 +37,6 @@ class ChargesAction extends BaseAction
 	 */
 	public function get()
 	{
-		helper(['form']);
-
 		// Build out the clickable charge items for the "Details" aside
 		$items = [
 			[

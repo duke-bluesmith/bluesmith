@@ -1,6 +1,7 @@
 <?php namespace App\Libraries;
 
 use App\Entities\Job;
+use App\Entities\Ledger;
 use App\Entities\User;
 use App\Models\JobModel;
 use CodeIgniter\Email\Email as Emailer;
@@ -61,7 +62,7 @@ class Mailer
 
 		// Prep Email to our Template
 		$emailer = $template->email([
-			'title'       => 'Job invitation',
+			'title'       => 'Job Invitation',
 			'preview'     => 'Collaborate with ' . $issuer->firstname,
 			'issuer_name' => $issuer->name,
 			'accept_url'  => site_url('emails/invite/' . $token),
@@ -72,6 +73,35 @@ class Mailer
 			$config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
 			$config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName)
 		->setTo($recipient);
+
+		if ($emailId = self::send($emailer))
+		{
+			model(JobModel::class)->addEmailToJob($emailId, $job->id);
+		}
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
+	 * Estimate
+	 * Emails an estimate Ledger to the recipients
+	 *
+	 * @param array $recipients Email addresses of the recipients
+	 * @param Job $job
+	 * @param Ledger $ledger
+	 */
+	public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
+	{
+		$template = model(TemplateModel::class)->findByName('Job Invite');
+
+		// Prep Email to our Template
+		$emailer = $template->email([
+			'title'       => 'Job Estimate',
+			'preview'     => 'Your estimate is ready',
+			'job_name'    => $job->name,
+			'job_url'     => site_url('jobs/' . $job->id),
+			'description' => $ledger->description ?: 'none provided',
+		])->setTo($recipients);
 
 		if ($emailId = self::send($emailer))
 		{

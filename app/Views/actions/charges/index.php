@@ -56,33 +56,7 @@
 	<?php if (empty($estimate->charges)): ?>
 	<p><em>No charges have been set.</em></p>
 	<?php else: ?>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Description</th>
-				<th scope="col">Quantity</th>
-				<th scope="col">Price</th>
-				<th scope="col">Subtotal</th>
-				<th scope="col"></th>
-			</tr>
-		</thead>
-		<tbody>
-
-		<?php foreach ($estimate->charges ?? [] as $i => $charge): ?>
-			<tr>
-				<td><?= $charge->name ?></td>
-				<td><?= $charge->quantity ?></td>
-				<td><?= price_to_scaled($charge->price, null, true) ?></td>
-				<td><?= $charge->getAmount(true) ?></td>
-				<td>
-					<?= view('actions/charges/delete', ['charge' => $charge]) ?>
-				</td>
-			</div>
-		</div>
-		<?php endforeach; ?>
-
-		</tbody>
-	</table>
+	<?= view('actions/charges/table', ['mayDelete' => true]) ?>
 	<?php endif; ?>
 
 </div>

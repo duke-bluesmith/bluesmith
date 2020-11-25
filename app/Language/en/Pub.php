@@ -5,6 +5,7 @@ return [
 	'add'                     => 'Add',
 	'remove'                  => 'Remove',
 	'accept'                  => 'Accept',
+	'send'                    => 'Send',
 	'saveContinue'            => 'Save and Continue',
 	'jobOption'               => 'Job option',
 	'printService'            => 'Print service',
