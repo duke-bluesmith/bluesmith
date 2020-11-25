@@ -1,11 +1,11 @@
 <?php namespace Tests\Support;
 
+use App\Entities\Job;
+use App\Entities\User;
 use CodeIgniter\Test\FeatureResponse;
 use Myth\Auth\Authorization\PermissionModel;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Entities\Job;
 use Tatter\Workflows\Entities\Stage;
-use Tatter\Workflows\Entities\User;
 use Tatter\Workflows\Entities\Workflow;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\StageModel;
@@ -20,6 +20,13 @@ use Tests\Support\Fakers\JobFaker;
  */
 abstract class ActionTestCase extends FeatureTestCase
 {
+	/**
+	 * UID of the Action to test, set by child class.
+	 * 
+	 * @var string
+	 */
+	protected $actionUid;
+
 	/**
 	 * @var Action
 	 */
@@ -65,7 +72,7 @@ abstract class ActionTestCase extends FeatureTestCase
 		]);
 
 		// Log in a User to be the Job owner
-		$this->user = $this->createAuthUser();
+		$this->user = $this->createAuthUser(); // @phpstan-ignore-line
 		model(JobFaker::class)->addUserToJob($this->user->id, $this->job->id);
 
 		// Grant the User manageJobs permission to access all Actions

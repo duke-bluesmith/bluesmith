@@ -1,12 +1,13 @@
 <?php namespace App\Entities;
 
+use App\Models\ChargeModel;
 use Tatter\Settings\Models\SettingModel;
 use Tests\Support\ActionTestCase;
 
 class EstimateTest extends ActionTestCase
 {
 	/**
-	 * Slug for the Action to test
+	 * UID of the Action to test
 	 * 
 	 * @var string
 	 */
