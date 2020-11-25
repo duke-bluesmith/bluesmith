@@ -13,7 +13,7 @@
 		</thead>
 		<tbody>
 
-		<?php foreach ($estimate->charges as $i => $charge): ?>
+		<?php foreach ($charges as $i => $charge): ?>
 			<tr>
 				<td><?= $charge->name ?></td>
 				<td><?= $charge->quantity ?></td>

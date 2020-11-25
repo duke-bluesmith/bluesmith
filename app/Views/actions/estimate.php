@@ -46,7 +46,7 @@
 		<?php if (empty($estimate->charges)): ?>
 		<p class="text-danger">No charges have been set.</p>
 		<?php else: ?>
-		<?= view('actions/charges/table', ['mayDelete' => false]) ?>
+		<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
 		<?php endif; ?>
 
 		<span class="float-right h3">Total: <?= $estimate->getTotal(true) ?></span>
