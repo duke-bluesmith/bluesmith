@@ -1,9 +1,8 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
-use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
+use App\Models\NoteModel;
+use CodeIgniter\HTTP\RedirectResponse;
 
 class PrintAction extends BaseAction
 {
@@ -21,35 +20,45 @@ class PrintAction extends BaseAction
 	
 	public function get()
 	{
-		helper(['form', 'inflector']);
+		// Load the helpers
+		helper(['currency', 'form', 'number']);
 
 		return view('actions/print', [
-			'job' => $this->job,
+			'action'   => $this->attributes['name'],
+			'job'      => $this->job,
+			'estimate' => $this->job->getEstimate(),
 		]);
 	}
-	
+
+	/**
+	 * Marks the job as printed and this Action complete.
+	 *
+	 * @return bool
+	 */
 	public function post()
 	{
-		$data = service('request')->getPost();
-
 		// End the action
 		return true;
 	}
-	
-	public function put()
-	{
 
-	}
-	
-	// run when a job progresses forward through the workflow
-	public function up()
+	/**
+	 * Adds a Note.
+	 *
+	 * @return RedirectResponse
+	 */
+	public function put(): RedirectResponse
 	{
-	
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
+		$data = service('request')->getPost();
 
+		$data['job_id']  = $this->job->id;
+		$data['user_id'] = user()->id;
+
+		// Create the Note
+		if (! model(NoteModel::class)->insert($data))
+		{
+			return redirect()->back()->withInput()->with('error', implode(' ', model(NoteModel::class)->errors()));
+		}
+
+		return redirect()->back();
 	}
 }

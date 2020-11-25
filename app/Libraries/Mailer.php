@@ -99,8 +99,8 @@ class Mailer
 			'title'       => 'Job Estimate',
 			'preview'     => 'Your estimate is ready',
 			'job_name'    => $job->name,
-			'job_url'     => site_url('jobs/' . $job->id),
-			'description' => $ledger->description ?: 'none provided',
+			'job_url'     => anchor('jobs/' . $job->id),
+			'description' => nl2br($ledger->description ?: 'none provided'),
 		])->setTo($recipients);
 
 		if ($emailId = self::send($emailer))
