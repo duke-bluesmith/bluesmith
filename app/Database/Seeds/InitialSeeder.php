@@ -1,6 +1,7 @@
 <?php namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
 {
@@ -40,7 +41,13 @@ class InitialSeeder extends Seeder
 				}
 			}
 		}
-		
+
+		// Use the Registrar to seed Actions
+		if (Registrar::actions())
+		{
+			command('actions:list');
+		}
+
 		return $errors;
 	}
 }

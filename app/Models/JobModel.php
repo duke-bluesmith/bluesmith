@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Entities\Job;
 use Tatter\Workflows\Models\JobModel as BaseJobModel;
 
 /**
@@ -15,7 +16,7 @@ class JobModel extends BaseJobModel
 	use \Tatter\Relations\Traits\ModelTrait;
 
 	protected $with		     = ['options'];
-	protected $returnType	 = 'App\Entities\Job';
+	protected $returnType	 = Job::class;
 	protected $allowedFields = ['name', 'summary', 'workflow_id', 'stage_id', 'material_id'];
 
 	/**
@@ -41,9 +42,9 @@ class JobModel extends BaseJobModel
 	 *
 	 * @return bool
 	 */
-	public function addEmailToJob(int $emailId, int $jobId)
+	public function addEmailToJob(int $emailId, int $jobId): bool
 	{
-		return $this->db->table('emails_jobs')->insert([
+		return (bool) $this->db->table('emails_jobs')->insert([
 			'email_id' => (int) $emailId,
 			'job_id'   => (int) $jobId,
 		]);
@@ -57,9 +58,9 @@ class JobModel extends BaseJobModel
 	 *
 	 * @return bool
 	 */
-	public function addUserToJob(int $userId, int $jobId)
+	public function addUserToJob(int $userId, int $jobId): bool
 	{
-		return $this->db->table('jobs_users')->insert([
+		return (bool) $this->db->table('jobs_users')->insert([
 			'job_id'  => (int) $jobId,
 			'user_id' => (int) $userId,
 		]);

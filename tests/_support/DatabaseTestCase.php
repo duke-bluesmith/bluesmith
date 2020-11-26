@@ -1,5 +1,6 @@
 <?php namespace Tests\Support;
 
+use App\Database\Seeds\InitialSeeder;
 use App\Entities\User;
 use CodeIgniter\Test\CIDatabaseTestCase;
 use Config\Services;
@@ -43,7 +44,7 @@ class DatabaseTestCase extends CIDatabaseTestCase
 	 *
 	 * @var string|array
 	 */
-	protected $seed = 'App\Database\Seeds\InitialSeeder';
+	protected $seed = InitialSeeder::class;
 
 	//--------------------------------------------------------------------
 	// Staging

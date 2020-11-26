@@ -1,7 +1,7 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -21,8 +21,6 @@ class PaymentAction extends BaseAction
 
 	public function get()
 	{
-		helper(['form', 'inflector']);
-
 		return view('actions/payment', [
 			'job' => $this->job,
 		]);

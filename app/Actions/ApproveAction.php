@@ -1,9 +1,6 @@
 <?php namespace App\Actions;
 
-use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\BaseAction;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
+use App\BaseAction;
 
 class ApproveAction extends BaseAction
 {
@@ -18,38 +15,29 @@ class ApproveAction extends BaseAction
 		'icon'     => 'fas fa-thumbs-up',
 		'summary'  => 'Client approves the estimate',
 	];
-	
+
+	/**
+	 * Displays the Charges and form for
+	 * accepting the estimate Ledger.
+	 *
+	 * @return string
+	 */
 	public function get()
 	{
-		helper(['form', 'inflector']);
-
 		return view('actions/approve', [
-			'job' => $this->job,
+			'job'      => $this->job,
+			'estimate' => $this->job->getEstimate(),
 		]);
 	}
-	
-	public function post()
-	{
-		$data = service('request')->getPost();
 
+	/**
+	 * Processes the acceptance.
+	 *
+	 * @return bool
+	 */
+	public function post(): bool
+	{
 		// End the action
 		return true;
-	}
-	
-	public function put()
-	{
-
-	}
-	
-	// run when a job progresses forward through the workflow
-	public function up()
-	{
-	
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
-
 	}
 }

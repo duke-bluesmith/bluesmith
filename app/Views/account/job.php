@@ -80,8 +80,6 @@
 					</table>
 
 					<a href="#" class="btn btn-secondary">Change</a>
-
-
 				</div>
 
 				<div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
@@ -101,7 +99,7 @@
 							<tr>
 								<td><?= $log->from->name ?? lang('Pub.newJob') ?></td>
 								<td><?= $log->stage_to > $log->stage_from ? lang('Pub.complete') : lang('Pub.revert') ?>
-								<td><?= service('accounts')->app->get($log->user_id)->name ?></td>
+								<td><?= $log->user ? $log->user->name : '' ?></td>
 								<td><?= $log->created_at->humanize() ?></td>
 							</tr>
 
@@ -121,7 +119,7 @@ $data = [
 	'access'  => 'display',
 	'exports' => handlers('Exports')->findAll(),
 ];
-echo view('Tatter\Files\Views\Formats\\cards', $data)
+echo view('Tatter\Files\Views\Formats\cards', $data)
 ?>
 
 

@@ -1,8 +1,8 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use App\Models\MethodModel;
 use App\Models\OptionModel;
-use Tatter\Workflows\BaseAction;
 
 class OptionsAction extends BaseAction
 {
@@ -20,7 +20,6 @@ class OptionsAction extends BaseAction
 	
 	public function get()
 	{
-		helper(['form', 'inflector']);
 		$options = new OptionModel();
 		$methods = new MethodModel();
 		

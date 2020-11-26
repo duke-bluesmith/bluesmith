@@ -1,10 +1,10 @@
 <?php namespace App\Actions;
 
+use App\BaseAction;
 use App\Entities\Job;
 use App\Exceptions\InviteException;
 use App\Models\UserModel;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -27,23 +27,9 @@ class AssignAction extends BaseAction
 	 */
 	public $job;
 
-	public function __construct()
-	{
-		helper('alerts');
-	}
-
 	// Display the form
 	public function get()
 	{
-		// The first time through add the current user
-		if (empty($this->job->users))
-		{
-			helper('auth');
-			$this->job->addUser(user_id());
-		}
-
-		helper('form');
-
 		$data = [
 			'job' => $this->job,
 		];
@@ -56,7 +42,7 @@ class AssignAction extends BaseAction
 		if (empty($this->job->users))
 		{
 			alert('warning', lang('Actions.needClients'));
-			return redirect()->back();		
+			return redirect()->back();
 		}
 
 		return true;
@@ -131,16 +117,15 @@ class AssignAction extends BaseAction
 			return redirect()->back();
 		}
 	}
-	
-	// run when a job progresses forward through the workflow
+
+	/**
+	 * If there are no clients then assign the current user
+	 */
 	public function up()
 	{
-
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
-
+		if (empty($this->job->users))
+		{
+			$this->job->addUser(user_id());
+		}
 	}
 }

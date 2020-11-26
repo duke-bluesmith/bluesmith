@@ -22,7 +22,7 @@ class InitialSeederTest extends DatabaseTestCase
 
 		$result = $workflow->stages;
 
-		$this->assertCount(12, $result);
+		$this->assertCount(13, $result);
 		$this->assertEquals('options', $result[3]->action->uid);
 	}
 

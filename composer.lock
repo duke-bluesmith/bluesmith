@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1768c17abfd82be3adadebb89f8a77de",
+    "content-hash": "8ed36fc2ddad44740dd4416885cdaa89",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -946,6 +946,107 @@
                 }
             ],
             "time": "2020-09-14T14:23:00+00:00"
+        },
+        {
+            "name": "league/commonmark",
+            "version": "1.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "11df9b36fd4f1d2b727a73bf14931d81373b9a54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/11df9b36fd4f1d2b727a73bf14931d81373b9a54",
+                "reference": "11df9b36fd4f1d2b727a73bf14931d81373b9a54",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "conflict": {
+                "scrutinizer/ocular": "1.7.*"
+            },
+            "require-dev": {
+                "cebe/markdown": "~1.0",
+                "commonmark/commonmark.js": "0.29.2",
+                "erusev/parsedown": "~1.0",
+                "ext-json": "*",
+                "github/gfm": "0.29.0",
+                "michelf/php-markdown": "~1.4",
+                "mikehaertl/php-shellcommand": "^1.4",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.2",
+                "scrutinizer/ocular": "^1.5",
+                "symfony/finder": "^4.2"
+            },
+            "bin": [
+                "bin/commonmark"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
+            "homepage": "https://commonmark.thephpleague.com",
+            "keywords": [
+                "commonmark",
+                "flavored",
+                "gfm",
+                "github",
+                "github-flavored",
+                "markdown",
+                "md",
+                "parser"
+            ],
+            "support": {
+                "docs": "https://commonmark.thephpleague.com/",
+                "issues": "https://github.com/thephpleague/commonmark/issues",
+                "rss": "https://github.com/thephpleague/commonmark/releases.atom",
+                "source": "https://github.com/thephpleague/commonmark"
+            },
+            "funding": [
+                {
+                    "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.colinodell.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/colinpodell/10.00",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/colinodell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/colinodell",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-31T13:49:32+00:00"
         },
         {
             "name": "myth/auth",
@@ -3472,23 +3573,24 @@
         },
         {
             "name": "tatter/settings",
-            "version": "v1.0.5",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-settings.git",
-                "reference": "34a2cf3949f87f1bef89750504beea930d3af266"
+                "reference": "ac6a113303794f010db79c69e076c6cd8858fbcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-settings/zipball/34a2cf3949f87f1bef89750504beea930d3af266",
-                "reference": "34a2cf3949f87f1bef89750504beea930d3af266",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-settings/zipball/ac6a113303794f010db79c69e076c6cd8858fbcf",
+                "reference": "ac6a113303794f010db79c69e076c6cd8858fbcf",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "codeigniter4/framework": "dev-master"
+                "codeigniter4/codeigniter4": "dev-develop",
+                "tatter/tools": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -3518,9 +3620,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-settings/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-settings/tree/develop"
+                "source": "https://github.com/tattersoftware/codeigniter4-settings/tree/v1.1.0"
             },
-            "time": "2019-09-26T19:45:38+00:00"
+            "time": "2020-11-12T18:01:10+00:00"
         },
         {
             "name": "tatter/themes",
@@ -3690,16 +3792,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.1.2",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447"
+                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
-                "reference": "610bf97129a1efdc9f8c92ff1b886ad55d5cb447",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/7903f3d23ace182303cb1b8cd6af6e972629389e",
+                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e",
                 "shasum": ""
             },
             "require": {
@@ -3715,16 +3817,17 @@
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "fzaninotto/faker": "^1.9@dev",
                 "myth/auth": "dev-develop",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5"
+                "tatter/tools": "^1.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Workflows\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3749,9 +3852,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.1.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.2.1"
             },
-            "time": "2020-11-10T02:14:15+00:00"
+            "time": "2020-11-16T17:44:48+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
