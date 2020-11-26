@@ -18,4 +18,5 @@ return [
 	'newJob'                  => 'Job created',
 	'complete'                => 'Complete',
 	'revert'                  => 'Revert',
+	'invoice'                 => 'Invoice',
 ];

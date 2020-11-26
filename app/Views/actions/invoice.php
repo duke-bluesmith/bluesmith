@@ -6,8 +6,9 @@
 	<?= form_open('jobs/invoice/' . $job->id) ?>
 
 		<input class="btn btn-primary float-md-right" type="submit" name="send" value="<?= lang('Pub.send') ?>">
+		<h2 class="mb-4"><?= lang('Pub.invoice') ?></h2>
 
-		<h3><?= lang('Pub.clients') ?></h3>
+		<h4><?= lang('Pub.clients') ?></h4>
 
 		<?php if (empty($job->users)): ?>
 
@@ -40,14 +41,15 @@
 		</table>
 
 		<?php endif; ?>
-		<div class="col-sm-6">
-			<h2>Add a Charge</h2>
+
+		<h4>Add a Charge</h4>
+		<div class="col-sm-6 mb-4">
 
 			<?= form_open('jobs/charges/' . $job->id) ?>
 				<input type="hidden" name="_method" value="PUT" />
 
 				<div class="form-row mb-1">
-					<div class="col-7">
+					<div class="col-6">
 						<label class="sr-only" for="name-add">Description</label>
 						<input type="text" name="name" id="name-add" class="form-control" placeholder="Description">
 					</div>
@@ -64,22 +66,24 @@
 							<input type="text" name="price" id="price-add" class="form-control" placeholder="Price">
 						</div>
 					</div>
+					<div class="col-1">
+						<button class="btn btn-primary" type="submit" name="charge-add"><?= lang('Pub.add') ?></button>
+					</div>
 				</div>
 
-				<button class="btn btn-primary" type="submit" name="charge-add"><?= lang('Pub.add') ?></button>
 			<?= form_close() ?>
 
 		</div>
 
-		<h2>Current Charges</h2>
+		<h4>Current Charges</h4>
 		<?php if (empty($invoice->charges)): ?>
 		<p class="text-danger">No charges have been set.</p>
 		<?php else: ?>
-		<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
+		<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $invoice->charges]) ?>
 		<?php endif; ?>
 
 
-		<h3>Additional Notes</h3>
+		<h4>Additional Notes</h4>
 		<textarea class="form-control mb-3" name="description" rows="8" placeholder="Additional notes..."><?= old('description') ?></textarea>
 	</div>
 </div>
