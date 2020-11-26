@@ -27,17 +27,41 @@ class InvoiceAction extends BaseAction
 		]);
 	}
 
-	public function post()
+	/**
+	 * Ends the Action
+	 *
+	 * @return bool
+	 */
+	public function post(): bool
 	{
-		$data = service('request')->getPost();
-
-		// End the action
 		return true;
 	}
 
+	/**
+	 * Adds a Charge to the invoice Ledger.
+	 *
+	 * @return RedirectResponse
+	 */
 	public function put()
 	{
+		$data = service('request')->getPost();
 
+		// Convert the input into fractional money units
+		$data['price']     = scaled_to_price($data['price']);
+		$data['ledger_id'] = $this->job->invoice->id;
+
+		if (empty($data['quantity']))
+		{
+			unset($data['quantity']);
+		}
+
+		// Add the Charge
+		if (! model(ChargeModel::class)->insert($data))
+		{
+			return redirect()->back()->withInput()->with('error', implode(' ', model(ChargeModel::class)->errors()));
+		}
+
+		return redirect()->back();
 	}
 
 	/**
