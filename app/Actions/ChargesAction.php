@@ -88,6 +88,11 @@ class ChargesAction extends BaseAction
 	{
 		$data = service('request')->getPost();
 
+		if (! isset($data['amount']))
+		{
+			return redirect()->back()->withInput()->with('error', 'You must enter a price!');
+		}
+
 		// Convert the input into fractional money units
 		$data['amount']    = scaled_to_price($data['amount']);
 		$data['ledger_id'] = $this->job->estimate->id;

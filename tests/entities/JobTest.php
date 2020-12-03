@@ -86,7 +86,7 @@ class JobTest extends DatabaseTestCase
 		$this->assertTrue($result->estimate);
 	}
 
-	public function testInvoiceReturnsLedger()
+	public function testInvoiceReturnsInvoice()
 	{
 		$result = model(LedgerModel::class)->insert([
 			'job_id'   => $this->job->id,
@@ -96,6 +96,7 @@ class JobTest extends DatabaseTestCase
 		$result = $this->job->invoice;
 
 		$this->assertInstanceOf(Ledger::class, $result);
+		$this->assertInstanceOf(Invoice::class, $result);
 		$this->assertFalse($result->estimate);
 	}
 

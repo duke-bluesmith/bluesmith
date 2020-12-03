@@ -46,8 +46,13 @@ class InvoiceAction extends BaseAction
 	{
 		$data = service('request')->getPost();
 
+		if (! isset($data['amount']))
+		{
+			return redirect()->back()->withInput()->with('error', 'You must enter a price!');
+		}
+
 		// Convert the input into fractional money units
-		$data['price']     = scaled_to_price($data['price']);
+		$data['amount']    = scaled_to_price($data['amount']);
 		$data['ledger_id'] = $this->job->invoice->id;
 
 		if (empty($data['quantity']))
@@ -83,7 +88,7 @@ class InvoiceAction extends BaseAction
 				model(ChargeModel::class)->insert([
 					'ledger_id' => $ledgerId,
 					'name'      => $charge->name,
-					'price'     => $charge->price,
+					'amount'    => $charge->amount,
 					'quantity'  => $charge->quantity,
 				]);
 			}
