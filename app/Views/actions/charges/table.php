@@ -17,8 +17,8 @@
 			<tr>
 				<td><?= $charge->name ?></td>
 				<td><?= $charge->quantity ?></td>
-				<td><?= price_to_scaled($charge->price, null, true) ?></td>
-				<td><?= $charge->getAmount(true) ?></td>
+				<td><?= price_to_scaled($charge->amount, null, true) ?></td>
+				<td><?= $charge->getPrice(true) ?></td>
 				<?php if ($mayDelete): ?>
 				<td>
 					<?= view('actions/charges/delete', ['charge' => $charge]) ?>

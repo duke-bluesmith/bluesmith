@@ -29,7 +29,7 @@
 							<div class="input-group-prepend">
 								<div class="input-group-text">$</div>
 							</div>
-							<input type="text" name="price" id="price-add" class="form-control" placeholder="Price">
+							<input type="text" name="amount" id="amount-add" class="form-control" placeholder="Price">
 						</div>
 					</div>
 				</div>

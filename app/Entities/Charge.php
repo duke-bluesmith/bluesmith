@@ -5,32 +5,32 @@ class Charge extends BaseEntity
 	protected $table = 'charges';
 	protected $casts = [
 		'ledger_id' => 'int',
-		'price'     => 'int',
+		'amount'    => 'int',
 		'quantity'  => '?float',
 	];
 
 	/**
-	 * Calculates the amount from the price and quantity.
+	 * Calculates the price from the amount and quantity.
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
 	 * @return string|int
 	 */
-	public function getAmount(bool $formatted = false)
+	public function getPrice(bool $formatted = false)
 	{
-		$amount = (int) $this->attributes['price'];
+		$price = (int) $this->attributes['amount'];
 
 		if (! empty($this->attributes['quantity']))
 		{
-			$amount = round($amount * (float) $this->attributes['quantity']);
+			$price = round($price * (float) $this->attributes['quantity']);
 		}
 
 		if (! $formatted)
 		{
-			return (int) $amount;
+			return (int) $price;
 		}
 
 		helper(['currency', 'number']);
-		return price_to_currency($amount);
+		return price_to_currency($price);
 	}
 }

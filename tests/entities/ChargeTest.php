@@ -14,26 +14,26 @@ class ChargeTest extends DatabaseTestCase
 		model(SettingModel::class)->where('name', 'currencyScale')->update(null, ['content' => 100]);
 	}
 
-	public function testGetAmountReturnsPrice()
+	public function testGetPriceReturnsPrice()
 	{
 		$charge = new Charge([
-			'price' => 1000,
+			'amount' => 1000,
 		]);
 
-		$result = $charge->getAmount();
+		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
 		$this->assertEquals(1000, $result);
 	}
 
-	public function testGetAmountMultipliesQuantity()
+	public function testGetPriceMultipliesQuantity()
 	{
 		$charge = new Charge([
-			'price'    => 1000,
+			'amount'   => 1000,
 			'quantity' => 3,
 		]);
 
-		$result = $charge->getAmount();
+		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
 		$this->assertEquals(3000, $result);
@@ -42,35 +42,35 @@ class ChargeTest extends DatabaseTestCase
 	public function testQuantityRounds()
 	{
 		$charge = new Charge([
-			'price'    => 1000,
+			'amount'   => 1000,
 			'quantity' => 0.36625363,
 		]);
 
-		$result = $charge->getAmount();
+		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
 		$this->assertEquals(366, $result);
 	}
 
-	public function testGetAmountFormatted()
+	public function testGetPriceFormatted()
 	{
 		$charge = new Charge([
-			'price'    => 1000,
+			'amount' => 1000,
 		]);
 
-		$result = $charge->getAmount(true);
+		$result = $charge->getPrice(true);
 
 		$this->assertIsString($result);
 		$this->assertEquals('$10.00', $result);
 	}
 
-	public function testGetAmountFormattedWithCents()
+	public function testGetPriceFormattedWithCents()
 	{
 		$charge = new Charge([
-			'price'    => 1005,
+			'amount' => 1005,
 		]);
 
-		$result = $charge->getAmount(true);
+		$result = $charge->getPrice(true);
 
 		$this->assertIsString($result);
 		$this->assertEquals('$10.05', $result);

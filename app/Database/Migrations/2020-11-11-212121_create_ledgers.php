@@ -29,7 +29,7 @@ class CreateLedgers extends Migration
 		$fields = [
 			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
-			'price'      => ['type' => 'int', 'null' => false, 'default' => 0],
+			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
 			'quantity'   => ['type' => 'double', 'null' => true, 'default' => null],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],

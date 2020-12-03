@@ -89,7 +89,7 @@ class ChargesAction extends BaseAction
 		$data = service('request')->getPost();
 
 		// Convert the input into fractional money units
-		$data['price']     = scaled_to_price($data['price']);
+		$data['amount']    = scaled_to_price($data['amount']);
 		$data['ledger_id'] = $this->job->estimate->id;
 
 		if (empty($data['quantity']))
