@@ -52,7 +52,7 @@ class CreateLedgers extends Migration
 			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
 			'class'      => ['type' => 'varchar', 'constraint' => 255],
 			'reference'  => ['type' => 'varchar', 'constraint' => 255],
-			'code'       => ['type' => 'int', 'null' => false, 'default' => 0],
+			'code'       => ['type' => 'int', 'null' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 		];

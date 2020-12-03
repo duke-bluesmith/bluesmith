@@ -19,4 +19,5 @@ return [
 	'complete'                => 'Complete',
 	'revert'                  => 'Revert',
 	'invoice'                 => 'Invoice',
+	'transactions'            => 'Bluechips',
 ];

@@ -6,6 +6,7 @@ class PaymentModel extends BaseModel
 {
 	protected $table          = 'payments';
 	protected $returnType     = Payment::class;
+	protected $useSoftDeletes = false;
 	protected $allowedFields  = [
 		'ledger_id', 'user_id', 'amount',
 		'class', 'reference', 'code'

@@ -21,8 +21,10 @@ class PaymentAction extends BaseAction
 
 	public function get()
 	{
-		return view('actions/payment', [
-			'job' => $this->job,
+		return view('actions/payments/index', [
+			'job'       => $this->job,
+			'invoice'   => $this->job->getInvoice(),
+			'handlers'  => service('handlers', 'Merchants'),
 		]);
 	}
 
