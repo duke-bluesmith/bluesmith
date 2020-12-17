@@ -9,7 +9,7 @@ class PaymentModel extends BaseModel
 	protected $useSoftDeletes = false;
 	protected $allowedFields  = [
 		'ledger_id', 'user_id', 'amount',
-		'class', 'reference', 'code'
+		'class', 'reference', 'code', 'reason',
 	];
 
 	protected $validationRules = [

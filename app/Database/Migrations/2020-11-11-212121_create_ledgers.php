@@ -53,6 +53,7 @@ class CreateLedgers extends Migration
 			'class'      => ['type' => 'varchar', 'constraint' => 255],
 			'reference'  => ['type' => 'varchar', 'constraint' => 255],
 			'code'       => ['type' => 'int', 'null' => true],
+			'reason'     => ['type' => 'text', 'null' => false, 'default' => ''],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 		];
@@ -66,28 +67,10 @@ class CreateLedgers extends Migration
 		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('payments');
-
-		// Payment statuses
-		$fields = [
-			'payment_id' => ['type' => 'int', 'unsigned' => true],
-			'code'       => ['type' => 'int', 'null' => false, 'default' => 0],
-			'reason'     => ['type' => 'text', 'null' => false, 'default' => ''],
-			'json'       => ['type' => 'bool', 'null' => false, 'default' => 0],
-			'created_at' => ['type' => 'datetime', 'null' => true],
-		];
-		
-		$this->forge->addField('id');
-		$this->forge->addField($fields);
-
-		$this->forge->addKey('payment_id');
-		$this->forge->addKey('created_at');
-		
-		$this->forge->createTable('payment_statuses');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('payment_statuses');
 		$this->forge->dropTable('payments');
 		$this->forge->dropTable('charges');
 		$this->forge->dropTable('ledgers');
