@@ -21,10 +21,21 @@ class PaymentAction extends BaseAction
 
 	public function get()
 	{
+		// Load Merchants and filter by eligibility
+		$merchants = [];
+		foreach (service('handlers', 'Merchants')->findAll() as $class)
+		{
+			$merchant = new $class();
+			if ($merchant->eligible(user()))
+			{
+				$merchants[] = $merchant;
+			}
+		}
+
 		return view('actions/payment/index', [
 			'job'       => $this->job,
 			'invoice'   => $this->job->getInvoice(),
-			'handlers'  => service('handlers', 'Merchants'),
+			'merchants' => $merchants,
 		]);
 	}
 

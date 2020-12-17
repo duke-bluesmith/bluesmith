@@ -21,12 +21,11 @@
 		</tr>
 	</table>
 
+	<?php if (count($merchants)): ?>
 	<p>Select your payment method to continue...</p>
 	<ul>
 
-		<?php foreach ($handlers->findAll() as $class): ?>
-		<?php $class    = $handlers->find($class); ?>
-		<?php $merchant = new $class(); ?>
+		<?php foreach ($merchants as $merchant): ?>
 		<li>
 
 		<?= form_open('jobs/payment/' . $job->id) ?>
@@ -41,6 +40,10 @@
 		<?php endforeach; ?>
 
 	</ul>
+
+	<?php else: ?>
+	<p class="text-danger">No eligible payment gateways. Please contact support.</p>
+	<?php endif; ?>
 
 </div>
 
