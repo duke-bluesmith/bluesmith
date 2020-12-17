@@ -25,15 +25,16 @@
 	<ul>
 
 		<?php foreach ($handlers->findAll() as $class): ?>
-		<?php $attributes = $handlers->getAttributes($class); ?>
+		<?php $class    = $handlers->find($class); ?>
+		<?php $merchant = new $class(); ?>
 		<li>
 
 		<?= form_open('jobs/payment/' . $job->id) ?>
 			<input type="hidden" name="_method" value="PUT" />
-			<input type="hidden" name="merchant" value="<?= $attributes['uid'] ?>" />
+			<input type="hidden" name="merchant" value="<?= $merchant->uid ?>" />
 
-			<button class="btn btn-primary btn-sm mr-3" type="submit"><?= $attributes['name'] ?></button>
-			<?= $attributes['summary'] ?>
+			<button class="btn btn-primary btn-sm mr-3" type="submit"><?= $merchant->name ?></button>
+			<?= $merchant->summary ?>
 		<?= form_close() ?>
 
 		</li>

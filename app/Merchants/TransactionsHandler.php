@@ -32,6 +32,18 @@ class TransactionsHandler extends BaseMerchant
 	}
 
 	/**
+	 * Checks a User for eligibility to use this Merchant.
+	 *
+	 * @param User $user The User to check
+	 *
+	 * @return bool
+	 */
+	public function eligible(User $user): bool
+	{
+		return ! empty($user->balance);
+	}
+
+	/**
 	 * Initiates a request for payment, returning a response
 	 * (usually a form or redirect link)
 	 *
@@ -41,7 +53,12 @@ class TransactionsHandler extends BaseMerchant
 	 */
 	public function request(Ledger $ledger): ResponseInterface
 	{
+		$response = service('response', config('App'));
+		$response->setBody(view('actions/payment/transactions', [
+			'ledger' => $ledger,
+		]));
 
+		return $response;
 	}
 
 	/**

@@ -11,7 +11,7 @@ class Invoice extends Ledger
 	/**
 	 * Store for calculated amount paid
 	 *
-	 * @var int
+	 * @var int|null
 	 */
 	private $paid;
 

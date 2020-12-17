@@ -65,4 +65,12 @@ class TransactionModelTest extends DatabaseTestCase
 		$user = model(UserModel::class)->find($this->user->id);
 		$this->assertEquals($expected, $user->balance);
 	}
+
+	public function testProcessThrowsOnInvalidInput()
+	{
+		$this->expectException('RuntimeException');
+		$this->expectExceptionMessage('');
+
+		model(TransactionModel::class)->credit($this->user, -100);
+	}
 }

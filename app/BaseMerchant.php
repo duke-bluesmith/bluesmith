@@ -53,6 +53,15 @@ abstract class BaseMerchant extends BaseHandler
 	}
 
 	/**
+	 * Checks a User for eligibility to use this Merchant.
+	 *
+	 * @param User $user The User to check
+	 *
+	 * @return bool
+	 */
+	abstract public function eligible(User $user): bool;
+
+	/**
 	 * Initiates a request for payment, returning a response
 	 * (usually a form or redirect link)
 	 *

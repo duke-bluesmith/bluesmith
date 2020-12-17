@@ -21,7 +21,7 @@ class PaymentAction extends BaseAction
 
 	public function get()
 	{
-		return view('actions/payments/index', [
+		return view('actions/payment/index', [
 			'job'       => $this->job,
 			'invoice'   => $this->job->getInvoice(),
 			'handlers'  => service('handlers', 'Merchants'),
@@ -38,7 +38,11 @@ class PaymentAction extends BaseAction
 
 	public function put()
 	{
+		$name     = service('request')->getPost('merchant');
+		$class    = service('handlers', 'Merchants')->find($name);
+		$merchant = new $class();
 
+		return $merchant->request($this->job->getInvoice());
 	}
 
 	// run when a job progresses forward through the workflow

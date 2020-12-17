@@ -64,7 +64,7 @@ class TransactionModel extends BaseModel
 	 * @param User $user
 	 * @param array $data
 	 *
-	 * @return bool
+	 * @return int
 	 * @throws \RuntimeException
 	 */
 	protected function process(User $user, array $data): int
