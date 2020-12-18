@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open('jobs/approve/' . $job->id) ?>
 		<input class="btn btn-primary float-right" type="submit" name="approve" value="<?= lang('Pub.accept') ?>">	
 	<?= form_close() ?>
@@ -20,6 +18,5 @@
 	<blockquote>
 	<?= nl2br($job->estimate->description ?: '<em>Nothing noted.</em>') ?>
 	</blockquote>
-</div>
 
 <?= $this->endSection() ?>

@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open('jobs/estimate/' . $job->id) ?>
 
 		<input class="btn btn-primary float-md-right" type="submit" name="send" value="<?= lang('Pub.send') ?>">
@@ -55,6 +53,5 @@
 		<textarea class="form-control mb-3" name="description" rows="8" placeholder="Additional notes..."><?= old('description') ?></textarea>
 
 	<?= form_close() ?>
-</div>
 
 <?= $this->endSection() ?>

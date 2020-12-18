@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open('jobs/charges/' . $job->id) ?>
 		<input class="btn btn-primary mb-3" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">	
 	<?= form_close() ?>
@@ -58,7 +56,5 @@
 	<?php else: ?>
 	<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
 	<?php endif; ?>
-
-</div>
 
 <?= $this->endSection() ?>

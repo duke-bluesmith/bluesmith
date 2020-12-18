@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open('jobs/options/' . $job->id) ?>
 
 		<input class="btn btn-primary float-md-right" type="submit" name="submit" value="<?= lang('Pub.saveContinue') ?>">	
@@ -123,6 +121,4 @@
 
 	<?= form_close() ?>
 	
-</div>
-
 <?= $this->endSection() ?>

@@ -1,7 +1,5 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
-
-<div class="container">
 	
 	<?= form_open('jobs/clients/' . $job->id) ?>
 
@@ -123,6 +121,5 @@
 
 		</div>
 	</div>
-</div>
 
 <?= $this->endSection() ?>

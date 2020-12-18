@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<h3>Payment</h3>
 	<h5><?= $invoice->job->name ?></h5>
 
@@ -40,7 +38,5 @@
 		<input type="hidden" name="merchant" value="transactions" />
 		<button class="btn btn-primary btn-sm mr-3" type="submit"><?= lang('Pub.submit') ?></button>
 	<?= form_close() ?>
-
-</div>
 
 <?= $this->endSection() ?>

@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open() ?>
 
 		<input class="btn btn-primary float-md-right" type="submit" name="complete" value="<?= lang('Pub.complete') ?>">	
@@ -97,6 +95,5 @@
 
 		</div>
 	</div>
-</div>
 
 <?= $this->endSection() ?>
