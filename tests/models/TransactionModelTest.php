@@ -69,7 +69,7 @@ class TransactionModelTest extends DatabaseTestCase
 	public function testProcessThrowsOnInvalidInput()
 	{
 		$this->expectException('RuntimeException');
-		$this->expectExceptionMessage('');
+		$this->expectExceptionMessage('The amount field must only contain digits and must be greater than zero');
 
 		model(TransactionModel::class)->credit($this->user, -100);
 	}
