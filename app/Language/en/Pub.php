@@ -6,6 +6,7 @@ return [
 	'remove'                  => 'Remove',
 	'accept'                  => 'Accept',
 	'send'                    => 'Send',
+	'submit'                  => 'Submit',
 	'saveContinue'            => 'Save and Continue',
 	'jobOption'               => 'Job option',
 	'printService'            => 'Print service',
@@ -19,4 +20,5 @@ return [
 	'complete'                => 'Complete',
 	'revert'                  => 'Revert',
 	'invoice'                 => 'Invoice',
+	'transactions'            => 'Bluechips',
 ];

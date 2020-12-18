@@ -25,7 +25,7 @@ class EstimateTest extends ActionTestCase
 		model(ChargeModel::class)->insert([
 			'ledger_id' => $estimate->id,
 			'name'      => 'Test Charge',
-			'price'     => 1000,
+			'amount'    => 1000,
 			'quantity'  => 2,
 		]);
 	}

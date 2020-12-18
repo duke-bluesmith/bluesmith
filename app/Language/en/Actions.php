@@ -21,4 +21,5 @@ return [
 	'mustAccept'       => 'You must accept the Terms of Service to continue.',
 	'missingLedger'    => 'An error has occurred: the ledger is missing.',
 	'estimateReady'    => 'Your estimate is ready.',
+	'paymentFail'      => 'The payment gateway responded with error code {0}.',
 ];

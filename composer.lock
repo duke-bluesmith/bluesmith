@@ -3792,16 +3792,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e"
+                "reference": "31a16582471f8d63008d4dd695afb6b5cd9a798d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/7903f3d23ace182303cb1b8cd6af6e972629389e",
-                "reference": "7903f3d23ace182303cb1b8cd6af6e972629389e",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/31a16582471f8d63008d4dd695afb6b5cd9a798d",
+                "reference": "31a16582471f8d63008d4dd695afb6b5cd9a798d",
                 "shasum": ""
             },
             "require": {
@@ -3852,9 +3852,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.2.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.2.2"
             },
-            "time": "2020-11-16T17:44:48+00:00"
+            "time": "2020-12-17T16:56:40+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

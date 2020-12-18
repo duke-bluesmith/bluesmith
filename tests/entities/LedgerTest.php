@@ -33,9 +33,9 @@ class LedgerTest extends DatabaseTestCase
 		for ($i=1; $i<5; $i++)
 		{
 			model(ChargeModel::class)->insert([
-				'name'       => $i,
+				'name'      => $i,
 				'ledger_id' => $this->ledger->id,
-				'price'      => $i * 1000,
+				'amount'    => $i * 1000,
 			]);
 		}
 

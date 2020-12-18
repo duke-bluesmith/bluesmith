@@ -61,7 +61,7 @@
 		<div class="col">
 			<h4>Add a Charge</h4>
 
-			<?= form_open('jobs/charges/' . $job->id) ?>
+			<?= form_open('jobs/invoice/' . $job->id) ?>
 				<input type="hidden" name="_method" value="PUT" />
 
 				<div class="form-row mb-1">
@@ -74,12 +74,12 @@
 						<input type="text" name="quantity" id="quantity-add" class="form-control" placeholder="Qty">
 					</div>
 					<div class="col-3">
-						<label class="sr-only" for="price-add">Price</label>
+						<label class="sr-only" for="amount-add">Price</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<div class="input-group-text">$</div>
 							</div>
-							<input type="text" name="price" id="price-add" class="form-control" placeholder="Price">
+							<input type="text" name="amount" id="amount-add" class="form-control" placeholder="Price">
 						</div>
 					</div>
 					<div class="col-1">

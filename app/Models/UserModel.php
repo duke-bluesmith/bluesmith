@@ -12,7 +12,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 	protected $primaryKey = 'id';
 	protected $returnType = User::class;
 
-	protected $_allowedFields   = ['firstname', 'lastname'];
+	protected $_allowedFields   = ['firstname', 'lastname', 'balance'];
 	protected $_validationRules = [];
 
 	/**

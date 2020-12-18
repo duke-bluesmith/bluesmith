@@ -51,11 +51,16 @@ class Job extends \Tatter\Workflows\Entities\Job
 	 *
 	 * @param bool $create Whether a new Ledger should be created if missing
 	 *
-	 * @return Ledger|null
+	 * @return Invoice|null
 	 */
-	public function getInvoice($create = false): ?Ledger
+	public function getInvoice($create = false): ?Invoice
 	{
-		return $this->ledger(false, $create);
+		if ($ledger = $this->ledger(false, $create))
+		{
+			return new Invoice($ledger->toRawArray());
+		}
+
+		return null;
 	}
 
 	/**

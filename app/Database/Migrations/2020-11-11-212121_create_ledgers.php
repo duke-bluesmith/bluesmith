@@ -29,7 +29,7 @@ class CreateLedgers extends Migration
 		$fields = [
 			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
-			'price'      => ['type' => 'int', 'null' => false, 'default' => 0],
+			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
 			'quantity'   => ['type' => 'double', 'null' => true, 'default' => null],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
@@ -44,10 +44,34 @@ class CreateLedgers extends Migration
 		$this->forge->addKey(['deleted_at', 'id']);
 		
 		$this->forge->createTable('charges');
+
+		// Payments
+		$fields = [
+			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
+			'user_id'    => ['type' => 'int', 'unsigned' => true],
+			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
+			'class'      => ['type' => 'varchar', 'constraint' => 255],
+			'reference'  => ['type' => 'varchar', 'constraint' => 255],
+			'code'       => ['type' => 'int', 'null' => true],
+			'reason'     => ['type' => 'text', 'null' => false, 'default' => ''],
+			'created_at' => ['type' => 'datetime', 'null' => true],
+			'updated_at' => ['type' => 'datetime', 'null' => true],
+		];
+		
+		$this->forge->addField('id');
+		$this->forge->addField($fields);
+
+		$this->forge->addKey('ledger_id');
+		$this->forge->addKey('user_id');
+		$this->forge->addKey('reference');
+		$this->forge->addKey('created_at');
+		
+		$this->forge->createTable('payments');
 	}
 
 	public function down()
 	{
+		$this->forge->dropTable('payments');
 		$this->forge->dropTable('charges');
 		$this->forge->dropTable('ledgers');
 	}
