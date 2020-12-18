@@ -29,7 +29,10 @@ class Invoice extends Ledger
 			$this->paid = 0;
 			foreach ($this->payments ?? [] as $payment)
 			{
-				$this->paid += $payment->amount;
+				if ($payment->code === 0)
+				{
+					$this->paid += $payment->amount;
+				}
 			}
 		}
 

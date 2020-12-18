@@ -21,6 +21,8 @@
 		</tr>
 	</table>
 
+	<hr>
+
 	<?php if (count($merchants)): ?>
 	<p>Select your payment method to continue...</p>
 	<ul>

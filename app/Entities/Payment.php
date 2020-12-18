@@ -8,7 +8,7 @@
  * as determined by `code`:
  *  - null : authorized but not processed
  *  - 0    : success
- *  - >0   : error, see Statuses or merchant docs for details
+ *  - >0   : error, see `reason` or merchant docs for details
  */
 class Payment extends BaseEntity
 {

@@ -3,12 +3,21 @@
 use App\Entities\Ledger;
 use App\Entities\Payment;
 use App\Entities\User;
-use App\Exceptions\PaymentException;
 use App\Models\PaymentModel;
-use App\Models\PaymentStatusModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Handlers\BaseHandler;
 
+/**
+ * Base Merchant Abstract Class
+ *
+ * Provides common method basis for payment processing.
+ * Each Merchant should correspond with its respective
+ * payment gateway to handle authorization and processing.
+ *
+ * Methods should not throw exceptions (except for grievous
+ * mistakes), but rather create/update a Payment object with
+ * the relevant failure code and corresponding reason.
+ */
 abstract class BaseMerchant extends BaseHandler
 {
 	/**
@@ -63,32 +72,32 @@ abstract class BaseMerchant extends BaseHandler
 
 	/**
 	 * Initiates a request for payment, returning a response
-	 * (usually a form or redirect link)
+	 * (usually a form or redirect)
 	 *
-	 * @param Ledger $ledger The invoice Ledger to make payment towards
+	 * @param Ledger $invoice The invoice Ledger to make payment towards
 	 *
 	 * @return ResponseInterface
 	 */
-	abstract public function request(Ledger $ledger): ResponseInterface;
+	abstract public function request(Ledger $invoice): ResponseInterface;
 
 	/**
 	 * Performs pre-payment verification and starts the Payment record.
 	 *
-	 * @param User $user       The User making the payment
-	 * @param Ledger $ledger   The invoice Ledger to make payment towards
-	 * @param array $data      Additional data for the gateway, usually from request()
-	 * @param int|null $amount Optional amount to pay instead of the Ledger total
+	 * @param User $user     The User making the payment
+	 * @param Ledger $ledger The invoice Ledger to make payment towards
+	 * @param int $amount    Amount to charge in fractional money units
+	 * @param array $data    Additional data for the gateway, usually from request()
 	 *
-	 * @return Payment The resulting record of the Payment
+	 * @return Payment The resulting record of the authorized Payment
 	 */
-	abstract public function authorize(User $user, Ledger $ledger, array $data = [], int $amount = null): Payment;
+	abstract public function authorize(User $user, Ledger $invoice, int $amount, array $data = []): Payment;
 
 	/**
-	 * Does the actual proessing of the preauthorized Payment.
+	 * Does the actual processing of the preauthorized Payment.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
-	 * @return Payment The potentially-updated Payment record
+	 * @return Payment The updated Payment record
 	 *
 	 * @throws PaymentException For any failure
 	 */
