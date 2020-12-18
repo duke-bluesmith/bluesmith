@@ -1,8 +1,6 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-<div class="container">
-
 	<?= form_open('jobs/files/' . $job->id) ?>
 	
 		<input class="btn btn-primary float-md-right" type="submit" name="submit" value="<?= lang('Pub.saveContinue') ?>">	
@@ -26,7 +24,6 @@
 	<?= form_close() ?>
 
 	<?= view('Tatter\Files\Views\Dropzone\modal') ?>
-</div>
 
 <?= $this->endSection() ?>
 <?= $this->section('footerAssets') ?>
