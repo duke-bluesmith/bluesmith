@@ -2,7 +2,9 @@
 
 use App\BaseAction;
 use App\BaseMerchant;
+use App\Entities\User;
 use App\Exceptions\PaymentException;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\ActionModel;
@@ -30,6 +32,9 @@ class PaymentAction extends BaseAction
 	 */
 	public function get(): string
 	{
+		/** @var User $user */
+		$user = user();
+
 		// Load Merchants and filter by eligibility
 		$merchants = [];
 		foreach (service('handlers', 'Merchants')->findAll() as $class)
@@ -51,10 +56,15 @@ class PaymentAction extends BaseAction
 	/**
 	 * Indicates payment is complete and finishes the Action.
 	 *
-	 * @return string
+	 * @return RedirectResponse|bool
 	 */
 	public function post()
 	{
+		if ($this->job->invoice->due > 0)
+		{
+			return redirect()->back()->with('error', lang('Payment.unpaid'));
+		}
+
 		return true;
 	}
 
@@ -75,15 +85,17 @@ class PaymentAction extends BaseAction
 	 */
 	public function patch()
 	{
+		/** @var User $user */
+		$user     = user();
 		$merchant = $this->getMerchant();
 		$data     = service('request')->getPost();
 		$amount   = scaled_to_price($data['amount']);
 
 		// Attempt to authorize with the Merchant
-		$payment = $merchant->authorize(user(), $this->job->getInvoice(), $amount, $data);
+		$payment = $merchant->authorize($user, $this->job->getInvoice(), $amount, $data);
 		if (! is_null($payment->code))
 		{
-			$message = $payment->reason ?: lang('Actions.unauthorized', $this->attributes['code']);
+			$message = $payment->reason ?: lang('Actions.unauthorized', [$this->attributes['code']]);
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
@@ -91,7 +103,7 @@ class PaymentAction extends BaseAction
 		$payment = $merchant->complete($payment);
 		if ($payment->code !== 0)
 		{
-			$message = $payment->reason ?: lang('Actions.failure', $this->attributes['code']);
+			$message = $payment->reason ?: lang('Actions.failure', [$this->attributes['code']]);
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 

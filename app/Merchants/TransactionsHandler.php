@@ -104,8 +104,6 @@ class TransactionsHandler extends BaseMerchant
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
 	 * @return Payment The potentially-updated Payment record
-	 *
-	 * @throws PaymentException For any failure
 	 */
 	public function complete(Payment $payment): Payment
 	{

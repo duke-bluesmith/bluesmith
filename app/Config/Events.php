@@ -56,7 +56,7 @@ Events::on('pre_system', function () {
 /**
  * Loads helpers we want available globally.
  *
- * @see BaseController::$helpers for slightly less global
+ * @see BaseAction::__construct() and BaseController::$helpers for slightly less global
  */
 Events::on('post_controller_constructor', function () {
 	helper(['alerts', 'auth', 'html']);

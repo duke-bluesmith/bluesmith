@@ -47,18 +47,12 @@ abstract class BaseMerchant extends BaseHandler
 	protected $model;
 
 	/**
-	 * @var PaymentStatusModel
+	 * Merges default attributes with child and initializes the PaymentModel
 	 */
-	protected $statuses;
-
-	/**
-	 * Merges default attributes with child and initializes the models
-	 */
-	public function __construct(PaymentModel $model = null, PaymentStatusModel $statuses = null)
+	public function __construct(PaymentModel $model = null)
 	{
 		$this->attributes = array_merge($this->defaults, $this->attributes);
 		$this->model      = $model ?? model(PaymentModel::class);
-		$this->statuses   = $statuses ?? model(PaymentStatusModel::class);
 	}
 
 	/**
@@ -84,7 +78,7 @@ abstract class BaseMerchant extends BaseHandler
 	 * Performs pre-payment verification and starts the Payment record.
 	 *
 	 * @param User $user     The User making the payment
-	 * @param Ledger $ledger The invoice Ledger to make payment towards
+	 * @param Ledger $invoice The invoice Ledger to make payment towards
 	 * @param int $amount    Amount to charge in fractional money units
 	 * @param array $data    Additional data for the gateway, usually from request()
 	 *
@@ -98,8 +92,6 @@ abstract class BaseMerchant extends BaseHandler
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
 	 * @return Payment The updated Payment record
-	 *
-	 * @throws PaymentException For any failure
 	 */
 	abstract public function complete(Payment $payment): Payment;
 }
