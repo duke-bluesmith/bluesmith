@@ -19,10 +19,10 @@ parameters:
 		- CodeIgniter\Entity
 		- Faker\Generator
 	scanDirectories:
-		- system/Helpers
+		- vendor/codeigniter4/codeigniter4/system/Helpers
 		- vendor/tatter/alerts/src/Helpers
 		- vendor/myth/auth/src/Helpers
 	dynamicConstantNames:
 		- APP_NAMESPACE
-		- ENVIRONMENT
 		- CI_DEBUG
+		- ENVIRONMENT

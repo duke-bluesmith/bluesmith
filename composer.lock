@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "7479fbad1e7d40485b4615b6573b9873fe057847"
+                "reference": "e31166e246a7b27ba555897ef87b9812c9a01195"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/7479fbad1e7d40485b4615b6573b9873fe057847",
-                "reference": "7479fbad1e7d40485b4615b6573b9873fe057847",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/e31166e246a7b27ba555897ef87b9812c9a01195",
+                "reference": "e31166e246a7b27ba555897ef87b9812c9a01195",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2020-12-18T12:03:30+00:00"
+            "time": "2020-12-30T12:36:50+00:00"
         },
         {
             "name": "components/jquery",
@@ -3413,32 +3413,34 @@
         },
         {
             "name": "tatter/relations",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-relations.git",
-                "reference": "f602addcd4f288015f1ff85dc696d1a79815d558"
+                "reference": "d033806af70e3eade9baf89ac4ea5c5995b92d59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-relations/zipball/f602addcd4f288015f1ff85dc696d1a79815d558",
-                "reference": "f602addcd4f288015f1ff85dc696d1a79815d558",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-relations/zipball/d033806af70e3eade9baf89ac4ea5c5995b92d59",
+                "reference": "d033806af70e3eade9baf89ac4ea5c5995b92d59",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": "^7.2|^8.0",
                 "tatter/schemas": "^2.0"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "mikey179/vfsstream": "1.6.*",
-                "phpunit/phpunit": "^8.5"
+                "tatter/tools": "^1.3"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Relations\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3465,9 +3467,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-relations/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-relations/tree/v2.0.5"
+                "source": "https://github.com/tattersoftware/codeigniter4-relations/tree/v2.0.6"
             },
-            "time": "2020-11-08T18:29:28+00:00"
+            "time": "2020-12-30T16:54:38+00:00"
         },
         {
             "name": "tatter/reports",
@@ -4300,40 +4302,38 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.11.0",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "fbe3173c54af8227a0915094f7c63d3c09f7b28b"
+                "reference": "23f34eb43d8c4fccc7acb9173488f48e102f7a30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/fbe3173c54af8227a0915094f7c63d3c09f7b28b",
-                "reference": "fbe3173c54af8227a0915094f7c63d3c09f7b28b",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/23f34eb43d8c4fccc7acb9173488f48e102f7a30",
+                "reference": "23f34eb43d8c4fccc7acb9173488f48e102f7a30",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^2.0.0",
-                "ergebnis/json-normalizer": "~0.14.0",
+                "composer-plugin-api": "^1.1.0 || ^2.0.0",
+                "ergebnis/json-normalizer": "^1.0.1",
                 "ergebnis/json-printer": "^3.1.1",
                 "justinrainbow/json-schema": "^5.2.10",
                 "localheinz/diff": "^1.1.1",
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "^2.0.0",
-                "composer/package-versions-deprecated": "^1.11.99",
+                "composer/composer": "^1.10.19 || ^2.0.8",
                 "ergebnis/license": "^1.1.0",
-                "ergebnis/php-cs-fixer-config": "^2.5.1",
-                "ergebnis/phpstan-rules": "~0.15.2",
-                "ergebnis/test-util": "^1.3.0",
-                "jangregor/phpstan-prophecy": "~0.8.1",
-                "phpstan/extension-installer": "^1.0.5",
-                "phpstan/phpstan": "~0.12.52",
-                "phpstan/phpstan-deprecation-rules": "~0.12.5",
-                "phpstan/phpstan-phpunit": "~0.12.16",
-                "phpstan/phpstan-strict-rules": "~0.12.5",
-                "phpunit/phpunit": "^8.5.8",
+                "ergebnis/php-cs-fixer-config": "^2.10.0",
+                "ergebnis/phpstan-rules": "~0.15.3",
+                "ergebnis/test-util": "^1.4.0",
+                "phpstan/extension-installer": "^1.1.0",
+                "phpstan/phpstan": "~0.12.64",
+                "phpstan/phpstan-deprecation-rules": "~0.12.6",
+                "phpstan/phpstan-phpunit": "~0.12.17",
+                "phpstan/phpstan-strict-rules": "~0.12.7",
+                "phpunit/phpunit": "^8.5.13",
                 "psalm/plugin-phpunit": "~0.12.2",
                 "symfony/filesystem": "^5.1.8",
                 "vimeo/psalm": "^3.18.2"
@@ -4379,20 +4379,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-05T09:22:39+00:00"
+            "time": "2020-12-30T16:06:10+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
-            "version": "0.14.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/json-normalizer.git",
-                "reference": "4aad3594810d7477b5ea67a16544ad94ae374fc7"
+                "reference": "f80e5603ab425b49539951b0a684e138be6ee9a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/4aad3594810d7477b5ea67a16544ad94ae374fc7",
-                "reference": "4aad3594810d7477b5ea67a16544ad94ae374fc7",
+                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/f80e5603ab425b49539951b0a684e138be6ee9a7",
+                "reference": "f80e5603ab425b49539951b0a684e138be6ee9a7",
                 "shasum": ""
             },
             "require": {
@@ -4403,17 +4403,17 @@
             },
             "require-dev": {
                 "ergebnis/license": "^1.1.0",
-                "ergebnis/php-cs-fixer-config": "^2.5.1",
-                "ergebnis/phpstan-rules": "~0.15.2",
-                "ergebnis/test-util": "^1.3.0",
+                "ergebnis/php-cs-fixer-config": "^2.10.0",
+                "ergebnis/phpstan-rules": "~0.15.3",
+                "ergebnis/test-util": "^1.4.0",
                 "infection/infection": "~0.15.3",
                 "jangregor/phpstan-prophecy": "~0.8.1",
-                "phpstan/extension-installer": "^1.0.5",
-                "phpstan/phpstan": "~0.12.52",
-                "phpstan/phpstan-deprecation-rules": "~0.12.5",
-                "phpstan/phpstan-phpunit": "~0.12.16",
-                "phpstan/phpstan-strict-rules": "~0.12.5",
-                "phpunit/phpunit": "^8.5.8",
+                "phpstan/extension-installer": "^1.1.0",
+                "phpstan/phpstan": "~0.12.60",
+                "phpstan/phpstan-deprecation-rules": "~0.12.6",
+                "phpstan/phpstan-phpunit": "~0.12.17",
+                "phpstan/phpstan-strict-rules": "~0.12.7",
+                "phpunit/phpunit": "^8.5.13",
                 "psalm/plugin-phpunit": "~0.12.2",
                 "vimeo/psalm": "^3.18"
             },
@@ -4449,7 +4449,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-31T15:46:10+00:00"
+            "time": "2020-12-30T15:16:58+00:00"
         },
         {
             "name": "ergebnis/json-printer",
@@ -4574,16 +4574,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.17.2",
+            "version": "v2.17.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "aaee4f3d16a996fc0b570be0c69d3b80c909c507"
+                "reference": "bd32f5dd72cdfc7b53f54077f980e144bfa2f595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/aaee4f3d16a996fc0b570be0c69d3b80c909c507",
-                "reference": "aaee4f3d16a996fc0b570be0c69d3b80c909c507",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/bd32f5dd72cdfc7b53f54077f980e144bfa2f595",
+                "reference": "bd32f5dd72cdfc7b53f54077f980e144bfa2f595",
                 "shasum": ""
             },
             "require": {
@@ -4609,7 +4609,7 @@
                 "justinrainbow/json-schema": "^5.0",
                 "keradus/cli-executor": "^1.4",
                 "mikey179/vfsstream": "^1.6",
-                "php-coveralls/php-coveralls": "^2.4.1",
+                "php-coveralls/php-coveralls": "^2.4.2",
                 "php-cs-fixer/accessible-object": "^1.0",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.2",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.2.1",
@@ -4666,7 +4666,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.17.2"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.17.3"
             },
             "funding": [
                 {
@@ -4674,7 +4674,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-17T16:41:55+00:00"
+            "time": "2020-12-24T11:14:44+00:00"
         },
         {
             "name": "localheinz/diff",
@@ -4847,16 +4847,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.3",
+            "version": "v4.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984"
+                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984",
-                "reference": "dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c6d052fc58cb876152f89f532b95a8d7907e7f0e",
+                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e",
                 "shasum": ""
             },
             "require": {
@@ -4897,9 +4897,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.3"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.4"
             },
-            "time": "2020-12-03T17:45:45+00:00"
+            "time": "2020-12-20T10:01:03+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5227,16 +5227,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.1",
+            "version": "1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d"
+                "reference": "245710e971a030f42e08f4912863805570f23d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ce87516be71aae9b956f81906aaf0338e0d8a2d",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
+                "reference": "245710e971a030f42e08f4912863805570f23d39",
                 "shasum": ""
             },
             "require": {
@@ -5248,7 +5248,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^6.0",
-                "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
@@ -5288,22 +5288,22 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.12.1"
+                "source": "https://github.com/phpspec/prophecy/tree/1.12.2"
             },
-            "time": "2020-09-29T09:10:42+00:00"
+            "time": "2020-12-19T10:15:11+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.63",
+            "version": "0.12.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c97ec4754bd53099a06c24847bd2870b99966b6a"
+                "reference": "23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c97ec4754bd53099a06c24847bd2870b99966b6a",
-                "reference": "c97ec4754bd53099a06c24847bd2870b99966b6a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa",
+                "reference": "23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa",
                 "shasum": ""
             },
             "require": {
@@ -5334,7 +5334,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.63"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.64"
             },
             "funding": [
                 {
@@ -5350,7 +5350,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-15T16:37:16+00:00"
+            "time": "2020-12-21T11:59:02+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -7285,32 +7285,32 @@
         },
         {
             "name": "tatter/tools",
-            "version": "v1.2",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-tools.git",
-                "reference": "3a97347aaecea54393941f47aad1dddc8ab9e123"
+                "reference": "5189eb53d841d21f2d1e05fe22ca4bb90b30aac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/3a97347aaecea54393941f47aad1dddc8ab9e123",
-                "reference": "3a97347aaecea54393941f47aad1dddc8ab9e123",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/5189eb53d841d21f2d1e05fe22ca4bb90b30aac4",
+                "reference": "5189eb53d841d21f2d1e05fe22ca4bb90b30aac4",
                 "shasum": ""
             },
             "require": {
-                "codeigniter4/codeigniter4": "dev-develop",
                 "codeigniter4/codeigniter4-standard": "^1.0",
                 "ergebnis/composer-normalize": "^2.9",
                 "fakerphp/faker": "^1.9",
                 "friendsofphp/php-cs-fixer": "^2.16",
                 "mikey179/vfsstream": "^1.6",
-                "php": ">=7.2",
+                "php": "^7.2 || ^8.0",
                 "phpstan/phpstan": "^0.12",
                 "phpunit/phpunit": "^8.0 || ^9.0",
-                "squizlabs/php_codesniffer": "^3.5"
+                "squizlabs/php_codesniffer": "^3.5",
+                "tatter/patches": "^1.0"
             },
             "require-dev": {
-                "tatter/patches": "^1.0"
+                "codeigniter4/codeigniter4": "dev-develop"
             },
             "type": "library",
             "autoload": {
@@ -7341,9 +7341,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-tools/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.3.1"
             },
-            "time": "2020-11-09T16:44:06+00:00"
+            "time": "2020-12-21T16:52:36+00:00"
         },
         {
             "name": "theseer/tokenizer",
