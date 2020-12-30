@@ -1,4 +1,4 @@
-<?php namespace App\Config;
+<?php namespace Config;
 
 use Tatter\Outbox\Config\Outbox as OutboxConfig;
 

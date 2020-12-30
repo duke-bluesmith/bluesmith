@@ -61,8 +61,9 @@ class JobModel extends BaseJobModel
 	public function addUserToJob(int $userId, int $jobId): bool
 	{
 		return (bool) $this->db->table('jobs_users')->insert([
-			'job_id'  => (int) $jobId,
-			'user_id' => (int) $userId,
+			'job_id'     => (int) $jobId,
+			'user_id'    => (int) $userId,
+			'created_at' => date('Y-m-d H:i:s'),
 		]);
 	}
 }

@@ -9,8 +9,9 @@ class CreateJobsUsers extends Migration
 		// Add the pivot table
 		// jobs_users
 		$fields = [
-			'job_id'  => ['type' => 'int', 'unsigned' => true],
-			'user_id' => ['type' => 'int', 'unsigned' => true],
+			'job_id'     => ['type' => 'int', 'unsigned' => true],
+			'user_id'    => ['type' => 'int', 'unsigned' => true],
+			'created_at' => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');
@@ -18,6 +19,7 @@ class CreateJobsUsers extends Migration
 
 		$this->forge->addUniqueKey(['job_id', 'user_id']);
 		$this->forge->addUniqueKey(['user_id', 'job_id']);
+		$this->forge->addKey('created_at');
 		
 		$this->forge->createTable('jobs_users');
 		
