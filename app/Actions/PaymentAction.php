@@ -40,7 +40,7 @@ class PaymentAction extends BaseAction
 		foreach (service('handlers', 'Merchants')->findAll() as $class)
 		{
 			$merchant = new $class();
-			if ($merchant->eligible(user()))
+			if ($merchant->eligible($user))
 			{
 				$merchants[] = $merchant;
 			}
@@ -81,7 +81,7 @@ class PaymentAction extends BaseAction
 	/**
 	 * Processes payment from put() with the Merchant
 	 *
-	 * @return RedirectResponse|string
+	 * @return ResponseInterface|string
 	 */
 	public function patch()
 	{
@@ -99,7 +99,13 @@ class PaymentAction extends BaseAction
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
-		// Payment authorized! Proceed with the charge
+		// Payment authorized! Check if confirmation intercepts
+		if ($response = $merchant->confirm($payment))
+		{
+			return $response;
+		}
+
+		// Proceed with the charge
 		$payment = $merchant->complete($payment);
 		if ($payment->code !== 0)
 		{

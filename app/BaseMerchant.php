@@ -17,6 +17,10 @@ use Tatter\Handlers\BaseHandler;
  * Methods should not throw exceptions (except for grievous
  * mistakes), but rather create/update a Payment object with
  * the relevant failure code and corresponding reason.
+ * Methods in this class are in their logical order of
+ * execution.
+ *
+ * @see PaymentAction
  */
 abstract class BaseMerchant extends BaseHandler
 {
@@ -87,11 +91,22 @@ abstract class BaseMerchant extends BaseHandler
 	abstract public function authorize(User $user, Ledger $invoice, int $amount, array $data = []): Payment;
 
 	/**
-	 * Does the actual processing of the preauthorized Payment.
+	 * Confirms the Payment with the Merchant. May send the user off
+	 * to complete processing.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
+	 * @return ResponseInterface|null
+	 */
+	abstract public function confirm(Payment $payment): ?ResponseInterface;
+
+	/**
+	 * Does the actual processing of the preauthorized Payment.
+	 *
+	 * @param Payment $payment The pre-authorized Payment from authorize()
+	 * @param array $data      Additional data for the gateway, usually from confirm()
+	 *
 	 * @return Payment The updated Payment record
 	 */
-	abstract public function complete(Payment $payment): Payment;
+	abstract public function complete(Payment $payment, array $data = []): Payment;
 }

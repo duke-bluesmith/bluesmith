@@ -19,7 +19,7 @@ class TransactionsHandler extends BaseMerchant
 	public $attributes = [
 		'name'    => 'Transactions',
 		'uid'     => 'transactions',
-		'icon'    => 'fas cookie-bite',
+		'icon'    => 'fas fa-cookie-bite',
 		'summary' => 'Internal currency credit/debit tracking.',
 	];
 
@@ -99,7 +99,20 @@ class TransactionsHandler extends BaseMerchant
 	}
 
 	/**
-	 * Does the actual proessing of the preauthorized Payment.
+	 * Confirms the Payment with the Merchant. May send the user off
+	 * to complete processing.
+	 *
+	 * @param Payment $payment The pre-authorized Payment from authorize()
+	 *
+	 * @return ResponseInterface|null
+	 */
+	public function confirm(Payment $payment): ?ResponseInterface
+	{
+		return null;
+	}
+
+	/**
+	 * Does the actual processing of the preauthorized Payment.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
@@ -118,7 +131,7 @@ class TransactionsHandler extends BaseMerchant
 			'Payment ' . $payment->id . ' towards Ledger ' . $payment->ledger_id
 		);
 
-		// Update the the Payment with the Transaction
+		// Update the Payment with the Transaction
 		model(PaymentModel::class)->update($payment->id, [
 			'code'      => 0,
 			'reference' => $transactionId,
