@@ -28,7 +28,7 @@ class ChargesAction extends BaseAction
 	public function get()
 	{
 		// Build out the clickable charge items for the "Details" aside
-		$items = [
+		$items = $this->job->material ? [
 			[
 				'name' => $this->job->material->method->name,
 				'quantity' => null,
@@ -37,7 +37,7 @@ class ChargesAction extends BaseAction
 				'name'     => $this->job->material->name,
 				'quantity' => 1,
 			]
-		];
+		] : [];
 		foreach ($this->job->options as $option)
 		{
 			$items[] = [

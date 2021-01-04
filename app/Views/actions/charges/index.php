@@ -1,13 +1,15 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', $menu ?? '')->setVar('header', $header ?? 'Estimate Costs')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 	<?= form_open('jobs/charges/' . $job->id) ?>
-		<input class="btn btn-primary mb-3" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">	
+		<input class="btn btn-primary mb-3 float-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">
 	<?= form_close() ?>
+
+	<h3><?= $job->name ?></h3>
 
 	<div class="row">
 		<div class="col-sm-6">
-			<h2>Add a Charge</h2>
+			<h3 class="mt-4">Add a Charge</h3>
 
 			<?= form_open('jobs/charges/' . $job->id) ?>
 				<input type="hidden" name="_method" value="PUT" />
@@ -49,7 +51,7 @@
 		</div>
 	</div>
 
-	<h2>Current Charges</h2>
+	<h3 class="mt-5">Current Charges</h3>
 
 	<?php if (empty($estimate->charges)): ?>
 	<p><em>No charges have been set.</em></p>

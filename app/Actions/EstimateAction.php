@@ -42,10 +42,11 @@ class EstimateAction extends BaseAction
 	 */
 	public function post()
 	{
-		// Update the description
+		// Update the description and reload the estimate Ledger
 		model(LedgerModel::class)->update($this->job->estimate->id, [
 			'description' => service('request')->getPost('description'),
 		]);
+		$ledger = model(LedgerModel::class)->find($this->job->estimate->id);
 
 		// Verify each user and grab their email address
 		$recipients = [];
@@ -72,7 +73,7 @@ class EstimateAction extends BaseAction
 		}
 
 		// Send the email
-		Mailer::forEstimate($recipients, $this->job, $this->job->estimate);
+		Mailer::forEstimate($recipients, $this->job, $ledger);
 
 		// End the action
 		return true;
