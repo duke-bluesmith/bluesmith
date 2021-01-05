@@ -6,6 +6,7 @@ use App\Entities\User;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Handlers\BaseHandler;
+use RuntimeException;
 
 /**
  * Base Merchant Abstract Class
@@ -17,6 +18,7 @@ use Tatter\Handlers\BaseHandler;
  * Methods should not throw exceptions (except for grievous
  * mistakes), but rather create/update a Payment object with
  * the relevant failure code and corresponding reason.
+ *
  * Methods in this class are in their logical order of
  * execution.
  *
@@ -60,26 +62,73 @@ abstract class BaseMerchant extends BaseHandler
 	}
 
 	/**
+	 * Creates a new Payment with supplied criteria.
+	 * Usually called during authorize().
+	 *
+	 * @param User $user      The User making the payment
+	 * @param Ledger $invoice The invoice Ledger to make payment towards
+	 * @param int $amount     Amount to charge in fractional money units
+	 * @param int|null $code  Error code if something went wrong
+	 * @param string $reason  Optional reason to explain error code
+	 *
+	 * @return Payment The new Payment
+	 *
+	 * @throws RuntimeException
+	 */
+	protected function createPayment(User $user, Ledger $invoice, int $amount, int $code = null, string $reason = ''): Payment
+	{
+		$result = model(PaymentModel::class)->insert([
+			'ledger_id' => $invoice->id,
+			'user_id'   => $user->id,
+			'amount'    => $amount,
+			'class'     => static::class,
+			'code'      => $code,
+			'reason'    => $reason,
+		]);
+
+		if (! $result)
+		{
+			$error = implode(' ', model(PaymentModel::class)->error());
+			throw new RuntimeException($error);
+		}
+
+		// Return the new version from the database
+		return model(PaymentModel::class)->find($result);
+	}
+
+	/**
+	 * Fetches a User's balance, if supported.
+	 *
+	 * @param User $user The User to check
+	 *
+	 * @return int|null User balance in fractional money units, or null for "unsupported"
+	 */
+	public function balance(User $user): ?int
+	{
+		return null;
+	}
+
+	/**
 	 * Checks a User for eligibility to use this Merchant.
 	 *
 	 * @param User $user The User to check
 	 *
 	 * @return bool
 	 */
-	abstract public function eligible(User $user): bool;
+	public function eligible(User $user): bool
+	{
+		$balance = $this->balance($user);
+		if (is_null($balance) || $balance > 0)
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 	/**
-	 * Initiates a request for payment, returning a response
-	 * (usually a form or redirect)
-	 *
-	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 *
-	 * @return ResponseInterface
-	 */
-	abstract public function request(Ledger $invoice): ResponseInterface;
-
-	/**
-	 * Performs pre-payment verification and starts the Payment record.
+	 * Performs pre-payment verification and calls
+	 * createPayment() to begin the Payment record.
 	 *
 	 * @param User $user     The User making the payment
 	 * @param Ledger $invoice The invoice Ledger to make payment towards
@@ -91,22 +140,14 @@ abstract class BaseMerchant extends BaseHandler
 	abstract public function authorize(User $user, Ledger $invoice, int $amount, array $data = []): Payment;
 
 	/**
-	 * Confirms the Payment with the Merchant. May send the user off
-	 * to complete processing.
+	 * Initiates a gateway request for payment with the Merchant,
+	 * returning a response (usually a form or redirect).
+	 * Gateways that confirm internally may update the
+	 * Payment and return null to signify completion.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
 	 * @return ResponseInterface|null
 	 */
-	abstract public function confirm(Payment $payment): ?ResponseInterface;
-
-	/**
-	 * Does the actual processing of the preauthorized Payment.
-	 *
-	 * @param Payment $payment The pre-authorized Payment from authorize()
-	 * @param array $data      Additional data for the gateway, usually from confirm()
-	 *
-	 * @return Payment The updated Payment record
-	 */
-	abstract public function complete(Payment $payment, array $data = []): Payment;
+	abstract public function request(Payment $payment): ?ResponseInterface;
 }

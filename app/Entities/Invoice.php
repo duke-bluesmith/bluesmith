@@ -46,7 +46,7 @@ class Invoice extends Ledger
 	}
 
 	/**
-	 * Calculates the due: total minus paid.
+	 * Calculates the due: total minus paid capped at 0.
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
@@ -54,7 +54,7 @@ class Invoice extends Ledger
 	 */
 	public function getDue(bool $formatted = false)
 	{
-		$due = $this->getTotal() - $this->getPaid();
+		$due = max(0, $this->getTotal() - $this->getPaid());
 
 		if (! $formatted)
 		{
