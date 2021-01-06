@@ -21,37 +21,6 @@
 		<dd class="col-3 col-lg-9"><?= $invoice->getDue(true) ?></dd>
 	</dl>
 
-	<h5>Payments</h5>
-
-	<?php if ($invoice->hasPayments()): ?>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Date</th>
-				<th scope="col">Method</th>
-				<th scope="col">Amount</th>
-				<th scope="col">Status</th>
-			</tr>
-		</thead>
-		<tbody>
-
-			<?php foreach ($invoice->payments as $payment): ?>
-			<tr>
-				<td><?= $payment->created_at->format('n/j/Y') ?></td>
-				<td><?= price_to_currency($payment->amount) ?></td>
-				<td><?= service('handlers', 'Merchants')->getAttributes($payment->class)['name'] ?></td>
-				<td class="<?= $payment->code ? 'text-danger' : '' ?>"><?= $payment->status ?></td>
-			</tr>
-			<?php endforeach; ?>
-
-		</tbody>
-	</table>
-	<?php else: ?>
-	<p class="muted">No payments have been made.</p>
-	<?php endif; ?>
-
-	<hr>
-
 	<?php if ($invoice->getDue() === 0): ?>
 
 	<p class="text-success">Payment is complete!</p>
@@ -94,6 +63,39 @@
 
 	<?php else: ?>
 	<p class="text-danger">No eligible payment gateways. Please contact support.</p>
+	<?php endif; ?>
+
+	<hr>
+
+	<h5>Payments</h5>
+
+	<?php if ($invoice->hasPayments()): ?>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Date</th>
+				<th scope="col">Method</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<?php foreach ($invoice->payments as $payment): ?>
+			<tr>
+				<td>#<?= $payment->id ?></td>
+				<td><?= $payment->created_at->format('n/j/Y') ?></td>
+				<td><?= price_to_currency($payment->amount) ?></td>
+				<td><?= service('handlers', 'Merchants')->getAttributes($payment->class)['name'] ?></td>
+				<td class="<?= $payment->code ? 'text-danger' : '' ?>"><?= $payment->status ?></td>
+			</tr>
+			<?php endforeach; ?>
+
+		</tbody>
+	</table>
+	<?php else: ?>
+	<p class="muted">No payments have been made.</p>
 	<?php endif; ?>
 
 <?= $this->endSection() ?>

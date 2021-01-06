@@ -50,7 +50,7 @@ class EstimateAction extends BaseAction
 
 		// Verify each user and grab their email address
 		$recipients = [];
-		foreach (service('request')->getPost('users') as $userId)
+		foreach (service('request')->getPost('users') ?? [] as $userId)
 		{
 			if (! is_numeric($userId))
 			{
@@ -67,13 +67,11 @@ class EstimateAction extends BaseAction
 			}
 		}
 
-		if (empty($recipients))
+		if ($recipients)
 		{
-			return redirect()->back()->withInput()->with('error', lang('Actions.needClients'));
+			// Send the email
+			Mailer::forEstimate($recipients, $this->job, $ledger);
 		}
-
-		// Send the email
-		Mailer::forEstimate($recipients, $this->job, $ledger);
 
 		// End the action
 		return true;
