@@ -121,9 +121,9 @@ nb-configuration.xml
 # Visual Studio Code
 .vscode/
 
-
 #-------------------------
-# Sensitive Files
+# Local & Sensitive Files
 #-------------------------
 
-access/
+/access
+/local
