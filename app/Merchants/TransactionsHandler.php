@@ -115,10 +115,11 @@ class TransactionsHandler extends BaseMerchant
 	 * Does the actual processing of the preauthorized Payment.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
+	 * @param array $data      Additional data for the gateway, usually from confirm()
 	 *
 	 * @return Payment The potentially-updated Payment record
 	 */
-	public function complete(Payment $payment): Payment
+	public function complete(Payment $payment, array $data = []): Payment
 	{
 		if (! $user = model(UserModel::class)->find($payment->user_id))
 		{
