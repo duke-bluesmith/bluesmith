@@ -17,3 +17,11 @@ use Config\Services;
  *
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
+
+// @codeCoverageIgnoreStart
+// Check for Local autoload
+if (is_file($file = ROOTPATH . 'local/vendor/autoload.php'))
+{
+	require_once $file;
+}
+// @codeCoverageIgnoreEnd
