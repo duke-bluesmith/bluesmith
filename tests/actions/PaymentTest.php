@@ -35,7 +35,7 @@ class PaymentTest extends ActionTestCase
 	{
 		$response = $this->get($this->route);
 
-		$response->assertSee('Payment', 'h3');
+		$response->assertSee('Payments', 'h5');
 	}
 
 	public function testGetWithoutMerchants()
@@ -61,6 +61,6 @@ class PaymentTest extends ActionTestCase
 
 		$response = $this->get($this->route);
 
-		$response->assertSee('Bluechips', 'button');
+		$response->assertSee('Bluechips', 'label');
 	}
 }

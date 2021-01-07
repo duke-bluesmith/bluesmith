@@ -19,4 +19,24 @@ class Payment extends BaseEntity
 		'amount'    => 'int',
 		'code'      => '?int',
 	];
+
+	/**
+	 * Returns a user-friendly status string.
+	 *
+	 * @return string
+	 */
+	public function getStatus()
+	{
+		if (is_null($this->attributes['code']))
+		{
+			return lang('Payment.pending');
+		}
+
+		if ($this->code === 0)
+		{
+			return lang('Payment.complete');
+		}
+
+		return $this->attributes['reason'] ?: lang('Payment.failure', [$this->attributes['code']]);
+	}
 }

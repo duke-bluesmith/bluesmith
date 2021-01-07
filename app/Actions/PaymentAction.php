@@ -4,6 +4,7 @@ use App\BaseAction;
 use App\BaseMerchant;
 use App\Entities\User;
 use App\Exceptions\PaymentException;
+use App\Models\PaymentModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
@@ -46,7 +47,7 @@ class PaymentAction extends BaseAction
 			}
 		}
 
-		return view('actions/payment/index', [
+		return view('actions/payment', [
 			'job'       => $this->job,
 			'invoice'   => $this->job->getInvoice(),
 			'merchants' => $merchants,
@@ -69,47 +70,70 @@ class PaymentAction extends BaseAction
 	}
 
 	/**
-	 * Returns the Merchant-specific request (usually a form or redirect)
+	 * Begins a Payment with info from get()
 	 *
 	 * @return ResponseInterface
 	 */
 	public function put(): ResponseInterface
 	{
-		return $this->getMerchant()->request($this->job->getInvoice());
-	}
-
-	/**
-	 * Processes payment from put() with the Merchant
-	 *
-	 * @return ResponseInterface|string
-	 */
-	public function patch()
-	{
 		/** @var User $user */
-		$user     = user();
-		$merchant = $this->getMerchant();
-		$data     = service('request')->getPost();
-		$amount   = scaled_to_price($data['amount']);
+		$user = user();
+		$data = service('request')->getPost();
+
+		// Locate the Merchant
+		if (empty($data['merchant']))
+		{
+			return redirect()->back()->withInput()->with('error', 'Please select a payment method.');
+		}
+		if (! $class = service('handlers', 'Merchants')->find($data['merchant']))
+		{
+			$message = 'Unable to locate payment method "' . $data['merchant'] . '"';
+			log_message('error', $message);
+			return redirect()->back()->withInput()->with('error', $message);
+		}
+		$merchant = new $class();
+
+		// Verify Merchant eligibility
+		if (! $merchant->eligible($user))
+		{
+			return redirect()->back()->withInput()->with('error', 'You are not eligible for payments with ' . $merchant->name);		
+		}
+
+		// Validate amounts
+		$due    = $this->job->invoice->getDue();
+		$amount = scaled_to_price($data['amount']);
+
+		if ($amount < 1)
+		{
+			return redirect()->back()->withInput()->with('error', 'Payment amount must be more than 0.');
+		}
+		if ($amount > $due)
+		{
+			return redirect()->back()->withInput()->with('error', 'Payment amount should not be more than ' . price_to_currency($due));
+		}
 
 		// Attempt to authorize with the Merchant
 		$payment = $merchant->authorize($user, $this->job->getInvoice(), $amount, $data);
 		if (! is_null($payment->code))
 		{
-			$message = $payment->reason ?: lang('Actions.unauthorized', [$this->attributes['code']]);
+			$message = $payment->reason ?: lang('Payment.unauthorized', [$this->attributes['code']]);
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
-		// Payment authorized! Check if confirmation intercepts
-		if ($response = $merchant->confirm($payment))
+		// Payment authorized! Request the payment
+		$result = $merchant->request($payment);
+
+		// If $result was a response then more processing is needed, probably a redirect or form
+		if ($result instanceof ResponseInterface)
 		{
-			return $response;
+			return $result;
 		}
 
-		// Proceed with the charge
-		$payment = $merchant->complete($payment);
+		// Otherwise $result was null and Payment is done, check for failures
+		$payment = model(PaymentModel::class)->find($payment->id);
 		if ($payment->code !== 0)
 		{
-			$message = $payment->reason ?: lang('Actions.failure', [$this->attributes['code']]);
+			$message = $payment->reason ?: lang('Payment.failure', [$this->attributes['code']]);
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
@@ -117,19 +141,8 @@ class PaymentAction extends BaseAction
 			'Payment.success',
 			[price_to_currency($amount)]
 		));
-		return $this->get();
-	}
 
-	/**
-	 * Initializes a Merchant from its posted UID
-	 *
-	 * @return BaseMerchant
-	 */
-	protected function getMerchant(): BaseMerchant
-	{
-		$name  = service('request')->getPost('merchant');
-		$class = service('handlers', 'Merchants')->find($name);
-
-		return new $class();
+		// Send back to get()
+		return redirect()->to(current_url());
 	}
 }

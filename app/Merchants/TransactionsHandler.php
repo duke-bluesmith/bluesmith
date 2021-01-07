@@ -8,6 +8,7 @@ use App\Models\PaymentModel;
 use App\Models\TransactionModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use RuntimeException;
 
 class TransactionsHandler extends BaseMerchant
 {
@@ -34,96 +35,62 @@ class TransactionsHandler extends BaseMerchant
 	}
 
 	/**
-	 * Checks a User for eligibility to use this Merchant.
+	 * Fetches a User's balance.
 	 *
 	 * @param User $user The User to check
 	 *
-	 * @return bool
+	 * @return int User balance in fractional money units
 	 */
-	public function eligible(User $user): bool
+	public function balance(User $user): int
 	{
-		return ! empty($user->balance);
-	}
-
-	/**
-	 * Initiates a request for payment, returning a response
-	 * (usually a form or redirect link)
-	 *
-	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 *
-	 * @return ResponseInterface
-	 */
-	public function request(Ledger $invoice): ResponseInterface
-	{
-		return service('response', config('App'))->setBody(
-			view('actions/payment/transactions', ['invoice' => $invoice])
-		);
+		return $user->balance;
 	}
 
 	/**
 	 * Performs pre-payment verification and starts the Payment record.
 	 *
-	 * @param User $user      The User making the payment
+	 * @param User $user     The User making the payment
 	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 * @param int $amount     Amount to charge in fractional money units
-	 * @param array $data     Additional data for the gateway, usually from request()
+	 * @param int $amount    Amount to charge in fractional money units
+	 * @param array $data    Additional data for the gateway, usually from request()
 	 *
 	 * @return Payment The resulting record of the authorized Payment
 	 */
 	public function authorize(User $user, Ledger $invoice, int $amount, array $data = []): Payment
 	{
-		$row = [
-			'ledger_id' => $invoice->id,
-			'user_id'   => $user->id,
-			'amount'    => $amount,
-			'class'     => static::class,
-		];
-
 		// Make sure User has enough balance
 		if ($user->balance < $amount)
 		{
-			$row['code']   = 413;
-			$row['reason'] = lang('Payment.insufficient', [
+			$code   = 413;
+			$reason = lang('Payment.insufficient', [
 				price_to_currency($user->balance),
 				price_to_currency($amount),
 			]);
 		}
-
-		if (! $id = model(PaymentModel::class)->insert($row))
+		else
 		{
-			$error = implode(' ', model(PaymentModel::class)->error());
-			throw new \RuntimeException($error);
+			$code   = null;
+			$reason = '';
 		}
 
-		return model(PaymentModel::class)->find($id);
+		return $this->createPayment($user, $invoice, $amount, $code, $reason = '');
 	}
 
 	/**
-	 * Confirms the Payment with the Merchant. May send the user off
-	 * to complete processing.
+	 * Initiates a gateway request for payment with the Merchant,
+	 * returning a response (usually a form or redirect).
+	 * Gateways that confirm internally may update the
+	 * Payment and return null to signify completion.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
 	 *
 	 * @return ResponseInterface|null
 	 */
-	public function confirm(Payment $payment): ?ResponseInterface
-	{
-		return null;
-	}
-
-	/**
-	 * Does the actual processing of the preauthorized Payment.
-	 *
-	 * @param Payment $payment The pre-authorized Payment from authorize()
-	 * @param array $data      Additional data for the gateway, usually from confirm()
-	 *
-	 * @return Payment The potentially-updated Payment record
-	 */
-	public function complete(Payment $payment, array $data = []): Payment
+	public function request(Payment $payment): ?ResponseInterface
 	{
 		if (! $user = model(UserModel::class)->find($payment->user_id))
 		{
-			throw new \RuntimeException('Unable to locate user for Payment ' . $payment->id);
+			throw new RuntimeException('Unable to locate User for Payment ' . $payment->id);
 		}
 
 		$transactionId = model(TransactionModel::class)->debit(
@@ -138,6 +105,6 @@ class TransactionsHandler extends BaseMerchant
 			'reference' => $transactionId,
 		]);
 
-		return model(PaymentModel::class)->find($payment->id);
+		return null;
 	}
 }

@@ -36,7 +36,7 @@ class CreateTransactions extends Migration
 
 		// User balances
 		$fields = [
-			'balance' => ['type' => 'int', 'null' => false, 'default' => 0],
+			'balance' => ['type' => 'int', 'null' => false, 'default' => 0, 'after' => 'lastname'],
 		];
 
 		$this->forge->addColumn('users', $fields);

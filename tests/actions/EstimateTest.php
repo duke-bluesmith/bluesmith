@@ -48,17 +48,6 @@ class EstimateTest extends ActionTestCase
 		$this->seeInDatabase('ledgers', ['description' => 'foobar']);
 	}
 
-	public function testPostNoUsers()
-	{
-		$response = $this->post($this->route, [
-			'users'       => [],
-			'description' => 'foobar',
-		]);
-		$response->assertRedirect();
-
-		$response->assertSessionHas('error', lang('Actions.needClients'));
-	}
-
 	public function testPostSendsEmail()
 	{
 		$response = $this->post($this->route, [
