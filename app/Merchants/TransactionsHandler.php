@@ -21,7 +21,7 @@ class TransactionsHandler extends BaseMerchant
 		'name'    => 'Transactions',
 		'uid'     => 'transactions',
 		'icon'    => 'fas fa-cookie-bite',
-		'summary' => 'Internal currency credit/debit tracking.',
+		'summary' => 'Use your internal currency credit.',
 	];
 
 	/**
