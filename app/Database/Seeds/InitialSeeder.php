@@ -12,14 +12,20 @@ class InitialSeeder extends Seeder
 		// Seeds to run
 		$seeds = [
 			'Tatter\Settings\Database\Seeds\SettingsSeeder',
-			'Tatter\Themes\Database\Seeds\ThemeSeeder',
 			'Tatter\Files\Database\Seeds\FileSeeder',
-			'App\Database\Seeds\AuthSeeder',
-			'App\Database\Seeds\EmailSeeder',
-			'App\Database\Seeds\PageSeeder',
-			'App\Database\Seeds\OptionSeeder',
-			'App\Database\Seeds\WorkflowSeeder',
+			AuthSeeder::class,
+			EmailSeeder::class,
+			OptionSeeder::class,
+			PageSeeder::class,
+			ThemeSeeder::class,
+			WorkflowSeeder::class,
 		];
+
+		// Check for a Local seeder
+		if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder'))
+		{
+			$seeds[] = $seedName;
+		}
 
 		// Run each seeder in order
 		foreach ($seeds as $seedName)
