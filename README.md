@@ -16,7 +16,7 @@ sure your environment meets all of the framework's
 [system requirements](https://codeigniter4.github.io/userguide/intro/requirements.html).
 Framework requirements may change but here is a good start:
 
-* PHP 7.2 or newer
+* PHP 7.3 or newer
 * PHP extensions (`php -m`): intl, json, mbstring, mysqlnd, xml, curl
 * A database with one of the framework's supported drivers
 
@@ -26,31 +26,24 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 ## Setup
 
 1. Clone or download the repository
-
 2. In the root directory, copy **env** to **.env** and edit the new file:
 	* Set `app.baseURL` to your site (with trailing slash), e.g. 'https://bluesmith.example.edu/'
 	* Set all variables in the `DATABASE` section for the `default` group
 	* `forceGlobalSecureRequests` is recommended but requires a valid HTTPS configuration
-
 3. Install all packages and dependencies with the following command in the root directory:
-	* `composer update`<sup>1</sup>
-
+	* `composer install`<sup>1</sup>
 4. Migrate the database:
 	* `php spark migrate -all`
-
 5. Seed the database with the necessary initial settings:
 	* `php spark db:seed InitialSeeder`
-
 6. Set up cron jobs for the following tasks:
 	* `php spark reports:generate`
-
 7. Set your web host to serve the **public/** directory
 	
 <sup>1</sup> Note: This should trigger Composer's post-update command which handles
-vendor assets, but if that fails or if you update manually be sure to run the following
-command from the root directory to publish them manually:
+vendor assets, but if that fails or if you update some other way then be sure to run
+the following command from the root directory to publish them manually:
 	* `php spark assets:publish`
-
 
 ## Customize
 
