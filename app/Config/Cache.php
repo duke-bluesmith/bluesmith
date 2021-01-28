@@ -93,7 +93,7 @@ class Cache extends BaseConfig
 	 */
 	public $file = [
 		'storePath' => WRITEPATH . 'cache/',
-		'mode'      => 0640,
+		'mode'      => 0660,
 	];
 
 	/**
