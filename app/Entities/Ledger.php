@@ -30,7 +30,7 @@ class Ledger extends BaseEntity
 		$total = 0;
 		foreach ($this->charges ?? [] as $charge)
 		{
-			$total += $charge->amount;
+			$total += $charge->price;
 		}
 
 		if (! $formatted)
