@@ -1,6 +1,8 @@
 <?php namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Tatter\Files\Database\Seeds\FileSeeder;
+use Tatter\Settings\Database\Seeds\SettingsSeeder;
 use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
@@ -11,8 +13,8 @@ class InitialSeeder extends Seeder
 
 		// Seeds to run
 		$seeds = [
-			'Tatter\Settings\Database\Seeds\SettingsSeeder',
-			'Tatter\Files\Database\Seeds\FileSeeder',
+			SettingsSeeder::class,
+			FileSeeder::class,
 			AuthSeeder::class,
 			EmailSeeder::class,
 			OptionSeeder::class,

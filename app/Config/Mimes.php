@@ -474,6 +474,11 @@ class Mimes
 			'image/x-ico',
 			'image/vnd.microsoft.icon',
 		],
+		'stl'   => [
+			'application/sla',
+			'application/vnd.ms-pki.stl',
+			'application/x-navistyle',
+		],
 	];
 
 	/**

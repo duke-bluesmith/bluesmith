@@ -29,14 +29,16 @@ class WorkflowSeeder extends Seeder
 	/**
 	 * @var string
 	 */
-	protected $description = 
-'1. Upload your files you want printed
-2. Add print options and any specific instructions
-3. Our staff will assess your submission and issue you an estimate. Typically this takes 1-2 business days, but during busy times may be a week
-4. Review and approve the estimate
-5. Once the job is approved our staff will print it and notify you when it is done
-6. After printing is completed, pay for your job before pickup. Payment can be in the form of Credit Card, Fundcodes, Bluechips, or Invoices.
-7. Come to the studio to pickup your job';
+	protected $description = '
+	<ol>
+		<li>Upload your files you want printed.</li>
+		<li>Add print options and any specific instructions.</li>
+		<li>Our staff will assess your submission and issue you an estimate. Typically this takes 1-2 business days, but during busy times may be a week.</li>
+		<li>Review and approve the estimate.</li>
+		<li>Once the job is approved our staff will print it and notify you when it is done.</li>
+		<li>After printing is completed, pay for your job before pickup. Payment can be in the form of Credit Card, Fundcodes, Bluechips, or Invoices.</li>
+		<li>Come to the studio to pickup your job.
+	</ol>';
 
 	public function run()
 	{

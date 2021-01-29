@@ -4,6 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\PageModel;
 use App\Models\MaterialModel;
 use App\Models\MethodModel;
+use Tatter\Settings\Models\SettingModel;
 
 class Content extends BaseController
 {
@@ -52,7 +53,7 @@ class Content extends BaseController
 	}
 	
 	/**
-	 * Displays or processesr individual settings related to site branding
+	 * Displays or processes individual settings related to site branding
 	 *
 	 * @return string
 	 */
@@ -65,18 +66,25 @@ class Content extends BaseController
 		// Check for form submission
 		if ($post = $this->request->getPost())
 		{
-			$page = $this->model->where('name', $post['name'])->first();
-			$page->content = $post['content'];
+			foreach ($post as $name => $content)
+			{
+				// Try to match a setting
+				if ($setting = model(SettingModel::class)->where('name', $name)->first())
+				{
+					// Update the template and clear the cache
+					model(SettingModel::class)->update($setting->id, ['content' => $content]);
+					cache()->delete('settings-templates-' . $name);
+					cache()->delete('settings-contents-' . $name . '-' . user_id());
+				}
+			}
 
-			$this->model->save($page);
-			
 			if ($this->request->isAJAX())
 			{
 				echo 'success';
 				return '';
 			}
 
-			alert('success', "'{$page->name}' page updated.");
+			alert('success', "Settings updated.");
 		}
 
 		return view('content/branding', $data);
