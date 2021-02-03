@@ -124,3 +124,9 @@
 # security.regenerate = true
 # security.redirect   = true
 # security.samesite   = 'Lax'
+
+#--------------------------------------------------------------------
+# LOGGER
+#--------------------------------------------------------------------
+
+# logger.threshold = 4

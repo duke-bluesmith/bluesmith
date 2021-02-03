@@ -18,7 +18,7 @@ class Auth extends \Myth\Auth\Config\Auth
     // account. If you disable registration you may need to ensure your
     // controllers and views know not to offer registration.
     //
-    public $allowRegistration = false;
+    public $allowRegistration = true;
 
     //--------------------------------------------------------------------
     // Allow Persistent Login Cookies (Remember me)

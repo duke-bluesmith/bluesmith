@@ -98,7 +98,7 @@
 
 							<tr>
 								<td><?= $log->from->name ?? lang('Pub.newJob') ?></td>
-								<td><?= $log->stage_to > $log->stage_from ? lang('Pub.complete') : lang('Pub.revert') ?>
+								<td><?= (is_null($log->stage_to) || $log->stage_to > $log->stage_from) ? lang('Pub.complete') : lang('Pub.revert') ?>
 								<td><?= $log->user ? $log->user->name : '' ?></td>
 								<td><?= $log->created_at->humanize() ?></td>
 							</tr>

@@ -1,9 +1,7 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
-use App\Models\AcceptModel;
 use App\Models\PageModel;
-use App\Models\TermModel;
 
 class TermsAction extends BaseAction
 {
@@ -18,59 +16,41 @@ class TermsAction extends BaseAction
 		'icon'     => 'fas fa-actions',
 		'summary'  => 'Client accepts terms of service',
 	];
-	
+
 	public function get()
 	{
-		$pages = new PageModel();
-		
-		$data = [
+		return view('actions/terms', [
 			'job'   => $this->job,
-			'page'  => $pages->where('name', 'TOS')->first(),
-		];
-
-		return view('actions/terms', $data);
+			'page'  => model(PageModel::class)->where('name', 'TOS')->first(),
+		]);
 	}
-	
+
 	public function post()
 	{
 		$data = service('request')->getPost();
-		
+
 		if (empty($data['accept']))
 		{
 			alert('warning', lang('Actions.mustAccept'));
-			return redirect()->back();		
+			return redirect()->back();
 		}
-		
+
+		$this->job->setFlag('Accepted');
+
 		// End the action
 		return true;
 	}
-	
-	// run when a job progresses forward through the workflow
-	public function up()
-	{
-		$accepts = new AcceptModel();
 
-		// If skipping is allowed we'll assume this is deliberate and auto-accept on their behalf
-		$row = [
-			'job_id'  => $this->job->id,
-			'user_id' => user_id(),
-		];
-
-		// Check for an existing row
-		if (! $accepts->where($row)->first())
-		{
-			// Create the record of acceptance
-			return $accepts->insert($row);
-		}
-
-		return true;
-	}
-	
-	// run when job regresses back through the workflow
+	/**
+	 * Runs when job regresses back through the workflow.
+	 *
+	 * @return mixed
+	 */
 	public function down()
 	{
-		// Remove all acceptance records
-		$accepts = new AcceptModel();
-		return $accepts->where('job_id',$this->job->id)->delete();
+		// Remove acceptance
+		$this->job->clearFlag('Accepted');
+
+		return true;
 	}
 }
