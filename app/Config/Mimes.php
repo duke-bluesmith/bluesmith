@@ -516,7 +516,7 @@ class Mimes
 
 		if ($proposedExtension !== '')
 		{
-			if(array_key_exists($proposedExtension, static::$mimes) && in_array($type, is_string(static::$mimes[$proposedExtension]) ? [static::$mimes[$proposedExtension]] : static::$mimes[$proposedExtension], true))
+			if (array_key_exists($proposedExtension, static::$mimes) && in_array($type, is_string(static::$mimes[$proposedExtension]) ? [static::$mimes[$proposedExtension]] : static::$mimes[$proposedExtension], true))
 			{
 				// The detected mime type matches with the proposed extension.
 				return $proposedExtension;
