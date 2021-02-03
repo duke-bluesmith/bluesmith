@@ -67,7 +67,10 @@ writable/debugbar/*
 writable/patches/*
 writable/statements/*
 
+writable/database.db
+
 php_errors.log
+public/error_log
 
 #-------------------------
 # Test Files
