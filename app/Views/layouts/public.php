@@ -2,7 +2,6 @@
 $settings = service('settings');
 $menu = $menu ?? '';
 $current = ' <span class="sr-only">(current)</span>';
-helper('auth');
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -44,7 +43,7 @@ helper('auth');
 		<div class="container">
 			<div id="banner-logo">
 				<p>
-					<a href="<?= $settings->orgUrl ?>"><img src="<?= $settings->orgLogo ?>" height="60" class="align-middle" alt="logo"></a>
+					<a href="<?= $settings->orgUrl ?>"><img src="<?= base_url($settings->orgLogo) ?>" height="60" class="align-middle" alt="logo"></a>
 					<a href="<?= site_url() ?>"><?= $settings->brandName ?></a>
 				</p>
 			</div>
@@ -109,7 +108,7 @@ helper('auth');
 
 	<footer id="footer" class="footer fixed-bottom border-top">
 		<div class="float-left">
-			<a href="<?= $settings->orgUrl ?>"><img src="<?= $settings->orgLogo ?>" height="45" alt="logo"></a>
+			<a href="<?= $settings->orgUrl ?>"><img src="<?= base_url($settings->orgLogo) ?>" height="45" alt="logo"></a>
 		</div>
 			
 		<div class="float-right copyright">
