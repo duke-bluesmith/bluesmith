@@ -1,11 +1,7 @@
-<?= $this->setVar('menu', 'jobs')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'jobs')->setVar('header', 'Jobs')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<!-- Page Heading -->
-<h1 class="h3 mb-0 text-gray-800">Jobs</h1>
-<p class="mb-4">Browse and manage jobs</p>
-
-<?php if (empty($jobs)): ?>
+<?php if (empty($rows)): ?>
 
 <p>No jobs matched your request.</p>
 
@@ -13,7 +9,7 @@
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">Active jobs</h6>
+		<h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
 	</div>
 
 	<div class="card-body">
@@ -24,22 +20,22 @@
 						<th scope="col">ID</th>
 						<th scope="col">Name</th>
 						<th scope="col">Owner</th>
-						<th scope="col">Workflow</th>
 						<th scope="col">Action</th>
-						<th scope="col">Start date</th>
+						<th scope="col">Started</th>
+						<th scope="col">Updated</th>
 					</tr>
 				</thead>
 				<tbody>
 	
-					<?php foreach ($jobs as $job): ?>
+					<?php foreach ($rows as $row): ?>
 
 					<tr>
-						<td><?= $job->id ?></td>
-						<td><?= anchor('jobs/show/' . $job->id, $job->name) ?></td>
-						<td><?= $job->users ? $job->users[0]->name : '' ?></td>
-						<td><?= $job->workflow->name ?></td>
-						<td><?= $job->getStage() ? $job->stage->name : '' ?></td>
-						<td><?= $job->created_at->humanize() ?></td>
+						<td><?= $row['id'] ?></td>
+						<td><?= anchor('jobs/show/' . $row['id'], $row['name']) ?></td>
+						<td><?= isset($row['user_id']) ? $row['firstname'] . ' ' . $row['lastname'] : '' ?></td>
+						<td data-order="<?= $row['stage_id'] ?? 99 ?>"><?= $row['action'] ?? '<em>Complete</em>' ?></td>
+						<td data-order="<?= $row['created_at']->getTimestamp() ?>"><?= $row['created_at']->format('n/j/Y') ?></td>
+						<td data-order="<?= $row['updated_at']->getTimestamp() ?>"><?= $row['updated_at']->humanize() ?></td>
 					</tr>
 		
 					<?php endforeach; ?>
@@ -52,4 +48,13 @@
 
 <?php endif; ?>
 
+<?= $this->endSection() ?>
+<?= $this->section('footerAssets') ?>
+<script>
+$(document).ready(function() {
+	$('#dataTable').DataTable({
+		"order": []
+	});
+});
+</script>
 <?= $this->endSection() ?>

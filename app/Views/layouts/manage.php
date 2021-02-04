@@ -113,16 +113,22 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="<?= site_url('manage/jobs') ?>" class="nav-link <?= url_is('manage/jobs') ? 'active' : '' ?>">
-									<i class="far fa-circle nav-icon"></i>
-									<p>All Jobs</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?= site_url('mnage/jobs/staff') ?>" class="nav-link <?= url_is('manage/jobs/staff') ? 'active' : '' ?>">
+								<a href="<?= site_url('manage/jobs/staff') ?>" class="nav-link <?= url_is('manage/jobs/staff') ? 'active' : '' ?>">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Action Items</p>
 									<span class="right badge badge-warning">12</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('manage/jobs/active') ?>" class="nav-link <?= url_is('manage/jobs/active') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Active Jobs</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('manage/jobs/index') ?>" class="nav-link <?= url_is('manage/jobs/index') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>All Jobs</p>
 								</a>
 							</li>
 						</ul>
@@ -247,7 +253,7 @@
 		<!-- /.content-header -->
 
 		<!-- Main content -->
-		<div class="content">
+		<div class="content" style="min-height: 600px;">
 			<div class="container-fluid text-dark">
 
 			<?= $this->renderSection('main') ?>
