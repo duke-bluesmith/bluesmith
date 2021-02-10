@@ -29,7 +29,7 @@ class Jobs extends BaseController
 		return view('jobs/index', [
 			'title' => 'Active Jobs',
 			'rows'  => $this->getJobRows(null, 'updated_at', false),
-		]);	
+		]);
 	}
 
 	/**

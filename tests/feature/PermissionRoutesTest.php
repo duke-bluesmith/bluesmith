@@ -107,11 +107,9 @@ class PermissionRoutesTest extends FeatureTestCase
 			['about/options', 'public'],
 			['account/jobs', 'login'],
 			['files/index', 'login'],
-			['manage', 'manage'],
-			['manage/', 'manage'],
+			['manage/jobs', 'manage'],
 			['manage/content/branding', 'manage'],
 			['manage/content/page', 'manage'],
-			//['manage/jobs', 'manage'], Why is this breaking Feature tests but works from browser??
 			['manage/materials', 'manage'],
 			['manage/materials/method/1', 'manage'],
 			['actions', 'manage'],
