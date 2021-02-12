@@ -29,7 +29,7 @@
 					<?php foreach ($job->stages as $stage): ?>
 			
 						<li class="list-group-item">
-							<?php if ($stage->id < $job->stage_id): ?>
+							<?php if (is_null($job->stage_id) || $job->stage_id > $stage->id): ?>
 
 							<i class="far fa-check-square mr-1"></i>
 					

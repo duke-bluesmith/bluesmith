@@ -6,6 +6,7 @@ class Dashboard extends BaseController
 {
 	public function index()
 	{
-		return view('manage/dashboard');
+		// return view('manage/dashboard');
+		return redirect()->to(site_url('manage/jobs/staff'));
 	}
 }
