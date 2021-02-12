@@ -22,7 +22,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.2",
+		"php": "^7.3",
 		"almasaeed2010/adminlte": "^3.0",
 		"codeigniter4/codeigniter4": "dev-develop",
 		"components/jquery": "^3.3",
@@ -41,7 +41,6 @@
 		"league/commonmark": "^1.5"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^9.0",
 		"tatter/tools": "^1.1"
 	},
 	"autoload": {
@@ -79,6 +78,7 @@
 			"php spark assets:publish"
 		],
 		"analyze": "phpstan analyze",
+		"mutate": "infection --threads=2 --coverage=build/phpunit",
 		"style": "phpcbf --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4 tests/ app/",
 		"test": "phpunit"
 	}
