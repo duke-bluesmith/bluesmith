@@ -117,32 +117,3 @@ class PermissionRoutesTest extends FeatureTestCase
 		];
 	}
 }
-
-/*
-
-
-			['name' => 'Administrators', 'description' => 'Staff with full access to the application'],
-			['name' => 'Consultants',    'description' => 'Staff who facilitate and manage print jobs'],
-			['name' => 'Editors',        'description' => 'Staff who can access the CMS to update content'],
-			['name' => 'VIPs',           'description' => 'Patrons with priority printing access'],
-
-			['name' => 'manageAny',     'description' => 'General access to the admin dashboard'],
-			['name' => 'manageContent', 'description' => 'Access to the CMS'],
-			['name' => 'manageJobs',    'description' => 'Access to perform job updates'],
-
-		'login'  => ['before' => ['account*', 'files*', 'jobs*']],
-		'manage' => ['before' => ['manage*', 'actions*', 'workflows*']]
-
-// Admin dashboard
-$routes->group('manage', ['filter'=>'permission:ManageAny', 'namespace'=>'App\Controllers\Manage'], function($routes)
-{
-	$routes->add('/', 'Dashboard::index');
-
-	$routes->get('content/(:any)', 'Content::$1');
-	$routes->post('content/(:any)', 'Content::$1');
-
-	$routes->get('materials/method/(:any)', 'Materials::method/$1');
-	$routes->presenter('materials');
-});
-
-*/

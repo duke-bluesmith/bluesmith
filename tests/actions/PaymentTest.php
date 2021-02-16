@@ -1,4 +1,4 @@
-<?php namespace App\Entities;
+<?php
 
 use App\Models\ChargeModel;
 use App\Models\UserModel;
