@@ -20,6 +20,7 @@
 						<th scope="col">ID</th>
 						<th scope="col">Name</th>
 						<th scope="col">Owner</th>
+						<th scope="col">Method</th>
 						<th scope="col">Action</th>
 						<th scope="col">Started</th>
 						<th scope="col">Updated</th>
@@ -33,6 +34,7 @@
 						<td><?= $row['id'] ?></td>
 						<td><?= anchor('jobs/show/' . $row['id'], $row['name']) ?></td>
 						<td><?= isset($row['user_id']) ? $row['firstname'] . ' ' . $row['lastname'] : '' ?></td>
+						<td><?= $row['method'] ?></td>
 						<td data-order="<?= $row['stage_id'] ?? 99 ?>"><?= $row['action'] ?? '<em>Complete</em>' ?></td>
 						<td data-order="<?= $row['created_at']->getTimestamp() ?>"><?= $row['created_at']->format('n/j/Y') ?></td>
 						<td data-order="<?= $row['updated_at']->getTimestamp() ?>"><?= $row['updated_at']->humanize() ?></td>
