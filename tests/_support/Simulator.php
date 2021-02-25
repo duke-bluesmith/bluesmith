@@ -2,6 +2,7 @@
 
 use CodeIgniter\Test\Fabricator;
 use Myth\Auth\Authorization\GroupModel;
+use Tatter\Workflows\Test\Simulator as BaseSimulator;
 use Tests\Support\Fakers\JobFaker;
 use Tests\Support\Fakers\MaterialFaker;
 use Tests\Support\Fakers\MethodFaker;
@@ -11,7 +12,7 @@ use Tests\Support\Fakers\UserFaker;
  * Support class for simulating a complete project environment.
  * Builds off existing funcitonality in Workflows.
  */
-class Simulator extends \Tatter\Workflows\Test\Simulator
+class Simulator extends BaseSimulator
 {
 	/**
 	 * Initialize the simulation.
@@ -25,7 +26,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 		// Create methods up to N
 		if (in_array('methods', $targets))
 		{
-			$count = rand(1, 8);
+			$count = rand(1, 2);
 			while (Fabricator::getCount('methods') < $count)
 			{
 				fake(MethodFaker::class);
@@ -35,7 +36,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 		// Create materials up to N
 		if (in_array('materials', $targets))
 		{
-			$count = Fabricator::getCount('methods') * rand(2, 6);
+			$count = Fabricator::getCount('methods') * rand(2, 4);
 			while (Fabricator::getCount('materials') < $count)
 			{
 				fake(MaterialFaker::class);
@@ -45,7 +46,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 		// Create users up to N
 		if (in_array('users', $targets))
 		{
-			$count = rand(20, 50);
+			$count = rand(3, 5);
 			while (Fabricator::getCount('users') < $count)
 			{
 				fake(UserFaker::class);
@@ -67,7 +68,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 		// Create jobs up to N
 		if (in_array('jobs', $targets))
 		{
-			$count = rand(40, 200);
+			$count = rand(4, 20);
 			while (Fabricator::getCount('jobs') < $count)
 			{
 				fake(JobFaker::class);
@@ -84,7 +85,7 @@ class Simulator extends \Tatter\Workflows\Test\Simulator
 			}
 
 			// Make a few jobs have multiple users
-			$count = rand(10, 30);
+			$count = rand(2, 6);
 			for ($i = 1; $i < $count; $i++)
 			{
 				$user = fake(UserFaker::class);
