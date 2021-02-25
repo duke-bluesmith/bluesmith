@@ -119,6 +119,19 @@ class JobModel extends BaseJobModel
 				$rows[$row['id']] = $row;
 			}
 
+			// Convert timestamps to Time
+			$rows = array_map(function ($row) {
+				$row['created_at'] = new Time($row['created_at']);
+				$row['updated_at'] = new Time($row['updated_at']);
+
+				if (isset($row['deleted_at']))
+				{
+					$row['deleted_at'] = new Time($row['deleted_at']);
+				}
+
+				return $row;
+			}, $rows);
+
 			// Cache the rows
 			$rows = array_values($rows);
 			cache()->save('jobrows', $rows, HOUR);
@@ -126,19 +139,6 @@ class JobModel extends BaseJobModel
 
 		// Filter the array with the callable, or `null` which removes empties
 		$rows = $filter ? array_filter($rows, $filter) : array_filter($rows);
-
-		// Convert timestamps to Time
-		$rows = array_map(function ($row) {
-			$row['created_at'] = new Time($row['created_at']);
-			$row['updated_at'] = new Time($row['updated_at']);
-
-			if (isset($row['deleted_at']))
-			{
-				$row['deleted_at'] = new Time($row['deleted_at']);
-			}
-
-			return $row;
-		}, $rows);
 
 		// Short circuit for unsortable results
 		if (count($rows) < 2)
