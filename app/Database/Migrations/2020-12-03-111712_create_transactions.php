@@ -21,8 +21,8 @@ class CreateTransactions extends Migration
 		$fields = [
 			'user_id'    => ['type' => 'int', 'unsigned' => true],
 			'credit'     => ['type' => 'bool', 'null' => false, 'default' => 0],
-			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
-			'summary'    => ['type' => 'varchar', 'constraint' => 255],
+			'amount'     => ['type' => 'int', 'null' => false],
+			'summary'    => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 		];
 

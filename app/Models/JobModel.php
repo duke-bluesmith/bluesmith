@@ -127,12 +127,6 @@ class JobModel extends BaseJobModel
 		// Filter the array with the callable, or `null` which removes empties
 		$rows = $filter ? array_filter($rows, $filter) : array_filter($rows);
 
-		// Short circuit for unsortable results
-		if (count($rows) < 2)
-		{
-			return $rows;
-		}
-
 		// Convert timestamps to Time
 		$rows = array_map(function ($row) {
 			$row['created_at'] = new Time($row['created_at']);
@@ -145,6 +139,12 @@ class JobModel extends BaseJobModel
 
 			return $row;
 		}, $rows);
+
+		// Short circuit for unsortable results
+		if (count($rows) < 2)
+		{
+			return $rows;
+		}
 
 		// Check for a valid sort request
 		if (array_key_exists($sort, reset($rows)))

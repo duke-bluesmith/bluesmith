@@ -9,9 +9,9 @@ class CreateFilesJobs extends Migration
 		// Add the jobs pivot table
 		// files_jobs
 		$fields = [
-			'file_id'       => ['type' => 'INT', 'unsigned' => true],
-			'job_id'        => ['type' => 'INT', 'unsigned' => true],
-			'created_at'    => ['type' => 'DATETIME', 'null' => true],
+			'file_id'    => ['type' => 'int', 'unsigned' => true],
+			'job_id'     => ['type' => 'int', 'unsigned' => true],
+			'created_at' => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');

@@ -27,8 +27,8 @@ class CreateJobsUsers extends Migration
 		$fields = [
 			'job_id'     => ['type' => 'int', 'unsigned' => true],
 			'issuer'     => ['type' => 'int', 'unsigned' => true, 'null' => true],
-			'email'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
-			'token'      => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
+			'email'      => ['type' => 'varchar', 'constraint' => 255],
+			'token'      => ['type' => 'varchar', 'constraint' => 255],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'expired_at' => ['type' => 'datetime', 'null' => true],
 		];
