@@ -7,8 +7,8 @@ class AlterUsers extends Migration
 	public function up()
 	{
 		$fields = [
-			'firstname' => ['type' => 'varchar', 'constraint' => 255, 'after' => 'username'],
-			'lastname'  => ['type' => 'varchar', 'constraint' => 255, 'after' => 'firstname'],
+			'firstname' => ['type' => 'varchar', 'constraint' => 255, 'after' => 'username', 'default' => ''],
+			'lastname'  => ['type' => 'varchar', 'constraint' => 255, 'after' => 'firstname', 'default' => ''],
 		];
 
 		$this->forge->addColumn('users', $fields);

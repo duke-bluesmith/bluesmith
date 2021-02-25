@@ -8,12 +8,12 @@ class CreateOptions extends Migration
 	public function up()
 	{
 		$fields = [
-			'name'        => ['type' => 'VARCHAR', 'constraint' => 127],
-			'summary'     => ['type' => 'VARCHAR', 'constraint' => 127],
-			'description' => ['type' => 'VARCHAR', 'constraint' => 255],
-			'created_at'  => ['type' => 'DATETIME', 'null' => true],
-			'updated_at'  => ['type' => 'DATETIME', 'null' => true],
-			'deleted_at'  => ['type' => 'DATETIME', 'null' => true],
+			'name'        => ['type' => 'varchar', 'constraint' => 127],
+			'summary'     => ['type' => 'varchar', 'constraint' => 127, 'default' => ''],
+			'description' => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
+			'created_at'  => ['type' => 'datetime', 'null' => true],
+			'updated_at'  => ['type' => 'datetime', 'null' => true],
+			'deleted_at'  => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');
@@ -27,9 +27,9 @@ class CreateOptions extends Migration
 		// Add the jobs pivot table
 		// jobs_options
 		$fields = [
-			'job_id'     => ['type' => 'INT', 'unsigned' => true],
-			'option_id'  => ['type' => 'INT', 'unsigned' => true],
-			'created_at' => ['type' => 'DATETIME', 'null' => true],
+			'job_id'     => ['type' => 'int', 'unsigned' => true],
+			'option_id'  => ['type' => 'int', 'unsigned' => true],
+			'created_at' => ['type' => 'datetime', 'null' => true],
 		];
 		
 		$this->forge->addField('id');

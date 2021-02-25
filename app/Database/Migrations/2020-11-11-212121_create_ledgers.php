@@ -9,8 +9,8 @@ class CreateLedgers extends Migration
 		// Ledgers
 		$fields = [
 			'job_id'      => ['type' => 'int', 'unsigned' => true],
-			'description' => ['type' => 'text', 'null' => false, 'default' => ''],
-			'estimate'    => ['type' => 'bool', 'null' => false, 'default' => 0],
+			'description' => ['type' => 'text', 'default' => ''],
+			'estimate'    => ['type' => 'bool', 'default' => 0],
 			'created_at'  => ['type' => 'datetime', 'null' => true],
 			'updated_at'  => ['type' => 'datetime', 'null' => true],
 			'deleted_at'  => ['type' => 'datetime', 'null' => true],
@@ -29,8 +29,8 @@ class CreateLedgers extends Migration
 		$fields = [
 			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
 			'name'       => ['type' => 'varchar', 'constraint' => 255],
-			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
-			'quantity'   => ['type' => 'double', 'null' => true, 'default' => null],
+			'amount'     => ['type' => 'int', 'default' => 0],
+			'quantity'   => ['type' => 'double', 'null' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 			'deleted_at' => ['type' => 'datetime', 'null' => true],
@@ -49,11 +49,11 @@ class CreateLedgers extends Migration
 		$fields = [
 			'ledger_id'  => ['type' => 'int', 'unsigned' => true],
 			'user_id'    => ['type' => 'int', 'unsigned' => true],
-			'amount'     => ['type' => 'int', 'null' => false, 'default' => 0],
+			'amount'     => ['type' => 'int'],
 			'class'      => ['type' => 'varchar', 'constraint' => 255],
-			'reference'  => ['type' => 'varchar', 'constraint' => 255],
+			'reference'  => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
 			'code'       => ['type' => 'int', 'null' => true],
-			'reason'     => ['type' => 'text', 'null' => false, 'default' => ''],
+			'reason'     => ['type' => 'text', 'default' => ''],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 		];

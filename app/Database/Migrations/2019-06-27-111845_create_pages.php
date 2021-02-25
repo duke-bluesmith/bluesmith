@@ -9,7 +9,7 @@ class CreatePages extends Migration
 	{
 		$fields = [
 			'name'          => ['type' => 'varchar', 'constraint' => 127],
-			'content'       => ['type' => 'text'],
+			'content'       => ['type' => 'text', 'default' => ''],
 			'created_at'    => ['type' => 'datetime', 'null' => true],
 			'updated_at'    => ['type' => 'datetime', 'null' => true],
 			'deleted_at'    => ['type' => 'datetime', 'null' => true],
