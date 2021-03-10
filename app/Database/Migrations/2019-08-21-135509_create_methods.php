@@ -10,7 +10,7 @@ class CreateMethods extends Migration
 		$fields = [
 			'name'        => ['type' => 'varchar', 'constraint' => 127],
 			'summary'     => ['type' => 'varchar', 'constraint' => 127, 'default' => ''],
-			'description' => ['type' => 'text', 'default' => ''],
+			'description' => ['type' => 'text', 'null' => true],
 			'sortorder'   => ['type' => 'int', 'unsigned' => true, 'default' => 0],
 			'created_at'  => ['type' => 'datetime', 'null' => true],
 			'updated_at'  => ['type' => 'datetime', 'null' => true],
@@ -31,7 +31,7 @@ class CreateMethods extends Migration
 		$fields = [
 			'name'        => ['type' => 'varchar', 'constraint' => 127],
 			'summary'     => ['type' => 'varchar', 'constraint' => 127, 'default' => ''],
-			'description' => ['type' => 'text', 'default' => ''],
+			'description' => ['type' => 'text', 'null' => true],
 			'sortorder'   => ['type' => 'int', 'unsigned' => true, 'default' => 0],
 			'method_id'   => ['type' => 'int'],
 			'created_at'  => ['type' => 'datetime', 'null' => true],
