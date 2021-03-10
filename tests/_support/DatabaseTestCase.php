@@ -2,7 +2,7 @@
 
 use App\Database\Seeds\InitialSeeder;
 use App\Entities\User;
-use CodeIgniter\Test\CIDatabaseTestCase;
+use CodeIgniter\Test\CIUnitTestCase;
 use Config\Services;
 use Faker\Factory;
 use Myth\Auth\Authorization\GroupModel;
@@ -10,8 +10,9 @@ use Myth\Auth\Authorization\PermissionModel;
 use Tests\Support\Fakers\UserFaker;
 use Tests\Support\Simulator;
 
-class DatabaseTestCase extends CIDatabaseTestCase
+class DatabaseTestCase extends CIUnitTestCase
 {
+	use \CodeIgniter\Test\DatabaseTestTrait;
 	use \Myth\Auth\Test\AuthTestTrait;
 
 	/**

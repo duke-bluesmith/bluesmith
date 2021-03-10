@@ -4,6 +4,7 @@ use App\BaseAction;
 use App\Models\ChargeModel;
 use App\Models\LedgerModel;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class InvoiceAction extends BaseAction
 {
@@ -19,22 +20,27 @@ class InvoiceAction extends BaseAction
 		'summary'  => 'Staff issues an invoice for actual charges',
 	];
 
-	public function get()
+	/**
+	 * Displays the invoice form.
+	 *
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		return view('actions/invoice', [
+		return $this->response->setBody(view('actions/invoice', [
 			'job'     => $this->job,
 			'invoice' => $this->job->getInvoice(true),
-		]);
+		]));
 	}
 
 	/**
 	 * Ends the Action
 	 *
-	 * @return bool
+	 * @return null
 	 */
-	public function post(): bool
+	public function post(): ?ResponseInterface
 	{
-		return true;
+		return null;
 	}
 
 	/**
@@ -42,7 +48,7 @@ class InvoiceAction extends BaseAction
 	 *
 	 * @return RedirectResponse
 	 */
-	public function put()
+	public function put(): ResponseInterface
 	{
 		$data = service('request')->getPost();
 

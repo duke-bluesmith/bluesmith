@@ -20,7 +20,7 @@ class PaymentAction extends BaseAction
 		'category' => 'Complete',
 		'name'     => 'Payment',
 		'uid'      => 'payment',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-money-check',
 		'summary'  => 'Client submits payment for charges',
 	];
@@ -29,9 +29,9 @@ class PaymentAction extends BaseAction
 	 * Displays the payment details from the invoice Ledger
 	 * and a selectable list of user-eligible Merchants.
 	 *
-	 * @return string
+	 * @return ResponseInterface|null
 	 */
-	public function get(): string
+	public function get(): ?ResponseInterface
 	{
 		/** @var User $user */
 		$user = user();
@@ -47,26 +47,26 @@ class PaymentAction extends BaseAction
 			}
 		}
 
-		return view('actions/payment', [
+		return $this->response->setBody(view('actions/payment', [
 			'job'       => $this->job,
 			'invoice'   => $this->job->getInvoice(),
 			'merchants' => $merchants,
-		]);
+		]));
 	}
 
 	/**
 	 * Indicates payment is complete and finishes the Action.
 	 *
-	 * @return RedirectResponse|bool
+	 * @return RedirectResponse|null
 	 */
-	public function post()
+	public function post(): ?ResponseInterface
 	{
 		if ($this->job->invoice->due > 0)
 		{
 			return redirect()->back()->with('error', lang('Payment.unpaid'));
 		}
 
-		return true;
+		return null;
 	}
 
 	/**
@@ -74,7 +74,7 @@ class PaymentAction extends BaseAction
 	 *
 	 * @return ResponseInterface
 	 */
-	public function put(): ResponseInterface
+	public function put(): ?ResponseInterface
 	{
 		/** @var User $user */
 		$user = user();

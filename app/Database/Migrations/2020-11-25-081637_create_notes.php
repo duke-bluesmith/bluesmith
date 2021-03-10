@@ -9,7 +9,7 @@ class CreateNotes extends Migration
 		$fields = [
 			'job_id'     => ['type' => 'int', 'unsigned' => true],
 			'user_id'    => ['type' => 'int', 'unsigned' => true],
-			'content'    => ['type' => 'text', 'default' => ''],
+			'content'    => ['type' => 'text', 'null' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 			'deleted_at' => ['type' => 'datetime', 'null' => true],

@@ -1,6 +1,7 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class ApproveAction extends BaseAction
 {
@@ -11,7 +12,7 @@ class ApproveAction extends BaseAction
 		'category' => 'Assess',
 		'name'     => 'Approve',
 		'uid'      => 'approve',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-thumbs-up',
 		'summary'  => 'Client approves the estimate',
 	];
@@ -20,24 +21,24 @@ class ApproveAction extends BaseAction
 	 * Displays the Charges and form for
 	 * accepting the estimate Ledger.
 	 *
-	 * @return string
+	 * @return ResponseInterface
 	 */
-	public function get()
+	public function get(): ResponseInterface
 	{
-		return view('actions/approve', [
+		return $this->response->setBody(view('actions/approve', [
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(),
-		]);
+		]));
 	}
 
 	/**
 	 * Processes the acceptance.
 	 *
-	 * @return bool
+	 * @return null
 	 */
-	public function post(): bool
+	public function post(): ?ResponseInterface
 	{
 		// End the action
-		return true;
+		return null;
 	}
 }

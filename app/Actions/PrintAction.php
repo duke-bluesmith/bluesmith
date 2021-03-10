@@ -3,6 +3,7 @@
 use App\BaseAction;
 use App\Models\NoteModel;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class PrintAction extends BaseAction
 {
@@ -17,25 +18,30 @@ class PrintAction extends BaseAction
 		'icon'     => 'fas fa-cubes',
 		'summary'  => 'Staff prints objects',
 	];
-	
-	public function get()
+
+	/**
+	 * Displays the Job print prompt.
+	 *
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		return view('actions/print', [
+		return $this->response->setBody(view('actions/print', [
 			'action'   => $this->attributes['name'],
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(),
-		]);
+		]));
 	}
 
 	/**
 	 * Marks the job as printed and this Action complete.
 	 *
-	 * @return bool
+	 * @return null
 	 */
-	public function post()
+	public function post(): ?ResponseInterface
 	{
 		// End the action
-		return true;
+		return null;
 	}
 
 	/**
@@ -43,7 +49,7 @@ class PrintAction extends BaseAction
 	 *
 	 * @return RedirectResponse
 	 */
-	public function put(): RedirectResponse
+	public function put(): ?ResponseInterface
 	{
 		$data = service('request')->getPost();
 

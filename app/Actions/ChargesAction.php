@@ -4,6 +4,7 @@ use App\BaseAction;
 use App\Models\ChargeModel;
 use App\Models\LedgerModel;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class ChargesAction extends BaseAction
 {
@@ -23,9 +24,9 @@ class ChargesAction extends BaseAction
 	 * Displays the form for modifying Charges
 	 * on the estimate Ledger.
 	 *
-	 * @return string
+	 * @return ResponseInterface
 	 */
-	public function get()
+	public function get(): ResponseInterface
 	{
 		// Build out the clickable charge items for the "Details" aside
 		$items = $this->job->material ? [
@@ -38,6 +39,7 @@ class ChargesAction extends BaseAction
 				'quantity' => 1,
 			]
 		] : [];
+
 		foreach ($this->job->options as $option)
 		{
 			$items[] = [
@@ -46,21 +48,21 @@ class ChargesAction extends BaseAction
 			];
 		}
 
-		return view('actions/charges/index', [
+		return $this->response->setBody(view('actions/charges/index', [
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(true),
 			'items'    => $items,
-		]);
+		]));
 	}
 
 	/**
 	 * Denotes that all Charges are created.
 	 *
-	 * @return bool
+	 * @return null
 	 */
-	public function post(): bool
+	public function post(): ?ResponseInterface
 	{
-		return true;
+		return null;
 	}
 
 	/**
@@ -68,7 +70,7 @@ class ChargesAction extends BaseAction
 	 *
 	 * @return RedirectResponse
 	 */
-	public function delete(): RedirectResponse
+	public function delete(): ResponseInterface
 	{
 		if ($chargeId = service('request')->getPost('charge_id'))
 		{
@@ -84,7 +86,7 @@ class ChargesAction extends BaseAction
 	 *
 	 * @return RedirectResponse
 	 */
-	public function put(): RedirectResponse
+	public function put(): ResponseInterface
 	{
 		$data = service('request')->getPost();
 

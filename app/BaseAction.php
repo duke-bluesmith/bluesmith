@@ -2,6 +2,8 @@
 
 use App\Entities\Job;
 use App\Models\JobModel;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
 use Config\Workflows;
 use Tatter\Workflows\BaseAction as ModuleBaseAction;
 
@@ -31,10 +33,15 @@ abstract class BaseAction extends ModuleBaseAction
 
 	/**
 	 * Loads frequently-needed helpers
+	 *
+	 * @param Job|null $job
+	 * @param Workflows|null $config
+	 * @param RequestInterface|null $request
+	 * @param ResponseInterface|null $response
 	 */
-	public function __construct()
+	public function __construct(Job $job = null, Workflows $config = null, RequestInterface $request = null, ResponseInterface $response = null)
 	{
-		parent::__construct();
+		parent::__construct($job, $config, $request, $response);
 
 		helper(['currency', 'form', 'inflector', 'number']);
 	}

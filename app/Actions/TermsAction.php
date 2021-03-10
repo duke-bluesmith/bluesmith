@@ -2,6 +2,8 @@
 
 use App\BaseAction;
 use App\Models\PageModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class TermsAction extends BaseAction
 {
@@ -12,20 +14,26 @@ class TermsAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-actions',
 		'summary'  => 'Client accepts terms of service',
 	];
 
-	public function get()
+	/**
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		return view('actions/terms', [
+		return $this->response->setBody(view('actions/terms', [
 			'job'   => $this->job,
 			'page'  => model(PageModel::class)->where('name', 'TOS')->first(),
-		]);
+		]));
 	}
 
-	public function post()
+	/**
+	 * @return ResponseInterface|null
+	 */
+	public function post(): ?ResponseInterface
 	{
 		$data = service('request')->getPost();
 
@@ -38,7 +46,7 @@ class TermsAction extends BaseAction
 		$this->job->setFlag('Accepted');
 
 		// End the action
-		return true;
+		return null;
 	}
 
 	/**

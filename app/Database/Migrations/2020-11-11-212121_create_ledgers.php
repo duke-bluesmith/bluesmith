@@ -9,7 +9,7 @@ class CreateLedgers extends Migration
 		// Ledgers
 		$fields = [
 			'job_id'      => ['type' => 'int', 'unsigned' => true],
-			'description' => ['type' => 'text', 'default' => ''],
+			'description' => ['type' => 'text', 'null' => true],
 			'estimate'    => ['type' => 'bool', 'default' => 0],
 			'created_at'  => ['type' => 'datetime', 'null' => true],
 			'updated_at'  => ['type' => 'datetime', 'null' => true],
@@ -53,7 +53,7 @@ class CreateLedgers extends Migration
 			'class'      => ['type' => 'varchar', 'constraint' => 255],
 			'reference'  => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
 			'code'       => ['type' => 'int', 'null' => true],
-			'reason'     => ['type' => 'text', 'default' => ''],
+			'reason'     => ['type' => 'text', 'null' => true],
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 		];
