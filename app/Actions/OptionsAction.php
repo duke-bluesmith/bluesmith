@@ -15,7 +15,7 @@ class OptionsAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Print Options',
 		'uid'      => 'options',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-cogs',
 		'summary'  => 'Client specifies method, materials, and options',
 	];

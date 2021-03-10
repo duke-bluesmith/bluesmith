@@ -20,7 +20,7 @@ class AssignAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Assign Clients',
 		'uid'      => 'clients',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-user-friends',
 		'summary'  => 'Client includes other clients',
 	];

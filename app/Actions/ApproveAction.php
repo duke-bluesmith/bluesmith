@@ -12,7 +12,7 @@ class ApproveAction extends BaseAction
 		'category' => 'Assess',
 		'name'     => 'Approve',
 		'uid'      => 'approve',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-thumbs-up',
 		'summary'  => 'Client approves the estimate',
 	];

@@ -11,7 +11,7 @@ class PrepayAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Prepay',
 		'uid'      => 'prepay',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-comments-dollar',
 		'summary'  => 'Client submits payment in advance',
 	];

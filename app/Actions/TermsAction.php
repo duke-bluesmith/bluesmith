@@ -14,7 +14,7 @@ class TermsAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Terms',
 		'uid'      => 'terms',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-actions',
 		'summary'  => 'Client accepts terms of service',
 	];

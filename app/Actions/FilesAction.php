@@ -17,7 +17,7 @@ class FilesAction extends BaseAction
 		'category' => 'Define',
 		'name'     => 'Files',
 		'uid'      => 'files',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-file-alt',
 		'summary'  => 'Client selects or uploads files',
 	];

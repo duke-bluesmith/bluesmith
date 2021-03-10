@@ -20,7 +20,7 @@ class PaymentAction extends BaseAction
 		'category' => 'Complete',
 		'name'     => 'Payment',
 		'uid'      => 'payment',
-		'role'     => 'user',
+		'role'     => '',
 		'icon'     => 'fas fa-money-check',
 		'summary'  => 'Client submits payment for charges',
 	];
