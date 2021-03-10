@@ -1,6 +1,8 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -18,36 +20,27 @@ class DeliverAction extends BaseAction
 		'icon'     => 'fas fa-truck',
 		'summary'  => 'Staff delivers objects to client',
 	];
-	
-	public function get()
+
+	/**
+	 * Displays the delivery form.
+	 *
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		return view('actions/deliver', [
+		return $this->response->setBody(view('actions/deliver', [
 			'job' => $this->job,
-		]);
+		]));
 	}
-	
-	public function post()
-	{
-		$data = service('request')->getPost();
 
+	/**
+	 * Marks the items as delivered.
+	 *
+	 * @return null
+	 */
+	public function post(): ?ResponseInterface
+	{
 		// End the action
-		return true;
-	}
-	
-	public function put()
-	{
-
-	}
-	
-	// run when a job progresses forward through the workflow
-	public function up()
-	{
-	
-	}
-	
-	// run when job regresses back through the workflow
-	public function down()
-	{
-
+		return null;
 	}
 }

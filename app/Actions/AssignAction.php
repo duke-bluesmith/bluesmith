@@ -3,7 +3,10 @@
 use App\BaseAction;
 use App\Entities\Job;
 use App\Exceptions\InviteException;
+use App\Models\InviteModel;
 use App\Models\UserModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -23,33 +26,41 @@ class AssignAction extends BaseAction
 	];
 
 	/**
-	 * @var Job
+	 * Displays the form
+	 *
+	 * @return ResponseInterface
 	 */
-	public $job;
-
-	// Display the form
-	public function get()
+	public function get(): ResponseInterface
 	{
-		$data = [
+		return $this->response->setBody(view('actions/clients', [
 			'job' => $this->job,
-		];
-		return view('actions/clients', $data);
+		]));
 	}
-	
-	// Validate and continue
-	public function post()
+
+	/**
+	 * Verifies at least one user has been assigned
+	 *
+	 * @return RedirectResponse|null
+	 */
+	public function post(): ?ResponseInterface
 	{
 		if (empty($this->job->users))
 		{
 			alert('warning', lang('Actions.needClients'));
+
 			return redirect()->back();
 		}
 
-		return true;
+		return null;
 	}
 
-	// Take an email address and add a user or send them an invite
-	public function put()
+	/**
+	 * Takes an email address and either adds
+	 * a user or sends them an invite.
+	 *
+	 * @return RedirectResponse
+	 */
+	public function put(): ResponseInterface
 	{
 		// All we care about is a valid email address
 		$email = service('request')->getPost('email');
@@ -100,22 +111,27 @@ class AssignAction extends BaseAction
 		return redirect()->back();		
 	}
 
-	// Remove a user or an invitation
-	public function delete()
+	/**
+	 * Removes a user or an invitation
+	 *
+	 * @return RedirectResponse
+	 */
+	public function delete(): ResponseInterface
 	{
 		if ($userId = service('request')->getPost('user_id'))
 		{
-			/** @todo */
+			$this->job->removeUser($userId);
 		}
 		elseif ($inviteId = service('request')->getPost('invite_id'))
 		{
-			/** @todo */
+			model(InviteModel::class)->delete($inviteId);
 		}
 		else
 		{
 			alert('error', lang('Actions.removeClientFail'));
-			return redirect()->back();
 		}
+
+		return redirect()->back();
 	}
 
 	/**

@@ -1,6 +1,8 @@
 <?php namespace App\Database\Seeds;
 
 use Tatter\Workflows\Entities\Workflow;
+use Tatter\Workflows\Models\ActionModel;
+use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
 use Tatter\Workflows\Registrar;
 use CodeIgniter\Database\Seeder;
@@ -8,22 +10,24 @@ use CodeIgniter\Database\Seeder;
 class WorkflowSeeder extends Seeder
 {
 	/**
-	 * @var array Actions to insert
+	 * Actions to insert
+	 *
+	 * @var array<string, bool> UID => required
 	 */
 	protected $actions = [
-		'info',
-		'files',
-		'options',
-		'clients',
-		'terms',
-		'charges',
-		'estimate',
-		'approve',
-		'print',
-		'postprint',
-		'invoice',
-		'payment',
-		'deliver',
+		'info'      => false,
+		'files'     => false,
+		'options'   => true,
+		'clients'   => true,
+		'terms'     => true,
+		'charges'   => false,
+		'estimate'  => false,
+		'approve'   => true,
+		'print'     => true,
+		'postprint' => false,
+		'invoice'   => false,
+		'payment'   => true,
+		'deliver'   => true,
 	];
 
 	/**
@@ -67,9 +71,15 @@ class WorkflowSeeder extends Seeder
 		Registrar::actions();
 
 		// Create the stages in a specific order
-		foreach ($this->actions as $uid)
+		foreach ($this->actions as $uid => $required)
 		{
-			$workflow->addAction($uid);
+			$action = model(ActionModel::class)->where('uid', $uid)->first();
+
+			model(StageModel::class)->insert([
+				'action_id'   => $action->id,
+				'workflow_id' => $workflow->id,
+				'required'    => $required,
+			]);
 		}
 	}
 }

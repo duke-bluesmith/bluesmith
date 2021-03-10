@@ -1,6 +1,11 @@
 <?php namespace App\Actions;
 
 use App\BaseAction;
+use App\Entities\Job;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Config\Workflows;
 use Tatter\Files\Models\FileModel;
 
 class FilesAction extends BaseAction
@@ -22,44 +27,59 @@ class FilesAction extends BaseAction
 	 */
 	protected $files;
 
-	public function __construct()
+	/**
+	 * Preloads the Files model and helper
+	 *
+	 * @param Job|null $job
+	 * @param Workflows|null $config
+	 * @param RequestInterface|null $request
+	 * @param ResponseInterface|null $response
+	 */
+	public function __construct(Job $job = null, Workflows $config = null, RequestInterface $request = null, ResponseInterface $response = null)
 	{
-		parent::__construct();
+		parent::__construct($job, $config, $request, $response);
 
-		// Preload the Files model and helper
 		$this->files = new FileModel();
 		helper('files');
 	}
-	
-	public function get()
+
+	/**
+	 * Displays the file selection form.
+	 *
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		$data = [
+		return $this->response->setBody(view('actions/files', [
 			'job'      => $this->job,
 			'files'    => $this->files->getForUser(user_id()),
 			'selected' => array_column($this->job->files ?? [], 'id'),
-		];
-		return view('actions/files', $data);
+		]));
 	}
-	
-	public function post()
-	{
-		$data = service('request')->getPost();
 
+	/**
+	 * Processes file selection.
+	 *
+	 * @return ResponseInterface|null
+	 */
+	public function post(): ?ResponseInterface
+	{
 		// Harvest file IDs
-		$action = '';
+		$action  = '';
 		$fileIds = [];
-		foreach ($data as $key => $value)
+
+		foreach (service('request')->getPost() as $key => $value)
 		{
 			if (is_numeric($value) && strpos($key, 'file') === 0)
 			{
 				$fileIds[] = $value;
 			}
 		}
-		
+
 		// Filter by user's files
 		$fileIds = array_intersect($fileIds, array_column($this->files->getForUser(user_id()), 'id'));
-		
-		if (! empty($fileIds))
+
+		if ($fileIds !== [])
 		{
 			$this->job->setFiles($fileIds);
 		}
@@ -69,18 +89,6 @@ class FilesAction extends BaseAction
 		}
 
 		// End the action
-		return true;
-	}
-	
-	// Run when a job progresses forward through the workflow
-	public function up()
-	{
-	
-	}
-	
-	// Run when job regresses back through the workflow
-	public function down()
-	{
-
+		return null;
 	}
 }

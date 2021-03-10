@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "132334438445299118c5b6fd17177e3b",
+    "content-hash": "c5eb276bef88c8ad529a730d52f1c5dc",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -877,64 +877,6 @@
             "time": "2021-01-27T10:01:46+00:00"
         },
         {
-            "name": "tatter/accounts",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattersoftware/codeigniter4-accounts.git",
-                "reference": "aa96bbba073877bafc7140fde2efa41159042fdc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-accounts/zipball/aa96bbba073877bafc7140fde2efa41159042fdc",
-                "reference": "aa96bbba073877bafc7140fde2efa41159042fdc",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "fzaninotto/faker": "^1.9@dev",
-                "mockery/mockery": "^1.0",
-                "myth/auth": "dev-develop",
-                "phpunit/phpunit": "^7.0",
-                "stripe/stripe-php": "^7.14"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tatter\\Accounts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Gatner",
-                    "email": "mgatner@tattersoftware.com",
-                    "homepage": "https://tattersoftware.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Multi-service account management for CodeIgniter 4",
-            "homepage": "https://github.com/tattersoftware/codeigniter4-accounts",
-            "keywords": [
-                "Users",
-                "accounts",
-                "codeigniter",
-                "codeigniter4",
-                "management"
-            ],
-            "support": {
-                "issues": "https://github.com/tattersoftware/codeigniter4-accounts/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-accounts/tree/develop"
-            },
-            "time": "2020-03-22T18:50:03+00:00"
-        },
-        {
             "name": "tatter/addins",
             "version": "v2.0.4",
             "source": {
@@ -1254,37 +1196,39 @@
         },
         {
             "name": "tatter/chat",
-            "version": "v1.0.1",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-chat.git",
-                "reference": "f2a84917f3b226385de13536b99182e767f12ec1"
+                "reference": "466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/f2a84917f3b226385de13536b99182e767f12ec1",
-                "reference": "f2a84917f3b226385de13536b99182e767f12ec1",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8",
+                "reference": "466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8",
                 "shasum": ""
             },
             "require": {
+                "codeigniter4/authentication-implementation": "1.0",
                 "components/jquery": "^3.3",
-                "php": ">=7.2",
-                "tatter/accounts": "^1.0",
+                "php": "^7.3 || ^8.0",
                 "tatter/assets": "^2.0",
+                "tatter/users": "^1.0",
                 "twbs/bootstrap": "^4.3"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "fzaninotto/faker": "^1.9@dev",
-                "mockery/mockery": "^1.0",
                 "myth/auth": "dev-develop",
-                "phpunit/phpunit": "^7.0"
+                "tatter/tools": "^1.6"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Chat\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1308,9 +1252,19 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-chat/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v1.0.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.0.0"
             },
-            "time": "2020-02-06T20:34:18+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-03-05T17:58:53+00:00"
         },
         {
             "name": "tatter/exports",
@@ -2108,6 +2062,75 @@
             "time": "2020-10-01T19:30:20+00:00"
         },
         {
+            "name": "tatter/users",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tattersoftware/codeigniter4-users.git",
+                "reference": "ffc8a8f4a8dc13b08291abd5eeb34caa3471c45a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-users/zipball/ffc8a8f4a8dc13b08291abd5eeb34caa3471c45a",
+                "reference": "ffc8a8f4a8dc13b08291abd5eeb34caa3471c45a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "agungsugiarto/codeigniter4-authentication": "dev-master",
+                "codeigniter4/codeigniter4": "dev-develop",
+                "lonnieezell/codigniter-shield": "dev-develop",
+                "myth/auth": "dev-develop",
+                "tatter/tools": "^1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tatter\\Users\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Gatner",
+                    "email": "mgatner@tattersoftware.com",
+                    "homepage": "https://tattersoftware.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "User interfaces and provider for CodeIgniter 4",
+            "homepage": "https://github.com/tattersoftware/codeigniter4-users",
+            "keywords": [
+                "Authentication",
+                "Users",
+                "codeigniter",
+                "codeigniter4"
+            ],
+            "support": {
+                "issues": "https://github.com/tattersoftware/codeigniter4-users/issues",
+                "source": "https://github.com/tattersoftware/codeigniter4-users/tree/v1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-03-01T03:14:42+00:00"
+        },
+        {
             "name": "tatter/visits",
             "version": "v1.2.0",
             "source": {
@@ -2176,19 +2199,20 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v3.3.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "7d337609a2071f9e008f0b40032a89e79f3d3559"
+                "reference": "86951f9529f1ad7d51f01d80fea8d0708c1ce35b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/7d337609a2071f9e008f0b40032a89e79f3d3559",
-                "reference": "7d337609a2071f9e008f0b40032a89e79f3d3559",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/86951f9529f1ad7d51f01d80fea8d0708c1ce35b",
+                "reference": "86951f9529f1ad7d51f01d80fea8d0708c1ce35b",
                 "shasum": ""
             },
             "require": {
+                "codeigniter4/authentication-implementation": "1.0",
                 "components/jquery": "^3.3",
                 "fortawesome/font-awesome": "^5.8",
                 "npm-asset/sortablejs": "^1.10",
@@ -2197,12 +2221,13 @@
                 "tatter/assets": "^2.0",
                 "tatter/audits": "^1.0",
                 "tatter/handlers": "^2.0",
+                "tatter/users": "^1.0",
                 "twbs/bootstrap": "^4.3"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.4"
+                "tatter/tools": "^1.6"
             },
             "type": "library",
             "autoload": {
@@ -2236,7 +2261,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v3.3.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.0"
             },
             "funding": [
                 {
@@ -2248,7 +2273,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-29T16:47:58+00:00"
+            "time": "2021-03-09T18:40:44+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -8199,7 +8224,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3"
+        "php": "^7.3 || ^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

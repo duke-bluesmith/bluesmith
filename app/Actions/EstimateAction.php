@@ -5,6 +5,7 @@ use App\Libraries\Mailer;
 use App\Models\LedgerModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class EstimateAction extends BaseAction
 {
@@ -24,28 +25,29 @@ class EstimateAction extends BaseAction
 	 * Displays the Charges and form for sending
 	 * the estimate Ledger.
 	 *
-	 * @return string
+	 * @return ResponseInterface
 	 */
-	public function get()
+	public function get(): ResponseInterface
 	{
-		return view('actions/estimate', [
+		return $this->response->setBody(view('actions/estimate', [
 			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(),
-		]);
+		]));
 	}
 
 	/**
 	 * Processes form data and sends the Estimate
 	 * Email to each selected user.
 	 *
-	 * @return RedirectResponse|bool
+	 * @return RedirectResponse|null
 	 */
-	public function post()
+	public function post(): ?ResponseInterface
 	{
 		// Update the description and reload the estimate Ledger
 		model(LedgerModel::class)->update($this->job->estimate->id, [
 			'description' => service('request')->getPost('description'),
 		]);
+
 		$ledger = model(LedgerModel::class)->find($this->job->estimate->id);
 
 		// Verify each user and grab their email address
@@ -74,6 +76,6 @@ class EstimateAction extends BaseAction
 		}
 
 		// End the action
-		return true;
+		return null;
 	}
 }

@@ -51,9 +51,9 @@ class InitialSeeder extends Seeder
 		}
 
 		// Use the Registrar to seed Actions
-		if (Registrar::actions())
+		if (Registrar::actions() && ENVIRONMENT !== 'testing')
 		{
-			command('actions:list');
+			command('actions:list'); // @codeCoverageIgnore
 		}
 
 		return $errors;

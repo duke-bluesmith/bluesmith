@@ -3,6 +3,8 @@
 use App\BaseAction;
 use App\Models\MethodModel;
 use App\Models\OptionModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class OptionsAction extends BaseAction
 {
@@ -18,21 +20,26 @@ class OptionsAction extends BaseAction
 		'summary'  => 'Client specifies method, materials, and options',
 	];
 
-	public function get()
+	/**
+	 * Displays the options form.
+	 *
+	 * @return ResponseInterface
+	 */
+	public function get(): ResponseInterface
 	{
-		$options = new OptionModel();
-		$methods = new MethodModel();
-
-		$data = [
+		return $this->response->setbody(view('actions/options', [
 			'job'     => $this->job,
-			'methods' => $methods->with('materials')->findAll(),
-			'options' => $options->findAll(),
-		];
-
-		return view('actions/options', $data);
+			'methods' => model(MethodModel::class)->with('materials')->findAll(),
+			'options' => model(OptionModel::class)->findAll(),
+		]));
 	}
 
-	public function post()
+	/**
+	 * Processes form submission.
+	 *
+	 * @return null
+	 */
+	public function post(): ?ResponseInterface
 	{
 		$data = service('request')->getPost();
 
@@ -52,6 +59,6 @@ class OptionsAction extends BaseAction
 		}
 
 		// End the action
-		return true;
+		return null;
 	}
 }
