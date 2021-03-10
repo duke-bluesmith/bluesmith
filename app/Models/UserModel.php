@@ -3,6 +3,7 @@
 use App\Entities\User;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
+use Faker\Generator;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 
@@ -45,5 +46,25 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 			->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
 			->where('auth_groups_users.user_id', $userId)
 			->get()->getResultObject();
+	}
+
+	/**
+	 * Faked data for Fabricator.
+	 *
+	 * @param Generator $faker
+	 *
+	 * @return User
+	 */
+	public function fake(Generator &$faker): User
+	{
+		return new User([
+			'email'     => $faker->email,
+			'username'  => $faker->userName,
+			'firstname' => $faker->firstName,
+			'lastname'  => $faker->lastName,
+			'password'  => bin2hex(random_bytes(24)),
+			'balance'   => rand(0, 1) ? rand(100, 5000) : 0,
+			'active'    => (bool) rand(0, 20),
+		]);
 	}
 }
