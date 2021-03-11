@@ -1,17 +1,29 @@
 <?php namespace App\Entities;
 
-use Tatter\Settings\Models\SettingModel;
-use Tests\Support\DatabaseTestCase;
+use Config\Services;
+use Tests\Support\Mock\MockSettings;
+use Tests\Support\ProjectTestCase;
 
-class ChargeTest extends DatabaseTestCase
+class ChargeTest extends ProjectTestCase
 {
-	// Locks down currency settings
+    /**
+     * Loads the helper functions.
+     */
+    public static function setUpBeforeClass(): void
+    {
+    	parent::setUpBeforeClass();
+
+		helper(['currency', 'number']);
+    }
+
+	/**
+	 * Mocks the Settings service to eliminate the need for a database
+	 */
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		model(SettingModel::class)->where('name', 'currencyUnit')->update(null, ['content' => 'USD']);
-		model(SettingModel::class)->where('name', 'currencyScale')->update(null, ['content' => 100]);
+		Services::injectMock('settings', MockSettings::create());
 	}
 
 	public function testGetPriceReturnsPrice()
