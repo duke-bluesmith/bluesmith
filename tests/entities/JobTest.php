@@ -1,21 +1,33 @@
 <?php namespace App\Entities;
 
 use App\Models\LedgerModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
 
-class JobTest extends DatabaseTestCase
+class JobTest extends ProjectTestCase
 {
+	use \CodeIgniter\Test\DatabaseTestTrait;
+
+    protected $namespace = [
+    	'Tatter\Workflows',
+    	'Myth\Auth',
+    	'App',
+    ];
+
+	protected $seed = 'App\Database\Seeds\OptionSeeder';
+
 	/**
 	 * @var Job
 	 */
-	protected $job;
+	private $job;
 
+	/**
+	 * Fakes a test Job.
+	 */
 	protected function setUp(): void
 	{
 		parent::setUp();
-				
-		// Create a random job
+
 		$this->job = fake(JobModel::class);
 	}
 
@@ -35,7 +47,7 @@ class JobTest extends DatabaseTestCase
 	{
 		$this->job->setOptions([1, 2, 3]);
 
-		$this->assertTrue($this->job->hasOption(1));
+		$this->assertTrue($this->job->hasOption(2));
 	}
 
 	public function testGetLedgersReturnsLedgers()
