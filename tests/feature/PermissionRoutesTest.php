@@ -3,7 +3,7 @@
 use App\Entities\User;
 use App\Models\JobModel;
 use Myth\Auth\Exceptions\PermissionException;
-use Tests\Support\Fakers\UserFaker;
+use App\Models\UserModel;
 use Tests\Support\FeatureTestCase;
 use Tests\Support\Simulator;
 
@@ -48,7 +48,7 @@ class PermissionRoutesTest extends FeatureTestCase
 	 */
 	public function testLoggedInNoPermissions($route, $status)
 	{
-		$user = fake(UserFaker::class);
+		$user = fake(UserModel::class);
 
 		// The filter will throw if user does not have access
 		if ($status === 'manage')

@@ -2,7 +2,7 @@
 
 use App\Models\LedgerModel;
 use Tests\Support\DatabaseTestCase;
-use Tests\Support\Fakers\JobFaker;
+use App\Models\JobModel;
 
 class JobTest extends DatabaseTestCase
 {
@@ -16,7 +16,7 @@ class JobTest extends DatabaseTestCase
 		parent::setUp();
 				
 		// Create a random job
-		$this->job = fake(JobFaker::class);
+		$this->job = fake(JobModel::class);
 	}
 
 	public function testSetOptionsAddsToDatabase()

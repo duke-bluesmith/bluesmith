@@ -1,7 +1,7 @@
 <?php
 
-use Tests\Support\Fakers\JobFaker;
-use Tests\Support\Fakers\UserFaker;
+use App\Models\JobModel;
+use App\Models\UserModel;
 use Tests\Support\DatabaseTestCase;
 use Tests\Support\Simulator;
 
@@ -9,10 +9,10 @@ class JobModelTest extends DatabaseTestCase
 {
 	public function testAddUserToJob()
 	{
-		$user = fake(UserFaker::class);
-		$job  = fake(JobFaker::class);
+		$user = fake(UserModel::class);
+		$job  = fake(JobModel::class);
 
-		model(JobFaker::class)->addUserToJob($user->id, $job->id);
+		model(JobModel::class)->addUserToJob($user->id, $job->id);
 
 		$result = $user->jobs;
 
@@ -24,7 +24,7 @@ class JobModelTest extends DatabaseTestCase
 	{
 		Simulator::initialize();
 
-		$result = model(JobFaker::class)->getCompiledRows();
+		$result = model(JobModel::class)->getCompiledRows();
 
 		$this->assertIsArray($result);
 		$this->assertGreaterThanOrEqual(1, count($result));
@@ -37,7 +37,7 @@ class JobModelTest extends DatabaseTestCase
 	{
 		$this->assertNull(cache()->get('jobrows'));
 
-		model(JobFaker::class)->getCompiledRows();
+		model(JobModel::class)->getCompiledRows();
 
 		$this->assertNotNull(cache()->get('jobrows'));
 	}
@@ -47,7 +47,7 @@ class JobModelTest extends DatabaseTestCase
 		$expected = ['foo' => 'bar'];
 		cache()->save('jobrows', $expected);
 
-		$result = model(JobFaker::class)->getCompiledRows();
+		$result = model(JobModel::class)->getCompiledRows();
 
 		$this->assertSame($expected, $result);
 	}
@@ -56,7 +56,7 @@ class JobModelTest extends DatabaseTestCase
 	{
 		cache()->save('jobrows', ['foo' => 'bar']);
 
-		fake(JobFaker::class);
+		fake(JobModel::class);
 
 		$this->assertNull(cache()->get('jobrows'));
 	}
