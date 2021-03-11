@@ -4,20 +4,21 @@ use App\Models\JobModel;
 use App\Models\MaterialModel;
 use App\Models\MethodModel;
 use App\Models\UserModel;
+use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\Fabricator;
 use Myth\Auth\Authorization\GroupModel;
 use Tatter\Workflows\Test\Simulator as BaseSimulator;
 
 /**
  * Support class for simulating a complete project environment.
- * Builds off existing funcitonality in Workflows.
+ * Builds on the existing funcitonality in Workflows.
  */
 class Simulator extends BaseSimulator
 {
 	/**
 	 * Initialize the simulation.
 	 *
-	 * @param array $targets  Array of target items to create
+	 * @param string[] $targets Array of target items to create
 	 */
 	static public function initialize($targets = ['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'])
 	{
@@ -26,11 +27,14 @@ class Simulator extends BaseSimulator
 		// Create methods up to N
 		if (in_array('methods', $targets))
 		{
-			$count = rand(1, 2);
+			$count = rand(2, 3);
 			while (Fabricator::getCount('methods') < $count)
 			{
 				fake(MethodModel::class);
 			}
+
+			// ...and one deleted
+			model(MethodModel::class)->delete(Fabricator::getCount('methods'));
 		}
 
 		// Create materials up to N
@@ -41,6 +45,9 @@ class Simulator extends BaseSimulator
 			{
 				fake(MaterialModel::class);
 			}
+
+			// ...and one deleted
+			model(MaterialModel::class)->delete(Fabricator::getCount('materials'));
 		}
 
 		// Create users up to N
@@ -52,10 +59,13 @@ class Simulator extends BaseSimulator
 				fake(UserModel::class);
 			}
 
+			// ...and one deleted
+			model(UserModel::class)->delete(Fabricator::getCount('users'));
+
 			// Assign some users to groups (created by AuthSeeder)
 			$numGroups = model(GroupModel::class)->countAllResults();
 
-			$count = rand(5, 10);
+			$count = rand(4, 8);
 			for ($i = 1; $i < $count; $i++)
 			{
 				model(GroupModel::class)->addUserToGroup(
@@ -68,15 +78,18 @@ class Simulator extends BaseSimulator
 		// Create jobs up to N
 		if (in_array('jobs', $targets))
 		{
-			$count = rand(4, 20);
+			$count = rand(3, 10);
 			while (Fabricator::getCount('jobs') < $count)
 			{
 				fake(JobModel::class);
 			}
 
+			// ...and one deleted
+			model(JobModel::class)->delete(Fabricator::getCount('jobs'));
+
 			// Assign jobs to users
 			$builder = db_connect()->table('jobs_users');
-			for ($i = 1; $i < Fabricator::getCount('jobs'); $i++)
+			for ($i = 1; $i <= Fabricator::getCount('jobs'); $i++)
 			{
 				$builder->insert([
 					'job_id'  => $i,
@@ -86,12 +99,11 @@ class Simulator extends BaseSimulator
 
 			// Make a few jobs have multiple users
 			$count = rand(2, 6);
+			$user  = fake(UserModel::class);
 			for ($i = 1; $i < $count; $i++)
 			{
-				$user = fake(UserModel::class);
-
 				$builder->insert([
-					'job_id'  => rand(1, Fabricator::getCount('jobs')),
+					'job_id'  => $i,
 					'user_id' => $user->id,
 				]);		
 			}

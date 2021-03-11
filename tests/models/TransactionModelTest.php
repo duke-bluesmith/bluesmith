@@ -2,10 +2,12 @@
 
 use App\Entities\User;
 use App\Models\UserModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 
-class TransactionModelTest extends DatabaseTestCase
+class TransactionModelTest extends ProjectTestCase
 {
+	use \CodeIgniter\Test\DatabaseTestTrait;
+
 	/**
 	 * @var User
 	 */
