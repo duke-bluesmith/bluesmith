@@ -1,12 +1,19 @@
-<?php
+<?php namespace App\Models;
 
-use App\Models\JobModel;
-use App\Models\UserModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
-class JobModelTest extends DatabaseTestCase
+class JobModelTest extends ProjectTestCase
 {
+	use \CodeIgniter\Test\DatabaseTestTrait;
+
+	public function testAddEmailToJob()
+	{
+		model(JobModel::class)->addEmailtoJob(23, 42);
+
+		$this->seeInDatabase('emails_jobs', ['job_id' => 42]);
+	}
+
 	public function testAddUserToJob()
 	{
 		$user = fake(UserModel::class);
@@ -31,6 +38,16 @@ class JobModelTest extends DatabaseTestCase
 		$this->assertArrayHasKey('workflow', $result[0]);
 		$this->assertArrayHasKey('firstname', $result[0]);
 		$this->assertArrayHasKey('role', $result[0]);
+	}
+
+	public function testClearCompiledRows()
+	{
+		cache()->save('jobrows', ['foo' => 'bar']);
+
+		model(JobModel::class)->clearCompiledRows();
+		$result = model(JobModel::class)->getCompiledRows();
+
+		$this->assertEquals([], $result);
 	}
 
 	public function testCompiledRowsCreatesCache()
