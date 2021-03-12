@@ -26,7 +26,7 @@ class InitialSeeder extends Seeder
 		// Check for a Local seeder
 		if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder'))
 		{
-			$seeds[] = $seedName;
+			$seeds[] = $seedName; // @codeCoverageIgnore
 		}
 
 		// Run each seeder in order
@@ -36,6 +36,7 @@ class InitialSeeder extends Seeder
 			{
 				$this->call($seedName);
 			}
+			// @codeCoverageIgnoreStart
 			catch (\Exception $e)
 			{
 				// Pass CLI exceptions back to BaseCommand for display
@@ -48,6 +49,7 @@ class InitialSeeder extends Seeder
 					$errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
 				}
 			}
+			// @codeCoverageIgnoreEnd
 		}
 
 		// Use the Registrar to seed Actions

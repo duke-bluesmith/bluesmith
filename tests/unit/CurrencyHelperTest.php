@@ -1,25 +1,10 @@
 <?php
 
-use Tatter\Settings\Models\SettingModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 
-class CurrencyHelperTest extends DatabaseTestCase
+class CurrencyHelperTest extends ProjectTestCase
 {
-	public static function setUpBeforeClass(): void
-	{
-		parent::setUpBeforeClass();
-
-		helper('currency');
-	}
-
-	// Locks down currency settings 
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		model(SettingModel::class)->where('name', 'currencyUnit')->update(null, ['content' => 'USD']);
-		model(SettingModel::class)->where('name', 'currencyScale')->update(null, ['content' => 100]);
-	}
+	use \Tests\Support\CurrencyTrait;
 
 	public function testPriceToScaled()
 	{

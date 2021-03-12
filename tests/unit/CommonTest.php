@@ -1,20 +1,15 @@
 <?php
 
 use App\Entities\User;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 
 /**
  * Tests functions defined in Common.php
  */
-class CommonTest extends DatabaseTestCase
+class CommonTest extends ProjectTestCase
 {
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		$this->resetAuthServices();
-		helper('auth');
-	}
+	use \CodeIgniter\Test\DatabaseTestTrait;
+	use \Tests\Support\AuthenticationTrait;
 
 	public function testUserReturnsNull()
 	{

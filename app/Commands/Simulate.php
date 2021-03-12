@@ -18,7 +18,7 @@ class Simulate extends BaseCommand
 	{
 		if (ENVIRONMENT === 'production')
 		{
-			throw new RuntimeException('This feature is not available on production sites.'); 
+			throw new RuntimeException('This feature is not available on production sites.'); // @codeCoverageIgnore
 		}
 
 		helper('test');
