@@ -1,30 +1,10 @@
 <?php namespace App\Entities;
 
-use Config\Services;
-use Tests\Support\Mock\MockSettings;
 use Tests\Support\ProjectTestCase;
 
 class ChargeTest extends ProjectTestCase
 {
-    /**
-     * Loads the helper functions.
-     */
-    public static function setUpBeforeClass(): void
-    {
-    	parent::setUpBeforeClass();
-
-		helper(['currency', 'number']);
-    }
-
-	/**
-	 * Mocks the Settings service to eliminate the need for a database
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		Services::injectMock('settings', MockSettings::create());
-	}
+	use \Tests\Support\CurrencyTrait;
 
 	public function testGetPriceReturnsPrice()
 	{

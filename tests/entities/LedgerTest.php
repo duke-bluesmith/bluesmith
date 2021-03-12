@@ -1,13 +1,11 @@
 <?php namespace App\Entities;
 
-use App\Models\ChargeModel;
-use App\Models\LedgerModel;
-use Config\Services;
-use Tests\Support\Mock\MockSettings;
 use Tests\Support\ProjectTestCase;
 
 class LedgerTest extends ProjectTestCase
 {
+	use \Tests\Support\CurrencyTrait;
+
 	/**
 	 * @var Ledger
 	 */
@@ -18,16 +16,6 @@ class LedgerTest extends ProjectTestCase
 	 */
 	private $charges = [];
 
-    /**
-     * Loads the helper functions.
-     */
-    public static function setUpBeforeClass(): void
-    {
-    	parent::setUpBeforeClass();
-
-		helper(['currency', 'number']);
-    }
-
 	/**
 	 * Mocks the Settings service and creates a
 	 * test Ledger with some Charges.
@@ -35,8 +23,6 @@ class LedgerTest extends ProjectTestCase
 	protected function setUp(): void
 	{
 		parent::setUp();
-
-		Services::injectMock('settings', MockSettings::create());
 
 		// Create a test Ledger with some Charges
 		$this->ledger = new Ledger([

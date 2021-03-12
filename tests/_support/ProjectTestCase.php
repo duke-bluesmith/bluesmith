@@ -22,4 +22,52 @@ class ProjectTestCase extends CIUnitTestCase
 	 * @var string|array
 	 */
 	protected $seed = InitialSeeder::class;
+
+	/**
+	 * Initializes required helpers.
+	 *
+	 * @see app/Config/Events.php "post_controller_constructor"
+	 */
+	public static function setUpBeforeClass(): void
+	{
+		parent::setUpBeforeClass();
+
+		helper(['alerts', 'auth', 'html']);
+	}
+
+	/**
+	 * Runs any trait set up methods.
+	 *
+	 * @see app/Config/Events.php "post_controller_constructor"
+	 */
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		foreach (['setUpCurrency'] as $method)
+		{
+			if (method_exists($this, $method))
+			{
+				$this->$method();
+			}
+		}
+	}
+
+	/**
+	 * Runs any trait tear down methods.
+	 *
+	 * @see app/Config/Events.php "post_controller_constructor"
+	 */
+	protected function tearDown(): void
+	{
+		parent::tearDown();
+
+		foreach (['tearDownAuth'] as $method)
+		{
+			if (method_exists($this, $method))
+			{
+				$this->$method();
+			}
+		}
+	}
 }
