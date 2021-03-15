@@ -5,9 +5,23 @@ use CodeIgniter\Test\CIUnitTestCase;
 
 class ProjectTestCase extends CIUnitTestCase
 {
+	/**
+	 * Methods to run during tearDown.
+	 *
+	 * @var array of methods
+	 */
+	protected $tearDownMethods = ['resetServices'];
+
 	//--------------------------------------------------------------------
 	// Database Properties
 	//--------------------------------------------------------------------
+
+	/**
+	 * Should the db be refreshed before test?
+	 *
+	 * @var boolean
+	 */
+	protected $refresh = true;
 
 	/**
 	 * The namespace(s) to help us find the migration classes.

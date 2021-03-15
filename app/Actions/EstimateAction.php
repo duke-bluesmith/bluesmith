@@ -59,7 +59,7 @@ class EstimateAction extends BaseAction
 				continue;			
 			}
 
-			if ($user = model(UserModel::class)->first($userId))
+			if ($user = model(UserModel::class)->find($userId))
 			{
 				$recipients[] = $user->email;
 			}
