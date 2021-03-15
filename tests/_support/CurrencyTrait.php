@@ -14,7 +14,7 @@ trait CurrencyTrait
 	/**
 	 * Loads the helpers and injects Mock Settings.
 	 */
-	protected function setUpCurrency(): void
+	protected function setUpCurrencyTrait(): void
 	{
 		if (! function_exists('price_to_currency'))
 		{

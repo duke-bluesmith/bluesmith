@@ -5,6 +5,10 @@ use CodeIgniter\Test\CIUnitTestCase;
 
 class ProjectTestCase extends CIUnitTestCase
 {
+	//--------------------------------------------------------------------
+	// Database Properties
+	//--------------------------------------------------------------------
+
 	/**
 	 * The namespace(s) to help us find the migration classes.
 	 * Empty is equivalent to running `spark migrate -all`.
@@ -23,6 +27,37 @@ class ProjectTestCase extends CIUnitTestCase
 	 */
 	protected $seed = InitialSeeder::class;
 
+	//--------------------------------------------------------------------
+	// Feature Test
+	//--------------------------------------------------------------------
+
+	/**
+	 * If present, will override application
+	 * routes when using call().
+	 *
+	 * @var \CodeIgniter\Router\RouteCollection|null
+	 */
+	protected $routes;
+
+	/**
+	 * Values to be set in the SESSION global
+	 * before running the test.
+	 *
+	 * @var array
+	 */
+	protected $session = [];
+
+	/**
+	 * Enabled auto clean op buffer after request call
+	 *
+	 * @var boolean
+	 */
+	protected $clean = true;
+
+	//--------------------------------------------------------------------
+	// Staging
+	//--------------------------------------------------------------------
+
 	/**
 	 * Initializes required helpers.
 	 *
@@ -33,41 +68,5 @@ class ProjectTestCase extends CIUnitTestCase
 		parent::setUpBeforeClass();
 
 		helper(['alerts', 'auth', 'html']);
-	}
-
-	/**
-	 * Runs any trait set up methods.
-	 *
-	 * @see app/Config/Events.php "post_controller_constructor"
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		foreach (['setUpCurrency'] as $method)
-		{
-			if (method_exists($this, $method))
-			{
-				$this->$method();
-			}
-		}
-	}
-
-	/**
-	 * Runs any trait tear down methods.
-	 *
-	 * @see app/Config/Events.php "post_controller_constructor"
-	 */
-	protected function tearDown(): void
-	{
-		parent::tearDown();
-
-		foreach (['tearDownAuth'] as $method)
-		{
-			if (method_exists($this, $method))
-			{
-				$this->$method();
-			}
-		}
 	}
 }
