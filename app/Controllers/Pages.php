@@ -9,7 +9,7 @@ class Pages extends BaseController
 	{
 		if (! $page = model(PageModel::class)->where('name', $name)->first())
 		{
-			 throw PageNotFoundException::forPageNotFound();
+			throw PageNotFoundException::forPageNotFound();
 		}
 
 		// Check for a specified view file
