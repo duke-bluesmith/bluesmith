@@ -39,21 +39,29 @@ trait AuthenticationTrait
 
 	/**
 	 * Adds a permission to the given User.
+	 * Defaults to $this->user.
 	 *
 	 * @param string $name
-	 * @param User $user
+	 * @param User|null $user
 	 *
 	 * @return void
 	 */
-	protected function addPermissionToUser(string $name, User $user): void
+	protected function addPermissionToUser(string $name, User $user = null): void
 	{
+		$user = $user ?? $this->user;
+
+		if (is_null($user))
+		{
+			throw new RuntimeException('You must provide a user via parameter to property');
+		}
+
 		// Look up the permission
 		if (! $permission = model(PermissionModel::class)->where(['name' => $name])->first())
 		{
 			throw new RuntimeException('Unable to locate that permission: ' . $name);
 		}
 
-		if (! model(PermissionModel::class)->addPermissionToUser($permission->id, $user->id))
+		if (! model(PermissionModel::class)->addPermissionToUser($permission['id'], $user->id))
 		{
 			throw new RuntimeException(implode('.', model(PermissionModel::class)->error()));
 		}
