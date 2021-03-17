@@ -17,13 +17,6 @@ class ProjectTestCase extends CIUnitTestCase
 	//--------------------------------------------------------------------
 
 	/**
-	 * Should the db be refreshed before test?
-	 *
-	 * @var boolean
-	 */
-	protected $refresh = true;
-
-	/**
 	 * The namespace(s) to help us find the migration classes.
 	 * Empty is equivalent to running `spark migrate -all`.
 	 * Note that running "all" runs migrations in date order,
@@ -40,33 +33,6 @@ class ProjectTestCase extends CIUnitTestCase
 	 * @var string|array
 	 */
 	protected $seed = InitialSeeder::class;
-
-	//--------------------------------------------------------------------
-	// Feature Test
-	//--------------------------------------------------------------------
-
-	/**
-	 * If present, will override application
-	 * routes when using call().
-	 *
-	 * @var \CodeIgniter\Router\RouteCollection|null
-	 */
-	protected $routes;
-
-	/**
-	 * Values to be set in the SESSION global
-	 * before running the test.
-	 *
-	 * @var array
-	 */
-	protected $session = [];
-
-	/**
-	 * Enabled auto clean op buffer after request call
-	 *
-	 * @var boolean
-	 */
-	protected $clean = true;
 
 	//--------------------------------------------------------------------
 	// Staging
