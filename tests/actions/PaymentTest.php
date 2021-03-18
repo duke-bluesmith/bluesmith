@@ -1,12 +1,16 @@
-<?php
+<?php namespace App\Entities;
 
 use App\Models\ChargeModel;
 use App\Models\UserModel;
-use Tatter\Settings\Models\SettingModel;
-use Tests\Support\ActionTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ActionTrait;
+use Tests\Support\AuthenticationTrait;
+use Tests\Support\ProjectTestCase;
 
-class PaymentTest extends ActionTestCase
+class PaymentTest extends ProjectTestCase
 {
+	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+
 	/**
 	 * UID of the Action to test
 	 * 
@@ -33,7 +37,7 @@ class PaymentTest extends ActionTestCase
 
 	public function testGetReturnsForm()
 	{
-		$response = $this->get($this->route);
+		$response = $this->expectResponse('get');
 
 		$response->assertSee('Payments', 'h5');
 	}
@@ -46,7 +50,7 @@ class PaymentTest extends ActionTestCase
 			'balance' => 0,
 		]);
 
-		$response = $this->get($this->route);
+		$response = $this->expectResponse('get');
 
 		$response->assertSee('No eligible payment gateways', 'p');
 	}
@@ -59,7 +63,7 @@ class PaymentTest extends ActionTestCase
 			'balance' => 10000,
 		]);
 
-		$response = $this->get($this->route);
+		$response = $this->expectResponse('get');
 
 		$response->assertSee('Bluechips', 'label');
 	}

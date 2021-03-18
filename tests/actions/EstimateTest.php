@@ -1,11 +1,15 @@
 <?php namespace App\Entities;
 
 use App\Models\ChargeModel;
-use Tatter\Settings\Models\SettingModel;
-use Tests\Support\ActionTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ActionTrait;
+use Tests\Support\AuthenticationTrait;
+use Tests\Support\ProjectTestCase;
 
-class EstimateTest extends ActionTestCase
+class EstimateTest extends ProjectTestCase
 {
+	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+
 	/**
 	 * UID of the Action to test
 	 * 
@@ -32,30 +36,47 @@ class EstimateTest extends ActionTestCase
 
 	public function testGetReturnsForm()
 	{
-		$response = $this->get($this->route);
+		$response = $this->expectResponse('get');
 
 		$response->assertSee('Charges', 'h3');
 	}
 
-	public function testPostSavesDescription()
+	public function testPost()
 	{
-		$response = $this->post($this->route, [
+		$_POST = [
 			'users'       => [$this->user->id],
 			'description' => 'foobar',
-		]);
-		$response->assertRedirect();
+		];
 
+		$this->expectNull('post');
+
+		// Verify the description was updated
 		$this->seeInDatabase('ledgers', ['description' => 'foobar']);
+
+		// Verify an email was sent
+		$this->seeInDatabase('emails_jobs', ['job_id' => $this->job->id]);
 	}
 
-	public function testPostSendsEmail()
+	public function testPostInvalidUsers()
 	{
-		$response = $this->post($this->route, [
-			'users'       => [$this->user->id],
+		$_POST = [
+			'users'       => [42, 'jimmy'],
 			'description' => 'foobar',
-		]);
-		$response->assertRedirect();
+		];
 
-		$this->seeInDatabase('emails_jobs', ['job_id' => $this->job->id]);
+		$this->expectNull('post');
+
+		// Verify the description was still updated
+		$this->seeInDatabase('ledgers', ['description' => 'foobar']);
+
+		// Make sure no emails were sent
+		$this->dontSeeInDatabase('emails_jobs', ['job_id' => $this->job->id]);
+
+		// Check for the alert
+		$this->assertArrayHasKey('alerts-queue', $_SESSION);
+		$this->assertEquals([
+			'class' => 'warning',
+			'text'  => 'Unable to locate user #42',
+		], $_SESSION['alerts-queue'][0]);
 	}
 }

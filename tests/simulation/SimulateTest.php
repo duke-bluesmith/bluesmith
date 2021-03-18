@@ -1,13 +1,16 @@
 <?php
 
 use App\Models\MethodModel;
-use Tests\Support\DatabaseTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ProjectTestCase;
 
 /**
  * Tests for the Simulate Command
  */
-class SimulateTest extends DatabaseTestCase
+class SimulateTest extends ProjectTestCase
 {
+	use DatabaseTestTrait;
+
 	public function testTruncatesTables()
 	{
 		model(MethodModel::class)->insert(['name' => 'foobar']);

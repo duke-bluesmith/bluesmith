@@ -1,18 +1,10 @@
 <?php namespace App\Entities;
 
-use Tatter\Settings\Models\SettingModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 
-class ChargeTest extends DatabaseTestCase
+class ChargeTest extends ProjectTestCase
 {
-	// Locks down currency settings
-	protected function setUp(): void
-	{
-		parent::setUp();
-
-		model(SettingModel::class)->where('name', 'currencyUnit')->update(null, ['content' => 'USD']);
-		model(SettingModel::class)->where('name', 'currencyScale')->update(null, ['content' => 100]);
-	}
+	use \Tests\Support\CurrencyTrait;
 
 	public function testGetPriceReturnsPrice()
 	{

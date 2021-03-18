@@ -1,14 +1,15 @@
 <?php
 
 use App\Libraries\Mailer;
-use Tatter\Outbox\Entities\Email;
 use Tatter\Outbox\Models\EmailModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
 use App\Models\UserModel;
 
-class MailerTest extends DatabaseTestCase
+class MailerTest extends ProjectTestCase
 {
+	use \CodeIgniter\Test\DatabaseTestTrait;
+
 	public function testJobInviteAddsEmailToJob()
 	{
 		$job    = fake(JobModel::class);

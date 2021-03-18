@@ -1,9 +1,9 @@
 <?php namespace App\Entities;
 
 use App\Entities\Note;
-use CodeIgniter\Test\CIUnitTestCase;
+use Tests\Support\ProjectTestCase;
 
-class NoteTest extends CIUnitTestCase
+class NoteTest extends ProjectTestCase
 {
 	public function testGetContentUnformatted()
 	{
