@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "2abeb6ea6d6524052608453bce06387e2e9d1552"
+                "reference": "2797039cdeba6240f712a71062a6ae16c92e2104"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/2abeb6ea6d6524052608453bce06387e2e9d1552",
-                "reference": "2abeb6ea6d6524052608453bce06387e2e9d1552",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/2797039cdeba6240f712a71062a6ae16c92e2104",
+                "reference": "2797039cdeba6240f712a71062a6ae16c92e2104",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-03-17T13:05:22+00:00"
+            "time": "2021-03-18T10:27:00+00:00"
         },
         {
             "name": "components/jquery",
@@ -2132,16 +2132,16 @@
         },
         {
             "name": "tatter/visits",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-visits.git",
-                "reference": "bd4e273a6eafb1604fa9a5f11f91f7deacdf1ffa"
+                "reference": "4d5fa6c68e1057c4b601a5c0d485301244a0bd84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-visits/zipball/bd4e273a6eafb1604fa9a5f11f91f7deacdf1ffa",
-                "reference": "bd4e273a6eafb1604fa9a5f11f91f7deacdf1ffa",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-visits/zipball/4d5fa6c68e1057c4b601a5c0d485301244a0bd84",
+                "reference": "4d5fa6c68e1057c4b601a5c0d485301244a0bd84",
                 "shasum": ""
             },
             "require": {
@@ -2149,7 +2149,7 @@
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.6"
+                "tatter/tools": "^1.7"
             },
             "type": "library",
             "autoload": {
@@ -2183,7 +2183,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-visits/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-visits/tree/v1.2.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-visits/tree/v1.2.1"
             },
             "funding": [
                 {
@@ -2195,7 +2195,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-07T16:15:09+00:00"
+            "time": "2021-03-17T23:06:33+00:00"
         },
         {
             "name": "tatter/workflows",

@@ -48,7 +48,7 @@ class EstimateTest extends ProjectTestCase
 			'description' => 'foobar',
 		];
 
-		$response = $this->expectNull('post');
+		$this->expectNull('post');
 
 		// Verify the description was updated
 		$this->seeInDatabase('ledgers', ['description' => 'foobar']);
@@ -64,7 +64,7 @@ class EstimateTest extends ProjectTestCase
 			'description' => 'foobar',
 		];
 
-		$response = $this->expectNull('post');
+		$this->expectNull('post');
 
 		// Verify the description was still updated
 		$this->seeInDatabase('ledgers', ['description' => 'foobar']);
