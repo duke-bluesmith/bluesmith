@@ -53,16 +53,6 @@ class SimulatorTest extends ProjectTestCase
 		$this->seeInDatabase('actions', ['uid' => 'approve']);
 	}
 
-	public function testDoesAssignJobsToUsers()
-	{
-		$job = model(JobModel::class)->first();
-
-		$result = $job->users;
-
-		$this->assertIsArray($result);
-		$this->assertGreaterThan(0, $result);
-	}
-
 	public function testDoesAssignUsersToGroups()
 	{
 		// Gather the groups

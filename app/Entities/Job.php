@@ -5,6 +5,8 @@ use App\Libraries\Mailer;
 use App\Models\InviteModel;
 use App\Models\LedgerModel;
 use CodeIgniter\I18n\Time;
+use Tatter\Relations\Traits\EntityTrait;
+use Tatter\Workflows\Entities\Job as BaseJob;
 
 /**
  * Class Job
@@ -13,9 +15,9 @@ use CodeIgniter\I18n\Time;
  * Relations and add a number of project-specific
  * methods and poperty stores.
  */
-class Job extends \Tatter\Workflows\Entities\Job
+class Job extends BaseJob
 {
-	use \Tatter\Relations\Traits\EntityTrait;
+	use EntityTrait;
 
 	protected $table      = 'jobs';
 	protected $primaryKey = 'id';
