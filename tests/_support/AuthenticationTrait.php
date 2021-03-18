@@ -25,7 +25,9 @@ trait AuthenticationTrait
 	 */
 	protected function setUpAuthenticationTrait(): void
 	{
-		$this->user = $this->createAuthUser(true);
+		/** @var User $user */
+		$user       = $this->createAuthUser(true);
+		$this->user = $user;
 	}
 
 	/**
@@ -49,11 +51,6 @@ trait AuthenticationTrait
 	protected function addPermissionToUser(string $name, User $user = null): void
 	{
 		$user = $user ?? $this->user;
-
-		if (is_null($user))
-		{
-			throw new RuntimeException('You must provide a user via parameter to property');
-		}
 
 		// Look up the permission
 		if (! $permission = model(PermissionModel::class)->where(['name' => $name])->first())
