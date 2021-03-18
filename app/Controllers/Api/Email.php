@@ -1,4 +1,4 @@
-<?php namespace App\Controllers\API;
+<?php namespace App\Controllers\Api;
 
 use CodeIgniter\Controller;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
