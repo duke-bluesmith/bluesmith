@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\MethodModel;
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
 /**
@@ -8,7 +9,7 @@ use Tests\Support\ProjectTestCase;
  */
 class SimulateTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
 
 	public function testTruncatesTables()
 	{

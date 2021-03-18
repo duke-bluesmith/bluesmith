@@ -1,27 +1,51 @@
 <?php
 
 use App\Models\JobModel;
+use CodeIgniter\Test\DatabaseTestTrait;
 use Myth\Auth\Authorization\GroupModel;
-use Tests\Support\DatabaseTestCase;
+use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
 /**
  * Tests for the internal version of the simulator
  */
-class SimulatorTest extends DatabaseTestCase
+class SimulatorTest extends ProjectTestCase
 {
+	use DatabaseTestTrait;
+
 	/**
-	 * Should the database be refreshed before each test?
+	 * Should run db migration only once?
+	 *
+	 * @var boolean
+	 */
+	protected $migrateOnce = true;
+
+	/**
+	 * Should run seeding only once?
+	 *
+	 * @var boolean
+	 */
+	protected $seedOnce = true;
+
+	/**
+	 * Should the db be refreshed before test?
 	 *
 	 * @var boolean
 	 */
 	protected $refresh = false;
 
+	/**
+	 * Initializes the simulation only
+	 * once since it is costly.
+	 */
 	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->simulateOnce();
+		if (! Simulator::$initialized)
+		{
+			Simulator::initialize();
+		}
 	}
 
 	public function testDoesRegisterAppActions()
