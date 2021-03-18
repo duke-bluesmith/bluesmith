@@ -4,6 +4,7 @@ use App\Entities\User;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
 use Faker\Generator;
+use Myth\Auth\Entities\User as MythUser;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 
@@ -55,7 +56,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 	 *
 	 * @return User
 	 */
-	public function fake(Generator &$faker): User
+	public function fake(Generator &$faker): MythUser
 	{
 		return new User([
 			'email'     => $faker->email,

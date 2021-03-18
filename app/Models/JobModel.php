@@ -4,6 +4,9 @@ use App\Entities\Job;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\Fabricator;
 use Faker\Generator;
+use Tatter\Permits\Traits\PermitsTrait;
+use Tatter\Relations\Traits\ModelTrait;
+use Tatter\Workflows\Entities\Job as BaseJob;
 use Tatter\Workflows\Models\JobModel as BaseJobModel;
 
 /**
@@ -14,9 +17,7 @@ use Tatter\Workflows\Models\JobModel as BaseJobModel;
  */
 class JobModel extends BaseJobModel
 {
-	// Traits
-	use \Tatter\Permits\Traits\PermitsTrait;
-	use \Tatter\Relations\Traits\ModelTrait;
+	use PermitsTrait, ModelTrait;
 
 	protected $with		     = ['options'];
 	protected $returnType	 = Job::class;
@@ -168,7 +169,7 @@ class JobModel extends BaseJobModel
 	 *
 	 * @return Job
 	 */
-	public function fake(Generator &$faker): Job
+	public function fake(Generator &$faker): BaseJob
 	{
 		return new Job([
 			'name'        => $faker->catchPhrase,
