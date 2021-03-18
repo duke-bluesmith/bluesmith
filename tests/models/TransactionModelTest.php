@@ -1,7 +1,7 @@
 <?php namespace App\Models;
 
 use App\Entities\User;
-use Tests\Support\Fakers\UserFaker;
+use App\Models\UserModel;
 use Tests\Support\DatabaseTestCase;
 
 class TransactionModelTest extends DatabaseTestCase
@@ -15,7 +15,7 @@ class TransactionModelTest extends DatabaseTestCase
 	{
 		parent::setUp();
 
-		$this->user = fake(UserFaker::class);
+		$this->user = fake(UserModel::class);
 	}
 
 	public function testCreditCreatesTransaction()

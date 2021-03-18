@@ -2,12 +2,12 @@
 
 use App\Database\Seeds\InitialSeeder;
 use App\Entities\User;
+use App\Models\UserModel;
 use CodeIgniter\Test\CIUnitTestCase;
 use Config\Services;
 use Faker\Factory;
 use Myth\Auth\Authorization\GroupModel;
 use Myth\Auth\Authorization\PermissionModel;
-use Tests\Support\Fakers\UserFaker;
 use Tests\Support\Simulator;
 
 class DatabaseTestCase extends CIUnitTestCase
@@ -122,7 +122,7 @@ class DatabaseTestCase extends CIUnitTestCase
 			throw new \RuntimeException('Unable to determine type for $identifier');
 		}
 
-		$user = fake(UserFaker::class);
+		$user = fake(UserModel::class);
 		model(PermissionModel::class)->addPermissionToUser($id, $user->id);
 
 		return $user;
@@ -157,7 +157,7 @@ class DatabaseTestCase extends CIUnitTestCase
 			throw new \RuntimeException('Unable to determine type for $identifier');
 		}
 
-		$user = fake(UserFaker::class);
+		$user = fake(UserModel::class);
 		model(GroupModel::class)->addUserToGroup($user->id, $id);
 
 		return $user;

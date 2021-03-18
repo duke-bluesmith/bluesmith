@@ -2,6 +2,7 @@
 
 use App\Entities\Job;
 use App\Entities\User;
+use App\Models\JobModel;
 use CodeIgniter\Test\FeatureResponse;
 use Myth\Auth\Authorization\PermissionModel;
 use Tatter\Workflows\Entities\Action;
@@ -11,7 +12,6 @@ use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
 use Tests\Support\DatabaseTestCase;
-use Tests\Support\Fakers\JobFaker;
 
 /**
  * Action Test Case
@@ -66,14 +66,14 @@ abstract class ActionTestCase extends FeatureTestCase
 		$this->stage    = model(StageModel::class)->where('action_id', $this->action->id)->where('workflow_id', $this->workflow->id)->first();
 
 		// Create a random Job using the Default Workflow at the target Stage
-		$this->job = fake(JobFaker::class, [
+		$this->job = fake(JobModel::class, [
 			'workflow_id' => $this->workflow->id,
 			'stage_id'    => $this->stage->id,
 		]);
 
 		// Log in a User to be the Job owner
 		$this->user = $this->createAuthUser(); // @phpstan-ignore-line
-		model(JobFaker::class)->addUserToJob($this->user->id, $this->job->id);
+		model(JobModel::class)->addUserToJob($this->user->id, $this->job->id);
 
 		// Grant the User manageJobs permission to access all Actions
 		$permission = model(PermissionModel::class)->where(['name' => 'manageJobs'])->first();

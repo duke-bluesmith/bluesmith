@@ -1,12 +1,12 @@
 <?php namespace Tests\Support;
 
+use App\Models\JobModel;
+use App\Models\MaterialModel;
+use App\Models\MethodModel;
+use App\Models\UserModel;
 use CodeIgniter\Test\Fabricator;
 use Myth\Auth\Authorization\GroupModel;
 use Tatter\Workflows\Test\Simulator as BaseSimulator;
-use Tests\Support\Fakers\JobFaker;
-use Tests\Support\Fakers\MaterialFaker;
-use Tests\Support\Fakers\MethodFaker;
-use Tests\Support\Fakers\UserFaker;
 
 /**
  * Support class for simulating a complete project environment.
@@ -29,7 +29,7 @@ class Simulator extends BaseSimulator
 			$count = rand(1, 2);
 			while (Fabricator::getCount('methods') < $count)
 			{
-				fake(MethodFaker::class);
+				fake(MethodModel::class);
 			}
 		}
 
@@ -39,7 +39,7 @@ class Simulator extends BaseSimulator
 			$count = Fabricator::getCount('methods') * rand(2, 4);
 			while (Fabricator::getCount('materials') < $count)
 			{
-				fake(MaterialFaker::class);
+				fake(MaterialModel::class);
 			}
 		}
 
@@ -49,7 +49,7 @@ class Simulator extends BaseSimulator
 			$count = rand(3, 5);
 			while (Fabricator::getCount('users') < $count)
 			{
-				fake(UserFaker::class);
+				fake(UserModel::class);
 			}
 
 			// Assign some users to groups (created by AuthSeeder)
@@ -71,7 +71,7 @@ class Simulator extends BaseSimulator
 			$count = rand(4, 20);
 			while (Fabricator::getCount('jobs') < $count)
 			{
-				fake(JobFaker::class);
+				fake(JobModel::class);
 			}
 
 			// Assign jobs to users
@@ -88,7 +88,7 @@ class Simulator extends BaseSimulator
 			$count = rand(2, 6);
 			for ($i = 1; $i < $count; $i++)
 			{
-				$user = fake(UserFaker::class);
+				$user = fake(UserModel::class);
 
 				$builder->insert([
 					'job_id'  => rand(1, Fabricator::getCount('jobs')),
