@@ -5,6 +5,10 @@ use CodeIgniter\Test\CIUnitTestCase;
 
 class ProjectTestCase extends CIUnitTestCase
 {
+	//--------------------------------------------------------------------
+	// Database Properties
+	//--------------------------------------------------------------------
+
 	/**
 	 * The namespace(s) to help us find the migration classes.
 	 * Empty is equivalent to running `spark migrate -all`.
@@ -22,4 +26,47 @@ class ProjectTestCase extends CIUnitTestCase
 	 * @var string|array
 	 */
 	protected $seed = InitialSeeder::class;
+
+	//--------------------------------------------------------------------
+	// Feature Test
+	//--------------------------------------------------------------------
+
+	/**
+	 * If present, will override application
+	 * routes when using call().
+	 *
+	 * @var \CodeIgniter\Router\RouteCollection|null
+	 */
+	protected $routes;
+
+	/**
+	 * Values to be set in the SESSION global
+	 * before running the test.
+	 *
+	 * @var array
+	 */
+	protected $session = [];
+
+	/**
+	 * Enabled auto clean op buffer after request call
+	 *
+	 * @var boolean
+	 */
+	protected $clean = true;
+
+	//--------------------------------------------------------------------
+	// Staging
+	//--------------------------------------------------------------------
+
+	/**
+	 * Initializes required helpers.
+	 *
+	 * @see app/Config/Events.php "post_controller_constructor"
+	 */
+	public static function setUpBeforeClass(): void
+	{
+		parent::setUpBeforeClass();
+
+		helper(['alerts', 'auth', 'html']);
+	}
 }
