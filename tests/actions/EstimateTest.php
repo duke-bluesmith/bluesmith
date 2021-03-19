@@ -1,4 +1,4 @@
-<?php namespace App\Entities;
+<?php namespace App\Actions;
 
 use App\Models\ChargeModel;
 use CodeIgniter\Test\DatabaseTestTrait;
@@ -9,6 +9,15 @@ use Tests\Support\ProjectTestCase;
 class EstimateTest extends ProjectTestCase
 {
 	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+
+    protected $namespace = [
+		'Tatter\Outbox',
+		'Tatter\Settings',
+		'Tatter\Themes',
+		'Tatter\Workflows',
+		'Myth\Auth',
+		'App',
+    ];
 
 	/**
 	 * UID of the Action to test

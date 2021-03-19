@@ -21,17 +21,17 @@ class JobModelTest extends ProjectTestCase
 
 	public function testAddUserToJob()
 	{
-		$user = fake(UserModel::class);
-		$job  = fake(JobModel::class);
+		model(JobModel::class)->addUserToJob(123, 456);
 
-		model(JobModel::class)->addUserToJob($user->id, $job->id);
-
-		$result = $user->jobs;
-
-		$this->assertCount(1, $result);
-		$this->assertEquals($job->id, $result[0]->id);
+		$this->seeInDatabase('jobs_users', [
+			'job_id'  => 456,
+			'user_id' => 123,
+		]);
 	}
 
+	/**
+	 * @slowThreshold 2500
+	 */
 	public function testCompiledRowsDefault()
 	{
 		Simulator::initialize();
@@ -70,7 +70,7 @@ class JobModelTest extends ProjectTestCase
 		model(JobModel::class)->clearCompiledRows();
 		$result = model(JobModel::class)->getCompiledRows();
 
-		$this->assertEquals([], $result);
+		$this->assertArrayNotHasKey('foo', $result);
 	}
 
 	public function testCompiledRowsCreatesCache()

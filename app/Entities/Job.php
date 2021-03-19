@@ -147,7 +147,7 @@ class Job extends BaseJob
 			'job_id'     => $this->attributes['id'],
 			'email'      => $recipient,
 			'token'      => bin2hex(random_bytes(16)),
-			'created_at' => date('Y-m-d H:i:s'),
+			'created_at' => Time::now()->toDateTimeString(),
 		];
 
 		// Check for expirations

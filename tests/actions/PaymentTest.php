@@ -1,4 +1,4 @@
-<?php namespace App\Entities;
+<?php namespace App\Actions;
 
 use App\Models\ChargeModel;
 use App\Models\UserModel;
@@ -10,6 +10,15 @@ use Tests\Support\ProjectTestCase;
 class PaymentTest extends ProjectTestCase
 {
 	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+
+    protected $namespace = [
+		'Tatter\Outbox',
+		'Tatter\Settings',
+		'Tatter\Themes',
+		'Tatter\Workflows',
+		'Myth\Auth',
+		'App',
+    ];
 
 	/**
 	 * UID of the Action to test

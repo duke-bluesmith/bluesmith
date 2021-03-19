@@ -2,11 +2,16 @@
 
 use App\Entities\User;
 use App\Models\UserModel;
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
 class TransactionModelTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
+
+	protected $migrateOnce = true;
+	protected $seedOnce    = true;
+	protected $refresh     = false;
 
 	/**
 	 * @var User
