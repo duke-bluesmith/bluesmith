@@ -1,11 +1,16 @@
 <?php namespace App\Models;
 
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
 class JobModelTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
+
+	protected $migrateOnce = true;
+	protected $seedOnce    = true;
+	protected $refresh     = false;
 
 	public function testAddEmailToJob()
 	{
@@ -35,14 +40,32 @@ class JobModelTest extends ProjectTestCase
 
 		$this->assertIsArray($result);
 		$this->assertGreaterThanOrEqual(1, count($result));
-		$this->assertArrayHasKey('workflow', $result[0]);
-		$this->assertArrayHasKey('firstname', $result[0]);
-		$this->assertArrayHasKey('role', $result[0]);
+
+		$expected = [
+			'id',
+			'name',
+			'summary',
+			'workflow_id',
+			'stage_id',
+			'created_at',
+			'updated_at',
+			'deleted_at',
+			'material_id',
+			'method',
+			'user_id',
+			'firstname',
+			'lastname',
+			'workflow',
+			'action',
+			'role',
+		];
+
+		$this->assertEquals($expected, array_keys($result[0]));
 	}
 
 	public function testClearCompiledRows()
 	{
-		cache()->save('jobrows', ['foo' => 'bar']);
+		cache()->save('jobsrows', ['foo' => 'bar']);
 
 		model(JobModel::class)->clearCompiledRows();
 		$result = model(JobModel::class)->getCompiledRows();
@@ -52,17 +75,17 @@ class JobModelTest extends ProjectTestCase
 
 	public function testCompiledRowsCreatesCache()
 	{
-		$this->assertNull(cache()->get('jobrows'));
+		$this->assertNull(cache()->get('jobsrows'));
 
 		model(JobModel::class)->getCompiledRows();
 
-		$this->assertNotNull(cache()->get('jobrows'));
+		$this->assertNotNull(cache()->get('jobsrows'));
 	}
 
 	public function testCompiledRowsUsesCache()
 	{
 		$expected = ['foo' => 'bar'];
-		cache()->save('jobrows', $expected);
+		cache()->save('jobsrows', $expected);
 
 		$result = model(JobModel::class)->getCompiledRows();
 
@@ -71,10 +94,10 @@ class JobModelTest extends ProjectTestCase
 
 	public function testEventClearsCompiledRowsCache()
 	{
-		cache()->save('jobrows', ['foo' => 'bar']);
+		cache()->save('jobsrows', ['foo' => 'bar']);
 
 		fake(JobModel::class);
 
-		$this->assertNull(cache()->get('jobrows'));
+		$this->assertNull(cache()->get('jobsrows'));
 	}
 }
