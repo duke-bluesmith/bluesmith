@@ -1,19 +1,45 @@
 <?php namespace App\Entities;
 
-class User extends \Myth\Auth\Entities\User
+use Tatter\Users\Entities\MythEntity;
+use Tatter\Relations\Traits\EntityTrait;
+use Tatter\Workflows\Entities\Workflow;
+use Tatter\Workflows\Models\WorkflowModel;
+
+class User extends MythEntity
 {
-	use \Tatter\Relations\Traits\EntityTrait;
+	use EntityTrait;
 
 	protected $table      = 'users';
 	protected $primaryKey = 'id';
 
 	/**
-	 * Return a full name: "First Last"
+	 * @var Workflows[]|null
+	 */
+	private $workflows;
+
+	/**
+	 * Returns a full name: "First Last"
 	 *
 	 * @return string
 	 */
-	public function getName()
+	public function getName(): string
 	{
-		return trim(trim($this->attributes['firstname']) . ' ' . trim($this->attributes['lastname']));
+		return trim(trim($this->firstname) . ' ' . trim($this->lastname));
+	}
+
+	/**
+	 * Fetches and stores the Workflows this User
+	 * is eligible to use.
+	 *
+	 * @return Workflow[]
+	 */
+	public function getWorkflows()
+	{
+		if (is_null($this->workflows))
+		{
+			$this->workflows = model(WorkflowModel::class)->getForUser($this);
+		}
+
+		return $this->workflows;
 	}
 }

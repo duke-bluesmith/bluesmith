@@ -29,11 +29,13 @@ trait CompiledRowsTrait
 	/**
 	 * Removes cached Job rows.
 	 *
-	 * @return void
+	 * @return $this
 	 */
-	public function clearCompiledRows(): void
+	public function clearCompiledRows(): self
 	{
 		cache()->delete($this->table . 'rows');
+
+		return $this;
 	}
 
 	/**

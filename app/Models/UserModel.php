@@ -7,9 +7,12 @@ use Faker\Generator;
 use Myth\Auth\Entities\User as MythUser;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
+use stdClass;
 
 class UserModel extends MythModel implements PermitsUserModelInterface
 {
+	use CompiledRowsTrait;
+
 	protected $table      = 'users';
 	protected $primaryKey = 'id';
 	protected $returnType = User::class;
@@ -38,7 +41,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 	 *
 	 * @param mixed $userId = null
 	 *
-	 * @return \stdClass[] Array of group objects
+	 * @return stdClass[] Array of group objects
 	 */
 	public function groups($userId = null): array
 	{
@@ -47,6 +50,21 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 			->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
 			->where('auth_groups_users.user_id', $userId)
 			->get()->getResultObject();
+	}
+
+	/**
+	 * Fetch or build the compiled rows for browsing,
+	 * applying filters, and sorting.
+	 *
+	 * @return array[]
+	 */
+	protected function fetchCompiledRows(): array
+	{
+		return $this->builder()
+			->select('users.*, auth_groups.id AS group_id, auth_groups.name as group')
+			->join('auth_groups_users', 'users.id = auth_groups_users.user_id', 'left')
+			->join('auth_groups', 'auth_groups_users.group_id = auth_groups.id', 'left')
+			->get()->getResultArray();
 	}
 
 	/**
