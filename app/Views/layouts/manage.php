@@ -38,7 +38,7 @@
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>
-<body class="hold-transition sidebar-mini accent-blue">
+<body class="hold-transition sidebar-mini accent-blue layout-footer-fixed">
 <div class="wrapper">
 
 	<?= service('alerts')->display() ?>
