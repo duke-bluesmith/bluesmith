@@ -5,6 +5,7 @@ use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
 use Faker\Generator;
 use Myth\Auth\Entities\User as MythUser;
+use Myth\Auth\Models\GroupModel;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 use stdClass;
@@ -19,6 +20,10 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 
 	protected $_allowedFields   = ['firstname', 'lastname', 'balance'];
 	protected $_validationRules = [];
+
+	protected $afterInsert = ['clearCompiledRows'];
+	protected $afterUpdate = ['clearCompiledRows'];
+	protected $afterDelete = ['clearCompiledRows'];
 
 	/**
 	 * Call the framework constructor then add the extended properties.
@@ -37,19 +42,29 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 	}
 
 	/**
-	 * Returns groups for a single user.
+	 * Returns groups for a single user. Uses Myth:Auth's
+	 * GroupModel but converts the result to objects.
 	 *
-	 * @param mixed $userId = null
+	 * @param string|int|null $userId
 	 *
 	 * @return stdClass[] Array of group objects
 	 */
 	public function groups($userId = null): array
 	{
-		return $this->db->table('auth_groups')
-			->select('auth_groups.*')
-			->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
-			->where('auth_groups_users.user_id', $userId)
-			->get()->getResultObject();
+		if (is_null($userId))
+		{
+			return [];
+		}
+
+		if ($result = model(GroupModel::class)->getGroupsForUser($userId))
+		{
+			// Convert the arrays to objects
+			$result = array_map(function ($row) {
+				return (object) $row;
+			}, $result);
+		}
+
+		return $result;
 	}
 
 	/**
