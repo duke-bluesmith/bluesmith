@@ -69,13 +69,14 @@ trait CompiledRowsTrait
 			}
 
 			// Convert timestamps to Time
-			$rows = array_map(function ($row) {
-				$row['created_at'] = new Time($row['created_at']);
-				$row['updated_at'] = new Time($row['updated_at']);
-
-				if (isset($row['deleted_at']))
+			$fields = $this->getTimestampFields();
+			$rows   = array_map(function ($row) use ($fields) {
+				foreach ($fields as $field)
 				{
-					$row['deleted_at'] = new Time($row['deleted_at']);
+					if (isset($row[$field]))
+					{
+						$row[$field] = new Time($row[$field]);
+					}
 				}
 
 				return $row;
@@ -106,5 +107,35 @@ trait CompiledRowsTrait
 		}
 
 		return $rows;
+	}
+
+	/**
+	 * Returns an array of all fields that should
+	 * be converted to Time objects.
+	 *
+	 * @return string[]
+	 */
+	private function getTimestampFields(): array
+	{
+		$fields = [];
+
+		if ($this->useTimestamps)
+		{
+			if ($this->createdField)
+			{
+				$fields[] = $this->createdField;
+			}
+			if ($this->updatedField)
+			{
+				$fields[] = $this->updatedField;
+			}
+		}
+
+		if ($this->tempUseSoftDeletes && $this->deletedField)
+		{
+			$fields[] = $this->deletedField;
+		}
+
+		return $fields;
 	}
 }

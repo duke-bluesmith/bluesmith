@@ -32,11 +32,12 @@ class JobModelTest extends ProjectTestCase
 	/**
 	 * @slowThreshold 2500
 	 */
-	public function testCompiledRowsDefault()
+	public function testFetchCompiledRows()
 	{
 		Simulator::initialize();
 
-		$result = model(JobModel::class)->getCompiledRows();
+		$method = $this->getPrivateMethodInvoker(model(JobModel::class), 'fetchCompiledRows');
+		$result = $method();
 
 		$this->assertIsArray($result);
 		$this->assertGreaterThanOrEqual(1, count($result));
@@ -61,43 +62,5 @@ class JobModelTest extends ProjectTestCase
 		];
 
 		$this->assertEquals($expected, array_keys($result[0]));
-	}
-
-	public function testClearCompiledRows()
-	{
-		cache()->save('jobsrows', ['foo' => 'bar']);
-
-		model(JobModel::class)->clearCompiledRows();
-		$result = model(JobModel::class)->getCompiledRows();
-
-		$this->assertArrayNotHasKey('foo', $result);
-	}
-
-	public function testCompiledRowsCreatesCache()
-	{
-		$this->assertNull(cache()->get('jobsrows'));
-
-		model(JobModel::class)->getCompiledRows();
-
-		$this->assertNotNull(cache()->get('jobsrows'));
-	}
-
-	public function testCompiledRowsUsesCache()
-	{
-		$expected = ['foo' => 'bar'];
-		cache()->save('jobsrows', $expected);
-
-		$result = model(JobModel::class)->getCompiledRows();
-
-		$this->assertSame($expected, $result);
-	}
-
-	public function testEventClearsCompiledRowsCache()
-	{
-		cache()->save('jobsrows', ['foo' => 'bar']);
-
-		fake(JobModel::class);
-
-		$this->assertNull(cache()->get('jobsrows'));
 	}
 }
