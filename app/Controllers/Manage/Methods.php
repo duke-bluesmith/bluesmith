@@ -1,11 +1,15 @@
 <?php namespace App\Controllers\Manage;
 
-use App\Controllers\BaseController;
-use App\Models\MaterialModel;
 use App\Models\MethodModel;
+use Tatter\Forms\Controllers\ResourcePresenter;
 
-class Methods extends BaseController
+class Methods extends ResourcePresenter
 {
+	/**
+	 * @var string  Name of the model for ResourcePresenter
+	 */
+	public $modelName = MethodModel::class;
+
 	/**
 	 * Displays the form to manage print Methods
 	 *
@@ -23,12 +27,14 @@ class Methods extends BaseController
 	/**
 	 * Displays the form for a new Method
 	 *
-	 * @param string $methodId
-	 *
 	 * @return string
 	 */
-	public function new(string $methodId): string
+	public function new(): string
 	{
-		return view('methods/new');	
+		helper('form');
+
+		return $this->request->isAJAX()
+			? view('methods/form')
+			: view('methods/new');
 	}
 }
