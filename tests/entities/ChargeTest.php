@@ -1,10 +1,11 @@
 <?php namespace App\Entities;
 
+use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
 class ChargeTest extends ProjectTestCase
 {
-	use \Tests\Support\CurrencyTrait;
+	use CurrencyTrait;
 
 	public function testGetPriceReturnsPrice()
 	{

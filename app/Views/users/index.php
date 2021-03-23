@@ -1,9 +1,9 @@
-<?= $this->setVar('menu', 'jobs')->setVar('header', 'Jobs')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'users')->setVar('header', 'Users')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 <?php if (empty($rows)): ?>
 
-<p>No jobs matched your request.</p>
+<p>No users matched your request.</p>
 
 <?php else: ?>
 
@@ -18,11 +18,11 @@
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
-						<th scope="col">Name</th>
-						<th scope="col">Owner</th>
-						<th scope="col">Method</th>
-						<th scope="col">Action</th>
-						<th scope="col">Started</th>
+						<th scope="col">First name</th>
+						<th scope="col">Last name</th>
+						<th scope="col">Group</th>
+						<th scope="col">Balance</th>
+						<th scope="col">Created</th>
 						<th scope="col">Updated</th>
 					</tr>
 				</thead>
@@ -32,10 +32,10 @@
 
 					<tr>
 						<td><?= $row['id'] ?></td>
-						<td><?= anchor('jobs/show/' . $row['id'], $row['name']) ?></td>
-						<td><?= isset($row['user_id']) ? $row['firstname'] . ' ' . $row['lastname'] : '' ?></td>
-						<td><?= $row['method'] ?></td>
-						<td data-order="<?= $row['stage_id'] ?? 99 ?>"><?= $row['action'] ?? '<em>Complete</em>' ?></td>
+						<td><?= anchor('manage/users/show/' . $row['id'], $row['firstname'] ?: '<em>none</em>') ?></td>
+						<td><?= $row['lastname'] ?: '<em>none</em>' ?></td>
+						<td><?= $row['group'] ?></td>
+						<td><?= price_to_currency($row['balance']) ?></td>
 						<td data-order="<?= $row['created_at']->getTimestamp() ?>"><?= $row['created_at']->format('n/j/Y') ?></td>
 						<td data-order="<?= $row['updated_at']->getTimestamp() ?>"><?= $row['updated_at']->humanize() ?></td>
 					</tr>
@@ -46,7 +46,7 @@
 			</table>
 		</div>
 	</div>
-</table>
+</div>
 
 <?php endif; ?>
 

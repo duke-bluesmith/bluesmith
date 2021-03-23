@@ -105,6 +105,7 @@ class Simulator extends BaseSimulator
 				$builder->insert([
 					'job_id'  => $i,
 					'user_id' => $user->id,
+					'created_at' => Time::now()->toDateTimeString(),
 				]);		
 			}
 		}

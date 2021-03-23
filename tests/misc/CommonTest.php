@@ -1,6 +1,8 @@
 <?php
 
 use App\Entities\User;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
 /**
@@ -8,8 +10,7 @@ use Tests\Support\ProjectTestCase;
  */
 class CommonTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
-	use \Tests\Support\AuthenticationTrait;
+	use AuthenticationTrait, DatabaseTestTrait;
 
 	public function testUserReturnsAppEntity()
 	{

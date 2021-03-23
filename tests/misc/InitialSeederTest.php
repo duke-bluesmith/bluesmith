@@ -1,6 +1,7 @@
 <?php
 
 use App\Database\Seeds\InitialSeeder;
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tatter\Outbox\Entities\Template;
 use Tatter\Outbox\Models\TemplateModel;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -11,7 +12,7 @@ use Tests\Support\ProjectTestCase;
  */
 class InitialSeederTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
 
 	protected $seed = '';
 

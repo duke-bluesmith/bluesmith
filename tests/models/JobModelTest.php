@@ -1,11 +1,16 @@
 <?php namespace App\Models;
 
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
 class JobModelTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
+
+	// Initialize the database once
+	protected $migrateOnce = true;
+	protected $seedOnce    = true;
 
 	public function testAddEmailToJob()
 	{
@@ -16,65 +21,49 @@ class JobModelTest extends ProjectTestCase
 
 	public function testAddUserToJob()
 	{
-		$user = fake(UserModel::class);
-		$job  = fake(JobModel::class);
+		model(JobModel::class)->addUserToJob(123, 456);
 
-		model(JobModel::class)->addUserToJob($user->id, $job->id);
-
-		$result = $user->jobs;
-
-		$this->assertCount(1, $result);
-		$this->assertEquals($job->id, $result[0]->id);
+		$this->seeInDatabase('jobs_users', [
+			'job_id'  => 456,
+			'user_id' => 123,
+		]);
 	}
 
-	public function testCompiledRowsDefault()
+	/**
+	 * @slowThreshold 2500
+	 */
+	public function testFetchCompiledRows()
 	{
 		Simulator::initialize();
 
-		$result = model(JobModel::class)->getCompiledRows();
+		$method = $this->getPrivateMethodInvoker(model(JobModel::class), 'fetchCompiledRows');
+		$result = $method();
 
 		$this->assertIsArray($result);
 		$this->assertGreaterThanOrEqual(1, count($result));
-		$this->assertArrayHasKey('workflow', $result[0]);
-		$this->assertArrayHasKey('firstname', $result[0]);
-		$this->assertArrayHasKey('role', $result[0]);
-	}
 
-	public function testClearCompiledRows()
-	{
-		cache()->save('jobrows', ['foo' => 'bar']);
+		$expected = [
+			'action',
+			'created_at',
+			'deleted_at',
+			'firstname',
+			'id',
+			'lastname',
+			'material_id',
+			'method',
+			'name',
+			'role',
+			'stage_id',
+			'summary',
+			'updated_at',
+			'user_id',
+			'workflow',
+			'workflow_id',
+		];
 
-		model(JobModel::class)->clearCompiledRows();
-		$result = model(JobModel::class)->getCompiledRows();
+		$keys = array_keys($result[0]);
+		sort($keys, SORT_STRING);
 
-		$this->assertEquals([], $result);
-	}
-
-	public function testCompiledRowsCreatesCache()
-	{
-		$this->assertNull(cache()->get('jobrows'));
-
-		model(JobModel::class)->getCompiledRows();
-
-		$this->assertNotNull(cache()->get('jobrows'));
-	}
-
-	public function testCompiledRowsUsesCache()
-	{
-		$expected = ['foo' => 'bar'];
-		cache()->save('jobrows', $expected);
-
-		$result = model(JobModel::class)->getCompiledRows();
-
-		$this->assertSame($expected, $result);
-	}
-
-	public function testEventClearsCompiledRowsCache()
-	{
-		cache()->save('jobrows', ['foo' => 'bar']);
-
-		fake(JobModel::class);
-
-		$this->assertNull(cache()->get('jobrows'));
+		$this->assertEquals($expected, $keys);
 	}
 }

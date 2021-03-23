@@ -1,6 +1,7 @@
 <?php
 
 use App\Libraries\Mailer;
+use CodeIgniter\Test\DatabaseTestTrait;
 use Tatter\Outbox\Models\EmailModel;
 use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
@@ -8,7 +9,7 @@ use App\Models\UserModel;
 
 class MailerTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
 
 	public function testJobInviteAddsEmailToJob()
 	{

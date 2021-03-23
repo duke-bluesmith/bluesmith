@@ -1,10 +1,11 @@
 <?php
 
+use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
 class CurrencyHelperTest extends ProjectTestCase
 {
-	use \Tests\Support\CurrencyTrait;
+	use CurrencyTrait;
 
 	public function testPriceToScaled()
 	{

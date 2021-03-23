@@ -27,7 +27,7 @@ class Jobs extends BaseController
 	public function index()
 	{
 		return view('jobs/index', [
-			'title' => 'Active Jobs',
+			'title' => 'All Jobs',
 			'rows'  => $this->model->getCompiledRows(null, 'updated_at', false),
 		]);
 	}
@@ -55,7 +55,7 @@ class Jobs extends BaseController
 	public function staff()
 	{
 		return view('jobs/index', [
-			'title' => 'Active Jobs',
+			'title' => 'Action Items',
 			'rows'  => $this->model->getCompiledRows(function($row) {
 				return is_null($row['deleted_at']) && $row['role'] === 'manageJobs';
 			}, 'stage_id')
