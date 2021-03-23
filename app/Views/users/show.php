@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="col-xl-6">
-		<div class="card">
+		<div class="card card-secondary">
 			<div class="card-header">
 				<h3 class="card-title"><?= $user->getName() ?></h3>
 			</div>
@@ -11,47 +11,41 @@
 				<h6 class="card-subtitle mb-2 text-muted"><?= implode(', ', array_column($groups, 'name')) ?></h6>	
 			</div>		
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><strong>First name:</strong> <?= $user->lastname ?></li>
-				<li class="list-group-item"><strong>Last name:</strong> <?= $user->firstname ?></li>
+				<li class="list-group-item"><strong>First name:</strong> <?= $user->firstname ?></li>
+				<li class="list-group-item"><strong>Last name:</strong> <?= $user->lastname ?></li>
 				<li class="list-group-item"><strong>Balance:</strong> <?= price_to_currency($user->balance) ?></li>
 				<li class="list-group-item"><strong>Status:</strong> <?= $user->status ?: '<em>None</em>' ?></li>
 			</ul>
 		</div>
 	</div>
 	<div class="col-xl-3">
-		<div class="card card-outline card-primary">
+		<div class="card card-secondary">
 			<div class="card-header">
-				<h3 class="card-title">Allowed Workflows</h3>
+				<h3 class="card-title">Workflows</h3>
 			</div>
-			<ul class="list-group list-group-flush">
+			<div class="card-body">
+				<table class="table table-bordered">
 
-				<?php $userWorkflows = []; ?>
-				<?php foreach ($user->getWorkflows() as $workflow): $userWorkflows[] = $workflow->id; ?>
-				<li class="list-group-item">
-					<?= $workflow->name ?>
-					<a href="<?= site_url('manage/users/remove_workflow/' . $user->id . '/' . $workflow->id) ?>" class="badge badge-danger text-white float-right">Restrict</a>
-				</li>
-				<?php endforeach; ?>
+					<?php $userWorkflows = array_column($user->getWorkflows(), 'id'); ?>
+					<?php foreach ($workflows as $workflow): ?>
+					<tr>
+						<td><?= $workflow->name ?></td>
 
-			</ul>
-		</div>
-	</div>
-	<div class="col-xl-3">
-		<div class="card card-outline card-danger">
-			<div class="card-header">
-				<h3 class="card-title">Restriced Workflows</h3>
+						<?php if (in_array($workflow->id, $userWorkflows)): ?>
+						<td class="text-success"><?= $workflow->role ?: 'Open access' ?></td>
+						<td><a class="btn btn-danger btn-sm" href="<?= site_url('manage/users/remove_workflow/' . $user->id . '/' . $workflow->id) ?>">Ban</a></td>
+
+						<?php else: ?>
+
+						<td class="text-danger"><?= $workflow->role ?: 'Banned' ?></td>
+						<td><a class="btn btn-primary btn-sm" href="<?= site_url('manage/users/add_workflow/' . $user->id . '/' . $workflow->id) ?>">Allow</a></td>
+						<?php endif; ?>
+
+					</tr>
+					<?php endforeach; ?>
+
+				</table>
 			</div>
-			<ul class="list-group list-group-flush">
-
-				<?php foreach ($workflows as $workflow): ?>
-				<?php if (in_array($workflow->id, $userWorkflows)): continue; endif; ?>
-				<li class="list-group-item">
-					<?= $workflow->name ?>
-					<a href="<?= site_url('manage/users/add_workflow/' . $user->id . '/' . $workflow->id) ?>" class="badge badge-primary text-white float-right">Allow</a>
-				</li>
-				<?php endforeach; ?>
-
-			</ul>
 		</div>
 	</div>
 </table>

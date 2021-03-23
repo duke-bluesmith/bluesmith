@@ -5,6 +5,7 @@ use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 use Config\Database;
 use RuntimeException;
+use Tatter\Workflows\Models\WorkflowModel;
 use Tests\Support\Simulator;
 
 class Simulate extends BaseCommand
@@ -41,5 +42,11 @@ class Simulate extends BaseCommand
 
 		// Run the Simulator
 		Simulator::initialize();
+
+		// Set one Workflow to be restricted
+		model(WorkflowModel::class)->builder()
+			->orderBy('id', 'desc')
+			->limit(1)
+			->update(['role' => 'manageContent']);
 	}
 }
