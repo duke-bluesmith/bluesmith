@@ -1,8 +1,7 @@
 <?php namespace App\Models;
 
-use App\Models\CompiledRowsTrait;
-use CodeIgniter\Model;
 use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\Mock\MockCompiledRowsModel;
 use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
@@ -15,7 +14,7 @@ class CompiledRowsTraitTest extends ProjectTestCase
 	protected $refresh     = false;
 
 	/**
-	 * @var Model
+	 * @var MockCompiledRowsModel
 	 */
 	private $model;
 
@@ -27,54 +26,7 @@ class CompiledRowsTraitTest extends ProjectTestCase
 	{
 		parent::setUp();
 
-		$this->model = new class extends Model {
-
-			use CompiledRowsTrait;
-
-			protected $table = 'bananas';
-
-			protected $afterInsert = ['clearCompiledRows'];
-			protected $afterUpdate = ['clearCompiledRows'];
-			protected $afterDelete = ['clearCompiledRows'];
-
-			/**
-			 * Fetch or build the compiled rows for browsing,
-			 * applying filters, and sorting.
-			 *
-			 * @return array[]
-			 */
-			protected function fetchCompiledRows(): array
-			{
-				return [
-					[
-						'id'         => 1,
-						'name'       => 'first',
-						'created_at' => '2021-01-21 12:21:12',
-					],
-					[
-						'id'         => 2,
-						'name'       => 'last',
-						'created_at' => '2021-02-12 21:12:21',
-					],
-				];
-			}
-
-			/**
-			 * Exposes the trigger method to test
-			 * clearing the cache.
-			 *
-			 * @param string $event
-			 * @param array  $eventData
-			 *
-			 * @return mixed
-			 *
-			 * @throws DataException
-			 */
-			public function trigger(string $event, array $eventData = [])
-			{
-				parent::trigger($event, $eventData);
-			}
-		};		
+		$this->model = new MockCompiledRowsModel();		
 	}
 
 	public function testGet()

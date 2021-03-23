@@ -5,7 +5,7 @@ use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
 use Faker\Generator;
 use Myth\Auth\Entities\User as MythUser;
-use Myth\Auth\Models\GroupModel;
+use Myth\Auth\Authorization\GroupModel;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 use stdClass;

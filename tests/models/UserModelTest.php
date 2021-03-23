@@ -16,7 +16,7 @@ class UserModelTest extends ProjectTestCase
 	{
 		$model = new UserModel();
 
-		$this->assertContains('firstname', $model->allowedFields);
+		$this->assertContains('firstname', $model->allowedFields); // @phpstan-ignore-line
 	}
 
 	public function testGroups()

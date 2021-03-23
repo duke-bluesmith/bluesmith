@@ -13,7 +13,7 @@ class User extends MythEntity
 	protected $primaryKey = 'id';
 
 	/**
-	 * @var Workflows[]|null
+	 * @var Workflow[]|null
 	 */
 	private $workflows;
 
