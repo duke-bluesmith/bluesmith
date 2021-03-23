@@ -1,7 +1,9 @@
 # Bluesmith
 
-[![pipeline status](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/pipeline.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
-[![coverage report](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/coverage.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
+[![GitLab status](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/pipeline.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
+[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPUnit/badge.svg)](https://github.com/duke-bluesmith/bluesmith/actions?query=workflow%3A%22PHPUnit)
+[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPStan/badge.svg)](https://github.com/duke-bluesmith/bluesmith/actions?query=workflow%3A%22PHPStan)
+[![Coverage Status](https://coveralls.io/repos/github/duke-bluesmith/bluesmith/badge.svg?branch=develop)](https://coveralls.io/github/duke-bluesmith/bluesmith?branch=develop)
 
 3D Print manager, Bluesmith (https://bluesmith.oit.duke.edu)
 
