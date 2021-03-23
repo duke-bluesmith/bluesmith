@@ -1,10 +1,11 @@
 <?php namespace App\Entities;
 
+use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
 class LedgerTest extends ProjectTestCase
 {
-	use \Tests\Support\CurrencyTrait;
+	use CurrencyTrait;
 
 	/**
 	 * @var Ledger

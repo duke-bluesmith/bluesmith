@@ -1,12 +1,13 @@
 <?php namespace App\Entities;
 
-use App\Models\LedgerModel;
-use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
+use App\Models\LedgerModel;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ProjectTestCase;
 
 class JobTest extends ProjectTestCase
 {
-	use \CodeIgniter\Test\DatabaseTestTrait;
+	use DatabaseTestTrait;
 
     protected $namespace = [
     	'Tatter\Workflows',

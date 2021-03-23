@@ -13,26 +13,9 @@ class SimulatorTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
-	/**
-	 * Should run db migration only once?
-	 *
-	 * @var boolean
-	 */
+	// Initialize the database once
 	protected $migrateOnce = true;
-
-	/**
-	 * Should run seeding only once?
-	 *
-	 * @var boolean
-	 */
-	protected $seedOnce = true;
-
-	/**
-	 * Should the db be refreshed before test?
-	 *
-	 * @var boolean
-	 */
-	protected $refresh = false;
+	protected $seedOnce    = true;
 
 	/**
 	 * Initializes the simulation only

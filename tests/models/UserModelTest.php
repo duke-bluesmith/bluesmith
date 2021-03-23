@@ -10,8 +10,6 @@ class UserModelTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
-	protected $refresh = true;
-
 	public function testConstructorMergesFields()
 	{
 		$model = new UserModel();

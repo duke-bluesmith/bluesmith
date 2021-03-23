@@ -9,9 +9,9 @@ class CompiledRowsTraitTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
+	// Initialize the database once
 	protected $migrateOnce = true;
 	protected $seedOnce    = true;
-	protected $refresh     = false;
 
 	/**
 	 * @var MockCompiledRowsModel
