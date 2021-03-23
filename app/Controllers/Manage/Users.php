@@ -120,7 +120,7 @@ class Users extends BaseController
 	 *
 	 * @throws PageNotFoundException
 	 */
-	private function setWorkflow($userId = null, $workflowId = null, bool $permitted): RedirectResponse
+	private function setWorkflow($userId = null, $workflowId = null, bool $permitted = true): RedirectResponse
 	{
 		if (is_null($userId) || is_null($workflowId))
 		{
