@@ -43,24 +43,27 @@ class JobModelTest extends ProjectTestCase
 		$this->assertGreaterThanOrEqual(1, count($result));
 
 		$expected = [
-			'id',
-			'name',
-			'summary',
-			'workflow_id',
-			'stage_id',
+			'action',
 			'created_at',
-			'updated_at',
 			'deleted_at',
+			'firstname',
+			'id',
+			'lastname',
 			'material_id',
 			'method',
-			'user_id',
-			'firstname',
-			'lastname',
-			'workflow',
-			'action',
+			'name',
 			'role',
+			'stage_id',
+			'summary',
+			'updated_at',
+			'user_id',
+			'workflow',
+			'workflow_id',
 		];
 
-		$this->assertEquals($expected, array_keys($result[0]));
+		$keys = array_keys($result[0]);
+		sort($keys, SORT_STRING);
+
+		$this->assertEquals($expected, $keys);
 	}
 }
