@@ -1,5 +1,6 @@
 <?php namespace App\Controllers\Manage;
 
+use App\Models\MaterialModel;
 use App\Models\MethodModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use Tatter\Forms\Controllers\ResourcePresenter;
@@ -9,12 +10,7 @@ class Materials extends ResourcePresenter
 	/**
 	 * @var string  Name of the model for ResourcePresenter
 	 */
-	public $modelName = 'App\Models\MaterialModel';
-	
-	/**
-	 * @var array  Helpers to load
-	 */
-	protected $helpers = ['alerts', 'assets', 'auth', 'inflector', 'themes'];
+	public $modelName = MaterialModel::class;
 
 	/**
 	 * @var MethodModel

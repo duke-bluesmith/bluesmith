@@ -1,11 +1,12 @@
 <?php namespace App\Controllers\Api;
 
-use Tatter\Forms\Controllers\ResourceController;
+use App\Models\MaterialModel;
 use App\Models\MethodModel;
+use Tatter\Forms\Controllers\ResourceController;
 
 class Materials extends ResourceController
 {
-	protected $modelName = 'App\Models\MaterialModel';
+	protected $modelName = MaterialModel::class;
 	
 	// Intercept filter requests
 	public function index()

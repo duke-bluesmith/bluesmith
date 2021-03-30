@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5eb276bef88c8ad529a730d52f1c5dc",
+    "content-hash": "deb035d91b4aaaa0f499d122e79d9c5f",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1410,51 +1410,40 @@
         },
         {
             "name": "tatter/forms",
-            "version": "dev-develop",
+            "version": "0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-forms.git",
-                "reference": "9109f96d9b1c6bf8a9ec80669f898e39584d25fe"
+                "reference": "e342c2a4421b91e6594f0b1be381b3942d2f9661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-forms/zipball/9109f96d9b1c6bf8a9ec80669f898e39584d25fe",
-                "reference": "9109f96d9b1c6bf8a9ec80669f898e39584d25fe",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-forms/zipball/e342c2a4421b91e6594f0b1be381b3942d2f9661",
+                "reference": "e342c2a4421b91e6594f0b1be381b3942d2f9661",
                 "shasum": ""
             },
             "require": {
                 "components/jquery": "^3.3",
-                "php": ">=7.2",
+                "php": "^7.3 || ^8.0",
                 "tatter/alerts": "^2.0",
                 "tatter/assets": "^2.0",
                 "twbs/bootstrap": "^4.3"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "mikey179/vfsstream": "1.6.*",
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^7.0"
+                "mikey179/vfsstream": "^1.6",
+                "tatter/tools": "^1.7"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Forms\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "ModuleTests\\Support\\": "tests/_support"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ],
-                "post-update-cmd": [
-                    "composer dump-autoload"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1469,29 +1458,29 @@
             "description": "RESTful AJAX forms for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-forms",
             "keywords": [
-                "AJAX",
-                "CRUD",
-                "REST",
+                "Forms",
+                "ajax",
                 "codeigniter",
                 "codeigniter4",
-                "forms",
-                "javascript"
+                "crud",
+                "javascript",
+                "rest"
             ],
             "support": {
-                "source": "https://github.com/tattersoftware/codeigniter4-forms/tree/develop",
-                "issues": "https://github.com/tattersoftware/codeigniter4-forms/issues"
+                "issues": "https://github.com/tattersoftware/codeigniter4-forms/issues",
+                "source": "https://github.com/tattersoftware/codeigniter4-forms/tree/0.9"
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/tattersoftware"
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
                 },
                 {
-                    "type": "custom",
-                    "url": "https://paypal.me/tatter"
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
                 }
             ],
-            "time": "2019-10-13T02:43:24+00:00"
+            "time": "2021-03-29T17:56:11+00:00"
         },
         {
             "name": "tatter/handlers",
@@ -8272,8 +8261,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "codeigniter4/codeigniter4": 20,
-        "myth/auth": 20,
-        "tatter/forms": 20
+        "myth/auth": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
