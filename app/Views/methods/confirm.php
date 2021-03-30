@@ -9,5 +9,5 @@
 
 		<button class="btn btn-primary" type="submit">Confirm</button>
 		<a class="btn btn-secondary" href="<?= site_url('manage/methods') ?>" onclick="closeModal(); return ! isMobile();">Cancel</a>
-	
+
 	<?= form_close() ?>
