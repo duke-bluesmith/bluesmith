@@ -33,7 +33,7 @@ class WorkflowSeeder extends Seeder
 	/**
 	 * @var string
 	 */
-	protected $description = '
+	protected $description = <<<EOT
 	<ol>
 		<li>Upload your files you want printed.</li>
 		<li>Add print options and any specific instructions.</li>
@@ -42,7 +42,8 @@ class WorkflowSeeder extends Seeder
 		<li>Once the job is approved our staff will print it and notify you when it is done.</li>
 		<li>After printing is completed, pay for your job before pickup. Payment can be in the form of Credit Card, Fundcodes, Bluechips, or Invoices.</li>
 		<li>Come to the studio to pickup your job.
-	</ol>';
+	</ol>
+EOT;
 
 	public function run()
 	{

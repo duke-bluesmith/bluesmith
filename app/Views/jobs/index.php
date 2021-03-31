@@ -1,7 +1,17 @@
 <?= $this->setVar('menu', 'jobs')->setVar('header', 'Jobs')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<?php if (empty($rows)): ?>
+<?php if ($title === 'All Jobs'): ?>
+
+<div class="row mb-3">
+	<div class="col">
+		<a class="btn btn-danger float-right" href="<?= site_url('manage/jobs/trash') ?>">Trash</a>
+	</div>
+</div>
+
+<?php endif; ?>
+
+<?php if ($rows === []): ?>
 
 <p>No jobs matched your request.</p>
 
