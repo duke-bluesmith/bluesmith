@@ -88,10 +88,10 @@ class JobModel extends BaseJobModel
 			->join('materials', 'jobs.material_id = materials.id')
 			->join('methods', 'materials.method_id = methods.id')
 			->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
-			->join('users', 'jobs_users.user_id = users.id')
+			->join('users', 'jobs_users.user_id = users.id', 'left')
 			->join('workflows', 'jobs.workflow_id = workflows.id')
 			->join('stages', 'jobs.stage_id = stages.id', 'left')
-			->join('actions', 'stages.action_id = actions.id')
+			->join('actions', 'stages.action_id = actions.id', 'left')
 			->get()->getResultArray();
 	}
 

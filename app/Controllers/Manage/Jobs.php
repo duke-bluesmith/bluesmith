@@ -50,7 +50,7 @@ class Jobs extends BaseController
 	}
 
 	/**
-	 * Display the active compiled rows
+	 * Display compiled rows for archived jobs
 	 *
 	 * @return string
 	 */

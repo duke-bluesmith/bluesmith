@@ -3,6 +3,9 @@
 use App\Entities\Job;
 use App\Controllers\Manage\Jobs;
 use App\Models\JobModel;
+use App\Models\MaterialModel;
+use App\Models\MethodModel;
+use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\ControllerTester;
 use CodeIgniter\Test\DatabaseTestTrait;
@@ -11,6 +14,8 @@ use Tests\Support\ProjectTestCase;
 class JobsControllerTest extends ProjectTestCase
 {
 	use ControllerTester, DatabaseTestTrait;
+
+	const JOBS = ['staff', 'client', 'completed', 'deleted'];
 
 	protected $migrateOnce = true;
 	protected $seedOnce    = true;
@@ -65,28 +70,47 @@ class JobsControllerTest extends ProjectTestCase
 	{
 		parent::setUp();
 
+		// Create the necessary relations (Fabricator will assign them)
+		$method   = fake(MethodModel::class);
+		$material = fake(MaterialModel::class);
+
 		// Create the test Jobs once
 		if (! $this->jobbed)
 		{
+			$this->jobbed = true;
+
 			$this->staff = fake(JobModel::class, [
+				'name'        => 'staff job',
 				'workflow_id' => 1,
 				'stage_id'    => 6, // charges
 			]);
 
 			$this->client = fake(JobModel::class, [
+				'name'        => 'client job',
 				'workflow_id' => 1,
 				'stage_id'    => 1, // info
 			]);
 
 			$this->completed = fake(JobModel::class, [
-				'stage_id' => null,
+				'name'        => 'completed job',
+				'workflow_id' => 1,
+				'stage_id'    => null,
 			]);
 
 			$this->deleted = fake(JobModel::class, [
-				'deleted_at' => Time::now()->toDatetimeString(),
+				'name'        => 'deleted job',
+				'workflow_id' => 1,
+				'stage_id'    => 1, // info
 			]);
+			model(JobModel::class)->delete($this->deleted->id);
+			$this->deleted->deleted_at = Time::now()->toDatetimeString();
 
-			$this->jobbed = true;
+			// Add a User to each Job so the left join completes
+			$user = fake(UserModel::class);
+			foreach (self::JOBS as $type)
+			{
+				model(JobModel::class)->addUserToJob($user->id, $this->$type->id);
+			}
 		}
 
 		$this->controller(Jobs::class);
@@ -103,16 +127,16 @@ class JobsControllerTest extends ProjectTestCase
 		$result->assertStatus(200);
 
 		// Check that each expected Job is present and others are not
-		foreach (['staff', 'client', 'completed', 'deleted'] as $type)
+		foreach (self::JOBS as $type)
 		{
 			if (in_array($type, $expected))
 			{
 				// Check for the Job name linked by its ID
-				$result->see(anchor('jobs/show/' . $this->$type->id, $this->$type->name));
+				$result->assertSee(anchor('jobs/show/' . $this->$type->id, $this->$type->name));
 			}
 			else
 			{
-				$result->dontSee($this->$type->name);
+				$result->assertDontSee($this->$type->name);
 			}
 		}
 	}
