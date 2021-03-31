@@ -90,15 +90,18 @@
 
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-dark-blue">
+
+			<?php if ($user = user()): ?>
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
 					<i class="fas fa-user"></i>
 				</div>
 				<div class="info">
-					<a href="<?= site_url('manage/users/' . user()->id) ?>" class="d-block"><?= user()->username ?></a>
+					<a href="<?= site_url('manage/users/' . $user->id) ?>" class="d-block"><?= $user->username ?></a>
 				</div>
 			</div>
+			<?php endif; ?>
 
 			<!-- Sidebar Menu -->
 			<nav class="mt-2">
@@ -127,7 +130,13 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="<?= site_url('manage/jobs/index') ?>" class="nav-link <?= url_is('manage/jobs/index') ? 'active' : '' ?>">
+								<a href="<?= site_url('manage/jobs/archive') ?>" class="nav-link <?= url_is('manage/jobs/archive') ? 'active' : '' ?>">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Archived Jobs</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="<?= site_url('manage/jobs/all') ?>" class="nav-link <?= url_is('manage/jobs/all') ? 'active' : '' ?>">
 									<i class="far fa-circle nav-icon"></i>
 									<p>All Jobs</p>
 								</a>

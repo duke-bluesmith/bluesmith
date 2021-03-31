@@ -10,14 +10,14 @@ class EstimateTest extends ProjectTestCase
 {
 	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
 
-    protected $namespace = [
+	protected $namespace = [
 		'Tatter\Outbox',
 		'Tatter\Settings',
 		'Tatter\Themes',
 		'Tatter\Workflows',
 		'Myth\Auth',
 		'App',
-    ];
+	];
 
 	/**
 	 * UID of the Action to test
