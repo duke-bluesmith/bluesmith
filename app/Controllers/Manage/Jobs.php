@@ -2,6 +2,7 @@
 
 use App\Controllers\BaseController;
 use App\Models\JobModel;
+use Closure;
 use CodeIgniter\I18n\Time;
 
 class Jobs extends BaseController
@@ -20,77 +21,90 @@ class Jobs extends BaseController
 	}
 
 	/**
-	 * Display the compiled rows awaiting staff input
+	 * Displays the compiled rows awaiting staff input
 	 *
 	 * @return string
 	 */
-	public function staff()
+	public function staff(): string
 	{
-		return view('jobs/index', [
-			'title' => 'Action Items',
-			'rows'  => $this->model->getCompiledRows(function($row) {
-				return is_null($row['deleted_at']) && $row['role'] === 'manageJobs';
-			}, 'stage_id')
-		]);
+		$filter = function($row) {
+			return is_null($row['deleted_at']) && $row['role'] === 'manageJobs';
+		};
+
+		return $this->index('Action Items', $filter);
 	}
 
 	/**
-	 * Display the active compiled rows
+	 * Displays the active compiled rows
 	 *
 	 * @return string
 	 */
-	public function active()
+	public function active(): string
 	{
-		return view('jobs/index', [
-			'title' => 'Active Jobs',
-			'rows'  => $this->model->getCompiledRows(function($row) {
-				return is_null($row['deleted_at']) && ! is_null($row['stage_id']);
-			}, 'stage_id')
-		]);
+		$filter = function($row) {
+			return is_null($row['deleted_at']) && ! is_null($row['stage_id']);
+		};
+
+		return $this->index('Active Jobs', $filter);
 	}
 
 	/**
-	 * Display compiled rows for archived jobs
+	 * Displays compiled rows for archived jobs
 	 *
 	 * @return string
 	 */
-	public function archive()
+	public function archive(): string
 	{
-		return view('jobs/index', [
-			'title' => 'Archived Jobs',
-			'rows'  => $this->model->getCompiledRows(function($row) {
-				return is_null($row['deleted_at']) && is_null($row['stage_id']);
-			}, 'stage_id')
-		]);
+		$filter = function($row) {
+			return is_null($row['deleted_at']) && is_null($row['stage_id']);
+		};
+
+		return $this->index('Archived Jobs', $filter, 'updated_at', false);
 	}
 
 	/**
-	 * Display all compiled rows (not deleted)
+	 * Displays all compiled rows (not deleted)
 	 *
 	 * @return string
 	 */
-	public function all()
+	public function all(): string
 	{
-		return view('jobs/index', [
-			'title' => 'All Jobs',
-			'rows'  => $this->model->getCompiledRows(function($row) {
-				return is_null($row['deleted_at']);
-			}, 'updated_at', false),
-		]);
+		$filter = function($row) {
+			return is_null($row['deleted_at']);
+		};
+
+		return $this->index('All Jobs', $filter, 'updated_at', false);
 	}
 
 	/**
-	 * Display the compiled rows for deleted jobs
+	 * Displays the compiled rows for deleted jobs
 	 *
 	 * @return string
 	 */
-	public function trash()
+	public function trash(): string
+	{
+		$filter = function($row) {
+			return ! is_null($row['deleted_at']);
+		};
+
+		return $this->index('Deleted Jobs', $filter, 'deleted_at', false);
+	}
+
+	/**
+	 * Displays the compiled rows.
+	 *
+	 * @param string $title
+	 * @param Closure|null $filter
+	 * @param string $sort
+	 * @param bool $ascending
+	 *
+	 * @return string
+	 */
+	public function index(string $title = 'Jobs', Closure $filter = null, string $sort = 'stage_id', bool $ascending = true): string
 	{
 		return view('jobs/index', [
-			'title' => 'Deleted Jobs',
-			'rows'  => $this->model->getCompiledRows(function($row) {
-				return ! is_null($row['deleted_at']);
-			}, 'deleted_at')
+			'title' => $title,
+			'rows'  => $this->model->getCompiledRows($filter, $sort, $ascending),
 		]);
 	}
 }
