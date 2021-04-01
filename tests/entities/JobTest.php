@@ -120,4 +120,11 @@ class JobTest extends ProjectTestCase
 		$this->assertInstanceOf(Ledger::class, $result);
 		$this->assertFalse($result->estimate);
 	}
+
+	public function testInvoiceReturnsNull()
+	{
+		$result = $this->job->getInvoice(false);
+
+		$this->assertNull($result);
+	}
 }

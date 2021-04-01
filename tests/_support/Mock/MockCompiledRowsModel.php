@@ -32,6 +32,11 @@ class MockCompiledRowsModel extends Model
 				'name'       => 'last',
 				'created_at' => '2021-02-12 21:12:21',
 			],
+			[
+				'id'         => 2,
+				'name'       => 'duplicate',
+				'created_at' => '2020-01-01 20:01:01',
+			],
 		];
 	}
 
