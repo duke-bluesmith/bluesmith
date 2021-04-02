@@ -2,8 +2,10 @@
 
 use App\Controllers\BaseController;
 use App\Models\JobModel;
-use Closure;
+use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\I18n\Time;
+use Tatter\Workflows\Models\JoblogModel;
+use Closure;
 
 class Jobs extends BaseController
 {
@@ -18,6 +20,27 @@ class Jobs extends BaseController
 	public function __construct()
 	{
 		$this->model = model(JobModel::class);
+	}
+
+	/**
+	 * Displays a single Job with management options.
+	 *
+	 * @param string|int|null $jobId
+	 *
+	 * @return string
+	 */
+	public function show($jobId = null): string
+	{
+		if (is_null($jobId) || ! $job = $this->model->withDeleted()->find($jobId))
+		{
+			throw PageNotFoundException::forPageNotFound();
+		}
+
+		return view('jobs/show', [
+			'title' => 'Job Details',
+			'job'   => $job,
+			'logs'  => model(JoblogModel::class)->findWithStages($job->id),
+		]);
 	}
 
 	/**
