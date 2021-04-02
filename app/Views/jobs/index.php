@@ -5,7 +5,7 @@
 
 <div class="row mb-3">
 	<div class="col">
-		<a class="btn btn-danger float-right" href="<?= site_url('manage/jobs/trash') ?>">Trash</a>
+		<a class="btn btn-danger float-right" href="<?= site_url('manage/jobs/trash') ?>">View Trash</a>
 	</div>
 </div>
 
@@ -42,7 +42,7 @@
 
 					<tr>
 						<td><?= $row['id'] ?></td>
-						<td><?= anchor('jobs/show/' . $row['id'], $row['name']) ?></td>
+						<td><?= anchor('manage/jobs/show/' . $row['id'], $row['name']) ?></td>
 						<td><?= isset($row['user_id']) ? $row['firstname'] . ' ' . $row['lastname'] : '' ?></td>
 						<td><?= $row['method'] ?></td>
 						<td data-order="<?= $row['stage_id'] ?? 99 ?>"><?= $row['action'] ?? '<em>Complete</em>' ?></td>

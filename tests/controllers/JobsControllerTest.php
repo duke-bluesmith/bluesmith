@@ -71,8 +71,8 @@ class JobsControllerTest extends ProjectTestCase
 		parent::setUp();
 
 		// Create the necessary relations (Fabricator will assign them)
-		$method   = fake(MethodModel::class);
-		$material = fake(MaterialModel::class);
+		fake(MethodModel::class);
+		fake(MaterialModel::class);
 
 		// Create the test Jobs once
 		if (! $this->jobbed)
@@ -111,6 +111,9 @@ class JobsControllerTest extends ProjectTestCase
 			{
 				model(JobModel::class)->addUserToJob($user->id, $this->$type->id);
 			}
+
+			// Cache the compiled rows
+			model(JobModel::class)->getCompiledRows();
 		}
 
 		$this->controller(Jobs::class);
@@ -118,7 +121,6 @@ class JobsControllerTest extends ProjectTestCase
 
 	/**
 	 * @dataProvider indexDataProvider
-	 * @timeLimit 0.75
 	 */
 	public function testIndexHasCorrectJobs(string $method, array $expected)
 	{
@@ -132,7 +134,7 @@ class JobsControllerTest extends ProjectTestCase
 			if (in_array($type, $expected))
 			{
 				// Check for the Job name linked by its ID
-				$result->assertSee(anchor('jobs/show/' . $this->$type->id, $this->$type->name));
+				$result->assertSee(anchor('manage/jobs/show/' . $this->$type->id, $this->$type->name));
 			}
 			else
 			{
