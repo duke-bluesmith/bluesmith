@@ -33,35 +33,35 @@ class JobsControllerTest extends ProjectTestCase
 	 *
 	 * @var bool
 	 */
-	private $jobbed = false;
+	private static $jobbed = false;
 
 	/**
 	 * An active staff Job
 	 *
 	 * @var Job
 	 */
-	private $staff;
+	private static $staff;
 
 	/**
 	 * An active client Job
 	 *
 	 * @var Job
 	 */
-	private $client;
+	private static $client;
 
 	/**
 	 * A completed Job
 	 *
 	 * @var Job
 	 */
-	private $completed;
+	private static $completed;
 
 	/**
 	 * A deleted Job
 	 *
 	 * @var Job
 	 */
-	private $deleted;
+	private static $deleted;
 
 	/**
 	 * Sets up the Controller for testing.
@@ -75,45 +75,45 @@ class JobsControllerTest extends ProjectTestCase
 		fake(MaterialModel::class);
 
 		// Create the test Jobs once
-		if (! $this->jobbed)
+		if (! self::$jobbed)
 		{
-			$this->jobbed = true;
-
-			$this->staff = fake(JobModel::class, [
+			self::$staff = fake(JobModel::class, [
 				'name'        => 'staff job',
 				'workflow_id' => 1,
 				'stage_id'    => 6, // charges
 			]);
 
-			$this->client = fake(JobModel::class, [
+			self::$client = fake(JobModel::class, [
 				'name'        => 'client job',
 				'workflow_id' => 1,
 				'stage_id'    => 1, // info
 			]);
 
-			$this->completed = fake(JobModel::class, [
+			self::$completed = fake(JobModel::class, [
 				'name'        => 'completed job',
 				'workflow_id' => 1,
 				'stage_id'    => null,
 			]);
 
-			$this->deleted = fake(JobModel::class, [
+			self::$deleted = fake(JobModel::class, [
 				'name'        => 'deleted job',
 				'workflow_id' => 1,
 				'stage_id'    => 1, // info
 			]);
-			model(JobModel::class)->delete($this->deleted->id);
-			$this->deleted->deleted_at = Time::now()->toDatetimeString();
+			model(JobModel::class)->delete(self::$deleted->id);
+			self::$deleted->deleted_at = Time::now()->toDatetimeString();
 
 			// Add a User to each Job so the left join completes
 			$user = fake(UserModel::class);
 			foreach (self::JOBS as $type)
 			{
-				model(JobModel::class)->addUserToJob($user->id, $this->$type->id);
+				model(JobModel::class)->addUserToJob($user->id, self::$$type->id);
 			}
 
 			// Cache the compiled rows
 			model(JobModel::class)->getCompiledRows();
+
+			self::$jobbed = true;
 		}
 
 		$this->controller(Jobs::class);
@@ -134,11 +134,11 @@ class JobsControllerTest extends ProjectTestCase
 			if (in_array($type, $expected))
 			{
 				// Check for the Job name linked by its ID
-				$result->assertSee(anchor('manage/jobs/show/' . $this->$type->id, $this->$type->name));
+				$result->assertSee(anchor('manage/jobs/show/' . self::$$type->id, self::$$type->name));
 			}
 			else
 			{
-				$result->assertDontSee($this->$type->name);
+				$result->assertDontSee(self::$$type->name);
 			}
 		}
 	}
