@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->setVar('menu', 'jobs')->setVar('header', $title ?? 'Job Details')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 <?= view('jobs/display') ?>

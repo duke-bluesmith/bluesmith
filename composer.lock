@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deb035d91b4aaaa0f499d122e79d9c5f",
+    "content-hash": "0d06258458f26f643e46643f0b4b1714",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "c6f60fe9d8962da3ff8f151869fc3cf80597be9c"
+                "reference": "aba6d98731b2f863b9b8ec53b1f61d869cd26aa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/c6f60fe9d8962da3ff8f151869fc3cf80597be9c",
-                "reference": "c6f60fe9d8962da3ff8f151869fc3cf80597be9c",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/aba6d98731b2f863b9b8ec53b1f61d869cd26aa4",
+                "reference": "aba6d98731b2f863b9b8ec53b1f61d869cd26aa4",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-03-30T05:55:55+00:00"
+            "time": "2021-03-31T16:38:18+00:00"
         },
         {
             "name": "components/jquery",
@@ -2189,16 +2189,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "0ad0591d176a06092ce213161b1bde2bad2651f3"
+                "reference": "79a666ceed52428a4387ff1d91f99b2444d496ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/0ad0591d176a06092ce213161b1bde2bad2651f3",
-                "reference": "0ad0591d176a06092ce213161b1bde2bad2651f3",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/79a666ceed52428a4387ff1d91f99b2444d496ba",
+                "reference": "79a666ceed52428a4387ff1d91f99b2444d496ba",
                 "shasum": ""
             },
             "require": {
@@ -2217,7 +2217,7 @@
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.6"
+                "tatter/tools": "^1.7"
             },
             "type": "library",
             "autoload": {
@@ -2251,7 +2251,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.3"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.4"
             },
             "funding": [
                 {
@@ -2263,7 +2263,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-10T19:30:47+00:00"
+            "time": "2021-04-01T17:41:39+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2550,16 +2550,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9"
+                "reference": "6c12ce263da71641903e399c3ce8ecb08fd375fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9",
-                "reference": "a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9",
+                "url": "https://api.github.com/repos/composer/composer/zipball/6c12ce263da71641903e399c3ce8ecb08fd375fb",
+                "reference": "6c12ce263da71641903e399c3ce8ecb08fd375fb",
                 "shasum": ""
             },
             "require": {
@@ -2627,7 +2627,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.0.11"
+                "source": "https://github.com/composer/composer/tree/2.0.12"
             },
             "funding": [
                 {
@@ -2643,7 +2643,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-24T13:57:23+00:00"
+            "time": "2021-04-01T08:14:59+00:00"
         },
         {
             "name": "composer/semver",
@@ -3951,16 +3951,16 @@
         },
         {
             "name": "nexusphp/tachycardia",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NexusPHP/tachycardia.git",
-                "reference": "70b7e2e1238347b2beafad343f85d1549f245f16"
+                "reference": "83fd3beaaf542c8aa1d81dbc4211a5710c5dd407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NexusPHP/tachycardia/zipball/70b7e2e1238347b2beafad343f85d1549f245f16",
-                "reference": "70b7e2e1238347b2beafad343f85d1549f245f16",
+                "url": "https://api.github.com/repos/NexusPHP/tachycardia/zipball/83fd3beaaf542c8aa1d81dbc4211a5710c5dd407",
+                "reference": "83fd3beaaf542c8aa1d81dbc4211a5710c5dd407",
                 "shasum": ""
             },
             "require": {
@@ -4000,7 +4000,7 @@
                 "slack": "https://nexusphp.slack.com",
                 "source": "https://github.com/NexusPHP/tachycardia.git"
             },
-            "time": "2021-03-28T17:41:04+00:00"
+            "time": "2021-04-01T13:20:41+00:00"
         },
         {
             "name": "nikic/php-parser",

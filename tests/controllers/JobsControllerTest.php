@@ -134,7 +134,7 @@ class JobsControllerTest extends ProjectTestCase
 			if (in_array($type, $expected))
 			{
 				// Check for the Job name linked by its ID
-				$result->assertSee(anchor('jobs/show/' . $this->$type->id, $this->$type->name));
+				$result->assertSee(anchor('manage/jobs/show/' . $this->$type->id, $this->$type->name));
 			}
 			else
 			{
