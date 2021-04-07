@@ -41,10 +41,12 @@
 		<div class="col-sm-2"></div>
 		<div class="col-sm-4">
 			<h3>Suggestions</h3>
-			<ul class="list-unstyled">
+			<ul>
 
 				<?php foreach ($items as $item): ?>
-				<li><?= view('actions/charges/add', $item) ?></li>
+				<li>
+					<a href= "#" onclick="fillCharge('<?= $item['name'] ?>', '<?= $item['amount'] ?>', '<?= $item['quantity'] ?>'); return false;"><?= $item['display'] ?? $item['name'] ?></a>
+				</li>
 				<?php endforeach; ?>
 
 			</ul>
@@ -58,5 +60,16 @@
 	<?php else: ?>
 	<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
 	<?php endif; ?>
+
+<?= $this->endSection() ?>
+<?= $this->section('footerAssets') ?>
+
+<script>
+	function fillCharge(name, amount, quantity) {
+		$("#name-add").val(name);
+		$("#amount-add").val(amount);
+		$("#quantity-add").val(quantity);
+	}
+</script>
 
 <?= $this->endSection() ?>
