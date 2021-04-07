@@ -24,7 +24,7 @@
 						<input type="text" name="quantity" id="quantity-add" class="form-control" placeholder="Qty">
 					</div>
 					<div class="col-3">
-						<label class="sr-only" for="price-add">Price</label>
+						<label class="sr-only" for="amount-add">Price</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<div class="input-group-text">$</div>

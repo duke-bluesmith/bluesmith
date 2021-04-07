@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "aba6d98731b2f863b9b8ec53b1f61d869cd26aa4"
+                "reference": "4e7f0745e3ca55b9b66761ff474c23f7d4ce08fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/aba6d98731b2f863b9b8ec53b1f61d869cd26aa4",
-                "reference": "aba6d98731b2f863b9b8ec53b1f61d869cd26aa4",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/4e7f0745e3ca55b9b66761ff474c23f7d4ce08fb",
+                "reference": "4e7f0745e3ca55b9b66761ff474c23f7d4ce08fb",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +78,7 @@
                 "fakerphp/faker": "^1.9",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/tachycardia": "^1.0",
-                "phpstan/phpstan": "0.12.82",
+                "phpstan/phpstan": "0.12.83",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1",
                 "rector/rector": "^0.10",
@@ -126,7 +126,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-03-31T16:38:18+00:00"
+            "time": "2021-04-06T19:48:25+00:00"
         },
         {
             "name": "components/jquery",
@@ -179,16 +179,16 @@
         },
         {
             "name": "enyo/dropzone",
-            "version": "v5.8.1",
+            "version": "v5.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dropzone/dropzone-packagist.git",
-                "reference": "dc95ebadf74e25fd6ee198bed78c11a966281a12"
+                "reference": "58574133fea351fc0b2d7461c6bf2431607c3a9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dropzone/dropzone-packagist/zipball/dc95ebadf74e25fd6ee198bed78c11a966281a12",
-                "reference": "dc95ebadf74e25fd6ee198bed78c11a966281a12",
+                "url": "https://api.github.com/repos/dropzone/dropzone-packagist/zipball/58574133fea351fc0b2d7461c6bf2431607c3a9a",
+                "reference": "58574133fea351fc0b2d7461c6bf2431607c3a9a",
                 "shasum": ""
             },
             "type": "library",
@@ -213,9 +213,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dropzone/dropzone-packagist/issues",
-                "source": "https://github.com/dropzone/dropzone-packagist/tree/v5.8.1"
+                "source": "https://github.com/dropzone/dropzone-packagist/tree/v5.9.2"
             },
-            "time": "2021-03-10T14:25:49+00:00"
+            "time": "2021-04-02T14:29:45+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
@@ -2189,16 +2189,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.0.4",
+            "version": "v4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "79a666ceed52428a4387ff1d91f99b2444d496ba"
+                "reference": "590da2200f1f977a6f4f9ba9a579ad8d9dd27848"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/79a666ceed52428a4387ff1d91f99b2444d496ba",
-                "reference": "79a666ceed52428a4387ff1d91f99b2444d496ba",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/590da2200f1f977a6f4f9ba9a579ad8d9dd27848",
+                "reference": "590da2200f1f977a6f4f9ba9a579ad8d9dd27848",
                 "shasum": ""
             },
             "require": {
@@ -2251,7 +2251,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.4"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.5"
             },
             "funding": [
                 {
@@ -2263,7 +2263,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-01T17:41:39+00:00"
+            "time": "2021-04-06T19:21:45+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3375,16 +3375,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.18.4",
+            "version": "v2.18.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "06f764e3cb6d60822d8f5135205f9d32b5508a31"
+                "reference": "e0f6d05c8b157f50029ca6c65c19ed2694f475bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/06f764e3cb6d60822d8f5135205f9d32b5508a31",
-                "reference": "06f764e3cb6d60822d8f5135205f9d32b5508a31",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/e0f6d05c8b157f50029ca6c65c19ed2694f475bf",
+                "reference": "e0f6d05c8b157f50029ca6c65c19ed2694f475bf",
                 "shasum": ""
             },
             "require": {
@@ -3467,7 +3467,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.18.4"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v2.18.5"
             },
             "funding": [
                 {
@@ -3475,7 +3475,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-20T14:52:33+00:00"
+            "time": "2021-04-06T18:37:33+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4534,16 +4534,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.82",
+            "version": "0.12.83",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3920f0fb0aff39263d3a4cb0bca120a67a1a6a11"
+                "reference": "4a967cec6efb46b500dd6d768657336a3ffe699f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3920f0fb0aff39263d3a4cb0bca120a67a1a6a11",
-                "reference": "3920f0fb0aff39263d3a4cb0bca120a67a1a6a11",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/4a967cec6efb46b500dd6d768657336a3ffe699f",
+                "reference": "4a967cec6efb46b500dd6d768657336a3ffe699f",
                 "shasum": ""
             },
             "require": {
@@ -4574,7 +4574,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.82"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.83"
             },
             "funding": [
                 {
@@ -4590,7 +4590,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-19T06:08:17+00:00"
+            "time": "2021-04-03T15:35:45+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8090,16 +8090,16 @@
         },
         {
             "name": "tatter/tools",
-            "version": "v1.7.2",
+            "version": "v1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-tools.git",
-                "reference": "bdfdb55700571dcfc43a5d9a8081c5ec362b84e4"
+                "reference": "90a64bcba03ad6ddd09203e6371273c38827a7cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/bdfdb55700571dcfc43a5d9a8081c5ec362b84e4",
-                "reference": "bdfdb55700571dcfc43a5d9a8081c5ec362b84e4",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/90a64bcba03ad6ddd09203e6371273c38827a7cc",
+                "reference": "90a64bcba03ad6ddd09203e6371273c38827a7cc",
                 "shasum": ""
             },
             "require": {
@@ -8151,7 +8151,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-tools/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.7.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.7.3"
             },
             "funding": [
                 {
@@ -8163,7 +8163,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-30T15:33:17+00:00"
+            "time": "2021-04-06T20:07:10+00:00"
         },
         {
             "name": "theseer/tokenizer",
