@@ -43,15 +43,13 @@ class OptionsAction extends BaseAction
 	{
 		$data = service('request')->getPost();
 
-		if ($data['material_id'])
-		{
-			$this->job->material_id = $data['material_id'];
-			$this->jobs->save($this->job);
-		}
+		$this->jobs->update($this->job->id, [
+			'material_id' => service('request')->getPost('material_id'),
+		]);
 
-		if (! empty($data['option_ids']) && is_array($data['option_ids']))
+		if (is_array($options = service('request')->getPost('option_ids')))
 		{
-			$this->job->setOptions($data['option_ids']);
+			$this->job->setOptions($options);
 		}
 		else
 		{

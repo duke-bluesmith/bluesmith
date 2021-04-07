@@ -31,12 +31,14 @@ class ChargesAction extends BaseAction
 		// Build out the clickable charge items for the "Details" aside
 		$items = $this->job->material ? [
 			[
-				'name' => $this->job->material->method->name,
+				'name'     => $this->job->material->method->name,
 				'quantity' => null,
+				'amount'   => 0,
 			],
 			[
 				'name'     => $this->job->material->name,
 				'quantity' => 1,
+				'amount'   => 0,
 			]
 		] : [];
 
@@ -45,6 +47,7 @@ class ChargesAction extends BaseAction
 			$items[] = [
 				'name'     => $option->summary,
 				'quantity' => null,
+				'amount'   => 0,
 			];
 		}
 
