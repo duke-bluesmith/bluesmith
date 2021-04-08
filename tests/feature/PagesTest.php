@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\MaterialModel;
+use App\Models\MethodModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FeatureTestTrait;
@@ -9,26 +11,8 @@ class PagesTest extends ProjectTestCase
 {
 	use DatabaseTestTrait, FeatureTestTrait;
 
-	/**
-	 * Should run db migration only once?
-	 *
-	 * @var boolean
-	 */
 	protected $migrateOnce = true;
-
-	/**
-	 * Should run seeding only once?
-	 *
-	 * @var boolean
-	 */
-	protected $seedOnce = true;
-
-	/**
-	 * Should the db be refreshed before test?
-	 *
-	 * @var boolean
-	 */
-	protected $refresh = false;
+	protected $seedOnce    = true;
 
 	public function testRootShowsHomePage()
 	{
@@ -40,10 +24,21 @@ class PagesTest extends ProjectTestCase
 
 	public function testAboutOptions()
 	{
+		// Create two Methods, with and without Material
+		$method1  = fake(MethodModel::class);
+		$method2  = fake(MethodModel::class);
+		$material = fake(MaterialModel::class, ['method_id' => $method2->id]);
+
 		$result = $this->get('about/options');
 
 		$result->assertStatus(200);
 		$result->assertSee('Services and Pricing', 'h3');
+
+		// Check for each Methods and Material
+		$result->assertSee($method1->name, 'h4');
+		$result->assertSee($method2->name, 'h4');
+		$result->assertSee($material->name, 'strong');
+		$result->assertSee('This print method has no available materials.', 'em');		
 	}
 
 	public function testAboutTerms()
