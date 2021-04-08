@@ -81,8 +81,6 @@
 
 						</tbody>
 					</table>
-
-					<a href="#" class="btn btn-secondary">Change</a>
 				</div>
 
 				<div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
@@ -97,6 +95,7 @@
 						</thead>
 						<tbody>
 
+					<?php $logs = array_reverse($logs ?? []); ?>
 					<?php foreach ($logs ?? [] as $log): ?>
 
 							<tr>
