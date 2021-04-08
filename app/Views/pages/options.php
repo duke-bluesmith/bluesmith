@@ -10,10 +10,27 @@
 
 			<?= $content ?>
 
-			<?php foreach ((new \App\Models\MethodModel())->findAll() as $method): ?>
+			<?php foreach (model('MethodModel')->findAll() as $method): ?>
 
-			<div class="border">
-				<h5><?= $method->name ?></h5>
+			<div class="border p-3">
+				<h4><?= $method->name ?></h4>
+				<p class="small text-muted"><?= $method->summary ?></p>
+				<p><?= nl2br($method->description) ?></p>
+
+				<?php if ($materials = $method->materials): ?>
+
+				<h5>Available Materials</h5>
+				<ul>
+
+				<?php foreach ($materials as $material): ?>
+					<li><strong><?= $material->name ?>:</strong> <?= $material->summary ?></li>
+				<?php endforeach; ?>
+
+				</ul>
+
+				<?php else: ?>
+				<p><em>This print method has no available materials.</em></p>
+				<?php endif; ?>
 			</div>
 			
 			<?php endforeach; ?>
