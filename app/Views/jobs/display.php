@@ -35,14 +35,14 @@
 							<?php if (is_null($job->stage_id) || $job->stage_id > $stage->id): ?>
 
 							<i class="far fa-check-square mr-1"></i>
+							<a href="<?= site_url($stage->action->getRoute($job->id)) ?>" onclick="return confirm('Are you sure you want to regress this job?');"><?= $stage->action->summary ?></a>
 
 							<?php else: ?>
 
 							<i class="far fa-square mr-1"></i>
+							<?= $stage->action->summary ?>
 
 							<?php endif; ?>
-
-							<?= $stage->action->summary ?>
 						</li>
 
 					<?php endforeach; ?>
