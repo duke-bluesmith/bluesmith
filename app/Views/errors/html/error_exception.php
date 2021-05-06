@@ -21,7 +21,7 @@
 		<div class="container">
 			<h1><?= esc($title), esc($exception->getCode() ? ' #' . $exception->getCode() : '') ?></h1>
 			<p>
-				<?= esc(nl2br($exception->getMessage())) ?>
+				<?= nl2br(esc($exception->getMessage())) ?>
 				<a href="https://www.duckduckgo.com/?q=<?= urlencode($title . ' ' . preg_replace('#\'.*\'|".*"#Us', '', $exception->getMessage())) ?>"
 				   rel="noreferrer" target="_blank">search &rarr;</a>
 			</p>
@@ -43,12 +43,11 @@
 
 		<ul class="tabs" id="tabs">
 			<li><a href="#backtrace">Backtrace</a></li>
-				<li><a href="#server">Server</a></li>
-				<li><a href="#request">Request</a></li>
-				<li><a href="#response">Response</a></li>
-				<li><a href="#files">Files</a></li>
-				<li><a href="#memory">Memory</a></li>
-			</li>
+			<li><a href="#server">Server</a></li>
+			<li><a href="#request">Request</a></li>
+			<li><a href="#response">Response</a></li>
+			<li><a href="#files">Files</a></li>
+			<li><a href="#memory">Memory</a></li>
 		</ul>
 
 		<div class="tab-content">
