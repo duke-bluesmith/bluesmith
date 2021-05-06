@@ -60,6 +60,8 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 		{
 			// Convert the arrays to objects
 			$result = array_map(function ($row) {
+				// Use the Group ID for the primary ID
+				$row['id'] = $row['group_id'];
 				return (object) $row;
 			}, $result);
 		}
