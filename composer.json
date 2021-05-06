@@ -38,7 +38,8 @@
 		"tatter/forms": "^0.9",
 		"tatter/workflows": "^4.0",
 		"tinymce/tinymce": "^5.0",
-		"twbs/bootstrap": "^4.3"
+		"twbs/bootstrap": "^4.3",
+		"tatter/menus": "^0.9.0"
 	},
 	"require-dev": {
 		"tatter/tools": "^1.7"

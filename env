@@ -21,7 +21,6 @@
 #--------------------------------------------------------------------
 
 # app.baseURL = ''
-# app.indexPage = ''
 # app.forceGlobalSecureRequests = false
 # app.appTimezone = 'America/New_York'
 

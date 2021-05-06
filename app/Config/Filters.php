@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\ManageFilter;
+use App\Filters\PublicFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -26,6 +27,7 @@ class Filters extends BaseConfig
 		'login'      => LoginFilter::class,
 		'role'       => RoleFilter::class,
 		'permission' => PermissionFilter::class,
+		'public'     => PublicFilter::class,
 		'manage'     => ManageFilter::class,
 	];
 
@@ -41,6 +43,7 @@ class Filters extends BaseConfig
 			// 'csrf',
 		],
 		'after'  => [
+			'public'  => ['except' => ['api/*', 'manage*', 'actions*', 'emails/templates*', 'workflows*']],
 			'toolbar' => ['except' => 'api/*'],
 			// 'honeypot',
 		],
@@ -68,6 +71,9 @@ class Filters extends BaseConfig
 	 */
 	public $filters = [
 		'login'  => ['before' => ['account*', 'files*', 'jobs*']],
-		'manage' => ['before' => ['manage*', 'actions*', 'workflows*']],
+		'manage' => [
+			'before' => ['manage*', 'actions*', 'emails/templates*', 'workflows*'],
+			'after'  => ['manage*', 'actions*', 'emails/templates*', 'workflows*'],
+		],
 	];
 }

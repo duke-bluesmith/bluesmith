@@ -10,7 +10,7 @@ $current = ' <span class="sr-only">(current)</span>';
 
 	<!--Mobile meta-data -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 	<meta name="description" content="Bluesmith 3D Print Job Management" />
 	<meta name="keywords" content="Bluesmith,3D print,job,manage" />
 	<meta name="author" content="Duke University OIT" />
@@ -47,7 +47,7 @@ $current = ' <span class="sr-only">(current)</span>';
 					<a href="<?= site_url() ?>"><?= $settings->brandName ?></a>
 				</p>
 			</div>
-			
+
 			<div id="banner-tools">
 
 				<?= themes_form('themed-select custom-select custom-select-sm') ?>
@@ -65,43 +65,20 @@ $current = ' <span class="sr-only">(current)</span>';
 			</div>
     	</div>
 	</header>
-	
+
 	<nav id="menu" class="navbar navbar-expand-lg <?= (theme()->dark) ? 'navbar-dark' : 'navbar-light' ?>" role="navigation">
 		<div class="container">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-		
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item<?= $menu == 'home' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url() ?>"><i class="fas fa-home"></i> Home<?= $menu == 'home' ? $current : '' ?></a>
-					</li>
-					<li class="nav-item<?= $menu == 'options' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('about/options') ?>"><i class="fas fa-cogs"></i> Options<?= $menu == 'options' ? $current : '' ?></a>
-					</li>
-					<li class="nav-item<?= $menu == 'files' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('files') ?>"><i class="fas fa-file-alt"></i> My files<?= $menu == 'files' ? $current : '' ?></a>
-					</li>
-					<li class="nav-item<?= $menu == 'jobs' ? ' active' : '' ?>">
-						<a class="nav-link" href="<?= site_url('account/jobs') ?>"><i class="fas fa-cubes"></i> Jobs<?= $menu == 'jobs' ? $current : '' ?></a>
-					</li>
-
-					<?php if (has_permission('manageAny')): ?>
-
-					<li class="nav-item">
-						<a class="nav-link" href="<?= site_url('manage') ?>"><i class="fas fa-user-shield"></i> Manage</a>
-					</li>
-
-					<?php endif; ?>
-	
-				</ul>
+				{{public-menu}}
 			</div>
 		</div>
 	</nav>
-		
+
 	<?= service('alerts')->display() ?>
-	
+
 	<main id="main" role="main" class="container my-5">
 		<?= $this->renderSection('main') ?>
 	</main>
@@ -110,7 +87,7 @@ $current = ' <span class="sr-only">(current)</span>';
 		<div class="float-left">
 			<a href="<?= $settings->orgUrl ?>"><img src="<?= base_url($settings->orgLogo) ?>" height="45" alt="logo"></a>
 		</div>
-			
+
 		<div class="float-right copyright">
 			&copy; <?= date('Y') ?>
 			<?= $settings->orgName ?>
@@ -118,13 +95,13 @@ $current = ' <span class="sr-only">(current)</span>';
 			<?= $settings->orgPhone ?>
 		</div>
 	</footer>
-	
+
 	<script>
 		var baseUrl = "<?= base_url() ?>";
 		var siteUrl = "<?= site_url() ?>";
 		var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 	</script>
-	
+
 	<?= service('assets')->js() ?>
 
 	<?= $this->renderSection('footerAssets') ?>

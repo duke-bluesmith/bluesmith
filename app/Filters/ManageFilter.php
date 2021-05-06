@@ -4,16 +4,41 @@ use Myth\Auth\Filters\PermissionFilter;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
+use Tatter\Menus\Filters\MenusFilter;
 
 /**
  * Filter ManageFilter
  *
- * Convenience wrapper for Myth:Auth's PermissionFilter for 'manageAny'
+ * Wrapper to the filters for the management section:
+ * - Myth:Auth's PermissionFilter for 'manageAny'
+ * - MenusFilter for 'manage-menu'
  */
-class ManageFilter extends PermissionFilter
+class ManageFilter implements FilterInterface
 {
-	public function before(RequestInterface $request, $params = null)
+	/**
+	 * Verifies management permission.
+	 *
+	 * @param RequestInterface $request
+	 * @param array|null       $arguments
+	 *
+	 * @return mixed
+	 */
+	public function before(RequestInterface $request, $arguments = null)
 	{
-		return parent::before($request, ['manageAny']);
+		return (new PermissionFilter)->before($request, ['manageAny']);
+	}
+
+	/**
+	 * Renders the manage menu and injects its content.
+	 *
+	 * @param RequestInterface  $request
+	 * @param ResponseInterface $response
+	 * @param array|null        $arguments
+	 *
+	 * @return ResponseInterface|null
+	 */
+	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
+	{
+		return (new MenusFilter)->after($request, $response, ['manage-menu']);
 	}
 }
