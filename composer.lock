@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b8b24bd97618f1f7fd84aa903355bd8",
+    "content-hash": "6e2150c34cd998cb8365ccfc792423b1",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "c6efa26e9e723a41372ccb154635d9e6032692f0"
+                "reference": "6c47861cced18438d953d6335d0898cf2be69b47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/c6efa26e9e723a41372ccb154635d9e6032692f0",
-                "reference": "c6efa26e9e723a41372ccb154635d9e6032692f0",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/6c47861cced18438d953d6335d0898cf2be69b47",
+                "reference": "6c47861cced18438d953d6335d0898cf2be69b47",
                 "shasum": ""
             },
             "require": {
@@ -82,7 +82,7 @@
                 "phpstan/phpstan": "0.12.85",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1",
-                "rector/rector": "0.10.19",
+                "rector/rector": "0.10.21",
                 "squizlabs/php_codesniffer": "^3.3"
             },
             "suggest": {
@@ -90,6 +90,11 @@
             },
             "default-branch": true,
             "type": "project",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "4.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "CodeIgniter\\": "system/"
@@ -107,7 +112,7 @@
             "scripts": {
                 "post-update-cmd": [
                     "CodeIgniter\\ComposerScripts::postUpdate",
-                    "if [ -f \"admin/setup.sh\" ]; then bash admin/setup.sh; fi"
+                    "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
                 ],
                 "analyze": [
                     "phpstan analyze"
@@ -127,7 +132,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-05-06T14:17:24+00:00"
+            "time": "2021-05-10T15:24:59+00:00"
         },
         {
             "name": "components/jquery",
@@ -488,16 +493,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "19a9673b833cc37770439097b381d86cd125bfe8"
+                "reference": "2651c497f005de305c7ba3f232cbd87b8c00ee8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/19a9673b833cc37770439097b381d86cd125bfe8",
-                "reference": "19a9673b833cc37770439097b381d86cd125bfe8",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2651c497f005de305c7ba3f232cbd87b8c00ee8c",
+                "reference": "2651c497f005de305c7ba3f232cbd87b8c00ee8c",
                 "shasum": ""
             },
             "require": {
@@ -585,7 +590,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-01T19:00:49+00:00"
+            "time": "2021-05-08T16:08:00+00:00"
         },
         {
             "name": "myth/auth",
@@ -1784,16 +1789,16 @@
         },
         {
             "name": "tatter/menus",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-menus.git",
-                "reference": "2937bed80f72bfa48da7dba9fed96b65a7369d1a"
+                "reference": "8589d57f18c8854a19bada3bc44d73b0edd0238e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-menus/zipball/2937bed80f72bfa48da7dba9fed96b65a7369d1a",
-                "reference": "2937bed80f72bfa48da7dba9fed96b65a7369d1a",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-menus/zipball/8589d57f18c8854a19bada3bc44d73b0edd0238e",
+                "reference": "8589d57f18c8854a19bada3bc44d73b0edd0238e",
                 "shasum": ""
             },
             "require": {
@@ -1835,7 +1840,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-menus/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-menus/tree/v0.9.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-menus/tree/v0.9.3"
             },
             "funding": [
                 {
@@ -1847,7 +1852,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-29T02:09:13+00:00"
+            "time": "2021-05-05T17:44:47+00:00"
         },
         {
             "name": "tatter/outbox",
@@ -1924,35 +1929,34 @@
         },
         {
             "name": "tatter/permits",
-            "version": "v2.1.5",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-permits.git",
-                "reference": "c04d7c7db198d0a9117c58150055c9ef08b5519c"
+                "reference": "edc1b7e875cf91e12776a3825e70d0c1b409cab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/c04d7c7db198d0a9117c58150055c9ef08b5519c",
-                "reference": "c04d7c7db198d0a9117c58150055c9ef08b5519c",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/edc1b7e875cf91e12776a3825e70d0c1b409cab3",
+                "reference": "edc1b7e875cf91e12776a3825e70d0c1b409cab3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "codeigniter4/codeigniter4-standard": "^1.0",
-                "fzaninotto/faker": "^1.9@dev",
-                "mikey179/vfsstream": "^1.6",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "tatter/tools": "^1.7"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Permits\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1977,9 +1981,19 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-permits/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-permits/tree/v2.1.5"
+                "source": "https://github.com/tattersoftware/codeigniter4-permits/tree/v2.1.6"
             },
-            "time": "2020-10-21T19:21:29+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-05-06T18:32:26+00:00"
         },
         {
             "name": "tatter/relations",
@@ -2851,12 +2865,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "649087d6de158dc4da73a06c7759dec5932be5a5"
+                "reference": "0021758e0bcf964237a56cb22e2f0309118b6a3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/649087d6de158dc4da73a06c7759dec5932be5a5",
-                "reference": "649087d6de158dc4da73a06c7759dec5932be5a5",
+                "url": "https://api.github.com/repos/composer/composer/zipball/0021758e0bcf964237a56cb22e2f0309118b6a3f",
+                "reference": "0021758e0bcf964237a56cb22e2f0309118b6a3f",
                 "shasum": ""
             },
             "require": {
@@ -2942,7 +2956,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-04T14:47:54+00:00"
+            "time": "2021-05-10T11:14:14+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -4324,16 +4338,16 @@
         },
         {
             "name": "nexusphp/tachycardia",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NexusPHP/tachycardia.git",
-                "reference": "f627c7e335061eb34e9756bf033b7bac1860631a"
+                "reference": "dbedecd2106a8ffa236b9587427e00f6d54b1a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NexusPHP/tachycardia/zipball/f627c7e335061eb34e9756bf033b7bac1860631a",
-                "reference": "f627c7e335061eb34e9756bf033b7bac1860631a",
+                "url": "https://api.github.com/repos/NexusPHP/tachycardia/zipball/dbedecd2106a8ffa236b9587427e00f6d54b1a63",
+                "reference": "dbedecd2106a8ffa236b9587427e00f6d54b1a63",
                 "shasum": ""
             },
             "require": {
@@ -4342,8 +4356,8 @@
                 "phpunit/phpunit": "^9.5"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
-                "nexusphp/cs-config": "^2.1",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "nexusphp/cs-config": "^3.0",
                 "phpstan/phpstan": "^0.12.82",
                 "phpstan/phpstan-strict-rules": "^0.12.9"
             },
@@ -4374,7 +4388,7 @@
                 "slack": "https://nexusphp.slack.com",
                 "source": "https://github.com/NexusPHP/tachycardia.git"
             },
-            "time": "2021-04-15T17:26:44+00:00"
+            "time": "2021-05-07T07:27:31+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4908,16 +4922,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.85",
+            "version": "0.12.86",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "20e6333c0067875ad7697cd8acdf245c6ef69d03"
+                "reference": "a84fdc53ecca7643dbc89ef8880d8b393a6c155a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/20e6333c0067875ad7697cd8acdf245c6ef69d03",
-                "reference": "20e6333c0067875ad7697cd8acdf245c6ef69d03",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a84fdc53ecca7643dbc89ef8880d8b393a6c155a",
+                "reference": "a84fdc53ecca7643dbc89ef8880d8b393a6c155a",
                 "shasum": ""
             },
             "require": {
@@ -4948,7 +4962,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.85"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.86"
             },
             "funding": [
                 {
@@ -4964,7 +4978,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-27T14:13:16+00:00"
+            "time": "2021-05-08T11:29:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
