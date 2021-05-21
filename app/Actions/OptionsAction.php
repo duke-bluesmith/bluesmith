@@ -27,7 +27,9 @@ class OptionsAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setbody(view('actions/options', [
+		helper(['currency']);
+
+		return $this->response->setBody(view('actions/options', [
 			'job'     => $this->job,
 			'methods' => model(MethodModel::class)->with('materials')->findAll(),
 			'options' => model(OptionModel::class)->findAll(),

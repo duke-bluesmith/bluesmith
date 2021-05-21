@@ -20,6 +20,11 @@
 			<label for="description">Description</label>
 			<textarea name="description" class="form-control" id="description" placeholder="description"><?= set_value('description', $material->description ?? '') ?></textarea>
 		</div>
+		
+		<div class="form-group">
+			<label for="cost">Cost (cents/mL)</label>
+			<input name="cost" type="text" class="form-control" id="cost" placeholder="Cost" value="<?= set_value('cost', $material->cost ?? '') ?>">
+		</div>
 	
 		<button class="btn btn-primary" type="submit"><?= isset($material) ? 'Update' : 'Create' ?></button>
 	

@@ -29,19 +29,26 @@ class ChargesAction extends BaseAction
 	public function get(): ResponseInterface
 	{
 		// Build out the clickable charge items for the "Details" aside
-		$items = $this->job->material ? [
-			[
+		$items = [];
+
+		// Add print method base charge
+		if (! empty($this->job->material))
+		{
+			$items[] = [
 				'name'     => $this->job->material->method->name,
 				'quantity' => null,
 				'amount'   => 0,
-			],
-			[
-				'name'     => $this->job->material->name,
-				'quantity' => 1,
-				'amount'   => 0,
-			]
-		] : [];
+			];
 
+			// Add material volume estimation
+			$items[] = [
+				'name'     => $this->job->material->name,
+				'quantity' => round($this->job->volume ?? 0, 1),
+				'amount'   => price_to_scaled((int) $this->job->material->cost),
+			];
+		}
+
+		// Add items for each selected Option
 		foreach ($this->job->options as $option)
 		{
 			$items[] = [

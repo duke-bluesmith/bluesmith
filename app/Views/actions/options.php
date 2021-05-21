@@ -50,72 +50,57 @@
 					><?= lang('Actions.chooseMyOwn') ?></button>
 				</p>
 
-				<div id="methods" class="card-deck <?= $job->material_id ? '' : 'invisible' ?>">
+				<div id="methods" class="<?= $job->material_id ? '' : 'invisible' ?>">
 
 					<?php foreach ($methods as $method): ?>
-					
-					<div class="card mb-4" style="min-width: 14rem; max-width: 33rem;">
-						<div class="card-body">
-							<h5 class="card-title"><?= $method->name ?></h5>
-							<h6 class="card-subtitle mb-2 text-muted"><?= $method->summary ?: '&nbsp;' ?></h6>
-							<button class="btn btn-info" onclick="$('#methodDetails<?= $method->id ?>').modal(); return false;"><?= lang('Pub.details') ?></button>
-						</div>
-						
-						<ul class="list-group list-group-flush">
-							
-						<?php foreach ($method->materials as $material): ?>
 
-							<li
-								class="list-group-item d-flex justify-content-between align-items-center"
+					<h4 class="mt-5"><?= $method->name ?></h4>
+					<p class="text-muted"><?= $method->summary  ?></p>
+					<p><?= $method->description ?></p>
+
+					<div class="card-deck">
+
+						<?php foreach ($method->materials as $material): ?>
+						<div class="card mb-4" style="min-width: 20rem; max-width: 33rem;">
+							<div class="card-header">
+								<h5 class="card-title">
+									<div class="custom-control custom-radio">
+										<input
+											type="radio"
+											id="material-<?= $material->id ?>"
+											name="material_id"
+											class="custom-control-input"
+											value="<?= $material->id ?>"
+											<?= $material->id == $job->material_id ? 'checked' : '' ?>
+										>
+										<label class="custom-control-label" for="material-<?= $material->id ?>"><?= $material->name ?></label>
+									</div>
+								</h5>
+								<h6 class="card-subtitle mb-2 text-muted"><?= $material->summary ?: '&nbsp;' ?></h6>
+							</div>
+							<div class="card-body">
+								<p><?= $material->description ?></p>
+							</div>
+
+							<?php if ($job->volume && $material->cost): ?>
+							<div
+								class="card-footer"
 								data-toggle="tooltip"
 								data-placement="right"
-								title="<?= htmlentities($material->description) ?>"
+								title="<?= lang('Actions.optionsEstimate') ?>"
 							>
-								<div class="custom-control custom-radio">
-									<input
-										type="radio"
-										id="material-<?= $material->id ?>"
-										name="material_id"
-										class="custom-control-input"
-										value="<?= $material->id ?>"
-										<?= $material->id == $job->material_id ? 'checked' : '' ?>
-									>
-									<label class="custom-control-label" for="material-<?= $material->id ?>"><?= $material->name ?></label>
-								</div>
+								Material cost estimate: <?= price_to_currency($job->volume * $material->cost / 1000) ?>
+								<span class="badge badge-info float-right"><i class="fas fa-info-circle"></i></span>
+							</div>
+							<?php endif; ?>
 
-								<span class="badge badge-info"><i class="fas fa-info-circle"></i></span>
-							</li>
-
+						</div>
 						<?php endforeach; ?>
 
-						</ul>
-						
-						<div class="modal fade" id="methodDetails<?= $method->id ?>" tabindex="-1" role="dialog" aria-labelledby="methodDetails<?= $method->id ?>Title" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-scrollable" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-								<h5 class="modal-title" id="methodDetails<?= $method->id ?>Title"><?= $method->name ?></h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								</div>
-								<div class="modal-body">
-									<?= $method->description ?>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-
 					</div>
-
-					</div>
-					
 					<?php endforeach; ?>
-					
-				</div>
 
+				</div>
 			</div>
 		</div>
 
