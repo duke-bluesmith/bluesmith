@@ -4,6 +4,11 @@ namespace Config;
 
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
+use PHPSTL\Exceptions\InvalidFileFormatException;
+use PHPSTL\Handler\VolumeHandler;
+use PHPSTL\Reader\STLReader;
+use Tatter\Files\Entities\File;
+use Tatter\Files\Models\FileModel;
 
 /*
  * --------------------------------------------------------------------
@@ -60,4 +65,37 @@ Events::on('pre_system', function () {
  */
 Events::on('post_controller_constructor', function () {
 	helper(['alerts', 'auth', 'html']);
+});
+
+/**
+ * Captures uploads from FilesController
+ * and processes volume for relevant files.
+ */
+Events::on('upload', function (File $file) {
+
+	// Ignore non-STL files
+	if (strtolower($file->getExtension('clientname')) !== 'stl')
+	{
+		return;
+	}
+
+	// Initialize the reader for volume calculations only (saves memory)
+	$reader = STLReader::forFile($file->getPath());
+	$reader->setHandler(new VolumeHandler());
+
+	try
+	{
+		$volume = $reader->readModel();
+	}
+	catch (InvalidFileFormatException $e)
+	{
+		log_message('error', 'Unable to calculate STL volume for ' . $file->localname . ': ' . $e->getMessage());
+		return;
+	}
+
+	// Update the row in the database
+	if ($volume > 0)
+	{
+		model(FileModel::class)->protect(false)->update($file->id, ['volume' => $volume]);
+	}
 });

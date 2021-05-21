@@ -6,6 +6,7 @@ class Material extends BaseEntity
 
 	protected $casts = [
 		'method_id' => 'int',
+		'cost'      => '?int',
 		'sortorder' => 'int',
 	];
 }

@@ -12,6 +12,7 @@ class PaymentTest extends ProjectTestCase
 	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
 
 	protected $namespace = [
+		'Tatter\Files',
 		'Tatter\Outbox',
 		'Tatter\Settings',
 		'Tatter\Themes',

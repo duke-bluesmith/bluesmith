@@ -23,6 +23,13 @@ class Job extends BaseJob
 	protected $primaryKey = 'id';
 
 	/**
+	 * Stored volume calculation
+	 *
+	 * @var int|null
+	 */
+	protected $volume;
+
+	/**
 	 * Stored Ledgers, indexed by "estimate" field
 	 *
 	 * @var array<bool,Ledger>|null
@@ -35,6 +42,41 @@ class Job extends BaseJob
 	 * @var Ledger|null
 	 */
 	protected $estimate;
+
+	/**
+	 * Calculates the total estimated volume based
+	 * on the files associated with this job.
+	 * Relies on PHPSTL having returned an accurate
+	 * number, assumed to be in cubic millimeters.
+	 *
+	 * @return int|null Null if there were no valid file volumes
+	 */
+	public function getVolume(): ?int
+	{
+		if (isset($this->volume))
+		{
+			return $this->volume;
+		}
+
+		if (empty($this->files))
+		{
+			return null;
+		}
+
+		$count         = 0;
+		$this->volume = 0;
+
+		foreach ($this->files as $file)
+		{
+			if (! empty($file->volume))
+			{
+				$count++;
+				$this->volume += $file->volume;
+			}
+		}
+
+		return $count ? $this->volume : null;
+	}
 
 	/**
 	 * Gets the estimate.

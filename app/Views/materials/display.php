@@ -9,6 +9,9 @@
 			<p>
 				<?= $material->description ?>
 			</p>
+			<?php if (is_int($material->cost)): ?>
+			<p>Cost: <?= $material->cost ?> cents/mL</p>
+			<?php endif; ?>
 		</div>
 		<div class="card-footer">
 			<a class="btn btn-primary" href="<?= site_url("manage/materials/edit/{$material->id}") ?>" onclick="return desktopModal('materials/edit/<?= $material->id ?>');">Edit</a>

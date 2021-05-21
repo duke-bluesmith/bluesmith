@@ -79,7 +79,7 @@ class Materials extends ResourcePresenter
 		}
 		
 		$data = [
-			$this->name => $object,
+			$this->name     => $object,
 			'methodOptions' => $this->methodOptions(),
 		];
 

@@ -2,6 +2,7 @@
 
 return [
 	'optionsHelp'      => 'Review and add any additional print services you require, then select your print method and material. Some services may apply additional charges.',
+	'optionsEstimate'  => 'Estimates are calculated from qualifying STL files based on their equivalent cubic millimeter volume. Automated estimates are subject to change and are not binding.',
 	'chooseForMe'      => 'Allow the consultant to select the best fit material.',
 	'chooseMyOwn'      => 'Select my own',
 	'filesHelp'        => 'Select any files (models, photos, screenshots, etc) from your Library that you would like to include with this job.',
