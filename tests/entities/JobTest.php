@@ -10,6 +10,7 @@ class JobTest extends ProjectTestCase
 	use DatabaseTestTrait;
 
     protected $namespace = [
+		'Tatter\Files',
     	'Tatter\Workflows',
     	'Myth\Auth',
     	'App',

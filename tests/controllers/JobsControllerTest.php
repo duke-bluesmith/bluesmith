@@ -20,6 +20,7 @@ class JobsControllerTest extends ProjectTestCase
 	protected $migrateOnce = true;
 	protected $seedOnce    = true;
 	protected $namespace   = [
+		'Tatter\Files',
 		'Tatter\Outbox',
 		'Tatter\Settings',
 		'Tatter\Themes',

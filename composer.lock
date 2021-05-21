@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b8b24bd97618f1f7fd84aa903355bd8",
+    "content-hash": "bad2b8bbbd97b60d340ad4286dad9fe8",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -50,17 +50,70 @@
             "time": "2021-03-22T07:30:50+00:00"
         },
         {
+            "name": "chubv/php-stl",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ChubV/php-stl.git",
+                "reference": "afe1c9ffb51bef2f82bcba2936c9b36d2eaf0fc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ChubV/php-stl/zipball/afe1c9ffb51bef2f82bcba2936c9b36d2eaf0fc8",
+                "reference": "afe1c9ffb51bef2f82bcba2936c9b36d2eaf0fc8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "nexusphp/tachycardia": "^1.0",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPSTL\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Chub",
+                    "email": "v@chub.com.ua",
+                    "homepage": "http://github.com/ChubV/"
+                }
+            ],
+            "description": "Library to parse STL file and get some statistics of the model",
+            "homepage": "http://github.com/ChubV/php-stl",
+            "keywords": [
+                "3d",
+                "stl",
+                "volume"
+            ],
+            "support": {
+                "issues": "https://github.com/ChubV/php-stl/issues",
+                "source": "https://github.com/ChubV/php-stl/tree/v2.1.0"
+            },
+            "time": "2021-05-06T20:17:49+00:00"
+        },
+        {
             "name": "codeigniter4/codeigniter4",
             "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "43e0e9611b7e527a4b927127fc6f26a1c6d123a5"
+                "reference": "de9f474f78433822fa224cfa332175fb5ca72f50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/43e0e9611b7e527a4b927127fc6f26a1c6d123a5",
-                "reference": "43e0e9611b7e527a4b927127fc6f26a1c6d123a5",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/de9f474f78433822fa224cfa332175fb5ca72f50",
+                "reference": "de9f474f78433822fa224cfa332175fb5ca72f50",
                 "shasum": ""
             },
             "require": {
@@ -71,26 +124,19 @@
                 "kint-php/kint": "^3.3",
                 "laminas/laminas-escaper": "^2.6",
                 "php": "^7.3 || ^8.0",
-                "psr/cache": "^1.0",
-                "psr/log": "^1.1",
-                "psr/simple-cache": "^1.0"
-            },
-            "provide": {
-                "psr/cache-implementation": "^1.0",
-                "psr/simple-cache-implementation": "^1.0"
+                "psr/log": "^1.1"
             },
             "require-dev": {
-                "cache/integration-tests": "^0.17.0",
                 "codeigniter4/codeigniter4-standard": "^1.0",
                 "fakerphp/faker": "^1.9",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/tachycardia": "^1.0",
-                "nikic/php-parser": "4.10.4",
-                "phpstan/phpstan": "0.12.85",
+                "phpstan/phpstan": "0.12.86",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1",
-                "rector/rector": "0.10.22",
-                "squizlabs/php_codesniffer": "^3.3"
+                "rector/rector": "0.11.2",
+                "squizlabs/php_codesniffer": "^3.3",
+                "symplify/package-builder": "^9.3"
             },
             "suggest": {
                 "ext-fileinfo": "Improves mime type detection for files"
@@ -139,7 +185,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-05-13T17:30:38+00:00"
+            "time": "2021-05-17T13:16:29+00:00"
         },
         {
             "name": "components/jquery",
@@ -605,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "b1a1313bc49267547cfd7f0691d19dff13859933"
+                "reference": "d3df41fb24b19c1362a163da4167b07efcff69e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/b1a1313bc49267547cfd7f0691d19dff13859933",
-                "reference": "b1a1313bc49267547cfd7f0691d19dff13859933",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/d3df41fb24b19c1362a163da4167b07efcff69e4",
+                "reference": "d3df41fb24b19c1362a163da4167b07efcff69e4",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +671,7 @@
                 "fakerphp/faker": "^1.9",
                 "mockery/mockery": "^1.0",
                 "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^9.1",
+                "phpunit/phpunit": "^9.2",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "default-branch": true,
@@ -686,7 +732,7 @@
                     "url": "https://www.patreon.com/lonnieezell"
                 }
             ],
-            "time": "2021-05-13T13:34:54+00:00"
+            "time": "2021-05-15T03:29:54+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -774,55 +820,6 @@
                 "source": "https://github.com/PeekLeon/datatables-all/tree/1.10.20"
             },
             "time": "2019-10-21T13:27:43+00:00"
-        },
-        {
-            "name": "psr/cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
-            },
-            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "psr/http-message",
@@ -926,57 +923,6 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
             "time": "2021-05-03T11:20:27+00:00"
-        },
-        {
-            "name": "psr/simple-cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/simple-cache.git",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\SimpleCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for simple caching",
-            "keywords": [
-                "cache",
-                "caching",
-                "psr",
-                "psr-16",
-                "simple-cache"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/simple-cache/tree/master"
-            },
-            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -1672,16 +1618,16 @@
         },
         {
             "name": "tatter/files",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-files.git",
-                "reference": "6410d9b3a41d167006126711a7a40c97bd5cffec"
+                "reference": "3085b77d1b6c984259360d7ed1c6f242414529ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/6410d9b3a41d167006126711a7a40c97bd5cffec",
-                "reference": "6410d9b3a41d167006126711a7a40c97bd5cffec",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/3085b77d1b6c984259360d7ed1c6f242414529ef",
+                "reference": "3085b77d1b6c984259360d7ed1c6f242414529ef",
                 "shasum": ""
             },
             "require": {
@@ -1703,7 +1649,7 @@
                 "codeigniter4/codeigniter4": "dev-develop",
                 "codeigniter4/codeigniter4-standard": "^1.0",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.6"
+                "tatter/tools": "^1.8"
             },
             "type": "library",
             "autoload": {
@@ -1737,7 +1683,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-files/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v2.2.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v2.2.2"
             },
             "funding": [
                 {
@@ -1749,7 +1695,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-07T20:35:34+00:00"
+            "time": "2021-05-21T14:05:24+00:00"
         },
         {
             "name": "tatter/forms",
@@ -4714,16 +4660,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.87",
+            "version": "0.12.88",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d464e00776afb711f419faffa96826dc02e4d145"
+                "reference": "464d1a81af49409c41074aa6640ed0c4cbd9bb68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d464e00776afb711f419faffa96826dc02e4d145",
-                "reference": "d464e00776afb711f419faffa96826dc02e4d145",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/464d1a81af49409c41074aa6640ed0c4cbd9bb68",
+                "reference": "464d1a81af49409c41074aa6640ed0c4cbd9bb68",
                 "shasum": ""
             },
             "require": {
@@ -4754,7 +4700,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.87"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.88"
             },
             "funding": [
                 {
@@ -4770,7 +4716,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-12T15:17:52+00:00"
+            "time": "2021-05-17T12:24:49+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -7790,16 +7736,16 @@
         },
         {
             "name": "tatter/tools",
-            "version": "v1.8.0",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-tools.git",
-                "reference": "3575e49075d95371bc7e564ae8688df4c67b2f4b"
+                "reference": "d83d725f931835f09fee6a69406f1d71b7d04e9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/3575e49075d95371bc7e564ae8688df4c67b2f4b",
-                "reference": "3575e49075d95371bc7e564ae8688df4c67b2f4b",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-tools/zipball/d83d725f931835f09fee6a69406f1d71b7d04e9e",
+                "reference": "d83d725f931835f09fee6a69406f1d71b7d04e9e",
                 "shasum": ""
             },
             "require": {
@@ -7850,7 +7796,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-tools/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.8.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-tools/tree/v1.8.1"
             },
             "funding": [
                 {
@@ -7862,7 +7808,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-13T17:37:58+00:00"
+            "time": "2021-05-13T19:04:45+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -7985,5 +7931,5 @@
         "php": "^7.3 || ^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }

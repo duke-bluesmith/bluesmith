@@ -33,6 +33,7 @@ class MenusTest extends ProjectTestCase
 	protected $seed        = AuthSeeder::class;
 	protected $namespace   = [
 		'Myth\Auth',
+		'Tatter\Files',
 		'Tatter\Workflows',
 		'App',
 	];
