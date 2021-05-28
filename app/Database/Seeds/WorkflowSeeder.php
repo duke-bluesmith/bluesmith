@@ -79,7 +79,7 @@ EOT;
 			model(StageModel::class)->insert([
 				'action_id'   => $action->id,
 				'workflow_id' => $workflow->id,
-				'required'    => $required,
+				'required'    => (int) $required,
 			]);
 		}
 	}

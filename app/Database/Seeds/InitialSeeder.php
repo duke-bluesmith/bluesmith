@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Seeder;
 use Tatter\Files\Database\Seeds\FileSeeder;
-use Tatter\Settings\Database\Seeds\SettingsSeeder;
+use Tatter\Settings\Database\Seeds\SettingSeeder;
 use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
@@ -13,7 +13,7 @@ class InitialSeeder extends Seeder
 
 		// Seeds to run
 		$seeds = [
-			SettingsSeeder::class,
+			SettingSeeder::class,
 			FileSeeder::class,
 			AuthSeeder::class,
 			EmailSeeder::class,

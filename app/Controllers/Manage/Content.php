@@ -71,10 +71,8 @@ class Content extends BaseController
 				// Try to match a setting
 				if ($setting = model(SettingModel::class)->where('name', $name)->first())
 				{
-					// Update the template and clear the cache
+					// Update the template (also clears the cache)
 					model(SettingModel::class)->update($setting->id, ['content' => $content]);
-					cache()->delete('settings-templates-' . $name);
-					cache()->delete('settings-contents-' . $name . '-' . user_id());
 				}
 			}
 

@@ -45,7 +45,7 @@ class Database extends Config
 		'swapPre'  => '',
 		'encrypt'  => false,
 		'compress' => false,
-		'strictOn' => false,
+		'strictOn' => true,
 		'failover' => [],
 		'port'     => 3306,
 	];
@@ -71,7 +71,7 @@ class Database extends Config
 		'swapPre'  => '',
 		'encrypt'  => false,
 		'compress' => false,
-		'strictOn' => false,
+		'strictOn' => true,
 		'failover' => [],
 		'port'     => 3306,
 	];
@@ -98,7 +98,7 @@ class Database extends Config
 		'swapPre'  => '',
 		'encrypt'  => false,
 		'compress' => false,
-		'strictOn' => false,
+		'strictOn' => true,
 		'failover' => [],
 		'port'     => 3306,
 	];
