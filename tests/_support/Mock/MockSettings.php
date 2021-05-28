@@ -21,13 +21,4 @@ final class MockSettings extends Settings
 	 * @var int
 	 */
 	public $currencyScale = 100;
-
-	/**
-	 * Convenience constructor to handle
-	 * dependencies.
-	 */
-	public static function create(): self
-	{
-		return new self(config('Settings'), model(SettingModel::class), service('session'));		
-	}
 }

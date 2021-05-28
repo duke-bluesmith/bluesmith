@@ -2,9 +2,12 @@
 
 use App\Database\Seeds\InitialSeeder;
 use CodeIgniter\Test\CIUnitTestCase;
+use Nexus\PHPUnit\Extension\Expeditable;
 
 class ProjectTestCase extends CIUnitTestCase
 {
+	use Expeditable;
+
 	/**
 	 * Methods to run during tearDown.
 	 *

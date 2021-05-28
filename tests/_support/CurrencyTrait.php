@@ -21,6 +21,6 @@ trait CurrencyTrait
 			helper(['currency', 'number']);
 		}
 
-		Services::injectMock('settings', MockSettings::create());
+		Services::injectMock('settings', new MockSettings());
 	}
 }
