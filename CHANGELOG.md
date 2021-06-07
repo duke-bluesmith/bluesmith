@@ -1,3 +1,11 @@
+## vv1.0.0-alpha.3 (2021-06-07)
+* 2021-05-10 - Add changelog 
+* 2021-05-21 - Add volume calculations 
+* 2021-05-21 - Add material cost & estimates 
+* 2021-05-27 - Enable strict DB 
+* 2021-05-28 - Migrate to Settings v2 
+* 2021-06-04 - Add STL previewer 
+
 ## vv1.0.0-alpha.2 (2021-05-10)
 * 2021-03-31 - Exclude Config from coverage 
 * 2021-04-01 - Apply coverage tweaks 
