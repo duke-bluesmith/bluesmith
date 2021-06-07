@@ -43,7 +43,7 @@ class Filters extends BaseConfig
 			// 'csrf',
 		],
 		'after'  => [
-			'public'  => ['except' => ['api/*', 'manage*', 'actions*', 'emails/templates*', 'files/upload', 'workflows*']],
+			'public'  => ['except' => ['api/*', 'manage*', 'actions*', 'emails/templates*', 'files/export/*', 'files/upload', 'workflows*']],
 			'toolbar' => ['except' => 'api/*'],
 			// 'honeypot',
 		],
@@ -70,7 +70,7 @@ class Filters extends BaseConfig
 	 * @var array
 	 */
 	public $filters = [
-		'login'  => ['before' => ['account*', 'files*', 'jobs*']],
+		'login'  => ['before' => ['account*', 'files*', 'jobs*', 'preview*', 'api/preview*']],
 		'manage' => [
 			'before' => ['manage*', 'actions*', 'emails/templates*', 'workflows*'],
 			'after'  => ['manage*', 'actions*', 'emails/templates*', 'workflows*', 'jobs*'],
