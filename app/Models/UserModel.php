@@ -100,7 +100,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 			'lastname'  => $faker->lastName,
 			'password'  => bin2hex(random_bytes(24)),
 			'balance'   => rand(0, 1) ? rand(100, 5000) : 0,
-			'active'    => (bool) rand(0, 20),
+			'active'    => rand(0, 20) ? 1 : 0,
 		]);
 	}
 }
