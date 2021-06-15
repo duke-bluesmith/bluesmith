@@ -1,83 +1,84 @@
 {
-	"name": "bluesmith/bluesmith",
-	"type": "project",
-	"description": "3D print job management",
-	"keywords": [
-		"codeigniter",
-		"codeigniter4",
-		"bluesmith",
-		"workflow",
-		"management",
-		"3d",
-		"printing"
-	],
-	"homepage": "https://bluesmith.oit.duke.edu",
-	"license": "Mozilla Public License Version 2.0",
-	"authors": [
-		{
-			"name": "Matthew Gatner",
-			"email": "msg8@duke.edu",
-			"homepage": "https://duke.edu",
-			"role": "Developer"
-		}
-	],
-	"require": {
-		"php": "^7.3 || ^8.0",
-		"almasaeed2010/adminlte": "^3.0",
-		"chubv/php-stl": "^2.1",
-		"codeigniter4/codeigniter4": "4.1.3",
-		"components/jquery": "^3.3",
-		"enyo/dropzone": "^5.5",
-		"fortawesome/font-awesome": "^5.8",
-		"league/commonmark": "^1.5",
-		"myth/auth": "dev-develop",
-		"nnnick/chartjs": "^2.8",
-		"peekleon/datatables-all": "^1.10",
-		"tatter/addins": "^2.0",
-		"tatter/chat": "^2.0",
-		"tatter/files": "^2.2",
-		"tatter/forms": "^0.9",
-		"tatter/menus": "^0.9.0",
-		"tatter/workflows": "^4.0",
-		"tinymce/tinymce": "^5.0",
-		"twbs/bootstrap": "^4.3"
-	},
-	"require-dev": {
-		"tatter/tools": "^1.7"
-	},
-	"autoload": {
-		"exclude-from-classmap": [
-			"**/Database/Migrations/**"
-		]
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Tests\\Support\\": "tests/_support"
-		}
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/codeigniter4/codeigniter4"
-		},
-		{
-			"type": "vcs",
-			"url": "https://github.com/lonnieezell/myth-auth"
-		},
-		{
-			"type": "composer",
-			"url": "https://asset-packagist.org"
-		}
-	],
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"scripts": {
-		"post-update-cmd": [
-			"php spark assets:publish"
-		],
-		"analyze": "phpstan analyze",
-		"mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
-		"style": "phpcbf --standard=./vendor/codeigniter4/codeigniter4-standard/CodeIgniter4 tests/ app/",
-		"test": "phpunit"
-	}
+    "name": "bluesmith/bluesmith",
+    "type": "project",
+    "description": "3D print job management",
+    "keywords": [
+        "codeigniter",
+        "codeigniter4",
+        "bluesmith",
+        "workflow",
+        "management",
+        "3d",
+        "printing"
+    ],
+    "homepage": "https://bluesmith.oit.duke.edu",
+    "license": "Mozilla Public License Version 2.0",
+    "authors": [
+        {
+            "name": "Matthew Gatner",
+            "email": "msg8@duke.edu",
+            "homepage": "https://duke.edu",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "almasaeed2010/adminlte": "^3.0",
+        "chubv/php-stl": "^2.1",
+        "codeigniter4/codeigniter4": "4.1.3",
+        "components/jquery": "^3.3",
+        "enyo/dropzone": "^5.5",
+        "fortawesome/font-awesome": "^5.8",
+        "league/commonmark": "^1.5",
+        "myth/auth": "dev-develop",
+        "nnnick/chartjs": "^2.8",
+        "peekleon/datatables-all": "^1.10",
+        "tatter/addins": "^2.0",
+        "tatter/chat": "^2.0",
+        "tatter/files": "^2.2",
+        "tatter/forms": "^0.9",
+        "tatter/menus": "^0.9.0",
+        "tatter/workflows": "^4.0",
+        "tinymce/tinymce": "^5.0",
+        "twbs/bootstrap": "^4.3"
+    },
+    "require-dev": {
+        "tatter/tools": "^1.10"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Support\\": "tests/_support"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/codeigniter4/codeigniter4"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/lonnieezell/myth-auth"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-update-cmd": [
+            "php spark assets:publish"
+        ],
+        "analyze": "phpstan analyze",
+        "mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
+        "patch": "patch",
+        "style": "php-cs-fixer fix --verbose --ansi",
+        "test": "phpunit"
+    }
 }
