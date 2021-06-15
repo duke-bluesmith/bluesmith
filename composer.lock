@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d5bb80232071df28012d434ea7c39dd",
+    "content-hash": "ac533d4f0b4c58f8e59b7d784d0ff1c3",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -650,12 +650,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "65173f11781afba0479dc7b0ccf9e6639fca1e81"
+                "reference": "f2aa27ee005d3494e5d737f54a6b13e9b77d7119"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/65173f11781afba0479dc7b0ccf9e6639fca1e81",
-                "reference": "65173f11781afba0479dc7b0ccf9e6639fca1e81",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/f2aa27ee005d3494e5d737f54a6b13e9b77d7119",
+                "reference": "f2aa27ee005d3494e5d737f54a6b13e9b77d7119",
                 "shasum": ""
             },
             "require": {
@@ -731,7 +731,7 @@
                     "url": "https://www.patreon.com/lonnieezell"
                 }
             ],
-            "time": "2021-06-10T14:13:30+00:00"
+            "time": "2021-06-14T13:23:29+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -1484,16 +1484,16 @@
         },
         {
             "name": "tatter/chat",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-chat.git",
-                "reference": "466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8"
+                "reference": "f38b219dae78b869b7b158c74b7bd670e104a0f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8",
-                "reference": "466f0b151fba1b87e7e7a9a6d208e2c8bda1acc8",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/f38b219dae78b869b7b158c74b7bd670e104a0f9",
+                "reference": "f38b219dae78b869b7b158c74b7bd670e104a0f9",
                 "shasum": ""
             },
             "require": {
@@ -1507,7 +1507,7 @@
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.6"
+                "tatter/tools": "^1.10"
             },
             "type": "library",
             "autoload": {
@@ -1540,7 +1540,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-chat/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.0.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -1552,7 +1552,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-05T17:58:53+00:00"
+            "time": "2021-06-14T17:00:29+00:00"
         },
         {
             "name": "tatter/exports",
@@ -2556,16 +2556,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.0.6",
+            "version": "v4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "8f57851a49240565f2d16d85283c7a72e7cc1d2d"
+                "reference": "0dd3ddfdad724576799e2635fb5080b1bf87d652"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/8f57851a49240565f2d16d85283c7a72e7cc1d2d",
-                "reference": "8f57851a49240565f2d16d85283c7a72e7cc1d2d",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/0dd3ddfdad724576799e2635fb5080b1bf87d652",
+                "reference": "0dd3ddfdad724576799e2635fb5080b1bf87d652",
                 "shasum": ""
             },
             "require": {
@@ -2618,7 +2618,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.6"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.7"
             },
             "funding": [
                 {
@@ -2630,7 +2630,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-27T17:59:07+00:00"
+            "time": "2021-06-11T14:32:35+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3167,16 +3167,16 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.14.0",
+            "version": "2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "8dbe652e6029345b7380d8f260722a76a874b0f0"
+                "reference": "d469a15b916441959446d52a0f5d3fc9f7720317"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/8dbe652e6029345b7380d8f260722a76a874b0f0",
-                "reference": "8dbe652e6029345b7380d8f260722a76a874b0f0",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/d469a15b916441959446d52a0f5d3fc9f7720317",
+                "reference": "d469a15b916441959446d52a0f5d3fc9f7720317",
                 "shasum": ""
             },
             "require": {
@@ -3194,12 +3194,12 @@
                 "ergebnis/phpstan-rules": "~0.15.3",
                 "ergebnis/test-util": "^1.5.0",
                 "phpstan/extension-installer": "^1.1.0",
-                "phpstan/phpstan": "~0.12.84",
+                "phpstan/phpstan": "~0.12.89",
                 "phpstan/phpstan-deprecation-rules": "~0.12.6",
                 "phpstan/phpstan-phpunit": "~0.12.19",
                 "phpstan/phpstan-strict-rules": "~0.12.9",
-                "phpunit/phpunit": "^8.5.15",
-                "psalm/plugin-phpunit": "~0.15.2",
+                "phpunit/phpunit": "^8.5.16",
+                "psalm/plugin-phpunit": "~0.16.0",
                 "symfony/filesystem": "^5.3.0",
                 "vimeo/psalm": "^4.7.3"
             },
@@ -3244,7 +3244,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-02T10:41:17+00:00"
+            "time": "2021-06-15T08:06:45+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
@@ -5882,16 +5882,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455"
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/a90ccbddffa067b51f574dea6eb25d5680839455",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23bd5951f7ff26f12d4e3242864df3e08dec4e49",
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49",
                 "shasum": ""
             },
             "require": {
@@ -5934,7 +5934,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.2"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.3"
             },
             "funding": [
                 {
@@ -5942,7 +5942,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T15:55:19+00:00"
+            "time": "2021-06-11T13:31:12+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -6233,16 +6233,16 @@
         },
         {
             "name": "sebastian/type",
-            "version": "2.3.2",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "0d1c587401514d17e8f9258a27e23527cb1b06c1"
+                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/0d1c587401514d17e8f9258a27e23527cb1b06c1",
-                "reference": "0d1c587401514d17e8f9258a27e23527cb1b06c1",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/b8cd8a1c753c90bc1a0f5372170e3e489136f914",
+                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914",
                 "shasum": ""
             },
             "require": {
@@ -6277,7 +6277,7 @@
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
-                "source": "https://github.com/sebastianbergmann/type/tree/2.3.2"
+                "source": "https://github.com/sebastianbergmann/type/tree/2.3.4"
             },
             "funding": [
                 {
@@ -6285,7 +6285,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-04T13:02:07+00:00"
+            "time": "2021-06-15T12:49:02+00:00"
         },
         {
             "name": "sebastian/version",
@@ -7944,16 +7944,16 @@
         },
         {
             "name": "tatter/patches",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-patches.git",
-                "reference": "329af987f6da570d893ef539e298376acca9e40d"
+                "reference": "8401b5f5cc4acd8c15a41e5e5b3cadf650a72d42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-patches/zipball/329af987f6da570d893ef539e298376acca9e40d",
-                "reference": "329af987f6da570d893ef539e298376acca9e40d",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-patches/zipball/8401b5f5cc4acd8c15a41e5e5b3cadf650a72d42",
+                "reference": "8401b5f5cc4acd8c15a41e5e5b3cadf650a72d42",
                 "shasum": ""
             },
             "require": {
@@ -7987,7 +7987,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-patches/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-patches/tree/v2.0.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-patches/tree/v2.0.3"
             },
             "funding": [
                 {
@@ -7999,7 +7999,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-10T11:45:21+00:00"
+            "time": "2021-06-10T19:03:37+00:00"
         },
         {
             "name": "tatter/tools",
