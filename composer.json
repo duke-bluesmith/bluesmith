@@ -37,7 +37,7 @@
         "tatter/chat": "^2.0",
         "tatter/files": "^2.2",
         "tatter/forms": "^0.9",
-        "tatter/menus": "^0.9.0",
+        "tatter/menus": "^1.0.0",
         "tatter/workflows": "^4.0",
         "tinymce/tinymce": "^5.0",
         "twbs/bootstrap": "^4.3"
