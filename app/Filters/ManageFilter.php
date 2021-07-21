@@ -39,6 +39,6 @@ class ManageFilter implements FilterInterface
 	 */
 	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
 	{
-		return (new MenusFilter)->after($request, $response, ['manage-menu']);
+		return (new MenusFilter)->after($request, $response, ['breadcrumbs', 'manage-menu']);
 	}
 }

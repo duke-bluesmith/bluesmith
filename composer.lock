@@ -1839,16 +1839,16 @@
         },
         {
             "name": "tatter/menus",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-menus.git",
-                "reference": "ebc8448e45fc6377b2cc071c5d8c93901ba704c7"
+                "reference": "6d99479f8a52132dcc5c2ce6ce5f3406881711a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-menus/zipball/ebc8448e45fc6377b2cc071c5d8c93901ba704c7",
-                "reference": "ebc8448e45fc6377b2cc071c5d8c93901ba704c7",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-menus/zipball/6d99479f8a52132dcc5c2ce6ce5f3406881711a6",
+                "reference": "6d99479f8a52132dcc5c2ce6ce5f3406881711a6",
                 "shasum": ""
             },
             "require": {
@@ -1890,7 +1890,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-menus/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-menus/tree/v1.0.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-menus/tree/v1.0.1"
             },
             "funding": [
                 {
@@ -1902,7 +1902,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-15T20:09:24+00:00"
+            "time": "2021-07-21T20:03:24+00:00"
         },
         {
             "name": "tatter/outbox",
