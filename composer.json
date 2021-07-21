@@ -72,6 +72,7 @@
             "php spark assets:publish"
         ],
         "analyze": "phpstan analyze",
+        "inspect": "deptrac analyze --cache-file=build/deptrac.cache",
         "mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
         "patch": "patch",
         "style": "php-cs-fixer fix --verbose --ansi",
