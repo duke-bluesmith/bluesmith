@@ -26,7 +26,7 @@ class TermsAction extends BaseAction
 	{
 		return $this->response->setBody(view('actions/terms', [
 			'job'   => $this->job,
-			'page'  => model(PageModel::class)->where('name', 'TOS')->first(),
+			'page'  => model(PageModel::class)->where('name', 'Terms')->first(),
 		]));
 	}
 
