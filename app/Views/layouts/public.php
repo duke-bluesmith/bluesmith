@@ -50,16 +50,10 @@ $current = ' <span class="sr-only">(current)</span>';
 
 			<div id="banner-tools">
 
-				<?= themes_form('themed-select custom-select custom-select-sm') ?>
-
 				<?php if (logged_in()): ?>
-
 				<a href="<?= route_to('logout') ?>"><i class="fas fa-sign-out-alt"></i>Logout</a>
-
 				<?php else: ?>
-
 				<a href="<?= route_to('login') ?>"><i class="fas fa-unlock-alt"></i>Login</a>
-
 				<?php endif; ?>
 
 			</div>
