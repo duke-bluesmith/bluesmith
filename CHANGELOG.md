@@ -1,4 +1,18 @@
-## vv1.0.0-alpha.3 (2021-06-07)
+## v1.0.0-beta.2 (2021-07-22)
+* 2021-07-21 - Apply menu fixes 
+* 2021-07-21 - Protect files directory 
+* 2021-07-21 - Remove theme debug form 
+* 2021-07-21 - Fix test case 
+* 2021-07-21 - Fix favicon URLs 
+* 2021-07-21 - Fix TOS slug 
+* 2021-07-21 - Bump toolkit 
+* 2021-07-22 - Supply missing form 
+* 2021-07-22 - Add charge forwarding tests 
+* 2021-07-22 - Enforce type 
+* 2021-07-22 - Reroute legacy endpoints 
+* 2021-07-22 - Bump dependencies 
+
+## v1.0.0-alpha.3 (2021-06-07)
 * 2021-05-10 - Add changelog 
 * 2021-05-21 - Add volume calculations 
 * 2021-05-21 - Add material cost & estimates 
@@ -6,7 +20,7 @@
 * 2021-05-28 - Migrate to Settings v2 
 * 2021-06-04 - Add STL previewer 
 
-## vv1.0.0-alpha.2 (2021-05-10)
+## v1.0.0-alpha.2 (2021-05-10)
 * 2021-03-31 - Exclude Config from coverage 
 * 2021-04-01 - Apply coverage tweaks 
 * 2021-04-02 - Consolidate index methods 
