@@ -89,7 +89,7 @@ class InvoiceAction extends BaseAction
 			]);
 
 			// Add Charges from the estimate
-			foreach ($this->job->estimate->charges as $charge)
+			foreach ($this->job->getEstimate(true)->charges ?? [] as $charge)
 			{
 				model(ChargeModel::class)->insert([
 					'ledger_id' => $ledgerId,

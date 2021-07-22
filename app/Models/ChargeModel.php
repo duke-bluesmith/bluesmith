@@ -1,6 +1,8 @@
 <?php namespace App\Models;
 
 use App\Entities\Charge;
+use CodeIgniter\Test\Fabricator;
+use Faker\Generator;
 
 class ChargeModel extends BaseModel
 {
@@ -17,4 +19,21 @@ class ChargeModel extends BaseModel
 		'amount'    => 'permit_empty|integer',
 		'quantity'  => 'permit_empty|greater_than[0]',
     ];
+
+	/**
+	 * Faked data for Fabricator.
+	 *
+	 * @param Generator $faker
+	 *
+	 * @return Charge
+	 */
+	public function fake(Generator &$faker): Charge
+	{
+		return new Charge([
+			'ledger_id' => rand(1, Fabricator::getCount('ledgers') ?: 10),
+			'name'      => $faker->sentence,
+			'amount'    => rand(100, 10000),
+			'quantity'  => rand(0, 1) ? rand(1, 5) : null,
+		]);
+	}
 }
