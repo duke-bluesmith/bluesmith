@@ -32,8 +32,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::show/home');
 $routes->get('about/(:segment)', 'Pages::show/$1');
-$routes->get('jobs', 'Account::jobs');
-$routes->get('jobs/index', 'Account::jobs');
+
+// Forward legacy routes
+$routes->get('jobs', 'account/jobs');
+$routes->get('jobs/index', 'account/jobs');
+$routes->get('jobs/add', 'jobs/new');
 
 // Admin dashboard
 $routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
