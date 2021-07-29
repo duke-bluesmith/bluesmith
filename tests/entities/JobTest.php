@@ -2,6 +2,7 @@
 
 use App\Models\JobModel;
 use App\Models\LedgerModel;
+use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
@@ -127,5 +128,19 @@ class JobTest extends ProjectTestCase
 		$result = $this->job->getInvoice(false);
 
 		$this->assertNull($result);
+	}
+
+	public function testGetOwner()
+	{
+		$user1 = fake(UserModel::class);
+		$user2 = fake(UserModel::class);
+
+		model(JobModel::class)->addUserToJob($user1->id, $this->job->id);
+		model(JobModel::class)->addUserToJob($user2->id, $this->job->id);
+
+		$result = $this->job->getOwner();
+
+		$this->assertInstanceOf(User::class, $result);
+		$this->assertSame($user1->id, $result->id);
 	}
 }

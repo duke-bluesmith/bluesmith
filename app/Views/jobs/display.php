@@ -6,7 +6,8 @@
 	<p><em>This job has been deleted.</em></p>
 <?php endif; ?>
 
-	<h2><?= $job->name ?></h2>
+	<h4><?= $job->name ?></h4>
+	<h5 class="mb-3"><?= $job->owner->name ?></h5>
 
 	<div class="row">
 		<div class="col-md-8">
