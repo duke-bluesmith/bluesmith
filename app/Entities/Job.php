@@ -79,6 +79,21 @@ class Job extends BaseJob
 	}
 
 	/**
+	 * Returns the first User associated with this Job.
+	 *
+	 * @return User
+	 */
+	public function getOwner(): ?User
+	{
+		if ($users = $this->users)
+		{
+			return reset($users);
+		}
+
+		return null;
+	}
+
+	/**
 	 * Gets the estimate.
 	 *
 	 * @param bool $create Whether a new Ledger should be created if missing
