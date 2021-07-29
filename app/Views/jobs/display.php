@@ -23,6 +23,9 @@
 				<li class="nav-item">
 					<a class="nav-link" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="false">Files</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="costs-tab" data-toggle="tab" href="#costs" role="tab" aria-controls="costs" aria-selected="false">Costs</a>
+				</li>
 			</ul>
 
 			<div class="tab-content" id="tabContent">
@@ -124,6 +127,39 @@ $data = [
 echo view('Tatter\Files\Views\Formats\cards', $data);
 ?>
 
+				</div>
+
+				<div class="tab-pane fade" id="costs" role="tabpanel" aria-labelledby="costs-tab">
+
+<?php
+// Display Charges and Payments
+helper(['currency']);
+$estimate = $job->getEstimate();
+$invoice  = $job->getInvoice();
+?>
+					<h4>Estimate</h4>
+
+					<?php if ($estimate === null || empty($estimate->charges)): ?>
+					<p><em>No estimate charges have been set.</em></p>
+					<?php else: ?>
+					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
+					<?php endif; ?>
+
+					<h4>Invoice</h4>
+
+					<?php if ($invoice === null || empty($invoice->charges)): ?>
+					<p><em>No invoice charges have been set.</em></p>
+					<?php else: ?>
+					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
+					<?php endif; ?>
+
+					<h4>Payments</h4>
+
+					<?php if ($invoice === null || ! $invoice->hasPayments()): ?>
+					<p class="muted">No payments have been made.</p>
+					<?php else: ?>
+					<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
+					<?php endif; ?>
 
 				</div>
 			</div>
