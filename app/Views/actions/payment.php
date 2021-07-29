@@ -70,30 +70,7 @@
 	<h5>Payments</h5>
 
 	<?php if ($invoice->hasPayments()): ?>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Date</th>
-				<th scope="col">Method</th>
-				<th scope="col">Amount</th>
-				<th scope="col">Status</th>
-			</tr>
-		</thead>
-		<tbody>
-
-			<?php foreach ($invoice->payments as $payment): ?>
-			<tr>
-				<td>#<?= $payment->id ?></td>
-				<td><?= $payment->created_at->format('n/j/Y') ?></td>
-				<td><?= price_to_currency($payment->amount) ?></td>
-				<td><?= service('handlers', 'Merchants')->getAttributes($payment->class)['name'] ?></td>
-				<td class="<?= $payment->code ? 'text-danger' : '' ?>"><?= $payment->status ?></td>
-			</tr>
-			<?php endforeach; ?>
-
-		</tbody>
-	</table>
+	<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
 	<?php else: ?>
 	<p class="muted">No payments have been made.</p>
 	<?php endif; ?>
