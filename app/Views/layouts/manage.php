@@ -220,7 +220,7 @@
 <!-- REQUIRED SCRIPTS -->
 <script>
 	var baseUrl = "<?= base_url() ?>";
-	var siteUrl = "<?= site_url('manage') ?>";
+	var siteUrl = "<?= site_url() ?>";
 	var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 </script>
 
