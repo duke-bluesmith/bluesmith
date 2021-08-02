@@ -5,6 +5,8 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 use Tatter\Menus\Filters\MenusFilter;
+use Tatter\Menus\Breadcrumb;
+use Tatter\Menus\Menus\BreadcrumbsMenu;
 
 /**
  * Filter ManageFilter
@@ -39,6 +41,37 @@ class ManageFilter implements FilterInterface
 	 */
 	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
 	{
+		// Special handling Breadcrumbs menu handling for job routes
+		if (url_is('jobs/*') || url_is('manage/jobs/*'))
+		{
+			BreadcrumbsMenu::push(new Breadcrumb(base_url(), 'Home'));
+			BreadcrumbsMenu::push(new Breadcrumb(site_url('manage'), 'Manage'));
+
+			$segments = service('request')->getUri()->getSegments();
+
+			if (url_is('manage/jobs/show/*'))
+			{
+				BreadcrumbsMenu::push(new Breadcrumb(
+					current_url(),
+					'Job Details'
+				));
+			}
+			elseif (url_is('jobs/*') && count($segments) > 2)
+			{
+				// Next breadcrumb is the details
+				BreadcrumbsMenu::push(new Breadcrumb(
+					site_url('manage/jobs/show/' . $segments[2]),
+					'Job Details'
+				));
+
+				// Then add the Action (or "show")
+				BreadcrumbsMenu::push(new Breadcrumb(
+					current_url(),
+					ucfirst($segments[1])
+				));
+			}
+		}
+
 		return (new MenusFilter)->after($request, $response, ['breadcrumbs', 'manage-menu']);
 	}
 }
