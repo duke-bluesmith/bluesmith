@@ -1,7 +1,7 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<p>Delivery prompt here.</p>
+	<p>Mark this job as "Delviered" cnce the printed parts have been received by the client.</p>
 
 	<?= form_open('jobs/deliver/' . $job->id) ?>
 
