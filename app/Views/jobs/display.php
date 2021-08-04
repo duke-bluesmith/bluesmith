@@ -27,6 +27,9 @@
 				<li class="nav-item">
 					<a class="nav-link" id="costs-tab" data-toggle="tab" href="#costs" role="tab" aria-controls="costs" aria-selected="false">Costs</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="clients-tab" data-toggle="tab" href="#clients" role="tab" aria-controls="clients" aria-selected="false">Clients</a>
+				</li>
 			</ul>
 
 			<div class="tab-content" id="tabContent">
@@ -160,6 +163,17 @@ $invoice  = $job->getInvoice();
 					<p class="muted">No payments have been made.</p>
 					<?php else: ?>
 					<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
+					<?php endif; ?>
+
+				</div>
+
+				<div class="tab-pane fade" id="clients" role="tabpanel" aria-labelledby="clients-tab">
+					<h4><?= lang('Actions.currentClients') ?></h4>
+
+					<?php if (empty($job->users)): ?>
+					<p><em><?= lang('Actions.noClients') ?></em></p>
+					<?php else: ?>
+					<?= view('actions/clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
 					<?php endif; ?>
 
 				</div>
