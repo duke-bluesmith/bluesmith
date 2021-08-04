@@ -85,8 +85,8 @@ class JobModel extends BaseJobModel
 	{
 		return $this->builder()
 			->select('jobs.*, methods.name AS method, users.id AS user_id, users.firstname, users.lastname, workflows.name AS workflow, actions.name AS action, actions.role')
-			->join('materials', 'jobs.material_id = materials.id')
-			->join('methods', 'materials.method_id = methods.id')
+			->join('materials', 'jobs.material_id = materials.id', 'left')
+			->join('methods', 'materials.method_id = methods.id', 'left')
 			->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
 			->join('users', 'jobs_users.user_id = users.id', 'left')
 			->join('workflows', 'jobs.workflow_id = workflows.id')
