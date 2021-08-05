@@ -32,7 +32,7 @@ class AssignAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/clients/index', [
+		return $this->response->setBody(view('actions/assign', [
 			'job' => $this->job,
 		]));
 	}

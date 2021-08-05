@@ -1,11 +1,7 @@
 <?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 	
-	<?= form_open('jobs/clients/' . $job->id) ?>
-
-		<input class="btn btn-primary float-md-right" type="submit" name="submit" value="<?= lang('Pub.saveContinue') ?>">	
-
-	<?= form_close() ?>
+	<?= view('jobs/menu') ?>
 	
 	<h2 class="my-4"><?= lang('Pub.clients') ?></h2>
 	<p><?= lang('Actions.clientsHelp') ?></p>

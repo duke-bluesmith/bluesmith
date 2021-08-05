@@ -37,7 +37,7 @@ class TermsAction extends BaseAction
 	{
 		$data = service('request')->getPost();
 
-		if (empty($data['accept']))
+		if (empty($data['complete']))
 		{
 			alert('warning', lang('Actions.mustAccept'));
 			return redirect()->back();

@@ -1,11 +1,9 @@
-<?= $this->setVar('menu', $menu ?? '')->setVar('header', $header ?? 'Estimate Costs')->extend('layouts/manage') ?>
+<?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open('jobs/charges/' . $job->id) ?>
-		<input class="btn btn-primary mb-3 float-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">
+	<?= form_open() ?>
+	<?= $actionMenu ?>
 	<?= form_close() ?>
-
-	<h3><?= $job->name ?></h3>
 
 	<div class="row">
 		<div class="col-sm-6">
