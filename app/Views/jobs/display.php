@@ -146,7 +146,7 @@ $invoice  = $job->getInvoice();
 					<?php if ($estimate === null || empty($estimate->charges)): ?>
 					<p><em>No estimate charges have been set.</em></p>
 					<?php else: ?>
-					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
+					<?= view('charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
 					<?php endif; ?>
 
 					<h4>Invoice</h4>
@@ -154,15 +154,15 @@ $invoice  = $job->getInvoice();
 					<?php if ($invoice === null || empty($invoice->charges)): ?>
 					<p><em>No invoice charges have been set.</em></p>
 					<?php else: ?>
-					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
+					<?= view('charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
 					<?php endif; ?>
 
 					<h4>Payments</h4>
 
 					<?php if ($invoice === null || ! $invoice->hasPayments()): ?>
-					<p class="muted">No payments have been made.</p>
+					<p><em>No payments have been made.</em></p>
 					<?php else: ?>
-					<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
+					<?= view('payments/table', ['payments' => $invoice->payments]) ?>
 					<?php endif; ?>
 
 				</div>
@@ -173,7 +173,7 @@ $invoice  = $job->getInvoice();
 					<?php if (empty($job->users)): ?>
 					<p><em><?= lang('Actions.noClients') ?></em></p>
 					<?php else: ?>
-					<?= view('actions/clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
+					<?= view('clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
 					<?php endif; ?>
 
 				</div>

@@ -33,16 +33,26 @@ abstract class BaseAction extends ModuleBaseAction
 
 	/**
 	 * Loads frequently-needed helpers
-	 *
-	 * @param Job|null $job
-	 * @param Workflows|null $config
-	 * @param RequestInterface|null $request
-	 * @param ResponseInterface|null $response
 	 */
-	public function __construct(Job $job = null, Workflows $config = null, RequestInterface $request = null, ResponseInterface $response = null)
+	public function initialize()
 	{
-		parent::__construct($job, $config, $request, $response);
-
 		helper(['currency', 'form', 'inflector', 'number']);
+	}
+
+	/**
+	 * Renders the content within the Action layout.
+	 *
+	 * @param string $view The view file
+	 * @param array $data  Any variable data to pass to View
+	 *
+	 * @return ResponseInterface
+	 */
+	public function render(string $view, array $data = []): ResponseInterface
+	{
+		// Add layout data
+		$data['header']     = $this->header;
+		$data['actionMenu'] = view('actions/layout/menu', ['action' => $this]);
+
+		return $this->response->setBody(view($view, $data));
 	}
 }
