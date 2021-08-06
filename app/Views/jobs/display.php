@@ -1,9 +1,11 @@
 
-<?php if (is_null($job->deleted_at)): ?>
-	<a class="btn btn-danger float-md-right ml-3" href="<?= site_url('jobs/' . $job->id . '/delete') ?>" onclick="return confirm('Are you sure you want to remove this job?');">Move to Trash</a>
-	<a class="btn btn-primary float-md-right mb-3" href="<?= site_url(config('Workflows')->routeBase . '/' . $job->id) ?>">Continue Job</a>
-<?php else: ?>
+<?php if ($job->deleted_at !== null): ?>
 	<p><em>This job has been deleted.</em></p>
+<?php else: ?>
+	<a class="btn btn-danger float-md-right ml-3" href="<?= site_url('jobs/' . $job->id . '/delete') ?>" onclick="return confirm('Are you sure you want to remove this job?');">Move to Trash</a>
+	<?php if ($job->stage_id !== null): ?>
+	<a class="btn btn-primary float-md-right mb-3" href="<?= site_url(config('Workflows')->routeBase . '/' . $job->id) ?>">Continue Job</a>
+	<?php endif; ?>
 <?php endif; ?>
 
 	<h4><?= $job->name ?></h4>
@@ -146,7 +148,7 @@ $invoice  = $job->getInvoice();
 					<?php if ($estimate === null || empty($estimate->charges)): ?>
 					<p><em>No estimate charges have been set.</em></p>
 					<?php else: ?>
-					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
+					<?= view('charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
 					<?php endif; ?>
 
 					<h4>Invoice</h4>
@@ -154,15 +156,15 @@ $invoice  = $job->getInvoice();
 					<?php if ($invoice === null || empty($invoice->charges)): ?>
 					<p><em>No invoice charges have been set.</em></p>
 					<?php else: ?>
-					<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
+					<?= view('charges/table', ['mayDelete' => false, 'charges' => $invoice->charges]) ?>
 					<?php endif; ?>
 
 					<h4>Payments</h4>
 
 					<?php if ($invoice === null || ! $invoice->hasPayments()): ?>
-					<p class="muted">No payments have been made.</p>
+					<p><em>No payments have been made.</em></p>
 					<?php else: ?>
-					<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
+					<?= view('payments/table', ['payments' => $invoice->payments]) ?>
 					<?php endif; ?>
 
 				</div>
@@ -173,7 +175,7 @@ $invoice  = $job->getInvoice();
 					<?php if (empty($job->users)): ?>
 					<p><em><?= lang('Actions.noClients') ?></em></p>
 					<?php else: ?>
-					<?= view('actions/clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
+					<?= view('clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
 					<?php endif; ?>
 
 				</div>

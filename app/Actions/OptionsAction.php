@@ -18,6 +18,8 @@ class OptionsAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-cogs',
 		'summary'  => 'Client specifies method, materials, and options',
+		'header'   => 'Select Options',
+		'button'   => 'Options Selected',
 	];
 
 	/**
@@ -29,11 +31,10 @@ class OptionsAction extends BaseAction
 	{
 		helper(['currency']);
 
-		return $this->response->setBody(view('actions/options', [
-			'job'     => $this->job,
+		return $this->render('actions/options', [
 			'methods' => model(MethodModel::class)->with('materials')->findAll(),
 			'options' => model(OptionModel::class)->findAll(),
-		]));
+		]);
 	}
 
 	/**

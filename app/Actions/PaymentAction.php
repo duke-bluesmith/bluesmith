@@ -23,6 +23,8 @@ class PaymentAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-money-check',
 		'summary'  => 'Client submits payment for charges',
+		'header'   => 'Submit Payment',
+		'button'   => 'Done Paying',
 	];
 
 	/**
@@ -47,11 +49,10 @@ class PaymentAction extends BaseAction
 			}
 		}
 
-		return $this->response->setBody(view('actions/payment', [
-			'job'       => $this->job,
+		return $this->render('actions/payment', [
 			'invoice'   => $this->job->getInvoice(),
 			'merchants' => $merchants,
-		]));
+		]);
 	}
 
 	/**

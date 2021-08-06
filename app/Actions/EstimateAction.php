@@ -19,6 +19,8 @@ class EstimateAction extends BaseAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-balance-scale-right',
 		'summary'  => 'Staff issues estimate',
+		'header'   => 'Issue Estimate',
+		'button'   => 'Email Estimate',
 	];
 
 	/**
@@ -29,10 +31,9 @@ class EstimateAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/estimate', [
-			'job'      => $this->job,
+		return $this->render('actions/estimate', [
 			'estimate' => $this->job->getEstimate(),
-		]));
+		]);
 	}
 
 	/**

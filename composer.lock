@@ -108,12 +108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "4169dce2ab1cc9c0dad718e878e0d93b33315bf9"
+                "reference": "781aa9eb0a89afeaafb58c8422faf6ac776b51fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/4169dce2ab1cc9c0dad718e878e0d93b33315bf9",
-                "reference": "4169dce2ab1cc9c0dad718e878e0d93b33315bf9",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/781aa9eb0a89afeaafb58c8422faf6ac776b51fa",
+                "reference": "781aa9eb0a89afeaafb58c8422faf6ac776b51fa",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "phpstan/phpstan": "^0.12.91",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1",
-                "rector/rector": "0.11.40",
+                "rector/rector": "0.11.43",
                 "symplify/package-builder": "^9.3"
             },
             "suggest": {
@@ -185,7 +185,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2021-08-01T08:14:39+00:00"
+            "time": "2021-08-06T11:51:19+00:00"
         },
         {
             "name": "components/jquery",
@@ -278,16 +278,16 @@
         },
         {
             "name": "fortawesome/font-awesome",
-            "version": "5.15.3",
+            "version": "5.15.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "d79d85c3fad85ad1885e87ed558f4afd6fce8289"
+                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/d79d85c3fad85ad1885e87ed558f4afd6fce8289",
-                "reference": "d79d85c3fad85ad1885e87ed558f4afd6fce8289",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/7d3d774145ac38663f6d1effc6def0334b68ab7e",
+                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e",
                 "shasum": ""
             },
             "type": "library",
@@ -343,7 +343,7 @@
                 "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
                 "source": "https://github.com/FortAwesome/Font-Awesome"
             },
-            "time": "2021-03-16T18:57:33+00:00"
+            "time": "2021-08-04T19:09:22+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -2641,16 +2641,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.0.7",
+            "version": "v4.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "0dd3ddfdad724576799e2635fb5080b1bf87d652"
+                "reference": "d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/0dd3ddfdad724576799e2635fb5080b1bf87d652",
-                "reference": "0dd3ddfdad724576799e2635fb5080b1bf87d652",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca",
+                "reference": "d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca",
                 "shasum": ""
             },
             "require": {
@@ -2669,7 +2669,7 @@
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.8"
+                "tatter/tools": "^1.10"
             },
             "type": "library",
             "autoload": {
@@ -2703,7 +2703,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.7"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.10"
             },
             "funding": [
                 {
@@ -2715,7 +2715,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-11T14:32:35+00:00"
+            "time": "2021-08-06T16:02:11+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3031,16 +3031,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.13.1",
+            "version": "1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "e6e7b7d5b45a2f2abc5460cc6396480b2b1d321f"
+                "reference": "5b668aef16090008790395c02c893b1ba13f7e08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/e6e7b7d5b45a2f2abc5460cc6396480b2b1d321f",
-                "reference": "e6e7b7d5b45a2f2abc5460cc6396480b2b1d321f",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
+                "reference": "5b668aef16090008790395c02c893b1ba13f7e08",
                 "shasum": ""
             },
             "require": {
@@ -3097,9 +3097,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.1"
+                "source": "https://github.com/doctrine/annotations/tree/1.13.2"
             },
-            "time": "2021-05-16T18:07:53+00:00"
+            "time": "2021-08-05T19:00:23+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -3537,16 +3537,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.0.0",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "c15377bdfa8d1ecf186f1deadec39c89984e1167"
+                "reference": "990b979379502feb7f393d6c9aa36cc9b9765f24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c15377bdfa8d1ecf186f1deadec39c89984e1167",
-                "reference": "c15377bdfa8d1ecf186f1deadec39c89984e1167",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/990b979379502feb7f393d6c9aa36cc9b9765f24",
+                "reference": "990b979379502feb7f393d6c9aa36cc9b9765f24",
                 "shasum": ""
             },
             "require": {
@@ -3613,7 +3613,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.0.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.0.2"
             },
             "funding": [
                 {
@@ -3621,7 +3621,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-03T21:51:58+00:00"
+            "time": "2021-08-04T19:28:19+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -6372,7 +6372,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {

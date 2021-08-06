@@ -20,6 +20,8 @@ class FilesAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-file-alt',
 		'summary'  => 'Client selects or uploads files',
+		'header'   => 'Select Files',
+		'button'   => 'Files Selected',
 	];
 
 	/**
@@ -29,15 +31,10 @@ class FilesAction extends BaseAction
 
 	/**
 	 * Preloads the Files model and helper
-	 *
-	 * @param Job|null $job
-	 * @param Workflows|null $config
-	 * @param RequestInterface|null $request
-	 * @param ResponseInterface|null $response
 	 */
-	public function __construct(Job $job = null, Workflows $config = null, RequestInterface $request = null, ResponseInterface $response = null)
+	public function initialize()
 	{
-		parent::__construct($job, $config, $request, $response);
+		parent::initialize();
 
 		$this->files = new FileModel();
 		helper('files');
@@ -50,11 +47,10 @@ class FilesAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/files', [
-			'job'      => $this->job,
+		return $this->render('actions/files', [
 			'files'    => $this->files->getForUser(user_id()),
 			'selected' => array_column($this->job->files ?? [], 'id'),
-		]));
+		]);
 	}
 
 	/**

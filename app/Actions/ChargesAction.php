@@ -18,6 +18,8 @@ class ChargesAction extends BaseAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-file-invoice-dollar',
 		'summary'  => 'Staff reviews submission and sets charges',
+		'header'   => 'Estimate Costs',
+		'button'   => 'All Charges Added',
 	];
 
 	/**
@@ -58,11 +60,10 @@ class ChargesAction extends BaseAction
 			];
 		}
 
-		return $this->response->setBody(view('actions/charges/index', [
-			'job'      => $this->job,
+		return $this->render('actions/charges', [
 			'estimate' => $this->job->getEstimate(true),
 			'items'    => $items,
-		]));
+		]);
 	}
 
 	/**

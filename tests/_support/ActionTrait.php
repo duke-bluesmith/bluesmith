@@ -6,6 +6,8 @@ use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Test\FeatureResponse;
 use Tatter\Workflows\Entities\Action;
+use Tatter\Workflows\Models\StageModel;
+use Tatter\Workflows\Models\WorkflowModel;
 use RuntimeException;
 
 /**
@@ -41,6 +43,9 @@ trait ActionTrait
 		}
 
 		// Create a random Job for the Action
+		fake(WorkflowModel::class);
+		fake(StageModel::class);
+		fake(StageModel::class);
 		$this->job = fake(JobModel::class);
 
 		// Locate the Action based on its UID

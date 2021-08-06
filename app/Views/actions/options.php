@@ -1,11 +1,10 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
 	<?= form_open('jobs/options/' . $job->id) ?>
 
-		<input class="btn btn-primary float-md-right" type="submit" name="submit" value="<?= lang('Pub.saveContinue') ?>">	
-		
-		<h2 class="my-4"><?= plural(lang('Pub.jobOption')) ?></h2>
+		<?= $actionMenu ?>
+
 		<p><?= lang('Actions.optionsHelp') ?></p>
 		
 		<div class="row">

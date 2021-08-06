@@ -20,5 +20,7 @@ class PostprintAction extends PrintAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-broom',
 		'summary'  => 'Staff post-processes objects',
+		'header'   => 'Print Post-Process',
+		'button'   => 'Processing Complete',
 	];
 }

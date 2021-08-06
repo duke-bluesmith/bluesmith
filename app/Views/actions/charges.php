@@ -1,11 +1,9 @@
-<?= $this->setVar('menu', $menu ?? '')->setVar('header', $header ?? 'Estimate Costs')->extend('layouts/manage') ?>
+<?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open('jobs/charges/' . $job->id) ?>
-		<input class="btn btn-primary mb-3 float-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">
+	<?= form_open() ?>
+	<?= $actionMenu ?>
 	<?= form_close() ?>
-
-	<h3><?= $job->name ?></h3>
 
 	<div class="row">
 		<div class="col-sm-6">
@@ -58,7 +56,7 @@
 	<?php if (empty($estimate->charges)): ?>
 	<p><em>No charges have been set.</em></p>
 	<?php else: ?>
-	<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
+	<?= view('charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
 	<?php endif; ?>
 
 <?= $this->endSection() ?>

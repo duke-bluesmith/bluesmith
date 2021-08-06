@@ -18,6 +18,8 @@ class InvoiceAction extends BaseAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-receipt',
 		'summary'  => 'Staff issues an invoice for actual charges',
+		'header'   => 'Create Invoice',
+		'button'   => 'Send Invoice',
 	];
 
 	/**
@@ -27,10 +29,9 @@ class InvoiceAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/invoice', [
-			'job'     => $this->job,
+		return $this->render('actions/invoice', [
 			'invoice' => $this->job->getInvoice(true),
-		]));
+		]);
 	}
 
 	/**
@@ -41,6 +42,22 @@ class InvoiceAction extends BaseAction
 	public function post(): ?ResponseInterface
 	{
 		return null;
+	}
+
+	/**
+	 * Removes a single Charge.
+	 *
+	 * @return RedirectResponse
+	 */
+	public function delete(): ResponseInterface
+	{
+		if ($chargeId = service('request')->getPost('charge_id'))
+		{
+			model(ChargeModel::class)->delete($chargeId);
+			alert('warning', 'Charge removed.');
+		}
+
+		return redirect()->back();
 	}
 
 	/**

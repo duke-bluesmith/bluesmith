@@ -17,6 +17,8 @@ class TermsAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-actions',
 		'summary'  => 'Client accepts terms of service',
+		'header'   => 'Terms of Service',
+		'button'   => 'Accept the Terms',
 	];
 
 	/**
@@ -24,10 +26,10 @@ class TermsAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/terms', [
+		return $this->render('actions/terms', [
 			'job'   => $this->job,
 			'page'  => model(PageModel::class)->where('name', 'Terms')->first(),
-		]));
+		]);
 	}
 
 	/**
@@ -37,7 +39,7 @@ class TermsAction extends BaseAction
 	{
 		$data = service('request')->getPost();
 
-		if (empty($data['accept']))
+		if (empty($data['complete']))
 		{
 			alert('warning', lang('Actions.mustAccept'));
 			return redirect()->back();

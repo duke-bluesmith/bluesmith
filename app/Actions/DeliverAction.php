@@ -19,6 +19,8 @@ class DeliverAction extends BaseAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-truck',
 		'summary'  => 'Staff delivers objects to client',
+		'header'   => 'Delivery',
+		'button'   => 'Delivery Complete',
 	];
 
 	/**
@@ -28,9 +30,7 @@ class DeliverAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/deliver', [
-			'job' => $this->job,
-		]));
+		return $this->render('actions/deliver');
 	}
 
 	/**
