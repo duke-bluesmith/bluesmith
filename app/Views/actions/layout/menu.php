@@ -1,11 +1,11 @@
 
+	<input class="btn btn-success float-md-right" type="submit" name="complete" value="<?= $action->button ?>">
+
 	<?php if (! $action->job->stage->required && $stage = $action->job->next()): ?>
-	<a class="btn btn-link float-right" href="<?= site_url($stage->action->getRoute($action->job->id)) ?>" role="button">
+	<a class="btn btn-link float-right" href="<?= site_url($stage->action->getRoute($action->job->id)) ?>" role="button" onclick="return confirm('Are you sure you want to skip this stage?');">
 		<i class="fas fa-arrow-circle-right"></i> <?= $stage->name ?>
 	</a>
 	<?php endif; ?>
-
-	<input class="btn btn-success float-md-right" type="submit" name="complete" value="<?= $action->button ?>">
 
 	<?php if ($stage = $action->job->previous()): ?>
 	<a class="btn btn-link float-right" href="<?= site_url($stage->action->getRoute($action->job->id)) ?>" role="button" onclick="return confirm('Are you sure you want to regress this job?');">

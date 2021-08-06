@@ -61,7 +61,6 @@ class ChargesAction extends BaseAction
 		}
 
 		return $this->render('actions/charges', [
-			'job'      => $this->job,
 			'estimate' => $this->job->getEstimate(true),
 			'items'    => $items,
 		]);

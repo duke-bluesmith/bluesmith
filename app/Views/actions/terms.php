@@ -1,18 +1,14 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open('jobs/terms/' . $job->id) ?>
-
-		<input class="btn btn-primary float-md-right" type="submit" name="accept" value="<?= lang('Pub.accept') ?>">	
-		
-		<div class="row">
-			<div class="col">
-
-				<?= $page->content ?? lang('Actions.genericTerms') ?></p>
-				
-			</div>
-		</div>
-	
+	<?= form_open() ?>
+	<?= $actionMenu ?>
 	<?= form_close() ?>
+
+	<div class="row">
+		<div class="col">
+			<?= $page->content ?? '<p>' . lang('Actions.genericTerms') . '</p>' ?>
+		</div>
+	</div>
 
 <?= $this->endSection() ?>

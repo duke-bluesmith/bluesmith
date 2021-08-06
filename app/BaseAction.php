@@ -49,8 +49,10 @@ abstract class BaseAction extends ModuleBaseAction
 	 */
 	public function render(string $view, array $data = []): ResponseInterface
 	{
+		$data['job'] = $this->job;
+
 		// Add layout data
-		$data['header']     = $this->header;
+		$data['header']     = $this->attributes['header'];
 		$data['actionMenu'] = view('actions/layout/menu', ['action' => $this]);
 
 		return $this->response->setBody(view($view, $data));

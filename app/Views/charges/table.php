@@ -21,7 +21,7 @@
 				<td><?= $charge->getPrice(true) ?></td>
 				<?php if ($mayDelete): ?>
 				<td>
-					<?= view('actions/charges/delete', ['charge' => $charge]) ?>
+					<?= view('charges/delete', ['charge' => $charge]) ?>
 				</td>
 				<?php endif; ?>
 			</div>

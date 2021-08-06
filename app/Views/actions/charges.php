@@ -56,7 +56,7 @@
 	<?php if (empty($estimate->charges)): ?>
 	<p><em>No charges have been set.</em></p>
 	<?php else: ?>
-	<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
+	<?= view('charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
 	<?php endif; ?>
 
 <?= $this->endSection() ?>

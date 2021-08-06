@@ -1,14 +1,10 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
+<?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
 	<?= form_open() ?>
-
-		<input class="btn btn-primary float-md-right" type="submit" name="complete" value="<?= lang('Pub.complete') ?>">	
-
+	<?= $actionMenu ?>
 	<?= form_close() ?>
 
-	<h2><?= $action ?></h2>
-	<h3><?= $job->name ?></h3>
 	<div class="row">
 		<div class="col-sm-6">
 			<h5>Details</h5>
@@ -44,7 +40,7 @@
 			<?php if (empty($estimate->charges)): ?>
 			<p>No charges have been set.</p>
 			<?php else: ?>
-			<?= view('actions/charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
+			<?= view('charges/table', ['mayDelete' => false, 'charges' => $estimate->charges]) ?>
 			<?php endif; ?>
 
 			<span class="float-right h5">Total: <?= $estimate->getTotal(true) ?></span>

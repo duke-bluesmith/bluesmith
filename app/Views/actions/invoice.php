@@ -1,11 +1,9 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/manage') ?>
+<?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open('jobs/invoice/' . $job->id) ?>
-		<input class="btn btn-primary float-md-right" type="submit" name="send" value="<?= lang('Pub.send') ?>">
+	<?= form_open() ?>
+	<?= $actionMenu ?>
 	<?= form_close() ?>
-
-	<h2 class="mb-4"><?= lang('Pub.invoice') ?></h2>
 
 	<div class="row mb-4">
 		<div class="col">
@@ -50,7 +48,7 @@
 			<?php if (empty($invoice->charges)): ?>
 			<p class="text-danger">No charges have been set.</p>
 			<?php else: ?>
-			<?= view('actions/charges/table', ['mayDelete' => true, 'charges' => $invoice->charges]) ?>
+			<?= view('charges/table', ['mayDelete' => true, 'charges' => $invoice->charges]) ?>
 			<?php endif; ?>
 		</div>
 	</div>

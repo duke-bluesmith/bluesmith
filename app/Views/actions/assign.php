@@ -1,9 +1,10 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 	
-	<?= view('jobs/menu') ?>
-	
-	<h2 class="my-4"><?= lang('Pub.clients') ?></h2>
+	<?= form_open() ?>
+	<?= $actionMenu ?>
+	<?= form_close() ?>
+
 	<p><?= lang('Actions.clientsHelp') ?></p>
 		
 	<div class="row">
@@ -31,7 +32,7 @@
 			<?php if (empty($job->users)): ?>
 			<p><em><?= lang('Actions.noClients') ?></em></p>
 			<?php else: ?>
-			<?= view('actions/clients/table', ['mayDelete' => true, 'users' => $job->users]) ?>
+			<?= view('clients/table', ['mayDelete' => true, 'users' => $job->users]) ?>
 			<?php endif; ?>
 
 		</div>

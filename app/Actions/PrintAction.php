@@ -17,6 +17,8 @@ class PrintAction extends BaseAction
 		'role'     => 'manageJobs',
 		'icon'     => 'fas fa-cubes',
 		'summary'  => 'Staff prints objects',
+		'header'   => 'Print',
+		'button'   => 'Printing Complete',
 	];
 
 	/**
@@ -26,11 +28,9 @@ class PrintAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/print', [
-			'action'   => $this->attributes['name'],
-			'job'      => $this->job,
+		return $this->render('actions/print', [
 			'estimate' => $this->job->getEstimate(),
-		]));
+		]);
 	}
 
 	/**

@@ -1,12 +1,12 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
 	<?php if ($invoice->due === 0): ?>
 	<?= form_open('jobs/payment/' . $job->id) ?>
-
-	<input class="btn btn-primary float-md-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">	
-
+		<?= $actionMenu ?>
 	<?= form_close() ?>
+	<?php else: ?>
+	<?= $actionMenu ?>
 	<?php endif; ?>
 
 	<h3 class="mb-3"><?= $job->name ?></h3>
@@ -21,15 +21,8 @@
 		<dd class="col-3 col-lg-9"><?= $invoice->getDue(true) ?></dd>
 	</dl>
 
-	<?php if ($invoice->getDue() === 0): ?>
-
+	<?php if ($invoice->due === 0): ?>
 	<p class="text-success">Payment is complete!</p>
-	<?= form_open('jobs/payment/' . $job->id) ?>
-
-	<input class="btn btn-primary float-md-right" type="submit" name="save" value="<?= lang('Pub.saveContinue') ?>">	
-
-	<?= form_close() ?>
-
 	<?php elseif (count($merchants)): ?>
 
 	<h5 class="my-3"><?= lang('Payment.add') ?></h5>
@@ -70,7 +63,7 @@
 	<h5>Payments</h5>
 
 	<?php if ($invoice->hasPayments()): ?>
-	<?= view('actions/payments/table', ['payments' => $invoice->payments]) ?>
+	<?= view('payments/table', ['payments' => $invoice->payments]) ?>
 	<?php else: ?>
 	<p class="muted">No payments have been made.</p>
 	<?php endif; ?>

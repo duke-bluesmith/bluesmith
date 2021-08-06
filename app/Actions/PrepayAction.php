@@ -14,5 +14,7 @@ class PrepayAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-comments-dollar',
 		'summary'  => 'Client submits payment in advance',
+		'header'   => 'Prepay',
+		'button'   => 'Prepayment Processed',
 	];
 }

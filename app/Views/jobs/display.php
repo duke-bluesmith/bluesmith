@@ -1,9 +1,11 @@
 
-<?php if (is_null($job->deleted_at)): ?>
-	<a class="btn btn-danger float-md-right ml-3" href="<?= site_url('jobs/' . $job->id . '/delete') ?>" onclick="return confirm('Are you sure you want to remove this job?');">Move to Trash</a>
-	<a class="btn btn-primary float-md-right mb-3" href="<?= site_url(config('Workflows')->routeBase . '/' . $job->id) ?>">Continue Job</a>
-<?php else: ?>
+<?php if ($job->deleted_at !== null): ?>
 	<p><em>This job has been deleted.</em></p>
+<?php else: ?>
+	<a class="btn btn-danger float-md-right ml-3" href="<?= site_url('jobs/' . $job->id . '/delete') ?>" onclick="return confirm('Are you sure you want to remove this job?');">Move to Trash</a>
+	<?php if ($job->stage_id !== null): ?>
+	<a class="btn btn-primary float-md-right mb-3" href="<?= site_url(config('Workflows')->routeBase . '/' . $job->id) ?>">Continue Job</a>
+	<?php endif; ?>
 <?php endif; ?>
 
 	<h4><?= $job->name ?></h4>

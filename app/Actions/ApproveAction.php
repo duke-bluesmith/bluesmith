@@ -15,6 +15,8 @@ class ApproveAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-thumbs-up',
 		'summary'  => 'Client approves the estimate',
+		'header'   => 'Approval',
+		'button'   => 'Approve Estimate',
 	];
 
 	/**
@@ -25,10 +27,9 @@ class ApproveAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/approve', [
-			'job'      => $this->job,
+		return $this->render('actions/approve', [
 			'estimate' => $this->job->getEstimate(),
-		]));
+		]);
 	}
 
 	/**

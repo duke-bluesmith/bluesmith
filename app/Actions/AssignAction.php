@@ -23,6 +23,8 @@ class AssignAction extends BaseAction
 		'role'     => '',
 		'icon'     => 'fas fa-user-friends',
 		'summary'  => 'Client includes other clients',
+		'header'   => 'Assign Clients',
+		'button'   => 'Clients Assigned',
 	];
 
 	/**
@@ -32,9 +34,7 @@ class AssignAction extends BaseAction
 	 */
 	public function get(): ResponseInterface
 	{
-		return $this->response->setBody(view('actions/assign', [
-			'job' => $this->job,
-		]));
+		return $this->render('actions/assign');
 	}
 
 	/**
