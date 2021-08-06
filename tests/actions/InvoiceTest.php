@@ -59,6 +59,7 @@ class InvoiceTest extends ProjectTestCase
 	{
 		$response = $this->expectResponse('get');
 
-		$response->assertSee(lang('Pub.invoice'), 'h2');
+		$response->assertSee(lang('Pub.clients'), 'h4');
+		$response->assertSee('Add a Charge', 'h4');
 	}
 }
