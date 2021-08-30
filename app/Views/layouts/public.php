@@ -19,12 +19,12 @@ $current = ' <span class="sr-only">(current)</span>';
 	<title>Bluesmith<?= empty($title) ? '' : " | {$title}" ?></title>
 
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/favicon/apple-touch-icon.png') ?>">
+	<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('assets/favicon/apple-touch-icon.png') ?>">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/favicon/favicon-32x32.png') ?>">
 	<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/favicon/favicon-16x16.png') ?>">
 	<link rel="manifest" href="<?= base_url('assets/favicon/site.webmanifest') ?>">
 	<link rel="mask-icon" href="<?= base_url('assets/favicon/safari-pinned-tab.svg') ?>" color="#012169">
-	<link rel="shortcut icon" href="<?= base_url('assets/favicon/favicon.ico"') ?>>
+	<link rel="shortcut icon" href="<?= base_url('assets/favicon/favicon.ico') ?>">
 	<meta name="msapplication-TileColor" content="#2b5797">
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#ffffff">
