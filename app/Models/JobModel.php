@@ -23,8 +23,8 @@ class JobModel extends BaseJobModel
 	protected $returnType	 = Job::class;
 	protected $allowedFields = ['name', 'summary', 'workflow_id', 'stage_id', 'material_id'];
 
-	protected $afterInsert = ['clearCompiledRows'];
-	protected $afterUpdate = ['clearCompiledRows'];
+	protected $afterInsert = ['clearCompiledRows', 'logInsert'];
+	protected $afterUpdate = ['clearCompiledRows', 'logUpdate'];
 	protected $afterDelete = ['clearCompiledRows'];
 
 	/**

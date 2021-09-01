@@ -36,9 +36,11 @@ class Users extends BaseController
 	 */
 	public function index()
 	{
+		$this->model->clearCompiledRows();
+
 		return view('users/index', [
 			'title' => 'All Users',
-			'rows'  => $this->model->clearCompiledRows()->getCompiledRows(null, 'updated_at', false),
+			'rows'  => $this->model->getCompiledRows(null, 'updated_at', false),
 		]);
 	}
 
