@@ -28,14 +28,15 @@ trait CompiledRowsTrait
 
 	/**
 	 * Removes cached Job rows.
+	 * Must be compatible with model events.
 	 *
-	 * @return $this
+	 * @return array
 	 */
-	public function clearCompiledRows(): self
+	public function clearCompiledRows(array $eventData = null): array
 	{
 		cache()->delete($this->table . 'rows');
 
-		return $this;
+		return $eventData ?? [];
 	}
 
 	/**
