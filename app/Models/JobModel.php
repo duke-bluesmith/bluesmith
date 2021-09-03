@@ -43,6 +43,22 @@ class JobModel extends BaseJobModel
 	protected $pivotKey = 'job_id';
 
 	/**
+	 * Associates a new Job with its User.
+	 *
+	 * @param array $eventData
+	 */
+	protected function logInsert(array $eventData)
+	{
+		parent::logInsert($eventData);
+
+		if ($eventData['result'] && $userId = user_id()) {
+			$this->addUserToJob($userId, $eventData['id']);
+		}
+
+		return $eventData;
+	}
+
+	/**
 	 * Assigns a single Email to a single job.
 	 *
 	 * @param int $emailId
