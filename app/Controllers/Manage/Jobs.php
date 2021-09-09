@@ -44,20 +44,6 @@ class Jobs extends BaseController
 	}
 
 	/**
-	 * Displays the compiled rows awaiting staff input
-	 *
-	 * @return string
-	 */
-	public function staff(): string
-	{
-		$filter = function($row) {
-			return is_null($row['deleted_at']) && $row['role'] === 'manageJobs';
-		};
-
-		return $this->index('Action Items', $filter);
-	}
-
-	/**
 	 * Displays the active compiled rows
 	 *
 	 * @return string

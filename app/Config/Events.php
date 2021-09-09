@@ -99,3 +99,10 @@ Events::on('upload', function (File $file) {
 		model(FileModel::class)->protect(false)->update($file->id, ['volume' => $volume]);
 	}
 });
+
+/**
+ * Captures new Chat messages to clear Notifications.
+ */
+Events::on('chat', function (array $data) {
+	cache()->delete('notifications');
+});

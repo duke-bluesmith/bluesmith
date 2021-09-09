@@ -18,6 +18,11 @@ class ManageMenu extends BaseMenu
 	 */
 	public function __toString(): string
 	{
+		// Dashboard
+		$dashboard  = '<i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p><span class="right badge badge-warning">';
+		$dashboard .= count(service('notifications')) . '</span>';
+		$this->builder->link(site_url('manage/dashboard'), $dashboard);
+
 		// Submenus
 		$this->jobsSubmenu();
 		$this->usersSubmenu();
@@ -54,7 +59,6 @@ class ManageMenu extends BaseMenu
 						->addClass('nav nav-treeview')
 						->addParentClass('nav-item has-treeview menu-open')
 						->setActiveClassOnLink()
-						->link(site_url('manage/jobs/staff'), '<i class="far fa-circle nav-icon"></i><p>Action Items</p><span class="right badge badge-warning">12</span>')
 						->link(site_url('manage/jobs/active'), '<i class="far fa-circle nav-icon"></i><p>Active Jobs</p>')
 						->link(site_url('manage/jobs/archive'), '<i class="far fa-circle nav-icon"></i><p>Archived Jobs</p>')
 						->link(site_url('manage/jobs/all'), '<i class="far fa-circle nav-icon"></i><p>All Jobs</p>');

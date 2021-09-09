@@ -21,6 +21,7 @@ parameters:
 	scanDirectories:
 		- vendor/codeigniter4/codeigniter4/system/Helpers
 		- vendor/tatter/alerts/src/Helpers
+		- vendor/tatter/chat/src/Helpers
 		- vendor/tatter/handlers/src/Helpers
 		- vendor/myth/auth/src/Helpers
 	dynamicConstantNames:

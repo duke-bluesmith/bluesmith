@@ -96,6 +96,20 @@ class JobModel extends BaseJobModel
 	}
 
 	/**
+	 * Removes cached Job rows and Notifications.
+	 * Must be compatible with model events.
+	 *
+	 * @return array
+	 */
+	public function clearCompiledRows(array $eventData = null): array
+	{
+		cache()->delete($this->table . 'rows');
+		cache()->delete('notifications');
+
+		return $eventData ?? [];
+	}
+
+	/**
 	 * Faked data for Fabricator.
 	 *
 	 * @param Generator $faker

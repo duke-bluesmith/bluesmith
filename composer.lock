@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2e8d22e32fcd5496e9752e6d4596fa8",
+    "content-hash": "8ec8b96ea20a42d555adba88ff920a04",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1566,16 +1566,16 @@
         },
         {
             "name": "tatter/chat",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-chat.git",
-                "reference": "040215d634f1f82f926112c043f38d242498b17f"
+                "reference": "bda8c6d17cc8ee0846cb048478f9acab6b5fb064"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/040215d634f1f82f926112c043f38d242498b17f",
-                "reference": "040215d634f1f82f926112c043f38d242498b17f",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/bda8c6d17cc8ee0846cb048478f9acab6b5fb064",
+                "reference": "bda8c6d17cc8ee0846cb048478f9acab6b5fb064",
                 "shasum": ""
             },
             "require": {
@@ -1623,7 +1623,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-chat/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.1.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.1.1"
             },
             "funding": [
                 {
@@ -1635,7 +1635,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-30T20:02:26+00:00"
+            "time": "2021-09-03T20:08:59+00:00"
         },
         {
             "name": "tatter/exports",
