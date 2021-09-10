@@ -84,7 +84,7 @@ final class Notifications implements Countable, IteratorAggregate
 				'user_id'    => $row['user_id'],
 				'user_name'  => $row['firstname'] . ' ' . $row['lastname'],
 				'status'     => 'Awaiting Staff',
-				'content'    => $row['summary'],
+				'content'    => $row['summary'] ?: '[empty]',
 				'created_at' => $row['updated_at'],
 			]);
 		}
@@ -140,7 +140,7 @@ final class Notifications implements Countable, IteratorAggregate
 				'user_id'    => $user->id,
 				'user_name'  => $user->name,
 				'status'     => 'Client Message',
-				'content'    => character_limiter($row['content']),
+				'content'    => character_limiter($row['content']) ?: '[empty]',
 				'created_at' => $row['created_at'],
 			]);
 		}
