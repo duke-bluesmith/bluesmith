@@ -140,7 +140,7 @@ final class Notifications implements Countable, IteratorAggregate
 				'user_id'    => $user->id,
 				'user_name'  => $user->name,
 				'status'     => 'Client Message',
-				'content'    => character_limiter($row['content']) ?: '[empty]',
+				'content'    => character_limiter($row['content'], 100) ?: '[empty]',
 				'created_at' => $row['created_at'],
 			]);
 		}
