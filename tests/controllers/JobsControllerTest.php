@@ -147,7 +147,6 @@ class JobsControllerTest extends ProjectTestCase
 	public function indexDataProvider(): array
 	{
 		return [
-			['staff', ['staff']],
 			['active', ['staff', 'client']],
 			['archive', ['completed']],
 			['all', ['staff', 'client', 'completed']],

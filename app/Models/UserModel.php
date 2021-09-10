@@ -6,6 +6,7 @@ use CodeIgniter\Validation\ValidationInterface;
 use Faker\Generator;
 use Myth\Auth\Entities\User as MythUser;
 use Myth\Auth\Authorization\GroupModel;
+use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Models\UserModel as MythModel;
 use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 use stdClass;
@@ -39,6 +40,28 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 		// Merge properties with parent
 		$this->allowedFields   = array_merge($this->allowedFields,   $this->_allowedFields);
 		$this->validationRules = array_merge($this->validationRules, $this->_validationRules);
+	}
+
+	/**
+	 * Returns the IDs of all Users considered "staff".
+	 *
+	 * @return int[]
+	 */
+	public function findStaffIds(): array
+	{
+		if (! $permission = model(PermissionModel::class)->where('name', 'manageAny')->first())
+		{
+			return [];
+		}
+
+		$ids = $this->builder()
+			->select('users.id')
+			->join('auth_groups_users', 'users.id = auth_groups_users.user_id', 'left')
+			->join('auth_groups_permissions', 'auth_groups_permissions.group_id = auth_groups_users.group_id', 'left')
+			->where('auth_groups_permissions.permission_id', $permission['id'])
+			->get()->getResultArray();
+
+		return array_column($ids, 'id');
 	}
 
 	/**

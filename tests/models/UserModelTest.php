@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use CodeIgniter\Test\DatabaseTestTrait;
+use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Test\Fakers\GroupFaker;
 use Myth\Auth\Test\Fakers\UserFaker;
 use Tests\Support\ProjectTestCase;
@@ -15,6 +16,20 @@ class UserModelTest extends ProjectTestCase
 		$model = new UserModel();
 
 		$this->assertContains('firstname', $model->allowedFields); // @phpstan-ignore-line
+	}
+
+	public function testStaffIds()
+	{
+		$user  = fake(UserFaker::class);
+		$group = model(GroupFaker::class)->where('name', 'Administrators')->first();
+
+		model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
+
+		$result = model(UserModel::class)->findStaffIds();
+
+		$this->assertIsArray($result);
+		$this->assertCount(1, $result);
+		$this->assertSame($user->id, $result[0]);
 	}
 
 	public function testGroups()
