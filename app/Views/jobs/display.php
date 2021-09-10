@@ -9,7 +9,7 @@
 <?php endif; ?>
 
 	<h4><?= $job->name ?></h4>
-	<h5 class="mb-3"><?= $job->owner->name ?></h5>
+	<h5 class="mb-3">Job #<?= $job->id ?>, <?= $job->owner->name ?></h5>
 
 	<div class="row">
 		<div class="col-md-8">
@@ -65,6 +65,10 @@
 
 					<table class="table">
 						<tbody>
+							<tr>
+								<th scope="row">Created</th>
+								<td><?= $job->created_at->format('F j, Y, g:ia') ?></td>
+							</tr>
 
 					<?php if ($job->material): ?>
 

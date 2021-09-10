@@ -54,7 +54,7 @@ class Jobs extends BaseController
 			return is_null($row['deleted_at']) && ! is_null($row['stage_id']);
 		};
 
-		return $this->index('Active Jobs', $filter);
+		return $this->index('Active Jobs', $filter, 'created_at', false);
 	}
 
 	/**
