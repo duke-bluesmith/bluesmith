@@ -89,9 +89,9 @@ class MenusTest extends ProjectTestCase
 
 	public function testManageMenu()
 	{
-		// Make sure any lingering Notifications do no throw off the result
-		cache()->delete('notifications');
-		Services::resetSingle('notifications');
+		// Make sure any lingering Notices do no throw off the result
+		cache()->delete('notices');
+		Services::resetSingle('notices');
 
 		$result = (string) (new ManageMenu);
 

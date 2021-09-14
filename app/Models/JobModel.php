@@ -112,7 +112,7 @@ class JobModel extends BaseJobModel
 	}
 
 	/**
-	 * Removes cached Job rows and Notifications.
+	 * Removes cached Job rows and Notices.
 	 * Must be compatible with model events.
 	 *
 	 * @return array
@@ -120,7 +120,7 @@ class JobModel extends BaseJobModel
 	public function clearCompiledRows(array $eventData = null): array
 	{
 		cache()->delete($this->table . 'rows');
-		cache()->delete('notifications');
+		cache()->delete('notices');
 
 		return $eventData ?? [];
 	}
