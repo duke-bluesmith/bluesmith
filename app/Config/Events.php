@@ -101,8 +101,8 @@ Events::on('upload', function (File $file) {
 });
 
 /**
- * Captures new Chat messages to clear Notifications.
+ * Captures new Chat messages to clear Notices.
  */
 Events::on('chat', function (array $data) {
-	cache()->delete('notifications');
+	cache()->delete('notices');
 });

@@ -10,11 +10,11 @@ use CodeIgniter\Validation\ValidationInterface;
 use InvalidArgumentException;
 
 /**
- * Notifications Class
+ * Notices Class
  *
- * Represents a single Notification for the staff dashboard.
+ * Represents a single Notice for the staff dashboard.
  */
-class Notification extends Entity
+class Notice extends Entity
 {
 	protected $dates = ['created_at'];
 	protected $casts = [
@@ -87,7 +87,7 @@ class Notification extends Entity
 	}
 
 	/**
-	 * Returns this Notification's sort value.
+	 * Returns this Notice's sort value.
 	 *
 	 * @return int
 	 */

@@ -1,7 +1,7 @@
-<?= $this->setVar('header', 'Notifications')->extend('layouts/manage') ?>
+<?= $this->setVar('header', 'Notices')->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-<?php if ($notifications === []): ?>
+<?php if ($notices === []): ?>
 
 <p>Nothing needs attention!</p>
 
@@ -18,20 +18,20 @@
 						<th scope="col">Owner</th>
 						<th scope="col">Status</th>
 						<th scope="col">Time</th>
-						<th scope="col">Notification</th>
+						<th scope="col">notice</th>
 					</tr>
 				</thead>
 				<tbody>
 
-					<?php foreach ($notifications as $notification): ?>
+					<?php foreach ($notices as $notice): ?>
 
 					<tr>
-						<td>#<?= $notification->job_id ?></td>
-						<td><?= anchor('manage/jobs/show/' . $notification->job_id, $notification->job_name) ?></td>
-						<td><?= $notification->user_name ?></td>
-						<td><?= $notification->status ?></td>
-						<td data-order="<?= $notification->created_at->getTimestamp() ?>"><?= $notification->created_at->humanize() ?></td>
-						<td><?= $notification->content ?></td>
+						<td>#<?= $notice->job_id ?></td>
+						<td><?= anchor('manage/jobs/show/' . $notice->job_id, $notice->job_name) ?></td>
+						<td><?= $notice->user_name ?></td>
+						<td><?= $notice->status ?></td>
+						<td data-order="<?= $notice->created_at->getTimestamp() ?>"><?= $notice->created_at->humanize() ?></td>
+						<td><?= $notice->content ?></td>
 					</tr>
 
 					<?php endforeach; ?>

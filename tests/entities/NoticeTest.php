@@ -8,7 +8,7 @@ use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class NotificationTest extends ProjectTestCase
+class NoticeTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -49,7 +49,7 @@ class NotificationTest extends ProjectTestCase
 		$this->expectException('InvalidArgumentException');
 		$this->expectExceptionMessage('The content field is required.');
 
-		new Notification([
+		new Notice([
 			'job_id'     => $this->job->id,
 			'user_id'    => $this->user->id,
 			'name'       => 'Test',
@@ -60,7 +60,7 @@ class NotificationTest extends ProjectTestCase
 
 	public function testGetJob()
 	{
-		$notification = new Notification([
+		$notice = new Notice([
 			'job_id'     => $this->job->id,
 			'job_name'   => 'Test Job',
 			'user_id'    => $this->user->id,
@@ -70,14 +70,14 @@ class NotificationTest extends ProjectTestCase
 			'created_at' => new Time(),
 		]);
 
-		$result = $notification->getJob();
+		$result = $notice->getJob();
 
 		$this->assertEquals($this->job, $result);
 	}
 
 	public function testGetUser()
 	{
-		$notification = new Notification([
+		$notice = new Notice([
 			'job_id'     => $this->job->id,
 			'job_name'   => 'Test Job',
 			'user_id'    => $this->user->id,
@@ -87,7 +87,7 @@ class NotificationTest extends ProjectTestCase
 			'created_at' => new Time(),
 		]);
 
-		$result = $notification->getUser();
+		$result = $notice->getUser();
 
 		$this->assertEquals($this->user, $result);
 	}

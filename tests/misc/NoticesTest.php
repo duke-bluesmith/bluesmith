@@ -1,7 +1,7 @@
 <?php
 
-use App\Entities\Notification;
-use App\Libraries\Notifications;
+use App\Entities\Notice;
+use App\Libraries\Notices;
 use App\Models\JobModel;
 use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
@@ -10,7 +10,7 @@ use Tatter\Chat\Models\ParticipantModel;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class NotificationsTest extends ProjectTestCase
+class NoticesTest extends ProjectTestCase
 {
 	use AuthenticationTrait;
 	use DatabaseTestTrait;
@@ -32,13 +32,13 @@ class NotificationsTest extends ProjectTestCase
 		$participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
 		$messageId   = $participant->say('hello world');
 
-		$notifications = new Notifications();
+		$notices = new Notices();
 
-		$this->assertCount(1, $notifications);
+		$this->assertCount(1, $notices);
 
-		$notification = $notifications->getIterator()->current();
+		$notice = $notices->getIterator()->current();
 
-		$this->assertInstanceOf(Notification::class, $notification);
-		$this->assertSame('hello world', $notification->content);
+		$this->assertInstanceOf(Notice::class, $notice);
+		$this->assertSame('hello world', $notice->content);
 	}
 }

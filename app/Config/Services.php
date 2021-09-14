@@ -2,7 +2,7 @@
 
 namespace Config;
 
-use App\Libraries\Notifications;
+use App\Libraries\Notices;
 use CodeIgniter\Config\BaseService;
 
 /**
@@ -20,13 +20,13 @@ use CodeIgniter\Config\BaseService;
  */
 class Services extends BaseService
 {
-	public static function notifications($getShared = true)
+	public static function notices($getShared = true)
 	{
 		if ($getShared)
 		{
-			return static::getSharedInstance('notifications');
+			return static::getSharedInstance('notices');
 		}
 
-		return Notifications::createFromCache();
+		return Notices::createFromCache();
 	}
 }
