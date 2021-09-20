@@ -32,12 +32,14 @@ class NoticesTest extends ProjectTestCase
 		$participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
 		$messageId   = $participant->say('hello world');
 
-		$notices = new Notices();
+		// Verify it works with deleted items
+		model(JobModel::class)->delete($job->id);
+		model(UserModel::class)->delete($this->user->id);
 
+		$notices = new Notices();
 		$this->assertCount(1, $notices);
 
 		$notice = $notices->getIterator()->current();
-
 		$this->assertInstanceOf(Notice::class, $notice);
 		$this->assertSame('hello world', $notice->content);
 	}
