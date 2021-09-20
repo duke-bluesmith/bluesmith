@@ -7,7 +7,7 @@ class Dashboard extends BaseController
 	public function index()
 	{
 		return view('manage/dashboard', [
-			'notifications' => service('notifications'),
+			'notices' => service('notices'),
 		]);
 	}
 }
