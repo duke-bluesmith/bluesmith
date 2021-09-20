@@ -50,6 +50,8 @@ $routes->group('manage', ['namespace'=>'App\Controllers\Manage'], function($rout
 // API
 $routes->resource('api/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
 $routes->resource('api/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
+$routes->resource('api/manage/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
+$routes->resource('api/manage/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
 
  /**
  * Unsubscription
