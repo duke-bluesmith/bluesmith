@@ -131,8 +131,8 @@ final class Notices implements Countable, IteratorAggregate
 		// Create Notices from the remaining rows
 		foreach ($messages as $jobId => $row)
 		{
-			$job  = model(JobModel::class)->find($jobId);
-			$user = model(UserModel::class)->find($row['user_id']);
+			$job  = model(JobModel::class)->withDeleted()->find($jobId);
+			$user = model(UserModel::class)->withDeleted()->find($row['user_id']);
 
 			$this->notices[$jobId] = new Notice([
 				'job_id'     => $job->id,
