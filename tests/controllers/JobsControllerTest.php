@@ -7,13 +7,13 @@ use App\Models\MaterialModel;
 use App\Models\MethodModel;
 use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
-use CodeIgniter\Test\ControllerTester;
+use CodeIgniter\Test\ControllerTestTrait;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
 class JobsControllerTest extends ProjectTestCase
 {
-	use ControllerTester, DatabaseTestTrait;
+	use ControllerTestTrait, DatabaseTestTrait;
 
 	const JOBS = ['staff', 'client', 'completed', 'deleted'];
 

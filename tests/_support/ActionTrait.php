@@ -4,7 +4,7 @@ use App\Entities\Job;
 use App\Models\JobModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\Test\FeatureResponse;
+use CodeIgniter\Test\TestResponse;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -78,9 +78,9 @@ trait ActionTrait
      *
      * @param string $method
      *
-     * @return FeatureResponse
+     * @return TestResponse
      */
-	protected function expectResponse(string $method): FeatureResponse
+	protected function expectResponse(string $method): TestResponse
 	{
 		return $this->getResponse($method, false);
 	}
@@ -91,9 +91,9 @@ trait ActionTrait
      *
      * @param string $method
      *
-     * @return FeatureResponse
+     * @return TestResponse
      */
-	protected function expectRedirect(string $method): FeatureResponse
+	protected function expectRedirect(string $method): TestResponse
 	{
 		return $this->getResponse($method, true);
 	}
@@ -101,19 +101,19 @@ trait ActionTrait
     /**
      * Calls an Action method expected to return
      * a `ResponseInterface`, verifies it, and returns
-     * the response wrapped in a FeatureResponse.
+     * the response wrapped in a TestResponse.
      *
      * @param string $method The Action method to call
      * @param bool $redirect Whether to expect a redirect
      *
-     * @return FeatureResponse
+     * @return TestResponse
      */
-	private function getResponse(string $method, bool $redirect): FeatureResponse
+	private function getResponse(string $method, bool $redirect): TestResponse
 	{
 		$result = $this->action->$method();
 		$this->assertInstanceOf(ResponseInterface::class, $result);
 
-		$response = new FeatureResponse($result);
+		$response = new TestResponse($result);
 		$response->assertOK();
 
 		$this->assertEquals($redirect, $response->isRedirect());

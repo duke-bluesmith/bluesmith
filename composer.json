@@ -43,7 +43,7 @@
         "twbs/bootstrap": "^4.3"
     },
     "require-dev": {
-        "tatter/tools": "^1.10"
+        "tatter/tools": "^1.12"
     },
     "autoload": {
         "exclude-from-classmap": [
@@ -72,10 +72,20 @@
             "php spark assets:publish"
         ],
         "analyze": "phpstan analyze",
+        "ci": [
+            "Composer\\Config::disableProcessTimeout",
+            "@deduplicate",
+            "@analyze",
+            "@test",
+            "@mutate",
+            "@inspect",
+            "@style"
+        ],
+        "deduplicate": "phpcpd app/ src/",
         "inspect": "deptrac analyze --cache-file=build/deptrac.cache",
         "mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
         "patch": "patch",
-        "style": "php-cs-fixer fix --verbose --ansi",
+        "style": "php-cs-fixer fix --verbose --ansi --using-cache=no",
         "test": "phpunit"
     }
 }
