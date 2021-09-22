@@ -19,56 +19,52 @@ use Tatter\Menus\Menus\BreadcrumbsMenu;
  */
 class ManageFilter implements FilterInterface
 {
-	/**
-	 * Verifies management permission.
-	 *
-	 * @param array|null $arguments
-	 *
-	 * @return mixed
-	 */
-	public function before(RequestInterface $request, $arguments = null)
-	{
-		return (new PermissionFilter())->before($request, ['manageAny']);
-	}
+    /**
+     * Verifies management permission.
+     *
+     * @param array|null $arguments
+     *
+     * @return mixed
+     */
+    public function before(RequestInterface $request, $arguments = null)
+    {
+        return (new PermissionFilter())->before($request, ['manageAny']);
+    }
 
-	/**
-	 * Renders the manage menu and injects its content.
-	 *
-	 * @param array|null $arguments
-	 */
-	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
-	{
-		// Special handling Breadcrumbs menu handling for job routes
-		if (url_is('jobs/*') || url_is('manage/jobs/*'))
-		{
-			BreadcrumbsMenu::push(new Breadcrumb(base_url(), 'Home'));
-			BreadcrumbsMenu::push(new Breadcrumb(site_url('manage'), 'Manage'));
+    /**
+     * Renders the manage menu and injects its content.
+     *
+     * @param array|null $arguments
+     */
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
+    {
+        // Special handling Breadcrumbs menu handling for job routes
+        if (url_is('jobs/*') || url_is('manage/jobs/*')) {
+            BreadcrumbsMenu::push(new Breadcrumb(base_url(), 'Home'));
+            BreadcrumbsMenu::push(new Breadcrumb(site_url('manage'), 'Manage'));
 
-			$segments = service('request')->getUri()->getSegments();
+            $segments = service('request')->getUri()->getSegments();
 
-			if (url_is('manage/jobs/show/*'))
-			{
-				BreadcrumbsMenu::push(new Breadcrumb(
-				    current_url(),
-				    'Job Details'
-				));
-			}
-			elseif (url_is('jobs/*') && count($segments) > 2)
-			{
-				// Next breadcrumb is the details
-				BreadcrumbsMenu::push(new Breadcrumb(
-				    site_url('manage/jobs/show/' . $segments[2]),
-				    'Job Details'
-				));
+            if (url_is('manage/jobs/show/*')) {
+                BreadcrumbsMenu::push(new Breadcrumb(
+                    current_url(),
+                    'Job Details'
+                ));
+            } elseif (url_is('jobs/*') && count($segments) > 2) {
+                // Next breadcrumb is the details
+                BreadcrumbsMenu::push(new Breadcrumb(
+                    site_url('manage/jobs/show/' . $segments[2]),
+                    'Job Details'
+                ));
 
-				// Then add the Action (or "show")
-				BreadcrumbsMenu::push(new Breadcrumb(
-				    current_url(),
-				    ucfirst($segments[1])
-				));
-			}
-		}
+                // Then add the Action (or "show")
+                BreadcrumbsMenu::push(new Breadcrumb(
+                    current_url(),
+                    ucfirst($segments[1])
+                ));
+            }
+        }
 
-		return (new MenusFilter())->after($request, $response, ['breadcrumbs', 'manage-menu']);
-	}
+        return (new MenusFilter())->after($request, $response, ['breadcrumbs', 'manage-menu']);
+    }
 }

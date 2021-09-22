@@ -9,20 +9,20 @@ use Nexus\PHPUnit\Extension\Expeditable;
 /**
  * @internal
  */
-final class ProjectTestCase extends CIUnitTestCase
+abstract class ProjectTestCase extends CIUnitTestCase
 {
-	use Expeditable;
+    use Expeditable;
 
-	/**
-	 * Methods to run during tearDown.
-	 *
-	 * @var array of methods
-	 */
-	protected $tearDownMethods = ['resetServices'];
+    /**
+     * Methods to run during tearDown.
+     *
+     * @var array of methods
+     */
+    protected $tearDownMethods = ['resetServices'];
 
-	//--------------------------------------------------------------------
-	// Database Properties
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
+    // Database Properties
+    //--------------------------------------------------------------------
 
     /**
      * The namespace(s) to help us find the migration classes.
@@ -34,27 +34,27 @@ final class ProjectTestCase extends CIUnitTestCase
      */
     protected $namespace;
 
-	/**
-	 * The seed file(s) used for all tests within this test case.
-	 * Should be fully-namespaced or relative to $basePath
-	 *
-	 * @var array|string
-	 */
-	protected $seed = InitialSeeder::class;
+    /**
+     * The seed file(s) used for all tests within this test case.
+     * Should be fully-namespaced or relative to $basePath
+     *
+     * @var array|string
+     */
+    protected $seed = InitialSeeder::class;
 
-	//--------------------------------------------------------------------
-	// Staging
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
+    // Staging
+    //--------------------------------------------------------------------
 
-	/**
-	 * Initializes required helpers.
-	 *
-	 * @see app/Config/Events.php "post_controller_constructor"
-	 */
-	public static function setUpBeforeClass(): void
-	{
-		parent::setUpBeforeClass();
+    /**
+     * Initializes required helpers.
+     *
+     * @see app/Config/Events.php "post_controller_constructor"
+     */
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
 
-		helper(['alerts', 'auth', 'html']);
-	}
+        helper(['alerts', 'auth', 'html']);
+    }
 }

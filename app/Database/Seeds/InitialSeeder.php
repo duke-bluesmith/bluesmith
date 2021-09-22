@@ -9,55 +9,49 @@ use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
 {
-	public function run()
-	{
-		$errors = [];
+    public function run()
+    {
+        $errors = [];
 
-		// Seeds to run
-		$seeds = [
-			SettingSeeder::class,
-			FileSeeder::class,
-			AuthSeeder::class,
-			EmailSeeder::class,
-			OptionSeeder::class,
-			PageSeeder::class,
-			ThemeSeeder::class,
-			WorkflowSeeder::class,
-		];
+        // Seeds to run
+        $seeds = [
+            SettingSeeder::class,
+            FileSeeder::class,
+            AuthSeeder::class,
+            EmailSeeder::class,
+            OptionSeeder::class,
+            PageSeeder::class,
+            ThemeSeeder::class,
+            WorkflowSeeder::class,
+        ];
 
-		// Check for a Local seeder
-		if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder'))
-		{
-			$seeds[] = $seedName; // @codeCoverageIgnore
-		}
+        // Check for a Local seeder
+        if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder')) {
+            $seeds[] = $seedName; // @codeCoverageIgnore
+        }
 
-		// Run each seeder in order
-		foreach ($seeds as $seedName)
-		{
-			try {
-				$this->call($seedName);
-			}
-			// @codeCoverageIgnoreStart
-			catch (\Exception $e)
-			{
-				// Pass CLI exceptions back to BaseCommand for display
-				if (is_cli())
-				{
-					throw $e;
-				}
+        // Run each seeder in order
+        foreach ($seeds as $seedName) {
+            try {
+                $this->call($seedName);
+            }
+            // @codeCoverageIgnoreStart
+            catch (\Exception $e) {
+                // Pass CLI exceptions back to BaseCommand for display
+                if (is_cli()) {
+                    throw $e;
+                }
 
-					$errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
+                $errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
+            }
+            // @codeCoverageIgnoreEnd
+        }
 
-			}
-			// @codeCoverageIgnoreEnd
-		}
+        // Use the Registrar to seed Actions
+        if (Registrar::actions() && ENVIRONMENT !== 'testing') {
+            command('actions:list'); // @codeCoverageIgnore
+        }
 
-		// Use the Registrar to seed Actions
-		if (Registrar::actions() && ENVIRONMENT !== 'testing')
-		{
-			command('actions:list'); // @codeCoverageIgnore
-		}
-
-		return $errors;
-	}
+        return $errors;
+    }
 }

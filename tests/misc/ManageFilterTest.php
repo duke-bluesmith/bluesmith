@@ -13,35 +13,37 @@ use Tests\Support\ProjectTestCase;
  */
 final class ManageFilterTest extends ProjectTestCase
 {
-	use AuthenticationTrait; use DatabaseTestTrait; use FilterTestTrait;
+    use AuthenticationTrait;
+    use DatabaseTestTrait;
+    use FilterTestTrait;
 
-	public function testNotAuthenticated()
-	{
-		$this->resetAuthServices();
+    public function testNotAuthenticated()
+    {
+        $this->resetAuthServices();
 
-		$caller = $this->getFilterCaller(ManageFilter::class, 'before');
-		$result = $caller();
+        $caller = $this->getFilterCaller(ManageFilter::class, 'before');
+        $result = $caller();
 
-		$this->assertInstanceOf(RedirectResponse::class, $result);
-		$this->assertSame(site_url('login'), $result->getHeaderLine('Location'));
-	}
+        $this->assertInstanceOf(RedirectResponse::class, $result);
+        $this->assertSame(site_url('login'), $result->getHeaderLine('Location'));
+    }
 
-	public function testNotAuthorized()
-	{
-		$this->expectException(PermissionException::class);
-		$this->expectExceptionMessage(lang('Auth.notEnoughPrivilege'));
+    public function testNotAuthorized()
+    {
+        $this->expectException(PermissionException::class);
+        $this->expectExceptionMessage(lang('Auth.notEnoughPrivilege'));
 
-		$caller = $this->getFilterCaller(ManageFilter::class, 'before');
-		$result = $caller();
-	}
+        $caller = $this->getFilterCaller(ManageFilter::class, 'before');
+        $result = $caller();
+    }
 
-	public function testValid()
-	{
-		$this->addPermissionToUser('manageAny');
+    public function testValid()
+    {
+        $this->addPermissionToUser('manageAny');
 
-		$caller = $this->getFilterCaller(ManageFilter::class, 'before');
-		$result = $caller();
+        $caller = $this->getFilterCaller(ManageFilter::class, 'before');
+        $result = $caller();
 
-		$this->assertNull($result);
-	}
+        $this->assertNull($result);
+    }
 }

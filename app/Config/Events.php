@@ -28,34 +28,30 @@ use Tatter\Files\Models\FileModel;
  */
 
 Events::on('pre_system', static function () {
-	if (ENVIRONMENT !== 'testing')
-	{
-		if (ini_get('zlib.output_compression'))
-		{
-			throw FrameworkException::forEnabledZlibOutputCompression();
-		}
+    if (ENVIRONMENT !== 'testing') {
+        if (ini_get('zlib.output_compression')) {
+            throw FrameworkException::forEnabledZlibOutputCompression();
+        }
 
-		while (ob_get_level() > 0)
-		{
-			ob_end_flush();
-		}
+        while (ob_get_level() > 0) {
+            ob_end_flush();
+        }
 
-		ob_start(static function ($buffer) {
-			return $buffer;
-		});
-	}
+        ob_start(static function ($buffer) {
+            return $buffer;
+        });
+    }
 
-	/*
-	 * --------------------------------------------------------------------
-	 * Debug Toolbar Listeners.
-	 * --------------------------------------------------------------------
-	 * If you delete, they will no longer be collected.
-	 */
-	if (CI_DEBUG && ! is_cli())
-	{
-		Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
-		Services::toolbar()->respond();
-	}
+    /*
+     * --------------------------------------------------------------------
+     * Debug Toolbar Listeners.
+     * --------------------------------------------------------------------
+     * If you delete, they will no longer be collected.
+     */
+    if (CI_DEBUG && ! is_cli()) {
+        Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
+        Services::toolbar()->respond();
+    }
 });
 
 /**
@@ -64,7 +60,7 @@ Events::on('pre_system', static function () {
  * @see BaseAction::__construct() and BaseController::$helpers for slightly less global
  */
 Events::on('post_controller_constructor', static function () {
-	helper(['alerts', 'auth', 'html']);
+    helper(['alerts', 'auth', 'html']);
 });
 
 /**
@@ -73,36 +69,32 @@ Events::on('post_controller_constructor', static function () {
  */
 Events::on('upload', static function (File $file) {
 
-	// Ignore non-STL files
-	if (strtolower($file->getExtension('clientname')) !== 'stl')
-	{
-		return;
-	}
+    // Ignore non-STL files
+    if (strtolower($file->getExtension('clientname')) !== 'stl') {
+        return;
+    }
 
-	// Initialize the reader for volume calculations only (saves memory)
-	$reader = STLReader::forFile($file->getPath());
-	$reader->setHandler(new VolumeHandler());
+    // Initialize the reader for volume calculations only (saves memory)
+    $reader = STLReader::forFile($file->getPath());
+    $reader->setHandler(new VolumeHandler());
 
-	try {
-		$volume = $reader->readModel();
-	}
-	catch (InvalidFileFormatException $e)
-	{
-		log_message('error', 'Unable to calculate STL volume for ' . $file->localname . ': ' . $e->getMessage());
+    try {
+        $volume = $reader->readModel();
+    } catch (InvalidFileFormatException $e) {
+        log_message('error', 'Unable to calculate STL volume for ' . $file->localname . ': ' . $e->getMessage());
 
-		return;
-	}
+        return;
+    }
 
-	// Update the row in the database
-	if ($volume > 0)
-	{
-		model(FileModel::class)->protect(false)->update($file->id, ['volume' => $volume]);
-	}
+    // Update the row in the database
+    if ($volume > 0) {
+        model(FileModel::class)->protect(false)->update($file->id, ['volume' => $volume]);
+    }
 });
 
 /**
  * Captures new Chat messages to clear Notices.
  */
 Events::on('chat', static function (array $data) {
-	cache()->delete('notices');
+    cache()->delete('notices');
 });

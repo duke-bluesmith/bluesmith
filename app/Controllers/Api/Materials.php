@@ -7,16 +7,15 @@ use Tatter\Forms\Controllers\ResourceController;
 
 class Materials extends ResourceController
 {
-	protected $modelName = MaterialModel::class;
+    protected $modelName = MaterialModel::class;
 
-	// Intercept filter requests
-	public function index()
-	{
-		if ($methodId = $this->request->getGet('method_id', FILTER_SANITIZE_NUMBER_INT))
-		{
-			$this->model->where('method_id', $methodId);
-		}
+    // Intercept filter requests
+    public function index()
+    {
+        if ($methodId = $this->request->getGet('method_id', FILTER_SANITIZE_NUMBER_INT)) {
+            $this->model->where('method_id', $methodId);
+        }
 
-		return parent::index();
-	}
+        return parent::index();
+    }
 }

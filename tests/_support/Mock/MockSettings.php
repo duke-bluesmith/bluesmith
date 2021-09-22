@@ -13,13 +13,13 @@ use Tatter\Settings\Settings;
  */
 final class MockSettings extends Settings
 {
-	/**
-	 * @var string
-	 */
-	public $currencyUnit = 'USD';
+    /**
+     * @var string
+     */
+    public $currencyUnit = 'USD';
 
-	/**
-	 * @var int
-	 */
-	public $currencyScale = 100;
+    /**
+     * @var int
+     */
+    public $currencyScale = 100;
 }

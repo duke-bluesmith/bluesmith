@@ -8,23 +8,22 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 class Notes extends BaseController
 {
-	/**
-	 * Adds a Note to a Job
-	 */
-	public function add(): RedirectResponse
-	{
-		$data            = $this->request->getPost();
-		$data['user_id'] = user()->id;
+    /**
+     * Adds a Note to a Job
+     */
+    public function add(): RedirectResponse
+    {
+        $data            = $this->request->getPost();
+        $data['user_id'] = user()->id;
 
-		// Create the Note
-		if (! model(NoteModel::class)->insert($data))
-		{
-			return redirect()
-			    ->back()
-			    ->withInput()
-			    ->with('errors', model(NoteModel::class)->errors());
-		}
+        // Create the Note
+        if (! model(NoteModel::class)->insert($data)) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('errors', model(NoteModel::class)->errors());
+        }
 
-		return redirect()->back();
-	}
+        return redirect()->back();
+    }
 }

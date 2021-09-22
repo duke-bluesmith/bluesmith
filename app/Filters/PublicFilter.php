@@ -8,8 +8,8 @@ use Tatter\Menus\Filters\MenusFilter;
 
 class PublicFilter extends MenusFilter
 {
-	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
-	{
-		return parent::after($request, $response, ['public-menu']);
-	}
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
+    {
+        return parent::after($request, $response, ['public-menu']);
+    }
 }

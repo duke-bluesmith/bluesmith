@@ -13,16 +13,15 @@ use Tests\Support\Mock\MockSettings;
  */
 trait CurrencyTrait
 {
-	/**
-	 * Loads the helpers and injects Mock Settings.
-	 */
-	protected function setUpCurrencyTrait(): void
-	{
-		if (! function_exists('price_to_currency'))
-		{
-			helper(['currency', 'number']);
-		}
+    /**
+     * Loads the helpers and injects Mock Settings.
+     */
+    protected function setUpCurrencyTrait(): void
+    {
+        if (! function_exists('price_to_currency')) {
+            helper(['currency', 'number']);
+        }
 
-		Services::injectMock('settings', new MockSettings());
-	}
+        Services::injectMock('settings', new MockSettings());
+    }
 }

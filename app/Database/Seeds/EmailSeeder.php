@@ -25,38 +25,36 @@ use Tatter\Outbox\Models\TemplateModel;
  */
 class EmailSeeder extends BaseSeeder
 {
-	public function run()
-	{
-		// Run the module version first to ensure Default exists
-		parent::run();
+    public function run()
+    {
+        // Run the module version first to ensure Default exists
+        parent::run();
 
-		// Use "Default" as the parent (will throw if it does not exist)
-		$default = model(TemplateModel::class)->findByName('Default');
+        // Use "Default" as the parent (will throw if it does not exist)
+        $default = model(TemplateModel::class)->findByName('Default');
 
-		// Define each Template
-		$templates = [
-			[
-				'name'    => 'Job Invite',
-				'subject' => lang('Invite.subject', ['{issuer_name}']),
-				'body'    => view('emails/seeds/JobInvite'),
-			],
-			[
-				'name'    => 'Estimate',
-				'subject' => lang('Actions.estimateReady'),
-				'body'    => view('emails/seeds/Estimate'),
-			],
-		];
+        // Define each Template
+        $templates = [
+            [
+                'name'    => 'Job Invite',
+                'subject' => lang('Invite.subject', ['{issuer_name}']),
+                'body'    => view('emails/seeds/JobInvite'),
+            ],
+            [
+                'name'    => 'Estimate',
+                'subject' => lang('Actions.estimateReady'),
+                'body'    => view('emails/seeds/Estimate'),
+            ],
+        ];
 
-		foreach ($templates as $row)
-		{
-			if (model(TemplateModel::class)->where('name', $row['name'])->first())
-			{
-				continue;
-			}
+        foreach ($templates as $row) {
+            if (model(TemplateModel::class)->where('name', $row['name'])->first()) {
+                continue;
+            }
 
-			// Set the parent
-			$row['parent_id'] = $default->id;
-			model(TemplateModel::class)->insert($row);
-		}
-	}
+            // Set the parent
+            $row['parent_id'] = $default->id;
+            model(TemplateModel::class)->insert($row);
+        }
+    }
 }

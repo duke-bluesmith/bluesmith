@@ -130,9 +130,9 @@
 // Display the Files card view partial
 helper(['files', 'handlers']);
 $data = [
-	'files'   => $job->files,
-	'access'  => 'display',
-	'exports' => handlers('Exports')->findAll(),
+    'files'   => $job->files,
+    'access'  => 'display',
+    'exports' => handlers('Exports')->findAll(),
 ];
 echo view('Tatter\Files\Views\Formats\cards', $data);
 ?>

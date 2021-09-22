@@ -20,13 +20,12 @@ use CodeIgniter\Config\BaseService;
  */
 class Services extends BaseService
 {
-	public static function notices($getShared = true)
-	{
-		if ($getShared)
-		{
-			return static::getSharedInstance('notices');
-		}
+    public static function notices($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('notices');
+        }
 
-		return Notices::createFromCache();
-	}
+        return Notices::createFromCache();
+    }
 }

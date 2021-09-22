@@ -12,17 +12,17 @@ namespace App\Actions;
  */
 class PostprintAction extends PrintAction
 {
-	/**
-	 * @var array<string, string>
-	 */
-	public $attributes = [
-		'category' => 'Process',
-		'name'     => 'Print Post-Process',
-		'uid'      => 'postprint',
-		'role'     => 'manageJobs',
-		'icon'     => 'fas fa-broom',
-		'summary'  => 'Staff post-processes objects',
-		'header'   => 'Print Post-Process',
-		'button'   => 'Processing Complete',
-	];
+    /**
+     * @var array<string, string>
+     */
+    public $attributes = [
+        'category' => 'Process',
+        'name'     => 'Print Post-Process',
+        'uid'      => 'postprint',
+        'role'     => 'manageJobs',
+        'icon'     => 'fas fa-broom',
+        'summary'  => 'Staff post-processes objects',
+        'header'   => 'Print Post-Process',
+        'button'   => 'Processing Complete',
+    ];
 }

@@ -12,42 +12,40 @@ use Tests\Support\Simulator;
  */
 final class SimulatorTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	// Initialize the database once
-	protected $migrateOnce = true;
-	protected $seedOnce    = true;
+    // Initialize the database once
+    protected $migrateOnce = true;
+    protected $seedOnce    = true;
 
-	/**
-	 * Initializes the simulation only
-	 * once since it is costly.
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
+    /**
+     * Initializes the simulation only
+     * once since it is costly.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-		if (! Simulator::$initialized)
-		{
-			Simulator::initialize();
-		}
-	}
+        if (! Simulator::$initialized) {
+            Simulator::initialize();
+        }
+    }
 
-	public function testDoesRegisterAppActions()
-	{
-		$this->seeInDatabase('actions', ['uid' => 'approve']);
-	}
+    public function testDoesRegisterAppActions()
+    {
+        $this->seeInDatabase('actions', ['uid' => 'approve']);
+    }
 
-	public function testDoesAssignUsersToGroups()
-	{
-		// Gather the groups
-		$groups = model(GroupModel::class)->findAll();
-		$this->assertGreaterThanOrEqual(4, count($groups));
+    public function testDoesAssignUsersToGroups()
+    {
+        // Gather the groups
+        $groups = model(GroupModel::class)->findAll();
+        $this->assertGreaterThanOrEqual(4, count($groups));
 
-		// Check that each group has at least one user
-		foreach ($groups as $group)
-		{
-			$users = model(GroupModel::class)->getUsersForGroup($group->id);
-			$this->assertGreaterThanOrEqual(1, $users);
-		}
-	}
+        // Check that each group has at least one user
+        foreach ($groups as $group) {
+            $users = model(GroupModel::class)->getUsersForGroup($group->id);
+            $this->assertGreaterThanOrEqual(1, $users);
+        }
+    }
 }

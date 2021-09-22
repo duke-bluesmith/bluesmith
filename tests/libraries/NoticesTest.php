@@ -15,35 +15,35 @@ use Tests\Support\ProjectTestCase;
  */
 final class NoticesTest extends ProjectTestCase
 {
-	use AuthenticationTrait;
-	use DatabaseTestTrait;
+    use AuthenticationTrait;
+    use DatabaseTestTrait;
 
-	public function testDetection()
-	{
-		helper(['chat']);
+    public function testDetection()
+    {
+        helper(['chat']);
 
-		// Make an administrator
-		$user  = fake(UserModel::class);
-		$group = model(GroupFaker::class)->where('name', 'Administrators')->first();
-		model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
+        // Make an administrator
+        $user  = fake(UserModel::class);
+        $group = model(GroupFaker::class)->where('name', 'Administrators')->first();
+        model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
 
-		// Create a Job with a Chat (will use $this->user from AuthenticationTrait)
-		$job = fake(JobModel::class);
-		chat('job-' . $job->id);
+        // Create a Job with a Chat (will use $this->user from AuthenticationTrait)
+        $job = fake(JobModel::class);
+        chat('job-' . $job->id);
 
-		// Say something
-		$participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
-		$messageId   = $participant->say('hello world');
+        // Say something
+        $participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
+        $messageId   = $participant->say('hello world');
 
-		// Verify it works with deleted items
-		model(JobModel::class)->delete($job->id);
-		model(UserModel::class)->delete($this->user->id);
+        // Verify it works with deleted items
+        model(JobModel::class)->delete($job->id);
+        model(UserModel::class)->delete($this->user->id);
 
-		$notices = new Notices();
-		$this->assertCount(1, $notices);
+        $notices = new Notices();
+        $this->assertCount(1, $notices);
 
-		$notice = $notices->getIterator()->current();
-		$this->assertInstanceOf(Notice::class, $notice);
-		$this->assertSame('hello world', $notice->content);
-	}
+        $notice = $notices->getIterator()->current();
+        $this->assertInstanceOf(Notice::class, $notice);
+        $this->assertSame('hello world', $notice->content);
+    }
 }

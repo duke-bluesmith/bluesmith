@@ -9,37 +9,36 @@ use Tatter\Workflows\Models\WorkflowModel;
 
 class User extends MythEntity
 {
-	use EntityTrait;
+    use EntityTrait;
 
-	protected $table      = 'users';
-	protected $primaryKey = 'id';
+    protected $table      = 'users';
+    protected $primaryKey = 'id';
 
-	/**
-	 * @var Workflow[]|null
-	 */
-	private $workflows;
+    /**
+     * @var Workflow[]|null
+     */
+    private $workflows;
 
-	/**
-	 * Returns a full name: "First Last"
-	 */
-	public function getName(): string
-	{
-		return trim(trim($this->firstname) . ' ' . trim($this->lastname));
-	}
+    /**
+     * Returns a full name: "First Last"
+     */
+    public function getName(): string
+    {
+        return trim(trim($this->firstname) . ' ' . trim($this->lastname));
+    }
 
-	/**
-	 * Fetches and stores the Workflows this User
-	 * is eligible to use.
-	 *
-	 * @return Workflow[]
-	 */
-	public function getWorkflows()
-	{
-		if (null === $this->workflows)
-		{
-			$this->workflows = model(WorkflowModel::class)->getForUser($this);
-		}
+    /**
+     * Fetches and stores the Workflows this User
+     * is eligible to use.
+     *
+     * @return Workflow[]
+     */
+    public function getWorkflows()
+    {
+        if (null === $this->workflows) {
+            $this->workflows = model(WorkflowModel::class)->getForUser($this);
+        }
 
-		return $this->workflows;
-	}
+        return $this->workflows;
+    }
 }

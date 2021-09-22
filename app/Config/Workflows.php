@@ -4,25 +4,25 @@ namespace Config;
 
 class Workflows extends \Tatter\Workflows\Config\Workflows
 {
-	// Whether to continue instead of throwing exceptions
-	public $silent = false;
+    // Whether to continue instead of throwing exceptions
+    public $silent = false;
 
-	// The model to use for jobs
-	public $jobModel = 'App\Models\JobModel';
+    // The model to use for jobs
+    public $jobModel = 'App\Models\JobModel';
 
-	// Layouts to use for jobs and administration
-	public $layouts = [
-		'public' => 'layouts/public',
-		'manage' => 'layouts/manage',
-	];
+    // Layouts to use for jobs and administration
+    public $layouts = [
+        'public' => 'layouts/public',
+        'manage' => 'layouts/manage',
+    ];
 
-	// Views to display for each function
-	public $views = [
-		'job'      => 'account/job',
-		'messages' => 'Tatter\Workflows\Views\messages',
-		'complete' => 'Tatter\Workflows\Views\complete',
-		'deleted'  => 'Tatter\Workflows\Views\deleted',
-		'filter'   => 'Tatter\Workflows\Views\filter',
-		'workflow' => 'Tatter\Workflows\Views\workflow',
-	];
+    // Views to display for each function
+    public $views = [
+        'job'      => 'account/job',
+        'messages' => 'Tatter\Workflows\Views\messages',
+        'complete' => 'Tatter\Workflows\Views\complete',
+        'deleted'  => 'Tatter\Workflows\Views\deleted',
+        'filter'   => 'Tatter\Workflows\Views\filter',
+        'workflow' => 'Tatter\Workflows\Views\workflow',
+    ];
 }

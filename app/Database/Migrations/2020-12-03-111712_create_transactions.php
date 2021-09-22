@@ -17,36 +17,36 @@ use CodeIgniter\Database\Migration;
  */
 class CreateTransactions extends Migration
 {
-	public function up()
-	{
-		// Internal transactions (Bluechips)
-		$fields = [
-			'user_id'    => ['type' => 'int', 'unsigned' => true],
-			'credit'     => ['type' => 'bool', 'null' => false, 'default' => 0],
-			'amount'     => ['type' => 'int', 'null' => false],
-			'summary'    => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
-			'created_at' => ['type' => 'datetime', 'null' => true],
-		];
+    public function up()
+    {
+        // Internal transactions (Bluechips)
+        $fields = [
+            'user_id'    => ['type' => 'int', 'unsigned' => true],
+            'credit'     => ['type' => 'bool', 'null' => false, 'default' => 0],
+            'amount'     => ['type' => 'int', 'null' => false],
+            'summary'    => ['type' => 'varchar', 'constraint' => 255, 'default' => ''],
+            'created_at' => ['type' => 'datetime', 'null' => true],
+        ];
 
-		$this->forge->addField('id');
-		$this->forge->addField($fields);
+        $this->forge->addField('id');
+        $this->forge->addField($fields);
 
-		$this->forge->addKey('user_id');
-		$this->forge->addKey('created_at');
+        $this->forge->addKey('user_id');
+        $this->forge->addKey('created_at');
 
-		$this->forge->createTable('transactions');
+        $this->forge->createTable('transactions');
 
-		// User balances
-		$fields = [
-			'balance' => ['type' => 'int', 'null' => false, 'default' => 0, 'after' => 'lastname'],
-		];
+        // User balances
+        $fields = [
+            'balance' => ['type' => 'int', 'null' => false, 'default' => 0, 'after' => 'lastname'],
+        ];
 
-		$this->forge->addColumn('users', $fields);
-	}
+        $this->forge->addColumn('users', $fields);
+    }
 
-	public function down()
-	{
-		$this->forge->dropTable('transactions');
-		$this->forge->dropColumn('users', 'balance');
-	}
+    public function down()
+    {
+        $this->forge->dropTable('transactions');
+        $this->forge->dropColumn('users', 'balance');
+    }
 }

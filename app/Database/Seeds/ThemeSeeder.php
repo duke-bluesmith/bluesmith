@@ -13,31 +13,29 @@ use Tatter\Themes\Models\ThemeModel;
  */
 class ThemeSeeder extends BaseSeeder
 {
-	public function run()
-	{
-		parent::run();
+    public function run()
+    {
+        parent::run();
 
-		$rows = [
-			[
-				'name'        => 'Dark',
-				'path'        => 'themes/dark',
-				'description' => 'Sometimes there is no darker place than our thoughts, the moonless midnight of the mind.',
-				'dark'        => 1,
-			],
-			[
-				'name'        => 'Light',
-				'path'        => 'themes/light',
-				'description' => 'Low calorie, gluten-free',
-				'dark'        => 0,
-			],
-		];
+        $rows = [
+            [
+                'name'        => 'Dark',
+                'path'        => 'themes/dark',
+                'description' => 'Sometimes there is no darker place than our thoughts, the moonless midnight of the mind.',
+                'dark'        => 1,
+            ],
+            [
+                'name'        => 'Light',
+                'path'        => 'themes/light',
+                'description' => 'Low calorie, gluten-free',
+                'dark'        => 0,
+            ],
+        ];
 
-		foreach ($rows as $row)
-		{
-			if (! model(ThemeModel::class)->where('name', $row['name'])->first())
-			{
-				model(ThemeModel::class)->insert($row);
-			}
-		}
-	}
+        foreach ($rows as $row) {
+            if (! model(ThemeModel::class)->where('name', $row['name'])->first()) {
+                model(ThemeModel::class)->insert($row);
+            }
+        }
+    }
 }

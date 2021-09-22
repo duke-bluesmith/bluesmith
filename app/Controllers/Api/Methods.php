@@ -7,5 +7,5 @@ use Tatter\Forms\Controllers\ResourceController;
 
 class Methods extends ResourceController
 {
-	protected $modelName = MethodModel::class;
+    protected $modelName = MethodModel::class;
 }

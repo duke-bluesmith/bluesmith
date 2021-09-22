@@ -14,9 +14,9 @@ namespace Config;
 
 class Files extends \Tatter\Files\Config\Files
 {
-	// Layouts to use for general access and for administration
-	public $layouts = [
-		'public' => 'layouts/public',
-		'manage' => 'layouts/manage',
-	];
+    // Layouts to use for general access and for administration
+    public $layouts = [
+        'public' => 'layouts/public',
+        'manage' => 'layouts/manage',
+    ];
 }

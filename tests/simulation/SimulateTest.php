@@ -11,27 +11,27 @@ use Tests\Support\ProjectTestCase;
  */
 final class SimulateTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	/**
-	 * @slowThreshold 3000
-	 */
-	public function testTruncatesTables()
-	{
-		model(MethodModel::class)->insert(['name' => 'foobar']);
+    /**
+     * @slowThreshold 3000
+     */
+    public function testTruncatesTables()
+    {
+        model(MethodModel::class)->insert(['name' => 'foobar']);
 
-		command('simulate');
+        command('simulate');
 
-		$this->dontSeeInDatabase('methods', ['name' => 'foobar']);
-	}
+        $this->dontSeeInDatabase('methods', ['name' => 'foobar']);
+    }
 
-	/**
-	 * @slowThreshold 3000
-	 */
-	public function testCreatesRestrictedWorkflow()
-	{
-		command('simulate');
+    /**
+     * @slowThreshold 3000
+     */
+    public function testCreatesRestrictedWorkflow()
+    {
+        command('simulate');
 
-		$this->seeInDatabase('workflows', ['role' => 'manageContent']);
-	}
+        $this->seeInDatabase('workflows', ['role' => 'manageContent']);
+    }
 }

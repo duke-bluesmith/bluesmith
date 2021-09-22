@@ -12,39 +12,41 @@ use Tests\Support\ProjectTestCase;
  */
 final class ChargesTest extends ProjectTestCase
 {
-	use ActionTrait; use AuthenticationTrait; use DatabaseTestTrait;
+    use ActionTrait;
+    use AuthenticationTrait;
+    use DatabaseTestTrait;
 
-	protected $namespace = [
-		'Tatter\Files',
-		'Tatter\Outbox',
-		'Tatter\Settings',
-		'Tatter\Themes',
-		'Tatter\Workflows',
-		'Myth\Auth',
-		'App',
-	];
+    protected $namespace = [
+        'Tatter\Files',
+        'Tatter\Outbox',
+        'Tatter\Settings',
+        'Tatter\Themes',
+        'Tatter\Workflows',
+        'Myth\Auth',
+        'App',
+    ];
 
-	/**
-	 * UID of the Action to test
-	 *
-	 * @var string
-	 */
-	protected $actionUid = 'charges';
+    /**
+     * UID of the Action to test
+     *
+     * @var string
+     */
+    protected $actionUid = 'charges';
 
-	public function testUpCreatesEstimate()
-	{
-		$this->expectNull('up');
+    public function testUpCreatesEstimate()
+    {
+        $this->expectNull('up');
 
-		$this->seeInDatabase('ledgers', [
-			'job_id'   => $this->job->id,
-			'estimate' => 1,
-		]);
-	}
+        $this->seeInDatabase('ledgers', [
+            'job_id'   => $this->job->id,
+            'estimate' => 1,
+        ]);
+    }
 
-	public function testGetReturnsForm()
-	{
-		$response = $this->expectResponse('get');
+    public function testGetReturnsForm()
+    {
+        $response = $this->expectResponse('get');
 
-		$response->assertSee('Add a Charge', 'h3');
-	}
+        $response->assertSee('Add a Charge', 'h3');
+    }
 }

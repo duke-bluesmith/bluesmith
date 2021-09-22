@@ -27,87 +27,84 @@ use Tatter\Outbox\Models\TemplateModel;
  */
 class Mailer
 {
-	/**
-	 * Handles any last-minute global settings,
-	 * then sends the Email and deals with any errors.
-	 *
-	 * @param Emailer $emailer The Email class all ready to go
-	 *
-	 * @return int The insertID from EmailModel (0 = failed)
-	 */
-	protected static function send(Emailer $emailer): int
-	{
-		if (! $emailer->send(false))
-		{
-			log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
+    /**
+     * Handles any last-minute global settings,
+     * then sends the Email and deals with any errors.
+     *
+     * @param Emailer $emailer The Email class all ready to go
+     *
+     * @return int The insertID from EmailModel (0 = failed)
+     */
+    protected static function send(Emailer $emailer): int
+    {
+        if (! $emailer->send(false)) {
+            log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
 
-			return 0;
-		}
+            return 0;
+        }
 
-		// Because the EmailModel is shared we can trust the insertID value to come from the Event trigger
-		return model(EmailModel::class)->getInsertID();
-	}
+        // Because the EmailModel is shared we can trust the insertID value to come from the Event trigger
+        return model(EmailModel::class)->getInsertID();
+    }
 
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
-	/**
-	 * Job Invite
-	 * Emails an invitation to join a job
-	 *
-	 * @param User   $issuer    The User issuing the invitation
-	 * @param string $recipient Email address of the recipient
-	 * @param Job    $job       The Job Entity
-	 * @param string $token     The invitation token hash
-	 */
-	public static function forJobInvite(User $issuer, string $recipient, Job $job, string $token)
-	{
-		$template = model(TemplateModel::class)->findByName('Job Invite');
+    /**
+     * Job Invite
+     * Emails an invitation to join a job
+     *
+     * @param User   $issuer    The User issuing the invitation
+     * @param string $recipient Email address of the recipient
+     * @param Job    $job       The Job Entity
+     * @param string $token     The invitation token hash
+     */
+    public static function forJobInvite(User $issuer, string $recipient, Job $job, string $token)
+    {
+        $template = model(TemplateModel::class)->findByName('Job Invite');
 
-		// Prep Email to our Template
-		$emailer = $template->email([
-			'title'       => 'Job Invitation',
-			'preview'     => 'Collaborate with ' . $issuer->firstname,
-			'issuer_name' => $issuer->name,
-			'accept_url'  => site_url('emails/invite/' . $token),
-		]);
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Invitation',
+            'preview'     => 'Collaborate with ' . $issuer->firstname,
+            'issuer_name' => $issuer->name,
+            'accept_url'  => site_url('emails/invite/' . $token),
+        ]);
 
-		// Use the Auth activator email settings, if available
-		$emailer->setFrom(
-		    $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
-		    $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
-		)
-		    ->setTo($recipient);
+        // Use the Auth activator email settings, if available
+        $emailer->setFrom(
+            $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
+            $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
+        )
+            ->setTo($recipient);
 
-		if ($emailId = self::send($emailer))
-		{
-			model(JobModel::class)->addEmailToJob($emailId, $job->id);
-		}
-	}
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
 
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
-	/**
-	 * Estimate
-	 * Emails an estimate Ledger to the recipients
-	 *
-	 * @param array $recipients Email addresses of the recipients
-	 */
-	public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
-	{
-		$template = model(TemplateModel::class)->findByName('Estimate');
+    /**
+     * Estimate
+     * Emails an estimate Ledger to the recipients
+     *
+     * @param array $recipients Email addresses of the recipients
+     */
+    public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
+    {
+        $template = model(TemplateModel::class)->findByName('Estimate');
 
-		// Prep Email to our Template
-		$emailer = $template->email([
-			'title'       => 'Job Estimate',
-			'preview'     => 'Your estimate is ready',
-			'job_name'    => $job->name,
-			'job_url'     => anchor('jobs/' . $job->id),
-			'description' => nl2br($ledger->description ?: 'none provided'),
-		])->setTo($recipients);
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Estimate',
+            'preview'     => 'Your estimate is ready',
+            'job_name'    => $job->name,
+            'job_url'     => anchor('jobs/' . $job->id),
+            'description' => nl2br($ledger->description ?: 'none provided'),
+        ])->setTo($recipients);
 
-		if ($emailId = self::send($emailer))
-		{
-			model(JobModel::class)->addEmailToJob($emailId, $job->id);
-		}
-	}
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
 }

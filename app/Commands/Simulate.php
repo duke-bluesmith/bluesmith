@@ -11,43 +11,41 @@ use Tests\Support\Simulator;
 
 class Simulate extends BaseCommand
 {
-	protected $group       = 'Database';
-	protected $name        = 'simulate';
-	protected $description = 'Create a simulated project in the database.';
-	protected $usage       = 'simulate';
+    protected $group       = 'Database';
+    protected $name        = 'simulate';
+    protected $description = 'Create a simulated project in the database.';
+    protected $usage       = 'simulate';
 
-	public function run(array $params)
-	{
-		if (ENVIRONMENT === 'production')
-		{
-			throw new RuntimeException('This feature is not available on production sites.'); // @codeCoverageIgnore
-		}
+    public function run(array $params)
+    {
+        if (ENVIRONMENT === 'production') {
+            throw new RuntimeException('This feature is not available on production sites.'); // @codeCoverageIgnore
+        }
 
-		helper('test');
+        helper('test');
 
-		// Disable foreign key locks
-		$db = db_connect();
-		$db->disableForeignKeyChecks();
+        // Disable foreign key locks
+        $db = db_connect();
+        $db->disableForeignKeyChecks();
 
-		// Truncate the target tables
-		foreach (['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'] as $table)
-		{
-			$db->table($table)->truncate();
-		}
+        // Truncate the target tables
+        foreach (['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'] as $table) {
+            $db->table($table)->truncate();
+        }
 
-		// Reenable foreign key locks
-		$db->enableForeignKeyChecks();
+        // Reenable foreign key locks
+        $db->enableForeignKeyChecks();
 
-		// Run the InitialSeeder to restore defaults
-		Database::seeder()->setSilent(ENVIRONMENT === 'testing')->call(InitialSeeder::class);
+        // Run the InitialSeeder to restore defaults
+        Database::seeder()->setSilent(ENVIRONMENT === 'testing')->call(InitialSeeder::class);
 
-		// Run the Simulator
-		Simulator::initialize();
+        // Run the Simulator
+        Simulator::initialize();
 
-		// Set one Workflow to be restricted
-		model(WorkflowModel::class)->builder()
-		    ->orderBy('id', 'desc')
-		    ->limit(1)
-		    ->update(['role' => 'manageContent']);
-	}
+        // Set one Workflow to be restricted
+        model(WorkflowModel::class)->builder()
+            ->orderBy('id', 'desc')
+            ->limit(1)
+            ->update(['role' => 'manageContent']);
+    }
 }

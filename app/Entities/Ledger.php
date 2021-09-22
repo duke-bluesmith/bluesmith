@@ -4,45 +4,43 @@ namespace App\Entities;
 
 class Ledger extends BaseEntity
 {
-	protected $table = 'ledgers';
-	protected $casts = [
-		'job_id'   => 'int',
-		'estimate' => 'bool',
-	];
+    protected $table = 'ledgers';
+    protected $casts = [
+        'job_id'   => 'int',
+        'estimate' => 'bool',
+    ];
 
-	/**
-	 * Default initial values
-	 *
-	 * @var array
-	 */
-	protected $attributes = [
-		'description' => '',
-		'estimate'    => 0,
-	];
+    /**
+     * Default initial values
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'description' => '',
+        'estimate'    => 0,
+    ];
 
-	/**
-	 * Calculates the total amount from associated charges.
-	 *
-	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
-	 *
-	 * @return int|string
-	 */
-	public function getTotal(bool $formatted = false)
-	{
-		$total = 0;
+    /**
+     * Calculates the total amount from associated charges.
+     *
+     * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
+     *
+     * @return int|string
+     */
+    public function getTotal(bool $formatted = false)
+    {
+        $total = 0;
 
-		foreach ($this->charges ?? [] as $charge)
-		{
-			$total += $charge->price;
-		}
+        foreach ($this->charges ?? [] as $charge) {
+            $total += $charge->price;
+        }
 
-		if (! $formatted)
-		{
-			return $total;
-		}
+        if (! $formatted) {
+            return $total;
+        }
 
-		helper(['currency', 'number']);
+        helper(['currency', 'number']);
 
-		return price_to_currency($total);
-	}
+        return price_to_currency($total);
+    }
 }

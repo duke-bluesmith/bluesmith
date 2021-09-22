@@ -14,14 +14,14 @@ namespace Config;
 
 class Schemas extends \Tatter\Schemas\Config\Schemas
 {
-	// Whether to continue instead of throwing exceptions
-	public $silent = false;
+    // Whether to continue instead of throwing exceptions
+    public $silent = false;
 
-	// Namespaces to ignore (mostly for ModelHandler)
-	public $ignoredNamespaces = [
-		'CodeIgniter\Commands\Generators',
-		'Myth\Auth\Models',
-		'Tatter\Permits\Models',
-		'Tests\Support',
-	];
+    // Namespaces to ignore (mostly for ModelHandler)
+    public $ignoredNamespaces = [
+        'CodeIgniter\Commands\Generators',
+        'Myth\Auth\Models',
+        'Tatter\Permits\Models',
+        'Tests\Support',
+    ];
 }

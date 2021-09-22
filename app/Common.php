@@ -16,8 +16,7 @@
 
 // @codeCoverageIgnoreStart
 // Check for Local autoload
-if (is_file($file = ROOTPATH . 'local/vendor/autoload.php'))
-{
-	require_once $file;
+if (is_file($file = ROOTPATH . 'local/vendor/autoload.php')) {
+    require_once $file;
 }
 // @codeCoverageIgnoreEnd

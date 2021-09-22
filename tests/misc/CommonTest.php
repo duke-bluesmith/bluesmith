@@ -12,22 +12,23 @@ use Tests\Support\ProjectTestCase;
  */
 final class CommonTest extends ProjectTestCase
 {
-	use AuthenticationTrait; use DatabaseTestTrait;
+    use AuthenticationTrait;
+    use DatabaseTestTrait;
 
-	public function testUserReturnsAppEntity()
-	{
-		$result = user();
+    public function testUserReturnsAppEntity()
+    {
+        $result = user();
 
-		$this->assertNotNull($result);
-		$this->assertSame(User::class, get_class($result));
-	}
+        $this->assertNotNull($result);
+        $this->assertSame(User::class, get_class($result));
+    }
 
-	public function testUserReturnsNull()
-	{
-		$this->resetAuthServices();
+    public function testUserReturnsNull()
+    {
+        $this->resetAuthServices();
 
-		$result = user();
+        $result = user();
 
-		$this->assertNull($result);
-	}
+        $this->assertNull($result);
+    }
 }
