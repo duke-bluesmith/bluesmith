@@ -1,11 +1,13 @@
-<?php namespace App\Database\Seeds;
+<?php
 
+namespace App\Database\Seeds;
+
+use CodeIgniter\Database\Seeder;
 use Tatter\Workflows\Entities\Workflow;
 use Tatter\Workflows\Models\ActionModel;
 use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
 use Tatter\Workflows\Registrar;
-use CodeIgniter\Database\Seeder;
 
 class WorkflowSeeder extends Seeder
 {
@@ -66,7 +68,7 @@ EOT;
 
 		// Get the new workflow
 		$workflow = $workflows->find($id);
-		/* @var Workflow $workflow */
+		// @var Workflow $workflow
 
 		// Make sure all Actions are registered
 		Registrar::actions();

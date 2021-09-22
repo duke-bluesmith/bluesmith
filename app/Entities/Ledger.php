@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 class Ledger extends BaseEntity
 {
@@ -23,11 +25,12 @@ class Ledger extends BaseEntity
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
-	 * @return string|int
+	 * @return int|string
 	 */
 	public function getTotal(bool $formatted = false)
 	{
 		$total = 0;
+
 		foreach ($this->charges ?? [] as $charge)
 		{
 			$total += $charge->price;
@@ -39,6 +42,7 @@ class Ledger extends BaseEntity
 		}
 
 		helper(['currency', 'number']);
+
 		return price_to_currency($total);
 	}
 }

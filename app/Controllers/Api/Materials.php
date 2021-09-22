@@ -1,13 +1,14 @@
-<?php namespace App\Controllers\Api;
+<?php
+
+namespace App\Controllers\Api;
 
 use App\Models\MaterialModel;
-use App\Models\MethodModel;
 use Tatter\Forms\Controllers\ResourceController;
 
 class Materials extends ResourceController
 {
 	protected $modelName = MaterialModel::class;
-	
+
 	// Intercept filter requests
 	public function index()
 	{
@@ -15,7 +16,7 @@ class Materials extends ResourceController
 		{
 			$this->model->where('method_id', $methodId);
 		}
-		
+
 		return parent::index();
 	}
 }

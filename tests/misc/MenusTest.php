@@ -3,16 +3,18 @@
 use App\Database\Seeds\AuthSeeder;
 use App\Menus\ManageMenu;
 use App\Menus\PublicMenu;
-use CodeIgniter\HTTP\URI;
 use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FilterTestTrait;
 use Config\Services;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class MenusTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class MenusTest extends ProjectTestCase
 {
-	use AuthenticationTrait, DatabaseTestTrait, FilterTestTrait;
+	use AuthenticationTrait; use DatabaseTestTrait; use FilterTestTrait;
 
 	/**
 	 * Expected value for the baseline public menu
@@ -57,7 +59,7 @@ class MenusTest extends ProjectTestCase
 
 	public function testPublicMenuUser()
 	{
-		$result = (string) (new PublicMenu);
+		$result = (string) (new PublicMenu());
 
 		$this->assertSame(self::$expectedPublic, $result);
 	}
@@ -67,7 +69,7 @@ class MenusTest extends ProjectTestCase
 		$expected = str_replace('</ul>', '<li class="nav-item"><a href="' . site_url('manage') . '" class="nav-link"><i class="fas fa-user-shield"></i> Manage</a></li></ul>', self::$expectedPublic);
 
 		$this->addPermissionToUser('manageAny');
-		$result = (string) (new PublicMenu);
+		$result = (string) (new PublicMenu());
 
 		$this->assertSame($expected, $result);
 	}
@@ -82,7 +84,7 @@ class MenusTest extends ProjectTestCase
 		$_SERVER['REQUEST_URI'] = '/account/jobs';
 		Services::resetSingle('request');
 
-		$result = (string) (new PublicMenu);
+		$result = (string) (new PublicMenu());
 
 		$this->assertSame($expected, $result);
 	}
@@ -93,9 +95,8 @@ class MenusTest extends ProjectTestCase
 		cache()->delete('notices');
 		Services::resetSingle('notices');
 
-		$result = (string) (new ManageMenu);
+		$result = (string) (new ManageMenu());
 
 		$this->assertSame(self::$expectedManage, $result);
 	}
 }
-

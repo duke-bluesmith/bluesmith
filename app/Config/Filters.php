@@ -9,8 +9,8 @@ use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use Myth\Auth\Filters\LoginFilter;
-use Myth\Auth\Filters\RoleFilter;
 use Myth\Auth\Filters\PermissionFilter;
+use Myth\Auth\Filters\RoleFilter;
 
 class Filters extends BaseConfig
 {
@@ -42,7 +42,7 @@ class Filters extends BaseConfig
 			// 'honeypot',
 			// 'csrf',
 		],
-		'after'  => [
+		'after' => [
 			'public'  => ['except' => ['api/*', 'manage*', 'actions*', 'emails/templates*', 'files/export/*', 'files/upload', 'workflows*']],
 			'toolbar' => ['except' => 'api/*'],
 			// 'honeypot',

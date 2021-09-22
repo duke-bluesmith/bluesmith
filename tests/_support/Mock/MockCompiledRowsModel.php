@@ -1,4 +1,6 @@
-<?php namespace Tests\Support\Mock;
+<?php
+
+namespace Tests\Support\Mock;
 
 use App\Models\CompiledRowsTrait;
 use CodeIgniter\Model;

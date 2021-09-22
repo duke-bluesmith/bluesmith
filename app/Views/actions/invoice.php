@@ -12,7 +12,7 @@
 			<?php if (empty($job->users)): ?>
 			<p><em><?= lang('Actions.noClients') ?></em></p>
 			<p class="text-danger"><?= lang('Actions.noClients') ?></p>
-		
+
 			<?php else: ?>
 			<table class="table table-striped">
 				<thead>

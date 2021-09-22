@@ -1,13 +1,9 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Job;
 use CodeIgniter\I18n\Time;
-use CodeIgniter\Test\Fabricator;
-use Faker\Generator;
-use Tatter\Permits\Traits\PermitsTrait;
-use Tatter\Relations\Traits\ModelTrait;
-use Tatter\Workflows\Entities\Job as BaseJob;
-use Tatter\Workflows\Models\JobModel as BaseJobModel;
 
 /**
  * Compiled Rows Trait
@@ -29,10 +25,8 @@ trait CompiledRowsTrait
 	/**
 	 * Removes cached Job rows.
 	 * Must be compatible with model events.
-	 *
-	 * @return array
 	 */
-	public function clearCompiledRows(array $eventData = null): array
+	public function clearCompiledRows(?array $eventData = null): array
 	{
 		cache()->delete($this->table . 'rows');
 
@@ -43,13 +37,9 @@ trait CompiledRowsTrait
 	 * Fetch or build the rows for browsing,
 	 * applying filters and sorting.
 	 *
-	 * @param callable|null $filter
-	 * @param string $sort
-	 * @param bool $ascending
-	 *
 	 * @return array[]
 	 */
-	public function getCompiledRows(callable $filter = null, string $sort = 'id', bool $ascending = true): array
+	public function getCompiledRows(?callable $filter = null, string $sort = 'id', bool $ascending = true): array
 	{
 		if (! $rows = cache($this->table . 'rows'))
 		{
@@ -58,6 +48,7 @@ trait CompiledRowsTrait
 
 			// Process into rows
 			$rows = [];
+
 			foreach ($result as $row)
 			{
 				// Only keep the first match (in case of from multiple joins)
@@ -71,7 +62,7 @@ trait CompiledRowsTrait
 
 			// Convert timestamps to Time
 			$fields = $this->getTimestampFields();
-			$rows   = array_map(function ($row) use ($fields) {
+			$rows   = array_map(static function ($row) use ($fields) {
 				foreach ($fields as $field)
 				{
 					if (isset($row[$field]))
@@ -100,7 +91,7 @@ trait CompiledRowsTrait
 		// Check for a valid sort request
 		if (array_key_exists($sort, reset($rows)))
 		{
-			usort($rows, function ($row1, $row2) use ($sort, $ascending) {
+			usort($rows, static function ($row1, $row2) use ($sort, $ascending) {
 				return $ascending
 					? $row1[$sort] <=> $row2[$sort]
 					: $row2[$sort] <=> $row1[$sort];

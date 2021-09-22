@@ -27,7 +27,7 @@ use Tatter\Files\Models\FileModel;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
-Events::on('pre_system', function () {
+Events::on('pre_system', static function () {
 	if (ENVIRONMENT !== 'testing')
 	{
 		if (ini_get('zlib.output_compression'))
@@ -40,7 +40,7 @@ Events::on('pre_system', function () {
 			ob_end_flush();
 		}
 
-		ob_start(function ($buffer) {
+		ob_start(static function ($buffer) {
 			return $buffer;
 		});
 	}
@@ -63,7 +63,7 @@ Events::on('pre_system', function () {
  *
  * @see BaseAction::__construct() and BaseController::$helpers for slightly less global
  */
-Events::on('post_controller_constructor', function () {
+Events::on('post_controller_constructor', static function () {
 	helper(['alerts', 'auth', 'html']);
 });
 
@@ -71,7 +71,7 @@ Events::on('post_controller_constructor', function () {
  * Captures uploads from FilesController
  * and processes volume for relevant files.
  */
-Events::on('upload', function (File $file) {
+Events::on('upload', static function (File $file) {
 
 	// Ignore non-STL files
 	if (strtolower($file->getExtension('clientname')) !== 'stl')
@@ -83,13 +83,13 @@ Events::on('upload', function (File $file) {
 	$reader = STLReader::forFile($file->getPath());
 	$reader->setHandler(new VolumeHandler());
 
-	try
-	{
+	try {
 		$volume = $reader->readModel();
 	}
 	catch (InvalidFileFormatException $e)
 	{
 		log_message('error', 'Unable to calculate STL volume for ' . $file->localname . ': ' . $e->getMessage());
+
 		return;
 	}
 
@@ -103,6 +103,6 @@ Events::on('upload', function (File $file) {
 /**
  * Captures new Chat messages to clear Notices.
  */
-Events::on('chat', function (array $data) {
+Events::on('chat', static function (array $data) {
 	cache()->delete('notices');
 });

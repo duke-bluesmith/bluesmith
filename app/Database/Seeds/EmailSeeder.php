@@ -1,4 +1,6 @@
-<?php namespace App\Database\Seeds;
+<?php
+
+namespace App\Database\Seeds;
 
 use Tatter\Outbox\Database\Seeds\TemplateSeeder as BaseSeeder;
 use Tatter\Outbox\Models\TemplateModel;

@@ -15,15 +15,15 @@
 						<td><?= $user->firstname ?> <?= $user->lastname ?></td>
 						<td><?= $user->email ?></td>
 						<td>
-							<?php if ($mayDelete && count($users)>1): ?>
-							
+							<?php if ($mayDelete && count($users) > 1): ?>
+
 							<?= form_open('jobs/clients/' . $job->id, '', ['_method' => 'DELETE']) ?>
 
 								<input type="hidden" name="user_id" value="<?= $user->id ?>">
-								<input class="btn btn-link btn-small" type="submit" name="remove" value="<?= lang('Pub.remove') ?>">	
+								<input class="btn btn-link btn-small" type="submit" name="remove" value="<?= lang('Pub.remove') ?>">
 
 							<?= form_close() ?>
-							
+
 							<?php endif; ?>
 						</td>
 					</tr>

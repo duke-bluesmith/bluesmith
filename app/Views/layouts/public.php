@@ -1,7 +1,7 @@
 <?php
 $settings = service('settings');
-$menu = $menu ?? '';
-$current = ' <span class="sr-only">(current)</span>';
+$menu     = $menu ?? '';
+$current  = ' <span class="sr-only">(current)</span>';
 ?><!doctype html>
 <html lang="en">
 <head>

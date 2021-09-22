@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Note;
 use CodeIgniter\Model;

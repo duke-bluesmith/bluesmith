@@ -1,4 +1,6 @@
-<?php namespace App\Merchants;
+<?php
+
+namespace App\Merchants;
 
 use App\BaseMerchant;
 use App\Entities\Ledger;
@@ -15,7 +17,7 @@ class TransactionsHandler extends BaseMerchant
 	/**
 	 * Attributes for Tatter\Handlers
 	 *
-	 * @var array<string, mixed>      
+	 * @var array<string, mixed>
 	 */
 	public $attributes = [
 		'name'    => 'Transactions',
@@ -49,10 +51,10 @@ class TransactionsHandler extends BaseMerchant
 	/**
 	 * Performs pre-payment verification and starts the Payment record.
 	 *
-	 * @param User $user     The User making the payment
+	 * @param User   $user    The User making the payment
 	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 * @param int $amount    Amount to charge in fractional money units
-	 * @param array $data    Additional data for the gateway, usually from request()
+	 * @param int    $amount  Amount to charge in fractional money units
+	 * @param array  $data    Additional data for the gateway, usually from request()
 	 *
 	 * @return Payment The resulting record of the authorized Payment
 	 */
@@ -67,8 +69,7 @@ class TransactionsHandler extends BaseMerchant
 				price_to_currency($amount),
 			]);
 		}
-		else
-		{
+		else {
 			$code   = null;
 			$reason = '';
 		}
@@ -83,8 +84,6 @@ class TransactionsHandler extends BaseMerchant
 	 * Payment and return null to signify completion.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
-	 *
-	 * @return ResponseInterface|null
 	 */
 	public function request(Payment $payment): ?ResponseInterface
 	{
@@ -94,9 +93,9 @@ class TransactionsHandler extends BaseMerchant
 		}
 
 		$transactionId = model(TransactionModel::class)->debit(
-			$user,
-			$payment->amount,
-			'Payment ' . $payment->id . ' towards Ledger ' . $payment->ledger_id
+		    $user,
+		    $payment->amount,
+		    'Payment ' . $payment->id . ' towards Ledger ' . $payment->ledger_id
 		);
 
 		// Update the Payment with the Transaction

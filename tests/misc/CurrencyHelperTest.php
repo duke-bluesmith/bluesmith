@@ -3,7 +3,10 @@
 use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
-class CurrencyHelperTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class CurrencyHelperTest extends ProjectTestCase
 {
 	use CurrencyTrait;
 
@@ -11,14 +14,14 @@ class CurrencyHelperTest extends ProjectTestCase
 	{
 		$result = price_to_scaled(1000);
 
-		$this->assertEquals(10, $result);
+		$this->assertSame(10, $result);
 	}
 
 	public function testPriceToScaledRespectsPrecision()
 	{
 		$result = price_to_scaled(1234.5678, 100.3333333); // @phpstan-ignore-line
 
-		$this->assertEquals(12.34, $result);
+		$this->assertSame(12.34, $result);
 	}
 
 	public function testPriceToScaledFormatted()
@@ -26,7 +29,7 @@ class CurrencyHelperTest extends ProjectTestCase
 		$result = price_to_scaled(1000, null, true);
 
 		$this->assertIsString($result);
-		$this->assertEquals('10.00', $result);
+		$this->assertSame('10.00', $result);
 	}
 
 	public function testPriceToCurrency()
@@ -34,7 +37,7 @@ class CurrencyHelperTest extends ProjectTestCase
 		$result = price_to_currency(1005);
 
 		$this->assertIsString($result);
-		$this->assertEquals('$10.05', $result);
+		$this->assertSame('$10.05', $result);
 	}
 
 	public function testPriceToCurrencyPrecision()
@@ -42,6 +45,6 @@ class CurrencyHelperTest extends ProjectTestCase
 		$result = price_to_currency(1005, null, null, 1);
 
 		$this->assertIsString($result);
-		$this->assertEquals('$10.0', $result);
+		$this->assertSame('$10.0', $result);
 	}
 }

@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Libraries\Mailer;
@@ -26,8 +28,6 @@ class EstimateAction extends BaseAction
 	/**
 	 * Displays the Charges and form for sending
 	 * the estimate Ledger.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{
@@ -53,19 +53,19 @@ class EstimateAction extends BaseAction
 
 		// Verify each user and grab their email address
 		$recipients = [];
+
 		foreach (service('request')->getPost('users') ?? [] as $userId)
 		{
 			if (! is_numeric($userId))
 			{
-				continue;			
+				continue;
 			}
 
 			if ($user = model(UserModel::class)->find($userId))
 			{
 				$recipients[] = $user->email;
 			}
-			else
-			{
+			else {
 				alert('warning', 'Unable to locate user #' . $userId);
 			}
 		}

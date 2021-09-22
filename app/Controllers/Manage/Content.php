@@ -1,9 +1,9 @@
-<?php namespace App\Controllers\Manage;
+<?php
+
+namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
 use App\Models\PageModel;
-use App\Models\MaterialModel;
-use App\Models\MethodModel;
 use Tatter\Settings\Models\SettingModel;
 
 class Content extends BaseController
@@ -24,25 +24,24 @@ class Content extends BaseController
 	/**
 	 * Loads dynamic page content from the database
 	 *
-	 * @return string
+	 * @param mixed $name
 	 */
 	public function page($name = 'home'): string
 	{
 		// Check for form submission
 		if ($post = $this->request->getPost())
 		{
-			$page = $this->model->where('name', $post['name'])->first();
+			$page          = $this->model->where('name', $post['name'])->first();
 			$page->content = $post['content'];
 
 			$this->model->save($page);
-			
+
 			alert('success', "'{$page->name}' page updated.");
 		}
 		// Load current values
-		else
-		{
+		else {
 			$page = $this->model->where('name', $name)->first();
-		}		
+		}
 
 		$data = [
 			'name'    => $page->name,
@@ -51,18 +50,16 @@ class Content extends BaseController
 
 		return view('content/page', $data);
 	}
-	
+
 	/**
 	 * Displays or processes individual settings related to site branding
-	 *
-	 * @return string
 	 */
 	public function branding(): string
 	{
 		// Preload the Settings Library
 		$data['settings'] = service('settings');
 		helper('date');
-		
+
 		// Check for form submission
 		if ($post = $this->request->getPost())
 		{
@@ -79,10 +76,11 @@ class Content extends BaseController
 			if ($this->request->isAJAX())
 			{
 				echo 'success';
+
 				return '';
 			}
 
-			alert('success', "Settings updated.");
+			alert('success', 'Settings updated.');
 		}
 
 		return view('content/branding', $data);

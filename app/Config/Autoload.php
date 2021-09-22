@@ -37,6 +37,7 @@ class Autoload extends AutoloadConfig
 	 *       'App'	       => APPPATH
 	 *   ];
 	 *```
+	 *
 	 * @var array<string, string>
 	 */
 	public $psr4 = [
@@ -61,6 +62,7 @@ class Autoload extends AutoloadConfig
 	 *       'MyClass'   => '/path/to/class/file.php'
 	 *   ];
 	 *```
+	 *
 	 * @var array<string, string>
 	 */
 	public $classmap = [];
@@ -79,6 +81,7 @@ class Autoload extends AutoloadConfig
 	 *	 	   '/path/to/my/file.php',
 	 *    ];
 	 * ```
+	 *
 	 * @var array<int, string>
 	 */
 	public $files = [];

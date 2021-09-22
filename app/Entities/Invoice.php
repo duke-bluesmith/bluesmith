@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 /**
  * Invoice Entity
@@ -20,13 +22,14 @@ class Invoice extends Ledger
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
-	 * @return string|int
+	 * @return int|string
 	 */
 	public function getPaid(bool $formatted = false)
 	{
-		if (is_null($this->paid))
+		if (null === $this->paid)
 		{
 			$this->paid = 0;
+
 			foreach ($this->payments ?? [] as $payment)
 			{
 				if ($payment->code === 0)
@@ -42,6 +45,7 @@ class Invoice extends Ledger
 		}
 
 		helper(['currency', 'number']);
+
 		return price_to_currency($this->paid);
 	}
 
@@ -50,7 +54,7 @@ class Invoice extends Ledger
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
-	 * @return string|int
+	 * @return int|string
 	 */
 	public function getDue(bool $formatted = false)
 	{
@@ -62,6 +66,7 @@ class Invoice extends Ledger
 		}
 
 		helper(['currency', 'number']);
+
 		return price_to_currency($due);
 	}
 }

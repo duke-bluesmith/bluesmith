@@ -1,4 +1,6 @@
-<?php namespace App\Database\Migrations;
+<?php
+
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
@@ -12,13 +14,13 @@ class CreateEmailsJobs extends Migration
 			'email_id' => ['type' => 'int', 'unsigned' => true],
 			'job_id'   => ['type' => 'int', 'unsigned' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
 		$this->forge->addUniqueKey(['email_id', 'job_id']);
 		$this->forge->addUniqueKey(['job_id', 'email_id']);
-		
+
 		$this->forge->createTable('emails_jobs');
 	}
 

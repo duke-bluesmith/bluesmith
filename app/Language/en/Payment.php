@@ -10,6 +10,6 @@ return [
 	'unpaid'       => 'You must complete payment before continuing!',
 
 	// Statuses
-	'pending'      => 'Pending',
-	'complete'     => 'Complete',
+	'pending'  => 'Pending',
+	'complete' => 'Complete',
 ];

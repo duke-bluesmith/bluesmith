@@ -1,4 +1,6 @@
-<?php namespace App\Merchants;
+<?php
+
+namespace App\Merchants;
 
 use App\BaseMerchant;
 use App\Entities\Ledger;
@@ -15,7 +17,7 @@ class ExemptionHandler extends BaseMerchant
 	/**
 	 * Attributes for Tatter\Handlers
 	 *
-	 * @var array<string, mixed>      
+	 * @var array<string, mixed>
 	 */
 	public $attributes = [
 		'name'    => 'Exemption',
@@ -28,8 +30,6 @@ class ExemptionHandler extends BaseMerchant
 	 * Checks a User for eligibility to use this Merchant.
 	 *
 	 * @param User $user The User to check
-	 *
-	 * @return bool
 	 */
 	public function eligible(User $user): bool
 	{
@@ -38,16 +38,16 @@ class ExemptionHandler extends BaseMerchant
 			return false;
 		}
 
-		return in_array('Administrators', array_column($groups, 'name'));
+		return in_array('Administrators', array_column($groups, 'name'), true);
 	}
 
 	/**
 	 * Performs pre-payment verification and starts the Payment record.
 	 *
-	 * @param User $user     The User making the payment
+	 * @param User   $user    The User making the payment
 	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 * @param int $amount    Amount to charge in fractional money units
-	 * @param array $data    Additional data for the gateway, usually from request()
+	 * @param int    $amount  Amount to charge in fractional money units
+	 * @param array  $data    Additional data for the gateway, usually from request()
 	 *
 	 * @return Payment The resulting record of the authorized Payment
 	 */
@@ -63,8 +63,6 @@ class ExemptionHandler extends BaseMerchant
 	 * Payment and return null to signify completion.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
-	 *
-	 * @return ResponseInterface|null
 	 */
 	public function request(Payment $payment): ?ResponseInterface
 	{

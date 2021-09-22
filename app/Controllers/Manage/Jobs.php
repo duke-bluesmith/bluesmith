@@ -1,11 +1,12 @@
-<?php namespace App\Controllers\Manage;
+<?php
+
+namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
 use App\Models\JobModel;
-use CodeIgniter\Exceptions\PageNotFoundException;
-use CodeIgniter\I18n\Time;
-use Tatter\Workflows\Models\JoblogModel;
 use Closure;
+use CodeIgniter\Exceptions\PageNotFoundException;
+use Tatter\Workflows\Models\JoblogModel;
 
 class Jobs extends BaseController
 {
@@ -25,13 +26,11 @@ class Jobs extends BaseController
 	/**
 	 * Displays a single Job with management options.
 	 *
-	 * @param string|int|null $jobId
-	 *
-	 * @return string
+	 * @param int|string|null $jobId
 	 */
 	public function show($jobId = null): string
 	{
-		if (is_null($jobId) || ! $job = $this->model->withDeleted()->find($jobId))
+		if (null === $jobId || ! $job = $this->model->withDeleted()->find($jobId))
 		{
 			throw PageNotFoundException::forPageNotFound();
 		}
@@ -45,13 +44,11 @@ class Jobs extends BaseController
 
 	/**
 	 * Displays the active compiled rows
-	 *
-	 * @return string
 	 */
 	public function active(): string
 	{
-		$filter = function($row) {
-			return is_null($row['deleted_at']) && ! is_null($row['stage_id']);
+		$filter = static function ($row) {
+			return null === $row['deleted_at'] && null !== $row['stage_id'];
 		};
 
 		return $this->index('Active Jobs', $filter, 'created_at', false);
@@ -59,13 +56,11 @@ class Jobs extends BaseController
 
 	/**
 	 * Displays compiled rows for archived jobs
-	 *
-	 * @return string
 	 */
 	public function archive(): string
 	{
-		$filter = function($row) {
-			return is_null($row['deleted_at']) && is_null($row['stage_id']);
+		$filter = static function ($row) {
+			return null === $row['deleted_at'] && null === $row['stage_id'];
 		};
 
 		return $this->index('Archived Jobs', $filter, 'updated_at', false);
@@ -73,13 +68,11 @@ class Jobs extends BaseController
 
 	/**
 	 * Displays all compiled rows (not deleted)
-	 *
-	 * @return string
 	 */
 	public function all(): string
 	{
-		$filter = function($row) {
-			return is_null($row['deleted_at']);
+		$filter = static function ($row) {
+			return null === $row['deleted_at'];
 		};
 
 		return $this->index('All Jobs', $filter, 'updated_at', false);
@@ -87,13 +80,11 @@ class Jobs extends BaseController
 
 	/**
 	 * Displays the compiled rows for deleted jobs
-	 *
-	 * @return string
 	 */
 	public function trash(): string
 	{
-		$filter = function($row) {
-			return ! is_null($row['deleted_at']);
+		$filter = static function ($row) {
+			return null !== $row['deleted_at'];
 		};
 
 		return $this->index('Deleted Jobs', $filter, 'deleted_at', false);
@@ -101,15 +92,8 @@ class Jobs extends BaseController
 
 	/**
 	 * Displays the compiled rows.
-	 *
-	 * @param string $title
-	 * @param Closure|null $filter
-	 * @param string $sort
-	 * @param bool $ascending
-	 *
-	 * @return string
 	 */
-	public function index(string $title = 'Jobs', Closure $filter = null, string $sort = 'stage_id', bool $ascending = true): string
+	public function index(string $title = 'Jobs', ?Closure $filter = null, string $sort = 'stage_id', bool $ascending = true): string
 	{
 		return view('jobs/index', [
 			'title' => $title,

@@ -1,11 +1,12 @@
-<?php namespace Tests\Support;
+<?php
+
+namespace Tests\Support;
 
 use App\Entities\User;
 use App\Models\UserModel;
 use CodeIgniter\Test\Fabricator;
 use Config\Services;
 use Myth\Auth\Authorization\PermissionModel;
-use Myth\Auth\Test\AuthTestTrait;
 use RuntimeException;
 
 /**
@@ -33,16 +34,15 @@ trait AuthenticationTrait
 		$this->user = $user;
 	}
 
-    /**
-     * Creates a new faked User, optionally logging them in.
-     * Overrides Myth:Auth's version so we can use our own Faker.
-     *
-     * @param bool $login      Whether to log in the new User
-     * @param array $overrides Overriding data for the Fabricator
-     *
-     * @return User
-     * @throws RuntimeException Usually only if overriding data fails to validate
-     */
+	/**
+	 * Creates a new faked User, optionally logging them in.
+	 * Overrides Myth:Auth's version so we can use our own Faker.
+	 *
+	 * @param bool  $login     Whether to log in the new User
+	 * @param array $overrides Overriding data for the Fabricator
+	 *
+	 * @throws RuntimeException Usually only if overriding data fails to validate
+	 */
 	protected function createAuthUser(bool $login = true, array $overrides = []): User
 	{
 		$fabricator = new Fabricator(UserModel::class);
@@ -91,13 +91,8 @@ trait AuthenticationTrait
 	/**
 	 * Adds a permission to the given User.
 	 * Defaults to $this->user.
-	 *
-	 * @param string $name
-	 * @param User|null $user
-	 *
-	 * @return void
 	 */
-	protected function addPermissionToUser(string $name, User $user = null): void
+	protected function addPermissionToUser(string $name, ?User $user = null): void
 	{
 		$user = $user ?? $this->user;
 

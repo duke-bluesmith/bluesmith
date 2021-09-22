@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Models\ChargeModel;
@@ -24,8 +26,6 @@ class InvoiceAction extends BaseAction
 
 	/**
 	 * Displays the invoice form.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{

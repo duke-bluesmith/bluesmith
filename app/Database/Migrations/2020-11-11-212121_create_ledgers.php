@@ -1,4 +1,6 @@
-<?php namespace App\Database\Migrations;
+<?php
+
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
@@ -35,14 +37,14 @@ class CreateLedgers extends Migration
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 			'deleted_at' => ['type' => 'datetime', 'null' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
 		$this->forge->addKey('ledger_id');
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
-		
+
 		$this->forge->createTable('charges');
 
 		// Payments
@@ -57,7 +59,7 @@ class CreateLedgers extends Migration
 			'created_at' => ['type' => 'datetime', 'null' => true],
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
@@ -65,7 +67,7 @@ class CreateLedgers extends Migration
 		$this->forge->addKey('user_id');
 		$this->forge->addKey('reference');
 		$this->forge->addKey('created_at');
-		
+
 		$this->forge->createTable('payments');
 	}
 

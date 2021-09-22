@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -41,7 +43,7 @@ $routes->get('jobs/add', 'jobs/new');
 // Admin dashboard
 $routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
 
-$routes->group('manage', ['namespace'=>'App\Controllers\Manage'], function($routes)
+$routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static function ($routes)
 {
 	$routes->get('materials/method/(:any)', 'Materials::method/$1');
 	$routes->presenter('materials');
@@ -53,8 +55,9 @@ $routes->resource('api/methods', ['websafe' => 1, 'controller' => '\App\Controll
 $routes->resource('api/manage/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
 $routes->resource('api/manage/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
 
- /**
+/**
  * Unsubscription
+ *
  * @todo Needs to be implemented
  */
 $routes->get('unsubscribe', 'Api\Email::unsubscribe', ['as' => 'unsubscribe']);

@@ -1,7 +1,9 @@
-<?php namespace App\Entities;
+<?php
 
-use Tatter\Users\Entities\MythEntity;
+namespace App\Entities;
+
 use Tatter\Relations\Traits\EntityTrait;
+use Tatter\Users\Entities\MythEntity;
 use Tatter\Workflows\Entities\Workflow;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -19,8 +21,6 @@ class User extends MythEntity
 
 	/**
 	 * Returns a full name: "First Last"
-	 *
-	 * @return string
 	 */
 	public function getName(): string
 	{
@@ -35,7 +35,7 @@ class User extends MythEntity
 	 */
 	public function getWorkflows()
 	{
-		if (is_null($this->workflows))
+		if (null === $this->workflows)
 		{
 			$this->workflows = model(WorkflowModel::class)->getForUser($this);
 		}

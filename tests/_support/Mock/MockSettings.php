@@ -1,6 +1,7 @@
-<?php namespace Tests\Support\Mock;
+<?php
 
-use Tatter\Settings\Models\SettingModel;
+namespace Tests\Support\Mock;
+
 use Tatter\Settings\Settings;
 
 /**

@@ -13,15 +13,15 @@
 <p>There are no defined print methods. Would you like to <a href="<?= site_url('manage/methods/new') ?>">add one now</a>?</p>
 
 <?php else: ?>
-		
+
 <!-- Card deck -->
 <div class="card-deck">
-	
+
 	<?php foreach ($methods as $method): ?>
-	
+
 	<div class="card shadow mb-4" style="min-width: 24rem;">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"><?= $method->name ?> <?= $method->summary && $method->name != $method->summary ? "({$method->summary})" : '' ?></h6>
+			<h6 class="m-0 font-weight-bold text-primary"><?= $method->name ?> <?= $method->summary && $method->name !== $method->summary ? "({$method->summary})" : '' ?></h6>
 		</div>
 		<div class="card-body">
 			<p><a class="btn btn-light" href="<?= site_url('manage/materials/method/' . $method->id) ?>"><?= counted(count($method->materials), 'materials') ?></a></p>
@@ -34,7 +34,7 @@
 			<a class="btn btn-link text-danger float-right" href="<?= site_url("manage/methods/remove/{$method->id}") ?>" onclick="return desktopModal('methods/remove/<?= $method->id ?>');">Delete</a>
 		</div>
 	</div>
-		
+
 	<?php endforeach; ?>
 
 </div>

@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Charge;
 use CodeIgniter\Test\Fabricator;
@@ -22,18 +24,14 @@ class ChargeModel extends BaseModel
 
 	/**
 	 * Faked data for Fabricator.
-	 *
-	 * @param Generator $faker
-	 *
-	 * @return Charge
 	 */
 	public function fake(Generator &$faker): Charge
 	{
 		return new Charge([
-			'ledger_id' => rand(1, Fabricator::getCount('ledgers') ?: 10),
+			'ledger_id' => mt_rand(1, Fabricator::getCount('ledgers') ?: 10),
 			'name'      => $faker->sentence,
-			'amount'    => rand(100, 10000),
-			'quantity'  => rand(0, 1) ? rand(1, 5) : null,
+			'amount'    => mt_rand(100, 10000),
+			'quantity'  => mt_rand(0, 1) ? mt_rand(1, 5) : null,
 		]);
 	}
 }

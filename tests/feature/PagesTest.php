@@ -7,9 +7,12 @@ use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FeatureTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class PagesTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class PagesTest extends ProjectTestCase
 {
-	use DatabaseTestTrait, FeatureTestTrait;
+	use DatabaseTestTrait; use FeatureTestTrait;
 
 	protected $migrateOnce = true;
 	protected $seedOnce    = true;
@@ -38,7 +41,7 @@ class PagesTest extends ProjectTestCase
 		$result->assertSee($method1->name, 'h4');
 		$result->assertSee($method2->name, 'h4');
 		$result->assertSee($material->name, 'strong');
-		$result->assertSee('This print method has no available materials.', 'em');		
+		$result->assertSee('This print method has no available materials.', 'em');
 	}
 
 	public function testAboutTerms()

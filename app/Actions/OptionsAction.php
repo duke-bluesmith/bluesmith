@@ -1,9 +1,10 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Models\MethodModel;
 use App\Models\OptionModel;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class OptionsAction extends BaseAction
@@ -24,8 +25,6 @@ class OptionsAction extends BaseAction
 
 	/**
 	 * Displays the options form.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{
@@ -54,8 +53,7 @@ class OptionsAction extends BaseAction
 		{
 			$this->job->setOptions($options);
 		}
-		else
-		{
+		else {
 			$this->job->setOptions([]);
 		}
 

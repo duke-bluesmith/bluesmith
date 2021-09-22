@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\Models\ChargeModel;
 use CodeIgniter\Test\DatabaseTestTrait;
@@ -6,9 +8,12 @@ use Tests\Support\ActionTrait;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class EstimateTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class EstimateTest extends ProjectTestCase
 {
-	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+	use ActionTrait; use AuthenticationTrait; use DatabaseTestTrait;
 
 	protected $namespace = [
 		'Tatter\Files',
@@ -22,7 +27,7 @@ class EstimateTest extends ProjectTestCase
 
 	/**
 	 * UID of the Action to test
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $actionUid = 'estimate';
@@ -84,7 +89,7 @@ class EstimateTest extends ProjectTestCase
 
 		// Check for the alert
 		$this->assertArrayHasKey('alerts-queue', $_SESSION);
-		$this->assertEquals([
+		$this->assertSame([
 			'class' => 'warning',
 			'text'  => 'Unable to locate user #42',
 		], $_SESSION['alerts-queue'][0]);

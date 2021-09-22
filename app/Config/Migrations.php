@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -14,7 +16,7 @@ class Migrations extends BaseConfig
 	 * You should enable migrations whenever you intend to do a schema migration
 	 * and disable it back when you're done.
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $enabled = true;
 

@@ -1,9 +1,14 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
-class LedgerTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class LedgerTest extends ProjectTestCase
 {
 	use CurrencyTrait;
 
@@ -33,7 +38,7 @@ class LedgerTest extends ProjectTestCase
 		]);
 
 		// Create some test Charges
-		for ($i=1; $i<5; $i++)
+		for ($i = 1; $i < 5; $i++)
 		{
 			$this->charges[] = new Charge([
 				'name'      => $i,
@@ -50,13 +55,13 @@ class LedgerTest extends ProjectTestCase
 	{
 		$result = $this->ledger->getTotal();
 
-		$this->assertEquals(10000, $result);
+		$this->assertSame(10000, $result);
 	}
 
 	public function testGetTotalFormatted()
 	{
 		$result = $this->ledger->getTotal(true);
 
-		$this->assertEquals('$100.00', $result);
+		$this->assertSame('$100.00', $result);
 	}
 }

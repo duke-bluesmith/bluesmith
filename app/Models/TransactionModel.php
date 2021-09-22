@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Transaction;
 use App\Entities\User;
@@ -21,11 +23,10 @@ class TransactionModel extends BaseModel
 	/**
 	 * Credits a User, recording the Transaction.
 	 *
-	 * @param User $user      The User to credit
-	 * @param int $amount     The amount of credit
+	 * @param User   $user    The User to credit
+	 * @param int    $amount  The amount of credit
 	 * @param string $summary Optional description
 	 *
-	 * @return int
 	 * @throws \RuntimeException
 	 */
 	public function credit(User $user, int $amount, string $summary = ''): int
@@ -41,11 +42,10 @@ class TransactionModel extends BaseModel
 	/**
 	 * Debits a User, recording the Transaction.
 	 *
-	 * @param User $user      The User to debit
-	 * @param int $amount     The amount of debit
+	 * @param User   $user    The User to debit
+	 * @param int    $amount  The amount of debit
 	 * @param string $summary Optional description
 	 *
-	 * @return int
 	 * @throws \RuntimeException
 	 */
 	public function debit(User $user, int $amount, string $summary = ''): int
@@ -61,10 +61,6 @@ class TransactionModel extends BaseModel
 	/**
 	 * Creates the Transaction and updates the User's balance.
 	 *
-	 * @param User $user
-	 * @param array $data
-	 *
-	 * @return int
 	 * @throws \RuntimeException
 	 */
 	protected function process(User $user, array $data): int

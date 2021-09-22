@@ -8,7 +8,10 @@ use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class NoticeTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class NoticeTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -72,7 +75,7 @@ class NoticeTest extends ProjectTestCase
 
 		$result = $notice->getJob();
 
-		$this->assertEquals($this->job, $result);
+		$this->assertSame($this->job, $result);
 	}
 
 	public function testGetUser()
@@ -89,6 +92,6 @@ class NoticeTest extends ProjectTestCase
 
 		$result = $notice->getUser();
 
-		$this->assertEquals($this->user, $result);
+		$this->assertSame($this->user, $result);
 	}
 }

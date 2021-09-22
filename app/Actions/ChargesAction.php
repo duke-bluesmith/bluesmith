@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Models\ChargeModel;
@@ -25,8 +27,6 @@ class ChargesAction extends BaseAction
 	/**
 	 * Displays the form for modifying Charges
 	 * on the estimate Ledger.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{

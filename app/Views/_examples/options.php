@@ -3,7 +3,7 @@
 <h3>Services and Pricing</h3>
 <section>
 	<p>
-		The cost of 3D printing varies widely and is based on technology and amount of 
+		The cost of 3D printing varies widely and is based on technology and amount of
 		material used.
 	</p>
 	<p>

@@ -1,15 +1,13 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
-use App\Entities\Job;
 use App\Exceptions\InviteException;
 use App\Models\InviteModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
-use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class AssignAction extends BaseAction
 {
@@ -29,8 +27,6 @@ class AssignAction extends BaseAction
 
 	/**
 	 * Displays the form
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{
@@ -63,19 +59,20 @@ class AssignAction extends BaseAction
 	public function put(): ResponseInterface
 	{
 		// All we care about is a valid email address
-		$email = service('request')->getPost('email');
+		$email      = service('request')->getPost('email');
 		$validation = service('validation');
 
 		// Check for a legit email
 		if (! $validation->check($email, 'valid_email'))
 		{
 			alert('warning', implode('. ', $validation->getErrors()));
+
 			return redirect()->back();
 		}
 
 		// Try to match it to an existing user
 		$users = new UserModel();
-		
+
 		// A match! Try to add the user
 		if ($user = $users->where('email', $email)->first())
 		{
@@ -88,17 +85,14 @@ class AssignAction extends BaseAction
 			{
 				alert('success', lang('Actions.addClientSuccess', [$user->firstname]));
 			}
-			else
-			{
+			else {
 				alert('error', lang('Actions.addClientFail'));
 			}
 		}
 
 		// Email address not found - send an invitation
-		else
-		{
-			try
-			{
+		else {
+			try {
 				$this->job->invite($email);
 				alert('success', lang('Invite.success', [$email]));
 			}
@@ -108,7 +102,7 @@ class AssignAction extends BaseAction
 			}
 		}
 
-		return redirect()->back();		
+		return redirect()->back();
 	}
 
 	/**
@@ -126,8 +120,7 @@ class AssignAction extends BaseAction
 		{
 			model(InviteModel::class)->delete($inviteId);
 		}
-		else
-		{
+		else {
 			alert('error', lang('Actions.removeClientFail'));
 		}
 

@@ -1,10 +1,15 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 
-class JobModelTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class JobModelTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -64,7 +69,7 @@ class JobModelTest extends ProjectTestCase
 		$keys = array_keys($result[0]);
 		sort($keys, SORT_STRING);
 
-		$this->assertEquals($expected, $keys);
+		$this->assertSame($expected, $keys);
 	}
 
 	public function testInsertCreatesJoblog()

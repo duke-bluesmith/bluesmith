@@ -1,13 +1,16 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Test\DatabaseTestTrait;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Test\Fakers\GroupFaker;
 use Myth\Auth\Test\Fakers\UserFaker;
 use Tests\Support\ProjectTestCase;
-use Tests\Support\Simulator;
 
-class UserModelTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class UserModelTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -43,7 +46,7 @@ class UserModelTest extends ProjectTestCase
 
 		$this->assertIsArray($result);
 		$this->assertCount(1, $result);
-		$this->assertEquals($group->name, $result[0]->name);
+		$this->assertSame($group->name, $result[0]->name);
 	}
 
 	public function testFetchCompiledRows()

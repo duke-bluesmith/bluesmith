@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\JobModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Myth\Auth\Authorization\GroupModel;
 use Tests\Support\ProjectTestCase;
@@ -8,8 +7,10 @@ use Tests\Support\Simulator;
 
 /**
  * Tests for the internal version of the simulator
+ *
+ * @internal
  */
-class SimulatorTest extends ProjectTestCase
+final class SimulatorTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 

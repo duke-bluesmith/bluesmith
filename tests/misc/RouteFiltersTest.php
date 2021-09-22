@@ -1,15 +1,20 @@
 <?php
 
-use App\Filters\ManageFilter;
 use CodeIgniter\Test\FilterTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class RouteFiltersTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class RouteFiltersTest extends ProjectTestCase
 {
 	use FilterTestTrait;
 
 	/**
 	 * @dataProvider routeProvider
+	 *
+	 * @param mixed $route
+	 * @param mixed $alias
 	 */
 	public function testRoutes($route, $alias)
 	{
@@ -17,8 +22,7 @@ class RouteFiltersTest extends ProjectTestCase
 		{
 			$this->assertFilter($route, 'before', $alias);
 		}
-		else
-		{
+		else {
 			$this->assertNotHasFilters($route, 'before');
 		}
 	}

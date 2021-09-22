@@ -41,7 +41,7 @@
 					<?php foreach ($job->stages as $stage): ?>
 
 						<li class="list-group-item">
-							<?php if (is_null($job->stage_id) || $job->stage_id > $stage->id): ?>
+							<?php if (null === $job->stage_id || $job->stage_id > $stage->id): ?>
 
 							<i class="far fa-check-square mr-1"></i>
 							<a href="<?= site_url($stage->action->getRoute($job->id)) ?>" onclick="return confirm('Are you sure you want to regress this job?');"><?= $stage->action->summary ?></a>
@@ -113,7 +113,7 @@
 
 							<tr>
 								<td><?= $log->from->name ?? lang('Pub.newJob') ?></td>
-								<td><?= (is_null($log->stage_to) || $log->stage_to > $log->stage_from) ? lang('Pub.complete') : lang('Pub.revert') ?>
+								<td><?= (null === $log->stage_to || $log->stage_to > $log->stage_from) ? lang('Pub.complete') : lang('Pub.revert') ?>
 								<td><?= $log->user ? $log->user->name : '' ?></td>
 								<td><?= $log->created_at->humanize() ?></td>
 							</tr>

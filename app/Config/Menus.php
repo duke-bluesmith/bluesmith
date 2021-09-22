@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use App\Menus\ManageMenu;
 use App\Menus\PublicMenu;

@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 class Charge extends BaseEntity
 {
@@ -14,7 +16,7 @@ class Charge extends BaseEntity
 	 *
 	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
 	 *
-	 * @return string|int
+	 * @return int|string
 	 */
 	public function getPrice(bool $formatted = false)
 	{
@@ -31,6 +33,7 @@ class Charge extends BaseEntity
 		}
 
 		helper(['currency', 'number']);
+
 		return price_to_currency($price);
 	}
 }

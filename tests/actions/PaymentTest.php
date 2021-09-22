@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\Models\ChargeModel;
 use App\Models\UserModel;
@@ -7,9 +9,12 @@ use Tests\Support\ActionTrait;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class PaymentTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class PaymentTest extends ProjectTestCase
 {
-	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+	use ActionTrait; use AuthenticationTrait; use DatabaseTestTrait;
 
 	protected $namespace = [
 		'Tatter\Files',
@@ -23,7 +28,7 @@ class PaymentTest extends ProjectTestCase
 
 	/**
 	 * UID of the Action to test
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $actionUid = 'payment';

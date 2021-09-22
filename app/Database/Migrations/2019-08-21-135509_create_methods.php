@@ -1,4 +1,6 @@
-<?php namespace App\Database\Migrations;
+<?php
+
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
@@ -16,7 +18,7 @@ class CreateMethods extends Migration
 			'updated_at'  => ['type' => 'datetime', 'null' => true],
 			'deleted_at'  => ['type' => 'datetime', 'null' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
@@ -24,9 +26,9 @@ class CreateMethods extends Migration
 		$this->forge->addKey(['sortorder', 'name']);
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
-		
+
 		$this->forge->createTable('methods');
-		
+
 		// Materials
 		$fields = [
 			'name'        => ['type' => 'varchar', 'constraint' => 127],
@@ -38,7 +40,7 @@ class CreateMethods extends Migration
 			'updated_at'  => ['type' => 'datetime', 'null' => true],
 			'deleted_at'  => ['type' => 'datetime', 'null' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
@@ -46,7 +48,7 @@ class CreateMethods extends Migration
 		$this->forge->addKey(['sortorder', 'name']);
 		$this->forge->addKey('created_at');
 		$this->forge->addKey(['deleted_at', 'id']);
-		
+
 		$this->forge->createTable('materials');
 	}
 

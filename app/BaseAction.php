@@ -1,8 +1,9 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Entities\Job;
 use App\Models\JobModel;
-use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Workflows;
 use Tatter\Workflows\BaseAction as ModuleBaseAction;
@@ -43,9 +44,7 @@ abstract class BaseAction extends ModuleBaseAction
 	 * Renders the content within the Action layout.
 	 *
 	 * @param string $view The view file
-	 * @param array $data  Any variable data to pass to View
-	 *
-	 * @return ResponseInterface
+	 * @param array  $data Any variable data to pass to View
 	 */
 	public function render(string $view, array $data = []): ResponseInterface
 	{

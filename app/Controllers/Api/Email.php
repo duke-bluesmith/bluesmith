@@ -1,4 +1,6 @@
-<?php namespace App\Controllers\Api;
+<?php
+
+namespace App\Controllers\Api;
 
 use CodeIgniter\Controller;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
@@ -7,10 +9,8 @@ class Email extends Controller
 {
 	/**
 	 * Handle unsubscribing
-	 *
-	 * @return string
 	 */
-	public function unsubscribe(string $token = null): string
+	public function unsubscribe(?string $token = null): string
 	{
 		return 'done';
 	}

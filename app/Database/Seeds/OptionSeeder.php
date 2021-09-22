@@ -1,4 +1,6 @@
-<?php namespace App\Database\Seeds;
+<?php
+
+namespace App\Database\Seeds;
 
 use App\Models\OptionModel;
 
@@ -31,11 +33,11 @@ class OptionSeeder extends \CodeIgniter\Database\Seeder
 				'description' => 'High priorty jobs are reserved for urgent clinical needs and take precendence over other jobs.',
 			],
 		];
-		
+
 		foreach ($rows as $row)
 		{
 			$option = $options->where('name', $row['name'])->first();
-			
+
 			if (empty($option))
 			{
 				$options->insert($row);

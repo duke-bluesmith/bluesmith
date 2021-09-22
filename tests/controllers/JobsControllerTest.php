@@ -1,7 +1,7 @@
 <?php
 
-use App\Entities\Job;
 use App\Controllers\Manage\Jobs;
+use App\Entities\Job;
 use App\Models\JobModel;
 use App\Models\MaterialModel;
 use App\Models\MethodModel;
@@ -11,11 +11,14 @@ use CodeIgniter\Test\ControllerTestTrait;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class JobsControllerTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class JobsControllerTest extends ProjectTestCase
 {
-	use ControllerTestTrait, DatabaseTestTrait;
+	use ControllerTestTrait; use DatabaseTestTrait;
 
-	const JOBS = ['staff', 'client', 'completed', 'deleted'];
+	public const JOBS = ['staff', 'client', 'completed', 'deleted'];
 
 	protected $migrateOnce = true;
 	protected $seedOnce    = true;
@@ -106,9 +109,10 @@ class JobsControllerTest extends ProjectTestCase
 
 			// Add a User to each Job so the left join completes
 			$user = fake(UserModel::class);
+
 			foreach (self::JOBS as $type)
 			{
-				model(JobModel::class)->addUserToJob($user->id, self::$$type->id);
+				model(JobModel::class)->addUserToJob($user->id, self::${$type}->id);
 			}
 
 			// Cache the compiled rows
@@ -132,14 +136,13 @@ class JobsControllerTest extends ProjectTestCase
 		// Check that each expected Job is present and others are not
 		foreach (self::JOBS as $type)
 		{
-			if (in_array($type, $expected))
+			if (in_array($type, $expected, true))
 			{
 				// Check for the Job name linked by its ID
-				$result->assertSee(anchor('manage/jobs/show/' . self::$$type->id, self::$$type->name));
+				$result->assertSee(anchor('manage/jobs/show/' . self::${$type}->id, self::${$type}->name));
 			}
-			else
-			{
-				$result->assertDontSee(self::$$type->name);
+			else {
+				$result->assertDontSee(self::${$type}->name);
 			}
 		}
 	}

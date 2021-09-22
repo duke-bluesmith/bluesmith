@@ -1,13 +1,15 @@
 <?php
 
 use App\Libraries\Mailer;
-use CodeIgniter\Test\DatabaseTestTrait;
-use Tatter\Outbox\Models\EmailModel;
-use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
 use App\Models\UserModel;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ProjectTestCase;
 
-class MailerTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class MailerTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 

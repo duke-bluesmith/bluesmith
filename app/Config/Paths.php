@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 /**
  * Holds the paths that are used by the system to
@@ -8,7 +10,6 @@
  *
  * All paths are relative to the project's root folder.
  */
-
 class Paths
 {
 	/*

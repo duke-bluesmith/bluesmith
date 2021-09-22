@@ -1,4 +1,6 @@
-<?php namespace App\Libraries;
+<?php
+
+namespace App\Libraries;
 
 use App\Entities\Job;
 use App\Entities\Ledger;
@@ -38,6 +40,7 @@ class Mailer
 		if (! $emailer->send(false))
 		{
 			log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
+
 			return 0;
 		}
 
@@ -51,9 +54,9 @@ class Mailer
 	 * Job Invite
 	 * Emails an invitation to join a job
 	 *
-	 * @param User $issuer      The User issuing the invitation
+	 * @param User   $issuer    The User issuing the invitation
 	 * @param string $recipient Email address of the recipient
-	 * @param Job $job          The Job Entity
+	 * @param Job    $job       The Job Entity
 	 * @param string $token     The invitation token hash
 	 */
 	public static function forJobInvite(User $issuer, string $recipient, Job $job, string $token)
@@ -70,9 +73,10 @@ class Mailer
 
 		// Use the Auth activator email settings, if available
 		$emailer->setFrom(
-			$config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
-			$config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName)
-		->setTo($recipient);
+		    $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
+		    $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
+		)
+		    ->setTo($recipient);
 
 		if ($emailId = self::send($emailer))
 		{
@@ -87,8 +91,6 @@ class Mailer
 	 * Emails an estimate Ledger to the recipients
 	 *
 	 * @param array $recipients Email addresses of the recipients
-	 * @param Job $job
-	 * @param Ledger $ledger
 	 */
 	public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
 	{

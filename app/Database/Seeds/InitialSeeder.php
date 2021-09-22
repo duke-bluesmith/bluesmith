@@ -1,4 +1,6 @@
-<?php namespace App\Database\Seeds;
+<?php
+
+namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use Tatter\Files\Database\Seeds\FileSeeder;
@@ -32,8 +34,7 @@ class InitialSeeder extends Seeder
 		// Run each seeder in order
 		foreach ($seeds as $seedName)
 		{
-			try
-			{
+			try {
 				$this->call($seedName);
 			}
 			// @codeCoverageIgnoreStart
@@ -44,10 +45,9 @@ class InitialSeeder extends Seeder
 				{
 					throw $e;
 				}
-				else
-				{
+
 					$errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
-				}
+
 			}
 			// @codeCoverageIgnoreEnd
 		}

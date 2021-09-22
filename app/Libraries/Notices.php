@@ -10,11 +10,9 @@ use Countable;
 use Generator;
 use IteratorAggregate;
 use Tatter\Chat\Models\MessageModel;
-use Traversable;
 
 /**
  * Notices Class
- *
  */
 final class Notices implements Countable, IteratorAggregate
 {
@@ -23,7 +21,7 @@ final class Notices implements Countable, IteratorAggregate
 	 *
 	 * @var Notice[]
 	 */
-	protected $notices = [];
+	private $notices = [];
 
 	/**
 	 * Creates a new instance from cache - falls back to detection.
@@ -45,7 +43,7 @@ final class Notices implements Countable, IteratorAggregate
 		$this->notices = $notices;
 
 		if ($notices === null)
-		{			
+		{
 			$this->detect();
 		}
 	}
@@ -69,14 +67,14 @@ final class Notices implements Countable, IteratorAggregate
 	private function getFromStaffJobs(): void
 	{
 		foreach (model(JobModel::class)->builder()
-			->select('jobs.*, actions.summary, users.id AS user_id, users.firstname, users.lastname')
-			->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
-			->join('users', 'jobs_users.user_id = users.id', 'left')
-			->join('stages', 'jobs.stage_id = stages.id', 'left')
-			->join('actions', 'stages.action_id = actions.id', 'left')
-			->where('jobs.deleted_at', null)
-			->where('actions.role', 'manageJobs')
-			->get()->getResultArray() as $row)
+		    ->select('jobs.*, actions.summary, users.id AS user_id, users.firstname, users.lastname')
+		    ->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
+		    ->join('users', 'jobs_users.user_id = users.id', 'left')
+		    ->join('stages', 'jobs.stage_id = stages.id', 'left')
+		    ->join('actions', 'stages.action_id = actions.id', 'left')
+		    ->where('jobs.deleted_at', null)
+		    ->where('actions.role', 'manageJobs')
+		    ->get()->getResultArray() as $row)
 		{
 			$this->notices[$row['id']] = new Notice([
 				'job_id'     => $row['id'],
@@ -106,24 +104,23 @@ final class Notices implements Countable, IteratorAggregate
 
 		// Get the last week of messages
 		$rows = model(MessageModel::class)
-			->select('chat_messages.*, chat_conversations.uid, chat_participants.user_id')
-			->join('chat_conversations', 'chat_messages.conversation_id = chat_conversations.id')
-			->join('chat_participants', 'chat_messages.participant_id = chat_participants.id')
-			->like('chat_conversations.uid', 'job-%')
-			->where('chat_messages.created_at >', new Time('-1 week'))
-			->get()->getResultArray();
+		    ->select('chat_messages.*, chat_conversations.uid, chat_participants.user_id')
+		    ->join('chat_conversations', 'chat_messages.conversation_id = chat_conversations.id')
+		    ->join('chat_participants', 'chat_messages.participant_id = chat_participants.id')
+		    ->like('chat_conversations.uid', 'job-%')
+		    ->where('chat_messages.created_at >', new Time('-1 week'))
+		    ->get()->getResultArray();
 
 		// Only keep messages without a staff response
 		foreach ($rows as $row)
 		{
 			[, $jobId] = explode('-', $row['uid']);
 
-			if (in_array($row['user_id'], $staff))
+			if (in_array($row['user_id'], $staff, true))
 			{
 				unset($messages[$jobId]);
 			}
-			else
-			{
+			else {
 				$messages[$jobId] = $row;
 			}
 		}
@@ -151,7 +148,7 @@ final class Notices implements Countable, IteratorAggregate
 	 *
 	 * @return $this
 	 */
-	final public function push(Notice $notice)
+	public function push(Notice $notice)
 	{
 		$this->notices[$notice->job_id] = $notice;
 
@@ -163,7 +160,7 @@ final class Notices implements Countable, IteratorAggregate
 	 *
 	 * @return Notice[]
 	 */
-	protected function get(): array
+	private function get(): array
 	{
 		$sort = array_column($this->notices, 'sort');
 		array_multisort($sort, SORT_DESC, SORT_NUMERIC, $this->notices, SORT_DESC);
@@ -178,8 +175,6 @@ final class Notices implements Countable, IteratorAggregate
     /**
      * Returns the current number of Notices in the collection.
      * Fulfills Countable.
-     *
-     * @return int
      */
     public function count(): int
     {

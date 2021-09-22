@@ -1,14 +1,14 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
-	
+
 	<?= form_open() ?>
 	<?= $actionMenu ?>
 	<?= form_close() ?>
 
 	<p><?= lang('Actions.clientsHelp') ?></p>
-		
+
 	<div class="row">
-		
+
 		<div class="col-sm-6">
 			<h3><?= lang('Actions.addClients') ?></h3>
 
@@ -43,9 +43,9 @@
 			<?php if (empty($job->invites)): ?>
 
 			<p><em><?= lang('Actions.noInvites') ?></em></p>
-				
+
 			<?php else: ?>
-				
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -66,7 +66,7 @@
 							<?= form_open('jobs/clients/' . $job->id, '', ['_method' => 'DELETE']) ?>
 
 								<input type="hidden" name="invite_id" value="<?= $invite->id ?>">
-								<input class="btn btn-danger btn-small" type="submit" name="remove" value="<?= lang('Pub.remove') ?>">	
+								<input class="btn btn-danger btn-small" type="submit" name="remove" value="<?= lang('Pub.remove') ?>">
 
 							<?= form_close() ?>
 

@@ -1,11 +1,12 @@
-<?php namespace App\Controllers\Manage;
+<?php
+
+namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
-use Myth\Auth\Authorization\GroupModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\RedirectResponse;
-use CodeIgniter\I18n\Time;
+use Myth\Auth\Authorization\GroupModel;
 use Tatter\Workflows\Models\ExplicitModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -54,22 +55,22 @@ class Users extends BaseController
 	{
 		return view('users/index', [
 			'title' => 'Staff',
-			'rows'  => $this->model->getCompiledRows(function($row) {
+			'rows'  => $this->model->getCompiledRows(static function ($row) {
 				return is_numeric($row['group_id']);
-			}, 'group')
-		]);	
+			}, 'group'),
+		]);
 	}
 
 	/**
 	 * Displays a single User.
 	 *
-	 * @param string|int|null $userId
+	 * @param int|string|null $userId
 	 *
 	 * @return string
 	 */
 	public function show($userId = null)
 	{
-		if (is_null($userId) || ! $user = $this->model->withDeleted()->find($userId))
+		if (null === $userId || ! $user = $this->model->withDeleted()->find($userId))
 		{
 			throw PageNotFoundException::forPageNotFound();
 		}
@@ -86,10 +87,8 @@ class Users extends BaseController
 	 * Adds an explicit inclusion for a User
 	 * to a Workflow.
 	 *
-	 * @param string|int|null $userId
-	 * @param string|int|null $workflowId
-	 *
-	 * @return RedirectResponse
+	 * @param int|string|null $userId
+	 * @param int|string|null $workflowId
 	 */
 	public function add_workflow($userId = null, $workflowId = null): RedirectResponse
 	{
@@ -100,10 +99,8 @@ class Users extends BaseController
 	 * Adds an explicit inclusion for a User
 	 * to a Workflow.
 	 *
-	 * @param string|int|null $userId
-	 * @param string|int|null $workflowId
-	 *
-	 * @return RedirectResponse
+	 * @param int|string|null $userId
+	 * @param int|string|null $workflowId
 	 */
 	public function remove_workflow($userId = null, $workflowId = null): RedirectResponse
 	{
@@ -114,17 +111,14 @@ class Users extends BaseController
 	 * Adds an explicit inclusion for a User
 	 * to a Workflow.
 	 *
-	 * @param string|int|null $userId
-	 * @param string|int|null $workflowId
-	 * @param bool $permitted
-	 *
-	 * @return RedirectResponse
+	 * @param int|string|null $userId
+	 * @param int|string|null $workflowId
 	 *
 	 * @throws PageNotFoundException
 	 */
 	private function setWorkflow($userId = null, $workflowId = null, bool $permitted = true): RedirectResponse
 	{
-		if (is_null($userId) || is_null($workflowId))
+		if (null === $userId || null === $workflowId)
 		{
 			throw PageNotFoundException::forPageNotFound();
 		}

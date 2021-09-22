@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 use Tatter\Outbox\Config\Outbox as OutboxConfig;
 
@@ -7,7 +9,7 @@ class Outbox extends OutboxConfig
 	/**
 	 * Whether to include routes to the Templates Controller.
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $routeTemplates = true;
 

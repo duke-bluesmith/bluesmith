@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -7,7 +9,7 @@ class OptionModel extends Model
 	protected $table      = 'options';
 	protected $primaryKey = 'id';
 
-	protected $returnType = 'object';
+	protected $returnType     = 'object';
 	protected $useSoftDeletes = true;
 
 	protected $allowedFields = ['name', 'summary', 'description'];
@@ -15,7 +17,7 @@ class OptionModel extends Model
 	protected $useTimestamps = true;
 
 	protected $validationRules = [
-		'name' => 'required'
+		'name' => 'required',
 	];
 	protected $validationMessages = [];
 	protected $skipValidation     = false;

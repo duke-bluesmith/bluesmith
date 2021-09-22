@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -27,10 +29,10 @@ class BaseModel extends Model
 	 * 6 Owner  read, write
 	 * 6 Group  read, write
 	 * 4 World  read, no write
-	 */	
+	 */
 	protected $mode = 04664;
-	
-	/* Properties that need to be filled in by each model to use Permits */
+
+	// Properties that need to be filled in by each model to use Permits
 	// Name of the user ID in this model's objects
 	protected $userKey;
 

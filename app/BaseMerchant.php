@@ -1,12 +1,14 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use App\Entities\Ledger;
 use App\Entities\Payment;
 use App\Entities\User;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\ResponseInterface;
-use Tatter\Handlers\BaseHandler;
 use RuntimeException;
+use Tatter\Handlers\BaseHandler;
 
 /**
  * Base Merchant Abstract Class
@@ -29,7 +31,7 @@ abstract class BaseMerchant extends BaseHandler
 	/**
 	 * Attributes for Tatter\Handlers
 	 *
-	 * @var array<string, mixed>      
+	 * @var array<string, mixed>
 	 */
 	public $attributes;
 
@@ -55,7 +57,7 @@ abstract class BaseMerchant extends BaseHandler
 	/**
 	 * Merges default attributes with child and initializes the PaymentModel
 	 */
-	public function __construct(PaymentModel $model = null)
+	public function __construct(?PaymentModel $model = null)
 	{
 		$this->attributes = array_merge($this->defaults, $this->attributes);
 		$this->model      = $model ?? model(PaymentModel::class);
@@ -65,17 +67,17 @@ abstract class BaseMerchant extends BaseHandler
 	 * Creates a new Payment with supplied criteria.
 	 * Usually called during authorize().
 	 *
-	 * @param User $user      The User making the payment
-	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 * @param int $amount     Amount to charge in fractional money units
-	 * @param int|null $code  Error code if something went wrong
-	 * @param string $reason  Optional reason to explain error code
-	 *
-	 * @return Payment The new Payment
+	 * @param User     $user    The User making the payment
+	 * @param Ledger   $invoice The invoice Ledger to make payment towards
+	 * @param int      $amount  Amount to charge in fractional money units
+	 * @param int|null $code    Error code if something went wrong
+	 * @param string   $reason  Optional reason to explain error code
 	 *
 	 * @throws RuntimeException
+	 *
+	 * @return Payment The new Payment
 	 */
-	protected function createPayment(User $user, Ledger $invoice, int $amount, int $code = null, string $reason = ''): Payment
+	protected function createPayment(User $user, Ledger $invoice, int $amount, ?int $code = null, string $reason = ''): Payment
 	{
 		$result = model(PaymentModel::class)->insert([
 			'ledger_id' => $invoice->id,
@@ -89,6 +91,7 @@ abstract class BaseMerchant extends BaseHandler
 		if (! $result)
 		{
 			$error = implode(' ', model(PaymentModel::class)->error());
+
 			throw new RuntimeException($error);
 		}
 
@@ -112,28 +115,22 @@ abstract class BaseMerchant extends BaseHandler
 	 * Checks a User for eligibility to use this Merchant.
 	 *
 	 * @param User $user The User to check
-	 *
-	 * @return bool
 	 */
 	public function eligible(User $user): bool
 	{
 		$balance = $this->balance($user);
-		if (is_null($balance) || $balance > 0)
-		{
-			return true;
-		}
 
-		return false;
+		return (bool) (null === $balance || $balance > 0);
 	}
 
 	/**
 	 * Performs pre-payment verification and calls
 	 * createPayment() to begin the Payment record.
 	 *
-	 * @param User $user     The User making the payment
+	 * @param User   $user    The User making the payment
 	 * @param Ledger $invoice The invoice Ledger to make payment towards
-	 * @param int $amount    Amount to charge in fractional money units
-	 * @param array $data    Additional data for the gateway, usually from request()
+	 * @param int    $amount  Amount to charge in fractional money units
+	 * @param array  $data    Additional data for the gateway, usually from request()
 	 *
 	 * @return Payment The resulting record of the authorized Payment
 	 */
@@ -146,8 +143,6 @@ abstract class BaseMerchant extends BaseHandler
 	 * Payment and return null to signify completion.
 	 *
 	 * @param Payment $payment The pre-authorized Payment from authorize()
-	 *
-	 * @return ResponseInterface|null
 	 */
 	abstract public function request(Payment $payment): ?ResponseInterface;
 }

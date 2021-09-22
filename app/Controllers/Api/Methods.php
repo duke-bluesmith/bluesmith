@@ -1,4 +1,6 @@
-<?php namespace App\Controllers\Api;
+<?php
+
+namespace App\Controllers\Api;
 
 use App\Models\MethodModel;
 use Tatter\Forms\Controllers\ResourceController;

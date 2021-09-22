@@ -7,17 +7,19 @@ use Tests\Support\ProjectTestCase;
 
 /**
  * Tests functions defined in Common.php
+ *
+ * @internal
  */
-class CommonTest extends ProjectTestCase
+final class CommonTest extends ProjectTestCase
 {
-	use AuthenticationTrait, DatabaseTestTrait;
+	use AuthenticationTrait; use DatabaseTestTrait;
 
 	public function testUserReturnsAppEntity()
 	{
 		$result = user();
 
 		$this->assertNotNull($result);
-		$this->assertEquals(User::class, get_class($result));
+		$this->assertSame(User::class, get_class($result));
 	}
 
 	public function testUserReturnsNull()

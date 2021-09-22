@@ -12,6 +12,7 @@ use CodeIgniter\Debug\Toolbar\Collectors\Timers;
 use CodeIgniter\Debug\Toolbar\Collectors\Views;
 use Myth\Auth\Collectors\Auth;
 use Tatter\Schemas\Collectors\Schema;
+
 /**
  * --------------------------------------------------------------------------
  * Debug Toolbar
@@ -56,7 +57,7 @@ class Toolbar extends BaseConfig
 	 * helping to conserve file space used to store them. You can set it to
 	 * 0 (zero) to not have any history stored, or -1 for unlimited history.
 	 *
-	 * @var integer
+	 * @var int
 	 */
 	public $maxHistory = 20;
 
@@ -84,7 +85,7 @@ class Toolbar extends BaseConfig
 	 *
 	 * `$maxQueries` defines the maximum amount of queries that will be stored.
 	 *
-	 * @var integer
+	 * @var int
 	 */
 	public $maxQueries = 100;
 }

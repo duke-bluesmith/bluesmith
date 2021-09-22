@@ -1,8 +1,9 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Models\PageModel;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class TermsAction extends BaseAction
@@ -21,20 +22,14 @@ class TermsAction extends BaseAction
 		'button'   => 'Accept the Terms',
 	];
 
-	/**
-	 * @return ResponseInterface
-	 */
 	public function get(): ResponseInterface
 	{
 		return $this->render('actions/terms', [
-			'job'   => $this->job,
-			'page'  => model(PageModel::class)->where('name', 'Terms')->first(),
+			'job'  => $this->job,
+			'page' => model(PageModel::class)->where('name', 'Terms')->first(),
 		]);
 	}
 
-	/**
-	 * @return ResponseInterface|null
-	 */
 	public function post(): ?ResponseInterface
 	{
 		$data = service('request')->getPost();
@@ -42,6 +37,7 @@ class TermsAction extends BaseAction
 		if (empty($data['complete']))
 		{
 			alert('warning', lang('Actions.mustAccept'));
+
 			return redirect()->back();
 		}
 

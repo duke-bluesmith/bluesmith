@@ -1,11 +1,13 @@
-<?php namespace App\Filters;
+<?php
 
-use Myth\Auth\Filters\PermissionFilter;
+namespace App\Filters;
+
+use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\Filters\FilterInterface;
-use Tatter\Menus\Filters\MenusFilter;
+use Myth\Auth\Filters\PermissionFilter;
 use Tatter\Menus\Breadcrumb;
+use Tatter\Menus\Filters\MenusFilter;
 use Tatter\Menus\Menus\BreadcrumbsMenu;
 
 /**
@@ -20,24 +22,19 @@ class ManageFilter implements FilterInterface
 	/**
 	 * Verifies management permission.
 	 *
-	 * @param RequestInterface $request
-	 * @param array|null       $arguments
+	 * @param array|null $arguments
 	 *
 	 * @return mixed
 	 */
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		return (new PermissionFilter)->before($request, ['manageAny']);
+		return (new PermissionFilter())->before($request, ['manageAny']);
 	}
 
 	/**
 	 * Renders the manage menu and injects its content.
 	 *
-	 * @param RequestInterface  $request
-	 * @param ResponseInterface $response
-	 * @param array|null        $arguments
-	 *
-	 * @return ResponseInterface|null
+	 * @param array|null $arguments
 	 */
 	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null): ?ResponseInterface
 	{
@@ -52,26 +49,26 @@ class ManageFilter implements FilterInterface
 			if (url_is('manage/jobs/show/*'))
 			{
 				BreadcrumbsMenu::push(new Breadcrumb(
-					current_url(),
-					'Job Details'
+				    current_url(),
+				    'Job Details'
 				));
 			}
 			elseif (url_is('jobs/*') && count($segments) > 2)
 			{
 				// Next breadcrumb is the details
 				BreadcrumbsMenu::push(new Breadcrumb(
-					site_url('manage/jobs/show/' . $segments[2]),
-					'Job Details'
+				    site_url('manage/jobs/show/' . $segments[2]),
+				    'Job Details'
 				));
 
 				// Then add the Action (or "show")
 				BreadcrumbsMenu::push(new Breadcrumb(
-					current_url(),
-					ucfirst($segments[1])
+				    current_url(),
+				    ucfirst($segments[1])
 				));
 			}
 		}
 
-		return (new MenusFilter)->after($request, $response, ['breadcrumbs', 'manage-menu']);
+		return (new MenusFilter())->after($request, $response, ['breadcrumbs', 'manage-menu']);
 	}
 }

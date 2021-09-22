@@ -1,11 +1,9 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
-use App\Entities\Job;
-use CodeIgniter\HTTP\RedirectResponse;
-use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use Config\Workflows;
 use Tatter\Files\Models\FileModel;
 
 class FilesAction extends BaseAction
@@ -42,8 +40,6 @@ class FilesAction extends BaseAction
 
 	/**
 	 * Displays the file selection form.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{
@@ -55,8 +51,6 @@ class FilesAction extends BaseAction
 
 	/**
 	 * Processes file selection.
-	 *
-	 * @return ResponseInterface|null
 	 */
 	public function post(): ?ResponseInterface
 	{
@@ -79,8 +73,7 @@ class FilesAction extends BaseAction
 		{
 			$this->job->setFiles($fileIds);
 		}
-		else
-		{
+		else {
 			$this->job->setFiles([]);
 		}
 

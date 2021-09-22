@@ -1,6 +1,6 @@
-<?php namespace Config;
+<?php
 
-use CodeIgniter\Config\BaseConfig;
+namespace Config;
 
 class Workflows extends \Tatter\Workflows\Config\Workflows
 {
@@ -15,14 +15,14 @@ class Workflows extends \Tatter\Workflows\Config\Workflows
 		'public' => 'layouts/public',
 		'manage' => 'layouts/manage',
 	];
-	
+
 	// Views to display for each function
 	public $views = [
-		'job'       => 'account/job',
-		'messages'  => 'Tatter\Workflows\Views\messages',
-		'complete'  => 'Tatter\Workflows\Views\complete',
-		'deleted'   => 'Tatter\Workflows\Views\deleted',
-		'filter'    => 'Tatter\Workflows\Views\filter',
-		'workflow'  => 'Tatter\Workflows\Views\workflow',
+		'job'      => 'account/job',
+		'messages' => 'Tatter\Workflows\Views\messages',
+		'complete' => 'Tatter\Workflows\Views\complete',
+		'deleted'  => 'Tatter\Workflows\Views\deleted',
+		'filter'   => 'Tatter\Workflows\Views\filter',
+		'workflow' => 'Tatter\Workflows\Views\workflow',
 	];
 }

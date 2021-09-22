@@ -5,8 +5,6 @@ namespace App\Entities;
 use App\Models\JobModel;
 use App\Models\UserModel;
 use CodeIgniter\Entity\Entity;
-use CodeIgniter\Validation\Validation;
-use CodeIgniter\Validation\ValidationInterface;
 use InvalidArgumentException;
 
 /**
@@ -63,7 +61,7 @@ class Notice extends Entity
 	 */
 	public function getJob()
 	{
-		if (is_null($this->job))
+		if (null === $this->job)
 		{
 			$this->job = model(JobModel::class)->find($this->attributes['job_id']);
 		}
@@ -78,7 +76,7 @@ class Notice extends Entity
 	 */
 	public function getUser()
 	{
-		if (is_null($this->user))
+		if (null === $this->user)
 		{
 			$this->user = model(UserModel::class)->find($this->attributes['user_id']);
 		}

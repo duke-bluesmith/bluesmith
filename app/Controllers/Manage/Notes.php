@@ -1,4 +1,6 @@
-<?php namespace App\Controllers\Manage;
+<?php
+
+namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
 use App\Models\NoteModel;
@@ -8,8 +10,6 @@ class Notes extends BaseController
 {
 	/**
 	 * Adds a Note to a Job
-	 *
-	 * @return RedirectResponse
 	 */
 	public function add(): RedirectResponse
 	{
@@ -20,9 +20,9 @@ class Notes extends BaseController
 		if (! model(NoteModel::class)->insert($data))
 		{
 			return redirect()
-				->back()
-				->withInput()
-				->with('errors', model(NoteModel::class)->errors());
+			    ->back()
+			    ->withInput()
+			    ->with('errors', model(NoteModel::class)->errors());
 		}
 
 		return redirect()->back();

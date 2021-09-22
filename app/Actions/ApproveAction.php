@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -22,8 +24,6 @@ class ApproveAction extends BaseAction
 	/**
 	 * Displays the Charges and form for
 	 * accepting the estimate Ledger.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{

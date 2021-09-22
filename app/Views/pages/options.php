@@ -4,7 +4,7 @@
 	<div class="d-lg-none mb-3">
 		<a href="<?= site_url('jobs/new') ?>" class="btn btn-primary">Submit a job now</a>
 	</div>
-	
+
 	<div class="row">
 		<div class="col-lg-9">
 
@@ -32,11 +32,11 @@
 				<p><em>This print method has no available materials.</em></p>
 				<?php endif; ?>
 			</div>
-			
+
 			<?php endforeach; ?>
 
 		</div>
-		
+
 		<div class="col-lg-3">
 			<a href="<?= site_url('jobs/new') ?>" class="btn btn-primary">Submit a job now</a>
 		</div>

@@ -1,6 +1,6 @@
-<?php namespace Config;
+<?php
 
-use CodeIgniter\Config\BaseConfig;
+namespace Config;
 
 class Assets extends \Tatter\Assets\Config\Assets
 {
@@ -28,7 +28,7 @@ class Assets extends \Tatter\Assets\Config\Assets
 			'vendor/chat/chat.css',
 			'vendor/chat/chat.js',
 		],
-		
+
 		// Admin dashboard
 		'manage' => [
 			'vendor/chartjs/Chart.min.css',

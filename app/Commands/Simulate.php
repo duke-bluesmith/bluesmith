@@ -1,8 +1,9 @@
-<?php namespace App\Commands;
+<?php
+
+namespace App\Commands;
 
 use App\Database\Seeds\InitialSeeder;
 use CodeIgniter\CLI\BaseCommand;
-use CodeIgniter\CLI\CLI;
 use Config\Database;
 use RuntimeException;
 use Tatter\Workflows\Models\WorkflowModel;
@@ -45,8 +46,8 @@ class Simulate extends BaseCommand
 
 		// Set one Workflow to be restricted
 		model(WorkflowModel::class)->builder()
-			->orderBy('id', 'desc')
-			->limit(1)
-			->update(['role' => 'manageContent']);
+		    ->orderBy('id', 'desc')
+		    ->limit(1)
+		    ->update(['role' => 'manageContent']);
 	}
 }

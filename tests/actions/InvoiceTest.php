@@ -1,17 +1,19 @@
-<?php namespace App\Actions;
+<?php
 
-use App\Entities\Ledger;
+namespace App\Actions;
+
 use App\Models\ChargeModel;
-use App\Models\JobModel;
-use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ActionTrait;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class InvoiceTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class InvoiceTest extends ProjectTestCase
 {
-	use ActionTrait, AuthenticationTrait, DatabaseTestTrait;
+	use ActionTrait; use AuthenticationTrait; use DatabaseTestTrait;
 
 	protected $namespace = [
 		'Tatter\Files',
@@ -25,7 +27,7 @@ class InvoiceTest extends ProjectTestCase
 
 	/**
 	 * UID of the Action to test
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $actionUid = 'invoice';

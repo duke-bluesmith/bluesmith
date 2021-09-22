@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 /**
  * Payment Entity
@@ -27,7 +29,7 @@ class Payment extends BaseEntity
 	 */
 	public function getStatus()
 	{
-		if (is_null($this->attributes['code']))
+		if (null === $this->attributes['code'])
 		{
 			return lang('Payment.pending');
 		}

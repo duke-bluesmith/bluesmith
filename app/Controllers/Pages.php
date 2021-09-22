@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use App\Models\PageModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -19,7 +21,7 @@ class Pages extends BaseController
 			return view('pages/' . strtolower($page->name), ['content' => $page->content, 'menu' => $page->name]);
 		}
 
-		// Otherwise use the generic one		
+		// Otherwise use the generic one
 		return view('pages/show', ['content' => $page->content, 'menu' => $page->name]);
 	}
 }

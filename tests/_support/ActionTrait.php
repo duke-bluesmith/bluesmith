@@ -1,14 +1,15 @@
-<?php namespace Tests\Support;
+<?php
+
+namespace Tests\Support;
 
 use App\Entities\Job;
 use App\Models\JobModel;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Test\TestResponse;
+use RuntimeException;
 use Tatter\Workflows\Entities\Action;
 use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
-use RuntimeException;
 
 /**
  * Action Test Trait
@@ -31,8 +32,6 @@ trait ActionTrait
 
 	/**
 	 * Fakes a Job and initializes the Action identified by $actionUid
-	 *
-	 * @return void
 	 */
 	protected function setUpActionTrait(): void
 	{
@@ -58,59 +57,45 @@ trait ActionTrait
 		$this->action = new $class($this->job);
 	}
 
-    /**
-     * Calls an Action method expected to return `null`.
-     *
-     * @param string $method
-     *
-     * @return void
-     */
+	/**
+	 * Calls an Action method expected to return `null`.
+	 */
 	protected function expectNull(string $method): void
 	{
-		$result = $this->action->$method();
+		$result = $this->action->{$method}();
 
 		$this->assertNull($result);
 	}
 
-    /**
-     * Calls an Action method expected to return
-     * a display response (i.e. not a redirect).
-     *
-     * @param string $method
-     *
-     * @return TestResponse
-     */
+	/**
+	 * Calls an Action method expected to return
+	 * a display response (i.e. not a redirect).
+	 */
 	protected function expectResponse(string $method): TestResponse
 	{
 		return $this->getResponse($method, false);
 	}
 
-    /**
-     * Calls an Action method expected to return
-     * a display response (i.e. not a redirect).
-     *
-     * @param string $method
-     *
-     * @return TestResponse
-     */
+	/**
+	 * Calls an Action method expected to return
+	 * a display response (i.e. not a redirect).
+	 */
 	protected function expectRedirect(string $method): TestResponse
 	{
 		return $this->getResponse($method, true);
 	}
 
-    /**
-     * Calls an Action method expected to return
-     * a `ResponseInterface`, verifies it, and returns
-     * the response wrapped in a TestResponse.
-     *
-     * @param string $method The Action method to call
-     * @param bool $redirect Whether to expect a redirect
-     *
-     * @return TestResponse
-     */
+	/**
+	 * Calls an Action method expected to return
+	 * a `ResponseInterface`, verifies it, and returns
+	 * the response wrapped in a TestResponse.
+	 *
+	 * @param string $method   The Action method to call
+	 * @param bool   $redirect Whether to expect a redirect
+	 */
 	private function getResponse(string $method, bool $redirect): TestResponse
 	{
-		$result = $this->action->$method();
+		$result = $this->action->{$method}();
 		$this->assertInstanceOf(ResponseInterface::class, $result);
 
 		$response = new TestResponse($result);

@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Method;
 use Faker\Generator;
@@ -15,10 +17,6 @@ class MethodModel extends BaseModel
 
 	/**
 	 * Faked data for Fabricator.
-	 *
-	 * @param Generator $faker
-	 *
-	 * @return Method
 	 */
 	public function fake(Generator &$faker): Method
 	{
@@ -26,7 +24,7 @@ class MethodModel extends BaseModel
 			'name'        => $faker->catchPhrase,
 			'summary'     => $faker->sentence,
 			'description' => $faker->paragraph,
-			'sortorder'   => rand(1, 10),
+			'sortorder'   => mt_rand(1, 10),
 		]);
 	}
 }

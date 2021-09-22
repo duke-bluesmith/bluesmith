@@ -1,11 +1,15 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\Mock\MockCompiledRowsModel;
 use Tests\Support\ProjectTestCase;
-use Tests\Support\Simulator;
 
-class CompiledRowsTraitTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class CompiledRowsTraitTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -26,7 +30,7 @@ class CompiledRowsTraitTest extends ProjectTestCase
 	{
 		parent::setUp();
 
-		$this->model = new MockCompiledRowsModel();		
+		$this->model = new MockCompiledRowsModel();
 	}
 
 	public function testGet()
@@ -35,7 +39,7 @@ class CompiledRowsTraitTest extends ProjectTestCase
 
 		$this->assertIsArray($result);
 		$this->assertCount(2, $result);
-		$this->assertEquals(['id', 'name', 'created_at'], array_keys($result[0]));
+		$this->assertSame(['id', 'name', 'created_at'], array_keys($result[0]));
 	}
 
 	public function testClear()

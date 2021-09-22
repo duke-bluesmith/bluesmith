@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use App\Models\JobModel;
 use App\Models\LedgerModel;
@@ -6,7 +8,10 @@ use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class JobTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class JobTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -56,21 +61,21 @@ class JobTest extends ProjectTestCase
 	public function testGetLedgersReturnsLedgers()
 	{
 		model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 0,
+			'job_id'   => $this->job->id,
+			'estimate' => 0,
 		]);
 		model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 1,
+			'job_id'   => $this->job->id,
+			'estimate' => 1,
 		]);
 
 		$result = $this->job->getLedgers();
 
 		$this->assertIsArray($result);
-		$this->assertEquals([false, true], array_keys($result)); // @phpstan-ignore-line
+		$this->assertSame([false, true], array_keys($result)); // @phpstan-ignore-line
 		$this->assertInstanceOf(Ledger::class, $result[false]); // @phpstan-ignore-line
 		$this->assertInstanceOf(Ledger::class, $result[true]); // @phpstan-ignore-line
-	
+
 	}
 
 	public function testEstimateReturnsNull()
@@ -83,8 +88,8 @@ class JobTest extends ProjectTestCase
 	public function testEstimateReturnsLedger()
 	{
 		$result = model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 1,
+			'job_id'   => $this->job->id,
+			'estimate' => 1,
 		]);
 
 		$result = $this->job->estimate;

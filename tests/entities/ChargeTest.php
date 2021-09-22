@@ -1,9 +1,14 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
-class ChargeTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class ChargeTest extends ProjectTestCase
 {
 	use CurrencyTrait;
 
@@ -16,7 +21,7 @@ class ChargeTest extends ProjectTestCase
 		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
-		$this->assertEquals(1000, $result);
+		$this->assertSame(1000, $result);
 	}
 
 	public function testGetPriceMultipliesQuantity()
@@ -29,7 +34,7 @@ class ChargeTest extends ProjectTestCase
 		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
-		$this->assertEquals(3000, $result);
+		$this->assertSame(3000, $result);
 	}
 
 	public function testQuantityRounds()
@@ -42,7 +47,7 @@ class ChargeTest extends ProjectTestCase
 		$result = $charge->getPrice();
 
 		$this->assertIsInt($result);
-		$this->assertEquals(366, $result);
+		$this->assertSame(366, $result);
 	}
 
 	public function testGetPriceFormatted()
@@ -54,7 +59,7 @@ class ChargeTest extends ProjectTestCase
 		$result = $charge->getPrice(true);
 
 		$this->assertIsString($result);
-		$this->assertEquals('$10.00', $result);
+		$this->assertSame('$10.00', $result);
 	}
 
 	public function testGetPriceFormattedWithCents()
@@ -66,6 +71,6 @@ class ChargeTest extends ProjectTestCase
 		$result = $charge->getPrice(true);
 
 		$this->assertIsString($result);
-		$this->assertEquals('$10.05', $result);
+		$this->assertSame('$10.05', $result);
 	}
 }

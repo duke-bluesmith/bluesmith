@@ -6,8 +6,10 @@ use Tests\Support\ProjectTestCase;
 
 /**
  * Tests for the Simulate Command
+ *
+ * @internal
  */
-class SimulateTest extends ProjectTestCase
+final class SimulateTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 

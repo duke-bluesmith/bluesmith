@@ -1,11 +1,10 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class DeliverAction extends BaseAction
 {
@@ -25,8 +24,6 @@ class DeliverAction extends BaseAction
 
 	/**
 	 * Displays the delivery form.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{

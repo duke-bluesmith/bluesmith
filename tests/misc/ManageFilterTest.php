@@ -8,9 +8,12 @@ use Myth\Auth\Exceptions\PermissionException;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class ManageFilterTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class ManageFilterTest extends ProjectTestCase
 {
-	use AuthenticationTrait, DatabaseTestTrait, FilterTestTrait;
+	use AuthenticationTrait; use DatabaseTestTrait; use FilterTestTrait;
 
 	public function testNotAuthenticated()
 	{
@@ -20,7 +23,7 @@ class ManageFilterTest extends ProjectTestCase
 		$result = $caller();
 
 		$this->assertInstanceOf(RedirectResponse::class, $result);
-		$this->assertEquals(site_url('login'), $result->getHeaderLine('Location'));
+		$this->assertSame(site_url('login'), $result->getHeaderLine('Location'));
 	}
 
 	public function testNotAuthorized()

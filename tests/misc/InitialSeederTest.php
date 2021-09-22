@@ -9,8 +9,10 @@ use Tests\Support\ProjectTestCase;
 
 /**
  * Tests for the intial seeder
+ *
+ * @internal
  */
-class InitialSeederTest extends ProjectTestCase
+final class InitialSeederTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -32,7 +34,7 @@ class InitialSeederTest extends ProjectTestCase
 		$result = model(WorkflowModel::class)->first()->stages;
 
 		$this->assertCount(13, $result);
-		$this->assertEquals('options', $result[3]->action->uid);
+		$this->assertSame('options', $result[3]->action->uid);
 	}
 
 	public function testCreatesInviteEmailTemplate()

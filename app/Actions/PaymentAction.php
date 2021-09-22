@@ -1,15 +1,13 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
-use App\BaseMerchant;
 use App\Entities\User;
-use App\Exceptions\PaymentException;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class PaymentAction extends BaseAction
 {
@@ -30,8 +28,6 @@ class PaymentAction extends BaseAction
 	/**
 	 * Displays the payment details from the invoice Ledger
 	 * and a selectable list of user-eligible Merchants.
-	 *
-	 * @return ResponseInterface|null
 	 */
 	public function get(): ?ResponseInterface
 	{
@@ -40,6 +36,7 @@ class PaymentAction extends BaseAction
 
 		// Load Merchants and filter by eligibility
 		$merchants = [];
+
 		foreach (service('handlers', 'Merchants')->findAll() as $class)
 		{
 			$merchant = new $class();
@@ -90,6 +87,7 @@ class PaymentAction extends BaseAction
 		{
 			$message = 'Unable to locate payment method "' . $data['merchant'] . '"';
 			log_message('error', $message);
+
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 		$merchant = new $class();
@@ -97,7 +95,7 @@ class PaymentAction extends BaseAction
 		// Verify Merchant eligibility
 		if (! $merchant->eligible($user))
 		{
-			return redirect()->back()->withInput()->with('error', 'You are not eligible for payments with ' . $merchant->name);		
+			return redirect()->back()->withInput()->with('error', 'You are not eligible for payments with ' . $merchant->name);
 		}
 
 		// Validate amounts
@@ -115,9 +113,10 @@ class PaymentAction extends BaseAction
 
 		// Attempt to authorize with the Merchant
 		$payment = $merchant->authorize($user, $this->job->getInvoice(), $amount, $data);
-		if (! is_null($payment->code))
+		if (null !== $payment->code)
 		{
 			$message = $payment->reason ?: lang('Payment.unauthorized', [$this->attributes['code']]);
+
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
@@ -135,12 +134,13 @@ class PaymentAction extends BaseAction
 		if ($payment->code !== 0)
 		{
 			$message = $payment->reason ?: lang('Payment.failure', [$this->attributes['code']]);
+
 			return redirect()->back()->withInput()->with('error', $message);
 		}
 
 		alert('success', lang(
-			'Payment.success',
-			[price_to_currency($amount)]
+		    'Payment.success',
+		    [price_to_currency($amount)]
 		));
 
 		// Send back to get()

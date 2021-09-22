@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Material;
 use CodeIgniter\Test\Fabricator;
@@ -19,10 +21,6 @@ class MaterialModel extends BaseModel
 
 	/**
 	 * Faked data for Fabricator.
-	 *
-	 * @param Generator $faker
-	 *
-	 * @return Material
 	 */
 	public function fake(Generator &$faker): Material
 	{
@@ -30,9 +28,9 @@ class MaterialModel extends BaseModel
 			'name'        => $faker->catchPhrase,
 			'summary'     => $faker->sentence,
 			'description' => $faker->paragraph,
-			'cost'        => rand(0, 4) ? rand(100, 500) : null,
-			'sortorder'   => rand(1, 10),
-			'method_id'   => rand(1, Fabricator::getCount('methods') ?: 8),
+			'cost'        => mt_rand(0, 4) ? mt_rand(100, 500) : null,
+			'sortorder'   => mt_rand(1, 10),
+			'method_id'   => mt_rand(1, Fabricator::getCount('methods') ?: 8),
 		]);
 	}
 }

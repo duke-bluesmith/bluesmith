@@ -1,5 +1,5 @@
 
-	<?= form_open(isset($method) ? "manage/methods/{$method->id}" : 'manage/methods', ['onsubmit'=>'return desktopSubmit(this, closeModal);']) ?>
+	<?= form_open(isset($method) ? "manage/methods/{$method->id}" : 'manage/methods', ['onsubmit' => 'return desktopSubmit(this, closeModal);']) ?>
 
 		<div class="form-group">
 			<label for="name">Name</label>

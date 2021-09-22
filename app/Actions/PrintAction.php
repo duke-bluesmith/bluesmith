@@ -1,4 +1,6 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
 use App\Models\NoteModel;
@@ -23,8 +25,6 @@ class PrintAction extends BaseAction
 
 	/**
 	 * Displays the Job print prompt.
-	 *
-	 * @return ResponseInterface
 	 */
 	public function get(): ResponseInterface
 	{

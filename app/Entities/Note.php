@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
@@ -21,8 +23,6 @@ class Note extends BaseEntity
 	 * Returns the content, optionally formatted from Markdown.
 	 *
 	 * @param bool $formatted Whether to format the result for display
-	 *
-	 * @return string
 	 */
 	public function getContent(bool $formatted = false): string
 	{
@@ -32,7 +32,7 @@ class Note extends BaseEntity
 		}
 
 		return (new GithubFlavoredMarkdownConverter([
-			'html_input' => 'strip',
+			'html_input'         => 'strip',
 			'allow_unsafe_links' => false,
 		]))->convertToHtml($this->attributes['content']);
 	}

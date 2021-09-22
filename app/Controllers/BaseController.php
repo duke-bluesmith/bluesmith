@@ -19,13 +19,12 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
-
 class BaseController extends Controller
 {
 	/**
 	 * Instance of the main Request object.
 	 *
-	 * @var IncomingRequest|CLIRequest
+	 * @var CLIRequest|IncomingRequest
 	 */
 	protected $request;
 
@@ -40,10 +39,6 @@ class BaseController extends Controller
 
 	/**
 	 * Constructor.
-	 *
-	 * @param RequestInterface  $request
-	 * @param ResponseInterface $response
-	 * @param LoggerInterface   $logger
 	 */
 	public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
 	{

@@ -37,7 +37,7 @@
 				<i class="fas fa-info-circle" data-toggle="tooltip" title="<?= $merchant->summary ?>"></i>
 			</label>
 
-			<?php if (! is_null($balance = $merchant->balance(user()))): ?>
+			<?php if (null !== ($balance = $merchant->balance(user()))): ?>
 			<small class="form-text text-muted"><?= price_to_currency(user()->balance) ?> balance</small>
 			<?php endif; ?>
 

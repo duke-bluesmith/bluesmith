@@ -1,9 +1,14 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
-class InvoiceTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class InvoiceTest extends ProjectTestCase
 {
 	use CurrencyTrait;
 
@@ -32,7 +37,7 @@ class InvoiceTest extends ProjectTestCase
 		]);
 
 		// Create some test Payments
-		for ($i=1; $i<5; $i++)
+		for ($i = 1; $i < 5; $i++)
 		{
 			$this->payments[] = new Payment([
 				'ledger_id' => $this->invoice->id,
@@ -51,13 +56,13 @@ class InvoiceTest extends ProjectTestCase
 	{
 		$result = $this->invoice->getPaid();
 
-		$this->assertEquals(10000, $result);
+		$this->assertSame(10000, $result);
 	}
 
 	public function testGetPaidFormatted()
 	{
 		$result = $this->invoice->getPaid(true);
 
-		$this->assertEquals('$100.00', $result);
+		$this->assertSame('$100.00', $result);
 	}
 }

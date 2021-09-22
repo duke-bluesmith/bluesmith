@@ -1,4 +1,6 @@
-<?php namespace App\Exports;
+<?php
+
+namespace App\Exports;
 
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Exports\BaseExport;
@@ -23,8 +25,6 @@ class STLHandler extends BaseExport
 
 	/**
 	 * Checks for AJAX to tag image, otherwise reads out the file directly.
-	 *
-	 * @return ResponseInterface|null
 	 */
 	protected function _process(): ?ResponseInterface
 	{
@@ -38,8 +38,6 @@ class STLHandler extends BaseExport
 
 	/**
 	 * Creates the ThreeJS view.
-	 *
-	 * @return ResponseInterface
 	 */
 	protected function processDisplay(): ResponseInterface
 	{
@@ -54,8 +52,6 @@ class STLHandler extends BaseExport
 
 	/**
 	 * Reads the file out directly to browser.
-	 *
-	 * @return ResponseInterface
 	 */
 	protected function processFile(): ResponseInterface
 	{
@@ -64,7 +60,7 @@ class STLHandler extends BaseExport
 
 		// Set the headers and read out the file
 		return $this->response
-			->setHeader('Content-Type', $this->fileMime)
-			->setBody(file_get_contents($path));
+		    ->setHeader('Content-Type', $this->fileMime)
+		    ->setBody(file_get_contents($path));
 	}
 }

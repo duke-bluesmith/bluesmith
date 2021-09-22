@@ -1,11 +1,15 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\User;
-use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class TransactionModelTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class TransactionModelTest extends ProjectTestCase
 {
 	use DatabaseTestTrait;
 
@@ -46,7 +50,7 @@ class TransactionModelTest extends ProjectTestCase
 		$this->assertIsInt($result);
 
 		$user = model(UserModel::class)->find($this->user->id);
-		$this->assertEquals($expected, $user->balance);
+		$this->assertSame($expected, $user->balance);
 	}
 
 	public function testDebitCreatesTransaction()
@@ -70,7 +74,7 @@ class TransactionModelTest extends ProjectTestCase
 		$this->assertIsInt($result);
 
 		$user = model(UserModel::class)->find($this->user->id);
-		$this->assertEquals($expected, $user->balance);
+		$this->assertSame($expected, $user->balance);
 	}
 
 	public function testProcessThrowsOnInvalidInput()

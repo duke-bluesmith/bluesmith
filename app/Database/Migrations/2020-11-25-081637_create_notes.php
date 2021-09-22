@@ -1,4 +1,6 @@
-<?php namespace App\Database\Migrations;
+<?php
+
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
@@ -14,13 +16,13 @@ class CreateNotes extends Migration
 			'updated_at' => ['type' => 'datetime', 'null' => true],
 			'deleted_at' => ['type' => 'datetime', 'null' => true],
 		];
-		
+
 		$this->forge->addField('id');
 		$this->forge->addField($fields);
 
 		$this->forge->addKey(['job_id', 'user_id']);
 		$this->forge->addKey('created_at');
-		
+
 		$this->forge->createTable('notes');
 	}
 

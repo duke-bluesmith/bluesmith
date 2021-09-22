@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use App\Exceptions\InviteException;
 use App\Libraries\Mailer;
@@ -63,7 +65,7 @@ class Job extends BaseJob
 			return null;
 		}
 
-		$count         = 0;
+		$count        = 0;
 		$this->volume = 0;
 
 		foreach ($this->files as $file)
@@ -97,8 +99,6 @@ class Job extends BaseJob
 	 * Gets the estimate.
 	 *
 	 * @param bool $create Whether a new Ledger should be created if missing
-	 *
-	 * @return Ledger|null
 	 */
 	public function getEstimate($create = false): ?Ledger
 	{
@@ -109,8 +109,6 @@ class Job extends BaseJob
 	 * Gets the invoice.
 	 *
 	 * @param bool $create Whether a new Ledger should be created if missing
-	 *
-	 * @return Invoice|null
 	 */
 	public function getInvoice($create = false): ?Invoice
 	{
@@ -131,7 +129,7 @@ class Job extends BaseJob
 	{
 		$this->ensureCreated();
 
-		if (is_null($this->ledgers))
+		if (null === $this->ledgers)
 		{
 			$this->ledgers = [];
 
@@ -149,8 +147,6 @@ class Job extends BaseJob
 	 *
 	 * @param bool $estimate Filter for the `estimate` field
 	 * @param bool $create   Whether a new Ledger should be created if missing
-	 *
-	 * @return Ledger|null
 	 */
 	protected function ledger(bool $estimate, bool $create): ?Ledger
 	{
@@ -177,8 +173,6 @@ class Job extends BaseJob
 	 *
 	 * @param string $recipient Email address to invite
 	 *
-	 * @return void
-	 *
 	 * @throws InviteException
 	 */
 	public function invite(string $recipient): void
@@ -199,7 +193,7 @@ class Job extends BaseJob
 			throw new InviteException(lang('Invite.noLogin'));
 		}
 
-		// Build the row		
+		// Build the row
 		$row = [
 			'job_id'     => $this->attributes['id'],
 			'email'      => $recipient,
@@ -217,6 +211,7 @@ class Job extends BaseJob
 		if (! model(InviteModel::class)->insert($row))
 		{
 			$error = implode(' ', model(InviteModel::class)->errors());
+
 			throw new InviteException($error);
 		}
 

@@ -10,7 +10,10 @@ use Tatter\Chat\Models\ParticipantModel;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
 
-class NoticesTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class NoticesTest extends ProjectTestCase
 {
 	use AuthenticationTrait;
 	use DatabaseTestTrait;

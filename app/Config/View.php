@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 class View extends \CodeIgniter\Config\View
 {
@@ -10,7 +12,7 @@ class View extends \CodeIgniter\Config\View
 	 * calls so that it is available to all views. If that is the case,
 	 * set $saveData to true.
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $saveData = true;
 

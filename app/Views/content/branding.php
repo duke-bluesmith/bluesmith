@@ -28,19 +28,19 @@
 						<input type="file" name="orgLogo" class="form-control-file" id="orgLogo" aria-describedby="orgLogoHelp">
 						<small id="orgLogoHelp" class="form-text text-muted"><?= $settings->getTemplate('orgLogo')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="orgUrl">URL</label>
 						<input type="url" name="orgUrl" class="form-control" id="orgUrl" aria-describedby="orgUrlHelp" placeholder="https://example.com" value="<?= $settings->orgUrl ?>">
 						<small id="orgUrlHelp" class="form-text text-muted"><?= $settings->getTemplate('orgUrl')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="orgPhone">Phone</label>
 						<input type="phone" name="orgPhone" class="form-control" id="orgPhone" aria-describedby="orgPhoneHelp" placeholder="(951) 262-3062" value="<?= $settings->orgPhone ?>">
 						<small id="orgPhoneHelp" class="form-text text-muted"><?= $settings->getTemplate('orgPhone')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="orgAddress">Address</label>
 						<textarea name="orgAddress" class="form-control" id="orgAddress" aria-describedby="orgAddressHelp"
@@ -53,7 +53,7 @@
 			</div>
 		</div>
     </div>
-    
+
 	<div class="col-xl-4 col-lg-6">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
@@ -73,7 +73,7 @@
 						<input type="file" name="brandLogo" class="form-control-file" id="brandLogo" aria-describedby="brandLogoHelp">
 						<small id="brandLogoHelp" class="form-text text-muted"><?= $settings->getTemplate('brandLogo')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="brandName">Default theme</label>
 						<?= themes_select('custom-select', $settings->getTemplate('theme')->content) ?>
@@ -85,7 +85,7 @@
 			</div>
 		</div>
     </div>
-    
+
 	<div class="col-xl-4 col-lg-6">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
@@ -98,13 +98,13 @@
 						<?= timezone_select('custom-select', $settings->getTemplate('timezone')->content) ?>
 						<small id="timezoneHelp" class="form-text text-muted"><?= $settings->getTemplate('timezone')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="serverTimezone">Server</label>
 						<?= timezone_select('custom-select', $settings->getTemplate('serverTimezone')->content) ?>
 						<small id="serverTimezoneHelp" class="form-text text-muted"><?= $settings->getTemplate('serverTimezone')->summary ?></small>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="databaseTimezone">Database</label>
 						<?= timezone_select('custom-select', $settings->getTemplate('databaseTimezone')->content) ?>

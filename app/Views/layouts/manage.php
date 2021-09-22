@@ -6,7 +6,7 @@
 
 	<!--Mobile meta-data -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 	<meta name="description" content="Admin Dashboard" />
 	<meta name="keywords" content="admin,dashboard,management" />
 	<meta name="author" content="AdminLTE" />
@@ -26,15 +26,15 @@
 	<meta name="theme-color" content="#307093">
 
 	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
-	
+
 	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
 
 	<?= service('assets')->css() ?>
-	
+
 	<?= service('alerts')->css() ?>
 
 	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
-	
+
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>
