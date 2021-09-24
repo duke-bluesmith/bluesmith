@@ -1,9 +1,5 @@
 <?php
 
-use App\Entities\User;
-use App\Models\UserModel;
-use Config\Services;
-
 /**
  * The goal of this file is to allow developers a location
  * where they can overwrite core procedural functions and
@@ -15,13 +11,12 @@ use Config\Services;
  * loaded early on, and may also contain additional functions
  * that you'd like to use throughout your entire application
  *
- * @link: https://codeigniter4.github.io/CodeIgniter4/
+ * @see: https://codeigniter4.github.io/CodeIgniter4/
  */
 
 // @codeCoverageIgnoreStart
 // Check for Local autoload
-if (is_file($file = ROOTPATH . 'local/vendor/autoload.php'))
-{
-	require_once $file;
+if (is_file($file = ROOTPATH . 'local/vendor/autoload.php')) {
+    require_once $file;
 }
 // @codeCoverageIgnoreEnd

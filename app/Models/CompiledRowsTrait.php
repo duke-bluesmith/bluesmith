@@ -1,13 +1,9 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Entities\Job;
 use CodeIgniter\I18n\Time;
-use CodeIgniter\Test\Fabricator;
-use Faker\Generator;
-use Tatter\Permits\Traits\PermitsTrait;
-use Tatter\Relations\Traits\ModelTrait;
-use Tatter\Workflows\Entities\Job as BaseJob;
-use Tatter\Workflows\Models\JobModel as BaseJobModel;
 
 /**
  * Compiled Rows Trait
@@ -18,125 +14,109 @@ use Tatter\Workflows\Models\JobModel as BaseJobModel;
  */
 trait CompiledRowsTrait
 {
-	/**
-	 * Fetch or build the compiled rows for browsing,
-	 * applying filters, and sorting.
-	 *
-	 * @return array[]
-	 */
-	abstract protected function fetchCompiledRows(): array;
+    /**
+     * Fetch or build the compiled rows for browsing,
+     * applying filters, and sorting.
+     *
+     * @return array[]
+     */
+    abstract protected function fetchCompiledRows(): array;
 
-	/**
-	 * Removes cached Job rows.
-	 * Must be compatible with model events.
-	 *
-	 * @return array
-	 */
-	public function clearCompiledRows(array $eventData = null): array
-	{
-		cache()->delete($this->table . 'rows');
+    /**
+     * Removes cached Job rows.
+     * Must be compatible with model events.
+     */
+    public function clearCompiledRows(?array $eventData = null): array
+    {
+        cache()->delete($this->table . 'rows');
 
-		return $eventData ?? [];
-	}
+        return $eventData ?? [];
+    }
 
-	/**
-	 * Fetch or build the rows for browsing,
-	 * applying filters and sorting.
-	 *
-	 * @param callable|null $filter
-	 * @param string $sort
-	 * @param bool $ascending
-	 *
-	 * @return array[]
-	 */
-	public function getCompiledRows(callable $filter = null, string $sort = 'id', bool $ascending = true): array
-	{
-		if (! $rows = cache($this->table . 'rows'))
-		{
-			// Pull all the data
-			$result = $this->fetchCompiledRows();
+    /**
+     * Fetch or build the rows for browsing,
+     * applying filters and sorting.
+     *
+     * @return array[]
+     */
+    public function getCompiledRows(?callable $filter = null, string $sort = 'id', bool $ascending = true): array
+    {
+        if (! $rows = cache($this->table . 'rows')) {
+            // Pull all the data
+            $result = $this->fetchCompiledRows();
 
-			// Process into rows
-			$rows = [];
-			foreach ($result as $row)
-			{
-				// Only keep the first match (in case of from multiple joins)
-				if (isset($rows[$row['id']]))
-				{
-					continue;
-				}
+            // Process into rows
+            $rows = [];
 
-				$rows[$row['id']] = $row;
-			}
+            foreach ($result as $row) {
+                // Only keep the first match (in case of from multiple joins)
+                if (isset($rows[$row['id']])) {
+                    continue;
+                }
 
-			// Convert timestamps to Time
-			$fields = $this->getTimestampFields();
-			$rows   = array_map(function ($row) use ($fields) {
-				foreach ($fields as $field)
-				{
-					if (isset($row[$field]))
-					{
-						$row[$field] = new Time($row[$field]);
-					}
-				}
+                $rows[$row['id']] = $row;
+            }
 
-				return $row;
-			}, $rows);
+            // Convert timestamps to Time
+            $fields = $this->getTimestampFields();
+            $rows   = array_map(static function ($row) use ($fields) {
+                foreach ($fields as $field) {
+                    if (isset($row[$field])) {
+                        $row[$field] = new Time($row[$field]);
+                    }
+                }
 
-			// Cache the rows
-			$rows = array_values($rows);
-			cache()->save($this->table . 'rows', $rows, HOUR);
-		}
+                return $row;
+            }, $rows);
 
-		// Filter the array with the callable, or `null` which removes empties
-		$rows = $filter ? array_filter($rows, $filter) : array_filter($rows);
+            // Cache the rows
+            $rows = array_values($rows);
+            cache()->save($this->table . 'rows', $rows, HOUR);
+        }
 
-		// Short circuit for unsortable results
-		if (count($rows) < 2)
-		{
-			return $rows;
-		}
+        // Filter the array with the callable, or `null` which removes empties
+        $rows = $filter ? array_filter($rows, $filter) : array_filter($rows);
 
-		// Check for a valid sort request
-		if (array_key_exists($sort, reset($rows)))
-		{
-			usort($rows, function ($row1, $row2) use ($sort, $ascending) {
-				return $ascending
-					? $row1[$sort] <=> $row2[$sort]
-					: $row2[$sort] <=> $row1[$sort];
-			});
-		}
+        // Short circuit for unsortable results
+        if (count($rows) < 2) {
+            return $rows;
+        }
 
-		return $rows;
-	}
+        // Check for a valid sort request
+        if (array_key_exists($sort, reset($rows))) {
+            usort($rows, static function ($row1, $row2) use ($sort, $ascending) {
+                return $ascending
+                    ? $row1[$sort] <=> $row2[$sort]
+                    : $row2[$sort] <=> $row1[$sort];
+            });
+        }
 
-	/**
-	 * Returns an array of all fields that should
-	 * be converted to Time objects.
-	 *
-	 * @return string[]
-	 */
-	private function getTimestampFields(): array
-	{
-		$fields = [];
+        return $rows;
+    }
 
-		if ($this->useTimestamps)
-		{
-			if ($this->createdField)
-			{
-				$fields[] = $this->createdField;
-			}
-			if ($this->updatedField)
-			{
-				$fields[] = $this->updatedField;
-			}
-		}
+    /**
+     * Returns an array of all fields that should
+     * be converted to Time objects.
+     *
+     * @return string[]
+     */
+    private function getTimestampFields(): array
+    {
+        $fields = [];
 
-		if ($this->tempUseSoftDeletes && $this->deletedField)
-		{
-			$fields[] = $this->deletedField;
-		}
+        if ($this->useTimestamps) {
+            if ($this->createdField) {
+                $fields[] = $this->createdField;
+            }
+            if ($this->updatedField) {
+                $fields[] = $this->updatedField;
+            }
+        }
 
-		return $fields;
-	}
+        if ($this->tempUseSoftDeletes && $this->deletedField) {
+            $fields[] = $this->deletedField;
+        }
+
+        return $fields;
+    }
 }

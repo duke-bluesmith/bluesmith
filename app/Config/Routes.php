@@ -1,16 +1,17 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
-	require SYSTEMPATH . 'Config/Routes.php';
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
-/**
+/*
  * --------------------------------------------------------------------
  * Router Setup
  * --------------------------------------------------------------------
@@ -41,10 +42,9 @@ $routes->get('jobs/add', 'jobs/new');
 // Admin dashboard
 $routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
 
-$routes->group('manage', ['namespace'=>'App\Controllers\Manage'], function($routes)
-{
-	$routes->get('materials/method/(:any)', 'Materials::method/$1');
-	$routes->presenter('materials');
+$routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static function ($routes) {
+    $routes->get('materials/method/(:any)', 'Materials::method/$1');
+    $routes->presenter('materials');
 });
 
 // API
@@ -53,8 +53,9 @@ $routes->resource('api/methods', ['websafe' => 1, 'controller' => '\App\Controll
 $routes->resource('api/manage/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
 $routes->resource('api/manage/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
 
- /**
+/**
  * Unsubscription
+ *
  * @todo Needs to be implemented
  */
 $routes->get('unsubscribe', 'Api\Email::unsubscribe', ['as' => 'unsubscribe']);
@@ -72,7 +73,6 @@ $routes->get('unsubscribe', 'Api\Email::unsubscribe', ['as' => 'unsubscribe']);
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
-	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

@@ -9,38 +9,40 @@ use Tests\Support\ProjectTestCase;
 
 /**
  * Tests for the intial seeder
+ *
+ * @internal
  */
-class InitialSeederTest extends ProjectTestCase
+final class InitialSeederTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	protected $seed = '';
+    protected $seed = '';
 
-	public function testCreatesDefaultWorkflow()
-	{
-		$this->dontSeeInDatabase('workflows', ['category' => 'Core']);
+    public function testCreatesDefaultWorkflow()
+    {
+        $this->dontSeeInDatabase('workflows', ['category' => 'Core']);
 
-		$this->seed(InitialSeeder::class);
+        $this->seed(InitialSeeder::class);
 
-		$this->seeInDatabase('workflows', ['category' => 'Core']);
-	}
+        $this->seeInDatabase('workflows', ['category' => 'Core']);
+    }
 
-	public function testCreatesInitialStages()
-	{
-		$this->seed(InitialSeeder::class);
+    public function testCreatesInitialStages()
+    {
+        $this->seed(InitialSeeder::class);
 
-		$result = model(WorkflowModel::class)->first()->stages;
+        $result = model(WorkflowModel::class)->first()->stages;
 
-		$this->assertCount(13, $result);
-		$this->assertEquals('options', $result[3]->action->uid);
-	}
+        $this->assertCount(13, $result);
+        $this->assertSame('options', $result[3]->action->uid);
+    }
 
-	public function testCreatesInviteEmailTemplate()
-	{
-		$this->seed(InitialSeeder::class);
+    public function testCreatesInviteEmailTemplate()
+    {
+        $this->seed(InitialSeeder::class);
 
-		$template = model(TemplateModel::class)->findByName('Job Invite');
+        $template = model(TemplateModel::class)->findByName('Job Invite');
 
-		$this->assertInstanceOf(Template::class, $template);
-	}
+        $this->assertInstanceOf(Template::class, $template);
+    }
 }

@@ -37,7 +37,7 @@
 					</tr>
 				</thead>
 				<tbody>
-	
+
 					<?php foreach ($rows as $row): ?>
 
 					<tr>
@@ -49,7 +49,7 @@
 						<td data-order="<?= $row['created_at']->getTimestamp() ?>"><?= $row['created_at']->format('n/j/Y') ?></td>
 						<td data-order="<?= $row['updated_at']->getTimestamp() ?>"><?= $row['updated_at']->humanize() ?></td>
 					</tr>
-		
+
 					<?php endforeach; ?>
 
 				</tbody>

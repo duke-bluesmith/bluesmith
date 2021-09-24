@@ -1,46 +1,43 @@
-<?php namespace App\Actions;
+<?php
+
+namespace App\Actions;
 
 use App\BaseAction;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\Entities\Action;
-use Tatter\Workflows\Models\ActionModel;
-use Tatter\Workflows\Models\WorkflowModel;
 
 class DeliverAction extends BaseAction
 {
-	/**
-	 * @var array<string, string>
-	 */
-	public $attributes = [
-		'category' => 'Complete',
-		'name'     => 'Deliver',
-		'uid'      => 'deliver',
-		'role'     => 'manageJobs',
-		'icon'     => 'fas fa-truck',
-		'summary'  => 'Staff delivers objects to client',
-		'header'   => 'Delivery',
-		'button'   => 'Delivery Complete',
-	];
+    /**
+     * @var array<string, string>
+     */
+    public $attributes = [
+        'category' => 'Complete',
+        'name'     => 'Deliver',
+        'uid'      => 'deliver',
+        'role'     => 'manageJobs',
+        'icon'     => 'fas fa-truck',
+        'summary'  => 'Staff delivers objects to client',
+        'header'   => 'Delivery',
+        'button'   => 'Delivery Complete',
+    ];
 
-	/**
-	 * Displays the delivery form.
-	 *
-	 * @return ResponseInterface
-	 */
-	public function get(): ResponseInterface
-	{
-		return $this->render('actions/deliver');
-	}
+    /**
+     * Displays the delivery form.
+     */
+    public function get(): ResponseInterface
+    {
+        return $this->render('actions/deliver');
+    }
 
-	/**
-	 * Marks the items as delivered.
-	 *
-	 * @return null
-	 */
-	public function post(): ?ResponseInterface
-	{
-		// End the action
-		return null;
-	}
+    /**
+     * Marks the items as delivered.
+     *
+     * @return null
+     */
+    public function post(): ?ResponseInterface
+    {
+        // End the action
+        return null;
+    }
 }

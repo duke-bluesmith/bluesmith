@@ -11,7 +11,7 @@
 <p>This method has no defined materials. Would you like to <a href="<?= site_url('manage/materials/new/' . $method->id) ?>">add one now</a>?</p>
 
 <?php else: ?>
-	
+
 <p class="mb-4">Available printing materials for <?= $method->name ?></p>
 
 	<?= view('materials/cards', ['materials' => $method->materials]) ?>

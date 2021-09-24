@@ -1,7 +1,6 @@
-<?php namespace Config;
+<?php
 
-use CodeIgniter\Config\BaseConfig;
-use Myth\Auth\Authentication\LocalAuthenticator;
+namespace Config;
 
 class Auth extends \Myth\Auth\Config\Auth
 {
@@ -10,7 +9,7 @@ class Auth extends \Myth\Auth\Config\Auth
     //--------------------------------------------------------------------
 
     public $viewLayout = 'layouts/public';
-    
+
     //--------------------------------------------------------------------
     // Allow User Registration
     //--------------------------------------------------------------------

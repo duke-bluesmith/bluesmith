@@ -8,8 +8,8 @@
 				<h3 class="card-title"><?= $user->getName() ?></h3>
 			</div>
 			<div class="card-body">
-				<h6 class="card-subtitle mb-2 text-muted"><?= implode(', ', array_column($groups, 'name')) ?></h6>	
-			</div>		
+				<h6 class="card-subtitle mb-2 text-muted"><?= implode(', ', array_column($groups, 'name')) ?></h6>
+			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><strong>First name:</strong> <?= $user->firstname ?></li>
 				<li class="list-group-item"><strong>Last name:</strong> <?= $user->lastname ?></li>
@@ -31,7 +31,7 @@
 					<tr>
 						<td><?= $workflow->name ?></td>
 
-						<?php if (in_array($workflow->id, $userWorkflows)): ?>
+						<?php if (in_array($workflow->id, $userWorkflows, true)): ?>
 						<td class="text-success"><?= $workflow->role ?: 'Open access' ?></td>
 						<td><a class="btn btn-danger btn-sm" href="<?= site_url('manage/users/remove_workflow/' . $user->id . '/' . $workflow->id) ?>">Ban</a></td>
 

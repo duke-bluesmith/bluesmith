@@ -39,7 +39,7 @@
 		amount increase.
 	</p>
 	<p>
-		The cost of 3D printing varies widely and is based on the technology and amount of 
+		The cost of 3D printing varies widely and is based on the technology and amount of
 		material used. Material prices are liable to change frequently and thus our printing
 		costs may also change without notice for new jobs.
 	</p>

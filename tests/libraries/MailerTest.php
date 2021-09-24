@@ -1,23 +1,25 @@
 <?php
 
 use App\Libraries\Mailer;
-use CodeIgniter\Test\DatabaseTestTrait;
-use Tatter\Outbox\Models\EmailModel;
-use Tests\Support\ProjectTestCase;
 use App\Models\JobModel;
 use App\Models\UserModel;
+use CodeIgniter\Test\DatabaseTestTrait;
+use Tests\Support\ProjectTestCase;
 
-class MailerTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class MailerTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	public function testJobInviteAddsEmailToJob()
-	{
-		$job    = fake(JobModel::class);
-		$issuer = fake(UserModel::class);
+    public function testJobInviteAddsEmailToJob()
+    {
+        $job    = fake(JobModel::class);
+        $issuer = fake(UserModel::class);
 
-		Mailer::forJobInvite($issuer, 'email@example.com', $job, 'abcdefg1234567890');
+        Mailer::forJobInvite($issuer, 'email@example.com', $job, 'abcdefg1234567890');
 
-		$this->seeInDatabase('emails_jobs', ['job_id' => $job->id]);
-	}
+        $this->seeInDatabase('emails_jobs', ['job_id' => $job->id]);
+    }
 }

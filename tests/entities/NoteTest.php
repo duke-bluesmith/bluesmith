@@ -1,29 +1,33 @@
-<?php namespace App\Entities;
+<?php
 
-use App\Entities\Note;
+namespace App\Entities;
+
 use Tests\Support\ProjectTestCase;
 
-class NoteTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class NoteTest extends ProjectTestCase
 {
-	public function testGetContentUnformatted()
-	{
-		$note = new Note([
-			'job_id'  => 1,
-			'user_id' => 1,
-			'content' => 'Test **markup**',
-		]);
+    public function testGetContentUnformatted()
+    {
+        $note = new Note([
+            'job_id'  => 1,
+            'user_id' => 1,
+            'content' => 'Test **markup**',
+        ]);
 
-		$this->assertEquals('Test **markup**', $note->getContent(false));
-	}
+        $this->assertSame('Test **markup**', $note->getContent(false));
+    }
 
-	public function testGetContentFormatted()
-	{
-		$note = new Note([
-			'job_id'  => 1,
-			'user_id' => 1,
-			'content' => 'Test **markup**',
-		]);
+    public function testGetContentFormatted()
+    {
+        $note = new Note([
+            'job_id'  => 1,
+            'user_id' => 1,
+            'content' => 'Test **markup**',
+        ]);
 
-		$this->assertEquals("<p>Test <strong>markup</strong></p>\n", $note->getContent(true));
-	}
+        $this->assertSame("<p>Test <strong>markup</strong></p>\n", $note->getContent(true));
+    }
 }

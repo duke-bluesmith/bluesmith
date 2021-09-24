@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 use App\Models\JobModel;
 use App\Models\LedgerModel;
@@ -6,141 +8,145 @@ use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class JobTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class JobTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
     protected $namespace = [
-		'Tatter\Files',
-    	'Tatter\Workflows',
-    	'Myth\Auth',
-    	'App',
+        'Tatter\Files',
+        'Tatter\Workflows',
+        'Myth\Auth',
+        'App',
     ];
 
-	protected $seed = 'App\Database\Seeds\OptionSeeder';
+    protected $seed = 'App\Database\Seeds\OptionSeeder';
 
-	/**
-	 * @var Job
-	 */
-	private $job;
+    /**
+     * @var Job
+     */
+    private $job;
 
-	/**
-	 * Fakes a test Job.
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
+    /**
+     * Fakes a test Job.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-		$this->job = fake(JobModel::class);
-	}
+        $this->job = fake(JobModel::class);
+    }
 
-	public function testSetOptionsAddsToDatabase()
-	{
-		$this->job->setOptions([1, 2, 3]);
+    public function testSetOptionsAddsToDatabase()
+    {
+        $this->job->setOptions([1, 2, 3]);
 
-		$this->seeNumRecords(3, 'jobs_options', ['job_id' => 1]);
-	}
+        $this->seeNumRecords(3, 'jobs_options', ['job_id' => 1]);
+    }
 
-	public function testHasOptionEmpty()
-	{
-		$this->assertFalse($this->job->hasOption(1));
-	}
+    public function testHasOptionEmpty()
+    {
+        $this->assertFalse($this->job->hasOption(1));
+    }
 
-	public function testHasOptionTrue()
-	{
-		$this->job->setOptions([1, 2, 3]);
+    public function testHasOptionTrue()
+    {
+        $this->job->setOptions([1, 2, 3]);
 
-		$this->assertTrue($this->job->hasOption(2));
-	}
+        $this->assertTrue($this->job->hasOption(2));
+    }
 
-	public function testGetLedgersReturnsLedgers()
-	{
-		model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 0,
-		]);
-		model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 1,
-		]);
+    public function testGetLedgersReturnsLedgers()
+    {
+        model(LedgerModel::class)->insert([
+            'job_id'   => $this->job->id,
+            'estimate' => 0,
+        ]);
+        model(LedgerModel::class)->insert([
+            'job_id'   => $this->job->id,
+            'estimate' => 1,
+        ]);
 
-		$result = $this->job->getLedgers();
+        $result = $this->job->getLedgers();
 
-		$this->assertIsArray($result);
-		$this->assertEquals([false, true], array_keys($result)); // @phpstan-ignore-line
-		$this->assertInstanceOf(Ledger::class, $result[false]); // @phpstan-ignore-line
-		$this->assertInstanceOf(Ledger::class, $result[true]); // @phpstan-ignore-line
-	
-	}
+        $this->assertIsArray($result);
+        $this->assertCount(2, $result);
 
-	public function testEstimateReturnsNull()
-	{
-		$result = $this->job->estimate;
+        foreach ($result as $ledger) {
+            $this->assertInstanceOf(Ledger::class, $ledger);
+        }
+    }
 
-		$this->assertNull($result);
-	}
+    public function testEstimateReturnsNull()
+    {
+        $result = $this->job->estimate;
 
-	public function testEstimateReturnsLedger()
-	{
-		$result = model(LedgerModel::class)->insert([
-			'job_id'      => $this->job->id,
-			'estimate'    => 1,
-		]);
+        $this->assertNull($result);
+    }
 
-		$result = $this->job->estimate;
+    public function testEstimateReturnsLedger()
+    {
+        $result = model(LedgerModel::class)->insert([
+            'job_id'   => $this->job->id,
+            'estimate' => 1,
+        ]);
 
-		$this->assertInstanceOf(Ledger::class, $result);
-		$this->assertTrue($result->estimate);
-	}
+        $result = $this->job->estimate;
 
-	public function testEstimateCreatesLedger()
-	{
-		$result = $this->job->getEstimate(true);
+        $this->assertInstanceOf(Ledger::class, $result);
+        $this->assertTrue($result->estimate);
+    }
 
-		$this->assertInstanceOf(Ledger::class, $result);
-		$this->assertTrue($result->estimate);
-	}
+    public function testEstimateCreatesLedger()
+    {
+        $result = $this->job->getEstimate(true);
 
-	public function testInvoiceReturnsInvoice()
-	{
-		$result = model(LedgerModel::class)->insert([
-			'job_id'   => $this->job->id,
-			'estimate' => 0,
-		]);
+        $this->assertInstanceOf(Ledger::class, $result);
+        $this->assertTrue($result->estimate);
+    }
 
-		$result = $this->job->invoice;
+    public function testInvoiceReturnsInvoice()
+    {
+        $result = model(LedgerModel::class)->insert([
+            'job_id'   => $this->job->id,
+            'estimate' => 0,
+        ]);
 
-		$this->assertInstanceOf(Ledger::class, $result);
-		$this->assertInstanceOf(Invoice::class, $result);
-		$this->assertFalse($result->estimate);
-	}
+        $result = $this->job->invoice;
 
-	public function testInvoiceCreatesLedger()
-	{
-		$result = $this->job->getInvoice(true);
+        $this->assertInstanceOf(Ledger::class, $result);
+        $this->assertInstanceOf(Invoice::class, $result);
+        $this->assertFalse($result->estimate);
+    }
 
-		$this->assertInstanceOf(Ledger::class, $result);
-		$this->assertFalse($result->estimate);
-	}
+    public function testInvoiceCreatesLedger()
+    {
+        $result = $this->job->getInvoice(true);
 
-	public function testInvoiceReturnsNull()
-	{
-		$result = $this->job->getInvoice(false);
+        $this->assertInstanceOf(Ledger::class, $result);
+        $this->assertFalse($result->estimate);
+    }
 
-		$this->assertNull($result);
-	}
+    public function testInvoiceReturnsNull()
+    {
+        $result = $this->job->getInvoice(false);
 
-	public function testGetOwner()
-	{
-		$user1 = fake(UserModel::class);
-		$user2 = fake(UserModel::class);
+        $this->assertNull($result);
+    }
 
-		model(JobModel::class)->addUserToJob($user1->id, $this->job->id);
-		model(JobModel::class)->addUserToJob($user2->id, $this->job->id);
+    public function testGetOwner()
+    {
+        $user1 = fake(UserModel::class);
+        $user2 = fake(UserModel::class);
 
-		$result = $this->job->getOwner();
+        model(JobModel::class)->addUserToJob($user1->id, $this->job->id);
+        model(JobModel::class)->addUserToJob($user2->id, $this->job->id);
 
-		$this->assertInstanceOf(User::class, $result);
-		$this->assertSame($user1->id, $result->id);
-	}
+        $result = $this->job->getOwner();
+
+        $this->assertInstanceOf(User::class, $result);
+        $this->assertSame($user1->id, $result->id);
+    }
 }

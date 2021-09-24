@@ -1,74 +1,76 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Test\DatabaseTestTrait;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Test\Fakers\GroupFaker;
 use Myth\Auth\Test\Fakers\UserFaker;
 use Tests\Support\ProjectTestCase;
-use Tests\Support\Simulator;
 
-class UserModelTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class UserModelTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	public function testConstructorMergesFields()
-	{
-		$model = new UserModel();
+    public function testConstructorMergesFields()
+    {
+        $model = new UserModel();
 
-		$this->assertContains('firstname', $model->allowedFields); // @phpstan-ignore-line
-	}
+        $this->assertContains('firstname', $model->allowedFields); // @phpstan-ignore-line
+    }
 
-	public function testStaffIds()
-	{
-		$user  = fake(UserFaker::class);
-		$group = model(GroupFaker::class)->where('name', 'Administrators')->first();
+    public function testStaffIds()
+    {
+        $user  = fake(UserFaker::class);
+        $group = model(GroupFaker::class)->where('name', 'Administrators')->first();
 
-		model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
+        model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
 
-		$result = model(UserModel::class)->findStaffIds();
+        $result = model(UserModel::class)->findStaffIds();
 
-		$this->assertIsArray($result);
-		$this->assertCount(1, $result);
-		$this->assertSame($user->id, $result[0]);
-	}
+        $this->assertIsArray($result);
+        $this->assertCount(1, $result);
+        $this->assertSame($user->id, $result[0]);
+    }
 
-	public function testGroups()
-	{
-		$user  = fake(UserFaker::class);
-		$group = fake(GroupFaker::class);
+    public function testGroups()
+    {
+        $user  = fake(UserFaker::class);
+        $group = fake(GroupFaker::class);
 
-		model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
+        model(GroupFaker::class)->addUserToGroup($user->id, $group->id);
 
-		$result = model(UserModel::class)->groups($user->id);
+        $result = model(UserModel::class)->groups($user->id);
 
-		$this->assertIsArray($result);
-		$this->assertCount(1, $result);
-		$this->assertEquals($group->name, $result[0]->name);
-	}
+        $this->assertIsArray($result);
+        $this->assertCount(1, $result);
+        $this->assertSame($group->name, $result[0]->name);
+    }
 
-	public function testFetchCompiledRows()
-	{
-		$user1 = fake(UserFaker::class);
-		$user2 = fake(UserFaker::class);
+    public function testFetchCompiledRows()
+    {
+        $user1 = fake(UserFaker::class);
+        $user2 = fake(UserFaker::class);
 
-		$method = $this->getPrivateMethodInvoker(model(UserModel::class), 'fetchCompiledRows');
-		$result = $method();
+        $method = $this->getPrivateMethodInvoker(model(UserModel::class), 'fetchCompiledRows');
+        $result = $method();
 
-		$this->assertIsArray($result);
-		$this->assertCount(2, $result);
+        $this->assertIsArray($result);
+        $this->assertCount(2, $result);
 
-		$keys   = array_keys($result[0]);
-		$fields = [
-			'id',
-			'firstname',
-			'lastname',
-			'group_id',
-			'group',
-		];
+        $keys   = array_keys($result[0]);
+        $fields = [
+            'id',
+            'firstname',
+            'lastname',
+            'group_id',
+            'group',
+        ];
 
-		foreach ($fields as $field)
-		{
-			$this->assertContains($field, $keys);
-		}
-	}
+        foreach ($fields as $field) {
+            $this->assertContains($field, $keys);
+        }
+    }
 }

@@ -1,4 +1,6 @@
-<?php namespace App\Database\Seeds;
+<?php
+
+namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use Tatter\Files\Database\Seeds\FileSeeder;
@@ -7,57 +9,49 @@ use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
 {
-	public function run()
-	{
-		$errors = [];
+    public function run()
+    {
+        $errors = [];
 
-		// Seeds to run
-		$seeds = [
-			SettingSeeder::class,
-			FileSeeder::class,
-			AuthSeeder::class,
-			EmailSeeder::class,
-			OptionSeeder::class,
-			PageSeeder::class,
-			ThemeSeeder::class,
-			WorkflowSeeder::class,
-		];
+        // Seeds to run
+        $seeds = [
+            SettingSeeder::class,
+            FileSeeder::class,
+            AuthSeeder::class,
+            EmailSeeder::class,
+            OptionSeeder::class,
+            PageSeeder::class,
+            ThemeSeeder::class,
+            WorkflowSeeder::class,
+        ];
 
-		// Check for a Local seeder
-		if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder'))
-		{
-			$seeds[] = $seedName; // @codeCoverageIgnore
-		}
+        // Check for a Local seeder
+        if (class_exists($seedName = 'Local\Database\Seeds\LocalSeeder')) {
+            $seeds[] = $seedName; // @codeCoverageIgnore
+        }
 
-		// Run each seeder in order
-		foreach ($seeds as $seedName)
-		{
-			try
-			{
-				$this->call($seedName);
-			}
-			// @codeCoverageIgnoreStart
-			catch (\Exception $e)
-			{
-				// Pass CLI exceptions back to BaseCommand for display
-				if (is_cli())
-				{
-					throw $e;
-				}
-				else
-				{
-					$errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
-				}
-			}
-			// @codeCoverageIgnoreEnd
-		}
+        // Run each seeder in order
+        foreach ($seeds as $seedName) {
+            try {
+                $this->call($seedName);
+            }
+            // @codeCoverageIgnoreStart
+            catch (\Exception $e) {
+                // Pass CLI exceptions back to BaseCommand for display
+                if (is_cli()) {
+                    throw $e;
+                }
 
-		// Use the Registrar to seed Actions
-		if (Registrar::actions() && ENVIRONMENT !== 'testing')
-		{
-			command('actions:list'); // @codeCoverageIgnore
-		}
+                $errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
+            }
+            // @codeCoverageIgnoreEnd
+        }
 
-		return $errors;
-	}
+        // Use the Registrar to seed Actions
+        if (Registrar::actions() && ENVIRONMENT !== 'testing') {
+            command('actions:list'); // @codeCoverageIgnore
+        }
+
+        return $errors;
+    }
 }

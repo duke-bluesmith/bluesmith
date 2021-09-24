@@ -8,87 +8,88 @@ use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\ProjectTestCase;
 
-class NoticeTest extends ProjectTestCase
+/**
+ * @internal
+ */
+final class NoticeTest extends ProjectTestCase
 {
-	use DatabaseTestTrait;
+    use DatabaseTestTrait;
 
-	// Initialize the database once
-	protected $migrateOnce = true;
-	protected $seedOnce    = true;
+    // Initialize the database once
+    protected $migrateOnce = true;
+    protected $seedOnce    = true;
 
-	/**
-	 * @var Job|null
-	 */
-	private $job;
+    /**
+     * @var Job|null
+     */
+    private $job;
 
-	/**
-	 * @var User|null
-	 */
-	private $user;
+    /**
+     * @var User|null
+     */
+    private $user;
 
-	/**
-	 * Creates test relations
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
+    /**
+     * Creates test relations
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-		if ($this->job === null)
-		{
-			$this->job = fake(JobModel::class);
-		}
+        if ($this->job === null) {
+            $this->job = fake(JobModel::class);
+        }
 
-		if ($this->user === null)
-		{
-			$this->user = fake(UserModel::class);
-		}
-	}
+        if ($this->user === null) {
+            $this->user = fake(UserModel::class);
+        }
+    }
 
-	public function testValidatesInput()
-	{
-		$this->expectException('InvalidArgumentException');
-		$this->expectExceptionMessage('The content field is required.');
+    public function testValidatesInput()
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('The content field is required.');
 
-		new Notice([
-			'job_id'     => $this->job->id,
-			'user_id'    => $this->user->id,
-			'name'       => 'Test',
-			'status'     => 'Test',
-			'created_at' => new Time(),
-		]);
-	}
+        new Notice([
+            'job_id'     => $this->job->id,
+            'user_id'    => $this->user->id,
+            'name'       => 'Test',
+            'status'     => 'Test',
+            'created_at' => new Time(),
+        ]);
+    }
 
-	public function testGetJob()
-	{
-		$notice = new Notice([
-			'job_id'     => $this->job->id,
-			'job_name'   => 'Test Job',
-			'user_id'    => $this->user->id,
-			'user_name'  => 'Test User',
-			'status'     => 'Test',
-			'content'    => 'Test',
-			'created_at' => new Time(),
-		]);
+    public function testGetJob()
+    {
+        $notice = new Notice([
+            'job_id'     => $this->job->id,
+            'job_name'   => 'Test Job',
+            'user_id'    => $this->user->id,
+            'user_name'  => 'Test User',
+            'status'     => 'Test',
+            'content'    => 'Test',
+            'created_at' => new Time(),
+        ]);
 
-		$result = $notice->getJob();
+        $result = $notice->getJob();
 
-		$this->assertEquals($this->job, $result);
-	}
+        $this->assertSame($this->job->id, $result->id);
+    }
 
-	public function testGetUser()
-	{
-		$notice = new Notice([
-			'job_id'     => $this->job->id,
-			'job_name'   => 'Test Job',
-			'user_id'    => $this->user->id,
-			'user_name'  => 'Test User',
-			'status'     => 'Test',
-			'content'    => 'Test',
-			'created_at' => new Time(),
-		]);
+    public function testGetUser()
+    {
+        $notice = new Notice([
+            'job_id'     => $this->job->id,
+            'job_name'   => 'Test Job',
+            'user_id'    => $this->user->id,
+            'user_name'  => 'Test User',
+            'status'     => 'Test',
+            'content'    => 'Test',
+            'created_at' => new Time(),
+        ]);
 
-		$result = $notice->getUser();
+        $result = $notice->getUser();
 
-		$this->assertEquals($this->user, $result);
-	}
+        $this->assertSame($this->user->id, $result->id);
+    }
 }

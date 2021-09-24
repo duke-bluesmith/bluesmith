@@ -6,13 +6,13 @@
 		<?= $actionMenu ?>
 
 		<p><?= lang('Actions.optionsHelp') ?></p>
-		
+
 		<div class="row">
-			
+
 			<div class="col">
-		
+
 				<h3><?= plural(lang('Pub.printService')) ?></h3>
-				
+
 				<?php foreach ($options as $option): ?>
 
 				<div class="custom-control custom-switch mb-3">
@@ -34,7 +34,7 @@
 				<?php endforeach; ?>
 
 				<h3 class="mt-5"><?= lang('Pub.printMethodAndMaterials') ?></h3>
-				
+
 				<p>
 					<div class="custom-control custom-radio mb-3">
 						<input type="radio" id="material-0" name="material_id" class="custom-control-input" value="0" <?= $job->material_id ? '' : 'checked' ?>>
@@ -70,7 +70,7 @@
 											name="material_id"
 											class="custom-control-input"
 											value="<?= $material->id ?>"
-											<?= $material->id == $job->material_id ? 'checked' : '' ?>
+											<?= $material->id === $job->material_id ? 'checked' : '' ?>
 										>
 										<label class="custom-control-label" for="material-<?= $material->id ?>"><?= $material->name ?></label>
 									</div>
@@ -104,5 +104,5 @@
 		</div>
 
 	<?= form_close() ?>
-	
+
 <?= $this->endSection() ?>

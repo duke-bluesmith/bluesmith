@@ -1,4 +1,6 @@
-<?php namespace App\Entities;
+<?php
+
+namespace App\Entities;
 
 /**
  * Invoice Entity
@@ -8,60 +10,58 @@
  */
 class Invoice extends Ledger
 {
-	/**
-	 * Store for calculated amount paid
-	 *
-	 * @var int|null
-	 */
-	private $paid;
+    /**
+     * Store for calculated amount paid
+     *
+     * @var int|null
+     */
+    private $paid;
 
-	/**
-	 * Calculates the total amount from associated Payments.
-	 *
-	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
-	 *
-	 * @return string|int
-	 */
-	public function getPaid(bool $formatted = false)
-	{
-		if (is_null($this->paid))
-		{
-			$this->paid = 0;
-			foreach ($this->payments ?? [] as $payment)
-			{
-				if ($payment->code === 0)
-				{
-					$this->paid += $payment->amount;
-				}
-			}
-		}
+    /**
+     * Calculates the total amount from associated Payments.
+     *
+     * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
+     *
+     * @return int|string
+     */
+    public function getPaid(bool $formatted = false)
+    {
+        if (null === $this->paid) {
+            $this->paid = 0;
 
-		if (! $formatted)
-		{
-			return $this->paid;
-		}
+            foreach ($this->payments ?? [] as $payment) {
+                if ($payment->code === 0) {
+                    $this->paid += $payment->amount;
+                }
+            }
+        }
 
-		helper(['currency', 'number']);
-		return price_to_currency($this->paid);
-	}
+        if (! $formatted) {
+            return $this->paid;
+        }
 
-	/**
-	 * Calculates the due: total minus paid capped at 0.
-	 *
-	 * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
-	 *
-	 * @return string|int
-	 */
-	public function getDue(bool $formatted = false)
-	{
-		$due = max(0, $this->getTotal() - $this->getPaid());
+        helper(['currency', 'number']);
 
-		if (! $formatted)
-		{
-			return $due;
-		}
+        return price_to_currency($this->paid);
+    }
 
-		helper(['currency', 'number']);
-		return price_to_currency($due);
-	}
+    /**
+     * Calculates the due: total minus paid capped at 0.
+     *
+     * @param bool $formatted Whether to format the result for display, e.g. 1005 => $10.05
+     *
+     * @return int|string
+     */
+    public function getDue(bool $formatted = false)
+    {
+        $due = max(0, $this->getTotal() - $this->getPaid());
+
+        if (! $formatted) {
+            return $due;
+        }
+
+        helper(['currency', 'number']);
+
+        return price_to_currency($due);
+    }
 }
