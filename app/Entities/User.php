@@ -13,6 +13,11 @@ class User extends MythEntity
 
     protected $table      = 'users';
     protected $primaryKey = 'id';
+    protected $casts      = [
+        'active'           => 'boolean',
+        'force_pass_reset' => 'boolean',
+        'balance'          => 'int',
+    ];
 
     /**
      * @var Workflow[]|null

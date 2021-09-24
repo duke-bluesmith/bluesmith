@@ -72,9 +72,11 @@ final class JobTest extends ProjectTestCase
         $result = $this->job->getLedgers();
 
         $this->assertIsArray($result);
-        $this->assertSame([false, true], array_keys($result)); // @phpstan-ignore-line
-        $this->assertInstanceOf(Ledger::class, $result[false]); // @phpstan-ignore-line
-        $this->assertInstanceOf(Ledger::class, $result[true]); // @phpstan-ignore-line
+        $this->assertCount(2, $result);
+
+        foreach ($result as $ledger) {
+            $this->assertInstanceOf(Ledger::class, $ledger);
+        }
     }
 
     public function testEstimateReturnsNull()
