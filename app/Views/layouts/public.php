@@ -1,8 +1,4 @@
-<?php
-$settings = service('settings');
-$menu     = $menu ?? '';
-$current  = ' <span class="sr-only">(current)</span>';
-?><!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -43,8 +39,8 @@ $current  = ' <span class="sr-only">(current)</span>';
 		<div class="container">
 			<div id="banner-logo">
 				<p>
-					<a href="<?= $settings->orgUrl ?>"><img src="<?= base_url($settings->orgLogo) ?>" height="60" class="align-middle" alt="logo"></a>
-					<a href="<?= site_url() ?>"><?= $settings->brandName ?></a>
+					<a href="<?= service('settings')->orgUrl ?>"><img src="<?= base_url(service('settings')->orgLogo) ?>" height="60" class="align-middle" alt="logo"></a>
+					<a href="<?= site_url() ?>"><?= service('settings')->brandName ?></a>
 				</p>
 			</div>
 
@@ -79,14 +75,14 @@ $current  = ' <span class="sr-only">(current)</span>';
 
 	<footer id="footer" class="footer fixed-bottom border-top">
 		<div class="float-left">
-			<a href="<?= $settings->orgUrl ?>"><img src="<?= base_url($settings->orgLogo) ?>" height="45" alt="logo"></a>
+			<a href="<?= service('settings')->orgUrl ?>"><img src="<?= base_url(service('settings')->orgLogo) ?>" height="45" alt="logo"></a>
 		</div>
 
 		<div class="float-right copyright">
 			&copy; <?= date('Y') ?>
-			<?= $settings->orgName ?>
-			<?= $settings->orgAddress ?>
-			<?= $settings->orgPhone ?>
+			<?= service('settings')->orgName ?>
+			<?= service('settings')->orgAddress ?>
+			<?= service('settings')->orgPhone ?>
 		</div>
 	</footer>
 
