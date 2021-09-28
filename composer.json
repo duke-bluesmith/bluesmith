@@ -43,7 +43,7 @@
         "twbs/bootstrap": "^4.3"
     },
     "require-dev": {
-        "tatter/tools": "^1.12"
+        "tatter/tools": "^1.13"
     },
     "autoload": {
         "exclude-from-classmap": [
@@ -55,16 +55,6 @@
             "Tests\\Support\\": "tests/_support"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/codeigniter4/codeigniter4"
-        },
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
@@ -87,5 +77,15 @@
         "patch": "patch",
         "style": "php-cs-fixer fix --verbose --ansi --using-cache=no",
         "test": "phpunit"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/codeigniter4/codeigniter4"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
