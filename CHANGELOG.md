@@ -1,3 +1,9 @@
+## vv1.0.0-beta.4 (2021-09-29)
+* 2021-09-22 - Apply initial styling
+* 2021-09-22 - Apply final styling
+* 2021-09-28 - Favor Phive over dependencies
+* 2021-09-29 - Lock PSR\Container to enable PHP 8 
+
 ## vv1.0.0-beta.3 (2021-09-21)
 * 2021-09-03 - Add user on job insert 
 * 2021-09-09 - Implement Notifications 
