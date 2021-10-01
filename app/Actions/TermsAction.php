@@ -16,7 +16,7 @@ class TermsAction extends BaseAction
         'name'     => 'Terms',
         'uid'      => 'terms',
         'role'     => '',
-        'icon'     => 'fas fa-actions',
+        'icon'     => 'fas fa-file-contract',
         'summary'  => 'Client accepts terms of service',
         'header'   => 'Terms of Service',
         'button'   => 'Accept the Terms',
