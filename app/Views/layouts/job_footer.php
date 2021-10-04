@@ -3,8 +3,8 @@
 			<div class="staff-notes">
 				<div class="row mt-5">
 					<div class="col">
-						<p class="small text-secondary float-right">Staff notes are not visible to clients</p>
 						<h3>Staff Notes</h3>
+						<p class="small text-secondary">Staff notes are not visible to clients</p>
 						<div id="notes" style="max-height: 800px; overflow-x: hidden; overflow-y: scroll;">
 
 							<?php foreach ($job->notes ?? [] as $note): ?>
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
+					<div class="col-sm-6">
 						<form action="<?= site_url('manage/notes/add') ?>" method="post">
 							<input type="hidden" name="job_id" value="<?= $job->id ?>" />
 							<textarea class="form-control" name="content" placeholder="Markdown content..."></textarea>

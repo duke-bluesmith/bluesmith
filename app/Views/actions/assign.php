@@ -1,14 +1,7 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
-	<?= $actionMenu ?>
-	<?= form_close() ?>
-
-	<p><?= lang('Actions.clientsHelp') ?></p>
-
 	<div class="row">
-
 		<div class="col-sm-6">
 			<h3><?= lang('Actions.addClients') ?></h3>
 
@@ -82,5 +75,9 @@
 
 		</div>
 	</div>
+
+	<?= form_open() ?>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+	<?= form_close() ?>
 
 <?= $this->endSection() ?>

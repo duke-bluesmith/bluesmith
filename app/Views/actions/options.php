@@ -3,10 +3,6 @@
 
 	<?= form_open('jobs/options/' . $job->id) ?>
 
-		<?= $actionMenu ?>
-
-		<p><?= lang('Actions.optionsHelp') ?></p>
-
 		<div class="row">
 
 			<div class="col">
@@ -100,6 +96,8 @@
 					<?php endforeach; ?>
 
 				</div>
+
+				<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 			</div>
 		</div>
 

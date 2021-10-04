@@ -3,8 +3,6 @@
 
 	<?= form_open('jobs/estimate/' . $job->id) ?>
 
-		<?= $actionMenu ?>
-
 		<?php if (empty($job->users)): ?>
 
 		<p><em><?= lang('Actions.noClients') ?></em></p>
@@ -49,6 +47,8 @@
 
 		<h3>Additional Notes</h3>
 		<textarea class="form-control mb-3" name="description" rows="8" placeholder="Additional notes..."><?= old('description') ?></textarea>
+
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 
 	<?= form_close() ?>
 

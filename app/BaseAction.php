@@ -54,7 +54,9 @@ abstract class BaseAction extends ModuleBaseAction
         $data['header'] = $this->attributes['header'];
 
         // If this is the last stage for a user then "submit"
-        if ($this->attributes['role'] === '' && ($stage = $this->job->next()) && $stage->action->role !== '') {
+        if (null === $next = $this->job->next()) {
+            $data['buttonText'] = 'Complete';
+        } elseif ($this->attributes['role'] !== $next->action->role) {
             $data['buttonText'] = 'Submit';
         } else {
             $data['buttonText'] = 'Continue';

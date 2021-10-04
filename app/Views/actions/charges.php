@@ -1,10 +1,6 @@
 <?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
-	<?= $actionMenu ?>
-	<?= form_close() ?>
-
 	<div class="row">
 		<div class="col-sm-6">
 			<h3 class="mt-4">Add a Charge</h3>
@@ -58,6 +54,10 @@
 	<?php else: ?>
 	<?= view('charges/table', ['mayDelete' => true, 'charges' => $estimate->charges]) ?>
 	<?php endif; ?>
+
+	<?= form_open() ?>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+	<?= form_close() ?>
 
 <?= $this->endSection() ?>
 <?= $this->section('footerAssets') ?>

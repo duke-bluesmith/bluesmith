@@ -1,6 +1,12 @@
+
+	<?php if ($action->role === ''): ?>
+	<h3><?= $action->name ?></h3>
+	<?php endif; ?>
+
+	<h4>for &ldquo;<?= $job->name ?>&rdquo;</h4>
+
 	<!-- Step Wizard Bar -->
-	<div id="wizard-wrapper" class="mb-3">
-		<h5>Job Progress</h5>
+	<div id="wizard-wrapper" style="max-width: 1110px;">
 		<div class="d-flex justify-content-between py-3">
 			<?php $after = false; ?>
 			<?php foreach ($job->stages as $stage): ?>
@@ -30,8 +36,6 @@
 		</div>
 	</div>
 
-	<h3><?= $action->name ?> Stage</h3>
-	<h4>for &ldquo;<?= $job->name ?>&rdquo;</h4>
 	<p><?= lang('Actions.' . $action->uid . 'Help') ?></p>
 
-	<hr>
+	<hr class="my-4">

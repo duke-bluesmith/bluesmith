@@ -1,10 +1,6 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
-	<?= $actionMenu ?>
-	<?= form_close() ?>
-
 	<h3>Charges</h3>
 
 	<?php if (empty($estimate->charges)): ?>
@@ -18,5 +14,15 @@
 	<blockquote>
 	<?= nl2br($job->estimate->description ?: '<em>Nothing noted.</em>') ?>
 	</blockquote>
+
+	<?= form_open() ?>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="" id="approveCheck" required>
+			<label class="form-check-label" for="approveCheck">
+				I approve the estimated charges.
+			</label>
+		</div>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+	<?= form_close() ?>
 
 <?= $this->endSection() ?>

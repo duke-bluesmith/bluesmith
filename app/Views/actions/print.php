@@ -1,13 +1,9 @@
 <?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
-	<?= $actionMenu ?>
-	<?= form_close() ?>
-
 	<div class="row">
 		<div class="col-sm-6">
-			<h5>Details</h5>
+			<h5>Print Details</h5>
 			<table class="table">
 				<tbody>
 
@@ -31,11 +27,13 @@
 
 				</tbody>
 			</table>
+
+			<h5>Job Summary</h5>
 			<p><?= $job->summary ?></p>
 		</div>
 
 		<div class="col-sm-6">
-			<h5>Charges</h5>
+			<h5>Estimated Charges</h5>
 
 			<?php if (empty($estimate->charges)): ?>
 			<p>No charges have been set.</p>
@@ -46,5 +44,9 @@
 			<span class="float-right h5">Total: <?= $estimate->getTotal(true) ?></span>
 		</div>
 	</div>
+
+	<?= form_open() ?>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+	<?= form_close() ?>
 
 <?= $this->endSection() ?>
