@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'infoHelp'         => 'Name your job and provide a summary to help us identify it in the system.',
     'optionsHelp'      => 'Review and add any additional print services you require, then select your print method and material. Some services may apply additional charges.',
     'optionsEstimate'  => 'Estimates are calculated from qualifying STL files based on their equivalent cubic millimeter volume. Automated estimates are subject to change and are not binding.',
     'chooseForMe'      => 'Allow the consultant to select the best fit material.',

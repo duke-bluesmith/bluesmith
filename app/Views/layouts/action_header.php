@@ -13,10 +13,10 @@
 					data-toggle="tooltip"
 					title="<?= $stage->action->summary ?>"
 				>
-					<?php if ($bg === 'primary' && $previous = $action->job->previous()): ?>
-					<a class="text-white" href="<?= site_url($stage->action->getRoute($action->job->id)) ?>" onclick="return confirm('Are you sure you want to regress this job?');">
-					<?php elseif ($bg === 'secondary' && ! $action->job->stage->required && ($next = $action->job->next()) && $next->id === $stage->id): ?>
-					<a class="text-white" href="<?= site_url($next->action->getRoute($action->job->id)) ?>" onclick="return confirm('Are you sure you want to skip this stage?');">
+					<?php if ($bg === 'primary' && $previous = $job->previous()): ?>
+					<a class="text-white" href="<?= site_url($stage->action->getRoute($job->id)) ?>" onclick="return confirm('Are you sure you want to regress this job?');">
+					<?php elseif ($bg === 'secondary' && ! $job->stage->required && ($next = $job->next()) && $next->id === $stage->id): ?>
+					<a class="text-white" href="<?= site_url($next->action->getRoute($job->id)) ?>" onclick="return confirm('Are you sure you want to skip this stage?');">
 					<?php else: ?>
 					<a class="text-white">
 					<?php endif; ?>
@@ -30,6 +30,8 @@
 		</div>
 	</div>
 
-	<h3><?= $action->name ?></h3>
-	<h4>Job: <?= $action->job->name ?></h4>
+	<h3><?= $action->name ?> Stage</h3>
+	<h4>for &ldquo;<?= $job->name ?>&rdquo;</h4>
+	<p><?= lang('Actions.' . $action->uid . 'Help') ?></p>
+
 	<hr>
