@@ -47,6 +47,8 @@ $routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static funct
     $routes->presenter('materials');
 });
 
+$routes->addRedirect('methods', 'manage/methods');
+
 // API
 $routes->resource('api/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
 $routes->resource('api/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);

@@ -2,7 +2,7 @@
 
 return [
     'optionsEstimate'  => 'Estimates are calculated from qualifying STL files based on their equivalent cubic millimeter volume. Automated estimates are subject to change and are not binding.',
-    'chooseForMe'      => 'Allow the consultant to select the best fit material.',
+    'chooseForMe'      => 'Allow the consultant to select the best fit for my job.',
     'chooseMyOwn'      => 'Select my own',
     'addClients'       => 'Add clients',
     'addClientSuccess' => '{0} was added to your job.',
