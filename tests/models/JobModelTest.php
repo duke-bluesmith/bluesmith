@@ -76,6 +76,7 @@ final class JobModelTest extends ProjectTestCase
     {
         $jobId = model(JobModel::class)->insert([
             'name'        => 'Banana Job',
+            'summary'     => 'A job for fruit lovers',
             'workflow_id' => 1,
             'stage_id'    => 42,
         ]);
