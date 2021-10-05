@@ -2597,16 +2597,16 @@
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.0.10",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca"
+                "reference": "df05d51afd6f1f1bd36cf29f1e789f929674e63c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca",
-                "reference": "d3ddd0d2d91528bc63bb43b25ba6f252b4be94ca",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/df05d51afd6f1f1bd36cf29f1e789f929674e63c",
+                "reference": "df05d51afd6f1f1bd36cf29f1e789f929674e63c",
                 "shasum": ""
             },
             "require": {
@@ -2625,7 +2625,7 @@
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
                 "myth/auth": "dev-develop",
-                "tatter/tools": "^1.10"
+                "tatter/tools": "^1.13"
             },
             "type": "library",
             "autoload": {
@@ -2659,7 +2659,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.0.10"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.1.0"
             },
             "funding": [
                 {
@@ -2671,7 +2671,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-06T16:02:11+00:00"
+            "time": "2021-10-01T13:53:56+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

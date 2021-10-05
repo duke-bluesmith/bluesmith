@@ -1,14 +1,6 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?php if ($invoice->due === 0): ?>
-	<?= form_open('jobs/payment/' . $job->id) ?>
-		<?= $actionMenu ?>
-	<?= form_close() ?>
-	<?php else: ?>
-	<?= $actionMenu ?>
-	<?php endif; ?>
-
 	<h3 class="mb-3"><?= $job->name ?></h3>
 	<dl class="row">
 		<dt class="col-3 col-lg-3">Total Amount</dt>
@@ -67,5 +59,14 @@
 	<?php else: ?>
 	<p class="muted">No payments have been made.</p>
 	<?php endif; ?>
+
+	<?php if ($invoice->due === 0): ?>
+
+	<?= form_open() ?>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+	<?= form_close() ?>
+
+	<?php endif; ?>
+
 
 <?= $this->endSection() ?>

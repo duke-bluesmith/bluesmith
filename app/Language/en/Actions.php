@@ -1,12 +1,9 @@
 <?php
 
 return [
-    'optionsHelp'      => 'Review and add any additional print services you require, then select your print method and material. Some services may apply additional charges.',
     'optionsEstimate'  => 'Estimates are calculated from qualifying STL files based on their equivalent cubic millimeter volume. Automated estimates are subject to change and are not binding.',
-    'chooseForMe'      => 'Allow the consultant to select the best fit material.',
+    'chooseForMe'      => 'Allow the consultant to select the best fit for my job.',
     'chooseMyOwn'      => 'Select my own',
-    'filesHelp'        => 'Select any files (models, photos, screenshots, etc) from your Library that you would like to include with this job.',
-    'clientsHelp'      => 'Invite others to collaborate by granting them access to this job.',
     'addClients'       => 'Add clients',
     'addClientSuccess' => '{0} was added to your job.',
     'addClientFail'    => 'There was an error adding that client.',
@@ -23,4 +20,19 @@ return [
     'missingLedger'    => 'An error has occurred: the ledger is missing.',
     'estimateReady'    => 'Your estimate is ready.',
     'paymentFail'      => 'The payment gateway responded with error code {0}.',
+
+    // Helpful descriptions
+    'infoHelp'      => 'Name your job and provide a summary to help us identify it in the system.',
+    'optionsHelp'   => 'Review and add any additional print services you require, then select your print method and material. Some services may apply additional charges.',
+    'filesHelp'     => 'Select any files (models, photos, screenshots, etc) from your Library that you would like to include with this job.',
+    'clientsHelp'   => 'Invite others to collaborate by granting them access to this job.',
+    'termsHelp'     => 'Please read and accept the terms of service.',
+    'chargesHelp'   => 'Add estimated costs for each chargeable component of the job. Use the &ldquo;Suggestions&rdquo; for fast access to job-specific components.',
+    'estimateHelp'  => 'Select the clients to receive the estimate ledger and add any explanations to &ldquo;Additional Notes&rdquo;.',
+    'approveHelp'   => 'Please review and approve the estimated charges (final costs mary vary) and approve.',
+    'printHelp'     => 'Proceed with printing the attached files.',
+    'postprintHelp' => 'Complete any processing required to finish the print.',
+    'invoiceHelp'   => 'Update the estimated charges to reflect actual costs and send the invoice to each selected client.',
+    'paymentHelp'   => 'Please submit payment for the amount invoiced below. You may split payments across multiple payment methods.',
+    'deliverHelp'   => 'Mark this job as &ldquo;Delivered&rdquo; once the printed parts have been received by the client.',
 ];

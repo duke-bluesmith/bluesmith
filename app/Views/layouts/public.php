@@ -70,6 +70,11 @@
 	<?= service('alerts')->display() ?>
 
 	<main id="main" role="main" class="container my-5">
+
+		<?php if (isset($action) && $action instanceof \Tatter\Workflows\BaseAction): ?>
+		<?= $this->include('layouts/action_header') ?>
+		<?php endif; ?>
+
 		<?= $this->renderSection('main') ?>
 	</main>
 

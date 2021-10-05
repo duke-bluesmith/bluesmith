@@ -1,10 +1,6 @@
 <?= $this->extend('layouts/manage') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
-	<?= $actionMenu ?>
-	<?= form_close() ?>
-
 	<div class="row mb-4">
 		<div class="col">
 			<h4><?= lang('Pub.clients') ?></h4>
@@ -91,6 +87,16 @@
 		<div class="col">
 			<h4>Additional Notes</h4>
 			<textarea class="form-control mb-3" name="description" rows="8" placeholder="Additional notes..."><?= old('description') ?></textarea>
+		</div>
+	</div>
+
+	<div class="row mb-4">
+		<div class="col">
+
+		<?= form_open() ?>
+			<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+		<?= form_close() ?>
+
 		</div>
 	</div>
 

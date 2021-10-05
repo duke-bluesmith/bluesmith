@@ -1,24 +1,21 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open('jobs/files/' . $job->id) ?>
-
-		<?= $actionMenu ?>
+	<?= form_open() ?>
 
 		<button type="button" class="btn btn-primary float-md-right mr-2" data-toggle="modal" data-target="#dropzoneModal">
 			<i class="fas fa-file-upload"></i> Add Files
 		</button>
 
-		<p><?= lang('Actions.filesHelp') ?></p>
-
 		<div class="row">
-
 			<div class="col">
 
 				<?= view('Tatter\Files\Views\Formats\select', ['files' => $files, 'selected' => $job->relations('files', true)]) ?>
 
 			</div>
 		</div>
+
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 
 	<?= form_close() ?>
 

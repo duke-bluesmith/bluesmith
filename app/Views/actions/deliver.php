@@ -2,9 +2,7 @@
 <?= $this->section('main') ?>
 
 	<?= form_open() ?>
-	<?= $actionMenu ?>
+		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 	<?= form_close() ?>
-
-	<p>Mark this job as "Delivered" once the printed parts have been received by the client.</p>
 
 <?= $this->endSection() ?>

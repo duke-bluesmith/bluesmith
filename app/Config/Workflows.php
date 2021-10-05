@@ -24,5 +24,6 @@ class Workflows extends \Tatter\Workflows\Config\Workflows
         'deleted'  => 'Tatter\Workflows\Views\deleted',
         'filter'   => 'Tatter\Workflows\Views\filter',
         'workflow' => 'Tatter\Workflows\Views\workflow',
+        'info'     => 'actions/info',
     ];
 }

@@ -48,11 +48,19 @@ abstract class BaseAction extends ModuleBaseAction
      */
     public function render(string $view, array $data = []): ResponseInterface
     {
-        $data['job'] = $this->job;
-
         // Add layout data
-        $data['header']     = $this->attributes['header'];
-        $data['actionMenu'] = view('actions/layout/menu', ['action' => $this]);
+        $data['action'] = $this;
+        $data['job']    = $this->job;
+        $data['header'] = $this->attributes['header'];
+
+        // If this is the last stage for a user then "submit"
+        if (null === $next = $this->job->next()) {
+            $data['buttonText'] = 'Complete';
+        } elseif ($this->attributes['role'] !== $next->action->role) {
+            $data['buttonText'] = 'Submit';
+        } else {
+            $data['buttonText'] = 'Continue';
+        }
 
         return $this->response->setBody(view($view, $data));
     }
