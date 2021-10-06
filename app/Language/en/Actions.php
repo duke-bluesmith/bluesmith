@@ -24,7 +24,7 @@ return [
     // Helpful descriptions
     'infoHelp'      => 'Name your job and provide a summary to help us identify it in the system.',
     'optionsHelp'   => 'Review and add any additional print services you require, then select your print method and material. Some services may apply additional charges.',
-    'filesHelp'     => 'Select any files (models, photos, screenshots, etc) from your Library that you would like to include with this job.',
+    'filesHelp'     => 'Upload any files (models, photos, screenshots, etc) that you would like to include with this job.',
     'clientsHelp'   => 'Invite others to collaborate by granting them access to this job.',
     'termsHelp'     => 'Please read and accept the terms of service.',
     'chargesHelp'   => 'Add estimated costs for each chargeable component of the job. Use the &ldquo;Suggestions&rdquo; for fast access to job-specific components.',

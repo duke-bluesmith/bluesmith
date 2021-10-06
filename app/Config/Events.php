@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Models\JobModel;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
 use PHPSTL\Exceptions\InvalidFileFormatException;
@@ -64,10 +65,17 @@ Events::on('post_controller_constructor', static function () {
 });
 
 /**
- * Captures uploads from FilesController
- * and processes volume for relevant files.
+ * Captures uploads from FilesController to associate with
+ * a Job and process volume on relevant files.
  */
 Events::on('upload', static function (File $file) {
+
+    // Check for an active Job and associate the file
+    if ($jobId = session('file_job_upload')) {
+        if ($job = model(JobModel::class)->find($jobId)) {
+            $job->addFile($file->id);
+        }
+    }
 
     // Ignore non-STL files
     if (strtolower($file->getExtension('clientname')) !== 'stl') {
