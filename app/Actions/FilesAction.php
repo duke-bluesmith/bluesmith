@@ -55,10 +55,8 @@ class FilesAction extends BaseAction
 
     /**
      * Removes a single File.
-     *
-     * @return RedirectResponse
      */
-    public function delete(): ResponseInterface
+    public function delete(): RedirectResponse
     {
         if ($fileId = service('request')->getPost('file_id')) {
             $this->job->removeFile($fileId);
