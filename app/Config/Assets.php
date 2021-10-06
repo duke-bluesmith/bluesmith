@@ -16,6 +16,10 @@ class Assets extends \Tatter\Assets\Config\Assets
             'vendor/dropzone/dropzone.min.css',
             'vendor/dropzone/dropzone.min.js',
         ],
+        'jobs/approve' => [
+            'vendor/chat/chat.css',
+            'vendor/chat/chat.js',
+        ],
         'jobs/files' => [
             'vendor/dropzone/dropzone.min.css',
             'vendor/dropzone/dropzone.min.js',
