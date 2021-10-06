@@ -9,7 +9,7 @@
 
 	<?= form_open() ?>
 		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="1" id="acceptCheck" required>
+			<input class="form-check-input" name="accept" type="checkbox" value="1" id="acceptCheck" required>
 			<label class="form-check-label" for="acceptCheck">
 				I accept the terms.<span class="badge badge-warning ml-2">Required</span>
 			</label>

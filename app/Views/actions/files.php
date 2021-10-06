@@ -1,25 +1,65 @@
 <?= $this->extend('layouts/public') ?>
 <?= $this->section('main') ?>
 
-	<?= form_open() ?>
+		<form action="<?= site_url('files/upload') ?>" class="dropzone mb-3" id="files-dropzone"></form>
 
-		<button type="button" class="btn btn-primary float-md-right mr-2" data-toggle="modal" data-target="#dropzoneModal">
-			<i class="fas fa-file-upload"></i> Add Files
-		</button>
+		<?php if ($files !== []): ?>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-sm-8">
+				<table class="table table-sm table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Filename</th>
+							<th scope="col">Type</th>
+							<th scope="col">Size</th>
+							<th scope="col">Added</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($files as $file): ?>
 
-				<?= view('Tatter\Files\Views\Formats\select', ['files' => $files, 'selected' => $job->relations('files', true)]) ?>
+						<tr>
+							<td><?= $file->filename ?></td>
+							<td class="align-middle"><?= $file->type ?></td>
+							<td class="align-middle"><?= bytes2human($file->size) ?></td>
+							<td class="align-middle"><?= $file->created_at->humanize(); ?></td>
+							<td>
+
+								<?= form_open() ?>
+									<input type="hidden" name="_method" value="DELETE" />
+									<input type="hidden" name="file_id" value="<?= $file->id ?>" />
+
+									<button class="btn btn-link btn-sm text-danger" type="submit"><i class="fas fa-minus-circle"></i></button>
+								<?= form_close() ?>
+
+							</td>
+						</tr>
+
+						<?php endforeach; ?>
+					</tbody>
+				</table>
 
 			</div>
 		</div>
 
-		<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+		<?php endif; ?>
+		<?= form_open() ?>
+			<?php if ($files === [] && ! $job->stage->required): ?>
 
-	<?= form_close() ?>
+			<p>If you do not have the files available or need to submit them in an alternate format, please indicate below:</p>
+			<div class="form-check">
+				<input class="form-check-input" name="accept" type="checkbox" value="1" id="acceptCheck">
+				<label class="form-check-label" for="acceptCheck">
+					I will provide the files later.
+				</label>
+			</div>
 
-	<?= view('Tatter\Files\Views\Dropzone\modal') ?>
+			<?php endif; ?>
+			<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+
+		<?= form_close() ?>
 
 <?= $this->endSection() ?>
 <?= $this->section('footerAssets') ?>
