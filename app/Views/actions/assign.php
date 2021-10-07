@@ -2,9 +2,21 @@
 <?= $this->section('main') ?>
 
 	<div class="row">
-		<div class="col-sm-6">
-			<h3><?= lang('Actions.addClients') ?></h3>
+		<div class="col-sm-9 mt-5">
+			<h4><?= lang('Actions.currentClients') ?></h4>
+			<?php if (empty($job->users)): ?>
 
+			<p><em><?= lang('Actions.noClients') ?></em></p>
+
+			<?php else: ?>
+
+			<?= view('clients/table', ['mayDelete' => true, 'users' => $job->users]) ?>
+
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
 			<?= form_open('jobs/clients/' . $job->id, '', ['_method' => 'PUT']) ?>
 
 				<div class="form-group">
@@ -16,22 +28,11 @@
 				<input class="btn btn-secondary" type="submit" name="submit" value="<?= lang('Pub.add') ?>">
 
 			<?= form_close() ?>
-
 		</div>
-
+	</div>
+	<div class="row">
 		<div class="col-sm-9 mt-5">
-			<h3><?= lang('Actions.currentClients') ?></h3>
-
-			<?php if (empty($job->users)): ?>
-			<p><em><?= lang('Actions.noClients') ?></em></p>
-			<?php else: ?>
-			<?= view('clients/table', ['mayDelete' => true, 'users' => $job->users]) ?>
-			<?php endif; ?>
-
-		</div>
-
-		<div class="col-sm-9 mt-5">
-			<h3><?= lang('Actions.pendingClients') ?></h3>
+			<h4><?= lang('Actions.pendingClients') ?></h4>
 
 			<?php if (empty($job->invites)): ?>
 

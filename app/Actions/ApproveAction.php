@@ -27,6 +27,8 @@ class ApproveAction extends BaseAction
      */
     public function get(): ResponseInterface
     {
+        helper(['chat']);
+
         return $this->render('actions/approve', [
             'estimate' => $this->job->getEstimate(),
         ]);
