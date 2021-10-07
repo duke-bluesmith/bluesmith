@@ -132,3 +132,4 @@ nb-configuration.xml
 /access
 /local
 /public/local
+/public/*.ini
