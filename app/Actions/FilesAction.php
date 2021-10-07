@@ -56,7 +56,7 @@ class FilesAction extends BaseAction
     /**
      * Removes a single File.
      */
-    public function delete(): RedirectResponse
+    public function delete(): ?ResponseInterface
     {
         if ($fileId = service('request')->getPost('file_id')) {
             $this->job->removeFile($fileId);
@@ -68,10 +68,8 @@ class FilesAction extends BaseAction
 
     /**
      * Finishes file selection.
-     *
-     * @return null
      */
-    public function post(): ?RedirectResponse
+    public function post(): ?ResponseInterface
     {
         // Need either files or the "later" checkbox
         if (empty($this->job->files) && empty($this->request->getPost('accept'))) {
