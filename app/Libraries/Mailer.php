@@ -79,6 +79,29 @@ final class Mailer
     }
 
     /**
+     * Emails clients when a Job is awaiting their input.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     */
+    public static function forJobReminder(array $recipients, Job $job)
+    {
+        $template = model(TemplateModel::class)->findByName('Job Reminder');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Reminder',
+            'preview'     => 'You have a job awaiting your input.',
+            'job_name'    => $job->name,
+            'job_url'     => site_url('jobs/show/' . $job->id),
+            'description' => $job->stage->action->summary,
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
      * Emails an invitation to join a job.
      *
      * @param User   $issuer    The User issuing the invitation

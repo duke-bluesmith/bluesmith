@@ -41,6 +41,11 @@ class EmailSeeder extends BaseSeeder
                 'body'    => view('emails/seeds/NewJob'),
             ],
             [
+                'name'    => 'Job Reminder',
+                'subject' => 'Job Awaiting Input',
+                'body'    => view('emails/seeds/JobReminder'),
+            ],
+            [
                 'name'    => 'Job Invite',
                 'subject' => lang('Invite.subject', ['{issuer_name}']),
                 'body'    => view('emails/seeds/JobInvite'),
