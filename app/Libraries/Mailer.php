@@ -58,6 +58,8 @@ final class Mailer
 
     /**
      * Emails a summary after a new Job is submitted (via Terms Action).
+     *
+     * @param array<string> $recipients Email addresses of the recipients
      */
     public static function forNewJob(array $recipients, Job $job)
     {
@@ -110,7 +112,7 @@ final class Mailer
     /**
      * Emails an estimate Ledger to the recipients.
      *
-     * @param array $recipients Email addresses of the recipients
+     * @param array<string> $recipients Email addresses of the recipients
      */
     public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
     {
@@ -132,6 +134,8 @@ final class Mailer
 
     /**
      * Emails an Invoice Ledger to the recipients.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
      */
     public static function forInvoice(array $recipients, Job $job, Invoice $ledger)
     {
@@ -144,6 +148,30 @@ final class Mailer
             'job_name'    => $job->name,
             'job_url'     => anchor('jobs/' . $job->id),
             'description' => nl2br($ledger->description ?: 'none provided'),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails clients when there are unread staff messages.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     * @param string        $summary    Precompiled summary of the Messages
+     */
+    public static function forChatMessages(array $recipients, Job $job, string $summary)
+    {
+        $template = model(TemplateModel::class)->findByName('Chat Messages');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'    => 'New Staff Messages',
+            'preview'  => 'You have unread chat messages about your job.',
+            'job_name' => $job->name,
+            'job_url'  => site_url('jobs/show/' . $job->id),
+            'summary'  => $summary,
         ])->setTo($recipients);
 
         if ($emailId = self::send($emailer)) {
