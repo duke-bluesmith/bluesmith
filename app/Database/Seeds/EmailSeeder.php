@@ -45,6 +45,11 @@ class EmailSeeder extends BaseSeeder
                 'subject' => lang('Actions.estimateReady'),
                 'body'    => view('emails/seeds/Estimate'),
             ],
+            [
+                'name'    => 'Invoice',
+                'subject' => lang('Actions.invoiceReady'),
+                'body'    => view('emails/seeds/Invoice'),
+            ],
         ];
 
         foreach ($templates as $row) {

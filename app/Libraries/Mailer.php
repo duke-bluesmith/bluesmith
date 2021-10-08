@@ -2,6 +2,7 @@
 
 namespace App\Libraries;
 
+use App\Entities\Invoice;
 use App\Entities\Job;
 use App\Entities\Ledger;
 use App\Entities\User;
@@ -25,7 +26,7 @@ use Tatter\Outbox\Models\TemplateModel;
  * only thrown when there is an error in the
  * configuration (i.e. a missing email Template).
  */
-class Mailer
+final class Mailer
 {
     /**
      * Handles any last-minute global settings,
@@ -37,6 +38,12 @@ class Mailer
      */
     protected static function send(Emailer $emailer): int
     {
+    	// Check for intercepts
+    	if (config('Email')->intercept) {
+    		// Redirect outgoing client mail
+    		$emailer->setTo(config('Email')->fromEmail);
+    	}
+
         if (! $emailer->send(false)) {
             log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
 
@@ -50,7 +57,6 @@ class Mailer
     //--------------------------------------------------------------------
 
     /**
-     * Job Invite
      * Emails an invitation to join a job
      *
      * @param User   $issuer    The User issuing the invitation
@@ -82,11 +88,8 @@ class Mailer
         }
     }
 
-    //--------------------------------------------------------------------
-
     /**
-     * Estimate
-     * Emails an estimate Ledger to the recipients
+     * Emails an estimate Ledger to the recipients.
      *
      * @param array $recipients Email addresses of the recipients
      */
@@ -97,7 +100,28 @@ class Mailer
         // Prep Email to our Template
         $emailer = $template->email([
             'title'       => 'Job Estimate',
-            'preview'     => 'Your estimate is ready',
+            'preview'     => lang('Actions.estimateReady'),
+            'job_name'    => $job->name,
+            'job_url'     => anchor('jobs/' . $job->id),
+            'description' => nl2br($ledger->description ?: 'none provided'),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails an Invoice Ledger to the recipients.
+     */
+    public static function forInvoice(array $recipients, Job $job, Invoice $ledger)
+    {
+        $template = model(TemplateModel::class)->findByName('Invoice');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Invoice',
+            'preview'     => lang('Actions.invoiceReady'),
             'job_name'    => $job->name,
             'job_url'     => anchor('jobs/' . $job->id),
             'description' => nl2br($ledger->description ?: 'none provided'),

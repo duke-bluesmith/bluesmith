@@ -7,6 +7,15 @@ use CodeIgniter\Config\BaseConfig;
 class Email extends BaseConfig
 {
     /**
+     * Whether to intercept outgoing Mailer messages
+     * and redirect them to fromEmail (prevents client
+     * emailing in staging environment).
+     *
+     * @var bool
+     */
+    public $intercept = false;
+
+    /**
      * @var string
      */
     public $fromEmail;
