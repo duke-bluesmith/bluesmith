@@ -3,7 +3,6 @@
 namespace App\Actions;
 
 use App\BaseAction;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Files\Models\FileModel;
 

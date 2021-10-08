@@ -3,8 +3,11 @@
 namespace App\Actions;
 
 use App\BaseAction;
+use App\Entities\Invoice;
+use App\Libraries\Mailer;
 use App\Models\ChargeModel;
 use App\Models\LedgerModel;
+use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -41,6 +44,34 @@ class InvoiceAction extends BaseAction
      */
     public function post(): ?ResponseInterface
     {
+        // Update the description and reload the Invoice
+        model(LedgerModel::class)->update($this->job->invoice->id, [
+            'description' => service('request')->getPost('description'),
+        ]);
+
+        $ledger  = model(LedgerModel::class)->find($this->job->invoice->id);
+        $invoice = new Invoice($ledger->toRawArray());
+
+        // Verify each user and grab their email address
+        $recipients = [];
+
+        foreach (service('request')->getPost('users') ?? [] as $userId) {
+            if (! is_numeric($userId)) {
+                continue;
+            }
+
+            if ($user = model(UserModel::class)->find($userId)) {
+                $recipients[] = $user->email;
+            } else {
+                alert('warning', 'Unable to locate user #' . $userId);
+            }
+        }
+
+        if ($recipients) {
+            // Send the email
+            Mailer::forInvoice($recipients, $this->job, $invoice);
+        }
+
         return null;
     }
 

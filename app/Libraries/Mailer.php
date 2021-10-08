@@ -2,6 +2,7 @@
 
 namespace App\Libraries;
 
+use App\Entities\Invoice;
 use App\Entities\Job;
 use App\Entities\Ledger;
 use App\Entities\User;
@@ -25,7 +26,7 @@ use Tatter\Outbox\Models\TemplateModel;
  * only thrown when there is an error in the
  * configuration (i.e. a missing email Template).
  */
-class Mailer
+final class Mailer
 {
     /**
      * Handles any last-minute global settings,
@@ -35,8 +36,14 @@ class Mailer
      *
      * @return int The insertID from EmailModel (0 = failed)
      */
-    protected static function send(Emailer $emailer): int
+    private static function send(Emailer $emailer): int
     {
+        // Check for intercepts
+        if (config('Email')->intercept) {
+            // Redirect outgoing client mail
+            $emailer->setTo(config('Email')->fromEmail);
+        }
+
         if (! $emailer->send(false)) {
             log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
 
@@ -50,8 +57,52 @@ class Mailer
     //--------------------------------------------------------------------
 
     /**
-     * Job Invite
-     * Emails an invitation to join a job
+     * Emails a summary after a new Job is submitted (via Terms Action).
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     */
+    public static function forNewJob(array $recipients, Job $job)
+    {
+        $template = model(TemplateModel::class)->findByName('New Job');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'    => 'New Job Received',
+            'preview'  => 'We received your job submission.',
+            'job_name' => $job->name,
+            'job_url'  => site_url('jobs/show/' . $job->id),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails clients when a Job is awaiting their input.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     */
+    public static function forJobReminder(array $recipients, Job $job)
+    {
+        $template = model(TemplateModel::class)->findByName('Job Reminder');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Reminder',
+            'preview'     => 'You have a job awaiting your input.',
+            'job_name'    => $job->name,
+            'job_url'     => site_url('jobs/show/' . $job->id),
+            'description' => $job->stage->action->summary,
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails an invitation to join a job.
      *
      * @param User   $issuer    The User issuing the invitation
      * @param string $recipient Email address of the recipient
@@ -74,21 +125,17 @@ class Mailer
         $emailer->setFrom(
             $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
             $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
-        )
-            ->setTo($recipient);
+        )->setTo($recipient);
 
         if ($emailId = self::send($emailer)) {
             model(JobModel::class)->addEmailToJob($emailId, $job->id);
         }
     }
 
-    //--------------------------------------------------------------------
-
     /**
-     * Estimate
-     * Emails an estimate Ledger to the recipients
+     * Emails an estimate Ledger to the recipients.
      *
-     * @param array $recipients Email addresses of the recipients
+     * @param array<string> $recipients Email addresses of the recipients
      */
     public static function forEstimate(array $recipients, Job $job, Ledger $ledger)
     {
@@ -97,10 +144,57 @@ class Mailer
         // Prep Email to our Template
         $emailer = $template->email([
             'title'       => 'Job Estimate',
-            'preview'     => 'Your estimate is ready',
+            'preview'     => lang('Actions.estimateReady'),
             'job_name'    => $job->name,
             'job_url'     => anchor('jobs/' . $job->id),
             'description' => nl2br($ledger->description ?: 'none provided'),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails an Invoice Ledger to the recipients.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     */
+    public static function forInvoice(array $recipients, Job $job, Invoice $ledger)
+    {
+        $template = model(TemplateModel::class)->findByName('Invoice');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'       => 'Job Invoice',
+            'preview'     => lang('Actions.invoiceReady'),
+            'job_name'    => $job->name,
+            'job_url'     => anchor('jobs/' . $job->id),
+            'description' => nl2br($ledger->description ?: 'none provided'),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails clients when there are unread staff messages.
+     *
+     * @param array<string> $recipients Email addresses of the recipients
+     * @param string        $summary    Precompiled summary of the Messages
+     */
+    public static function forChatMessages(array $recipients, Job $job, string $summary)
+    {
+        $template = model(TemplateModel::class)->findByName('Chat Messages');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'    => 'New Staff Messages',
+            'preview'  => 'You have unread chat messages about your job.',
+            'job_name' => $job->name,
+            'job_url'  => site_url('jobs/show/' . $job->id),
+            'summary'  => $summary,
         ])->setTo($recipients);
 
         if ($emailId = self::send($emailer)) {
