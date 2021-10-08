@@ -36,13 +36,13 @@ final class Mailer
      *
      * @return int The insertID from EmailModel (0 = failed)
      */
-    protected static function send(Emailer $emailer): int
+    private static function send(Emailer $emailer): int
     {
-    	// Check for intercepts
-    	if (config('Email')->intercept) {
-    		// Redirect outgoing client mail
-    		$emailer->setTo(config('Email')->fromEmail);
-    	}
+        // Check for intercepts
+        if (config('Email')->intercept) {
+            // Redirect outgoing client mail
+            $emailer->setTo(config('Email')->fromEmail);
+        }
 
         if (! $emailer->send(false)) {
             log_message('error', 'Mailer was unable to send an email: ' . $emailer->printDebugger());
@@ -57,7 +57,27 @@ final class Mailer
     //--------------------------------------------------------------------
 
     /**
-     * Emails an invitation to join a job
+     * Emails a summary after a new Job is submitted (via Terms Action).
+     */
+    public static function forNewJob(array $recipients, Job $job)
+    {
+        $template = model(TemplateModel::class)->findByName('New Job');
+
+        // Prep Email to our Template
+        $emailer = $template->email([
+            'title'    => 'New Job Received',
+            'preview'  => 'We received your job submission.',
+            'job_name' => $job->name,
+            'job_url'  => site_url('jobs/show/' . $job->id),
+        ])->setTo($recipients);
+
+        if ($emailId = self::send($emailer)) {
+            model(JobModel::class)->addEmailToJob($emailId, $job->id);
+        }
+    }
+
+    /**
+     * Emails an invitation to join a job.
      *
      * @param User   $issuer    The User issuing the invitation
      * @param string $recipient Email address of the recipient
@@ -80,8 +100,7 @@ final class Mailer
         $emailer->setFrom(
             $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
             $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
-        )
-            ->setTo($recipient);
+        )->setTo($recipient);
 
         if ($emailId = self::send($emailer)) {
             model(JobModel::class)->addEmailToJob($emailId, $job->id);

@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\BaseAction;
+use App\Libraries\Mailer;
 use App\Models\PageModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -41,6 +42,22 @@ class TermsAction extends BaseAction
         }
 
         $this->job->setFlag('Accepted');
+
+        // Check if we need to send welcome email
+        if ($this->job->getFlag('Welcomed') === null) {
+            // Get client email addresses
+            $recipients = [];
+
+            foreach ($this->job->users as $user) {
+                $recipients[] = $user->email;
+            }
+
+            if ($recipients) {
+                // Send the email
+                Mailer::forNewJob($recipients, $this->job);
+                $this->job->setFlag('Welcomed');
+            }
+        }
 
         // End the action
         return null;

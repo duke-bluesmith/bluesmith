@@ -16,4 +16,3 @@
   </tbody>
 </table>
 <p>You will need to create an account to proceed, but it is free and easy.</p>
-<p>Some basic instructions go here.</p>

@@ -36,6 +36,11 @@ class EmailSeeder extends BaseSeeder
         // Define each Template
         $templates = [
             [
+                'name'    => 'New Job',
+                'subject' => 'Job Received: {job_name}',
+                'body'    => view('emails/seeds/NewJob'),
+            ],
+            [
                 'name'    => 'Job Invite',
                 'subject' => lang('Invite.subject', ['{issuer_name}']),
                 'body'    => view('emails/seeds/JobInvite'),
