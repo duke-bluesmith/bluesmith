@@ -45,15 +45,6 @@ class JobModel extends BaseJobModel
     protected $pivotKey = 'job_id';
 
     /**
-     * Overrides the library's validation.
-     */
-    protected function initialize()
-    {
-        // Make `summary` a required field
-        $this->validationRules['summary'] = 'required|max_length[255]';
-    }
-
-    /**
      * Associates a new Job with its User.
      */
     protected function logInsert(array $eventData)
