@@ -1,6 +1,5 @@
 
 	<?php if ($action->role === ''): ?>
-	<a class="btn btn-info float-right" href="<?= site_url('jobs/show/' . $job->id) ?>">Job Details</a>
 	<h3><?= $action->name ?></h3>
 	<?php endif; ?>
 

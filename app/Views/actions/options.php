@@ -37,7 +37,7 @@
 						<tr>
 							<th scope="col">Print Method</th>
 							<th scope="col">Print Material</th>
-							<th scope="col" class="text-right">Estimated Cost</th>
+							<th scope="col" class="text-right">Estimated Cost<sup>1</sup></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -75,7 +75,7 @@
 					</tbody>
 				</table>
 
-				<p class="text-muted"><?= lang('Actions.optionsEstimate') ?></p>
+				<p class="text-muted"><sup>1</sup> <?= lang('Actions.optionsEstimate') ?></p>
 
 				<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 			</div>
