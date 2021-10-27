@@ -10,7 +10,7 @@ return [
     'removeClientFail' => 'There was an error removing that client.',
     'alreadyClient'    => 'That user is already assigned to this job!',
     'clientEmailHelp'  => 'Add an existing user, or send an invitation to new users.',
-    'currentClients'   => 'Current Clients',
+    'currentClients'   => 'Current Collaborators',
     'noClients'        => 'There are no clients assigned to this job.',
     'needClients'      => 'There must be at least one client assigned to a job.',
     'pendingClients'   => 'Pending Invitations',

@@ -16,13 +16,13 @@ class AssignAction extends BaseAction
      */
     public $attributes = [
         'category' => 'Define',
-        'name'     => 'Assign Clients',
+        'name'     => 'Project Collaborators',
         'uid'      => 'clients',
         'role'     => '',
         'icon'     => 'fas fa-user-friends',
-        'summary'  => 'Client includes other clients',
-        'header'   => 'Assign Clients',
-        'button'   => 'Clients Assigned',
+        'summary'  => 'Client invites other collaboratos',
+        'header'   => 'Project Collaborators',
+        'button'   => 'Collaborators Invited',
     ];
 
     /**

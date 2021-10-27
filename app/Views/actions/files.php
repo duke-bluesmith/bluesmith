@@ -57,7 +57,10 @@
 			</div>
 
 			<?php endif; ?>
-			<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
+
+			<hr>
+
+			<input class="btn btn-success mt-3" type="submit" name="complete" value="<?= $buttonText ?>">
 
 		<?= form_close() ?>
 
