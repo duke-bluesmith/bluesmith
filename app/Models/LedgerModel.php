@@ -11,7 +11,6 @@ class LedgerModel extends BaseModel
     protected $allowedFields = [
         'job_id', 'description', 'estimate',
     ];
-
     protected $validationRules = [
         'job_id' => 'required|is_natural_no_zero',
     ];

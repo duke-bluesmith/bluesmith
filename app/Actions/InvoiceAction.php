@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\BaseAction;
 use App\Entities\Invoice;
+use App\Entities\Ledger;
 use App\Libraries\Mailer;
 use App\Models\ChargeModel;
 use App\Models\LedgerModel;
@@ -49,6 +50,7 @@ class InvoiceAction extends BaseAction
             'description' => service('request')->getPost('description'),
         ]);
 
+        /** @var Ledger $ledger */
         $ledger  = model(LedgerModel::class)->find($this->job->invoice->id);
         $invoice = new Invoice($ledger->toRawArray());
 

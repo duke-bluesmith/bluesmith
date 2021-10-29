@@ -13,7 +13,6 @@ class PaymentModel extends BaseModel
         'ledger_id', 'user_id', 'amount',
         'class', 'reference', 'code', 'reason',
     ];
-
     protected $validationRules = [
         'ledger_id' => 'required|is_natural_no_zero',
         'user_id'   => 'required|is_natural_no_zero',

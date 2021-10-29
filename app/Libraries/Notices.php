@@ -104,7 +104,7 @@ final class Notices implements Countable, IteratorAggregate
             ->select('chat_messages.*, chat_conversations.uid, chat_participants.user_id')
             ->join('chat_conversations', 'chat_messages.conversation_id = chat_conversations.id')
             ->join('chat_participants', 'chat_messages.participant_id = chat_participants.id')
-            ->like('chat_conversations.uid', 'job-%')
+            ->like('uid', 'job-', 'after') // Bug workaround by not fully-qualifying the field
             ->where('chat_messages.created_at >', new Time('-1 week'))
             ->get()->getResultArray();
 

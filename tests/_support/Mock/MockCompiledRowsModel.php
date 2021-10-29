@@ -9,8 +9,7 @@ class MockCompiledRowsModel extends Model
 {
     use CompiledRowsTrait;
 
-    protected $table = 'bananas';
-
+    protected $table       = 'bananas';
     protected $afterInsert = ['clearCompiledRows'];
     protected $afterUpdate = ['clearCompiledRows'];
     protected $afterDelete = ['clearCompiledRows'];

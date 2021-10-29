@@ -60,7 +60,7 @@ abstract class BaseMerchant extends BaseHandler
     public function __construct(?PaymentModel $model = null)
     {
         $this->attributes = array_merge($this->defaults, $this->attributes);
-        $this->model      = $model ?? model(PaymentModel::class);
+        $this->model      = $model ?? model(PaymentModel::class); // @phpstan-ignore-line
     }
 
     /**

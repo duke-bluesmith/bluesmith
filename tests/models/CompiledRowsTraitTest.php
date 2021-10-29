@@ -63,7 +63,7 @@ final class CompiledRowsTraitTest extends ProjectTestCase
 
     public function testUsesCache()
     {
-        $expected = ['foo' => 'bar'];
+        $expected = [['foo' => 'bar']];
         cache()->save('bananasrows', $expected);
 
         $result = $this->model->getCompiledRows();

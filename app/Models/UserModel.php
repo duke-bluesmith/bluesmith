@@ -17,16 +17,14 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 {
     use CompiledRowsTrait;
 
-    protected $table      = 'users';
-    protected $primaryKey = 'id';
-    protected $returnType = User::class;
-
+    protected $table            = 'users';
+    protected $primaryKey       = 'id';
+    protected $returnType       = User::class;
     protected $_allowedFields   = ['firstname', 'lastname', 'balance'];
     protected $_validationRules = [];
-
-    protected $afterInsert = ['clearCompiledRows'];
-    protected $afterUpdate = ['clearCompiledRows'];
-    protected $afterDelete = ['clearCompiledRows'];
+    protected $afterInsert      = ['clearCompiledRows'];
+    protected $afterUpdate      = ['clearCompiledRows'];
+    protected $afterDelete      = ['clearCompiledRows'];
 
     /**
      * Call the framework constructor then add the extended properties.
