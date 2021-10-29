@@ -25,29 +25,36 @@ Framework requirements may change but here is a good start:
 Some additional requirements may depend on your choice of web host. See "Hosting with ..."
 in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/installation/running.html).
 
-## Setup
+## Installation
+
+### Overview
 
 1. Clone or download the repository
-2. In the root directory, copy **env** to **.env** and edit the new file:
+2. Configure your environment
+3. Run installation scripts
+
+### Configure
+
+1. In the root directory, copy **env** to **.env** and edit the new file:
 	* Set `app.baseURL` to your site (with trailing slash), e.g. 'https://bluesmith.example.edu/'
 	* Set all variables in the `DATABASE` section for the `default` group
 	* `forceGlobalSecureRequests` is recommended but requires a valid HTTPS configuration
-3. Install all packages and dependencies with the following command in the root directory:
-	* `composer install`<sup>1</sup>
-4. Migrate the database:
+2. Set your web host to serve the **public/** directory
+
+### Install/Upgrade
+
+Run the provided **upgrade.sh** script which will do the following:
+
+1. Install all packages and dependencies with the following command in the root directory:
+	* `composer install`
+2. Migrate the database:
 	* `php spark migrate -all`
-5. Seed the database with the necessary initial settings:
+3. Seed the database with the necessary initial settings:
 	* `php spark db:seed InitialSeeder`
-6. Set up cron jobs for the following tasks:
-	* `php spark reports:generate`
-7. Set your web host to serve the **public/** directory
-	
-<sup>1</sup> Note: This should trigger Composer's post-update command which handles
-vendor assets, but if that fails or if you update some other way then be sure to run
-the following command from the root directory to publish them manually:
+4. Publish asset files to the web root:
 	* `php spark assets:publish`
 
-## Customize
+## Customization
 
 **Bluesmith** comes with generic branding and a basic UI, but relishes being customized with
 your institution's flair. You should leverage the included
