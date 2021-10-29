@@ -13,6 +13,6 @@ cd "$SCRIPT"
 
 composer check-platform-reqs
 composer install
-php spark db:migrate --all
+php spark migrate --all
 php spark db:seed InitialSeeder
 php spark assets:publish
