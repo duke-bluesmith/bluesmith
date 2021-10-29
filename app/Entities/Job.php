@@ -171,7 +171,7 @@ class Job extends BaseJob
         $this->ensureCreated();
 
         // Check if invitations are allowed
-        if (! config('Auth')->allowInvitations) {
+        if (! config('Project')->allowInvitations) {
             throw new InviteException(lang('Invite.disabled'));
         }
 
@@ -191,7 +191,7 @@ class Job extends BaseJob
         ];
 
         // Check for expirations
-        if ($seconds = config('Auth')->invitationLength) {
+        if ($seconds = config('Project')->invitationLength) {
             $row['expired_at'] = (new Time("+{$seconds} seconds"))->toDateTimeString();
         }
 
