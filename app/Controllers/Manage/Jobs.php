@@ -20,7 +20,7 @@ class Jobs extends BaseController
      */
     public function __construct()
     {
-        $this->model = model(JobModel::class);
+        $this->model = model(JobModel::class); // @phpstan-ignore-line
     }
 
     /**

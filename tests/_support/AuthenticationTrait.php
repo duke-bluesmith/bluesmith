@@ -98,8 +98,10 @@ trait AuthenticationTrait
             throw new RuntimeException('Unable to locate that permission: ' . $name);
         }
 
-        if (! model(PermissionModel::class)->addPermissionToUser($permission['id'], $user->id)) {
-            throw new RuntimeException(implode('.', model(PermissionModel::class)->error()));
+        /** @var PermissionModel $permissions */
+        $permissions = model(PermissionModel::class);
+        if (! $permissions->addPermissionToUser($permission['id'], $user->id)) {
+            throw new RuntimeException(implode(' ', $permissions->errors()));
         }
     }
 }

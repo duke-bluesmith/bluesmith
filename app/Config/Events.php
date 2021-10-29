@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Entities\Job;
 use App\Models\JobModel;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
@@ -73,6 +74,7 @@ Events::on('upload', static function (File $file) {
     // Check for an active Job and associate the file
     if ($jobId = session('file_job_upload')) {
         if ($job = model(JobModel::class)->find($jobId)) {
+            /** @var Job $job */
             $job->addFile($file->id);
         }
     }
