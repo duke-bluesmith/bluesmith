@@ -11,13 +11,17 @@ class Project extends BaseConfig
      * create an account and collaborate on a specific job. This will
      * generate a tokenized URL to send to the specified email that will
      * prompt the user to make an account.
+     *
+     * @var bool
      */
-    public bool $allowInvitations = true;
+    public $allowInvitations = true;
 
     /**
      * The amount of time, in seconds, that you want invitations tokens to
      * to be valid before expiring. Set to 0 to disable expiration.
      * Defaults to 7 days.
+     *
+     * @var int
      */
-    public int $invitationLength = 7 * DAY;
+    public $invitationLength = 7 * DAY;
 }
