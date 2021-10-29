@@ -14,7 +14,6 @@ class TransactionModel extends BaseModel
     protected $allowedFields  = [
         'user_id', 'credit', 'amount', 'summary',
     ];
-
     protected $validationRules = [
         'user_id' => 'required|is_natural_no_zero',
         'amount'  => 'required|is_natural_no_zero',

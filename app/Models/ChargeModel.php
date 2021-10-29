@@ -14,7 +14,6 @@ class ChargeModel extends BaseModel
     protected $allowedFields  = [
         'ledger_id', 'name', 'amount', 'quantity',
     ];
-
     protected $validationRules = [
         'ledger_id' => 'required|is_natural_no_zero',
         'name'      => 'required',

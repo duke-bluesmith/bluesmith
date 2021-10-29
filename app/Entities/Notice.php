@@ -19,7 +19,6 @@ class Notice extends Entity
         'job_id'  => 'int',
         'user_id' => 'int',
     ];
-
     protected $validationRules = [
         'job_id'     => 'required|is_natural_no_zero',
         'job_name'   => 'required|string',

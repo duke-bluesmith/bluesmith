@@ -8,11 +8,10 @@ use Faker\Generator;
 
 class MaterialModel extends BaseModel
 {
-    protected $table         = 'materials';
-    protected $with          = ['methods'];
-    protected $returnType    = Material::class;
-    protected $allowedFields = ['name', 'summary', 'description', 'cost', 'sortorder', 'method_id'];
-
+    protected $table           = 'materials';
+    protected $with            = ['methods'];
+    protected $returnType      = Material::class;
+    protected $allowedFields   = ['name', 'summary', 'description', 'cost', 'sortorder', 'method_id'];
     protected $validationRules = [
         'name'      => 'required',
         'method_id' => 'required|is_natural_no_zero',

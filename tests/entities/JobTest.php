@@ -21,7 +21,6 @@ final class JobTest extends ProjectTestCase
         'Myth\Auth',
         'App',
     ];
-
     protected $seed = 'App\Database\Seeds\OptionSeeder';
 
     /**

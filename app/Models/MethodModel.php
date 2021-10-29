@@ -7,10 +7,9 @@ use Faker\Generator;
 
 class MethodModel extends BaseModel
 {
-    protected $table         = 'methods';
-    protected $returnType    = 'App\Entities\Method';
-    protected $allowedFields = ['name', 'summary', 'description', 'sortorder'];
-
+    protected $table           = 'methods';
+    protected $returnType      = 'App\Entities\Method';
+    protected $allowedFields   = ['name', 'summary', 'description', 'sortorder'];
     protected $validationRules = [
         'name' => 'required',
     ];
