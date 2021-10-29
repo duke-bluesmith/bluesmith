@@ -1,10 +1,28 @@
-## vv1.0.0-beta.4 (2021-09-29)
+## v1.0.0-beta.5 (2021-10-29)
+* 2021-10-05 - Rework options into table 
+* 2021-10-05 - Fix test 
+* 2021-10-06 - Rework Files to simple upload 
+* 2021-10-06 - Fix static analysis 
+* 2021-10-06 - Rearrange client view 
+* 2021-10-06 - Add Chat to approve view 
+* 2021-10-07 - Ignore project ini files 
+* 2021-10-07 - Fix types for PHP 7.3 
+* 2021-10-08 - Send email with Invoice 
+* 2021-10-08 - Add new job email 
+* 2021-10-08 - Add email for chat messages 
+* 2021-10-08 - Add email reminder 
+* 2021-10-18 - Remove breaking validation change 
+* 2021-10-25 - Refactor step wizard into classes 
+* 2021-10-25 - Tweak client views 
+* 2021-10-29 - Supply the upgrade script 
+
+## v1.0.0-beta.4 (2021-09-29)
 * 2021-09-22 - Apply initial styling
 * 2021-09-22 - Apply final styling
 * 2021-09-28 - Favor Phive over dependencies
 * 2021-09-29 - Lock PSR\Container to enable PHP 8 
 
-## vv1.0.0-beta.3 (2021-09-21)
+## v1.0.0-beta.3 (2021-09-21)
 * 2021-09-03 - Add user on job insert 
 * 2021-09-09 - Implement Notifications 
 * 2021-09-09 - Fix test 
