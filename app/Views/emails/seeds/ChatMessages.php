@@ -2,7 +2,7 @@
 
 {summary}
 
-<p>You may use the link below to check on your job status and respond to staff.</p>
+<p>Please use the link below to check on your job status and respond to staff.</p>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
   <tbody>
   <tr>
