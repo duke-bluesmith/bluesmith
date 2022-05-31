@@ -46,9 +46,7 @@ class Jobs extends BaseController
      */
     public function active(): string
     {
-        $filter = static function ($row) {
-            return null === $row['deleted_at'] && null !== $row['stage_id'];
-        };
+        $filter = static fn ($row) => null === $row['deleted_at'] && null !== $row['stage_id'];
 
         return $this->index('Active Jobs', $filter, 'created_at', false);
     }
@@ -58,9 +56,7 @@ class Jobs extends BaseController
      */
     public function archive(): string
     {
-        $filter = static function ($row) {
-            return null === $row['deleted_at'] && null === $row['stage_id'];
-        };
+        $filter = static fn ($row) => null === $row['deleted_at'] && null === $row['stage_id'];
 
         return $this->index('Archived Jobs', $filter, 'updated_at', false);
     }
@@ -70,9 +66,7 @@ class Jobs extends BaseController
      */
     public function all(): string
     {
-        $filter = static function ($row) {
-            return null === $row['deleted_at'];
-        };
+        $filter = static fn ($row) => null === $row['deleted_at'];
 
         return $this->index('All Jobs', $filter, 'updated_at', false);
     }
@@ -82,9 +76,7 @@ class Jobs extends BaseController
      */
     public function trash(): string
     {
-        $filter = static function ($row) {
-            return null !== $row['deleted_at'];
-        };
+        $filter = static fn ($row) => null !== $row['deleted_at'];
 
         return $this->index('Deleted Jobs', $filter, 'deleted_at', false);
     }

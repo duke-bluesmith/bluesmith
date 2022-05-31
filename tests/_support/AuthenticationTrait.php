@@ -91,7 +91,7 @@ trait AuthenticationTrait
      */
     protected function addPermissionToUser(string $name, ?User $user = null): void
     {
-        $user = $user ?? $this->user;
+        $user ??= $this->user;
 
         // Look up the permission
         if (! $permission = model(PermissionModel::class)->where(['name' => $name])->first()) {

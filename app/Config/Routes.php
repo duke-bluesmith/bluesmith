@@ -76,5 +76,8 @@ $routes->get('unsubscribe', 'Api\Email::unsubscribe', ['as' => 'unsubscribe']);
  * needing to reload it.
  */
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    /**
+     * @psalm-suppress MissingFile
+     */
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

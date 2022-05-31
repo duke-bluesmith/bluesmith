@@ -123,8 +123,8 @@ final class Mailer
 
         // Use the Auth activator email settings, if available
         $emailer->setFrom(
-            $config->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
-            $config->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
+            config('Auth')->userActivators[EmailActivator::class]['fromEmail'] ?? config('Email')->fromEmail,
+            config('Auth')->userActivators[EmailActivator::class]['fromName'] ?? config('Email')->fromName
         )->setTo($recipient);
 
         if ($emailId = self::send($emailer)) {

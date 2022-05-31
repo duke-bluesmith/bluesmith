@@ -1,7 +1,8 @@
 {
     "name": "bluesmith/bluesmith",
-    "type": "project",
     "description": "3D print job management",
+    "license": "Mozilla Public License Version 2.0",
+    "type": "project",
     "keywords": [
         "codeigniter",
         "codeigniter4",
@@ -11,8 +12,6 @@
         "3d",
         "printing"
     ],
-    "homepage": "https://bluesmith.oit.duke.edu",
-    "license": "Mozilla Public License Version 2.0",
     "authors": [
         {
             "name": "Matthew Gatner",
@@ -21,11 +20,12 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://bluesmith.oit.duke.edu",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "almasaeed2010/adminlte": "^3.0",
         "chubv/php-stl": "^2.1",
-        "codeigniter4/codeigniter4": "dev-develop",
+        "codeigniter4/framework": "^4.1",
         "components/jquery": "^3.3",
         "enyo/dropzone": "^5.5",
         "fortawesome/font-awesome": "^5.8",
@@ -43,9 +43,17 @@
         "twbs/bootstrap": "^4.3"
     },
     "require-dev": {
-        "psr/container": "^1.0",
-        "tatter/tools": "^1.14"
+        "psr/container": "^1.1",
+        "tatter/tools": "^2.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "exclude-from-classmap": [
             "**/Database/Migrations/**"
@@ -56,36 +64,37 @@
             "Tests\\Support\\": "tests/_support"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
     "scripts": {
         "post-update-cmd": [
             "php spark assets:publish"
         ],
-        "analyze": "phpstan analyze",
+        "analyze": [
+            "phpstan analyze",
+            "psalm"
+        ],
         "ci": [
             "Composer\\Config::disableProcessTimeout",
             "@deduplicate",
             "@analyze",
             "@test",
             "@inspect",
+            "rector process",
             "@style"
         ],
         "deduplicate": "phpcpd app/ src/",
         "inspect": "deptrac analyze --cache-file=build/deptrac.cache",
         "mutate": "infection --threads=2 --skip-initial-tests --coverage=build/phpunit",
         "patch": "patch",
+        "retool": "retool",
         "style": "php-cs-fixer fix --verbose --ansi --using-cache=no",
         "test": "phpunit"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/codeigniter4/codeigniter4"
-        },
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ]
+    }
 }

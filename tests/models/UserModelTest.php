@@ -16,9 +16,10 @@ final class UserModelTest extends ProjectTestCase
 
     public function testConstructorMergesFields()
     {
-        $model = new UserModel();
+        $model  = new UserModel();
+        $result = $this->getPrivateProperty($model, 'allowedFields');
 
-        $this->assertContains('firstname', $model->allowedFields); // @phpstan-ignore-line
+        $this->assertContains('firstname', $result);
     }
 
     public function testStaffIds()
