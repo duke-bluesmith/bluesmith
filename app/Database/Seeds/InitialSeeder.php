@@ -3,6 +3,7 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
+use Exception;
 use Tatter\Files\Database\Seeds\FileSeeder;
 use Tatter\Settings\Database\Seeds\SettingSeeder;
 use Tatter\Workflows\Registrar;
@@ -36,7 +37,7 @@ class InitialSeeder extends Seeder
                 $this->call($seedName);
             }
             // @codeCoverageIgnoreStart
-            catch (\Exception $e) {
+            catch (Exception $e) {
                 // Pass CLI exceptions back to BaseCommand for display
                 if (is_cli()) {
                     throw $e;

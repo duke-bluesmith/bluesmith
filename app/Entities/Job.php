@@ -16,6 +16,16 @@ use Tatter\Workflows\Entities\Job as BaseJob;
  * An extension of Workflow's Job entity to enable
  * Relations and add a number of project-specific
  * methods and poperty stores.
+ *
+ * Magic relation methods from Tatter\Relations:
+ *
+ * @method bool addFile(int|int[] $keys)
+ * @method bool addUser(int|int[] $keys)
+ * @method bool hasOption(int|int[] $keys)
+ * @method bool hasUser(int|int[] $keys)
+ * @method bool removeFile(int|int[] $keys)
+ * @method bool removeUser(int|int[] $keys)
+ * @method bool setOptions(int|int[] $keys)
  */
 class Job extends BaseJob
 {
@@ -34,7 +44,7 @@ class Job extends BaseJob
     /**
      * Stored Ledgers, indexed by "estimate" field
      *
-     * @var array<bool,Ledger>|null
+     * @var array<Ledger>|null
      */
     protected $ledgers;
 
@@ -117,7 +127,7 @@ class Job extends BaseJob
     /**
      * Gets related Ledgers.
      *
-     * @return array<bool,Ledger>
+     * @return array<Ledger>
      */
     public function getLedgers(): array
     {

@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
-class InviteException extends \RuntimeException
+use RuntimeException;
+
+class InviteException extends RuntimeException
 {
 }

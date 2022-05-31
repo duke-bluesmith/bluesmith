@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Entities\Transaction;
 use App\Entities\User;
+use RuntimeException;
 
 class TransactionModel extends BaseModel
 {
@@ -26,7 +27,7 @@ class TransactionModel extends BaseModel
      * @param int    $amount  The amount of credit
      * @param string $summary Optional description
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function credit(User $user, int $amount, string $summary = ''): int
     {
@@ -45,7 +46,7 @@ class TransactionModel extends BaseModel
      * @param int    $amount  The amount of debit
      * @param string $summary Optional description
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function debit(User $user, int $amount, string $summary = ''): int
     {
@@ -60,12 +61,12 @@ class TransactionModel extends BaseModel
     /**
      * Creates the Transaction and updates the User's balance.
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     protected function process(User $user, array $data): int
     {
         if (! $id = $this->insert($data)) {
-            throw new \RuntimeException(implode(' ', $this->errors()));
+            throw new RuntimeException(implode(' ', $this->errors()));
         }
 
         // Update the User's balance

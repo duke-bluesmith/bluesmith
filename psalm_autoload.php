@@ -7,6 +7,9 @@ require __DIR__ . '/vendor/codeigniter4/framework/system/Test/bootstrap.php';
 $helperDirs = [
     'app/Helpers',
     'vendor/codeigniter4/framework/system/Helpers',
+    'vendor/myth/auth/src/Helpers',
+    'vendor/tatter/alerts/src/Helpers',
+    'vendor/tatter/chat/src/Helpers',
 ];
 
 foreach ($helperDirs as $dir) {

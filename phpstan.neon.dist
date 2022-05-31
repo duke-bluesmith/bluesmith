@@ -11,12 +11,18 @@ parameters:
 		- app/Config/Routes.php
 		- app/Views/*
 	ignoreErrors:
+		- '#Call to an undefined method CodeIgniter\\Database\\BaseBuilder::first\(\)#'
+		- '#Call to an undefined method CodeIgniter\\Model::[A-Za-z].+\(\)#'
+		- '#Cannot access property \$[A-Za-z_].+ on array\|object#'
 	universalObjectCratesClasses:
 		- CodeIgniter\Entity
 		- CodeIgniter\Entity\Entity
 		- Faker\Generator
 	scanDirectories:
 		- vendor/codeigniter4/framework/system/Helpers
+		- vendor/myth/auth/src/Helpers
+		- vendor/tatter/alerts/src/Helpers
+		- vendor/tatter/chat/src/Helpers
 	dynamicConstantNames:
 		- APP_NAMESPACE
 		- CI_DEBUG
