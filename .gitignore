@@ -65,7 +65,6 @@ writable/uploads/*
 
 writable/debugbar/*
 writable/patches/*
-writable/statements/*
 
 writable/database.db
 
@@ -132,4 +131,3 @@ nb-configuration.xml
 /access
 /local
 /public/local
-/public/*.ini

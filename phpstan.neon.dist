@@ -2,29 +2,21 @@ parameters:
 	tmpDir: build/phpstan
 	level: 5
 	paths:
-		- app
-		- tests
+		- app/
+		- tests/
 	bootstrapFiles:
-		- vendor/codeigniter4/codeigniter4/system/Test/bootstrap.php
-	excludes_analyse:
+		- vendor/codeigniter4/framework/system/Test/bootstrap.php
+	excludePaths:
 		- app/Commands/Test.php
 		- app/Config/Routes.php
 		- app/Views/*
 	ignoreErrors:
-		- '#Call to an undefined method .+\\Entities\\[A-Za-z]+::(add|has|set|remove)[A-Za-z]+\(\)#'
-		- '#Call to an undefined method CodeIgniter\\Database\\BaseBuilder::first\(\)#'
-		- '#Call to an undefined method CodeIgniter\\Model::[A-Za-z]+\(\)#'
-		- '#Cannot access property [\$a-z_]+ on (array|object)#'
 	universalObjectCratesClasses:
 		- CodeIgniter\Entity
 		- CodeIgniter\Entity\Entity
 		- Faker\Generator
 	scanDirectories:
-		- vendor/codeigniter4/codeigniter4/system/Helpers
-		- vendor/tatter/alerts/src/Helpers
-		- vendor/tatter/chat/src/Helpers
-		- vendor/tatter/handlers/src/Helpers
-		- vendor/myth/auth/src/Helpers
+		- vendor/codeigniter4/framework/system/Helpers
 	dynamicConstantNames:
 		- APP_NAMESPACE
 		- CI_DEBUG
