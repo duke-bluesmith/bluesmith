@@ -66,7 +66,8 @@
     "config": {
         "allow-plugins": {
             "infection/extension-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "composer/package-versions-deprecated": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
