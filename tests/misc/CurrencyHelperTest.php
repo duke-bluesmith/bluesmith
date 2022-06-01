@@ -19,7 +19,7 @@ final class CurrencyHelperTest extends ProjectTestCase
 
     public function testPriceToScaledRespectsPrecision()
     {
-        $result = price_to_scaled(1234.5678, 100.3333333); // @phpstan-ignore-line
+        $result = price_to_scaled(1234, 100);
 
         $this->assertSame(12.34, $result);
     }
