@@ -15,6 +15,8 @@ final class MailerTest extends ProjectTestCase
 
     public function testJobInviteAddsEmailToJob()
     {
+        config('Email')->fromName = 'Kelsier';
+
         $job    = fake(JobModel::class);
         $issuer = fake(UserModel::class);
 

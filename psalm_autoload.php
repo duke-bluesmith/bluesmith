@@ -10,6 +10,7 @@ $helperDirs = [
     'vendor/myth/auth/src/Helpers',
     'vendor/tatter/alerts/src/Helpers',
     'vendor/tatter/chat/src/Helpers',
+    'vendor/tatter/handlers/src/Helpers',
 ];
 
 foreach ($helperDirs as $dir) {
