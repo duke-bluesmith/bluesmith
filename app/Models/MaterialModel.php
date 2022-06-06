@@ -27,9 +27,9 @@ class MaterialModel extends BaseModel
             'name'        => $faker->catchPhrase,
             'summary'     => $faker->sentence,
             'description' => $faker->paragraph,
-            'cost'        => mt_rand(0, 4) ? mt_rand(100, 500) : null,
-            'sortorder'   => mt_rand(1, 10),
-            'method_id'   => mt_rand(1, Fabricator::getCount('methods') ?: 8),
+            'cost'        => random_int(0, 4) ? random_int(100, 500) : null,
+            'sortorder'   => random_int(1, 10),
+            'method_id'   => random_int(1, Fabricator::getCount('methods') ?: 8),
         ]);
     }
 }

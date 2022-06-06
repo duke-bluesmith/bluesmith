@@ -5,7 +5,6 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use Myth\Auth\Authorization\GroupModel;
 use Myth\Auth\Authorization\PermissionModel;
-use Myth\Auth\Models\UserModel;
 
 class AuthSeeder extends Seeder
 {
@@ -14,7 +13,6 @@ class AuthSeeder extends Seeder
         // Initialize the classes
         $groups        = new GroupModel();
         $permissions   = new PermissionModel();
-        $users         = new UserModel();
         $authorization = service('authorization');
 
         // GROUPS

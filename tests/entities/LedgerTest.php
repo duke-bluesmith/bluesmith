@@ -12,15 +12,12 @@ final class LedgerTest extends ProjectTestCase
 {
     use CurrencyTrait;
 
-    /**
-     * @var Ledger
-     */
-    private $ledger;
+    private Ledger $ledger;
 
     /**
      * @var Charge[]
      */
-    private $charges = [];
+    private array $charges = [];
 
     /**
      * Mocks the Settings service and creates a

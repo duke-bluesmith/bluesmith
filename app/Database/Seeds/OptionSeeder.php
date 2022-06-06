@@ -3,8 +3,9 @@
 namespace App\Database\Seeds;
 
 use App\Models\OptionModel;
+use CodeIgniter\Database\Seeder;
 
-class OptionSeeder extends \CodeIgniter\Database\Seeder
+class OptionSeeder extends Seeder
 {
     public function run()
     {

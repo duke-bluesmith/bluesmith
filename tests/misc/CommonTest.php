@@ -20,7 +20,7 @@ final class CommonTest extends ProjectTestCase
         $result = user();
 
         $this->assertNotNull($result);
-        $this->assertSame(User::class, get_class($result));
+        $this->assertInstanceOf(User::class, $result);
     }
 
     public function testUserReturnsNull()

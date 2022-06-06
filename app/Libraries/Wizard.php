@@ -17,7 +17,7 @@ final class Wizard
     /**
      * @var Step[]
      */
-    private $steps;
+    private array $steps;
 
     /**
      * Generates a new Wizard from the given Job.
@@ -108,8 +108,7 @@ final class Wizard
 
         $output .= '<div class="d-flex justify-content-between py-3">' . PHP_EOL;
         $output .= implode(PHP_EOL, $this->steps);
-        $output .= '</div>' . PHP_EOL;
 
-        return $output;
+        return $output . ('</div>' . PHP_EOL);
     }
 }

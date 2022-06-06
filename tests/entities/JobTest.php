@@ -22,11 +22,7 @@ final class JobTest extends ProjectTestCase
         'App',
     ];
     protected $seed = 'App\Database\Seeds\OptionSeeder';
-
-    /**
-     * @var Job
-     */
-    private $job;
+    private Job $job;
 
     /**
      * Fakes a test Job.
@@ -73,9 +69,7 @@ final class JobTest extends ProjectTestCase
         $this->assertIsArray($result);
         $this->assertCount(2, $result);
 
-        foreach ($result as $ledger) {
-            $this->assertInstanceOf(Ledger::class, $ledger);
-        }
+        $this->assertContainsOnlyInstancesOf(Ledger::class, $result);
     }
 
     public function testEstimateReturnsNull()

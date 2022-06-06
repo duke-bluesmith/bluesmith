@@ -43,6 +43,7 @@ class ManageFilter implements FilterInterface
             BreadcrumbsMenu::push(new Breadcrumb(base_url(), 'Home'));
             BreadcrumbsMenu::push(new Breadcrumb(site_url('manage'), 'Manage'));
 
+            /** @var string[] $segments */
             $segments = service('request')->getUri()->getSegments();
 
             if (url_is('manage/jobs/show/*')) {

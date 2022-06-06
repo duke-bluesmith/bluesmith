@@ -43,7 +43,7 @@ class OptionsAction extends BaseAction
      */
     public function post(): ?ResponseInterface
     {
-        $data = service('request')->getPost();
+        service('request')->getPost();
 
         $this->jobs->update($this->job->id, [
             'material_id' => service('request')->getPost('material_id') ?: null,

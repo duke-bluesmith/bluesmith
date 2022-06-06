@@ -30,7 +30,7 @@ class FilesAction extends BaseAction
     /**
      * Preloads the Files model and helper
      */
-    public function initialize()
+    protected function initialize()
     {
         parent::initialize();
 

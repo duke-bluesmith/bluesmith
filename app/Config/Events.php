@@ -70,11 +70,9 @@ Events::on('post_controller_constructor', static function () {
 Events::on('upload', static function (File $file) {
 
     // Check for an active Job and associate the file
-    if ($jobId = session('file_job_upload')) {
-        if ($job = model(JobModel::class)->find($jobId)) {
-            /** @var Job $job */
-            $job->addFile($file->id);
-        }
+    if (($jobId = session('file_job_upload')) && ($job = model(JobModel::class)->find($jobId))) {
+        /** @var Job $job */
+        $job->addFile($file->id);
     }
 
     // Ignore non-STL files

@@ -35,7 +35,7 @@ abstract class BaseAction extends ModuleBaseAction
     /**
      * Loads frequently-needed helpers
      */
-    public function initialize()
+    protected function initialize()
     {
         helper(['currency', 'form', 'inflector', 'number']);
     }

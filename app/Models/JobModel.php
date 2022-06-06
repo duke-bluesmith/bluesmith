@@ -63,8 +63,8 @@ class JobModel extends BaseJobModel
     public function addEmailToJob(int $emailId, int $jobId): bool
     {
         return (bool) $this->db->table('emails_jobs')->insert([
-            'email_id' => (int) $emailId,
-            'job_id'   => (int) $jobId,
+            'email_id' => $emailId,
+            'job_id'   => $jobId,
         ]);
     }
 
@@ -74,8 +74,8 @@ class JobModel extends BaseJobModel
     public function addUserToJob(int $userId, int $jobId): bool
     {
         return (bool) $this->db->table('jobs_users')->insert([
-            'job_id'     => (int) $jobId,
-            'user_id'    => (int) $userId,
+            'job_id'     => $jobId,
+            'user_id'    => $userId,
             'created_at' => date('Y-m-d H:i:s'),
         ]);
     }
@@ -122,9 +122,9 @@ class JobModel extends BaseJobModel
         return new Job([
             'name'        => $faker->catchPhrase,
             'summary'     => $faker->sentence,
-            'workflow_id' => mt_rand(1, Fabricator::getCount('workflows') ?: 4),
-            'stage_id'    => mt_rand(1, Fabricator::getCount('stages') ?: 99),
-            'material_id' => mt_rand(1, Fabricator::getCount('materials') ?: 35),
+            'workflow_id' => random_int(1, Fabricator::getCount('workflows') ?: 4),
+            'stage_id'    => random_int(1, Fabricator::getCount('stages') ?: 99),
+            'material_id' => random_int(1, Fabricator::getCount('materials') ?: 35),
         ]);
     }
 }

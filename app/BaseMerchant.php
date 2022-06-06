@@ -40,7 +40,7 @@ abstract class BaseMerchant extends BaseHandler
      *
      * @var array<string, mixed>
      */
-    private $defaults = [
+    private array $defaults = [
         'name'    => '',
         'uid'     => '',
         'icon'    => 'fas money-bill-wave',
@@ -119,7 +119,7 @@ abstract class BaseMerchant extends BaseHandler
     {
         $balance = $this->balance($user);
 
-        return (bool) (null === $balance || $balance > 0);
+        return null === $balance || $balance > 0;
     }
 
     /**

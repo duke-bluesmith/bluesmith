@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Entities\Note;
 use CodeIgniter\Model;
+use Tatter\Relations\Traits\ModelTrait;
 
 class NoteModel extends Model
 {
-    use \Tatter\Relations\Traits\ModelTrait;
+    use ModelTrait;
 
     protected $primaryKey     = 'id';
     protected $table          = 'notes';

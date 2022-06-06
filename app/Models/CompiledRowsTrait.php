@@ -84,11 +84,9 @@ trait CompiledRowsTrait
 
         // Check for a valid sort request
         if (array_key_exists($sort, reset($rows))) {
-            usort($rows, static function ($row1, $row2) use ($sort, $ascending) {
-                return $ascending
-                    ? $row1[$sort] <=> $row2[$sort]
-                    : $row2[$sort] <=> $row1[$sort];
-            });
+            usort($rows, static fn ($row1, $row2) => $ascending
+                ? $row1[$sort] <=> $row2[$sort]
+                : $row2[$sort] <=> $row1[$sort]);
         }
 
         return $rows;

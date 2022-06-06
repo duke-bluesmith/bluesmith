@@ -16,11 +16,7 @@ final class CompiledRowsTraitTest extends ProjectTestCase
     // Initialize the database once
     protected $migrateOnce = true;
     protected $seedOnce    = true;
-
-    /**
-     * @var MockCompiledRowsModel
-     */
-    private $model;
+    private MockCompiledRowsModel $model;
 
     /**
      * Creates an anonymous traited model

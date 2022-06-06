@@ -23,7 +23,7 @@ class MethodModel extends BaseModel
             'name'        => $faker->catchPhrase,
             'summary'     => $faker->sentence,
             'description' => $faker->paragraph,
-            'sortorder'   => mt_rand(1, 10),
+            'sortorder'   => random_int(1, 10),
         ]);
     }
 }
