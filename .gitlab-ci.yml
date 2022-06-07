@@ -28,7 +28,7 @@ analyze:app:
     - codeigniter4
   script:
     - deptrac analyze --cache-file=build/deptrac.cache
-    - phpcpd
+    - phpcpd app/ tests/
     - vendor/bin/phpstan analyze
     - vendor/bin/psalm
     - rector process --dry-run --no-progress-bar
