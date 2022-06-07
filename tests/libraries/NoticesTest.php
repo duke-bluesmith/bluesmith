@@ -33,7 +33,7 @@ final class NoticesTest extends ProjectTestCase
 
         // Say something
         $participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
-        $messageId   = $participant->say('hello world');
+        $participant->say('hello world');
 
         // Verify it works with deleted items
         model(JobModel::class)->delete($job->id);

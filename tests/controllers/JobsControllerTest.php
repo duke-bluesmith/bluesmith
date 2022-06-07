@@ -35,10 +35,8 @@ final class JobsControllerTest extends ProjectTestCase
 
     /**
      * Whether the test Jobs have been created
-     *
-     * @var bool
      */
-    private static $jobbed = false;
+    private static bool $jobbed = false;
 
     /**
      * An active staff Job

@@ -13,6 +13,9 @@ before_script:
   - composer --version
   - php --version
 
+  # Create staging directory
+  - mkdir -p build
+
   # Inject PHPUnit configuration
   - cp "$PHP_UNIT_XML" ./phpunit.xml
 
@@ -24,11 +27,22 @@ analyze:app:
     - ubuntu18
     - codeigniter4
   script:
-  - vendor/bin/phpstan analyze
+    - deptrac analyze --cache-file=build/deptrac.cache
+    - phpcpd app/ tests/
+    - vendor/bin/phpstan analyze
+    - vendor/bin/psalm
+    - rector process --dry-run --no-progress-bar
+
+lint:app:
+  tags: 
+    - ubuntu18
+    - codeigniter4
+  script:
+    - vendor/bin/php-cs-fixer fix --verbose --ansi --dry-run --using-cache=no --diff
 
 test:app:
   tags: 
     - ubuntu18
     - codeigniter4
   script:
-  - vendor/bin/phpunit --verbose --coverage-text
+    - vendor/bin/phpunit --verbose --coverage-text

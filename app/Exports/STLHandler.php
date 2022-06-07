@@ -41,12 +41,9 @@ class STLHandler extends BaseExport
      */
     protected function processDisplay(): ResponseInterface
     {
-        $file = $this->getFile();
-        $path = $file->getRealPath() ?: (string) $file;
-
         return $this->response->setBody(view('layouts/threejs', [
             'id'   => $this->request->getUri()->getSegment(4),
-            'file' => $file,
+            'file' => $this->getFile(),
         ]));
     }
 

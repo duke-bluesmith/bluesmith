@@ -27,10 +27,10 @@ class ChargeModel extends BaseModel
     public function fake(Generator &$faker): Charge
     {
         return new Charge([
-            'ledger_id' => mt_rand(1, Fabricator::getCount('ledgers') ?: 10),
+            'ledger_id' => random_int(1, Fabricator::getCount('ledgers') ?: 10),
             'name'      => $faker->sentence,
-            'amount'    => mt_rand(100, 10000),
-            'quantity'  => mt_rand(0, 1) ? mt_rand(1, 5) : null,
+            'amount'    => random_int(100, 10000),
+            'quantity'  => random_int(0, 1) ? random_int(1, 5) : null,
         ]);
     }
 }

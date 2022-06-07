@@ -65,6 +65,6 @@ final class PagesTest extends ProjectTestCase
     {
         $this->expectException(PageNotFoundException::class);
 
-        $result = $this->get('about/bananas');
+        $this->get('about/bananas');
     }
 }

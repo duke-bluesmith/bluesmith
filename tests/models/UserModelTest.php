@@ -52,8 +52,8 @@ final class UserModelTest extends ProjectTestCase
 
     public function testFetchCompiledRows()
     {
-        $user1 = fake(UserFaker::class);
-        $user2 = fake(UserFaker::class);
+        fake(UserFaker::class);
+        fake(UserFaker::class);
 
         $method = $this->getPrivateMethodInvoker(model(UserModel::class), 'fetchCompiledRows');
         $result = $method();

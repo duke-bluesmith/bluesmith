@@ -34,7 +34,7 @@ final class ManageFilterTest extends ProjectTestCase
         $this->expectExceptionMessage(lang('Auth.notEnoughPrivilege'));
 
         $caller = $this->getFilterCaller(ManageFilter::class, 'before');
-        $result = $caller();
+        $caller();
     }
 
     public function testValid()

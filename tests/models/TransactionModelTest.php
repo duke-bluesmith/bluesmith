@@ -16,11 +16,7 @@ final class TransactionModelTest extends ProjectTestCase
     // Initialize the database once
     protected $migrateOnce = true;
     protected $seedOnce    = true;
-
-    /**
-     * @var User
-     */
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {

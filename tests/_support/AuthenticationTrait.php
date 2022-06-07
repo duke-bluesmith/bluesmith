@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use CodeIgniter\Test\Fabricator;
 use Config\Services;
 use Myth\Auth\Authorization\PermissionModel;
+use Myth\Auth\Test\AuthTestTrait;
 use RuntimeException;
 
 /**
@@ -17,7 +18,7 @@ use RuntimeException;
  */
 trait AuthenticationTrait
 {
-    use \Myth\Auth\Test\AuthTestTrait;
+    use AuthTestTrait;
 
     /**
      * @var User

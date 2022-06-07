@@ -20,17 +20,13 @@ final class MenusTest extends ProjectTestCase
 
     /**
      * Expected value for the baseline public menu
-     *
-     * @var string
      */
-    private static $expectedPublic;
+    private static string $expectedPublic;
 
     /**
      * Expected value for the baseline manage menu
-     *
-     * @var string
      */
-    private static $expectedManage;
+    private static string $expectedManage;
 
     protected $seedOnce    = true;
     protected $migrateOnce = true;

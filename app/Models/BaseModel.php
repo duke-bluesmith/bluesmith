@@ -3,13 +3,16 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Tatter\Audits\Traits\AuditsTrait;
+use Tatter\Permits\Traits\PermitsTrait;
+use Tatter\Relations\Traits\ModelTrait;
 
 class BaseModel extends Model
 {
     // Traits
-    use \Tatter\Audits\Traits\AuditsTrait;
-    use \Tatter\Permits\Traits\PermitsTrait;
-    use \Tatter\Relations\Traits\ModelTrait;
+    use AuditsTrait;
+    use PermitsTrait;
+    use ModelTrait;
 
     // Core defaults
     protected $primaryKey     = 'id';

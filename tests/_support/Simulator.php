@@ -28,7 +28,7 @@ class Simulator extends BaseSimulator
 
         // Create methods up to N
         if (in_array('methods', $targets, true)) {
-            $count = mt_rand(2, 3);
+            $count = random_int(2, 3);
 
             while (Fabricator::getCount('methods') < $count) {
                 fake(MethodModel::class);
@@ -40,7 +40,7 @@ class Simulator extends BaseSimulator
 
         // Create materials up to N
         if (in_array('materials', $targets, true)) {
-            $count = Fabricator::getCount('methods') * mt_rand(2, 4);
+            $count = Fabricator::getCount('methods') * random_int(2, 4);
 
             while (Fabricator::getCount('materials') < $count) {
                 fake(MaterialModel::class);
@@ -52,7 +52,7 @@ class Simulator extends BaseSimulator
 
         // Create users up to N
         if (in_array('users', $targets, true)) {
-            $count = mt_rand(3, 5);
+            $count = random_int(3, 5);
 
             while (Fabricator::getCount('users') < $count) {
                 fake(UserModel::class);
@@ -64,11 +64,11 @@ class Simulator extends BaseSimulator
             // Assign some users to groups (created by AuthSeeder)
             $numGroups = model(GroupModel::class)->countAllResults();
 
-            $count = mt_rand(4, 8);
+            $count = random_int(4, 8);
 
             for ($i = 1; $i < $count; $i++) {
                 model(GroupModel::class)->addUserToGroup(
-                    mt_rand(1, Fabricator::getCount('users')),
+                    random_int(1, Fabricator::getCount('users')),
                     $i % $numGroups + 1 // Ensures every group gets at least one
                 );
             }
@@ -76,7 +76,7 @@ class Simulator extends BaseSimulator
 
         // Create jobs up to N
         if (in_array('jobs', $targets, true)) {
-            $count = mt_rand(3, 10);
+            $count = random_int(3, 10);
 
             while (Fabricator::getCount('jobs') < $count) {
                 fake(JobModel::class);
@@ -91,12 +91,12 @@ class Simulator extends BaseSimulator
             for ($i = 1; $i <= Fabricator::getCount('jobs'); $i++) {
                 $builder->insert([
                     'job_id'  => $i,
-                    'user_id' => mt_rand(1, Fabricator::getCount('users')),
+                    'user_id' => random_int(1, Fabricator::getCount('users')),
                 ]);
             }
 
             // Make a few jobs have multiple users
-            $count = mt_rand(2, 6);
+            $count = random_int(2, 6);
             $user  = fake(UserModel::class);
 
             for ($i = 1; $i < $count; $i++) {

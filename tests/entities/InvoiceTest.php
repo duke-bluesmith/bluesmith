@@ -12,15 +12,12 @@ final class InvoiceTest extends ProjectTestCase
 {
     use CurrencyTrait;
 
-    /**
-     * @var Invoice
-     */
-    private $invoice;
+    private Invoice $invoice;
 
     /**
      * @var Payment[]
      */
-    private $payments = [];
+    private array $payments = [];
 
     /**
      * Mocks the Settings service and creates a

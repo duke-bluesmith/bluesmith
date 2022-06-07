@@ -20,7 +20,7 @@ class ManageMenu extends BaseMenu
     {
         // Dashboard
         $dashboard = '<i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p><span class="right badge badge-warning">';
-        $dashboard .= count(service('notices')) . '</span>';
+        $dashboard .= (is_countable(service('notices')) ? count(service('notices')) : 0) . '</span>';
         $this->builder->link(site_url('manage/dashboard'), $dashboard);
 
         // Submenus

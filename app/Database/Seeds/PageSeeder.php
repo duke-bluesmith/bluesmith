@@ -3,8 +3,9 @@
 namespace App\Database\Seeds;
 
 use App\Models\PageModel;
+use CodeIgniter\Database\Seeder;
 
-class PageSeeder extends \CodeIgniter\Database\Seeder
+class PageSeeder extends Seeder
 {
     public function run()
     {

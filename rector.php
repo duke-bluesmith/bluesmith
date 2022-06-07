@@ -21,6 +21,7 @@ use Rector\CodingStyle\Rector\FuncCall\CountArrayToEmptyArrayComparisonRector;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\DeadCode\Rector\MethodCall\RemoveEmptyMethodCallRector;
+use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\EarlyReturn\Rector\Foreach_\ChangeNestedForeachIfsToEarlyContinueRector;
 use Rector\EarlyReturn\Rector\If_\ChangeIfElseValueAssignToEarlyReturnRector;
 use Rector\EarlyReturn\Rector\If_\RemoveAlwaysElseRector;
@@ -89,6 +90,16 @@ return static function (RectorConfig $rectorConfig): void {
 
         // May be uninitialized on purpose
         AddDefaultValueForUndefinedVariableRector::class,
+
+        // Ignore Mock classes that intentional provide broader scope
+        MakeInheritedMethodVisibilitySameAsParentRector::class => [
+            __DIR__ . '/tests/_support/Mock/MockCompiledRowsModel.php',        
+        ],
+        
+        // Ignore faked properties for future test access
+        RemoveUnusedPrivatePropertyRector::class => [
+            __DIR__ . '/tests/controllers/JobsControllerTest.php',
+        ]
     ]);
     $rectorConfig->rule(SimplifyUselessVariableRector::class);
     $rectorConfig->rule(RemoveAlwaysElseRector::class);
@@ -115,6 +126,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig
         ->ruleWithConfiguration(TypedPropertyRector::class, [
             // Set to false if you use in libraries, or it does create breaking changes.
-            TypedPropertyRector::INLINE_PUBLIC => true,
+            TypedPropertyRector::INLINE_PUBLIC => false,
         ]);
 };
