@@ -6,6 +6,7 @@ use App\Models\JobModel;
 use App\Models\UserModel;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Myth\Auth\Test\Fakers\GroupFaker;
+use Tatter\Chat\Entities\Participant;
 use Tatter\Chat\Models\ParticipantModel;
 use Tests\Support\AuthenticationTrait;
 use Tests\Support\ProjectTestCase;
@@ -32,6 +33,7 @@ final class NoticesTest extends ProjectTestCase
         chat('job-' . $job->id);
 
         // Say something
+        /** @var Participant $participant */
         $participant = model(ParticipantModel::class)->where('user_id', $this->user->id)->first();
         $participant->say('hello world');
 

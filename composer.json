@@ -44,6 +44,7 @@
     },
     "require-dev": {
         "psr/container": "^1.1",
+        "tatter/patches": "^2.0",
         "tatter/tools": "^2.0"
     },
     "repositories": [

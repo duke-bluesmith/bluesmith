@@ -101,6 +101,7 @@ final class Notices implements Countable, IteratorAggregate
 
         // Get the last week of messages
         $rows = model(MessageModel::class)
+            ->builder()
             ->select('chat_messages.*, chat_conversations.uid, chat_participants.user_id')
             ->join('chat_conversations', 'chat_messages.conversation_id = chat_conversations.id')
             ->join('chat_participants', 'chat_messages.participant_id = chat_participants.id')

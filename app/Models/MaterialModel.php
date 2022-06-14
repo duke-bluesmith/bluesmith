@@ -6,6 +6,9 @@ use App\Entities\Material;
 use CodeIgniter\Test\Fabricator;
 use Faker\Generator;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class MaterialModel extends BaseModel
 {
     protected $table           = 'materials';

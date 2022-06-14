@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class InviteModel extends BaseModel
 {
     protected $table           = 'invites';

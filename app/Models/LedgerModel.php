@@ -4,6 +4,9 @@ namespace App\Models;
 
 use App\Entities\Ledger;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class LedgerModel extends BaseModel
 {
     protected $table         = 'ledgers';

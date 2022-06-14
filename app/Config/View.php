@@ -2,7 +2,9 @@
 
 namespace Config;
 
-class View extends \CodeIgniter\Config\View
+use CodeIgniter\Config\View as BaseView;
+
+class View extends BaseView
 {
     /**
      * When false, the view method will clear the data between each

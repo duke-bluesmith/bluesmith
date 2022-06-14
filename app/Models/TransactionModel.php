@@ -6,6 +6,9 @@ use App\Entities\Transaction;
 use App\Entities\User;
 use RuntimeException;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class TransactionModel extends BaseModel
 {
     protected $table          = 'transactions';

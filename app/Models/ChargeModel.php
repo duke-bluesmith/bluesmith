@@ -6,6 +6,9 @@ use App\Entities\Charge;
 use CodeIgniter\Test\Fabricator;
 use Faker\Generator;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class ChargeModel extends BaseModel
 {
     protected $table          = 'charges';
