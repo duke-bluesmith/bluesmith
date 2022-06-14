@@ -136,7 +136,6 @@ class Job extends BaseJob
         if (null === $this->ledgers) {
             $this->ledgers = [];
 
-            // @phpstan-ignore-next-line
             foreach (model(LedgerModel::class)->where('job_id', $this->attributes['id'])->findAll() as $ledger) {
                 $this->ledgers[$ledger->estimate] = $ledger;
             }

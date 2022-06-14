@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Entities\Method;
 use Faker\Generator;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class MethodModel extends BaseModel
 {
     protected $table           = 'methods';

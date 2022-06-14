@@ -27,7 +27,7 @@ class Users extends BaseController
      */
     public function __construct()
     {
-        $this->model = model(UserModel::class); // @phpstan-ignore-line
+        $this->model = model(UserModel::class);
     }
 
     /**

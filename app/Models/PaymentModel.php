@@ -4,6 +4,9 @@ namespace App\Models;
 
 use App\Entities\Payment;
 
+/**
+ * @psalm-suppress MethodSignatureMismatch
+ */
 class PaymentModel extends BaseModel
 {
     protected $table          = 'payments';

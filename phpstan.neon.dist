@@ -11,8 +11,6 @@ parameters:
 		- app/Config/Routes.php
 		- app/Views/*
 	ignoreErrors:
-		- '#Call to an undefined method CodeIgniter\\Database\\BaseBuilder::first\(\)#'
-		- '#Call to an undefined method CodeIgniter\\Model::[A-Za-z].+\(\)#'
 		- '#Cannot access property \$[A-Za-z_].+ on array\|object#'
 	universalObjectCratesClasses:
 		- CodeIgniter\Entity
