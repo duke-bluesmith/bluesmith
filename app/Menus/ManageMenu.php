@@ -58,7 +58,7 @@ class ManageMenu extends BaseMenu
                         ->addParentClass('nav-item has-treeview menu-open')
                         ->setActiveClassOnLink()
                         ->link(site_url('manage/jobs/active'), '<i class="far fa-circle nav-icon"></i><p>Active Jobs</p>')
-                        ->link(site_url('manage/jobs/archive'), '<i class="far fa-circle nav-icon"></i><p>Archived Jobs</p>')
+                        ->link(site_url('manage/jobs/archive'), '<i class="far fa-circle nav-icon"></i><p>Completed Jobs</p>')
                         ->link(site_url('manage/jobs/all'), '<i class="far fa-circle nav-icon"></i><p>All Jobs</p>');
                 }
             );
