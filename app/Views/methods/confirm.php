@@ -8,6 +8,6 @@
 	<?= form_open("manage/methods/delete/{$method->id}") ?>
 
 		<button class="btn btn-primary" type="submit">Confirm</button>
-		<a class="btn btn-secondary" href="<?= site_url('manage/methods') ?>" onclick="closeModal(); return ! isMobile();">Cancel</a>
+		<a class="btn btn-secondary" href="<?= site_url('manage/methods') ?>">Cancel</a>
 
 	<?= form_close() ?>

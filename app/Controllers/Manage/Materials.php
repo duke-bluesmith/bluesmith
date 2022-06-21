@@ -44,6 +44,54 @@ class Materials extends ResourcePresenter
     }
 
     /**
+     * Workaround for permit_empty validation bug.
+     *
+     * @see https://github.com/codeigniter4/CodeIgniter4/issues/3670
+     */
+    public function create()
+    {
+        $data = $this->request->getPost();
+        if (empty($data['cost'])) {
+            $data['cost'] = null;
+        }
+
+        if (! $id = $this->model->insert($data)) {
+            return $this->actionFailed('create');
+        }
+
+        $this->alert('success', lang('Forms.created', [$this->name]));
+
+        return redirect()->to(site_url($this->names));
+    }
+
+    /**
+     * Workaround for permit_empty validation bug.
+     *
+     * @see https://github.com/codeigniter4/CodeIgniter4/issues/3670
+     *
+     * @param mixed|null $id
+     */
+    public function update($id = null)
+    {
+        if (($object = $this->ensureExists($id)) instanceof RedirectResponse) {
+            return $object;
+        }
+
+        $data = $this->request->getPost();
+        if (empty($data['cost'])) {
+            $data['cost'] = null;
+        }
+
+        if (! $this->model->update($id, $data)) {
+            return $this->actionFailed('update');
+        }
+
+        $this->alert('success', lang('Forms.updated', [$this->name]));
+
+        return redirect()->to(site_url("{$this->names}/{$id}"));
+    }
+
+    /**
      * Lists materials for one method.
      *
      * @return RedirectResponse|string
