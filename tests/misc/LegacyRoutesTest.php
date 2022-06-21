@@ -13,9 +13,9 @@ final class LegacyRoutesTest extends ProjectTestCase
     public function testRoutes(string $route, string $redirect)
     {
         require APPPATH . 'Config/Routes.php';
-        $result = $routes->getRoutes();
+        $routes = service('routes')->getRoutes();
 
-        $this->assertSame($redirect, $result[$route]);
+        $this->assertSame($redirect, $routes[$route]);
     }
 
     public function legacyRouteProvider()

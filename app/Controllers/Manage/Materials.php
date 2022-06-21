@@ -42,7 +42,7 @@ class Materials extends ResourcePresenter
             ? view("{$this->names}/form", $data)
             : view("{$this->names}/new", $data);
     }
-    
+
     /**
      * Workaround for permit_empty validation bug.
      *
@@ -68,6 +68,8 @@ class Materials extends ResourcePresenter
      * Workaround for permit_empty validation bug.
      *
      * @see https://github.com/codeigniter4/CodeIgniter4/issues/3670
+     *
+     * @param mixed|null $id
      */
     public function update($id = null)
     {
