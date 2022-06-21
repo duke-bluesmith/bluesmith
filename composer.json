@@ -74,9 +74,6 @@
         "sort-packages": true
     },
     "scripts": {
-        "post-update-cmd": [
-            "php spark assets:publish"
-        ],
         "analyze": [
             "phpstan analyze",
             "psalm"
