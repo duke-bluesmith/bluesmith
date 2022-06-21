@@ -19,7 +19,7 @@
 
 	<?php foreach ($methods as $method): ?>
 
-	<div class="card shadow mb-4" style="min-width: 24rem;">
+	<div class="card shadow mb-4" style="min-width: 24rem; max-width: 36rem;">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary"><?= $method->name ?> <?= $method->summary && $method->name !== $method->summary ? "({$method->summary})" : '' ?></h6>
 		</div>
