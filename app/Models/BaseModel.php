@@ -23,8 +23,9 @@ class BaseModel extends Model
 
     // Audits
     protected $afterInsert = ['auditInsert'];
-    protected $afterUpdate = ['auditUpdate'];
     protected $afterDelete = ['auditDelete'];
+    // Temporarily disabled to prevent Audits DB error
+    // protected $afterUpdate = ['auditUpdate'];
 
     // Permits
     /* Default mode:
