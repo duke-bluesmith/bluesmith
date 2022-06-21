@@ -1,5 +1,5 @@
 
-	<?= form_open(isset($material) ? "manage/materials/{$material->id}" : 'manage/materials', ['onsubmit' => 'return desktopSubmit(this, closeModal);']) ?>
+	<?= form_open(isset($material) ? "manage/materials/update/{$material->id}" : 'manage/materials') ?>
 
 		<div class="form-group">
 			<label for="method">Method</label>

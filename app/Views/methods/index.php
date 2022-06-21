@@ -4,7 +4,7 @@
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 
 <!-- Page Heading -->
-<button type="button" class="btn btn-primary float-right" onclick="return desktopModal('methods/new');"><i class="fas fa-plus-circle"></i> Add method</button>
+<a class="btn btn-primary float-right" href="<?= site_url('manage/methods/new') ?>"><i class="fas fa-plus-circle"></i> Add method</a>
 <h1 class="h3 mb-0 text-gray-800">Print Methods</h1>
 <p class="mb-4">Available printing methods</p>
 
@@ -30,8 +30,8 @@
 			</p>
 		</div>
 		<div class="card-footer">
-			<a class="btn btn-primary" href="<?= site_url("manage/methods/edit/{$method->id}") ?>" onclick="return desktopModal('methods/edit/<?= $method->id ?>');">Edit</a>
-			<a class="btn btn-link text-danger float-right" href="<?= site_url("manage/methods/remove/{$method->id}") ?>" onclick="return desktopModal('methods/remove/<?= $method->id ?>');">Delete</a>
+			<a class="btn btn-primary" href="<?= site_url("manage/methods/edit/{$method->id}") ?>">Edit</a>
+			<a class="btn btn-link text-danger float-right" href="<?= site_url("manage/methods/remove/{$method->id}") ?>">Delete</a>
 		</div>
 	</div>
 

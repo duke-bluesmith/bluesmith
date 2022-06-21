@@ -45,19 +45,16 @@ $routes->addRedirect('jobs/add', 'jobs/new');
 
 // Admin dashboard
 $routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
-
 $routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static function ($routes) {
     $routes->get('materials/method/(:any)', 'Materials::method/$1');
     $routes->presenter('materials');
+    $routes->presenter('methods');
 });
 
+$routes->addRedirect('materials', 'manage/materials');
+$routes->addRedirect('materials/(:num)', 'manage/materials/$1');
 $routes->addRedirect('methods', 'manage/methods');
-
-// API
-$routes->resource('api/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
-$routes->resource('api/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
-$routes->resource('api/manage/materials', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Materials']);
-$routes->resource('api/manage/methods', ['websafe' => 1, 'controller' => '\App\Controllers\Api\Methods']);
+$routes->addRedirect('methods/(:num)', 'manage/methods/$1');
 
 /**
  * Unsubscription

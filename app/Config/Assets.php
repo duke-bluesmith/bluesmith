@@ -10,7 +10,6 @@ class Assets extends \Tatter\Assets\Config\Assets
             'vendor/bootstrap/bootstrap.min.css',
             'vendor/bootstrap/bootstrap.bundle.min.js',
             'vendor/font-awesome/css/all.min.css',
-            'vendor/forms',
         ],
         'files' => [
             'vendor/dropzone/dropzone.min.css',
