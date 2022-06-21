@@ -39,9 +39,9 @@ $routes->get('/', 'Pages::show/home');
 $routes->get('about/(:segment)', 'Pages::show/$1');
 
 // Forward legacy routes
-$routes->get('jobs', 'account/jobs');
-$routes->get('jobs/index', 'account/jobs');
-$routes->get('jobs/add', 'jobs/new');
+$routes->addRedirect('jobs', 'account/jobs');
+$routes->addRedirect('jobs/index', 'account/jobs');
+$routes->addRedirect('jobs/add', 'jobs/new');
 
 // Admin dashboard
 $routes->get('manage', '\App\Controllers\Manage\Dashboard::index');
