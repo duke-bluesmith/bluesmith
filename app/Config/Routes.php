@@ -54,7 +54,7 @@ $routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static funct
 $routes->addRedirect('materials', 'manage/materials');
 $routes->addRedirect('materials/(:num)', 'manage/materials/$1');
 $routes->addRedirect('methods', 'manage/methods');
-$routes->addRedirect('methods/(:num)', 'manage/methods/$1');
+$routes->addRedirect('methods/(:num)', 'manage/methods'); // Methods has no `show`
 
 /**
  * Unsubscription
