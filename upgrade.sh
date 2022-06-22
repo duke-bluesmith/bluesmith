@@ -16,3 +16,4 @@ composer install
 php spark migrate --all
 php spark db:seed InitialSeeder
 php spark assets:publish
+php spark actions:register
