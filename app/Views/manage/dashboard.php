@@ -17,8 +17,8 @@
 						<th scope="col">Job Name</th>
 						<th scope="col">Owner</th>
 						<th scope="col">Status</th>
-						<th scope="col">Time</th>
-						<th scope="col">notice</th>
+						<th scope="col">Last Update</th>
+						<th scope="col">Notice</th>
 					</tr>
 				</thead>
 				<tbody>
