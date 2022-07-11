@@ -32,7 +32,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
         $this->validationRules = array_merge($this->validationRules, [
             'firstname' => 'required|string',
             'lastname'  => 'required|string',
-            'balance'   => 'permit_empty|is_natural',
+            'balance'   => 'permit_empty|integer',
         ]);
     }
 
