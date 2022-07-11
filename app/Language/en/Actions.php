@@ -5,7 +5,7 @@ return [
     'chooseForMe'      => 'Allow the consultant to select the best fit for my job.',
     'chooseMyOwn'      => 'Select my own',
     'addClients'       => 'Add clients',
-    'addClientSuccess' => '{0} was added to your job.',
+    'addClientSuccess' => '{0} was added to the job.',
     'addClientFail'    => 'There was an error adding that client.',
     'removeClientFail' => 'There was an error removing that client.',
     'alreadyClient'    => 'That user is already assigned to this job!',

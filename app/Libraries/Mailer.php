@@ -118,7 +118,7 @@ final class Mailer
             'title'       => 'Job Invitation',
             'preview'     => 'Collaborate with ' . $issuer->firstname,
             'issuer_name' => $issuer->name,
-            'accept_url'  => site_url('emails/invite/' . $token),
+            'accept_url'  => site_url('email/invite/' . $token),
         ]);
 
         // Use the Auth activator email settings, if available

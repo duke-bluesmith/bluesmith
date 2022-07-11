@@ -56,6 +56,8 @@ $routes->addRedirect('materials/(:num)', 'manage/materials/$1');
 $routes->addRedirect('methods', 'manage/methods');
 $routes->addRedirect('methods/(:num)', 'manage/methods'); // Methods has no `show`
 
+// Invitation acceptance
+$routes->get('email/invite/(:alphanum)', 'Api\Email::invite/$1', ['filter' => 'login']);
 /**
  * Unsubscription
  *
