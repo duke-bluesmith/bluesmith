@@ -19,7 +19,7 @@ class ManageMenu extends BaseMenu
     public function __toString(): string
     {
         // Dashboard
-        $dashboard = '<i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p><span class="right badge badge-warning">';
+        $dashboard = '<i class="nav-icon fas fa-tachometer-alt"></i><p>Staff Dashboard</p><span class="right badge badge-warning">';
         $dashboard .= (is_countable(service('notices')) ? count(service('notices')) : 0) . '</span>';
         $this->builder->link(site_url('manage/dashboard'), $dashboard);
 

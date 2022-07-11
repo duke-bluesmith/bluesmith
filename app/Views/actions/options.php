@@ -7,28 +7,6 @@
 
 			<div class="col">
 
-				<h3><?= plural(lang('Pub.printService')) ?></h3>
-
-				<?php foreach ($options as $option): ?>
-
-				<div class="custom-control custom-switch mb-3">
-					<input
-						type="checkbox"
-						name="option_ids[]"
-						class="custom-control-input"
-						id="<?= $option->name ?>"
-						value="<?= $option->id ?>"
-						<?= $job->hasOption($option->id) ? 'checked' : '' ?>
-					>
-					<label class="custom-control-label font-weight-bold" for="<?= $option->name ?>"><?= $option->summary ?></label>
-
-					<br />
-
-					<small class="text-muted"><?= $option->description ?></small>
-				</div>
-
-				<?php endforeach; ?>
-
 				<h3 class="mt-5"><?= lang('Pub.printMethodAndMaterials') ?></h3>
 				<p>For more information about the print methods and materials visit the <?= anchor('about/options', 'Print Options page') ?>.
 
@@ -76,6 +54,28 @@
 				</table>
 
 				<p class="text-muted"><sup>1</sup> <?= lang('Actions.optionsEstimate') ?></p>
+
+				<h3>Additional <?= plural(lang('Pub.printService')) ?> Offered</h3>
+
+				<?php foreach ($options as $option): ?>
+
+				<div class="custom-control custom-switch mb-3">
+					<input
+						type="checkbox"
+						name="option_ids[]"
+						class="custom-control-input"
+						id="<?= $option->name ?>"
+						value="<?= $option->id ?>"
+						<?= $job->hasOption($option->id) ? 'checked' : '' ?>
+					>
+					<label class="custom-control-label font-weight-bold" for="<?= $option->name ?>"><?= $option->summary ?></label>
+
+					<br />
+
+					<small class="text-muted"><?= $option->description ?></small>
+				</div>
+
+				<?php endforeach; ?>
 
 				<input class="btn btn-success" type="submit" name="complete" value="<?= $buttonText ?>">
 			</div>

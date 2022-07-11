@@ -7,12 +7,12 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<div class="form-group">
-					<label for="name">Name<span class="badge badge-warning ml-2">Required</span></label>
+					<label for="name">Job name<span class="badge badge-warning ml-2">Required</span></label>
 					<input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Job name" value="<?= old('name', $job->name === 'My New Job' ? '' : $job->name) ?>" required>
 					<small id="nameHelp" class="form-text text-muted">A short descriptive name to identify this job.</small>
 				</div>
 				<div class="form-group">
-					<label for="summary">Summary<span class="badge badge-warning ml-2">Required</span></label>
+					<label for="summary">Job description<span class="badge badge-warning ml-2">Required</span></label>
 					<input name="summary" type="text" class="form-control" id="icon" aria-describedby="summaryHelp" placeholder="Job summary" value="<?= old('summary', $job->summary) ?>" required>
 					<small id="summaryHelp" class="form-text text-muted">A brief summary of this job.</small>
 				</div>
