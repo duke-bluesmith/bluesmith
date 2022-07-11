@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Entities\User;
-use CodeIgniter\Database\ConnectionInterface;
-use CodeIgniter\Validation\ValidationInterface;
 use Faker\Generator;
 use Myth\Auth\Authorization\GroupModel;
 use Myth\Auth\Authorization\PermissionModel;
@@ -17,29 +15,25 @@ class UserModel extends MythModel implements PermitsUserModelInterface
 {
     use CompiledRowsTrait;
 
-    protected $table            = 'users';
-    protected $primaryKey       = 'id';
-    protected $returnType       = User::class;
-    protected $_allowedFields   = ['firstname', 'lastname', 'balance'];
-    protected $_validationRules = [];
-    protected $afterInsert      = ['clearCompiledRows'];
-    protected $afterUpdate      = ['clearCompiledRows'];
-    protected $afterDelete      = ['clearCompiledRows'];
+    protected $table       = 'users';
+    protected $primaryKey  = 'id';
+    protected $returnType  = User::class;
+    protected $afterInsert = ['clearCompiledRows'];
+    protected $afterUpdate = ['clearCompiledRows'];
+    protected $afterDelete = ['clearCompiledRows'];
 
     /**
-     * Call the framework constructor then add the extended properties.
-     *
-     * @param ConnectionInterface $db
-     * @param ValidationInterface $validation
+     * Add the extended properties.
      */
-    public function __construct(?ConnectionInterface &$db = null, ?ValidationInterface $validation = null)
+    protected function initialize()
     {
-        // Call the framework constructor
-        parent::__construct($db, $validation);
-
         // Merge properties with parent
-        $this->allowedFields   = array_merge($this->allowedFields, $this->_allowedFields);
-        $this->validationRules = array_merge($this->validationRules, $this->_validationRules);
+        $this->allowedFields   = array_merge($this->allowedFields, ['firstname', 'lastname', 'balance']);
+        $this->validationRules = array_merge($this->validationRules, [
+            'firstname' => 'required|string',
+            'lastname'  => 'required|string',
+            'balance'   => 'permit_empty|integer',
+        ]);
     }
 
     /**
