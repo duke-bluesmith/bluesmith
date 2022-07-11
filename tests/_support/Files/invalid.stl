@@ -1,0 +1,8 @@
+screen mode id:i:2
+session bpp:i:32
+compression:i:1
+keyboardhook:i:2
+audiomode:i:0
+displayconnectionbar:i:1
+autoreconnection enabled:i:1
+bitmapcachepersistenable:i:1
