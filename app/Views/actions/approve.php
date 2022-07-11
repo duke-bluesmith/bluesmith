@@ -17,9 +17,9 @@
 			</blockquote>
 
 			<?= form_open() ?>
-				<div class="form-check">
+				<div class="form-check mb-3">
 					<input class="form-check-input" type="checkbox" value="" id="approveCheck" required>
-					<label class="form-check-label" for="approveCheck">
+					<label class="form-check-label font-weight-bold font-italic" for="approveCheck">
 						I approve the estimated charges.
 					</label>
 				</div>
