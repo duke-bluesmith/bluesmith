@@ -65,11 +65,13 @@ writable/uploads/*
 
 writable/debugbar/*
 writable/patches/*
+writable/statements/*
 
 writable/database.db
 
 php_errors.log
 public/error_log
+public/*.ini
 
 #-------------------------
 # Test Files
