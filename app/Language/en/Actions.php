@@ -21,6 +21,7 @@ return [
     'estimateReady'    => 'Your estimate is ready.',
     'invoiceReady'     => 'Your invoice is ready.',
     'paymentFail'      => 'The payment gateway responded with error code {0}.',
+    'volumeFail'       => 'Your file was not able to get an automatic volume estimation at this step. Often this means the file is corrupt or unsuitable for printing. Please verify your file and only continue if you are confident in its integrity. This file will be processed by our staff for the final cost estimate of this job.',
 
     // Helpful descriptions
     'infoHelp'      => 'Name your job and provide a summary to help us identify it in the system.',

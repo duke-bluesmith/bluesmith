@@ -87,6 +87,7 @@ Events::on('upload', static function (File $file) {
     try {
         $volume = $reader->readModel();
     } catch (InvalidFileFormatException $e) {
+        alert('warning', lang('Actions.volumeFail'));
         log_message('error', 'Unable to calculate STL volume for ' . $file->localname . ': ' . $e->getMessage());
 
         return;
@@ -95,7 +96,11 @@ Events::on('upload', static function (File $file) {
     // Update the row in the database
     if ($volume > 0) {
         model(FileModel::class)->protect(false)->update($file->id, ['volume' => $volume]);
+
+        return;
     }
+
+    alert('warning', lang('Actions.volumeFail'));
 });
 
 /**
