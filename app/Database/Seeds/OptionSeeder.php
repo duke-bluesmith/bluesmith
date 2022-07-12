@@ -10,7 +10,7 @@ class OptionSeeder extends Seeder
     public function run()
     {
         // Initialize the model
-        $options = new OptionModel();
+        $options = model(OptionModel::class);
 
         $rows = [
             [
@@ -36,7 +36,7 @@ class OptionSeeder extends Seeder
         ];
 
         foreach ($rows as $row) {
-            $option = $options->where('name', $row['name'])->first();
+            $option = $options->where('name', $row['name'])->withDeleted()->first();
 
             if (empty($option)) {
                 $options->insert($row);
