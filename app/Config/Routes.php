@@ -49,12 +49,15 @@ $routes->group('manage', ['namespace' => 'App\Controllers\Manage'], static funct
     $routes->get('materials/method/(:any)', 'Materials::method/$1');
     $routes->presenter('materials');
     $routes->presenter('methods');
+    $routes->presenter('options');
 });
 
 $routes->addRedirect('materials', 'manage/materials');
 $routes->addRedirect('materials/(:num)', 'manage/materials/$1');
 $routes->addRedirect('methods', 'manage/methods');
 $routes->addRedirect('methods/(:num)', 'manage/methods'); // Methods has no `show`
+$routes->addRedirect('options', 'manage/options');
+$routes->addRedirect('options/(:num)', 'manage/options/$1');
 
 // Invitation acceptance
 $routes->get('email/invite/(:alphanum)', 'Api\Email::invite/$1', ['filter' => 'login']);

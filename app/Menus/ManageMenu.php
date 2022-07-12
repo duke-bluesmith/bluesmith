@@ -39,6 +39,7 @@ class ManageMenu extends BaseMenu
         $this->builder
             ->link(site_url('manage/methods'), '<i class="nav-icon fas fa-cubes"></i><p>Methods</p>')
             ->link(site_url('manage/materials'), '<i class="nav-icon fas fa-tools"></i><p>Materials</p>')
+            ->link(site_url('manage/options'), '<i class="nav-icon fas fa-filter"></i><p>Options</p>')
             ->link(site_url('manage/content/branding'), '<i class="nav-icon fas fa-copyright"></i><p>Branding</p>');
 
         return $this->builder->render();
