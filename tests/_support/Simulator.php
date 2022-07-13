@@ -2,13 +2,13 @@
 
 namespace Tests\Support;
 
+use App\Models\GroupModel;
 use App\Models\JobModel;
 use App\Models\MaterialModel;
 use App\Models\MethodModel;
 use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\Fabricator;
-use Myth\Auth\Authorization\GroupModel;
 use Tatter\Workflows\Test\Simulator as BaseSimulator;
 
 /**

@@ -2,9 +2,9 @@
 
 namespace App\Database\Seeds;
 
+use App\Models\GroupModel;
+use App\Models\PermissionModel;
 use CodeIgniter\Database\Seeder;
-use Myth\Auth\Authorization\GroupModel;
-use Myth\Auth\Authorization\PermissionModel;
 
 class AuthSeeder extends Seeder
 {

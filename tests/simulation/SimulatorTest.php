@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\GroupModel;
 use CodeIgniter\Test\DatabaseTestTrait;
-use Myth\Auth\Authorization\GroupModel;
 use Tests\Support\ProjectTestCase;
 use Tests\Support\Simulator;
 

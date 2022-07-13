@@ -3,10 +3,10 @@
 namespace Tests\Support;
 
 use App\Entities\User;
+use App\Models\PermissionModel;
 use App\Models\UserModel;
 use CodeIgniter\Test\Fabricator;
 use Config\Services;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Test\AuthTestTrait;
 use RuntimeException;
 
@@ -101,7 +101,7 @@ trait AuthenticationTrait
 
         /** @var PermissionModel $permissions */
         $permissions = model(PermissionModel::class);
-        if (! $permissions->addPermissionToUser($permission['id'], $user->id)) {
+        if (! $permissions->addPermissionToUser($permission->id, $user->id)) {
             throw new RuntimeException(implode(' ', $permissions->errors()));
         }
     }
