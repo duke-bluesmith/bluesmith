@@ -46,4 +46,12 @@ class User extends MythEntity
 
         return $this->workflows;
     }
+
+    /**
+     * Whether this User is part of the Administrators group.
+     */
+    public function isAdmin(): bool
+    {
+        return in_array('administrators', $this->getRoles(), true);
+    }
 }

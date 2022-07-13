@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfbbed0a551d3f031e5e02f540228405",
+    "content-hash": "252f6b3bececd309e2e86c72436b24de",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -540,16 +540,16 @@
         },
         {
             "name": "myth/auth",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "a75cf92710779e8845f540148cfec9a5029d55d5"
+                "reference": "7d0347faa47bd754d2dc49593a9852800be73986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/a75cf92710779e8845f540148cfec9a5029d55d5",
-                "reference": "a75cf92710779e8845f540148cfec9a5029d55d5",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/7d0347faa47bd754d2dc49593a9852800be73986",
+                "reference": "7d0347faa47bd754d2dc49593a9852800be73986",
                 "shasum": ""
             },
             "require": {
@@ -594,7 +594,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lonnieezell/myth-auth/issues",
-                "source": "https://github.com/lonnieezell/myth-auth/tree/v1.2.0"
+                "source": "https://github.com/lonnieezell/myth-auth/tree/v1.2.1"
             },
             "funding": [
                 {
@@ -610,7 +610,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-13T17:11:05+00:00"
+            "time": "2022-07-13T18:35:46+00:00"
         },
         {
             "name": "nnnick/chartjs",
