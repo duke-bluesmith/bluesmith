@@ -3,12 +3,15 @@
 namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
+use App\Entities\User;
 use App\Models\GroupModel;
 use App\Models\PermissionModel;
+use App\Models\TransactionModel;
 use App\Models\UserModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\RedirectResponse;
 use Myth\Auth\Exceptions\PermissionException;
+use RuntimeException;
 use Tatter\Workflows\Models\ExplicitModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -22,7 +25,7 @@ class Users extends BaseController
     /**
      * @var string[]
      */
-    protected $helpers = ['currency'];
+    protected $helpers = ['currency', 'form'];
 
     /**
      * Load the model
@@ -34,10 +37,8 @@ class Users extends BaseController
 
     /**
      * Displays the compiled rows for of all Users.
-     *
-     * @return string
      */
-    public function index()
+    public function index(): string
     {
         $this->model->clearCompiledRows();
 
@@ -65,24 +66,71 @@ class Users extends BaseController
      * Displays a single User.
      *
      * @param int|string|null $userId
-     *
-     * @return string
-     *
-     * @throws PageNotFoundException
      */
-    public function show($userId = null)
+    public function show($userId = null): string
     {
-        if ($userId === null || ! $user = $this->model->withDeleted()->find($userId)) {
-            throw PageNotFoundException::forPageNotFound();
-        }
-
         return view('users/show', [
-            'title'     => 'User Details',
-            'user'      => $user,
-            'groups'    => model(GroupModel::class)->findAll(),
+            'header' => 'User Details',
+            'user'   => $this->getUser($userId),
+            'groups' => model(GroupModel::class)->getGroupsForUser($userId),
+        ]);
+    }
+
+    /**
+     * Displays the form to edit User attributes.
+     *
+     * @param int|string|null $userId
+     */
+    public function edit($userId = null): string
+    {
+        $this->requireAdmin();
+
+        return view('users/edit', [
+            'header'      => 'Edit User',
+            'user'        => $this->getUser($userId),
+            'groups'      => model(GroupModel::class)->findAll(),
             'permissions' => model(PermissionModel::class)->findAll(),
             'workflows'   => model(WorkflowModel::class)->findAll(),
         ]);
+    }
+
+    /**
+     * Updates a User.
+     *
+     * @param int|string|null $userId
+     */
+    public function update($userId = null): RedirectResponse
+    {
+        $this->requireAdmin();
+        $user = $this->getUser($userId);
+
+        if (! $this->model->update($user->id, $this->request->getPost())) {
+            $error = implode(' ', $this->model->errors());
+
+            return redirect()->back()->withInput()->with('error', $error);
+        }
+
+        return redirect()->to(site_url('manage/users/show/' . $userId))->with('message', 'User updated.');
+    }
+
+    /**
+     * Credits a User.
+     *
+     * @param int|string|null $userId
+     */
+    public function credit($userId = null): RedirectResponse
+    {
+        $this->requireAdmin();
+        $user   = $this->getUser($userId);
+        $amount = max(0, (int) $this->request->getPost('amount'));
+
+        try {
+            model(TransactionModel::class)->credit($user, $amount, 'Manual credit');
+        } catch (RuntimeException $e) {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+
+        return redirect()->to(site_url('manage/users/show/' . $userId))->with('message', 'User credited.');
     }
 
     /**
@@ -90,19 +138,13 @@ class Users extends BaseController
      *
      * @param int|string|null $userId
      *
-     * @return string
-     *
-     * @throws PageNotFoundException
      * @throws PermissionException
      */
     public function impersonate($userId = null): RedirectResponse
     {
         $this->requireAdmin();
 
-        if ($userId === null || ! $user = $this->model->withDeleted()->find($userId)) {
-            throw PageNotFoundException::forPageNotFound();
-        }
-
+        $user = $this->getUser($userId);
         session()->set('logged_in', $user->id);
         alert('success', 'You are now impersonating ' . $user->getName());
 
@@ -127,7 +169,7 @@ class Users extends BaseController
 
         model(GroupModel::class)->addUserToGroup($userId, $groupId);
 
-        return redirect()->to(site_url('manage/users/show/' . $userId))->with('message', 'User added to group.');
+        return redirect()->to(site_url('manage/users/edit/' . $userId))->with('message', 'User added to group.');
     }
 
     /**
@@ -144,7 +186,7 @@ class Users extends BaseController
 
         model(GroupModel::class)->removeUserFromGroup($userId, $groupId);
 
-        return redirect()->to(site_url('manage/users/show/' . $userId))->with('message', 'User removed from group.');
+        return redirect()->to(site_url('manage/users/edit/' . $userId))->with('message', 'User removed from group.');
     }
 
     /**
@@ -174,13 +216,31 @@ class Users extends BaseController
     }
 
     /**
+     * Returns the User matching the input parameter.
+     *
+     * @param int|string|null $userId
+     *
+     * @throws PageNotFoundException
+     */
+    private function getUser($userId): User
+    {
+        if ($userId === null || ! $user = $this->model->withDeleted()->find($userId)) {
+            throw PageNotFoundException::forPageNotFound();
+        }
+
+        return $user;
+    }
+
+    /**
      * Locks a method to admin access only.
      *
      * @throws PermissionException
      */
     private function requireAdmin(): void
     {
-        if (! user()->isAdmin()) {
+        /** @var User $user */
+        $user = user();
+        if (! $user->isAdmin()) {
             throw new PermissionException(lang('Auth.notEnoughPrivilege'));
         }
     }
@@ -212,6 +272,6 @@ class Users extends BaseController
             'permitted'   => (int) $permitted,
         ]);
 
-        return redirect()->back()->with('success', 'Workflow ' . ($permitted ? 'allowed.' : 'restricted.'));
+        return redirect()->to(site_url('manage/users/edit/' . $userId))->with('success', 'Workflow ' . ($permitted ? 'allowed.' : 'restricted.'));
     }
 }
