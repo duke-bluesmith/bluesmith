@@ -95,10 +95,10 @@
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
-					<i class="fas fa-user"></i>
+					<i class="fas fa-user align-bottom"></i>
 				</div>
 				<div class="info">
-					<a href="<?= site_url('manage/users/show/' . $user->id) ?>" class="d-block"><?= $user->username ?></a>
+					<a href="<?= site_url('manage/users/show/' . $user->id) ?>" class="d-block"><?= $user->getName() ?></a>
 				</div>
 			</div>
 			<?php endif; ?>

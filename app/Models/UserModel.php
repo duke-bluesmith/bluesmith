@@ -4,8 +4,6 @@ namespace App\Models;
 
 use App\Entities\User;
 use Faker\Generator;
-use Myth\Auth\Authorization\GroupModel;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Entities\User as MythUser;
 use Myth\Auth\Models\UserModel as MythModel;
 use stdClass;
@@ -51,7 +49,7 @@ class UserModel extends MythModel implements PermitsUserModelInterface
             ->select('users.id')
             ->join('auth_groups_users', 'users.id = auth_groups_users.user_id', 'left')
             ->join('auth_groups_permissions', 'auth_groups_permissions.group_id = auth_groups_users.group_id', 'left')
-            ->where('auth_groups_permissions.permission_id', $permission['id'])
+            ->where('auth_groups_permissions.permission_id', $permission->id)
             ->get()->getResultArray();
 
         return array_column($ids, 'id');

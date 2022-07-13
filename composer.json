@@ -30,7 +30,7 @@
         "enyo/dropzone": "^5.5",
         "fortawesome/font-awesome": "^5.8",
         "league/commonmark": "^1.5",
-        "myth/auth": "^1.0",
+        "myth/auth": "^1.2.1",
         "nnnick/chartjs": "^2.8",
         "peekleon/datatables-all": "^1.10",
         "tatter/addins": "^2.0",

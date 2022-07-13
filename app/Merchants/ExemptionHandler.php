@@ -6,10 +6,10 @@ use App\BaseMerchant;
 use App\Entities\Ledger;
 use App\Entities\Payment;
 use App\Entities\User;
+use App\Models\GroupModel;
 use App\Models\PaymentModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
-use Myth\Auth\Authorization\GroupModel;
 use RuntimeException;
 
 class ExemptionHandler extends BaseMerchant
