@@ -14,6 +14,7 @@
 		<div class="form-group">
 			<label for="description">Description</label>
 			<textarea name="description" class="form-control" id="description" placeholder="description"><?= set_value('description', $option->description ?? '') ?></textarea>
+			<small class="text-muted">Character limit: 255</small>
 		</div>
 
 		<button class="btn btn-primary" type="submit"><?= isset($option) ? 'Update' : 'Create' ?></button>
