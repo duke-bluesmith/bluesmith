@@ -18,6 +18,7 @@
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
+						<th scope="col">Username</th>
 						<th scope="col">First name</th>
 						<th scope="col">Last name</th>
 						<th scope="col">Group</th>
@@ -32,8 +33,9 @@
 
 					<tr>
 						<td><?= $row['id'] ?></td>
-						<td><?= anchor('manage/users/show/' . $row['id'], $row['firstname'] ?: '<em>none</em>') ?></td>
-						<td><?= $row['lastname'] ?: '<em>none</em>' ?></td>
+						<td><?= anchor('manage/users/show/' . $row['id'], $row['username']) ?></td>
+						<td><?= $row['firstname'] ?></td>
+						<td><?= $row['lastname'] ?></td>
 						<td><?= $row['group'] ?></td>
 						<td><?= price_to_currency($row['balance']) ?></td>
 						<td data-order="<?= $row['created_at']->getTimestamp() ?>"><?= $row['created_at']->format('n/j/Y') ?></td>

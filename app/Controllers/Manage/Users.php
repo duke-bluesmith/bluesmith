@@ -114,6 +114,27 @@ class Users extends BaseController
     }
 
     /**
+     * Bans a User.
+     *
+     * @param int|string|null $userId
+     */
+    public function ban($userId = null): RedirectResponse
+    {
+        $this->requireAdmin();
+
+        $user = $this->getUser($userId);
+        $user->ban($this->request->getPost('reason') ?? 'Administrative ban');
+
+        if (! $this->model->save($user)) {
+            $error = implode(' ', $this->model->errors());
+
+            return redirect()->back()->withInput()->with('error', $error);
+        }
+
+        return redirect()->to(site_url('manage/users/show/' . $userId))->with('message', 'User banned.');
+    }
+
+    /**
      * Credits a User.
      *
      * @param int|string|null $userId

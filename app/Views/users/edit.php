@@ -81,6 +81,18 @@
 				<h3 class="card-title">Access</h3>
 			</div>
 			<div class="card-body">
+                <?= form_open('manage/users/ban/' . $user->id) ?>
+
+                    <div class="form-group">
+                        <label for="reason">Ban User</label>
+                        <input name="reason" type="reason" class="form-control" id="reason" placeholder="Reason" value="<?= old('reason') ?>">
+                    </div>
+                    <button class="btn btn-danger" type="submit">Ban User</button>
+
+                <?= form_close() ?>
+			</div>
+
+			<div class="card-body">
 			    <h6>Groups</h6>
 				<table class="table table-bordered">
 
