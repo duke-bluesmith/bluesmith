@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecb2269df3e28f01e3f8ab86edbb7fae",
+    "content-hash": "bfbbed0a551d3f031e5e02f540228405",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -320,16 +320,16 @@
         },
         {
             "name": "kint-php/kint",
-            "version": "4.1.2",
+            "version": "4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "fa53c4333cda79dc9cb002cfa029abe994d0ae00"
+                "reference": "055630e77a9ae625968ade09addb0bd57ce1f4b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/fa53c4333cda79dc9cb002cfa029abe994d0ae00",
-                "reference": "fa53c4333cda79dc9cb002cfa029abe994d0ae00",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/055630e77a9ae625968ade09addb0bd57ce1f4b3",
+                "reference": "055630e77a9ae625968ade09addb0bd57ce1f4b3",
                 "shasum": ""
             },
             "require": {
@@ -379,9 +379,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kint-php/kint/issues",
-                "source": "https://github.com/kint-php/kint/tree/4.1.2"
+                "source": "https://github.com/kint-php/kint/tree/4.1.3"
             },
-            "time": "2022-02-22T20:32:24+00:00"
+            "time": "2022-07-12T15:40:11+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -540,35 +540,29 @@
         },
         {
             "name": "myth/auth",
-            "version": "v1.0.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lonnieezell/myth-auth.git",
-                "reference": "c62802b9e2ce5be931f15270811d831cc2e85457"
+                "reference": "a75cf92710779e8845f540148cfec9a5029d55d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/c62802b9e2ce5be931f15270811d831cc2e85457",
-                "reference": "c62802b9e2ce5be931f15270811d831cc2e85457",
+                "url": "https://api.github.com/repos/lonnieezell/myth-auth/zipball/a75cf92710779e8845f540148cfec9a5029d55d5",
+                "reference": "a75cf92710779e8845f540148cfec9a5029d55d5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "provide": {
                 "codeigniter4/authentication-implementation": "1.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
                 "codeigniter4/codeigniter4-standard": "^1.0",
-                "fakerphp/faker": "^1.9",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "mockery/mockery": "^1.0",
-                "nexusphp/cs-config": "^3.1",
-                "nexusphp/tachycardia": "^1.0",
-                "php-coveralls/php-coveralls": "^2.4",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^9.2"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1",
+                "mockery/mockery": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -600,7 +594,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lonnieezell/myth-auth/issues",
-                "source": "https://github.com/lonnieezell/myth-auth/tree/v1.0.1"
+                "source": "https://github.com/lonnieezell/myth-auth/tree/v1.2.0"
             },
             "funding": [
                 {
@@ -608,11 +602,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/mgatner",
+                    "type": "github"
+                },
+                {
                     "url": "https://www.patreon.com/lonnieezell",
                     "type": "patreon"
                 }
             ],
-            "time": "2021-07-02T13:07:46+00:00"
+            "time": "2022-07-13T17:11:05+00:00"
         },
         {
             "name": "nnnick/chartjs",
@@ -3081,16 +3079,16 @@
         },
         {
             "name": "codeigniter4/devkit",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/devkit.git",
-                "reference": "544110bb3cf151313cd1e3defe23d56a43ff2d6b"
+                "reference": "5ab223ee33005b0e1351539b6154eae2aebd0dca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/devkit/zipball/544110bb3cf151313cd1e3defe23d56a43ff2d6b",
-                "reference": "544110bb3cf151313cd1e3defe23d56a43ff2d6b",
+                "url": "https://api.github.com/repos/codeigniter4/devkit/zipball/5ab223ee33005b0e1351539b6154eae2aebd0dca",
+                "reference": "5ab223ee33005b0e1351539b6154eae2aebd0dca",
                 "shasum": ""
             },
             "require": {
@@ -3107,6 +3105,11 @@
                 "phpunit/phpunit": "^9.3",
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^4.22"
+            },
+            "require-dev": {
+                "codeigniter4/framework": "^4.1",
+                "icanhazstring/composer-unused": "^0.8.2",
+                "rector/rector": "0.13.5"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -3133,9 +3136,9 @@
             ],
             "support": {
                 "issues": "https://github.com/codeigniter4/devkit/issues",
-                "source": "https://github.com/codeigniter4/devkit/tree/v1.0.0"
+                "source": "https://github.com/codeigniter4/devkit/tree/v1.0.1"
             },
-            "time": "2022-06-04T13:15:38+00:00"
+            "time": "2022-07-12T14:40:52+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -3854,16 +3857,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.9.1",
+            "version": "v3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "94441633b80495464eb34eb3f7d63445221b2585"
+                "reference": "bad87e63d7d87efa5e82aa4feafa52df6a37e6c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/94441633b80495464eb34eb3f7d63445221b2585",
-                "reference": "94441633b80495464eb34eb3f7d63445221b2585",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/bad87e63d7d87efa5e82aa4feafa52df6a37e6c1",
+                "reference": "bad87e63d7d87efa5e82aa4feafa52df6a37e6c1",
                 "shasum": ""
             },
             "require": {
@@ -3931,7 +3934,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.1"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.3"
             },
             "funding": [
                 {
@@ -3939,7 +3942,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-11T08:51:43+00:00"
+            "time": "2022-07-13T09:53:20+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -4769,16 +4772,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "b7648d4ee9321665acaf112e49da9fd93df8fbd5"
+                "reference": "8dbba631fa32f4b289404469c2afd6122fd61d67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b7648d4ee9321665acaf112e49da9fd93df8fbd5",
-                "reference": "b7648d4ee9321665acaf112e49da9fd93df8fbd5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8dbba631fa32f4b289404469c2afd6122fd61d67",
+                "reference": "8dbba631fa32f4b289404469c2afd6122fd61d67",
                 "shasum": ""
             },
             "require": {
@@ -4804,7 +4807,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.0"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.1"
             },
             "funding": [
                 {
@@ -4824,7 +4827,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-29T08:53:31+00:00"
+            "time": "2022-07-12T16:08:06+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -5501,12 +5504,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "bc4d989050885c9c2138e0da74519efaad597076"
+                "reference": "142c350dd23588666546a92de0d4cd4cafdad2c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bc4d989050885c9c2138e0da74519efaad597076",
-                "reference": "bc4d989050885c9c2138e0da74519efaad597076",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/142c350dd23588666546a92de0d4cd4cafdad2c5",
+                "reference": "142c350dd23588666546a92de0d4cd4cafdad2c5",
                 "shasum": ""
             },
             "conflict": {
@@ -5568,7 +5571,7 @@
                 "contao/managed-edition": "<=1.5",
                 "craftcms/cms": "<3.7.36",
                 "croogo/croogo": "<3.0.7",
-                "cuyz/valinor": ">=0.5,<0.7",
+                "cuyz/valinor": "<0.12",
                 "czproject/git-php": "<4.0.3",
                 "darylldoyle/safe-svg": "<1.9.10",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
@@ -5665,6 +5668,7 @@
                 "illuminate/view": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
                 "impresscms/impresscms": "<=1.4.3",
                 "in2code/femanager": "<5.5.1|>=6,<6.3.1",
+                "in2code/lux": "<17.6.1|>=18,<24.0.2",
                 "intelliants/subrion": "<=4.2.1",
                 "ivankristianto/phpwhois": "<=4.3",
                 "jackalope/jackalope-doctrine-dbal": "<1.7.4",
@@ -5892,7 +5896,7 @@
                 "thinkcmf/thinkcmf": "<=5.1.7",
                 "tinymce/tinymce": "<5.10",
                 "titon/framework": ">=0,<9.9.99",
-                "topthink/framework": "<6.0.12",
+                "topthink/framework": "<=6.0.12",
                 "topthink/think": "<=6.0.9",
                 "topthink/thinkphp": "<=3.2.3",
                 "tribalsystems/zenario": "<9.2.55826",
@@ -5999,7 +6003,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-06T08:13:54+00:00"
+            "time": "2022-07-12T23:04:17+00:00"
         },
         {
             "name": "sebastian/cli-parser",
