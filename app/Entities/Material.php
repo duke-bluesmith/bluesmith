@@ -10,4 +10,5 @@ class Material extends BaseEntity
         'cost'      => '?int',
         'sortorder' => 'int',
     ];
+    protected $withDeletedRelations = ['methods'];
 }

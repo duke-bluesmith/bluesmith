@@ -20,6 +20,7 @@ class MaterialModel extends BaseModel
         'method_id' => 'required|is_natural_no_zero',
         'cost'      => 'permit_empty|is_natural_no_zero',
     ];
+    protected $withDeletedRelations = ['methods'];
 
     /**
      * Faked data for Fabricator.

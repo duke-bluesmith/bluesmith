@@ -48,9 +48,15 @@ final class JobTest extends ProjectTestCase
 
     public function testHasOptionTrue()
     {
-        $this->job->setOptions([1, 2, 3]);
+        $this->hasInDatabase('jobs_options', [
+            'job_id'    => $this->job->id,
+            'option_id' => 2,
+        ]);
 
-        $this->assertTrue($this->job->hasOption(2));
+        /** @var Job $job */
+        $job = model(JobModel::class)->find($this->job->id);
+
+        $this->assertTrue($job->hasOption(2));
     }
 
     public function testGetLedgersReturnsLedgers()

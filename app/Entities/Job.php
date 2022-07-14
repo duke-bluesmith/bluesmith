@@ -55,6 +55,8 @@ class Job extends BaseJob
      */
     protected $estimate;
 
+    protected $withDeletedRelations = ['materials', 'options'];
+
     /**
      * Calculates the total estimated volume based
      * on the files associated with this job.
