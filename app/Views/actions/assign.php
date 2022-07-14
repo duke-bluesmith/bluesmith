@@ -54,7 +54,7 @@
 
 					<tr>
 						<td><?= $invite->email ?></td>
-						<td><?= $invite->created_at ?></td>
+						<td><?= $invite->created_at->humanize() ?></td>
 						<td>
 
 							<?= form_open('jobs/clients/' . $job->id, '', ['_method' => 'DELETE']) ?>
