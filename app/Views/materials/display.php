@@ -13,8 +13,12 @@
 			<p>Cost: <?= $material->cost ?> cents/mL</p>
 			<?php endif; ?>
 		</div>
+
+		<?php if ($material->deleted_at === null): ?>
 		<div class="card-footer">
 			<a class="btn btn-primary" href="<?= site_url("manage/materials/edit/{$material->id}") ?>">Edit</a>
 			<a class="btn btn-link text-danger float-right" href="<?= site_url("manage/materials/remove/{$material->id}") ?>">Delete</a>
 		</div>
+        <?php endif; ?>
+
 	</div>
