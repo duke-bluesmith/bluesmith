@@ -143,7 +143,7 @@ echo view('Tatter\Files\Views\Formats\cards', $data);
 
 <?php
 // Display Charges and Payments
-helper(['currency']);
+helper(['currency', 'form']);
 $estimate = $job->getEstimate();
 $invoice  = $job->getInvoice();
 ?>
@@ -174,7 +174,7 @@ $invoice  = $job->getInvoice();
 				</div>
 
 				<div class="tab-pane fade" id="clients" role="tabpanel" aria-labelledby="clients-tab">
-					<h4><?= lang('Actions.currentClients') ?></h4>
+					<h4 class="mt-5"><?= lang('Actions.currentClients') ?></h4>
 
 					<?php if (empty($job->users)): ?>
 					<p><em><?= lang('Actions.noClients') ?></em></p>
@@ -182,6 +182,49 @@ $invoice  = $job->getInvoice();
 					<?= view('clients/table', ['mayDelete' => false, 'users' => $job->users]) ?>
 					<?php endif; ?>
 
+                    <h4 class="mt-5"><?= lang('Actions.pendingClients') ?></h4>
+
+                    <?php if (empty($job->invites)): ?>
+
+                    <p><em><?= lang('Actions.noInvites') ?></em></p>
+
+                    <?php else: ?>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Email</th>
+                                <th scope="col">Issued</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php foreach ($job->invites as $invite): ?>
+
+                            <tr>
+                                <td><?= $invite->email ?></td>
+                                <td><?= $invite->created_at->humanize() ?></td>
+                            </tr>
+
+                            <?php endforeach; ?>
+
+                        </tbody>
+                    </table>
+
+                    <?php endif; ?>
+
+					<h4 class="mt-5">Add User</h4>
+
+                    <?= form_open('clients/add/' . $job->id) ?>
+
+                        <div class="form-group">
+                            <label for="clientEmail">Email address</label>
+                            <input type="email" name="email" class="form-control" id="clientEmail" aria-describedby="emailHelp" placeholder="<?= lang('Pub.email') ?>...">
+                            <small id="emailHelp" class="form-text text-muted"><?= lang('Actions.clientEmailHelp') ?></small>
+                        </div>
+                        <input class="btn btn-secondary" type="submit" name="submit" value="<?= lang('Pub.add') ?>">
+
+                    <?= form_close() ?>
 				</div>
 			</div>
 		</div>
