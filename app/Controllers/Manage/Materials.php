@@ -27,6 +27,18 @@ class Materials extends ResourcePresenter
         $this->methods = new MethodModel();
     }
 
+    public function index(): string
+    {
+        if ($archive = $this->request->getGet('archive')) {
+            $this->model->withDeleted()->where('deleted_at IS NOT NULL');
+        }
+
+        return view('materials/index', [
+            'materials' => $this->model->findAll(),
+            'archive'   => $archive,
+        ]);
+    }
+
     /**
      * Displays the form for a new Material.
      */
@@ -100,7 +112,7 @@ class Materials extends ResourcePresenter
     {
         $methods = new MethodModel();
 
-        if (! $method = $methods->with('materials')->find($methodId)) {
+        if (! $method = $methods->withDeleted()->with('materials')->find($methodId)) {
             $error = lang('Forms.notFound', ['method']);
             $this->alert('danger', $error);
 

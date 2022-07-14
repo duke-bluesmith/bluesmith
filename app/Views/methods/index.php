@@ -1,17 +1,28 @@
-<?= $this->setVar('menu', 'methods')->extend('layouts/manage') ?>
-<?= $this->section('main') ?>
-
+<?php $this->setVar('header', 'Print Methods')->extend('layouts/manage'); ?>
+<?php $this->section('headerAssets'); ?>
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
+<?php $this->endSection(); ?>
+<?php $this->section('main'); ?>
 
-<!-- Page Heading -->
-<a class="btn btn-primary float-right" href="<?= site_url('manage/methods/new') ?>"><i class="fas fa-plus-circle"></i> Add method</a>
-<h1 class="h3 mb-0 text-gray-800">Print Methods</h1>
-<p class="mb-4">Available printing methods</p>
+<div class="row mb-3">
+	<div class="col text-right">
+
+        <?php if ($archive): ?>
+		<a class="btn btn-info" href="<?= site_url('manage/methods') ?>"><i class="fas fa-trash-restore"></i> Exit Archive</a>
+        <?php else: ?>
+        <a class="btn btn-primary" href="<?= site_url('manage/methods/new') ?>"><i class="fas fa-plus-circle"></i> Add Method</a>
+		<a class="btn btn-danger" href="<?= site_url('manage/methods?archive=1') ?>"><i class="fas fa-trash"></i> View Archive</a>
+		<?php endif; ?>
+
+	</div>
+</div>
 
 <?php if (empty($methods)): ?>
-
-<p>There are no defined print methods. Would you like to <a href="<?= site_url('manage/methods/new') ?>">add one now</a>?</p>
-
+    <?php if ($archive): ?>
+    <p>There are no archived print methods.</p>
+    <?php else: ?>
+    <p>There are no defined print methods. Would you like to <a href="<?= site_url('manage/methods/new') ?>">add one now</a>?</p>
+    <?php endif; ?>
 <?php else: ?>
 
 <!-- Card deck -->
@@ -29,10 +40,14 @@
 				<?= $method->description ?>
 			</p>
 		</div>
+
+		<?php if ($method->deleted_at === null): ?>
 		<div class="card-footer">
 			<a class="btn btn-primary" href="<?= site_url("manage/methods/edit/{$method->id}") ?>">Edit</a>
 			<a class="btn btn-link text-danger float-right" href="<?= site_url("manage/methods/remove/{$method->id}") ?>">Delete</a>
 		</div>
+		<?php endif; ?>
+
 	</div>
 
 	<?php endforeach; ?>

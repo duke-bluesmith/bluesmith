@@ -13,14 +13,22 @@ class Methods extends ResourcePresenter
     public $modelName = MethodModel::class;
 
     /**
-     * Displays the form to manage print Methods
+     * @var MethodModel|null
+     */
+    protected $model;
+
+    /**
+     * Displays the list of print Methods
      */
     public function index(): string
     {
-        $methods = new MethodModel();
+        if ($archive = $this->request->getGet('archive')) {
+            $this->model->withDeleted()->where('deleted_at IS NOT NULL');
+        }
 
         return view('methods/index', [
-            'methods' => $methods->with('materials')->findAll(),
+            'methods' => $this->model->with('materials')->findAll(),
+            'archive' => $archive,
         ]);
     }
 
