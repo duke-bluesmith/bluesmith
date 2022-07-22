@@ -1,4 +1,4 @@
-<?php $this->setVar('header', 'Materials')->extend('layouts/manage'); ?>
+<?php $this->setVar('header', 'Materials')->extend(config('Layouts')->manage); ?>
 <?php $this->section('headerAssets'); ?>
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>
 <?php $this->endSection(); ?>

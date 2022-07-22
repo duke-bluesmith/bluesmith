@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/public') ?>
+<?= $this->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 	<div class="row">

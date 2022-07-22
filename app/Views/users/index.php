@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', 'users')->setVar('header', 'Users')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'users')->setVar('header', 'Users')->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 <?php if (empty($rows)): ?>

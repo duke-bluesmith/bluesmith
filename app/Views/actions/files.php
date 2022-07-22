@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/public') ?>
+<?= $this->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 		<form action="<?= site_url('files/upload') ?>" class="dropzone mb-3" id="files-dropzone"></form>

@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', $menu ?? '')->extend('layouts/public') ?>
+<?= $this->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 <?= view('jobs/display') ?>

@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/manage') ?>
+<?= $this->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 	<div class="row">

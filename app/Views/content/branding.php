@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', 'branding')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'branding')->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 <script src="<?= base_url('/assets/vendor/tinymce/tinymce.min.js') ?>" type="text/javascript"></script>

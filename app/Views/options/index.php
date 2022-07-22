@@ -1,4 +1,4 @@
-<?php $this->setVar('header', 'Print Options')->extend('layouts/manage'); ?>
+<?php $this->setVar('header', 'Print Options')->extend(config('Layouts')->manage); ?>
 <?php $this->section('main'); ?>
 
 <div class="row mb-3">
