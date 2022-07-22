@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/public') ?>
+<?= $this->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 	<h3 class="mb-3"><?= $job->name ?></h3>

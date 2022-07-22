@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', "pages.{$name}")->extend('layouts/manage') ?>
+<?= $this->setVar('menu', "pages.{$name}")->extend(config('Layouts')->manage) ?>
 
 <?= $this->section('headerAssets') ?>
 	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>

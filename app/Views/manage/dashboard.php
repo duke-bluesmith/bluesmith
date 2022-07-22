@@ -1,4 +1,4 @@
-<?= $this->setVar('header', 'Notices')->extend('layouts/manage') ?>
+<?= $this->setVar('header', 'Notices')->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 <?php if ($notices === []): ?>

@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', 'jobs')->setVar('header', 'Jobs')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'jobs')->setVar('header', 'Jobs')->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 <?php if ($title === 'All Jobs'): ?>

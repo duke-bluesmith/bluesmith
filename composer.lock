@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "252f6b3bececd309e2e86c72436b24de",
+    "content-hash": "581e2645c1ed97c7e692f4aa1dc12709",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1825,24 +1825,24 @@
         },
         {
             "name": "tatter/layouts",
-            "version": "v1.0.0-rc.1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-layouts.git",
-                "reference": "6b6087883901c799cea435014e16174b8671e0e6"
+                "reference": "c3599824ac6e88b7ca9ea439416236ca434ad93b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-layouts/zipball/6b6087883901c799cea435014e16174b8671e0e6",
-                "reference": "6b6087883901c799cea435014e16174b8671e0e6",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-layouts/zipball/c3599824ac6e88b7ca9ea439416236ca434ad93b",
+                "reference": "c3599824ac6e88b7ca9ea439416236ca434ad93b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.15"
+                "codeigniter4/framework": "^4.1",
+                "tatter/tools": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -1875,7 +1875,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-layouts/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-layouts/tree/v1.0.0-rc.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-layouts/tree/v1.0.0"
             },
             "funding": [
                 {
@@ -1887,7 +1887,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-29T17:59:10+00:00"
+            "time": "2022-07-22T13:21:45+00:00"
         },
         {
             "name": "tatter/menus",

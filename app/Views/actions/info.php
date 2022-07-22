@@ -1,4 +1,4 @@
-<?= $this->setVar('action', $job->stage->action->instance)->extend('layouts/public') ?>
+<?= $this->setVar('action', $job->stage->action->instance)->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 	<h4>Basic info</h4>

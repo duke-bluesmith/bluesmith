@@ -1,4 +1,4 @@
-<?= $this->setVar('menu', 'methods')->extend('layouts/manage') ?>
+<?= $this->setVar('menu', 'methods')->extend(config('Layouts')->manage) ?>
 <?= $this->section('main') ?>
 
 <!-- Page Heading -->

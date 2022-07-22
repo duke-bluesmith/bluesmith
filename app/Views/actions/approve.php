@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/public') ?>
+<?= $this->extend(config('Layouts')->default) ?>
 <?= $this->section('main') ?>
 
 	<h3>Charges</h3>
