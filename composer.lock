@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "581e2645c1ed97c7e692f4aa1dc12709",
+    "content-hash": "ef1f44299dead4fcc353222a13f5168a",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -161,6 +161,68 @@
             "time": "2022-06-16T13:53:25+00:00"
         },
         {
+            "name": "codeigniter4/settings",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeigniter4/settings.git",
+                "reference": "0c3fbd5a474eeb592bef5550be2a6d2f73a8a09d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeigniter4/settings/zipball/0c3fbd5a474eeb592bef5550be2a6d2f73a8a09d",
+                "reference": "0c3fbd5a474eeb592bef5550be2a6d2f73a8a09d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter/coding-standard": "^1.1",
+                "codeigniter4/codeigniter4": "dev-develop",
+                "fakerphp/faker": "^1.9",
+                "mockery/mockery": "^1.0",
+                "nexusphp/cs-config": "^3.1",
+                "nexusphp/tachycardia": "^1.0",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodeIgniter\\Settings\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lonnie Ezell",
+                    "email": "lonnieje@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Settings library for CodeIgniter 4",
+            "homepage": "https://github.com/codeigniter4/settings",
+            "keywords": [
+                "Settings",
+                "codeigniter",
+                "codeigniter4"
+            ],
+            "support": {
+                "issues": "https://github.com/codeigniter4/settings/issues",
+                "source": "https://github.com/codeigniter4/settings/tree/v2.1.0"
+            },
+            "time": "2021-11-22T17:30:18+00:00"
+        },
+        {
             "name": "components/jquery",
             "version": "3.6.0",
             "source": {
@@ -210,17 +272,179 @@
             "time": "2021-03-20T19:13:42+00:00"
         },
         {
-            "name": "enyo/dropzone",
-            "version": "v5.9.3",
+            "name": "datatables.net/datatables.net",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dropzone/dropzone-packagist.git",
-                "reference": "286b2dc1f1195bd12169e4c9d5f91cfbe46e245f"
+                "url": "https://github.com/DataTables/Dist-DataTables.git",
+                "reference": "9d777bda7079b431f1fb09823d43147d68d05e4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dropzone/dropzone-packagist/zipball/286b2dc1f1195bd12169e4c9d5f91cfbe46e245f",
-                "reference": "286b2dc1f1195bd12169e4c9d5f91cfbe46e245f",
+                "url": "https://api.github.com/repos/DataTables/Dist-DataTables/zipball/9d777bda7079b431f1fb09823d43147d68d05e4e",
+                "reference": "9d777bda7079b431f1fb09823d43147d68d05e4e",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": ">=1.7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SpryMedia",
+                    "homepage": "https://datatables.net"
+                }
+            ],
+            "description": "DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, which will add advanced interaction controls to any HTML table. This is jQuery DataTables",
+            "homepage": "http://www.datatables.net/",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "table"
+            ],
+            "support": {
+                "forum": "https://datatables.net/forums",
+                "source": "https://github.com/DataTables/Dist-DataTables"
+            },
+            "time": "2022-07-26T15:21:25+00:00"
+        },
+        {
+            "name": "datatables.net/datatables.net-bs4",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DataTables/Dist-DataTables-Bootstrap4.git",
+                "reference": "4645c9e37179a359a6fb8a0672d47585a28ebefb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DataTables/Dist-DataTables-Bootstrap4/zipball/4645c9e37179a359a6fb8a0672d47585a28ebefb",
+                "reference": "4645c9e37179a359a6fb8a0672d47585a28ebefb",
+                "shasum": ""
+            },
+            "require": {
+                "datatables.net/datatables.net": ">=1.11.5",
+                "twbs/bootstrap": "4.*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SpryMedia",
+                    "homepage": "https://datatables.net"
+                }
+            ],
+            "description": "DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, which will add advanced interaction controls to any HTML table. This is DataTables with styling for [Bootstrap4](https://getbootstrap.com/docs/4.6/getting-started/introduction/)",
+            "homepage": "http://www.datatables.net/",
+            "keywords": [
+                "bootstrap",
+                "bootstrap4",
+                "datatables",
+                "jquery",
+                "table"
+            ],
+            "support": {
+                "forum": "https://datatables.net/forums",
+                "source": "https://github.com/DataTables/Dist-DataTables-Bootstrap4"
+            },
+            "time": "2022-03-31T10:59:57+00:00"
+        },
+        {
+            "name": "dflydev/dot-access-data",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
+                "reference": "0992cc19268b259a39e86f296da5f0677841f42c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/0992cc19268b259a39e86f296da5f0677841f42c",
+                "reference": "0992cc19268b259a39e86f296da5f0677841f42c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.42",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.3",
+                "scrutinizer/ocular": "1.6.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vimeo/psalm": "^3.14"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dflydev\\DotAccessData\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dragonfly Development Inc.",
+                    "email": "info@dflydev.com",
+                    "homepage": "http://dflydev.com"
+                },
+                {
+                    "name": "Beau Simensen",
+                    "email": "beau@dflydev.com",
+                    "homepage": "http://beausimensen.com"
+                },
+                {
+                    "name": "Carlos Frutos",
+                    "email": "carlos@kiwing.it",
+                    "homepage": "https://github.com/cfrutos"
+                },
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com"
+                }
+            ],
+            "description": "Given a deep data structure, access data by dot notation.",
+            "homepage": "https://github.com/dflydev/dflydev-dot-access-data",
+            "keywords": [
+                "access",
+                "data",
+                "dot",
+                "notation"
+            ],
+            "support": {
+                "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
+                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.1"
+            },
+            "time": "2021-08-13T13:06:58+00:00"
+        },
+        {
+            "name": "enyo/dropzone",
+            "version": "v6.0.0-beta.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dropzone/dropzone-packagist.git",
+                "reference": "6b788b4ca881f83602d800b3f6a59eff64b54928"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dropzone/dropzone-packagist/zipball/6b788b4ca881f83602d800b3f6a59eff64b54928",
+                "reference": "6b788b4ca881f83602d800b3f6a59eff64b54928",
                 "shasum": ""
             },
             "type": "library",
@@ -245,22 +469,22 @@
             ],
             "support": {
                 "issues": "https://github.com/dropzone/dropzone-packagist/issues",
-                "source": "https://github.com/dropzone/dropzone-packagist/tree/v5.9.3"
+                "source": "https://github.com/dropzone/dropzone-packagist/tree/v6.0.0-beta.2"
             },
-            "time": "2021-09-21T17:03:36+00:00"
+            "time": "2021-11-29T10:15:06+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
-            "version": "5.15.4",
+            "version": "6.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e"
+                "reference": "701d64a8943214b9767733e7ac0b201f1a08a8b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/7d3d774145ac38663f6d1effc6def0334b68ab7e",
-                "reference": "7d3d774145ac38663f6d1effc6def0334b68ab7e",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/701d64a8943214b9767733e7ac0b201f1a08a8b3",
+                "reference": "701d64a8943214b9767733e7ac0b201f1a08a8b3",
                 "shasum": ""
             },
             "type": "library",
@@ -272,32 +496,8 @@
             ],
             "authors": [
                 {
-                    "name": "Travis Chase",
-                    "homepage": "http://twitter.com/supercodepoet"
-                },
-                {
-                    "name": "Dave Gandy",
-                    "homepage": "http://twitter.com/davegandy"
-                },
-                {
-                    "name": "Rob Madole",
-                    "homepage": "http://twitter.com/robmadole"
-                },
-                {
-                    "name": "Jory Raphael",
-                    "homepage": "http://twitter.com/sensibleworld"
-                },
-                {
-                    "name": "Geremia Taglialatela",
-                    "homepage": "http://twitter.com/gtagliala"
-                },
-                {
-                    "name": "Brian Talbot",
-                    "homepage": "http://twitter.com/talbs"
-                },
-                {
-                    "name": "Mike Wilkerson",
-                    "homepage": "http://twitter.com/mw77"
+                    "name": "The Font Awesome Team",
+                    "homepage": "https://github.com/orgs/FortAwesome/people"
                 }
             ],
             "description": "The iconic font, CSS, and SVG framework",
@@ -311,12 +511,12 @@
                 "svg"
             ],
             "support": {
-                "docs": "http://fontawesome.com/how-to-use",
+                "docs": "http://fontawesome.com/docs",
                 "email": "hello@fontawesome.com",
                 "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
                 "source": "https://github.com/FortAwesome/Font-Awesome"
             },
-            "time": "2021-08-04T19:09:22+00:00"
+            "time": "2022-07-25T17:48:16+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -447,42 +647,54 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.6.7",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "2b8185c13bc9578367a5bf901881d1c1b5bbd09b"
+                "reference": "84d74485fdb7074f4f9dd6f02ab957b1de513257"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2b8185c13bc9578367a5bf901881d1c1b5bbd09b",
-                "reference": "2b8185c13bc9578367a5bf901881d1c1b5bbd09b",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/84d74485fdb7074f4f9dd6f02ab957b1de513257",
+                "reference": "84d74485fdb7074f4f9dd6f02ab957b1de513257",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": "^7.1 || ^8.0"
-            },
-            "conflict": {
-                "scrutinizer/ocular": "1.7.*"
+                "league/config": "^1.1.1",
+                "php": "^7.4 || ^8.0",
+                "psr/event-dispatcher": "^1.0",
+                "symfony/deprecation-contracts": "^2.1 || ^3.0",
+                "symfony/polyfill-php80": "^1.16"
             },
             "require-dev": {
-                "cebe/markdown": "~1.0",
-                "commonmark/commonmark.js": "0.29.2",
-                "erusev/parsedown": "~1.0",
+                "cebe/markdown": "^1.0",
+                "commonmark/cmark": "0.30.0",
+                "commonmark/commonmark.js": "0.30.0",
+                "composer/package-versions-deprecated": "^1.8",
+                "embed/embed": "^4.4",
+                "erusev/parsedown": "^1.0",
                 "ext-json": "*",
                 "github/gfm": "0.29.0",
-                "michelf/php-markdown": "~1.4",
-                "mikehaertl/php-shellcommand": "^1.4",
-                "phpstan/phpstan": "^0.12.90",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.2",
-                "scrutinizer/ocular": "^1.5",
-                "symfony/finder": "^4.2"
+                "michelf/php-markdown": "^1.4",
+                "nyholm/psr7": "^1.5",
+                "phpstan/phpstan": "^1.8.2",
+                "phpunit/phpunit": "^9.5.21",
+                "scrutinizer/ocular": "^1.8.1",
+                "symfony/finder": "^5.3 | ^6.0",
+                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0",
+                "unleashedtech/php-coding-standard": "^3.1.1",
+                "vimeo/psalm": "^4.24.0"
             },
-            "bin": [
-                "bin/commonmark"
-            ],
+            "suggest": {
+                "symfony/yaml": "v2.3+ required if using the Front Matter extension"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.4-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "League\\CommonMark\\": "src"
@@ -500,7 +712,7 @@
                     "role": "Lead Developer"
                 }
             ],
-            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
+            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and GitHub-Flavored Markdown (GFM)",
             "homepage": "https://commonmark.thephpleague.com",
             "keywords": [
                 "commonmark",
@@ -514,6 +726,7 @@
             ],
             "support": {
                 "docs": "https://commonmark.thephpleague.com/",
+                "forum": "https://github.com/thephpleague/commonmark/discussions",
                 "issues": "https://github.com/thephpleague/commonmark/issues",
                 "rss": "https://github.com/thephpleague/commonmark/releases.atom",
                 "source": "https://github.com/thephpleague/commonmark"
@@ -536,7 +749,89 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-13T17:18:13+00:00"
+            "time": "2022-07-29T10:59:45+00:00"
+        },
+        {
+            "name": "league/config",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/config.git",
+                "reference": "a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/config/zipball/a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e",
+                "reference": "a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e",
+                "shasum": ""
+            },
+            "require": {
+                "dflydev/dot-access-data": "^3.0.1",
+                "nette/schema": "^1.2",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.90",
+                "phpunit/phpunit": "^9.5.5",
+                "scrutinizer/ocular": "^1.8.1",
+                "unleashedtech/php-coding-standard": "^3.1",
+                "vimeo/psalm": "^4.7.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Config\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Define configuration arrays with strict schemas and access values with dot notation",
+            "homepage": "https://config.thephpleague.com",
+            "keywords": [
+                "array",
+                "config",
+                "configuration",
+                "dot",
+                "dot-access",
+                "nested",
+                "schema"
+            ],
+            "support": {
+                "docs": "https://config.thephpleague.com/",
+                "issues": "https://github.com/thephpleague/config/issues",
+                "rss": "https://github.com/thephpleague/config/releases.atom",
+                "source": "https://github.com/thephpleague/config"
+            },
+            "funding": [
+                {
+                    "url": "https://www.colinodell.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/colinpodell/10.00",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/colinodell",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-08-14T12:15:32+00:00"
         },
         {
             "name": "myth/auth",
@@ -613,49 +908,151 @@
             "time": "2022-07-13T18:35:46+00:00"
         },
         {
-            "name": "nnnick/chartjs",
-            "version": "v2.9.4",
+            "name": "nette/schema",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/chartjs/Chart.js.git",
-                "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278"
+                "url": "https://github.com/nette/schema.git",
+                "reference": "9a39cef03a5b34c7de64f551538cbba05c2be5df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/9bd4cf82fda9f50a5fb50b72843e06ab88124278",
-                "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278",
+                "url": "https://api.github.com/repos/nette/schema/zipball/9a39cef03a5b34c7de64f551538cbba05c2be5df",
+                "reference": "9a39cef03a5b34c7de64f551538cbba05c2be5df",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "nette/utils": "^2.5.7 || ^3.1.5 ||  ^4.0",
+                "php": ">=7.1 <8.2"
+            },
+            "require-dev": {
+                "nette/tester": "^2.3 || ^2.4",
+                "phpstan/phpstan-nette": "^0.12",
+                "tracy/tracy": "^2.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "release/2.0": "v2.0-dev"
+                    "dev-master": "1.2-dev"
                 }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
-                    "name": "NICK DOWNIE",
-                    "email": "hello@nickdownie.com"
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Simple HTML5 charts using the canvas element.",
-            "homepage": "https://www.chartjs.org/",
+            "description": "📐 Nette Schema: validating data structures against a given Schema.",
+            "homepage": "https://nette.org",
             "keywords": [
-                "JS",
-                "chart"
+                "config",
+                "nette"
             ],
             "support": {
-                "issues": "https://github.com/chartjs/Chart.js/issues",
-                "source": "https://github.com/chartjs/Chart.js/tree/v2.9.4"
+                "issues": "https://github.com/nette/schema/issues",
+                "source": "https://github.com/nette/schema/tree/v1.2.2"
             },
-            "time": "2020-10-19T12:22:11+00:00"
+            "time": "2021-10-15T11:40:02+00:00"
+        },
+        {
+            "name": "nette/utils",
+            "version": "v3.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "0af4e3de4df9f1543534beab255ccf459e7a2c99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/0af4e3de4df9f1543534beab255ccf459e7a2c99",
+                "reference": "0af4e3de4df9f1543534beab255ccf459e7a2c99",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2 <8.2"
+            },
+            "conflict": {
+                "nette/di": "<3.0.6"
+            },
+            "require-dev": {
+                "nette/tester": "~2.0",
+                "phpstan/phpstan": "^1.0",
+                "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
+                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🛠  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/utils/issues",
+                "source": "https://github.com/nette/utils/tree/v3.2.7"
+            },
+            "time": "2022-01-24T11:29:14+00:00"
         },
         {
             "name": "npm-asset/sortablejs",
@@ -670,34 +1067,54 @@
             ]
         },
         {
-            "name": "peekleon/datatables-all",
-            "version": "1.10.20",
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PeekLeon/datatables-all.git",
-                "reference": "3b242cabcd3ed0e740aafd30e3aac75998f66697"
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PeekLeon/datatables-all/zipball/3b242cabcd3ed0e740aafd30e3aac75998f66697",
-                "reference": "3b242cabcd3ed0e740aafd30e3aac75998f66697",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "shasum": ""
             },
             "require": {
-                "components/jquery": ">=1.7"
+                "php": ">=7.2.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "DataTables and all of its extensions.",
-            "homepage": "http://www.datatables.net/",
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
             "support": {
-                "issues": "https://github.com/PeekLeon/datatables-all/issues",
-                "source": "https://github.com/PeekLeon/datatables-all/tree/1.10.20"
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
             },
-            "time": "2019-10-21T13:27:43+00:00"
+            "time": "2019-01-08T18:20:26+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1035,6 +1452,73 @@
             "time": "2022-01-02T09:53:40+00:00"
         },
         {
+            "name": "symfony/deprecation-contracts",
+            "version": "v2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
+                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.5-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "function.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A generic function and convention to trigger deprecation notices",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-02T09:53:40+00:00"
+        },
+        {
             "name": "symfony/polyfill-php80",
             "version": "v1.26.0",
             "source": {
@@ -1119,31 +1603,32 @@
         },
         {
             "name": "tatter/addins",
-            "version": "v2.1.0",
+            "version": "v3.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-addins.git",
-                "reference": "7c4a0c2ac883eb6229931acc9cea83879e275916"
+                "reference": "306763f798eeebaca721caf6f39558d2de021ed9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/7c4a0c2ac883eb6229931acc9cea83879e275916",
-                "reference": "7c4a0c2ac883eb6229931acc9cea83879e275916",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-addins/zipball/306763f798eeebaca721caf6f39558d2de021ed9",
+                "reference": "306763f798eeebaca721caf6f39558d2de021ed9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "tatter/agents": "^1.1",
-                "tatter/alerts": "^2.0",
-                "tatter/assets": "^2.0",
+                "php": "^7.4 || ^8.0",
+                "tatter/alerts": "^3.0",
+                "tatter/assets": "^3.0",
                 "tatter/audits": "^1.0",
                 "tatter/outbox": "^2.0",
-                "tatter/permits": "^2.0",
+                "tatter/permits": "^3.0",
+                "tatter/preferences": "^1.0",
                 "tatter/relations": "^2.0",
-                "tatter/reports": "^1.1",
-                "tatter/settings": "^1.0 || ^2.0",
-                "tatter/themes": "^1.0",
-                "tatter/visits": "^1.0"
+                "tatter/themes": "^2.0",
+                "tatter/visits": "^2.0"
+            },
+            "require-dev": {
+                "tatter/imposter": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -1178,7 +1663,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-addins/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-addins/tree/v2.1.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-addins/tree/v3.0.0-rc.2"
             },
             "funding": [
                 {
@@ -1190,99 +1675,28 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-26T15:02:44+00:00"
-        },
-        {
-            "name": "tatter/agents",
-            "version": "v1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattersoftware/codeigniter4-agents.git",
-                "reference": "dbe5361daeb6ca88d51e841a6ba5c2ec48235359"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-agents/zipball/dbe5361daeb6ca88d51e841a6ba5c2ec48235359",
-                "reference": "dbe5361daeb6ca88d51e841a6ba5c2ec48235359",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3 || ^8.0",
-                "tatter/handlers": "^2.0",
-                "tatter/reports": "^1.1"
-            },
-            "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tatter\\Agents\\": "src"
-                },
-                "exclude-from-classmap": [
-                    "**/Database/Migrations/**"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Gatner",
-                    "email": "mgatner@tattersoftware.com",
-                    "homepage": "https://tattersoftware.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Service analysis and assessment for CodeIgniter 4",
-            "homepage": "https://github.com/tattersoftware/codeigniter4-agents",
-            "keywords": [
-                "Agent",
-                "checkup",
-                "codeigniter",
-                "codeigniter4",
-                "health",
-                "monitor",
-                "service"
-            ],
-            "support": {
-                "issues": "https://github.com/tattersoftware/codeigniter4-agents/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-agents/tree/v1.2.1"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/tatter",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/tattersoftware",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-02-05T21:11:09+00:00"
+            "time": "2022-07-29T11:43:16+00:00"
         },
         {
             "name": "tatter/alerts",
-            "version": "v2.1.1",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-alerts.git",
-                "reference": "f01d8295ee491e700554d462009644d10a5a9d93"
+                "reference": "96d3716f86c38ff3fdabf02354724bda356eb582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-alerts/zipball/f01d8295ee491e700554d462009644d10a5a9d93",
-                "reference": "f01d8295ee491e700554d462009644d10a5a9d93",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-alerts/zipball/96d3716f86c38ff3fdabf02354724bda356eb582",
+                "reference": "96d3716f86c38ff3fdabf02354724bda356eb582",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.11"
+                "codeigniter4/framework": "^4.1",
+                "tatter/tools": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -1316,7 +1730,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-alerts/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-alerts/tree/v2.1.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-alerts/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -1328,28 +1742,28 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-31T19:57:33+00:00"
+            "time": "2022-07-22T16:05:37+00:00"
         },
         {
             "name": "tatter/assets",
-            "version": "v2.3.0",
+            "version": "v3.0.0-rc.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-assets.git",
-                "reference": "267220d437786e0ddb9d7681745f5942d95c543b"
+                "reference": "3c7c015bef88d5c77061c94bfc3717c379db1eb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-assets/zipball/267220d437786e0ddb9d7681745f5942d95c543b",
-                "reference": "267220d437786e0ddb9d7681745f5942d95c543b",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-assets/zipball/3c7c015bef88d5c77061c94bfc3717c379db1eb2",
+                "reference": "3c7c015bef88d5c77061c94bfc3717c379db1eb2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.10"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1"
             },
             "type": "library",
             "autoload": {
@@ -1384,7 +1798,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-assets/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-assets/tree/v2.3.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-assets/tree/v3.0.0-rc.12"
             },
             "funding": [
                 {
@@ -1396,7 +1810,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-14T19:08:02+00:00"
+            "time": "2022-02-12T23:20:10+00:00"
         },
         {
             "name": "tatter/audits",
@@ -1467,31 +1881,28 @@
         },
         {
             "name": "tatter/chat",
-            "version": "v2.1.1",
+            "version": "v3.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-chat.git",
-                "reference": "bda8c6d17cc8ee0846cb048478f9acab6b5fb064"
+                "reference": "2e4790f4362ff2bf2a10219d0628a4bcad28e3d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/bda8c6d17cc8ee0846cb048478f9acab6b5fb064",
-                "reference": "bda8c6d17cc8ee0846cb048478f9acab6b5fb064",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-chat/zipball/2e4790f4362ff2bf2a10219d0628a4bcad28e3d1",
+                "reference": "2e4790f4362ff2bf2a10219d0628a4bcad28e3d1",
                 "shasum": ""
             },
             "require": {
                 "codeigniter4/authentication-implementation": "1.0",
-                "components/jquery": "^3.3",
-                "league/commonmark": "^1.6 || ^2.0",
-                "php": "^7.3 || ^8.0",
-                "tatter/assets": "^2.0",
-                "tatter/users": "^1.0",
-                "twbs/bootstrap": "^4.3"
+                "php": "^7.4 || ^8.0",
+                "tatter/frontend": "^1.0",
+                "tatter/users": "^1.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "myth/auth": "dev-develop",
-                "tatter/tools": "^1.10"
+                "codeigniter4/framework": "^4.1",
+                "tatter/imposter": "^1.0",
+                "tatter/tools": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -1517,14 +1928,13 @@
             "description": "Embedded chat widget for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-chat",
             "keywords": [
-                "bootstrap",
                 "chat",
                 "codeigniter",
                 "codeigniter4"
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-chat/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v2.1.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-chat/tree/v3.0.0-beta.1"
             },
             "funding": [
                 {
@@ -1536,39 +1946,38 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-03T20:08:59+00:00"
+            "time": "2022-07-29T11:17:04+00:00"
         },
         {
             "name": "tatter/exports",
-            "version": "v2.1.0",
+            "version": "v3.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-exports.git",
-                "reference": "61c3b4fdf93388f320abf21a71579837922ba9d0"
+                "reference": "7c219f909b927923b1558383714b8a7101ecc2ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-exports/zipball/61c3b4fdf93388f320abf21a71579837922ba9d0",
-                "reference": "61c3b4fdf93388f320abf21a71579837922ba9d0",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-exports/zipball/7c219f909b927923b1558383714b8a7101ecc2ad",
+                "reference": "7c219f909b927923b1558383714b8a7101ecc2ad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "tatter/handlers": "^2.0"
+                "php": "^7.4 || ^8.0",
+                "tatter/handlers": "^3.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "codeigniter4/codeigniter4-standard": "^1.0",
-                "fzaninotto/faker": "^1.9@dev",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Exports\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1595,44 +2004,51 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-exports/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-exports/tree/v2.1.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-exports/tree/v3.0.0-beta.4"
             },
-            "time": "2020-10-19T18:46:36+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-27T23:59:12+00:00"
         },
         {
             "name": "tatter/files",
-            "version": "v2.3.2",
+            "version": "v3.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-files.git",
-                "reference": "26efdfebe43cb20538dad0cf2939bb22f03f644d"
+                "reference": "85da0feeafe5c829896365210cc473fca68ffc2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/26efdfebe43cb20538dad0cf2939bb22f03f644d",
-                "reference": "26efdfebe43cb20538dad0cf2939bb22f03f644d",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-files/zipball/85da0feeafe5c829896365210cc473fca68ffc2a",
+                "reference": "85da0feeafe5c829896365210cc473fca68ffc2a",
                 "shasum": ""
             },
             "require": {
-                "components/jquery": "^3.3",
-                "enyo/dropzone": "^5.7",
-                "fortawesome/font-awesome": "^5.8",
-                "php": "^7.3 || ^8.0",
-                "tatter/alerts": "^2.0",
-                "tatter/assets": "^2.2",
-                "tatter/audits": "^1.0",
-                "tatter/exports": "^2.0",
-                "tatter/permits": "^2.0",
-                "tatter/settings": "^1.0 || ^2.0",
-                "tatter/thumbnails": "^1.2",
-                "twbs/bootstrap": "^4.5"
+                "codeigniter4/authentication-implementation": "^1.0",
+                "enyo/dropzone": "^6.0",
+                "php": "^7.4 || ^8.0",
+                "tatter/exports": "^3.0",
+                "tatter/frontend": "^1.0",
+                "tatter/permits": "^3.0",
+                "tatter/preferences": "^1.0",
+                "tatter/thumbnails": "^2.0"
             },
             "require-dev": {
-                "antecedent/patchwork": "^2.1",
-                "codeigniter4/codeigniter4": "dev-develop",
-                "codeigniter4/codeigniter4-standard": "^1.0",
-                "myth/auth": "dev-develop",
-                "tatter/tools": "^1.10"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1",
+                "tatter/imposter": "^1.0"
+            },
+            "suggest": {
+                "tatter/audits": "Adds logging for user changes to Files database rows."
             },
             "type": "library",
             "autoload": {
@@ -1666,7 +2082,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-files/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v2.3.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-files/tree/v3.0.0-beta.1"
             },
             "funding": [
                 {
@@ -1678,32 +2094,27 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-22T17:17:52+00:00"
+            "time": "2022-02-28T14:49:41+00:00"
         },
         {
             "name": "tatter/forms",
-            "version": "v0.9.1",
+            "version": "v0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-forms.git",
-                "reference": "bde96e047fcb7dfd59100190c4bcb8be0cff09ec"
+                "reference": "4e86a4e932085ed9bfe90f0b000fa63a68a5e76c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-forms/zipball/bde96e047fcb7dfd59100190c4bcb8be0cff09ec",
-                "reference": "bde96e047fcb7dfd59100190c4bcb8be0cff09ec",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-forms/zipball/4e86a4e932085ed9bfe90f0b000fa63a68a5e76c",
+                "reference": "4e86a4e932085ed9bfe90f0b000fa63a68a5e76c",
                 "shasum": ""
             },
             "require": {
-                "components/jquery": "^3.3",
-                "php": "^7.4 || ^8.0",
-                "tatter/alerts": "^2.0",
-                "tatter/assets": "^2.0",
-                "twbs/bootstrap": "^4.3"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
                 "codeigniter4/framework": "^4.1",
-                "mikey179/vfsstream": "^1.6",
                 "tatter/tools": "^2.0"
             },
             "type": "library",
@@ -1740,7 +2151,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-forms/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-forms/tree/v0.9.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-forms/tree/v0.10.0"
             },
             "funding": [
                 {
@@ -1752,28 +2163,108 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-02T17:56:01+00:00"
+            "time": "2022-07-28T19:25:03+00:00"
         },
         {
-            "name": "tatter/handlers",
-            "version": "v2.2.1",
+            "name": "tatter/frontend",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tattersoftware/codeigniter4-handlers.git",
-                "reference": "bd86605017cc930dce6b4ec0b8c6e78dd9404b69"
+                "url": "https://github.com/tattersoftware/codeigniter4-frontend.git",
+                "reference": "9aabca600e94603672a2e0bf4c94f2e1935c2fc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-handlers/zipball/bd86605017cc930dce6b4ec0b8c6e78dd9404b69",
-                "reference": "bd86605017cc930dce6b4ec0b8c6e78dd9404b69",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-frontend/zipball/9aabca600e94603672a2e0bf4c94f2e1935c2fc9",
+                "reference": "9aabca600e94603672a2e0bf4c94f2e1935c2fc9",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "almasaeed2010/adminlte": "^3.0",
+                "components/jquery": "^3.3",
+                "datatables.net/datatables.net-bs4": "dev-master",
+                "fortawesome/font-awesome": "^5.15 || ^6.0",
+                "league/commonmark": "^2.0",
+                "php": "^7.4 || ^8.0",
+                "tatter/alerts": "^3.0",
+                "tatter/assets": "^3.0",
+                "tatter/layouts": "^1.0",
+                "tatter/menus": "^1.0",
+                "tatter/themes": "^2.0",
+                "twbs/bootstrap": "^4.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "tatter/tools": "^1.12"
+                "codeigniter4/framework": "^4.1",
+                "tatter/tools": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tatter\\Frontend\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Gatner",
+                    "email": "mgatner@tattersoftware.com",
+                    "homepage": "https://tattersoftware.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Opinionated suite of frontend tech for CodeIgniter 4",
+            "homepage": "https://github.com/tattersoftware/codeigniter4-frontend",
+            "keywords": [
+                "assets",
+                "codeigniter",
+                "codeigniter4",
+                "css",
+                "framework",
+                "frontend",
+                "javascript"
+            ],
+            "support": {
+                "issues": "https://github.com/tattersoftware/codeigniter4-frontend/issues",
+                "source": "https://github.com/tattersoftware/codeigniter4-frontend/tree/v1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-28T15:11:30+00:00"
+        },
+        {
+            "name": "tatter/handlers",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tattersoftware/codeigniter4-handlers.git",
+                "reference": "31ef7d85a6142dab1011f020c572c3e95a45b18a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-handlers/zipball/31ef7d85a6142dab1011f020c572c3e95a45b18a",
+                "reference": "31ef7d85a6142dab1011f020c572c3e95a45b18a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter4/framework": "^4.1",
+                "tatter/tools": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -1796,7 +2287,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Cross-module handler registration, for CodeIgniter 4",
+            "description": "Handler discovery and management, for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-handlers",
             "keywords": [
                 "adapters",
@@ -1809,7 +2300,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-handlers/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-handlers/tree/v2.2.1"
+                "source": "https://github.com/tattersoftware/codeigniter4-handlers/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -1821,7 +2312,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-13T23:24:35+00:00"
+            "time": "2022-07-10T13:04:35+00:00"
         },
         {
             "name": "tatter/layouts",
@@ -2028,25 +2519,27 @@
         },
         {
             "name": "tatter/permits",
-            "version": "v2.1.7",
+            "version": "v3.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-permits.git",
-                "reference": "206d290643fb8303df06e55d11a152a25cbe08a3"
+                "reference": "7f5ebef44acd4bf486cf15ee6df36ffb44bb4667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/206d290643fb8303df06e55d11a152a25cbe08a3",
-                "reference": "206d290643fb8303df06e55d11a152a25cbe08a3",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-permits/zipball/7f5ebef44acd4bf486cf15ee6df36ffb44bb4667",
+                "reference": "7f5ebef44acd4bf486cf15ee6df36ffb44bb4667",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ^8.0"
+                "codeigniter4/authentication-implementation": "^1.0",
+                "php": "^7.4 || ^8.0",
+                "tatter/users": "^1.2"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "codeigniter4/codeigniter4-standard": "^1.0",
-                "tatter/tools": "^1.12"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1",
+                "tatter/imposter": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -2069,18 +2562,20 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Dynamic permission handling for CodeIgniter 4",
+            "description": "Model permission handling for CodeIgniter 4",
             "homepage": "https://github.com/tattersoftware/codeigniter4-permits",
             "keywords": [
+                "access",
                 "authorization",
                 "codeigniter",
                 "codeigniter4",
+                "crud",
                 "permission",
                 "rights"
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-permits/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-permits/tree/v2.1.7"
+                "source": "https://github.com/tattersoftware/codeigniter4-permits/tree/v3.0.0-rc.2"
             },
             "funding": [
                 {
@@ -2092,7 +2587,78 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-14T01:50:05+00:00"
+            "time": "2022-02-03T16:03:29+00:00"
+        },
+        {
+            "name": "tatter/preferences",
+            "version": "v1.0.0-rc.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tattersoftware/codeigniter4-preferences.git",
+                "reference": "f2f049114d5ff2c677d747a649082474f9bb0e02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-preferences/zipball/f2f049114d5ff2c677d747a649082474f9bb0e02",
+                "reference": "f2f049114d5ff2c677d747a649082474f9bb0e02",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/settings": "^2.1",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter4/codeigniter4": "dev-develop",
+                "tatter/imposter": "^1.0",
+                "tatter/tools": "^1.15"
+            },
+            "suggest": {
+                "codeigniter4/authentication-implementation": "Required to enable database persistence."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tatter\\Preferences\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Gatner",
+                    "email": "mgatner@tattersoftware.com",
+                    "homepage": "https://tattersoftware.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Persistent user-specific settings for CodeIgniter 4",
+            "homepage": "https://github.com/tattersoftware/codeigniter4-preferences",
+            "keywords": [
+                "Settings",
+                "codeigniter",
+                "codeigniter4",
+                "preferences"
+            ],
+            "support": {
+                "issues": "https://github.com/tattersoftware/codeigniter4-preferences/issues",
+                "source": "https://github.com/tattersoftware/codeigniter4-preferences/tree/v1.0.0-rc.4"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-11-23T21:16:22+00:00"
         },
         {
             "name": "tatter/relations",
@@ -2165,64 +2731,6 @@
             "time": "2022-07-14T20:12:37+00:00"
         },
         {
-            "name": "tatter/reports",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattersoftware/codeigniter4-reports.git",
-                "reference": "a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-reports/zipball/a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a",
-                "reference": "a5ed6a9db0a2efe3c510f34b1f6dab1b3bedab1a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "tatter/handlers": "^2.0"
-            },
-            "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "codeigniter4/codeigniter4-standard": "^1.0",
-                "fzaninotto/faker": "^1.9@dev",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tatter\\Reports\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Gatner",
-                    "email": "mgatner@tattersoftware.com",
-                    "homepage": "https://tattersoftware.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Report management framework for CodeIgniter 4",
-            "homepage": "https://github.com/tattersoftware/codeigniter4-reports",
-            "keywords": [
-                "codeigniter",
-                "codeigniter4",
-                "reporting",
-                "reports"
-            ],
-            "support": {
-                "issues": "https://github.com/tattersoftware/codeigniter4-reports/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-reports/tree/v1.1.0"
-            },
-            "time": "2020-09-10T20:01:17+00:00"
-        },
-        {
             "name": "tatter/schemas",
             "version": "v2.0.14",
             "source": {
@@ -2292,98 +2800,28 @@
             "time": "2022-05-12T13:27:50+00:00"
         },
         {
-            "name": "tatter/settings",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattersoftware/codeigniter4-settings.git",
-                "reference": "8f2dc2be6a5b7ab66cd4b6d7b22c5b5e33c3d4f9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-settings/zipball/8f2dc2be6a5b7ab66cd4b6d7b22c5b5e33c3d4f9",
-                "reference": "8f2dc2be6a5b7ab66cd4b6d7b22c5b5e33c3d4f9",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3 || ^8.0"
-            },
-            "require-dev": {
-                "codeigniter4/authentication-implementation": "1.0",
-                "codeigniter4/codeigniter4": "dev-develop",
-                "myth/auth": "dev-develop",
-                "tatter/tools": "^1.10"
-            },
-            "suggest": {
-                "codeigniter4/authentication-implementation": "Allows for user setting overrides"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Tatter\\Settings\\": "src"
-                },
-                "exclude-from-classmap": [
-                    "**/Database/Migrations/**"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matthew Gatner",
-                    "email": "mgatner@tattersoftware.com",
-                    "homepage": "https://tattersoftware.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Lightweight settings management for CodeIgniter 4",
-            "homepage": "https://github.com/tattersoftware/codeigniter4-settings",
-            "keywords": [
-                "Settings",
-                "codeigniter",
-                "codeigniter4",
-                "preferences"
-            ],
-            "support": {
-                "issues": "https://github.com/tattersoftware/codeigniter4-settings/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-settings/tree/v2.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/tatter",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/tattersoftware",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-07-10T12:23:06+00:00"
-        },
-        {
             "name": "tatter/themes",
-            "version": "v1.2.0",
+            "version": "v2.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-themes.git",
-                "reference": "ee991229780771d8bcc19d3f5a3008b054cd7164"
+                "reference": "ea539f7672d170a6326358db1ad2fea648c79c6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-themes/zipball/ee991229780771d8bcc19d3f5a3008b054cd7164",
-                "reference": "ee991229780771d8bcc19d3f5a3008b054cd7164",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-themes/zipball/ea539f7672d170a6326358db1ad2fea648c79c6a",
+                "reference": "ea539f7672d170a6326358db1ad2fea648c79c6a",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.3 || ^8.0",
-                "tatter/settings": "^1.0 || ^2.0"
+                "tatter/assets": "^3.0",
+                "tatter/preferences": "^1.0"
             },
             "require-dev": {
                 "codeigniter4/codeigniter4": "dev-develop",
-                "myth/auth": "dev-develop",
-                "tatter/tools": "^1.8"
+                "tatter/imposter": "^1.0",
+                "tatter/tools": "^1.15"
             },
             "type": "library",
             "autoload": {
@@ -2416,7 +2854,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-themes/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-themes/tree/v1.2.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-themes/tree/v2.0.0-rc.2"
             },
             "funding": [
                 {
@@ -2428,40 +2866,38 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-26T16:00:24+00:00"
+            "time": "2021-12-02T17:42:18+00:00"
         },
         {
             "name": "tatter/thumbnails",
-            "version": "v1.2.2",
+            "version": "v2.0.0-beta.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-thumbnails.git",
-                "reference": "4b6ffed154cae448ba3b746f16afbc20cdc48110"
+                "reference": "e84c87d72d34463b6a2926bf5d07d17a10855be1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-thumbnails/zipball/4b6ffed154cae448ba3b746f16afbc20cdc48110",
-                "reference": "4b6ffed154cae448ba3b746f16afbc20cdc48110",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-thumbnails/zipball/e84c87d72d34463b6a2926bf5d07d17a10855be1",
+                "reference": "e84c87d72d34463b6a2926bf5d07d17a10855be1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "tatter/handlers": "^2.0"
+                "php": "^7.4 || ^8.0",
+                "tatter/handlers": "^3.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "codeigniter4/codeigniter4-standard": "^1.0",
-                "fzaninotto/faker": "^1.9@dev",
-                "mikey179/vfsstream": "^1.6",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8.5",
-                "squizlabs/php_codesniffer": "^3.5"
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Tatter\\Thumbnails\\": "src"
-                }
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2486,9 +2922,19 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-thumbnails/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-thumbnails/tree/v1.2.2"
+                "source": "https://github.com/tattersoftware/codeigniter4-thumbnails/tree/v2.0.0-beta.3"
             },
-            "time": "2020-10-01T19:30:20+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/tatter",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tattersoftware",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-28T16:36:12+00:00"
         },
         {
             "name": "tatter/users",
@@ -2561,16 +3007,16 @@
         },
         {
             "name": "tatter/visits",
-            "version": "v1.3.0",
+            "version": "v2.0.0-beta.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-visits.git",
-                "reference": "0fa8bcc25bd91029d190b06d3abefab473c4b95c"
+                "reference": "178860174f7dc3d422db84251da3e33ff5890663"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-visits/zipball/0fa8bcc25bd91029d190b06d3abefab473c4b95c",
-                "reference": "0fa8bcc25bd91029d190b06d3abefab473c4b95c",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-visits/zipball/178860174f7dc3d422db84251da3e33ff5890663",
+                "reference": "178860174f7dc3d422db84251da3e33ff5890663",
                 "shasum": ""
             },
             "require": {
@@ -2578,7 +3024,11 @@
             },
             "require-dev": {
                 "codeigniter4/framework": "^4.2",
+                "tatter/imposter": "^1.0",
                 "tatter/tools": "^2.0"
+            },
+            "suggest": {
+                "codeigniter4/authentication-implementation": "Required to track authenticated users."
             },
             "type": "library",
             "autoload": {
@@ -2612,7 +3062,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-visits/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-visits/tree/v1.3.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-visits/tree/v2.0.0-beta.2"
             },
             "funding": [
                 {
@@ -2624,39 +3074,35 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-04T18:56:20+00:00"
+            "time": "2022-07-12T20:27:41+00:00"
         },
         {
             "name": "tatter/workflows",
-            "version": "v4.1.0",
+            "version": "v5.0.0-beta.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tattersoftware/codeigniter4-workflows.git",
-                "reference": "df05d51afd6f1f1bd36cf29f1e789f929674e63c"
+                "reference": "4916a26d0273e9f04675914cc57894638d0af97c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/df05d51afd6f1f1bd36cf29f1e789f929674e63c",
-                "reference": "df05d51afd6f1f1bd36cf29f1e789f929674e63c",
+                "url": "https://api.github.com/repos/tattersoftware/codeigniter4-workflows/zipball/4916a26d0273e9f04675914cc57894638d0af97c",
+                "reference": "4916a26d0273e9f04675914cc57894638d0af97c",
                 "shasum": ""
             },
             "require": {
                 "codeigniter4/authentication-implementation": "1.0",
-                "components/jquery": "^3.3",
-                "fortawesome/font-awesome": "^5.8",
                 "npm-asset/sortablejs": "^1.10",
-                "php": "^7.3 || ^8.0",
-                "tatter/alerts": "^2.0",
-                "tatter/assets": "^2.0",
+                "php": "^7.4 || ^8.0",
                 "tatter/audits": "^1.0",
-                "tatter/handlers": "^2.0",
-                "tatter/users": "^1.0",
-                "twbs/bootstrap": "^4.3"
+                "tatter/frontend": "^1.0",
+                "tatter/handlers": "^3.0",
+                "tatter/users": "^1.0"
             },
             "require-dev": {
-                "codeigniter4/codeigniter4": "dev-develop",
-                "myth/auth": "dev-develop",
-                "tatter/tools": "^1.13"
+                "codeigniter4/framework": "^4.1",
+                "tatter/imposter": "^1.0",
+                "tatter/tools": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -2690,7 +3136,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tattersoftware/codeigniter4-workflows/issues",
-                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v4.1.0"
+                "source": "https://github.com/tattersoftware/codeigniter4-workflows/tree/v5.0.0-beta.1"
             },
             "funding": [
                 {
@@ -2702,7 +3148,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-01T13:53:56+00:00"
+            "time": "2022-07-28T00:23:43+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3956,16 +4402,16 @@
         },
         {
             "name": "mikey179/vfsstream",
-            "version": "v1.6.10",
+            "version": "v1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85"
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/250c0825537d501e327df879fb3d4cd751933b85",
-                "reference": "250c0825537d501e327df879fb3d4cd751933b85",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
                 "shasum": ""
             },
             "require": {
@@ -4003,7 +4449,7 @@
                 "source": "https://github.com/bovigo/vfsStream/tree/master",
                 "wiki": "https://github.com/bovigo/vfsStream/wiki"
             },
-            "time": "2021-09-25T08:05:01+00:00"
+            "time": "2022-02-23T02:02:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5459,67 +5905,17 @@
             "time": "2021-11-05T16:50:12+00:00"
         },
         {
-            "name": "psr/event-dispatcher",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/event-dispatcher.git",
-                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
-                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\EventDispatcher\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Standard interfaces for event handling.",
-            "keywords": [
-                "events",
-                "psr",
-                "psr-14"
-            ],
-            "support": {
-                "issues": "https://github.com/php-fig/event-dispatcher/issues",
-                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
-            },
-            "time": "2019-01-08T18:20:26+00:00"
-        },
-        {
             "name": "roave/security-advisories",
             "version": "dev-latest",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "4bc2609bf9e2c2146d25465546bb10651cce47ac"
+                "reference": "66afddaae8d97c72945ae2f49bb94aff47084804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4bc2609bf9e2c2146d25465546bb10651cce47ac",
-                "reference": "4bc2609bf9e2c2146d25465546bb10651cce47ac",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/66afddaae8d97c72945ae2f49bb94aff47084804",
+                "reference": "66afddaae8d97c72945ae2f49bb94aff47084804",
                 "shasum": ""
             },
             "conflict": {
@@ -5599,7 +5995,7 @@
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
                 "dompdf/dompdf": "<2",
-                "drupal/core": ">=7,<7.88|>=8,<9.2.13|>=9.3,<9.3.6",
+                "drupal/core": ">=7,<7.91|>=8,<9.3.19|>=9.4,<9.4.3",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
                 "ecodev/newsletter": "<=4",
@@ -5699,6 +6095,7 @@
                 "krayin/laravel-crm": "<1.2.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
+                "laminas/laminas-diactoros": "<2.11.1",
                 "laminas/laminas-form": "<2.17.1|>=3,<3.0.2|>=3.1,<3.1.1",
                 "laminas/laminas-http": "<2.14.2",
                 "laravel/fortify": "<1.11.1",
@@ -5823,7 +6220,7 @@
                 "shopware/core": "<=6.4.9",
                 "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<5.7.12",
+                "shopware/shopware": "<=5.7.13",
                 "shopware/storefront": "<=6.4.8.1",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
@@ -6019,7 +6416,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-21T23:04:29+00:00"
+            "time": "2022-07-27T23:04:16+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7083,73 +7480,6 @@
                 }
             ],
             "time": "2022-06-26T13:00:04+00:00"
-        },
-        {
-            "name": "symfony/deprecation-contracts",
-            "version": "v2.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
-                "reference": "e8b495ea28c1d97b5e0c121748d6f9b53d075c66",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.5-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "function.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "A generic function and convention to trigger deprecation notices",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.2"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-01-02T09:53:40+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -8473,16 +8803,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.24.0",
+            "version": "v4.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "06dd975cb55d36af80f242561738f16c5f58264f"
+                "reference": "d7cd84c4ebca74ba3419b9601f81d177bcbe2aac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/06dd975cb55d36af80f242561738f16c5f58264f",
-                "reference": "06dd975cb55d36af80f242561738f16c5f58264f",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/d7cd84c4ebca74ba3419b9601f81d177bcbe2aac",
+                "reference": "d7cd84c4ebca74ba3419b9601f81d177bcbe2aac",
                 "shasum": ""
             },
             "require": {
@@ -8574,9 +8904,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.24.0"
+                "source": "https://github.com/vimeo/psalm/tree/v4.25.0"
             },
-            "time": "2022-06-26T11:47:54+00:00"
+            "time": "2022-07-25T17:04:37+00:00"
         },
         {
             "name": "webmozart/assert",
