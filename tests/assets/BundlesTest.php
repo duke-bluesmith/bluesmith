@@ -14,10 +14,10 @@ final class BundlesTest extends BundlesTestCase
         return [
             [
                 TinyMCEBundle::class,
-                [],
                 [
-                    'tinymce.min.js',
+                    'tinymce.min.js', // needs to be in the head tag
                 ],
+                [],
             ],
         ];
     }

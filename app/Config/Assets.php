@@ -2,52 +2,67 @@
 
 namespace Config;
 
-class Assets extends \Tatter\Assets\Config\Assets
-{
-    // Additional assets to load per route - no leading/trailing slashes
-    public $routes = [
-        '' => [
-            'vendor/bootstrap/bootstrap.min.css',
-            'vendor/bootstrap/bootstrap.bundle.min.js',
-            'vendor/font-awesome/css/all.min.css',
-        ],
-        'files' => [
-            'vendor/dropzone/dropzone.min.css',
-            'vendor/dropzone/dropzone.min.js',
-        ],
-        'jobs/approve' => [
-            'vendor/chat/chat.css',
-            'vendor/chat/chat.js',
-        ],
-        'jobs/files' => [
-            'vendor/dropzone/dropzone.min.css',
-            'vendor/dropzone/dropzone.min.js',
-        ],
-        'jobs/show' => [
-            'vendor/chat/chat.css',
-            'vendor/chat/chat.js',
-        ],
-        'manage/jobs/show' => [
-            'vendor/chat/chat.css',
-            'vendor/chat/chat.js',
-        ],
+use App\Bundles\GlobalBundle;
+use App\Bundles\TinyMCEBundle;
+use Tatter\Assets\Config\Assets as AssetsConfig;
+use Tatter\Frontend\Bundles\AdminLTEBundle;
+use Tatter\Frontend\Bundles\BootstrapBundle;
+use Tatter\Frontend\Bundles\DataTablesBundle;
+use Tatter\Frontend\Bundles\FontAwesomeBundle;
 
-        // Admin dashboard
-        'manage' => [
-            'vendor/chartjs/Chart.min.css',
-            'vendor/chartjs/Chart.bundle.min.js',
-            'vendor/datatables/css/dataTables.bootstrap4.min.css',
-            'vendor/datatables/css/buttons.bootstrap4.min.css',
-            'vendor/datatables/js/jquery.dataTables.min.js',
-            'vendor/datatables/js/dataTables.bootstrap4.min.js',
-            'vendor/datatables/js/dataTables.buttons.min.js',
-            'vendor/datatables/js/buttons.html5.min.js',
-            'vendor/datatables/js/buttons.print.min.js',
+class Assets extends AssetsConfig
+{
+    //--------------------------------------------------------------------
+    // Route Assets
+    //--------------------------------------------------------------------
+
+    /**
+     * Assets to apply to each route. Routes may use * as a wildcard to
+     * allow any valid character, similar to URL Helper's url_is().
+     * Keys are routes; values are an array of any of the following:
+     *   - Bundle class names
+     *   - File paths (relative to $directory)
+     *   - URLs
+     *
+     * Example:
+     *     $routes = [
+     *         '*' => [
+     *             'https://pagecdn.io/lib/cleave/1.6.0/cleave.min.js',
+     *             \App\Bundles\Bootstrap::class,
+     *          ],
+     *         'admin/*' => [
+     *             \Tatter\Frontend\Bundles\AdminLTE::class,
+     *             'admin/login.js',
+     *         ],
+     *     ];
+     *
+     * @var array<string,string[]>
+     */
+    public array $routes = [
+        '*' => [
+            BootstrapBundle::class,
+            FontAwesomeBundle::class,
+            GlobalBundle::class,
         ],
-        'workflows' => [
-            'vendor/adminlte/js/adminlte.min.js',
-            'vendor/adminlte/css/adminlte.min.css',
-            'vendor/sortablejs/Sortable.min.js',
+        'emails/templates' => [
+            AdminLTEBundle::class,
+        ],
+        'files*' => [
+            'dropzone.js',
+        ],
+        'manage*' => [
+            AdminLTEBundle::class,
+            DataTablesBundle::class,
+            FontAwesomeBundle::class,
+        ],
+        'manage/content*' => [
+        	TinyMCEBundle::class,
+        ],
+        'manage/materials*' => [
+        	TinyMCEBundle::class,
+        ],
+        'manage/methods*' => [
+        	TinyMCEBundle::class,
         ],
     ];
 }

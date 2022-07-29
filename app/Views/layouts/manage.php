@@ -132,6 +132,9 @@
 		<!-- Main content -->
 		<div class="content" style="min-height: 600px;">
 			<div class="container-fluid text-dark">
+				<aside id="alerts-wrapper">
+				{alerts}
+				</aside>
 
 				<?php if (isset($action) && $action instanceof \Tatter\Workflows\BaseAction): ?>
 				<?= $this->include('layouts/action_header') ?>

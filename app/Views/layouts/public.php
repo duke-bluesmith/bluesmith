@@ -25,12 +25,6 @@
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#ffffff">
 
-	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
-
-	<?= service('assets')->css() ?>
-
-	<?= view('Tatter\Themes\Views\css') ?>
-
 	<?= $this->renderSection('headerAssets') ?>
 
 </head>
@@ -67,9 +61,10 @@
 		</div>
 	</nav>
 
-	<?= service('alerts')->display() ?>
-
 	<main id="main" role="main" class="container my-5">
+		<aside id="alerts-wrapper">
+		{alerts}
+		</aside>
 
 		<?php if (isset($action) && $action instanceof \Tatter\Workflows\BaseAction): ?>
 		<?= $this->include('layouts/action_header') ?>
