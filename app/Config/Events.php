@@ -60,7 +60,7 @@ Events::on('pre_system', static function () {
  * @see BaseAction::__construct() and BaseController::$helpers for slightly less global
  */
 Events::on('post_controller_constructor', static function () {
-    helper(['alerts', 'auth', 'html']);
+    helper(['alerts', 'auth', 'html', 'preferences']);
 });
 
 /**

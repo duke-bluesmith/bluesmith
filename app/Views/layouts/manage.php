@@ -12,7 +12,7 @@
 	<meta name="author" content="AdminLTE" />
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-	<title><?= service('settings')->brandName ?> | <?= $header ?? 'Admin' ?></title>
+	<title><?= preference('brandName') ?> | <?= $header ?? 'Admin' ?></title>
 
 	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('assets/favicon/apple-touch-icon.png') ?>">
@@ -35,7 +35,7 @@
 
 	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
 
-	<?= $this->renderSection('headerAssets') ?>
+	<?php $this->renderSection('headerAssets'); ?>
 
 </head>
 <body class="hold-transition sidebar-mini accent-blue layout-footer-fixed">
@@ -84,8 +84,8 @@
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
 		<a href="<?= site_url('manage') ?>" class="brand-link">
-			<img src="<?= base_url(service('settings')->brandLogo) ?>" alt="Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
-			<span class="brand-text font-weight-light"><?= service('settings')->brandName ?></span>
+			<img src="<?= base_url(preference('brandLogo')) ?>" alt="Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
+			<span class="brand-text font-weight-light"><?= preference('brandName') ?></span>
 		</a>
 
 		<!-- Sidebar -->
@@ -166,10 +166,10 @@
 	<footer class="main-footer">
 		<!-- To the right -->
 		<div class="float-right d-none d-sm-inline mr-4">
-			<?= service('settings')->brandName ?>
+			<?= preference('brandName') ?>
 		</div>
 		<!-- Default to the left -->
-		<strong>Copyright &copy; <?= date('Y') ?> <?= service('settings')->orgName ?></strong>
+		<strong>Copyright &copy; <?= date('Y') ?> <?= preference('orgName') ?></strong>
 	</footer>
 </div>
 <!-- ./wrapper -->
@@ -178,13 +178,10 @@
 <script>
 	var baseUrl = "<?= base_url() ?>";
 	var siteUrl = "<?= site_url() ?>";
+	var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 </script>
 
-<?= service('assets')->js() ?>
-
-<?= service('assets')->tag('vendor/adminlte/js/adminlte.min.js') ?>
-
-<?= $this->renderSection('footerAssets') ?>
+<?php $this->renderSection('footerAssets'); ?>
 
 </body>
 </html>

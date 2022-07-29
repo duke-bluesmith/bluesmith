@@ -5,7 +5,6 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use Exception;
 use Tatter\Files\Database\Seeds\FileSeeder;
-use Tatter\Settings\Database\Seeds\SettingSeeder;
 use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
@@ -16,7 +15,6 @@ class InitialSeeder extends Seeder
 
         // Seeds to run
         $seeds = [
-            SettingSeeder::class,
             FileSeeder::class,
             AuthSeeder::class,
             EmailSeeder::class,
