@@ -67,7 +67,7 @@
 						<small id="brandNameHelp" class="form-text text-muted">Brand name for this project.</small>
 					</div>
 
-					<img src="<?= preference('brandLogo ?>" alt="Brand logo" style="float:right; max-height:100px; max-width:100%;" />
+					<img src="<?= preference('brandLogo') ?>" alt="Brand logo" style="float:right; max-height:100px; max-width:100%;" />
 					<div class="form-group">
 						<label for="brandLogo">Logo</label>
 						<input type="file" name="brandLogo" class="form-control-file" id="brandLogo" aria-describedby="brandLogoHelp">

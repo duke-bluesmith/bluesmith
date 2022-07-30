@@ -56,13 +56,13 @@ class Assets extends AssetsConfig
             FontAwesomeBundle::class,
         ],
         'manage/content*' => [
-        	TinyMCEBundle::class,
+            TinyMCEBundle::class,
         ],
         'manage/materials*' => [
-        	TinyMCEBundle::class,
+            TinyMCEBundle::class,
         ],
         'manage/methods*' => [
-        	TinyMCEBundle::class,
+            TinyMCEBundle::class,
         ],
     ];
 }

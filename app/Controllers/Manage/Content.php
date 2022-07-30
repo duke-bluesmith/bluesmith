@@ -54,15 +54,16 @@ class Content extends BaseController
      */
     public function branding(): string
     {
-    	$preferences = config('Preferences');
         helper('date');
 
         // Check for form submission
         if ($post = $this->request->getPost()) {
+            $preferences = config('Preferences');
+
             foreach ($post as $name => $content) {
-            	if (property_exists($preferences, $name)) {
-	                preference($name, $content);
-	            }
+                if (property_exists($preferences, $name)) {
+                    preference($name, $content);
+                }
             }
 
             if ($this->request->isAJAX()) {
@@ -74,6 +75,6 @@ class Content extends BaseController
             alert('success', 'Settings updated.');
         }
 
-        return view('content/branding', $data);
+        return view('content/branding');
     }
 }
