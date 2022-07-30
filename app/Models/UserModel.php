@@ -7,9 +7,8 @@ use Faker\Generator;
 use Myth\Auth\Entities\User as MythUser;
 use Myth\Auth\Models\UserModel as MythModel;
 use stdClass;
-use Tatter\Permits\Interfaces\PermitsUserModelInterface;
 
-class UserModel extends MythModel implements PermitsUserModelInterface
+class UserModel extends MythModel
 {
     use CompiledRowsTrait;
 

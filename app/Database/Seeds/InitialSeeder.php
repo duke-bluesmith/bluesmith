@@ -4,8 +4,6 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use Exception;
-use Tatter\Files\Database\Seeds\FileSeeder;
-use Tatter\Workflows\Registrar;
 
 class InitialSeeder extends Seeder
 {
@@ -15,7 +13,6 @@ class InitialSeeder extends Seeder
 
         // Seeds to run
         $seeds = [
-            FileSeeder::class,
             AuthSeeder::class,
             EmailSeeder::class,
             OptionSeeder::class,
@@ -44,11 +41,6 @@ class InitialSeeder extends Seeder
                 $errors[] = $e->getFile() . ' - ' . $e->getLine() . ': ' . $e->getMessage() . " (for {$seedName})";
             }
             // @codeCoverageIgnoreEnd
-        }
-
-        // Use the Registrar to seed Actions
-        if (Registrar::actions() && ENVIRONMENT !== 'testing') {
-            command('actions:list'); // @codeCoverageIgnore
         }
 
         return $errors;

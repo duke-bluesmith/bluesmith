@@ -30,21 +30,6 @@ class JobModel extends BaseJobModel
     protected $withDeletedRelations = ['materials', 'options'];
 
     /**
-     * Permits
-     * 6 Domain list and create
-     * 6 Owner  read, write
-     * 6 Group  read, write
-     * 0 World  no read, no write
-     */
-    protected $mode = 06660;
-
-    // Table that joins this model's objects to its users
-    protected $usersPivot = 'jobs_users';
-
-    // Name of this object's ID in the pivot tables
-    protected $pivotKey = 'job_id';
-
-    /**
      * Associates a new Job with its User.
      */
     protected function logInsert(array $eventData)

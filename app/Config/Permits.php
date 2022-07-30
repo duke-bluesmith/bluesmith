@@ -4,9 +4,18 @@ namespace Config;
 
 class Permits extends \Tatter\Permits\Config\Permits
 {
-    // number of seconds to cache a permission
-    public $cacheDuration = 300;
-
-    // whether to continue instead of throwing exceptions
-    public $silent = false;
+    /**
+     * @var array<string,mixed>
+     */
+    public array $jobs = [
+        'admin'      => self::NOBODY,
+        'create'     => self::USERS,
+        'list'       => self::NOBODY,
+        'read'       => self::OWNERS,
+        'update'     => self::OWNERS,
+        'delete'     => self::OWNERS,
+        'userKey'    => null,
+        'pivotKey'   => 'job_id',
+        'pivotTable' => 'jobs_users',
+    ];
 }
