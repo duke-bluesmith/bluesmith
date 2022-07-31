@@ -37,14 +37,13 @@ final class FilesTest extends ProjectTestCase
     {
         parent::setUp();
 
-        config('Files')->storagePath = SUPPORTPATH . 'Files/';
+        config('Files')->setPath(SUPPORTPATH . 'Files/');
     }
 
     public function testUploadAlertsVolumeFail()
     {
         $expected = [
-            'class' => 'warning',
-            'text'  => lang('Actions.volumeFail'),
+            'warning' => [lang('Actions.volumeFail')],
         ];
 
         $file = fake(FileModel::class, [
@@ -54,8 +53,8 @@ final class FilesTest extends ProjectTestCase
         ]);
         Events::trigger('upload', $file);
 
-        $result = session()->get('alerts-queue');
+        $result = session()->getFlashData();
 
-        $this->assertSame([$expected], $result);
+        $this->assertSame($expected, $result);
     }
 }

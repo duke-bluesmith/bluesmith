@@ -27,7 +27,7 @@ final class Wizard
         $steps    = [];
         $step     = null;
         $position = -1;
-        $managed  = (bool) $job->stage->action->role;
+        $managed  = $job->getStage()->getAction()::getAttributes()['role'] !== '';
         $previous = $job->getStage()->getPrevious();
         $next     = $job->getStage()->getNext();
         $nextUrl  = null;

@@ -58,7 +58,7 @@ abstract class ProjectTestCase extends CIUnitTestCase
     {
         parent::setUpBeforeClass();
 
-        helper(['alerts', 'auth', 'currency', 'html', 'number']);
+        helper(['alerts', 'auth', 'currency', 'html', 'number', 'preferences']);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\BaseAction;
 use App\Entities\User;
+use App\Factories\MerchantFactory;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -34,7 +35,7 @@ class PaymentAction extends BaseAction
         // Load Merchants and filter by eligibility
         $merchants = [];
 
-        foreach (service('handlers', 'Merchants')->findAll() as $class) {
+        foreach (MerchantFactory::findAll() as $class) {
             $merchant = new $class();
             if ($merchant->eligible($user)) {
                 $merchants[] = $merchant;

@@ -8,6 +8,7 @@ use Faker\Generator;
 use Tatter\Permits\Traits\PermitsTrait;
 use Tatter\Relations\Traits\ModelTrait;
 use Tatter\Workflows\Entities\Job as BaseJob;
+use Tatter\Workflows\Factories\ActionFactory;
 use Tatter\Workflows\Models\JobModel as BaseJobModel;
 
 /**
@@ -24,7 +25,7 @@ class JobModel extends BaseJobModel
     protected $with                 = ['options'];
     protected $returnType           = Job::class;
     protected $allowedFields        = ['name', 'summary', 'workflow_id', 'stage_id', 'material_id'];
-    protected $afterInsert          = ['clearCompiledRows', 'logInsert'];
+    protected $afterInsert          = ['clearCompiledRows', 'logInsert', 'setOwner'];
     protected $afterUpdate          = ['clearCompiledRows', 'logUpdate'];
     protected $afterDelete          = ['clearCompiledRows'];
     protected $withDeletedRelations = ['materials', 'options'];
@@ -32,10 +33,8 @@ class JobModel extends BaseJobModel
     /**
      * Associates a new Job with its User.
      */
-    protected function logInsert(array $eventData)
+    protected function setOwner(array $eventData)
     {
-        parent::logInsert($eventData);
-
         if ($eventData['result'] && $userId = user_id()) {
             $this->addUserToJob($userId, $eventData['id']);
         }
@@ -74,16 +73,23 @@ class JobModel extends BaseJobModel
      */
     protected function fetchCompiledRows(): array
     {
-        return $this->builder()
-            ->select('jobs.*, methods.name AS method, users.id AS user_id, users.firstname, users.lastname, workflows.name AS workflow, actions.name AS action, actions.role')
+        $rows   = [];
+        $result = $this->builder()
+            ->select('jobs.*, methods.name AS method, users.id AS user_id, users.firstname, users.lastname, workflows.name AS workflow, stages.action_id as action')
             ->join('materials', 'jobs.material_id = materials.id', 'left')
             ->join('methods', 'materials.method_id = methods.id', 'left')
             ->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
             ->join('users', 'jobs_users.user_id = users.id', 'left')
             ->join('workflows', 'jobs.workflow_id = workflows.id')
             ->join('stages', 'jobs.stage_id = stages.id', 'left')
-            ->join('actions', 'stages.action_id = actions.id', 'left')
             ->get()->getResultArray();
+
+        foreach ($result as $row) {
+            $row['role'] = $row['action'] ? ActionFactory::find($row['action'])::getAttributes()['role'] : '';
+            $rows[]      = $row;
+        }
+
+        return $rows;
     }
 
     /**

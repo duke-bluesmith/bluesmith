@@ -31,11 +31,6 @@ final class SimulatorTest extends ProjectTestCase
         }
     }
 
-    public function testDoesRegisterAppActions()
-    {
-        $this->seeInDatabase('actions', ['uid' => 'approve']);
-    }
-
     public function testDoesAssignUsersToGroups()
     {
         // Gather the groups

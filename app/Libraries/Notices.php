@@ -10,6 +10,7 @@ use Countable;
 use Generator;
 use IteratorAggregate;
 use Tatter\Chat\Models\MessageModel;
+use Tatter\Workflows\Factories\ActionFactory;
 
 /**
  * Notices Class
@@ -66,23 +67,26 @@ final class Notices implements Countable, IteratorAggregate
     private function getFromStaffJobs(): void
     {
         foreach (model(JobModel::class)->builder()
-            ->select('jobs.*, actions.summary, users.id AS user_id, users.firstname, users.lastname')
+            ->select('jobs.*, users.id AS user_id, users.firstname, users.lastname')
             ->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
             ->join('users', 'jobs_users.user_id = users.id', 'left')
             ->join('stages', 'jobs.stage_id = stages.id', 'left')
-            ->join('actions', 'stages.action_id = actions.id', 'left')
             ->where('jobs.deleted_at', null)
-            ->where('actions.role', 'manageJobs')
             ->get()->getResultArray() as $row) {
-            $this->notices[$row['id']] = new Notice([
-                'job_id'     => $row['id'],
-                'job_name'   => $row['name'],
-                'user_id'    => $row['user_id'],
-                'user_name'  => $row['firstname'] . ' ' . $row['lastname'],
-                'status'     => 'Awaiting Staff',
-                'content'    => $row['summary'] ?: '[empty]',
-                'created_at' => $row['updated_at'],
-            ]);
+
+            // Filter by staff Actions
+            $action = ActionFactory::find($row['action_id'])::getAttributes();
+            if ($action['role'] === 'manageJobs') {
+                $this->notices[$row['id']] = new Notice([
+                    'job_id'     => $row['id'],
+                    'job_name'   => $row['name'],
+                    'user_id'    => $row['user_id'],
+                    'user_name'  => $row['firstname'] . ' ' . $row['lastname'],
+                    'status'     => 'Awaiting Staff',
+                    'content'    => $action['summary'] ?: '[empty]',
+                    'created_at' => $row['updated_at'],
+                ]);
+            }
         }
     }
 

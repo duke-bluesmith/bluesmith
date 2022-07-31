@@ -1,6 +1,6 @@
 
-	<?php if ($action->role === ''): ?>
-	<h3><?= $action->name ?></h3>
+	<?php if ($action::getAttributes()['role'] === ''): ?>
+	<h3><?= $action::getAttributes()['name'] ?></h3>
 	<?php endif; ?>
 
 	<h4>for &ldquo;<?= $job->name ?>&rdquo;</h4>
@@ -10,6 +10,6 @@
 		<?= \App\Libraries\Wizard::fromJob($job) ?>
 	</div>
 
-	<p><?= lang('Actions.' . $action->uid . 'Help') ?></p>
+	<p><?= lang('Actions.' . $action::HANDLER_ID . 'Help') ?></p>
 
 	<hr class="my-4">

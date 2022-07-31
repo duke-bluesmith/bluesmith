@@ -90,10 +90,8 @@ final class EstimateTest extends ProjectTestCase
         $this->dontSeeInDatabase('emails_jobs', ['job_id' => $this->job->id]);
 
         // Check for the alert
-        $this->assertArrayHasKey('alerts-queue', $_SESSION);
         $this->assertSame([
-            'class' => 'warning',
-            'text'  => 'Unable to locate user #42',
-        ], $_SESSION['alerts-queue'][0]);
+            'warning' => ['Unable to locate user #42'],
+        ], session()->getFlashData());
     }
 }

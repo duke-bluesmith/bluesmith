@@ -25,24 +25,11 @@
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#307093">
 
-	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
-
-	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
-
-	<?= service('assets')->css() ?>
-
-	<?= service('alerts')->css() ?>
-
-	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
-
 	<?php $this->renderSection('headerAssets'); ?>
 
 </head>
 <body class="hold-transition sidebar-mini accent-blue layout-footer-fixed">
 <div class="wrapper">
-
-	<?= service('alerts')->display() ?>
-
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-blue navbar-light">
 		<!-- Left navbar links -->

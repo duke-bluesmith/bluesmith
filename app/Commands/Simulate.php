@@ -29,7 +29,7 @@ class Simulate extends BaseCommand
         $db->disableForeignKeyChecks();
 
         // Truncate the target tables
-        foreach (['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'] as $table) {
+        foreach (['jobs', 'materials', 'methods', 'stages', 'users', 'workflows'] as $table) {
             $db->table($table)->truncate();
         }
 
