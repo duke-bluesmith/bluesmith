@@ -12,15 +12,12 @@ namespace App\Actions;
  */
 class PostprintAction extends PrintAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Process',
+    public const HANDLER_ID = 'postprint';
+    public const ATTRIBUTES = [
         'name'     => 'Print Post-Process',
-        'uid'      => 'postprint',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-broom',
+        'category' => 'Process',
         'summary'  => 'Staff post-processes objects',
         'header'   => 'Print Post-Process',
         'button'   => 'Processing Complete',

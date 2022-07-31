@@ -3,13 +3,22 @@
 namespace Config;
 
 use App\Models\JobModel;
+use Tatter\Workflows\Config\Workflows as BaseConfig;
 
-class Workflows extends \Tatter\Workflows\Config\Workflows
+class Workflows extends BaseConfig
 {
-    // The model to use for jobs
+    /**
+     * The model to use for jobs.
+     *
+     * @var class-string<JobModel>
+     */
     public string $jobModel = JobModel::class;
 
-    // Views to display for each function
+    /**
+     * Views to display for various function.
+     *
+     * @var array<string,string>
+     */
     public array $views = [
         'job'      => 'account/job',
         'messages' => 'Tatter\Workflows\Views\messages',

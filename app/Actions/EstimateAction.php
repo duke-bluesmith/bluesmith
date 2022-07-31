@@ -11,15 +11,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class EstimateAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Assess',
+    public const HANDLER_ID = 'estimate';
+    public const ATTRIBUTES = [
         'name'     => 'Estimate',
-        'uid'      => 'estimate',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-balance-scale-right',
+        'category' => 'Assess',
         'summary'  => 'Staff issues estimate',
         'header'   => 'Issue Estimate',
         'button'   => 'Email Estimate',

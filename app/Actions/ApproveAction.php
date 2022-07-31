@@ -7,15 +7,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class ApproveAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Assess',
+    public const HANDLER_ID = 'approve';
+    public const ATTRIBUTES = [
         'name'     => 'Approve',
-        'uid'      => 'approve',
         'role'     => '',
         'icon'     => 'fas fa-thumbs-up',
+        'category' => 'Assess',
         'summary'  => 'Client approves the estimate',
         'header'   => 'Approval',
         'button'   => 'Approve Estimate',

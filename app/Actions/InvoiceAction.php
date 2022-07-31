@@ -11,22 +11,48 @@ use App\Models\LedgerModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use Tatter\Workflows\Entities\Job;
 
 class InvoiceAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Complete',
+    public const HANDLER_ID = 'invoice';
+    public const ATTRIBUTES = [
         'name'     => 'Invoice',
-        'uid'      => 'invoice',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-receipt',
+        'category' => 'Complete',
         'summary'  => 'Staff issues an invoice for actual charges',
         'header'   => 'Create Invoice',
         'button'   => 'Send Invoice',
     ];
+
+    /**
+     * Creates the initial invoice Ledger from the estimate Ledger.
+     *
+     * @param \App\Entities\Job $job
+     */
+    public static function up(Job $job): Job
+    {
+        // If there is no estimate then create a new one
+        if (! $job->getInvoice()) {
+            $ledgerId = model(LedgerModel::class)->insert([
+                'job_id'   => $job->id,
+                'estimate' => 0,
+            ]);
+
+            // Add Charges from the estimate
+            foreach ($job->getEstimate(true)->charges ?? [] as $charge) {
+                model(ChargeModel::class)->insert([
+                    'ledger_id' => $ledgerId,
+                    'name'      => $charge->name,
+                    'amount'    => $charge->amount,
+                    'quantity'  => $charge->quantity,
+                ]);
+            }
+        }
+
+        return $job;
+    }
 
     /**
      * Displays the invoice form.
@@ -119,29 +145,5 @@ class InvoiceAction extends BaseAction
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * Create the initial invoice Ledger from the estimate Ledger.
-     */
-    public function up()
-    {
-        // If there is no estimate then create a new one
-        if (! $this->job->getInvoice()) {
-            $ledgerId = model(LedgerModel::class)->insert([
-                'job_id'   => $this->job->id,
-                'estimate' => 0,
-            ]);
-
-            // Add Charges from the estimate
-            foreach ($this->job->getEstimate(true)->charges ?? [] as $charge) {
-                model(ChargeModel::class)->insert([
-                    'ledger_id' => $ledgerId,
-                    'name'      => $charge->name,
-                    'amount'    => $charge->amount,
-                    'quantity'  => $charge->quantity,
-                ]);
-            }
-        }
     }
 }

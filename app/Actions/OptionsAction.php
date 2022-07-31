@@ -9,15 +9,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class OptionsAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    public const HANDLER_ID = 'options';
+    public const ATTRIBUTES = [
         'name'     => 'Print Options',
-        'uid'      => 'options',
         'role'     => '',
         'icon'     => 'fas fa-cogs',
+        'category' => 'Define',
         'summary'  => 'Client specifies method, materials, and options',
         'header'   => 'Select Options',
         'button'   => 'Options Selected',

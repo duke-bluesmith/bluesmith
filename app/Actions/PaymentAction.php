@@ -11,15 +11,12 @@ use Tatter\Workflows\Entities\Action;
 
 class PaymentAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Complete',
+    public const HANDLER_ID = 'payment';
+    public const ATTRIBUTES = [
         'name'     => 'Payment',
-        'uid'      => 'payment',
         'role'     => '',
         'icon'     => 'fas fa-money-check',
+        'category' => 'Complete',
         'summary'  => 'Client submits payment for charges',
         'header'   => 'Submit Payment',
         'button'   => 'Done Paying',
@@ -106,7 +103,7 @@ class PaymentAction extends BaseAction
         // Attempt to authorize with the Merchant
         $payment = $merchant->authorize($user, $this->job->getInvoice(), $amount, $data);
         if (null !== $payment->code) {
-            $message = $payment->reason ?: lang('Payment.unauthorized', [$this->attributes['code']]);
+            $message = $payment->reason ?: lang('Payment.unauthorized', [$payment->code]);
 
             return redirect()->back()->withInput()->with('error', $message);
         }
@@ -122,7 +119,7 @@ class PaymentAction extends BaseAction
         // Otherwise $result was null and Payment is done, check for failures
         $payment = model(PaymentModel::class)->find($payment->id);
         if ($payment->code !== 0) {
-            $message = $payment->reason ?: lang('Payment.failure', [$this->attributes['code']]);
+            $message = $payment->reason ?: lang('Payment.failure', [$payment->code]);
 
             return redirect()->back()->withInput()->with('error', $message);
         }

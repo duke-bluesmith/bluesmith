@@ -6,15 +6,12 @@ use App\BaseAction;
 
 class PrepayAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    public const HANDLER_ID = 'prepay';
+    public const ATTRIBUTES = [
         'name'     => 'Prepay',
-        'uid'      => 'prepay',
         'role'     => '',
         'icon'     => 'fas fa-comments-dollar',
+    	'category' => 'Define',
         'summary'  => 'Client submits payment in advance',
         'header'   => 'Prepay',
         'button'   => 'Prepayment Processed',
