@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Entities\Job;
-use App\Models\JobModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use Tatter\Workflows\BaseAction as ModuleBaseAction;
 
@@ -27,7 +26,7 @@ abstract class BaseAction extends ModuleBaseAction
      */
     protected function render(string $view, array $data = []): ResponseInterface
     {
-    	$attributes = static::getAttributes();
+        $attributes = static::getAttributes();
 
         // Determine the text for the button based on the next stage
         $next = $this->job->getStage()->getNext();

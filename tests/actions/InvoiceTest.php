@@ -32,7 +32,7 @@ final class InvoiceTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'invoice';
+    protected $actionId = 'invoice';
 
     public function testUpCreatesInvoice()
     {

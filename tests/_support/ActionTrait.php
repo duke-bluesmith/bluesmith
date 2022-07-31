@@ -7,7 +7,8 @@ use App\Models\JobModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Test\TestResponse;
 use RuntimeException;
-use Tatter\Workflows\Entities\Action;
+use Tatter\Workflows\BaseAction;
+use Tatter\Workflows\Factories\ActionFactory;
 use Tatter\Workflows\Models\StageModel;
 use Tatter\Workflows\Models\WorkflowModel;
 
@@ -16,12 +17,12 @@ use Tatter\Workflows\Models\WorkflowModel;
  *
  * Support components for testing Actions.
  *
- * @property string $actionUid The Action to test. Must be set by child class.
+ * @property string $actionId The Action to test. Must be set by child class.
  */
 trait ActionTrait
 {
     /**
-     * @var Action
+     * @var BaseAction
      */
     protected $action;
 
@@ -31,7 +32,7 @@ trait ActionTrait
     protected $job;
 
     /**
-     * Fakes a Job and initializes the Action identified by $actionUid
+     * Fakes a Job and initializes the Action identified by $actionId
      */
     protected function setUpActionTrait(): void
     {
@@ -47,8 +48,8 @@ trait ActionTrait
         $this->job = fake(JobModel::class);
 
         // Locate the Action based on its UID
-        if (! $class = handlers('Actions')->find($this->actionUid)) {
-            throw new RuntimeException('Unable to locate an Action for ' . $this->actionUid);
+        if (! $class = ActionFactory::find($this->actionId)) {
+            throw new RuntimeException('Unable to locate an Action for ' . $this->actionId);
         }
 
         // Create the Action

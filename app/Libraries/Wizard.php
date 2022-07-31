@@ -33,7 +33,7 @@ final class Wizard
         $nextUrl  = null;
 
         foreach ($job->getWorkflow()->getStages() as $stage) {
-        	$attributes = $stage->getAction()::getAttributes();
+            $attributes = $stage->getAction()::getAttributes();
 
             // Check for an early completion
             if (! $managed && $position === 1 && $attributes['role'] !== '') {

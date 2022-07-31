@@ -32,7 +32,7 @@ final class EstimateTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'estimate';
+    protected $actionId = 'estimate';
 
     /**
      * Creates an estimate Ledger and adds a Charge

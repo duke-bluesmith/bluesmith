@@ -14,7 +14,7 @@ class PrintAction extends BaseAction
         'name'     => 'Print',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-cubes',
-    	'category' => 'Process',
+        'category' => 'Process',
         'summary'  => 'Staff prints objects',
         'header'   => 'Print',
         'button'   => 'Printing Complete',

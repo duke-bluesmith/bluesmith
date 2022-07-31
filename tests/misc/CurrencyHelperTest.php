@@ -1,6 +1,5 @@
 <?php
 
-use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
 /**
@@ -8,8 +7,6 @@ use Tests\Support\ProjectTestCase;
  */
 final class CurrencyHelperTest extends ProjectTestCase
 {
-    use CurrencyTrait;
-
     public function testPriceToScaled()
     {
         $result = price_to_scaled(1000);

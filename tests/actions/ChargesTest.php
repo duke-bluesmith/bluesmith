@@ -31,7 +31,7 @@ final class ChargesTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'charges';
+    protected $actionId = 'charges';
 
     public function testUpCreatesEstimate()
     {

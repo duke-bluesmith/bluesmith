@@ -3,7 +3,10 @@
 namespace Tests\Support;
 
 use App\Database\Seeds\InitialSeeder;
+use CodeIgniter\Settings\Handlers\ArrayHandler;
+use CodeIgniter\Settings\Settings;
 use CodeIgniter\Test\CIUnitTestCase;
+use Config\Services;
 use Nexus\PHPUnit\Extension\Expeditable;
 
 /**
@@ -55,6 +58,20 @@ abstract class ProjectTestCase extends CIUnitTestCase
     {
         parent::setUpBeforeClass();
 
-        helper(['alerts', 'auth', 'html']);
+        helper(['alerts', 'auth', 'currency', 'html', 'number']);
+    }
+
+    /**
+     * Force Settings ArrayHandler for faster & easier tests.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $config           = config('Settings');
+        $config->handlers = ['array'];
+        $settings         = new Settings($config);
+
+        Services::injectMock('settings', $settings);
     }
 }

@@ -31,7 +31,7 @@ final class FilesTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'files';
+    protected $actionId = 'files';
 
     protected function setUp(): void
     {
