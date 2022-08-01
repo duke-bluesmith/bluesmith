@@ -43,7 +43,7 @@ in the CodeIgniter [User Guide](https://codeigniter4.github.io/userguide/install
 
 ### Install/Upgrade
 
-Run the provided **upgrade.sh** script which will do the following:
+Run the provided **install.sh** script which will do the following:
 
 1. Install all packages and dependencies with the following command in the root directory:
 	* `composer install`
@@ -52,7 +52,9 @@ Run the provided **upgrade.sh** script which will do the following:
 3. Seed the database with the necessary initial values:
 	* `php spark db:seed InitialSeeder`
 4. Publish asset files to the web root:
-	* `php spark assets:publish`
+	* `php spark assets`
+5. Locate and cache handlers:
+	* `php spark handlers:cache`
 
 ## Customization
 
