@@ -49,7 +49,7 @@ Run the provided **upgrade.sh** script which will do the following:
 	* `composer install`
 2. Migrate the database:
 	* `php spark migrate -all`
-3. Seed the database with the necessary initial settings:
+3. Seed the database with the necessary initial values:
 	* `php spark db:seed InitialSeeder`
 4. Publish asset files to the web root:
 	* `php spark assets:publish`
@@ -62,7 +62,7 @@ your institution's flair. You should leverage the included
 themes or even replace the default theme (hint: `./spark themes:add`).
 
 There are a number of places where branding can be changed centrally from the
-[Settings Library](https://github.com/tattersoftware/codeigniter4-settings), and a built-in
+[Preferences Library](https://github.com/tattersoftware/codeigniter4-preferences), and a built-in
 CMS that allows for customized text in various places.
 
 ## Extending

@@ -84,3 +84,10 @@
 	<?= form_close() ?>
 
 <?= $this->endSection() ?>
+<?= $this->section('footerAssets') ?>
+<script>
+	function selectMethod(methodId) {
+		loadModal(apiUrl + 'materials?method_id=' + methodId);
+	}
+</script>
+<?= $this->endSection() ?>

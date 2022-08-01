@@ -44,7 +44,11 @@ class Filters extends BaseConfig
         ],
         'after' => [
             'public'  => ['except' => ['api/*', 'manage*', 'actions*', 'emails/templates*', 'files/export/*', 'files/upload', 'workflows*']],
+            'alerts'  => ['except' => 'api/*'],
+            'assets'  => ['except' => 'api/*'],
+            'themes'  => ['except' => 'api/*'],
             'toolbar' => ['except' => 'api/*'],
+            'visits',
             // 'honeypot',
         ],
     ];

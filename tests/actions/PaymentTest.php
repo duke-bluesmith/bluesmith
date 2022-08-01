@@ -33,7 +33,7 @@ final class PaymentTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'payment';
+    protected $actionId = 'payment';
 
     /**
      * Creates an invoice Ledger and adds a Charge

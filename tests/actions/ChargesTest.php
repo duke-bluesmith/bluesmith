@@ -31,11 +31,11 @@ final class ChargesTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'charges';
+    protected $actionId = 'charges';
 
     public function testUpCreatesEstimate()
     {
-        $this->expectNull('up');
+        $this->action->up($this->job);
 
         $this->seeInDatabase('ledgers', [
             'job_id'   => $this->job->id,

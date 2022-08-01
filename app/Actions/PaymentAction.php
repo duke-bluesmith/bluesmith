@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\BaseAction;
 use App\Entities\User;
+use App\Factories\MerchantFactory;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -11,15 +12,12 @@ use Tatter\Workflows\Entities\Action;
 
 class PaymentAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Complete',
+    public const HANDLER_ID = 'payment';
+    public const ATTRIBUTES = [
         'name'     => 'Payment',
-        'uid'      => 'payment',
         'role'     => '',
         'icon'     => 'fas fa-money-check',
+        'category' => 'Complete',
         'summary'  => 'Client submits payment for charges',
         'header'   => 'Submit Payment',
         'button'   => 'Done Paying',
@@ -37,7 +35,7 @@ class PaymentAction extends BaseAction
         // Load Merchants and filter by eligibility
         $merchants = [];
 
-        foreach (service('handlers', 'Merchants')->findAll() as $class) {
+        foreach (MerchantFactory::findAll() as $class) {
             $merchant = new $class();
             if ($merchant->eligible($user)) {
                 $merchants[] = $merchant;
@@ -45,7 +43,7 @@ class PaymentAction extends BaseAction
         }
 
         return $this->render('actions/payment', [
-            'invoice'   => $this->job->getInvoice(),
+            'invoice'   => $this->job->getInvoice(true),
             'merchants' => $merchants,
         ]);
     }
@@ -79,7 +77,7 @@ class PaymentAction extends BaseAction
         if (empty($data['merchant'])) {
             return redirect()->back()->withInput()->with('error', 'Please select a payment method.');
         }
-        if (! $class = service('handlers', 'Merchants')->find($data['merchant'])) {
+        if (! $class = MerchantFactory::find($data['merchant'])) {
             $message = 'Unable to locate payment method "' . $data['merchant'] . '"';
             log_message('error', $message);
 
@@ -106,7 +104,7 @@ class PaymentAction extends BaseAction
         // Attempt to authorize with the Merchant
         $payment = $merchant->authorize($user, $this->job->getInvoice(), $amount, $data);
         if (null !== $payment->code) {
-            $message = $payment->reason ?: lang('Payment.unauthorized', [$this->attributes['code']]);
+            $message = $payment->reason ?: lang('Payment.unauthorized', [$payment->code]);
 
             return redirect()->back()->withInput()->with('error', $message);
         }
@@ -122,7 +120,7 @@ class PaymentAction extends BaseAction
         // Otherwise $result was null and Payment is done, check for failures
         $payment = model(PaymentModel::class)->find($payment->id);
         if ($payment->code !== 0) {
-            $message = $payment->reason ?: lang('Payment.failure', [$this->attributes['code']]);
+            $message = $payment->reason ?: lang('Payment.failure', [$payment->code]);
 
             return redirect()->back()->withInput()->with('error', $message);
         }

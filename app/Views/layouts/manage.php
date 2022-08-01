@@ -12,7 +12,7 @@
 	<meta name="author" content="AdminLTE" />
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-	<title><?= service('settings')->brandName ?> | <?= $header ?? 'Admin' ?></title>
+	<title><?= preference('brandName') ?> | <?= $header ?? 'Admin' ?></title>
 
 	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('assets/favicon/apple-touch-icon.png') ?>">
@@ -25,24 +25,14 @@
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#307093">
 
-	<?= service('assets')->tag('vendor/tinymce/tinymce.min.js') ?>
+	<?php $adminLte = new \Tatter\Frontend\Bundles\AdminLTEBundle(); ?>
+	<?= $adminLte->head(); ?>
 
-	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
-
-	<?= service('assets')->css() ?>
-
-	<?= service('alerts')->css() ?>
-
-	<?= service('assets')->tag('vendor/adminlte/css/adminlte.min.css') ?>
-
-	<?= $this->renderSection('headerAssets') ?>
+	<?php $this->renderSection('headerAssets'); ?>
 
 </head>
 <body class="hold-transition sidebar-mini accent-blue layout-footer-fixed">
 <div class="wrapper">
-
-	<?= service('alerts')->display() ?>
-
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-blue navbar-light">
 		<!-- Left navbar links -->
@@ -84,8 +74,8 @@
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
 		<a href="<?= site_url('manage') ?>" class="brand-link">
-			<img src="<?= base_url(service('settings')->brandLogo) ?>" alt="Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
-			<span class="brand-text font-weight-light"><?= service('settings')->brandName ?></span>
+			<img src="<?= base_url(preference('brandLogo')) ?>" alt="Logo" class="brand-image img-circle elevation-3 bg-white" style="opacity: .8">
+			<span class="brand-text font-weight-light"><?= preference('brandName') ?></span>
 		</a>
 
 		<!-- Sidebar -->
@@ -132,6 +122,9 @@
 		<!-- Main content -->
 		<div class="content" style="min-height: 600px;">
 			<div class="container-fluid text-dark">
+				<aside id="alerts-wrapper">
+				{alerts}
+				</aside>
 
 				<?php if (isset($action) && $action instanceof \Tatter\Workflows\BaseAction): ?>
 				<?= $this->include('layouts/action_header') ?>
@@ -163,10 +156,10 @@
 	<footer class="main-footer">
 		<!-- To the right -->
 		<div class="float-right d-none d-sm-inline mr-4">
-			<?= service('settings')->brandName ?>
+			<?= preference('brandName') ?>
 		</div>
 		<!-- Default to the left -->
-		<strong>Copyright &copy; <?= date('Y') ?> <?= service('settings')->orgName ?></strong>
+		<strong>Copyright &copy; <?= date('Y') ?> <?= preference('orgName') ?></strong>
 	</footer>
 </div>
 <!-- ./wrapper -->
@@ -175,13 +168,16 @@
 <script>
 	var baseUrl = "<?= base_url() ?>";
 	var siteUrl = "<?= site_url() ?>";
+	var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 </script>
 
-<?= service('assets')->js() ?>
+<script>
+	<?= view('Tatter\Chat\Views\javascript') ?>
+</script>
 
-<?= service('assets')->tag('vendor/adminlte/js/adminlte.min.js') ?>
+<?= $adminLte->body() ?>
 
-<?= $this->renderSection('footerAssets') ?>
+<?php $this->renderSection('footerAssets'); ?>
 
 </body>
 </html>

@@ -31,31 +31,31 @@ final class FilesTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'files';
+    protected $actionId = 'files';
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        config('Files')->storagePath = SUPPORTPATH . 'Files/';
+        config('Files')->setPath(SUPPORTPATH . 'Files/');
     }
 
     public function testUploadAlertsVolumeFail()
     {
         $expected = [
-            'class' => 'warning',
-            'text'  => lang('Actions.volumeFail'),
+            'warning' => [lang('Actions.volumeFail')],
         ];
 
         $file = fake(FileModel::class, [
             'localname'  => 'invalid.stl',
             'clientname' => 'invalid.stl',
             'size'       => 12345,
+            'thumbnail'  => 'abc/def/hij',
         ]);
         Events::trigger('upload', $file);
 
-        $result = session()->get('alerts-queue');
+        $result = session()->getFlashData();
 
-        $this->assertSame([$expected], $result);
+        $this->assertSame($expected, $result);
     }
 }

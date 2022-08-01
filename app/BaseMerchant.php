@@ -8,7 +8,6 @@ use App\Entities\User;
 use App\Models\PaymentModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use RuntimeException;
-use Tatter\Handlers\BaseHandler;
 
 /**
  * Base Merchant Abstract Class
@@ -26,41 +25,23 @@ use Tatter\Handlers\BaseHandler;
  *
  * @see PaymentAction
  */
-abstract class BaseMerchant extends BaseHandler
+abstract class BaseMerchant
 {
-    /**
-     * Attributes for Tatter\Handlers
-     *
-     * @var array<string, mixed>
-     */
-    public $attributes;
-
-    /**
-     * Default set of attributes
-     *
-     * @var array<string, mixed>
-     */
-    private array $defaults = [
-        'name'    => '',
-        'uid'     => '',
-        'icon'    => 'fas money-bill-wave',
-        'summary' => '',
-    ];
+    public const HANDLER_ID = '';
 
     /**
      * Instance of the PaymentModel to use
      *
      * @var PaymentModel
      */
-    protected $model;
+    protected $payments;
 
     /**
-     * Merges default attributes with child and initializes the PaymentModel
+     * Initializes the PaymentModel
      */
-    public function __construct(?PaymentModel $model = null)
+    public function __construct(?PaymentModel $payments = null)
     {
-        $this->attributes = array_merge($this->defaults, $this->attributes);
-        $this->model      = $model ?? model(PaymentModel::class);
+        $this->payments = $payments ?? model(PaymentModel::class);
     }
 
     /**
@@ -79,7 +60,7 @@ abstract class BaseMerchant extends BaseHandler
      */
     protected function createPayment(User $user, Ledger $invoice, int $amount, ?int $code = null, string $reason = ''): Payment
     {
-        $result = model(PaymentModel::class)->insert([
+        $result = $this->payments->insert([
             'ledger_id' => $invoice->id,
             'user_id'   => $user->id,
             'amount'    => $amount,
@@ -95,7 +76,7 @@ abstract class BaseMerchant extends BaseHandler
         }
 
         // Return the new version from the database
-        return model(PaymentModel::class)->find($result);
+        return $this->payments->find($result);
     }
 
     /**
@@ -119,8 +100,23 @@ abstract class BaseMerchant extends BaseHandler
     {
         $balance = $this->balance($user);
 
-        return null === $balance || $balance > 0;
+        return ($balance === null) || ($balance > 0);
     }
+
+    /**
+     * Returns this Merchant's display name.
+     */
+    abstract public function getName(): string;
+
+    /**
+     * Returns this Merchant's icon class.
+     */
+    abstract public function getIcon(): string;
+
+    /**
+     * Returns this Merchant's summary.
+     */
+    abstract public function getSummary(): string;
 
     /**
      * Performs pre-payment verification and calls

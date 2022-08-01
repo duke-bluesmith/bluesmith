@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-use Tests\Support\CurrencyTrait;
 use Tests\Support\ProjectTestCase;
 
 /**
@@ -10,8 +9,6 @@ use Tests\Support\ProjectTestCase;
  */
 final class LedgerTest extends ProjectTestCase
 {
-    use CurrencyTrait;
-
     private Ledger $ledger;
 
     /**

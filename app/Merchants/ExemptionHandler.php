@@ -14,17 +14,22 @@ use RuntimeException;
 
 class ExemptionHandler extends BaseMerchant
 {
-    /**
-     * Attributes for Tatter\Handlers
-     *
-     * @var array<string, mixed>
-     */
-    public $attributes = [
-        'name'    => 'Exemption',
-        'uid'     => 'exemption',
-        'icon'    => 'fas fa-user-tie',
-        'summary' => 'Exempt an amount from payment.',
-    ];
+    public const HANDLER_ID = 'exemption';
+
+    public function getName(): string
+    {
+        return 'Exemption';
+    }
+
+    public function getIcon(): string
+    {
+        return 'fas fa-user-tie';
+    }
+
+    public function getSummary(): string
+    {
+        return 'Exempt an amount from payment.';
+    }
 
     /**
      * Checks a User for eligibility to use this Merchant.

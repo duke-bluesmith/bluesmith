@@ -71,7 +71,7 @@ class Materials extends ResourcePresenter
             return $this->actionFailed('create');
         }
 
-        $this->alert('success', lang('Forms.created', [$this->name]));
+        alert('success', lang('Forms.created', [$this->name]));
 
         return redirect()->to(site_url($this->names));
     }
@@ -98,7 +98,7 @@ class Materials extends ResourcePresenter
             return $this->actionFailed('update');
         }
 
-        $this->alert('success', lang('Forms.updated', [$this->name]));
+        alert('success', lang('Forms.updated', [$this->name]));
 
         return redirect()->to(site_url("{$this->names}/{$id}"));
     }
@@ -114,7 +114,7 @@ class Materials extends ResourcePresenter
 
         if (! $method = $methods->withDeleted()->with('materials')->find($methodId)) {
             $error = lang('Forms.notFound', ['method']);
-            $this->alert('danger', $error);
+            alert('danger', $error);
 
             return redirect()->back()->withInput()->with('errors', [$error]);
         }

@@ -33,6 +33,6 @@ class Note extends BaseEntity
         return (new GithubFlavoredMarkdownConverter([
             'html_input'         => 'strip',
             'allow_unsafe_links' => false,
-        ]))->convertToHtml($this->attributes['content']);
+        ]))->convert($this->attributes['content']);
     }
 }

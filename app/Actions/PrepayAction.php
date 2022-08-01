@@ -2,21 +2,23 @@
 
 namespace App\Actions;
 
-use App\BaseAction;
+use Tatter\Workflows\Actions\ButtonAction;
 
-class PrepayAction extends BaseAction
+class PrepayAction extends ButtonAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    use RenderTrait;
+
+    public const HANDLER_ID = 'prepay';
+    public const ATTRIBUTES = [
         'name'     => 'Prepay',
-        'uid'      => 'prepay',
         'role'     => '',
         'icon'     => 'fas fa-comments-dollar',
+        'category' => 'Core',
         'summary'  => 'Client submits payment in advance',
         'header'   => 'Prepay',
         'button'   => 'Prepayment Processed',
+        'view'     => 'Tatter\Workflows\Views\actions\button',
+        'prompt'   => 'By clicking below I agree to pay the final amount charged.',
+        'flag'     => 'Prepaid',
     ];
 }

@@ -23,10 +23,10 @@
 
 		<?php foreach ($merchants as $i => $merchant): ?>
 		<div class="custom-control custom-radio">
-			<input type="radio" id="merchant-<?= $i ?>" name="merchant" class="custom-control-input" value="<?= $merchant->uid ?>">
+			<input type="radio" id="merchant-<?= $i ?>" name="merchant" class="custom-control-input" value="<?= $merchant::HANDLER_ID ?>">
 			<label class="custom-control-label" for="merchant-<?= $i ?>">
-				<?= $merchant->name ?>
-				<i class="fas fa-info-circle" data-toggle="tooltip" title="<?= $merchant->summary ?>"></i>
+				<?= $merchant->getName() ?>
+				<i class="fas fa-info-circle" data-toggle="tooltip" title="<?= $merchant->getSummary() ?>"></i>
 			</label>
 
 			<?php if (null !== ($balance = $merchant->balance(user()))): ?>

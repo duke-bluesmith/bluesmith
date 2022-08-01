@@ -8,15 +8,12 @@ use Tatter\Files\Models\FileModel;
 
 class FilesAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    public const HANDLER_ID = 'files';
+    public const ATTRIBUTES = [
         'name'     => 'Files',
-        'uid'      => 'files',
         'role'     => '',
         'icon'     => 'fas fa-file-alt',
+        'category' => 'Define',
         'summary'  => 'Client selects or uploads files',
         'header'   => 'Select Files',
         'button'   => 'Files Selected',
@@ -28,9 +25,9 @@ class FilesAction extends BaseAction
     protected $files;
 
     /**
-     * Preloads the Files model and helper
+     * Preloads the Files model and helper.
      */
-    protected function initialize()
+    protected function initialize(): void
     {
         parent::initialize();
 

@@ -23,8 +23,8 @@ if (! function_exists('price_to_currency')) {
     {
         helper('number');
 
-        $unit ??= service('settings')->currencyUnit;
-        $scale ??= service('settings')->currencyScale;
+        $unit ??= preference('currencyUnit');
+        $scale ??= preference('currencyScale');
         $precision ??= log($scale, 10);
 
         // Convert, e.g. cents to dollars
@@ -50,7 +50,7 @@ if (! function_exists('price_to_scaled')) {
      */
     function price_to_scaled(int $price, ?int $scale = null, bool $format = false)
     {
-        $scale ??= service('settings')->currencyScale;
+        $scale ??= preference('currencyScale');
         $scaled    = $price / $scale;
         $precision = (int) log($scale, 10);
 
@@ -69,7 +69,7 @@ if (! function_exists('scaled_to_price')) {
      */
     function scaled_to_price(float $scaled, ?int $scale = null): int
     {
-        $scale ??= service('settings')->currencyScale;
+        $scale ??= preference('currencyScale');
         $price = $scaled * $scale;
 
         return (int) round($price);

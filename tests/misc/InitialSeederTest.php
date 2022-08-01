@@ -34,7 +34,7 @@ final class InitialSeederTest extends ProjectTestCase
         $result = model(WorkflowModel::class)->first()->stages;
 
         $this->assertCount(13, $result);
-        $this->assertSame('options', $result[3]->action->uid);
+        $this->assertSame('options', $result[3]->action_id);
     }
 
     public function testCreatesInviteEmailTemplate()

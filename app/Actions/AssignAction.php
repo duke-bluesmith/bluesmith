@@ -8,22 +8,34 @@ use App\Models\InviteModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use Tatter\Workflows\Entities\Job;
 
 class AssignAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    public const HANDLER_ID = 'clients';
+    public const ATTRIBUTES = [
         'name'     => 'Project Collaborators',
-        'uid'      => 'clients',
         'role'     => '',
         'icon'     => 'fas fa-user-friends',
+        'category' => 'Define',
         'summary'  => 'Client invites other collaboratos',
         'header'   => 'Project Collaborators',
         'button'   => 'Collaborators Invited',
     ];
+
+    /**
+     * If there are no clients then assign the current user.
+     *
+     * @param \App\Entities\Job $job
+     */
+    public static function up(Job $job): Job
+    {
+        if (empty($job->users)) {
+            $job->addUser(user_id());
+        }
+
+        return $job;
+    }
 
     /**
      * Displays the form
@@ -112,15 +124,5 @@ class AssignAction extends BaseAction
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * If there are no clients then assign the current user
-     */
-    public function up()
-    {
-        if (empty($this->job->users)) {
-            $this->job->addUser(user_id());
-        }
     }
 }

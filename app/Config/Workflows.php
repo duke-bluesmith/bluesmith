@@ -2,28 +2,30 @@
 
 namespace Config;
 
-class Workflows extends \Tatter\Workflows\Config\Workflows
+use App\Models\JobModel;
+use Tatter\Workflows\Config\Workflows as BaseConfig;
+
+class Workflows extends BaseConfig
 {
-    // Whether to continue instead of throwing exceptions
-    public $silent = false;
+    /**
+     * The model to use for jobs.
+     *
+     * @var class-string<JobModel>
+     */
+    public string $jobModel = JobModel::class;
 
-    // The model to use for jobs
-    public $jobModel = 'App\Models\JobModel';
-
-    // Layouts to use for jobs and administration
-    public $layouts = [
-        'public' => 'layouts/public',
-        'manage' => 'layouts/manage',
-    ];
-
-    // Views to display for each function
-    public $views = [
+    /**
+     * Views to display for various function.
+     *
+     * @var array<string,string>
+     */
+    public array $views = [
         'job'      => 'account/job',
         'messages' => 'Tatter\Workflows\Views\messages',
         'complete' => 'Tatter\Workflows\Views\complete',
         'deleted'  => 'Tatter\Workflows\Views\deleted',
         'filter'   => 'Tatter\Workflows\Views\filter',
         'workflow' => 'Tatter\Workflows\Views\workflow',
-        'info'     => 'actions/info',
+        'info'     => 'actions/info', // Unused, see App\Actions\InfoAction
     ];
 }

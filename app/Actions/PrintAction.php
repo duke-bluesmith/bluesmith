@@ -9,15 +9,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class PrintAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Process',
+    public const HANDLER_ID = 'print';
+    public const ATTRIBUTES = [
         'name'     => 'Print',
-        'uid'      => 'print',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-cubes',
+        'category' => 'Process',
         'summary'  => 'Staff prints objects',
         'header'   => 'Print',
         'button'   => 'Printing Complete',

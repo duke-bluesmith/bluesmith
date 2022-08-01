@@ -6,22 +6,31 @@ use App\BaseAction;
 use App\Libraries\Mailer;
 use App\Models\PageModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use Tatter\Workflows\Entities\Job;
 
 class TermsAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Define',
+    public const HANDLER_ID = 'terms';
+    public const ATTRIBUTES = [
         'name'     => 'Terms',
-        'uid'      => 'terms',
         'role'     => '',
         'icon'     => 'fas fa-file-contract',
+        'category' => 'Define',
         'summary'  => 'Client accepts terms of service',
         'header'   => 'Terms of Service',
         'button'   => 'Accept the Terms',
     ];
+
+    /**
+     * Runs on a Job when it regresses through the workflow.
+     */
+    public static function down(Job $job): Job
+    {
+        // Remove acceptance
+        $job->clearFlag('Accepted');
+
+        return $job;
+    }
 
     public function get(): ResponseInterface
     {
@@ -61,18 +70,5 @@ class TermsAction extends BaseAction
 
         // End the action
         return null;
-    }
-
-    /**
-     * Runs when job regresses back through the workflow.
-     *
-     * @return mixed
-     */
-    public function down()
-    {
-        // Remove acceptance
-        $this->job->clearFlag('Accepted');
-
-        return true;
     }
 }

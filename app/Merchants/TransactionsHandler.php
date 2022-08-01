@@ -14,26 +14,21 @@ use RuntimeException;
 
 class TransactionsHandler extends BaseMerchant
 {
-    /**
-     * Attributes for Tatter\Handlers
-     *
-     * @var array<string, mixed>
-     */
-    public $attributes = [
-        'name'    => 'Transactions',
-        'uid'     => 'transactions',
-        'icon'    => 'fas fa-cookie-bite',
-        'summary' => 'Use your internal currency credit.',
-    ];
+    public const HANDLER_ID = 'transactions';
 
-    /**
-     * Use the language setting to override the name
-     */
-    public function __construct()
+    public function getName(): string
     {
-        $this->attributes['name'] = lang('Pub.transactions');
+        return lang('Pub.transactions'); // "Bluechips" default
+    }
 
-        parent::__construct();
+    public function getIcon(): string
+    {
+        return 'fas fa-cookie-bite';
+    }
+
+    public function getSummary(): string
+    {
+        return 'Use your internal currency credit.';
     }
 
     /**

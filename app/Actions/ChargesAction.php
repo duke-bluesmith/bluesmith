@@ -7,22 +7,37 @@ use App\Models\ChargeModel;
 use App\Models\LedgerModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use Tatter\Workflows\Entities\Job;
 
 class ChargesAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Assess',
+    public const HANDLER_ID = 'charges';
+    public const ATTRIBUTES = [
         'name'     => 'Charges',
-        'uid'      => 'charges',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-file-invoice-dollar',
+        'category' => 'Assess',
         'summary'  => 'Staff reviews submission and sets charges',
         'header'   => 'Estimate Costs',
         'button'   => 'All Charges Added',
     ];
+
+    /**
+     * Creates an initial Estimate if Job does not have one.
+     *
+     * @param \App\Entities\Job $job
+     */
+    public static function up(Job $job): Job
+    {
+        if (! $job->getEstimate()) {
+            model(LedgerModel::class)->insert([
+                'job_id'   => $job->id,
+                'estimate' => 1,
+            ]);
+        }
+
+        return $job;
+    }
 
     /**
      * Displays the form for modifying Charges
@@ -116,19 +131,5 @@ class ChargesAction extends BaseAction
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * Runs when a job progresses forward through the workflow
-     */
-    public function up()
-    {
-        // If there is no estimate then create a new one
-        if (! $this->job->getEstimate()) {
-            model(LedgerModel::class)->insert([
-                'job_id'   => $this->job->id,
-                'estimate' => 1,
-            ]);
-        }
     }
 }

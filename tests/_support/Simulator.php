@@ -22,7 +22,7 @@ class Simulator extends BaseSimulator
      *
      * @param string[] $targets Array of target items to create
      */
-    public static function initialize($targets = ['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows'])
+    public static function initialize($targets = ['actions', 'jobs', 'materials', 'methods', 'stages', 'users', 'workflows']): void
     {
         parent::initialize(array_intersect(['actions', 'stages', 'workflows'], $targets));
 

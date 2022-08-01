@@ -25,13 +25,7 @@
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#ffffff">
 
-	<?= service('assets')->tag('vendor/jquery/jquery.min.js') ?>
-
-	<?= service('assets')->css() ?>
-
-	<?= view('Tatter\Themes\Views\css') ?>
-
-	<?= $this->renderSection('headerAssets') ?>
+	<?php $this->renderSection('headerAssets'); ?>
 
 </head>
 <body>
@@ -39,8 +33,8 @@
 		<div class="container">
 			<div id="banner-logo">
 				<p>
-					<a href="<?= service('settings')->orgUrl ?>"><img src="<?= base_url(service('settings')->orgLogo) ?>" height="60" class="align-middle" alt="logo"></a>
-					<a href="<?= site_url() ?>"><?= service('settings')->brandName ?></a>
+					<a href="<?= preference('orgUrl') ?>"><img src="<?= base_url(preference('orgLogo')) ?>" height="60" class="align-middle" alt="logo"></a>
+					<a href="<?= site_url() ?>"><?= preference('brandName') ?></a>
 				</p>
 			</div>
 
@@ -67,9 +61,10 @@
 		</div>
 	</nav>
 
-	<?= service('alerts')->display() ?>
-
 	<main id="main" role="main" class="container my-5">
+		<aside id="alerts-wrapper">
+		{alerts}
+		</aside>
 
 		<?php if (isset($action) && $action instanceof \Tatter\Workflows\BaseAction): ?>
 		<?= $this->include('layouts/action_header') ?>
@@ -80,14 +75,14 @@
 
 	<footer id="footer" class="footer fixed-bottom border-top">
 		<div class="float-left">
-			<a href="<?= service('settings')->orgUrl ?>"><img src="<?= base_url(service('settings')->orgLogo) ?>" height="45" alt="logo"></a>
+			<a href="<?= preference('orgUrl') ?>"><img src="<?= base_url(preference('orgLogo')) ?>" height="45" alt="logo"></a>
 		</div>
 
 		<div class="float-right copyright">
 			&copy; <?= date('Y') ?>
-			<?= service('settings')->orgName ?>
-			<?= service('settings')->orgAddress ?>
-			<?= service('settings')->orgPhone ?>
+			<?= preference('orgName') ?>
+			<?= preference('orgAddress') ?>
+			<?= preference('orgPhone') ?>
 		</div>
 	</footer>
 
@@ -97,9 +92,11 @@
 		var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 	</script>
 
-	<?= service('assets')->js() ?>
+	<script>
+		<?= view('Tatter\Chat\Views\javascript') ?>
+	</script>
 
-	<?= $this->renderSection('footerAssets') ?>
+	<?php $this->renderSection('footerAssets'); ?>
 
 </body>
 </html>

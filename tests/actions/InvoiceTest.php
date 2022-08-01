@@ -32,11 +32,11 @@ final class InvoiceTest extends ProjectTestCase
      *
      * @var string
      */
-    protected $actionUid = 'invoice';
+    protected $actionId = 'invoice';
 
     public function testUpCreatesInvoice()
     {
-        $this->expectNull('up');
+        $this->action->up($this->job);
 
         $this->seeInDatabase('ledgers', [
             'job_id'   => $this->job->id,
@@ -51,7 +51,7 @@ final class InvoiceTest extends ProjectTestCase
             'ledger_id' => $estimate->id,
         ]);
 
-        $this->expectNull('up');
+        $this->action->up($this->job);
 
         $this->seeInDatabase('charges', [
             'ledger_id' => $estimate->id,

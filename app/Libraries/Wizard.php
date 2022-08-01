@@ -27,20 +27,22 @@ final class Wizard
         $steps    = [];
         $step     = null;
         $position = -1;
-        $managed  = (bool) $job->stage->action->role;
-        $previous = $job->previous();
-        $next     = $job->next();
+        $managed  = $job->getStage()->getAction()::getAttributes()['role'] !== '';
+        $previous = $job->getStage()->getPrevious();
+        $next     = $job->getStage()->getNext();
         $nextUrl  = null;
 
-        foreach ($job->stages as $stage) {
+        foreach ($job->getWorkflow()->getStages() as $stage) {
+            $attributes = $stage->getAction()::getAttributes();
+
             // Check for an early completion
-            if (! $managed && $position === 1 && $stage->action->role !== '') {
+            if (! $managed && $position === 1 && $attributes['role'] !== '') {
                 break;
             }
 
             $data = [
-                'icon'    => $stage->action->icon,
-                'summary' => $stage->action->summary,
+                'icon'    => $attributes['icon'],
+                'summary' => $attributes['summary'],
             ];
 
             // Check for the current stage
@@ -50,13 +52,13 @@ final class Wizard
                 $position = 0;
                 if ($previous !== null) {
                     // Set the URL on the most recent Step
-                    $step->previousUrl = site_url($previous->action->getRoute($job->id));
+                    $step->previousUrl = site_url($previous->getRoute() . $job->id);
                 }
             }
             // Previous stage
             elseif ($position === -1) {
                 // Previous staff stages are orange
-                $data['color'] = $stage->action->role === ''
+                $data['color'] = $attributes['role'] === ''
                     ? 'primary'
                     : 'warning';
             }
@@ -76,7 +78,7 @@ final class Wizard
 
             if ($position === 0) {
                 $position = 1;
-                $nextUrl  = $next ? site_url($next->action->getRoute($job->id)) : '';
+                $nextUrl  = $next ? site_url($next->getRoute() . $job->id) : '';
             }
         }
 
@@ -109,6 +111,6 @@ final class Wizard
         $output .= '<div class="d-flex justify-content-between py-3">' . PHP_EOL;
         $output .= implode(PHP_EOL, $this->steps);
 
-        return $output . ('</div>' . PHP_EOL);
+        return $output . '</div>' . PHP_EOL;
     }
 }

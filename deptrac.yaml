@@ -102,6 +102,7 @@ parameters:
       - Vendor Entity
       - Vendor Model
     Config:
+      - Model
       - Service
       - Vendor Config
     Model:

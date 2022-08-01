@@ -4,7 +4,6 @@ namespace App\Controllers\Manage;
 
 use App\Controllers\BaseController;
 use App\Models\PageModel;
-use Tatter\Settings\Models\SettingModel;
 
 class Content extends BaseController
 {
@@ -55,17 +54,15 @@ class Content extends BaseController
      */
     public function branding(): string
     {
-        // Preload the Settings Library
-        $data['settings'] = service('settings');
         helper('date');
 
         // Check for form submission
         if ($post = $this->request->getPost()) {
+            $preferences = config('Preferences');
+
             foreach ($post as $name => $content) {
-                // Try to match a setting
-                if ($setting = model(SettingModel::class)->where('name', $name)->first()) {
-                    // Update the template (also clears the cache)
-                    model(SettingModel::class)->update($setting->id, ['content' => $content]);
+                if (property_exists($preferences, $name)) {
+                    preference($name, $content);
                 }
             }
 
@@ -78,6 +75,6 @@ class Content extends BaseController
             alert('success', 'Settings updated.');
         }
 
-        return view('content/branding', $data);
+        return view('content/branding');
     }
 }

@@ -8,15 +8,12 @@ use Tatter\Workflows\Entities\Action;
 
 class DeliverAction extends BaseAction
 {
-    /**
-     * @var array<string, string>
-     */
-    public $attributes = [
-        'category' => 'Complete',
+    public const HANDLER_ID = 'deliver';
+    public const ATTRIBUTES = [
         'name'     => 'Deliver',
-        'uid'      => 'deliver',
         'role'     => 'manageJobs',
         'icon'     => 'fas fa-truck',
+        'category' => 'Complete',
         'summary'  => 'Staff delivers objects to client',
         'header'   => 'Delivery',
         'button'   => 'Delivery Complete',

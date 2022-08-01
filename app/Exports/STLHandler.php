@@ -3,33 +3,27 @@
 namespace App\Exports;
 
 use CodeIgniter\HTTP\ResponseInterface;
-use Tatter\Exports\BaseExport;
+use Tatter\Exports\BaseExporter;
 
-class STLHandler extends BaseExport
+class STLHandler extends BaseExporter
 {
-    /**
-     * Attributes for Tatter\Handlers
-     *
-     * @var array<string, mixed>
-     */
-    public $attributes = [
-        'name'       => 'Preview',
-        'slug'       => 'stl',
-        'icon'       => 'fas fa-cube',
-        'summary'    => 'Preview a 3D model in the browser',
-        'extensions' => 'stl',
-        'ajax'       => false,
-        'direct'     => true,
-        'bulk'       => false,
-    ];
+    public const HANDLER_ID = 'stl';
 
-    /**
-     * Checks for AJAX to tag image, otherwise reads out the file directly.
-     */
-    protected function _process(): ?ResponseInterface
+    protected static function getAttributes(): array
     {
-        //		log_message('debug', print_r($this->request->headers(), true));
+        return [
+            'name'       => 'Preview',
+            'icon'       => 'fas fa-cube',
+            'summary'    => 'Preview a 3D model in the browser',
+            'ajax'       => false,
+            'direct'     => true,
+            'bulk'       => false,
+            'extensions' => ['stl'],
+        ];
+    }
 
+    protected function doProcess(): ResponseInterface
+    {
         // If the Referer is the export page than this is the ThreeJS request for the file
         return $this->request->hasHeader('Referer') && strpos($this->request->getHeaderLine('Referer'), 'export/stl')
             ? $this->processFile()
