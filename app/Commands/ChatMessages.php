@@ -2,9 +2,9 @@
 
 namespace App\Commands;
 
-use App\Database\Seeds\InitialSeeder;
 use App\Libraries\Mailer;
 use App\Models\JobModel;
+use App\Models\UserModel;
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\I18n\Time;
 use RuntimeException;
@@ -18,22 +18,23 @@ class ChatMessages extends BaseCommand
     protected $usage       = 'email:messages';
 
     public function run(array $params)
-	{
+    {
         helper(['text']);
 
-		$jobs = model(JobModel::class);
-		foreach ($this->getRows() as $row) {
-			if (! $job = $jobs->withDeleted()->find($row['job_id'])) {
-				throw new RuntimeException('Missing Job exists in Chat messages: ' . $row['job_id']);
-			}
+        $jobs = model(JobModel::class);
 
-			if ($recipients = array_column($job->users, 'email')) {
-				$summary = character_limiter($row['content'], 200) ?: '[empty]';
+        foreach ($this->getRows() as $row) {
+            if (! $job = $jobs->withDeleted()->find($row['job_id'])) {
+                throw new RuntimeException('Missing Job exists in Chat messages: ' . $row['job_id']);
+            }
 
-				Mailer::forChatMessages($recipients, $job, $summary);
-			}
-		}
-	}
+            if ($recipients = array_column($job->users, 'email')) {
+                $summary = character_limiter($row['content'], 200) ?: '[empty]';
+
+                Mailer::forChatMessages($recipients, $job, $summary);
+            }
+        }
+    }
 
     /**
      * Detects all recent staff Chat activity.
@@ -47,6 +48,7 @@ class ChatMessages extends BaseCommand
 
         // Get the last hour of messages
         $rows = model(MessageModel::class)
+            ->builder()
             ->select('chat_messages.*, chat_conversations.uid, chat_participants.user_id')
             ->join('chat_conversations', 'chat_messages.conversation_id = chat_conversations.id')
             ->join('chat_participants', 'chat_messages.participant_id = chat_participants.id')

@@ -2,7 +2,6 @@
 
 namespace App\Config;
 
-use App\Tasks\JobReminder;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Tasks\Scheduler;
 
@@ -10,8 +9,6 @@ class Tasks extends BaseConfig
 {
     /**
      * Register any tasks within this method for the application.
-     *
-     * @param Scheduler $schedule
      */
     public function init(Scheduler $schedule)
     {

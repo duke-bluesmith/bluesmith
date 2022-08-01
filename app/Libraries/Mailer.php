@@ -93,7 +93,7 @@ final class Mailer
             'preview'     => 'You have a job awaiting your input.',
             'job_name'    => $job->name,
             'job_url'     => site_url('jobs/show/' . $job->id),
-            'description' => $job->stage->action->summary,
+            'description' => $job->getStage()->getAction()::getAttributes()['summary'],
         ])->setTo($recipients);
 
         if ($emailId = self::send($emailer)) {

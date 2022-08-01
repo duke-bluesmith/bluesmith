@@ -2,7 +2,6 @@
 
 namespace App\Commands;
 
-use App\Database\Seeds\InitialSeeder;
 use App\Libraries\Mailer;
 use App\Models\JobModel;
 use CodeIgniter\CLI\BaseCommand;
@@ -17,55 +16,48 @@ class JobReminder extends BaseCommand
     protected $usage       = 'email:reminder';
 
     public function run(array $params)
-	{
-		$jobs = model(JobModel::class);
-		foreach ($this->getRows() as $row) {
-			if (empty($row['id'])) {
-				throw new RuntimeException('Missing Job ID in Job Rows');
-			}
-			if (! $job = $jobs->find($row['id'])) {
-				throw new RuntimeException('Missing Job exists in Job Rows: ' . $row['id']);
-			}
+    {
+        $jobs = model(JobModel::class);
 
-			if ($recipients = array_column($job->users, 'email')) {
-				Mailer::forJobReminder($recipients, $job);
-			}
-		}
-	}
+        foreach ($this->getRows() as $row) {
+            if (empty($row['id'])) {
+                throw new RuntimeException('Missing Job ID in Job Rows');
+            }
+            if (! $job = $jobs->find($row['id'])) {
+                throw new RuntimeException('Missing Job exists in Job Rows: ' . $row['id']);
+            }
 
-	/**
-	 * Returns all active client jobs as job rows.
-	 * Split out for testing.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function getRows()
-	{
-		// Get all active client jobs
-		$filter = static function ($row) {
-			if ($row['deleted_at'] !== null) {
-				return false;
-			}
+            if ($recipients = array_column($job->users, 'email')) {
+                Mailer::forJobReminder($recipients, $job);
+            }
+        }
+    }
 
-			if ($row['stage_id'] === null) {
-				return false;
-			}
+    /**
+     * Returns all active client jobs as job rows.
+     * Split out for testing.
+     *
+     * @return array<string, mixed>
+     */
+    public function getRows()
+    {
+        // Get all active client jobs
+        $filter = static function ($row) {
+            if ($row['deleted_at'] !== null) {
+                return false;
+            }
 
-			if ($row['role'] !== '') {
-				return false;
-			}
+            if ($row['stage_id'] === null) {
+                return false;
+            }
 
-			if ($row['role'] !== '') {
-				return false;
-			}
+            if ($row['role'] !== '') {
+                return false;
+            }
 
-			if ($row['updated_at']->isAfter(Time::today())) {
-				return false;
-			}
-
-            return true;
+            return ! $row['updated_at']->isAfter(Time::today());
         };
 
-		return model(JobModel::class)->getCompiledRows($filter);
-	}
+        return model(JobModel::class)->getCompiledRows($filter);
+    }
 }

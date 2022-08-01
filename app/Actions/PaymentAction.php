@@ -87,7 +87,7 @@ class PaymentAction extends BaseAction
 
         // Verify Merchant eligibility
         if (! $merchant->eligible($user)) {
-            return redirect()->back()->withInput()->with('error', 'You are not eligible for payments with ' . $merchant->name);
+            return redirect()->back()->withInput()->with('error', 'You are not eligible for payments with ' . $merchant->getName());
         }
 
         // Validate amounts
