@@ -1,3 +1,26 @@
+## vv1.0.0-rc.1 (2022-08-01)
+* 2022-08-01 - Apply additional test fixes 
+* 2022-08-01 - Add missing Dropzone 
+* 2022-08-01 - Fix legacy service ref 
+* 2022-08-01 - Improve install process 
+* 2022-08-01 - Apply workflow hotfix 
+* 2022-08-01 - Checkpoint 
+* 2022-08-01 - Apply analysis fixes 
+
+### Closed Issues
+* Rename Dashboard
+* Submission Page Edits
+* Email Template Bug
+* Sentry Exception: The email field is required
+* Set UAT to production
+* Modify Clients without Regression
+* Warning on volume failure
+* External Accounts Missing Names
+* Invitation Link Broken
+* User Management
+* Update `upgrade.sh`
+* Workflow Actions not showing
+
 ## v1.0.0-beta.5 (2021-10-29)
 * 2021-10-05 - Rework options into table 
 * 2021-10-05 - Fix test 

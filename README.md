@@ -1,8 +1,8 @@
 # Bluesmith
 
 [![GitLab status](https://gitlab.oit.duke.edu/academic-technology/bluesmith/badges/develop/pipeline.svg)](https://gitlab.oit.duke.edu/academic-technology/bluesmith/commits/develop)
-[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPUnit/badge.svg)](https://github.com/duke-bluesmith/bluesmith/actions?query=workflow%3A%22PHPUnit)
-[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPStan/badge.svg)](https://github.com/duke-bluesmith/bluesmith/actions?query=workflow%3A%22PHPStan)
+[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPUnit/badge.svg)](https://github.com/organization/project/actions/workflows/phpunit.yml)
+[![](https://github.com/duke-bluesmith/bluesmith/workflows/PHPStan/badge.svg)](https://github.com/organization/project/actions/workflows/phpstan.yml)
 [![Coverage Status](https://coveralls.io/repos/github/duke-bluesmith/bluesmith/badge.svg?branch=develop)](https://coveralls.io/github/duke-bluesmith/bluesmith?branch=develop)
 
 3D Print manager, Bluesmith (https://bluesmith.oit.duke.edu)
@@ -18,7 +18,7 @@ sure your environment meets all of the framework's
 [system requirements](https://codeigniter4.github.io/userguide/intro/requirements.html).
 Framework requirements may change but here is a good start:
 
-* PHP 7.3 or newer
+* PHP 7.4 or newer
 * PHP extensions (`php -m`): intl, json, mbstring, mysqlnd, xml, curl
 * A database with one of the framework's supported drivers
 
