@@ -50,6 +50,7 @@ final class FilesTest extends ProjectTestCase
             'localname'  => 'invalid.stl',
             'clientname' => 'invalid.stl',
             'size'       => 12345,
+            'thumbnail'  => 'abc/def/hij',
         ]);
         Events::trigger('upload', $file);
 

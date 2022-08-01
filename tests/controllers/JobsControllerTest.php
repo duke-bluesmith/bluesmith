@@ -9,6 +9,7 @@ use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Test\ControllerTestTrait;
 use CodeIgniter\Test\DatabaseTestTrait;
+use Tatter\Assets\Test\AssetsTestTrait;
 use Tests\Support\ProjectTestCase;
 
 /**
@@ -16,6 +17,7 @@ use Tests\Support\ProjectTestCase;
  */
 final class JobsControllerTest extends ProjectTestCase
 {
+    use AssetsTestTrait;
     use ControllerTestTrait;
     use DatabaseTestTrait;
 
@@ -119,6 +121,7 @@ final class JobsControllerTest extends ProjectTestCase
         }
 
         $this->controller(Jobs::class);
+        $this->publishAll();
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\JobModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Test\TestResponse;
 use RuntimeException;
+use Tatter\Assets\Test\AssetsTestTrait;
 use Tatter\Workflows\BaseAction;
 use Tatter\Workflows\Factories\ActionFactory;
 use Tatter\Workflows\Models\StageModel;
@@ -21,6 +22,8 @@ use Tatter\Workflows\Models\WorkflowModel;
  */
 trait ActionTrait
 {
+    use AssetsTestTrait;
+
     /**
      * @var BaseAction
      */
@@ -36,10 +39,8 @@ trait ActionTrait
      */
     protected function setUpActionTrait(): void
     {
-        // Make sure the helper is loaded
-        if (! function_exists('handlers')) {
-            helper('handlers');
-        }
+        $this->setUpAssetsTestTrait();
+        $this->publishAll();
 
         // Create a random Job for the Action
         fake(WorkflowModel::class);

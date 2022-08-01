@@ -27,7 +27,7 @@ class ApproveAction extends BaseAction
         helper(['chat']);
 
         return $this->render('actions/approve', [
-            'estimate' => $this->job->getEstimate(),
+            'estimate' => $this->job->getEstimate(true),
         ]);
     }
 
