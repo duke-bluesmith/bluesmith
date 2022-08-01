@@ -77,7 +77,7 @@ class PaymentAction extends BaseAction
         if (empty($data['merchant'])) {
             return redirect()->back()->withInput()->with('error', 'Please select a payment method.');
         }
-        if (! $class = service('handlers', 'Merchants')->find($data['merchant'])) {
+        if (! $class = MerchantFactory::find($data['merchant'])) {
             $message = 'Unable to locate payment method "' . $data['merchant'] . '"';
             log_message('error', $message);
 
