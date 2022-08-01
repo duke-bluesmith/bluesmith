@@ -1,7 +1,7 @@
 <p>
   The final charges for you job "{job_name}" are ready!
   Note that these may vary from any estimates you received
-  early. Log in now to review the charges and pay any
+  earlier. Log in now to review the charges and pay any
   outstanding balance: {job_url}
 </p>
 <p>

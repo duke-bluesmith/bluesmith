@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef1f44299dead4fcc353222a13f5168a",
+    "content-hash": "c6bf275fb6fa32a381b34c6dc6e82ac7",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -221,6 +221,108 @@
                 "source": "https://github.com/codeigniter4/settings/tree/v2.1.0"
             },
             "time": "2021-11-22T17:30:18+00:00"
+        },
+        {
+            "name": "codeigniter4/tasks",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeigniter4/tasks.git",
+                "reference": "1e121d37018635e084c7bc7ee12ffad0becfe193"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeigniter4/tasks/zipball/1e121d37018635e084c7bc7ee12ffad0becfe193",
+                "reference": "1e121d37018635e084c7bc7ee12ffad0becfe193",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/settings": "^2.0",
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.1",
+                "rector/rector": "0.13.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodeIgniter\\Tasks\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\Support\\": "tests/_support"
+                }
+            },
+            "scripts": {
+                "post-update-cmd": [
+                    "bash admin/setup.sh"
+                ],
+                "analyze": [
+                    "phpstan analyze",
+                    "psalm"
+                ],
+                "ci": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@deduplicate",
+                    "@analyze",
+                    "@test",
+                    "@inspect",
+                    "rector process",
+                    "@style"
+                ],
+                "deduplicate": [
+                    "phpcpd app/ src/"
+                ],
+                "inspect": [
+                    "deptrac analyze --cache-file=build/deptrac.cache"
+                ],
+                "mutate": [
+                    "infection --threads=2 --skip-initial-tests --coverage=build/phpunit"
+                ],
+                "retool": [
+                    "retool"
+                ],
+                "style": [
+                    "php-cs-fixer fix --verbose --ansi --using-cache=no"
+                ],
+                "cs-fix": [
+                    "@style"
+                ],
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lonnie Ezell",
+                    "email": "lonnieje@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Task Scheduler for CodeIgniter 4",
+            "homepage": "https://github.com/codeigniter4/tasks",
+            "keywords": [
+                "codeigniter",
+                "codeigniter4",
+                "cron",
+                "task scheduling"
+            ],
+            "support": {
+                "source": "https://github.com/codeigniter4/tasks/tree/develop",
+                "issues": "https://github.com/codeigniter4/tasks/issues"
+            },
+            "time": "2022-07-25T12:33:10+00:00"
         },
         {
             "name": "components/jquery",
@@ -9021,7 +9123,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "codeigniter4/tasks": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

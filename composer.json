@@ -25,6 +25,7 @@
         "php": "^7.4 || ^8.0",
         "chubv/php-stl": "^2.1",
         "codeigniter4/framework": "^4.1",
+        "codeigniter4/tasks": "dev-develop",
         "myth/auth": "^1.2.1",
         "tatter/addins": "^3.0",
         "tatter/chat": "^3.0",
@@ -40,6 +41,10 @@
         "tatter/tools": "^2.0"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lonnieezell/codeigniter4-tasks.git"
+        },
         {
             "type": "composer",
             "url": "https://asset-packagist.org"

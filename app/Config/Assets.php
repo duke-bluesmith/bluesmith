@@ -45,11 +45,11 @@ class Assets extends AssetsConfig
             GlobalBundle::class,
         ],
         'jobs/files*' => [
-        	DropzoneBundle::class,
+            DropzoneBundle::class,
             'dropzone.js', // Custom Dropzone config
         ],
         'files*' => [
-        	DropzoneBundle::class,
+            DropzoneBundle::class,
             'dropzone.js', // Custom Dropzone config
         ],
         // Note: AdminLTE bundle is loaded directly on the layout
