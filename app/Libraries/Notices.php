@@ -62,15 +62,15 @@ final class Notices implements Countable, IteratorAggregate
     }
 
     /**
-     * Detecs all active Jobs awaiting staff action.
+     * Detects all active Jobs awaiting staff action.
      */
     private function getFromStaffJobs(): void
     {
         foreach (model(JobModel::class)->builder()
-            ->select('jobs.*, users.id AS user_id, users.firstname, users.lastname')
+            ->select('jobs.*, users.id AS user_id, users.firstname, users.lastname, stages.action_id')
             ->join('jobs_users', 'jobs.id = jobs_users.job_id', 'left')
             ->join('users', 'jobs_users.user_id = users.id', 'left')
-            ->join('stages', 'jobs.stage_id = stages.id', 'left')
+            ->join('stages', 'jobs.stage_id = stages.id', 'inner')
             ->where('jobs.deleted_at', null)
             ->get()->getResultArray() as $row) {
 

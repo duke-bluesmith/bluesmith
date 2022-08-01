@@ -25,6 +25,9 @@
 	<meta name="msapplication-config" content="<?= base_url('assets/favicon/browserconfig.xml') ?>">
 	<meta name="theme-color" content="#307093">
 
+	<?php $adminLte = new \Tatter\Frontend\Bundles\AdminLTEBundle(); ?>
+	<?= $adminLte->head(); ?>
+
 	<?php $this->renderSection('headerAssets'); ?>
 
 </head>
@@ -167,6 +170,12 @@
 	var siteUrl = "<?= site_url() ?>";
 	var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 </script>
+
+<script>
+	<?= view('Tatter\Chat\Views\javascript') ?>
+</script>
+
+<?= $adminLte->body() ?>
 
 <?php $this->renderSection('footerAssets'); ?>
 

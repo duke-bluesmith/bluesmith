@@ -43,7 +43,7 @@ class PaymentAction extends BaseAction
         }
 
         return $this->render('actions/payment', [
-            'invoice'   => $this->job->getInvoice(),
+            'invoice'   => $this->job->getInvoice(true),
             'merchants' => $merchants,
         ]);
     }

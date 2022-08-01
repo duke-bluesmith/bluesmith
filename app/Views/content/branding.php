@@ -22,7 +22,7 @@
 						<small id="orgNameHelp" class="form-text text-muted">Your organization name.</small>
 					</div>
 
-					<img src="<?= preference('orgLogo') ?>" alt="Organization logo" style="float:right; max-height:100px; max-width:100%;" />
+					<img src="<?= base_url(preference('orgLogo')) ?>" alt="Organization logo" style="float:right; max-height:100px; max-width:100%;" />
 					<div class="form-group">
 						<label for="orgLogo">Logo</label>
 						<input type="file" name="orgLogo" class="form-control-file" id="orgLogo" aria-describedby="orgLogoHelp">
@@ -67,7 +67,7 @@
 						<small id="brandNameHelp" class="form-text text-muted">Brand name for this project.</small>
 					</div>
 
-					<img src="<?= preference('brandLogo') ?>" alt="Brand logo" style="float:right; max-height:100px; max-width:100%;" />
+					<img src="<?= base_url(preference('brandLogo')) ?>" alt="Brand logo" style="float:right; max-height:100px; max-width:100%;" />
 					<div class="form-group">
 						<label for="brandLogo">Logo</label>
 						<input type="file" name="brandLogo" class="form-control-file" id="brandLogo" aria-describedby="brandLogoHelp">
@@ -76,7 +76,7 @@
 
 					<div class="form-group">
 						<label for="brandName">Default theme</label>
-						<?= themes_select('custom-select', preference('theme')) ?>
+						<?= view('Tatter\Themes\Views\select', ['selected' => preference('theme')]) ?>
 						<small id="themeHelp" class="form-text text-muted">Default site display theme.</small>
 					</div>
 
@@ -95,7 +95,7 @@
 				<form method="post">
 					<div class="form-group">
 						<label for="timezone">Default</label>
-						<?= timezone_select('custom-select', preference('App.apptimeZone')) ?>
+						<?= timezone_select('custom-select', preference('App.appTimezone')) ?>
 						<small id="timezoneHelp" class="form-text text-muted">Default user timezone.</small>
 					</div>
 

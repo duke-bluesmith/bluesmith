@@ -38,18 +38,18 @@
 				 <div class="tab-pane fade show active" id="progress" role="tabpanel" aria-labelledby="progress-tab">
 					<ul class="list-group">
 
-					<?php foreach ($job->stages as $stage): ?>
+					<?php foreach ($job->getWorkflow()->getStages() as $stage): ?>
 
 						<li class="list-group-item">
-							<?php if (null === $job->stage_id || $job->stage_id > $stage->id): ?>
+							<?php if ($job->stage_id === null || $job->stage_id > $stage->id): ?>
 
 							<i class="far fa-check-square mr-1"></i>
-							<a href="<?= site_url($stage->action->getRoute($job->id)) ?>" onclick="return confirm('Are you sure you want to regress this job?');"><?= $stage->action->summary ?></a>
+							<a href="<?= site_url($stage->getRoute() . $job->id) ?>" onclick="return confirm('Are you sure you want to regress this job?');"><?= $stage->getAction()::getAttributes()['summary'] ?></a>
 
 							<?php else: ?>
 
 							<i class="far fa-square mr-1"></i>
-							<?= $stage->action->summary ?>
+							<?= $stage->getAction()::getAttributes()['summary'] ?>
 
 							<?php endif; ?>
 						</li>
@@ -132,7 +132,7 @@ helper(['files', 'handlers']);
 $data = [
     'files'   => $job->files,
     'access'  => 'display',
-    'exports' => handlers('Exports')->findAll(),
+    'exports' => \Tatter\Exports\Factories\ExporterFactory::findAll(),
 ];
 echo view('Tatter\Files\Views\Formats\cards', $data);
 ?>
@@ -213,6 +213,8 @@ $invoice  = $job->getInvoice();
 
                     <?php endif; ?>
 
+					<?php if ($job->deleted_at === null): ?>
+
 					<h4 class="mt-5">Add User</h4>
 
                     <?= form_open('clients/add/' . $job->id) ?>
@@ -225,6 +227,8 @@ $invoice  = $job->getInvoice();
                         <input class="btn btn-secondary" type="submit" name="submit" value="<?= lang('Pub.add') ?>">
 
                     <?= form_close() ?>
+
+                    <?php endif; ?>
 				</div>
 			</div>
 		</div>

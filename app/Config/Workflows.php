@@ -26,6 +26,6 @@ class Workflows extends BaseConfig
         'deleted'  => 'Tatter\Workflows\Views\deleted',
         'filter'   => 'Tatter\Workflows\Views\filter',
         'workflow' => 'Tatter\Workflows\Views\workflow',
-        'info'     => 'actions/info',
+        'info'     => 'actions/info', // Unused, see App\Actions\InfoAction
     ];
 }

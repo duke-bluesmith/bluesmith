@@ -5,7 +5,6 @@ namespace Config;
 use App\Bundles\GlobalBundle;
 use App\Bundles\TinyMCEBundle;
 use Tatter\Assets\Config\Assets as AssetsConfig;
-use Tatter\Frontend\Bundles\AdminLTEBundle;
 use Tatter\Frontend\Bundles\BootstrapBundle;
 use Tatter\Frontend\Bundles\DataTablesBundle;
 use Tatter\Frontend\Bundles\FontAwesomeBundle;
@@ -44,16 +43,12 @@ class Assets extends AssetsConfig
             FontAwesomeBundle::class,
             GlobalBundle::class,
         ],
-        'emails/templates' => [
-            AdminLTEBundle::class,
-        ],
         'files*' => [
-            'dropzone.js',
+            'dropzone.js', // Custom Dropzone config
         ],
+        // Note: AdminLTE bundle is loaded directly on the layout
         'manage*' => [
-            AdminLTEBundle::class,
             DataTablesBundle::class,
-            FontAwesomeBundle::class,
         ],
         'manage/content*' => [
             TinyMCEBundle::class,

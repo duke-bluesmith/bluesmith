@@ -15,7 +15,7 @@
 			<tr>
 				<td>#<?= $payment->id ?></td>
 				<td><?= $payment->created_at->format('n/j/Y') ?></td>
-				<td><?= service('handlers', 'Merchants')->getAttributes($payment->class)['name'] ?></td>
+				<td><?= (new $payment->class())->getName() ?></td>
 				<td><?= price_to_currency($payment->amount) ?></td>
 				<td class="<?= $payment->code ? 'text-danger' : '' ?>"><?= $payment->status ?></td>
 			</tr>

@@ -92,6 +92,10 @@
 		var apiUrl  = "<?= site_url(config('Forms')->apiUrl) ?>";
 	</script>
 
+	<script>
+		<?= view('Tatter\Chat\Views\javascript') ?>
+	</script>
+
 	<?php $this->renderSection('footerAssets'); ?>
 
 </body>

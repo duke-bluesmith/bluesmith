@@ -36,5 +36,6 @@ return [
     'postprintHelp' => 'Complete any processing required to finish the print.',
     'invoiceHelp'   => 'Update the estimated charges to reflect actual costs and send the invoice to each selected client.',
     'paymentHelp'   => 'Please submit payment for the amount invoiced below. You may split payments across multiple payment methods.',
+    'prepayHelp'    => 'Click below to agree to paying the final amount charged.',
     'deliverHelp'   => 'Mark this job as &ldquo;Delivered&rdquo; once the printed parts have been received by the client.',
 ];
