@@ -13,6 +13,6 @@ class Tasks extends BaseConfig
     public function init(Scheduler $schedule)
     {
         $schedule->command('email:messages')->hourly();
-        $schedule->command('email:reminder')->days([1, 3, 6])->hours([10]); // Mon-Wed-Sat at 10am
+        $schedule->command('email:reminder')->days([1, 3, 5])->hours([10]); // Mon-Wed-Fri at 10am
     }
 }
