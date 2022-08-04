@@ -11,7 +11,7 @@ by Duke University OIT
 
 (CodeIgniter 4 port of https://gitlab.oit.duke.edu/msg8/bluesmith)
 
-## Requirements
+### Requirements
 
 **Bluesmith** is built on version 4 the CodeIgniter PHP framework. You will need to be
 sure your environment meets all of the framework's
